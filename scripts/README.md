@@ -4,7 +4,7 @@ Este directorio contiene **tres scripts** para aplanar ramas de Git, cada uno co
 
 ## 📚 **Documentación Completa**
 
-- **[README.md](README.md)** - Guía de uso y comparación de scripts  
+- **[README.md](README.md)** - Guía de uso y comparación de scripts
 - **[TECHNICAL-DOCUMENTATION.md](TECHNICAL-DOCUMENTATION.md)** - Documentación técnica detallada y método manual paso a paso
 
 ## ⚡ git-simple-squash.sh
@@ -60,7 +60,7 @@ Este directorio contiene **tres scripts** para aplanar ramas de Git, cada uno co
 # Auto-detecta commits desde main/master
 ./scripts/git-rebase-squash.sh feature/nueva-funcionalidad
 
-# Especifica número de commits manualmente  
+# Especifica número de commits manualmente
 ./scripts/git-rebase-squash.sh feature/nueva-funcionalidad 5
 
 # Con mensaje personalizado
@@ -185,15 +185,15 @@ Mantenemos **dos métodos diferentes** intencionalmente porque diferentes situac
 
 ## � Comparación de Scripts
 
-| Característica | Simple | Rebase | Robusto |
-|---------------|--------|--------|---------|
-| **Velocidad** | ⚡ Ultra rápido | 🔄 Medio | 🔄 Rápido |
-| **Control** | ❌ Todo o nada | ❌ Todo o nada | ❌ Todo o nada |
-| **Seguridad** | ⚠️ Básica | ✅ Backup auto | ✅ Máxima |
-| **Complejidad** | 🟢 Simple | 🟡 Medio | 🟠 Avanzado |
-| **Método** | Orphan branch | Git rebase | Soft reset |
-| **Backup** | ❌ Manual | ✅ Automático | ✅ Automático |
-| **Estándar Git** | ❌ Método custom | ✅ Nativo | ❌ Método custom |
+| Característica   | Simple           | Rebase         | Robusto          |
+| ---------------- | ---------------- | -------------- | ---------------- |
+| **Velocidad**    | ⚡ Ultra rápido  | 🔄 Medio       | 🔄 Rápido        |
+| **Control**      | ❌ Todo o nada   | ❌ Todo o nada | ❌ Todo o nada   |
+| **Seguridad**    | ⚠️ Básica        | ✅ Backup auto | ✅ Máxima        |
+| **Complejidad**  | 🟢 Simple        | 🟡 Medio       | 🟠 Avanzado      |
+| **Método**       | Orphan branch    | Git rebase     | Soft reset       |
+| **Backup**       | ❌ Manual        | ✅ Automático  | ✅ Automático    |
+| **Estándar Git** | ❌ Método custom | ✅ Nativo      | ❌ Método custom |
 
 ## �📝 Ejemplos de uso común
 
@@ -216,7 +216,7 @@ git checkout feature/nueva-funcionalidad
 
 ```bash
 # Con backup y seguridad total
-./scripts/git-squash-branch.sh feature/nueva-funcionalidad "feat: Sistema de autenticación completo"  
+./scripts/git-squash-branch.sh feature/nueva-funcionalidad "feat: Sistema de autenticación completo"
 ```
 
 ### Para hotfixes
