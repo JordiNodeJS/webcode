@@ -1,0 +1,99 @@
+# WebSnack - Contexto Actualizado para LLMs
+
+> **Generado automáticamente**: 2025-09-01T01:26:20+02:00
+> **Proyecto**: WebSnack - Desarrollo Web Barcelona  
+> **Estado**: Fase de planificación → Setup inicial
+
+## Información del Proyecto
+
+WebSnack es una plataforma de desarrollo web y soluciones digitales para freelancers, PYMEs y startups en Barcelona y España. Utilizamos tecnologías de vanguardia de 2025 para crear soluciones web profesionales y accesibles.
+
+### Stack Tecnológico Confirmado
+- **Framework**: Next.js 15 con App Router (obligatorio)
+- **UI Library**: React 19 con TypeScript modo estricto
+- **Styling**: Tailwind CSS v4 + shadcn/ui components
+- **Package Manager**: pnpm (nunca npm/yarn)
+- **Validation**: React Hook Form + Zod schemas
+- **Testing**: Jest + React Testing Library + Playwright
+
+### Estado Actual del Desarrollo
+- **Fase**: Planificación → Setup inicial (15% progreso)
+- **Prioridad**: Configuración inicial de Next.js 15
+- **Bloqueadores**: Ninguno crítico identificado
+- **Próximos pasos**: Setup de Next.js, shadcn/ui, Tailwind v4
+
+### Estructura del Proyecto
+```
+src/
+├── app/                    # App Router (Next.js 15)
+├── components/
+│   ├── ui/                # shadcn/ui (NO MODIFICAR)
+│   ├── magicui/           # Magic UI animations  
+│   └── custom/            # Componentes WebSnack
+├── lib/                   # Utilities & configurations
+├── hooks/                 # Custom React hooks
+└── types/                 # TypeScript definitions
+```
+
+### Patrones de Desarrollo
+- **Server Components por defecto** - 'use client' solo cuando sea necesario
+- **TypeScript estricto** - Sin tipos 'any', interfaces completas
+- **Mobile-first responsive** - Diseño adaptive para todas las pantallas
+- **Accessibilidad WCAG 2.1 AA** - Compliance completo requerido
+- **Performance crítico** - Core Web Vitals en verde (<2.5s LCP)
+
+### Comandos Principales
+```bash
+# Setup inicial (pendiente)
+pnpm create next-app@latest websnack --typescript --tailwind --eslint --app --src-dir
+
+# Desarrollo
+pnpm dev
+
+# shadcn/ui setup
+pnpm dlx shadcn@latest init
+pnpm dlx shadcn@latest add button card input
+
+# Testing
+pnpm test
+pnpm test:e2e
+```
+
+### Decisiones Técnicas Recientes
+- Confirmado Next.js 15 con App Router como framework principal
+- Tailwind CSS v4 para styling system (nueva sintaxis)
+- pnpm como package manager oficial del proyecto
+- TypeScript en modo estricto (configuración establecida)
+- shadcn/ui para componentes base (no modificar archivos ui/)
+
+### Tareas Inmediatas (Esta Semana)
+1. **Crear aplicación Next.js 15** con configuración WebSnack
+2. **Instalar shadcn/ui** con componentes base necesarios
+3. **Configurar Tailwind v4** con sistema de temas personalizado
+4. **Establecer estructura de carpetas** siguiendo convenciones
+
+### Problemas y Riesgos Identificados
+- Tailwind v4 tiene nueva sintaxis (requiere migración cuidadosa)
+- React 19 compatibilidad con librerías third-party (tracking needed)
+- Proyecto aún no inicializado (solo documentación existente)
+
+### Contexto de Negocio
+- **Target**: Freelancers, PYMEs, startups en mercado español
+- **Ubicación**: Barcelona como hub principal
+- **Servicios**: Desarrollo web, soluciones digitales, consulting técnico
+- **Diferenciador**: Stack 2025, performance crítico, accesibilidad completa
+
+### Referencias Técnicas
+- Documentación completa en `/docs/` directory
+- Guías de estilo en `.github/prompts/`
+- Task management en `.github/taskmanager-instructions.md`
+- Context files en `.github/context/` para memoria persistente
+
+---
+
+**Para contexto actualizado siempre consultar**:
+- `.github/PROJECT-STATE.md` - Estado general del proyecto
+- `.github/context/technical-context.md` - Detalles técnicos actuales
+- `.github/context/current-session.md` - Contexto de sesión activa
+
+> > > > > > > > > > > > > > **Última actualización**: 2025-09-01 01:26:20
