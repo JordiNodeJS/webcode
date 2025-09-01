@@ -1,13 +1,13 @@
 # Scripts de Git Squash
 
-Este directorio contiene dos scripts para aplanar ramas de Git, cada uno con diferentes enfoques y casos de uso.
+Este directorio contiene **tres scripts** para aplanar ramas de Git, cada uno con diferentes enfoques y casos de uso.
 
-## � **Documentación Completa**
+## 📚 **Documentación Completa**
 
-- **[README.md](README.md)** - Guía de uso y comparación de scripts
+- **[README.md](README.md)** - Guía de uso y comparación de scripts  
 - **[TECHNICAL-DOCUMENTATION.md](TECHNICAL-DOCUMENTATION.md)** - Documentación técnica detallada y método manual paso a paso
 
-## �🚀 git-simple-squash.sh
+## ⚡ git-simple-squash.sh
 
 **Script rápido y directo basado en tu idea original**
 
@@ -41,6 +41,53 @@ Este directorio contiene dos scripts para aplanar ramas de Git, cada uno con dif
 - **No conserva metadatos** de commits anteriores
 - **No hay backup automático**
 - **Pierde toda referencia** al historial previo
+
+---
+
+## 🎯 git-rebase-squash.sh
+
+**Script automático usando git rebase (método estándar)**
+
+### Uso
+
+```bash
+./scripts/git-rebase-squash.sh <nombre-de-rama> [commits_desde_base] [mensaje-commit]
+```
+
+### Ejemplos
+
+```bash
+# Auto-detecta commits desde main/master
+./scripts/git-rebase-squash.sh feature/nueva-funcionalidad
+
+# Especifica número de commits manualmente  
+./scripts/git-rebase-squash.sh feature/nueva-funcionalidad 5
+
+# Con mensaje personalizado
+./scripts/git-rebase-squash.sh feature/nueva-funcionalidad 3 "feat: Nueva funcionalidad completa"
+```
+
+### Cómo funciona
+
+1. Detecta automáticamente commits únicos desde main/master
+2. Usa `git rebase -i` con script automático (sin intervención manual)
+3. Hace squash de todos los commits automáticamente
+4. Crea backup automático antes del proceso
+5. Usa método estándar de Git internamente
+
+### Ventajas
+
+- **Método estándar** - Usa herramientas nativas de Git
+- **Automático** - Sin intervención manual
+- **Desde la misma rama** - Workflow natural
+- **Backup automático** - Seguridad integrada
+- **Preserva estructura** - Mantiene historial de merge natural
+
+### Desventajas
+
+- **Solo squash completo** - No permite squash selectivo
+- **Más lento** que el método orphan branch
+- **Más complejo** internamente que los otros métodos
 
 ---
 
@@ -90,10 +137,15 @@ Este directorio contiene dos scripts para aplanar ramas de Git, cada uno con dif
 
 Mantenemos **dos métodos diferentes** intencionalmente porque diferentes situaciones requieren diferentes herramientas:
 
-**🚀 Script Simple:** Método `orphan branch` + `git branch -M`
+**⚡ Script Simple:** Método `orphan branch` + `git branch -M`
 
 - **Filosofía:** "Velocidad y limpieza absoluta"
 - **Casos:** Feature branches rápidos, experimentos, CI/CD
+
+**🎯 Script Rebase:** Método `git rebase -i` automático
+
+- **Filosofía:** "Estándar Git con workflow natural"
+- **Casos:** Desarrollo normal, workflow desde la misma rama
 
 **🛡️ Script Robusto:** Método `soft reset` + backups automáticos
 
@@ -102,9 +154,9 @@ Mantenemos **dos métodos diferentes** intencionalmente porque diferentes situac
 
 ### **🎓 Valor Educacional**
 
-- **Aprender Git:** Dos enfoques técnicos diferentes para el mismo problema
+- **Aprender Git:** Tres enfoques técnicos diferentes para el mismo problema
 - **Flexibilidad:** Herramienta correcta para cada situación
-- **Mejores prácticas:** Cuándo priorizar velocidad vs seguridad
+- **Mejores prácticas:** Cuándo priorizar velocidad vs seguridad vs estándares
 
 ---
 
@@ -117,14 +169,33 @@ Mantenemos **dos métodos diferentes** intencionalmente porque diferentes situac
 - ✅ La rama es **experimental** o temporal
 - ✅ Quieres una **solución minimalista**
 
+### Usa `git-rebase-squash.sh` cuando:
+
+- ✅ Quieres usar **método estándar de Git**
+- ✅ Prefieres **herramientas nativas** de Git
+- ✅ Necesitas **workflow desde la misma rama**
+- ✅ Quieres **squash automático** con rebase
+
 ### Usa `git-squash-branch.sh` cuando:
 
 - ✅ Trabajas en una rama **importante**
 - ✅ Quieres **máxima seguridad**
 - ✅ Necesitas **mantener alguna referencia** al historial
-- ✅ Prefieres un proceso **paso a paso**
+- ✅ Prefieres un proceso **automático pero seguro**
 
-## 📝 Ejemplos de uso común
+## � Comparación de Scripts
+
+| Característica | Simple | Rebase | Robusto |
+|---------------|--------|--------|---------|
+| **Velocidad** | ⚡ Ultra rápido | 🔄 Medio | 🔄 Rápido |
+| **Control** | ❌ Todo o nada | ❌ Todo o nada | ❌ Todo o nada |
+| **Seguridad** | ⚠️ Básica | ✅ Backup auto | ✅ Máxima |
+| **Complejidad** | 🟢 Simple | 🟡 Medio | 🟠 Avanzado |
+| **Método** | Orphan branch | Git rebase | Soft reset |
+| **Backup** | ❌ Manual | ✅ Automático | ✅ Automático |
+| **Estándar Git** | ❌ Método custom | ✅ Nativo | ❌ Método custom |
+
+## �📝 Ejemplos de uso común
 
 ### Para feature branches experimentales
 
@@ -133,11 +204,19 @@ Mantenemos **dos métodos diferentes** intencionalmente porque diferentes situac
 ./scripts/git-simple-squash.sh feature/experimento "feat: Experimento con nueva UI"
 ```
 
+### Para desarrollo normal
+
+```bash
+# Método estándar desde la misma rama
+git checkout feature/nueva-funcionalidad
+./scripts/git-rebase-squash.sh feature/nueva-funcionalidad "feat: Nueva funcionalidad completa"
+```
+
 ### Para feature branches importantes
 
 ```bash
-# Con backup y seguridad
-./scripts/git-squash-branch.sh feature/nueva-funcionalidad "feat: Sistema de autenticación completo"
+# Con backup y seguridad total
+./scripts/git-squash-branch.sh feature/nueva-funcionalidad "feat: Sistema de autenticación completo"  
 ```
 
 ### Para hotfixes
@@ -145,6 +224,14 @@ Mantenemos **dos métodos diferentes** intencionalmente porque diferentes situac
 ```bash
 # Rápido para hotfixes
 ./scripts/git-simple-squash.sh hotfix/bug-critico "fix: Solución crítica para bug de seguridad"
+```
+
+### Para workflow estándar
+
+```bash
+# Usando herramientas nativas de Git
+git checkout feature/mi-trabajo
+./scripts/git-rebase-squash.sh feature/mi-trabajo 5 "feat: Implementación completa"
 ```
 
 ## 🔧 Instalación y configuración
