@@ -1,6 +1,6 @@
 # WebSnack - Contexto Actualizado para LLMs
 
-> **Generado automáticamente**: 2025-09-01T01:26:20+02:00
+> **Generado automáticamente**: 2025-09-01T14:46:19+02:00
 > **Proyecto**: WebSnack - Desarrollo Web Barcelona  
 > **Estado**: Fase de planificación → Setup inicial
 
@@ -96,4 +96,4 @@ pnpm test:e2e
 - `.github/context/technical-context.md` - Detalles técnicos actuales
 - `.github/context/current-session.md` - Contexto de sesión activa
 
-> > > > > > > > > > > > > > **Última actualización**: 2025-09-01 01:26:20
+> > > > > > > > > > > > > > > **Última actualización**: 2025-09-01 14:46:19
