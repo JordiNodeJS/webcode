@@ -23,15 +23,15 @@ Establecer la estructura de archivos y componentes necesarios para la Hero Secti
 ### Archivos a crear
 ```
 src/
-└── components/
-    └── landing/
-        └── hero/
-            ├── HeroSection.tsx
-            ├── HeaderNavigation.tsx
-            ├── HeroContent.tsx
-            ├── ValuePropsGrid.tsx
-            ├── CallToAction.tsx
-            └── TrustIndicators.tsx
+├── app/
+│   ├── page.tsx
+│   └── components/
+│       ├── HeroSection.tsx
+│       ├── HeaderNavigation.tsx
+│       ├── HeroContent.tsx
+│       ├── ValuePropsGrid.tsx
+│       ├── CallToAction.tsx
+│       └── TrustIndicators.tsx
 ```
 
 ### Criterios de aceptación

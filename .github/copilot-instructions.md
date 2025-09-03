@@ -175,12 +175,15 @@ package.json                   # Dependencias del proyecto - PENDIENTE INSTALACI
 
 ### **REGLAS DE ORGANIZACIÓN DE ARCHIVOS**
 
-#### **1. Colocación Cercana (Colocation)**
+#### **1. Colocación Cercana (Colocation) - ENFOQUE PREFERIDO**
 - **Componentes específicos de página**: Si un componente solo se usa en una página o sección, debe guardarse en una carpeta `components/` dentro de la carpeta de esa ruta.
   ```
   app/dashboard/analytics/components/Chart.tsx
   app/services/floristeria/components/ServiceCard.tsx
+  app/components/HeroSection.tsx  # Para componentes de la página principal
   ```
+
+**🎯 RECOMENDACIÓN PRINCIPAL**: Usar colocación cercana siempre que sea posible. Es más fácil de mantener, más claro para el contexto, y sigue las mejores prácticas de Next.js 15.
 
 #### **2. Componentes Compartidos**
 - **Elementos atómicos** → `src/components/ui/` (botones, inputs, modales)
@@ -230,6 +233,31 @@ package.json                   # Dependencias del proyecto - PENDIENTE INSTALACI
 - **Estilos globales**: `src/styles/globals.css`
 - **Estilos específicos**: Junto al componente solo si no se reutilizan
 - **Preferencia por Tailwind**: Evitar CSS personalizado cuando sea posible
+
+#### **8. Guía de Decisión: Colocación Cercana vs Features**
+
+**🎯 USAR COLOCACIÓN CERCANA (app/components/) cuando:**
+- El componente solo se usa en una página específica
+- Es parte de la funcionalidad principal de esa ruta
+- Quieres mantener todo el código relacionado junto
+- Es un componente de presentación sin lógica de negocio compleja
+
+**🔧 USAR FEATURES (src/components/features/) cuando:**
+- El componente se reutiliza en múltiples páginas
+- Tiene lógica de negocio compleja
+- Es un módulo funcional completo (ej: carrito de compras)
+- Necesitas separar claramente la lógica de negocio
+
+**📱 EJEMPLO PRÁCTICO:**
+```
+# ✅ Colocación Cercana - Página principal
+app/components/HeroSection.tsx
+app/components/HeaderNavigation.tsx
+
+# ✅ Features - Funcionalidad reutilizable
+src/components/features/shopping-cart/ShoppingCart.tsx
+src/components/features/search/SearchBar.tsx
+```
 
 ### **Estado Actual del Proyecto**
 
