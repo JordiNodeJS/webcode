@@ -107,25 +107,129 @@ Eres un asistente especializado en el desarrollo del proyecto WebSnack. Sigue es
 
 ## **ESTRUCTURA DE ARCHIVOS DEL PROYECTO**
 
-⚠️ **NOTA IMPORTANTE**: El proyecto se creará con la estructura estándar de Next.js 15 usando `src/`:
+⚠️ **NOTA IMPORTANTE**: El proyecto se creará con la estructura estándar de Next.js 15 usando `src/` y siguiendo principios de colocación cercana (colocation).
+
+### **Estructura de Directorio Principal**
 
 ```
 src/
-├── app/                 # App Router - rutas y páginas
-├── components/
-│   ├── ui/             # shadcn/ui (nunca modificar) - PENDIENTE INSTALACIÓN
-│   ├── magicui/        # Magic UI components - PENDIENTE INSTALACIÓN
-│   └── custom/         # Componentes personalizados - PENDIENTE INSTALACIÓN
-├── lib/                # Utilidades y configuraciones - PENDIENTE INSTALACIÓN
-├── hooks/              # Custom hooks - PENDIENTE INSTALACIÓN
-└── types/              # Tipos TypeScript - PENDIENTE INSTALACIÓN
+├── app/                        # App Router - rutas y páginas
+│   ├── layout.tsx             # Layout raíz de la aplicación
+│   ├── page.tsx               # Página principal
+│   ├── (marketing)/           # Route Group - rutas de marketing
+│   │   ├── layout.tsx         # Layout específico para marketing
+│   │   ├── about/
+│   │   │   ├── page.tsx
+│   │   │   └── components/    # Componentes específicos de About
+│   │   └── services/
+│   │       ├── page.tsx
+│   │       └── components/    # Componentes específicos de Services
+│   ├── (dashboard)/           # Route Group - área de administración
+│   │   ├── layout.tsx         # Layout con sidebar y header admin
+│   │   ├── analytics/
+│   │   │   ├── page.tsx
+│   │   │   └── components/    # Chart.tsx, StatsCard.tsx, etc.
+│   │   └── orders/
+│   │       ├── page.tsx
+│   │       └── components/    # OrderTable.tsx, OrderCard.tsx, etc.
+│   ├── _private/              # Código privado que no genera rutas
+│   │   └── utils/             # Utilidades internas
+│   └── api/                   # Route handlers
+│       ├── services/
+│       └── contact/
+├── components/                 # Componentes compartidos
+│   ├── ui/                    # shadcn/ui (nunca modificar) - PENDIENTE INSTALACIÓN
+│   │   ├── Button.tsx
+│   │   ├── Card.tsx
+│   │   └── Input.tsx
+│   ├── magicui/               # Magic UI components - PENDIENTE INSTALACIÓN
+│   │   ├── AnimatedButton.tsx
+│   │   └── HeroSection.tsx
+│   └── features/              # Bloques funcionales con lógica de negocio
+│       ├── shopping-cart/     # ShoppingCart.tsx, CartItem.tsx, etc.
+│       ├── search/            # SearchBar.tsx, SearchResults.tsx, etc.
+│       └── contact/           # ContactForm.tsx, ContactInfo.tsx, etc.
+├── lib/                       # Utilidades y configuraciones - PENDIENTE INSTALACIÓN
+│   ├── utils.ts              # Funciones helper generales
+│   ├── validators.ts         # Esquemas Zod
+│   └── api.ts                # Configuración de API
+├── hooks/                     # Custom hooks - PENDIENTE INSTALACIÓN
+│   ├── useLocalStorage.ts
+│   └── useDebounce.ts
+├── types/                     # Tipos TypeScript - PENDIENTE INSTALACIÓN
+│   ├── index.ts              # Tipos principales
+│   └── api.ts                # Tipos de API
+└── styles/                    # Estilos globales - PENDIENTE INSTALACIÓN
+    ├── globals.css           # Estilos base de Tailwind
+    └── components.css        # Estilos específicos cuando sea necesario
 
-docs/                   # Documentación del proyecto ✅
-tasks/                  # Sistema de gestión de tareas ✅
-.github/                # Configuraciones y directrices ✅
-public/                 # Assets estáticos - PENDIENTE INSTALACIÓN
-package.json           # Dependencias del proyecto - PENDIENTE INSTALACIÓN
+docs/                          # Documentación del proyecto ✅
+tasks/                         # Sistema de gestión de tareas ✅
+.github/                       # Configuraciones y directrices ✅
+public/                        # Assets estáticos - PENDIENTE INSTALACIÓN
+├── images/
+├── icons/
+└── favicon.ico
+package.json                   # Dependencias del proyecto - PENDIENTE INSTALACIÓN
 ```
+
+### **REGLAS DE ORGANIZACIÓN DE ARCHIVOS**
+
+#### **1. Colocación Cercana (Colocation)**
+- **Componentes específicos de página**: Si un componente solo se usa en una página o sección, debe guardarse en una carpeta `components/` dentro de la carpeta de esa ruta.
+  ```
+  app/dashboard/analytics/components/Chart.tsx
+  app/services/floristeria/components/ServiceCard.tsx
+  ```
+
+#### **2. Componentes Compartidos**
+- **Elementos atómicos** → `src/components/ui/` (botones, inputs, modales)
+- **Bloques funcionales** → `src/components/features/` (carrito, buscador, formularios complejos)
+- **Animaciones** → `src/components/magicui/` (componentes con animaciones especiales)
+
+#### **3. Layouts Jerárquicos**
+- **Layout raíz**: `app/layout.tsx` - Estructura base de toda la aplicación
+- **Layouts de sección**: `app/(marketing)/layout.tsx` - Header/footer específicos
+- **Layouts de funcionalidad**: `app/(dashboard)/layout.tsx` - Sidebar, navegación admin
+
+#### **4. Agrupación de Rutas (Route Groups)**
+- Usar `(nombreGrupo)` para agrupar rutas sin afectar la URL:
+  ```
+  app/(marketing)/about/page.tsx     → /about
+  app/(marketing)/services/page.tsx  → /services
+  app/(dashboard)/orders/page.tsx    → /orders
+  ```
+
+#### **5. Archivos Privados y Utilidades**
+- **Carpetas con `_` inicial**: No generan rutas públicas
+  ```
+  app/_private/utils/     # Utilidades internas
+  app/_components/        # Componentes privados de app/
+  ```
+- **Lógica compartida fuera de app/**:
+  ```
+  src/lib/        # Helpers y configuraciones
+  src/hooks/      # Custom hooks reutilizables
+  src/types/      # Tipos TypeScript globales
+  ```
+
+#### **6. Nomenclatura Clara**
+- **Evitar `index.tsx` genéricos** en componentes
+- **Usar nombres descriptivos**:
+  ```
+  ✅ UserProfileCard.tsx
+  ✅ ProductListItem.tsx
+  ✅ ContactFormSubmit.tsx
+  
+  ❌ index.tsx
+  ❌ Component.tsx
+  ❌ Card.tsx (demasiado genérico)
+  ```
+
+#### **7. Organización de Estilos**
+- **Estilos globales**: `src/styles/globals.css`
+- **Estilos específicos**: Junto al componente solo si no se reutilizan
+- **Preferencia por Tailwind**: Evitar CSS personalizado cuando sea posible
 
 ### **Estado Actual del Proyecto**
 
