@@ -139,7 +139,7 @@ package.json           # Dependencias del proyecto - PENDIENTE INSTALACIÓN
 2. **Tipado TypeScript apropiado** - Interfaces completas, sin tipos 'any'
 3. **Estados de carga y error** - Implementar manejo robusto de estados
 4. **Mejores prácticas de accesibilidad** - Seguir estándares WCAG 2.1 AA
-5. **Validación de formularios** - React Hook Form + Zod para validación robusta
+5. **Validación de formularios** - React Hook Form + Zod con patrones progresivos para validación robusta
 6. **Elementos HTML semánticos** - Usar etiquetas apropiadas para SEO y accesibilidad
 7. **Diseño responsive** - Mobile-first, adaptive para todas las pantallas
 8. **Optimización de rendimiento** - Core Web Vitals en verde
@@ -229,10 +229,21 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
+// ✅ Validación Base
 const contactSchema = z.object({
   name: z.string().min(2, "Nombre debe tener al menos 2 caracteres"),
   email: z.string().email("Email inválido"),
   message: z.string().min(10, "Mensaje debe tener al menos 10 caracteres"),
+  gdprConsent: z.boolean().refine(val => val === true, "Debes aceptar la política de privacidad"),
+});
+
+// ✅ Validación Progresiva por Nicho
+const floristeriaSchema = contactSchema.extend({
+  businessInfo: z.object({
+    name: z.string().min(2),
+    location: z.string().min(5, "Incluye barrio de Barcelona"),
+    specialties: z.array(z.enum(["bodas", "funerales", "eventos_corporativos"])).min(1),
+  }),
 });
 
 type ContactForm = z.infer<typeof contactSchema>;

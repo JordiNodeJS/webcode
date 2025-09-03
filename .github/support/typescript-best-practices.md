@@ -92,18 +92,36 @@ async function getUsers(): Promise<ApiResponse<User[]>> {
 
 ### Form Handling with Zod
 
-Use Zod for runtime validation:
+Use Zod for runtime validation with progressive patterns:
 
 ```tsx
 import { z } from "zod";
 
-const UserSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Invalid email address"),
-  age: z.number().min(18, "Must be at least 18 years old"),
+// Base schema for reusability
+const baseContactSchema = z.object({
+  name: z.string().min(2, "Nombre debe tener al menos 2 caracteres"),
+  email: z.string().email("Email inválido"),
+  gdprConsent: z.boolean().refine(val => val === true, "Debes aceptar la política de privacidad"),
 });
 
-type UserFormData = z.infer<typeof UserSchema>;
+// Progressive validation - extending base schemas
+const webServiceSchema = baseContactSchema.extend({
+  projectType: z.enum(["landing", "corporate", "portfolio", "blog"]),
+  budget: z.enum(["1000-3000", "3000-7000", "7000-15000", "15000+"]),
+  features: z.array(z.enum(["responsive_design", "cms", "seo_basic"])).min(1),
+});
+
+// Niche-specific validation
+const floristeriaSchema = webServiceSchema.extend({
+  businessInfo: z.object({
+    location: z.string().min(5, "Incluye barrio de Barcelona"),
+    specialties: z.array(z.enum(["bodas", "funerales", "eventos_corporativos"])).min(1),
+  }),
+});
+
+type ContactFormData = z.infer<typeof baseContactSchema>;
+type WebServiceFormData = z.infer<typeof webServiceSchema>;
+type FloristeriaFormData = z.infer<typeof floristeriaSchema>;
 
 function UserForm() {
   const [formData, setFormData] = useState<UserFormData>({

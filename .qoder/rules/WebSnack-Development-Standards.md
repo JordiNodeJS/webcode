@@ -11,7 +11,7 @@ alwaysApply: true
 - **React**: React 19 con TypeScript modo estricto
 - **Package Manager**: pnpm (nunca npm/yarn)
 - **Styling**: Tailwind CSS v4 + shadcn/ui components
-- **Validation**: React Hook Form + Zod schemas
+- **Validation**: React Hook Form + Zod schemas con patrones progresivos
 
 ## Patrones Fundamentales
 
@@ -72,6 +72,16 @@ export default function InteractiveComponent() {
 const ContactSchema = z.object({
   name: z.string().min(2, "Mínimo 2 caracteres"),
   email: z.string().email("Email inválido"),
+  gdprConsent: z.boolean().refine(val => val === true, "Debes aceptar la política de privacidad"),
+});
+
+// ✅ Validación Progresiva por Nicho
+const floristeriaSchema = ContactSchema.extend({
+  businessInfo: z.object({
+    name: z.string().min(2),
+    location: z.string().min(5, "Incluye barrio de Barcelona"),
+    specialties: z.array(z.enum(["bodas", "funerales", "eventos_corporativos", "decoracion", "plantas"])).min(1),
+  }),
 });
 ```
 

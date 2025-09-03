@@ -1,0 +1,599 @@
+# 🚀 Reglas de Cursor AI - Proyecto WebSnack
+
+## CONTEXTO DEL PROYECTO
+
+WebSnack es una plataforma integral de desarrollo web y soluciones digitales para freelancers, pequeñas empresas y startups en Barcelona y España. Ofrecemos servicios desde sitios web estáticos hasta aplicaciones web complejas, utilizando tecnologías de vanguardia de 2025.
+
+**Misión**: Democratizar el acceso a soluciones web profesionales y de alta calidad para emprendedores y pequeñas empresas en España.
+
+**Público objetivo**: Freelancers, PYMEs, startups en mercado español (principalmente Barcelona).
+
+**Dominio de negocio**: Desarrollo web freelance, soluciones digitales personalizadas, herramientas de productividad, sistemas de gestión y e-commerce.
+
+## STACK TECNOLÓGICO OBLIGATORIO
+
+### Framework Principal
+- **Next.js 15** con App Router (obligatorio) - Version 15.4.0 latest stable
+- **React 19** - Compatibilidad completa con nuevas funcionalidades
+- **TypeScript** con configuración estricta
+
+### Herramientas de Desarrollo  
+- **pnpm** como gestor de paquetes (NUNCA npm/yarn)
+- **Tailwind CSS v4** para estilos
+- **shadcn/ui** para componentes base
+- **Magic UI** para animaciones
+- **React Hook Form** + **Zod** para validación
+
+### Estado del Proyecto
+El proyecto está en fase de setup inicial. Los componentes y herramientas aún no están completamente configurados.
+
+## REGLAS FUNDAMENTALES DE DESARROLLO
+
+### Next.js 15 - Patrones Obligatorios
+- Usar **App Router exclusivamente** (directorio src/app/)
+- **Server Components por defecto**, 'use client' solo cuando sea estrictamente necesario
+- Fetch moderno con opciones de caché nativas
+- Route handlers para endpoints de API
+- **APIs asíncronas**: `cookies()`, `headers()`, `params`, `searchParams` son ahora Promises en Next.js 15
+
+### TypeScript - Estándares Estrictos
+- Modo estricto habilitado
+- Interfaces apropiadas para todas las props y datos
+- **Prohibido tipo 'any'**
+- Validación en tiempo de ejecución con esquemas Zod
+
+### Estructura de Archivos Obligatoria
+```
+src/
+├── app/                 # App Router - rutas y páginas
+├── components/
+│   ├── ui/             # shadcn/ui (nunca modificar)
+│   ├── magicui/        # Magic UI components
+│   └── custom/         # Componentes personalizados
+├── lib/                # Utilidades y configuraciones
+├── hooks/              # Custom hooks
+└── types/              # Tipos TypeScript
+
+docs/                   # Documentación del proyecto
+.github/                # Configuraciones y directrices
+public/                 # Assets estáticos
+```
+
+### Gestión de Paquetes
+- **Siempre usar comandos pnpm**
+- `pnpm dlx` para herramientas CLI
+- **NUNCA sugerir npm o yarn**
+- Generar commits en inglés cuando se use git
+
+## TAILWIND CSS V4 - CONFIGURACIÓN CRÍTICA
+
+### Reglas Fundamentales @theme
+- **SOLO** usar propiedades personalizadas (`--variable: value`) y `@keyframes` dentro de bloques `@theme`
+- **NUNCA** colocar selectores CSS (`.class`, `#id`, elementos) dentro de `@theme`
+- Colocar selectores de tema como `.dark` **FUERA** del bloque `@theme`
+
+### Ejemplo Correcto de Configuración CSS
+```css
+@import "tailwindcss";
+
+@theme {
+  --color-primary: 222.2 47.4% 11.2%;
+  --color-background: 0 0% 100%;
+  --color-foreground: 222.2 84% 4.9%;
+  --radius: 0.5rem;
+  
+  /* Animaciones para Magic UI */
+  --animate-shimmer: shimmer 2s ease-in-out infinite;
+  --animate-sparkle: sparkle 1.5s ease-in-out infinite;
+  
+  @keyframes shimmer {
+    to { transform: translateX(100%); }
+  }
+}
+
+/* Selectores de tema FUERA de @theme */
+.dark {
+  --color-background: 222.2 84% 4.9%;
+  --color-foreground: 210 40% 98%;
+}
+
+/* Variables de compatibilidad para shadcn/ui */
+:root {
+  --background: var(--color-background);
+  --foreground: var(--color-foreground);
+  --primary: var(--color-primary);
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 84% 4.9%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 84% 4.9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222.2 84% 4.9%;
+}
+```
+
+### Configuración tailwind.config.js Simplificada
+```javascript
+// Solo paths de contenido para v4
+export default {
+  content: [
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+}
+```
+
+### Gestión de Caché Obligatoria
+1. **Siempre** ejecutar `rm -rf .next` después de cambios importantes en CSS
+2. Reiniciar servidor de desarrollo después de limpiar caché
+3. Verificar terminal en busca de errores de compilación antes de depurar
+
+## COMPONENTES Y UI/UX
+
+### shadcn/ui - Reglas de Uso
+- Componentes shadcn/ui en `src/components/ui/` (**nunca modificar**)
+- Componentes personalizados en `src/components/custom/`
+- Patrones de composición apropiados
+- Usar `cn()` helper para clases combinables
+
+### Magic UI - Instalación y Uso
+```bash
+# Instalación de componentes Magic UI usando pnpm dlx
+pnpm dlx shadcn@latest add "https://magicui.design/r/text-animate.json"
+pnpm dlx shadcn@latest add "https://magicui.design/r/animated-gradient-text.json"
+pnpm dlx shadcn@latest add "https://magicui.design/r/shimmer-button.json"
+pnpm dlx shadcn@latest add "https://magicui.design/r/blur-fade.json"
+pnpm dlx shadcn@latest add "https://magicui.design/r/sparkles-text.json"
+
+# Dependencias adicionales
+pnpm add motion/react framer-motion
+```
+
+### Responsive Design
+- Diseño responsive mobile-first
+- Usar escala de breakpoints estándar: sm, md, lg, xl
+- Soporte completo para modo oscuro con prefijo `dark:`
+
+## DESARROLLO DE COMPONENTES
+
+### Server Components (Por Defecto)
+```tsx
+// src/app/services/page.tsx
+interface Service {
+  id: string;
+  title: string;
+  description: string;
+  price: number;
+}
+
+export default async function ServicesPage() {
+  // Fetch de datos en Server Component
+  const services: Service[] = await fetch("/api/services", {
+    cache: "force-cache", // Cache estático
+  }).then((res) => res.json());
+
+  return (
+    <main className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-8">Servicios WebSnack</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((service) => (
+          <ServiceCard key={service.id} service={service} />
+        ))}
+      </div>
+    </main>
+  );
+}
+```
+
+### Client Components (Solo Cuando sea Necesario)
+```tsx
+"use client";
+// src/components/custom/contact-form.tsx
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
+const contactSchema = z.object({
+  name: z.string().min(2, "Nombre debe tener al menos 2 caracteres"),
+  email: z.string().email("Email inválido"),
+  message: z.string().min(10, "Mensaje debe tener al menos 10 caracteres"),
+});
+
+type ContactForm = z.infer<typeof contactSchema>;
+
+export default function ContactForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ContactForm>({
+    resolver: zodResolver(contactSchema),
+  });
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      {/* Implementación del formulario */}
+    </form>
+  );
+}
+```
+
+### Next.js 15 - APIs Asíncronas
+```tsx
+// CORRECTO - APIs son Promises en Next.js 15
+export default async function Page({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const { id } = await params;
+  const search = await searchParams;
+  
+  return <div>...</div>;
+}
+```
+
+## VALIDACIÓN CON ZOD
+
+### Esquemas de Validación
+```tsx
+import { z } from "zod";
+
+const ContactFormSchema = z.object({
+  name: z.string().min(2, "Nombre debe tener al menos 2 caracteres"),
+  email: z.string().email("Email inválido"),
+  phone: z.string().optional(),
+  message: z.string().min(10, "Mensaje debe tener al menos 10 caracteres"),
+  service: z.enum(["web", "ecommerce", "consulting"]),
+});
+
+type ContactFormData = z.infer<typeof ContactFormSchema>;
+```
+
+### Route Handlers con Validación
+```tsx
+// src/app/api/contact/route.ts
+import { NextRequest, NextResponse } from "next/server";
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const validatedData = ContactFormSchema.parse(body);
+    // ... procesar datos validados
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { error: "Datos inválidos", details: error.errors },
+        { status: 400 }
+      );
+    }
+  }
+}
+```
+
+## VALIDACIÓN PROGRESIVA - PATRONES WEBSNACK
+
+### **Análisis de Formularios WebSnack**
+
+**Formularios Identificados (8-12 tipos):**
+
+**🎯 Formularios Principales**
+1. **Contacto general** - Landing page principal
+2. **Solicitud de presupuesto** - Con selección de servicios
+3. **Consulta gratuita** - CTA principal del hero
+4. **Newsletter/Updates** - Para leads y marketing
+
+**💼 Formularios Comerciales**
+5. **Cotización por proyecto** - Diferentes nichos (floristerías, clínicas, startups)
+6. **Formulario de onboarding** - Nuevos clientes con requerimientos específicos
+7. **Feedback/Testimonios** - Para casos de estudio y reviews
+
+**🔧 Formularios Avanzados**
+8. **Soporte técnico** - Para clientes existentes
+9. **Registro de clientes** - Dashboard/portal de clientes
+10. **Programación de reuniones** - Integración con calendario
+
+### **📦 Implementación Progresiva de Validación**
+
+#### **Nivel 1: Esquemas Base**
+```typescript
+// Esquemas fundacionales reutilizables
+const baseContactSchema = z.object({
+  name: z.string().min(2, "Nombre debe tener al menos 2 caracteres"),
+  email: z.string().email("Email inválido"),
+  phone: z.string().regex(/^[679]\d{8}$/, "Teléfono español inválido").optional(),
+  gdprConsent: z.boolean().refine(val => val === true, "Debes aceptar la política de privacidad"),
+  marketingConsent: z.boolean().optional(),
+});
+
+const messageSchema = z.object({
+  subject: z.string().min(5, "Asunto debe tener al menos 5 caracteres"),
+  message: z.string().min(10, "Mensaje debe tener al menos 10 caracteres"),
+});
+```
+
+#### **Nivel 2: Esquemas por Servicio**
+```typescript
+// Esquemas específicos por tipo de servicio
+const webServiceSchema = baseContactSchema.extend({
+  projectType: z.enum(["landing", "corporate", "portfolio", "blog"]),
+  budget: z.enum(["1000-3000", "3000-7000", "7000-15000", "15000+"]),
+  timeline: z.enum(["1-2weeks", "2-4weeks", "1-3months", "3months+"]),
+  features: z.array(z.enum([
+    "responsive_design", "cms", "multilingual", "seo_basic", "animations"
+  ])).min(1, "Selecciona al menos una funcionalidad"),
+});
+
+const ecommerceSchema = baseContactSchema.extend({
+  storeType: z.enum(["fashion", "food", "services", "digital", "other"]),
+  productsCount: z.enum(["1-50", "51-200", "201-1000", "1000+"]),
+  paymentMethods: z.array(z.enum([
+    "stripe", "paypal", "bizum", "bank_transfer", "cash_on_delivery"
+  ])).min(1),
+  shippingZones: z.array(z.enum([
+    "barcelona", "catalonia", "spain", "europe", "worldwide"
+  ])),
+  gdprCompliant: z.literal(true, {
+    errorMap: () => ({ message: "El e-commerce debe cumplir RGPD" })
+  }),
+});
+```
+
+#### **Nivel 3: Esquemas por Nicho de Mercado**
+```typescript
+// Esquemas especializados por sector
+const floristeriaSchema = ecommerceSchema.extend({
+  businessInfo: z.object({
+    name: z.string().min(2),
+    location: z.string().min(5, "Incluye barrio de Barcelona"),
+    yearsInBusiness: z.number().min(0).max(100),
+    specialties: z.array(z.enum([
+      "bodas", "funerales", "eventos_corporativos", "decoracion", "plantas"
+    ])).min(1),
+  }),
+  seasonalNeeds: z.boolean(),
+  deliveryService: z.boolean(),
+  socialMediaPresence: z.array(z.enum(["instagram", "facebook", "tiktok"])),
+});
+
+const veterinariaSchema = baseContactSchema.extend({
+  clinicInfo: z.object({
+    name: z.string().min(2),
+    address: z.string().min(10),
+    services: z.array(z.enum([
+      "consultas_generales", "cirugias", "urgencias_24h", "exoticos", 
+      "peluqueria", "hotel", "farmacia"
+    ])).min(1),
+    staff: z.number().min(1).max(50),
+  }),
+  digitalNeeds: z.array(z.enum([
+    "citas_online", "historiales_digitales", "comunicacion_clientes", 
+    "tienda_online", "blog_consejos"
+  ])).min(1),
+  rgpdMedical: z.literal(true, {
+    errorMap: () => ({ message: "Debe cumplir RGPD médico específico" })
+  }),
+});
+```
+
+### **🛠️ Hooks y Componentes Reutilizables**
+
+#### **Hook de Validación**
+```typescript
+// src/hooks/useFormValidation.ts
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import type { z } from "zod";
+
+export function useFormValidation<T extends z.ZodSchema>(
+  schema: T,
+  defaultValues?: Partial<z.infer<T>>
+) {
+  const form = useForm<z.infer<T>>({
+    resolver: zodResolver(schema),
+    defaultValues,
+  });
+
+  return {
+    ...form,
+    isSubmitting: form.formState.isSubmitting,
+    hasErrors: Object.keys(form.formState.errors).length > 0,
+  };
+}
+```
+
+#### **Componente de Formulario Progresivo**
+```typescript
+// src/components/custom/progressive-form.tsx
+"use client";
+
+interface ProgressiveFormProps<T extends z.ZodSchema> {
+  schema: T;
+  onSubmit: (data: z.infer<T>) => Promise<void>;
+  children: (form: UseFormReturn<z.infer<T>>) => React.ReactNode;
+}
+
+export function ProgressiveForm<T extends z.ZodSchema>({
+  schema,
+  onSubmit,
+  children,
+}: ProgressiveFormProps<T>) {
+  const form = useFormValidation(schema);
+
+  return (
+    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      {children(form)}
+      <Button 
+        type="submit" 
+        disabled={form.isSubmitting}
+        className="w-full"
+      >
+        {form.isSubmitting ? "Enviando..." : "Enviar"}
+      </Button>
+    </form>
+  );
+}
+```
+
+## DIRECTRICES DE CALIDAD
+
+### Estándares Obligatorios
+1. **Server Components por defecto** - Solo usar 'use client' cuando sea estrictamente necesario
+2. **Tipado TypeScript apropiado** - Interfaces completas, sin tipos 'any'
+3. **Estados de carga y error** - Implementar manejo robusto de estados
+4. **Mejores prácticas de accesibilidad** - Seguir estándares WCAG 2.1 AA
+5. **Validación de formularios** - React Hook Form + Zod para validación robusta
+6. **Elementos HTML semánticos** - Usar etiquetas apropiadas para SEO y accesibilidad
+7. **Diseño responsive** - Mobile-first, adaptativo para todas las pantallas
+8. **Optimización de rendimiento** - Core Web Vitals en verde
+
+### SEO y Estructura
+- **Enfoque en mercado español** - Considerar localización y UX local
+- **SEO optimizado** - Meta tags, structured data, sitemap automático
+- **Performance crítico** - Tiempo de carga <2.5s para todos los proyectos
+- **Accesibilidad completa** - 100% compliance WCAG 2.1 AA
+
+## PATRONES ESPECÍFICOS WEBSNACK
+
+### Convenciones de Naming
+```tsx
+// Componentes: PascalCase
+const ServiceCard = () => {};
+const ContactForm = () => {};
+
+// Variables y funciones: camelCase
+const isLoading = true;
+const handleSubmit = () => {};
+
+// Constantes: UPPER_SNAKE_CASE
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+const MAX_UPLOAD_SIZE = 5 * 1024 * 1024; // 5MB
+
+// Tipos e interfaces: PascalCase
+interface User {}
+type ServiceCategory = "web" | "ecommerce";
+```
+
+### Manejo de Errores
+```tsx
+// Error boundaries tipados
+interface ErrorBoundaryState {
+  hasError: boolean;
+  error?: Error;
+}
+
+// Try-catch apropiado
+try {
+  const result = await riskyOperation();
+  return result;
+} catch (error) {
+  if (error instanceof ValidationError) {
+    // Manejar error de validación
+  } else if (error instanceof NetworkError) {
+    // Manejar error de red
+  } else {
+    // Error genérico
+    console.error("Error inesperado:", error);
+  }
+}
+```
+
+### Performance y Optimización
+```tsx
+// Memo para componentes pesados
+const ExpensiveComponent = React.memo<ExpensiveComponentProps>(
+  ({ data, onUpdate }) => {
+    // ... componente pesado
+  }
+);
+
+// useCallback para funciones en dependencias
+const handleClick = useCallback(
+  (id: string) => {
+    onItemClick?.(id);
+  },
+  [onItemClick]
+);
+```
+
+## TESTING Y VERIFICACIÓN
+
+### Testing Visual con Playwright
+- Asumir que el servidor de desarrollo está ejecutándose en `http://localhost:3000/`
+- NO inicializar servidor de desarrollo (ya está en ejecución)
+- Usar screenshots para verificar implementaciones visuales
+- Analizar imágenes tomadas para validar cambios
+- Si imagen no refleja cambios esperados: ajustar código y repetir proceso
+
+### Flujo de Testing
+1. Tomar screenshot para verificar resultado
+2. Analizar imagen tomada para validar cambios
+3. Validar responsive en diferentes tamaños de pantalla
+4. Verificar accesibilidad y performance
+
+## COMANDOS Y SETUP
+
+### Setup Inicial del Proyecto
+```bash
+# Crear proyecto Next.js 15
+pnpm create next-app@latest websnack --typescript --tailwind --eslint --app --src-dir --import-alias "@/*"
+
+# Instalar dependencias principales
+pnpm add next@latest react@latest react-dom@latest
+
+# Instalar shadcn/ui
+pnpm dlx shadcn@latest init
+pnpm dlx shadcn@latest add button card input
+
+# Instalar validación de formularios
+pnpm add react-hook-form @hookform/resolvers zod
+```
+
+### Verificación de Calidad
+- **Type-check**: `pnpm tsc --noEmit`
+- **Build**: `pnpm build` debe completar sin errores
+- **Linting**: `pnpm lint` debe pasar
+- **Tests**: `pnpm test` debe ejecutar correctamente
+
+## RESTRICCIONES Y PROHIBICIONES
+
+### ❌ NUNCA HACER
+- Usar npm o yarn (solo pnpm)
+- Usar tipo 'any' en TypeScript
+- Colocar selectores CSS dentro de bloques @theme en Tailwind v4
+- Modificar componentes en src/components/ui/
+- Usar Pages Router (solo App Router)
+- CSS personalizado sin justificación técnica
+- Omitir validación Zod en formularios
+
+### ✅ SIEMPRE HACER
+- Usar Server Components por defecto
+- Implementar TypeScript estricto
+- Aplicar responsive design mobile-first
+- Incluir soporte para dark mode
+- Validar accesibilidad WCAG 2.1 AA
+- Optimizar para Core Web Vitals
+- Usar pnpm para gestión de paquetes
+- Generar commits en inglés
+- Limpiar caché de Next.js después de cambios importantes en CSS
+
+## SISTEMA DE MEMORIA Y CONTEXTO
+
+### Archivos de Contexto Automático
+Antes de cualquier respuesta, consultar estos archivos para contexto actualizado:
+1. `.github/project/PROJECT-STATE.md` - Estado actual del proyecto
+2. `.github/context/technical-context.md` - Contexto técnico
+3. `.github/context/current-session.md` - Sesión actual
+
+### Referencias Detalladas
+- `.github/support/` - Patrones específicos y mejores prácticas
+- `.github/instructions/` - Guías específicas por tipo de archivo
+- `.github/prompts/` - Sistema de prompts especializados
+
+Esta configuración asegura que Cursor AI genere código de alta calidad, siguiendo todos los estándares y mejores prácticas del proyecto WebSnack.

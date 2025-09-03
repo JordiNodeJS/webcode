@@ -25,6 +25,7 @@ scenario: "Descripción del escenario"  # Solo para Model Decision
 | `Testing-Development-Tools.md` | **Model Decision** | ✅ YAML Frontmatter | Testing y herramientas |
 | `Theming-Color-System.md` | **Specific Files** | ✅ YAML Frontmatter | Sistema de theming |
 | `Git-Squash-Tools.md` | **Apply Manually** | ✅ YAML Frontmatter | Herramientas Git Squash |
+| `Form-Validation-Progressive.md` | **Specific Files** | ✅ YAML Frontmatter | Validación progresiva con Zod |
 
 ## 🎯 Tipos de Regla Explicados
 
@@ -37,6 +38,7 @@ scenario: "Descripción del escenario"  # Solo para Model Decision
 - **App-Router-APIs**: Se activa al trabajar con archivos del App Router
 - **UI-UX-Design**: Se activa al trabajar con archivos de estilos/UI
 - **Theming-Color-System**: Se activa al trabajar con archivos de theming/CSS
+- **Form-Validation-Progressive**: Se activa al trabajar con formularios y validación
 
 ### Model Decision
 - **Testing-Development-Tools**: La AI decide cuándo aplicarla basándose en el contexto de testing
@@ -93,6 +95,12 @@ scenario: "Descripción del escenario"  # Solo para Model Decision
 - **Type**: Apply Manually
 - **Content**: [Copiar contenido de Git-Squash-Tools.md]
 
+#### Regla 8: Form Validation Progressive
+- **Name**: Form Validation Progressive
+- **Type**: Specific Files
+- **File Patterns**: `src/components/**/*.tsx, src/app/**/*.tsx, src/hooks/**/*.ts`
+- **Content**: [Copiar contenido de Form-Validation-Progressive.md]
+
 ## 🔧 Uso de las Reglas
 
 ### Automáticas
@@ -118,11 +126,11 @@ scenario: "Descripción del escenario"  # Solo para Model Decision
 
 ## 🎯 Estado del Sistema
 
-- ✅ **7 reglas** creadas en formato oficial Qoder
+- ✅ **8 reglas** creadas en formato oficial Qoder
 - ✅ **100% compatibilidad** con sistema anterior
 - ✅ **Documentación completa** incluida
 - ✅ **Listo para configurar** en Qoder Settings
 
 ---
 
-**Próximo paso**: Configurar las 7 reglas en Qoder Settings → Rules siguiendo las instrucciones de este índice.
+**Próximo paso**: Configurar las 8 reglas en Qoder Settings → Rules siguiendo las instrucciones de este índice.
