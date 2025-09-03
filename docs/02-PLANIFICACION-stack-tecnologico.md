@@ -25,8 +25,28 @@ WebSnack se desarrollará utilizando el stack tecnológico más avanzado disponi
 **Versión:** `15.4.0` (latest stable)
 **Instalación:** Fase 1 - Setup inicial
 
+Para crear el proyecto en una nueva carpeta con un nombre específico:
 ```bash
-pnpm create next-app@latest --typescript --tailwind --eslint --app --src-dir --import-alias "@/*" --turbo
+pnpm dlx create-next-app@latest . --turbo --typescript --tailwind --eslint --app --src-dir --import-alias "@/*"
+```
+
+Para crear el proyecto en la carpeta actual (asegúrate de que esté vacía):
+```bash
+pnpm create next-app@latest . --turbo --typescript --tailwind --eslint --app --src-dir --import-alias "@/*"
+```
+
+**Alternativa usando `pnpm dlx` (recomendado para evitar problemas de interpretación de parámetros):**
+```bash
+pnpm dlx create-next-app@latest . --turbo --typescript --tailwind --eslint --app --src-dir --import-alias "@/*"
+```
+
+> **Nota Importante**: 
+> 1. La opción `--turbo` debe ir después del nombre del proyecto o `.` para ser interpretada correctamente.
+> 2. Si ejecutas el comando en una carpeta que ya existe y no está vacía, puede interpretar `--turbo` como el nombre del proyecto.
+> 3. Asegúrate de estar en una carpeta vacía o especifica un nombre de proyecto para evitar problemas.
+> 4. El uso de `pnpm dlx` puede evitar problemas de interpretación de parámetros en algunos casos.
+
+```bash
 pnpm add next@latest react@latest react-dom@latest
 ```
 
@@ -308,7 +328,7 @@ pnpm dlx shadcn@latest add button card input form
 
 **Arquitectura de componentes:**
 
-```tsx
+``tsx
 // components/ui/ - No modificar (shadcn/ui base)
 // components/custom/ - Extensiones para WebSnack
 // components/sections/ - Secciones de landing page
@@ -459,13 +479,13 @@ pnpm add @radix-ui/react-dialog
 **Versión:** `11.15.0+` (latest stable)
 **Instalación:** Fase 3 - Animaciones avanzadas
 
-```bash
+``bash
 pnpm add framer-motion
 ```
 
 **Implementación en WebSnack:**
 
-```tsx
+``tsx
 // Scroll-triggered animations
 export function ServiceCard({ children, index }) {
   return (
@@ -811,7 +831,7 @@ pnpm exec vercel --prod
 - ✅ Estructura de carpetas
 - ✅ Git repository + Husky hooks
 
-```bash
+``bash
 # Scripts Fase 1
 pnpm create next-app@latest websnack --typescript --tailwind --eslint --app --src-dir
 cd websnack
@@ -848,7 +868,7 @@ pnpm dlx shadcn@latest add alert badge separator
 - 🔧 Pricing tables interactivas
 - 🔧 Contact form con validación
 
-```bash
+``bash
 # Scripts Fase 3
 pnpm add framer-motion react-hook-form zod @hookform/resolvers
 pnpm dlx magicui-cli add animated-beam text-reveal
@@ -880,7 +900,7 @@ pnpm add react-hook-form zod @hookform/resolvers
 - 🔧 Accessibility testing
 - 🔧 SEO validation
 
-```bash
+``bash
 # Scripts Fase 5
 pnpm add -D vitest @vitejs/plugin-react @testing-library/react
 pnpm create playwright@latest
