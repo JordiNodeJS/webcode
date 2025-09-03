@@ -54,23 +54,6 @@ Los scripts automatizan el proceso de **squash completo** de una rama con dos en
 
 ## 🔀 **Diversidad de Métodos: Diseño Intencional**
 
-### **🚀 Script Simple (`git-simple-squash.sh`)**
-
-**Método:** Orphan Branch + `git branch -M`
-
-```bash
-git checkout --orphan temp-branch    # Rama completamente nueva
-git add . && git commit -m "mensaje" # Commit único
-git branch -M original-branch        # Reemplazo optimizado
-```
-
-**Ideal para:**
-
-- ✅ **Velocidad máxima** - Proceso en 3 segundos
-- ✅ **Limpieza total** - Sin referencias al historial previo
-- ✅ **Casos simples** - Feature branches directos
-- ✅ **CI/CD automation** - Sin interacción requerida
-
 ### **🛡️ Script Robusto (`git-squash-branch.sh`)**
 
 **Método:** Soft Reset + Commit preservando contexto
@@ -87,11 +70,27 @@ git commit -m "mensaje-con-historial" # Commit con referencias al historial
 - ✅ **Debugging facilitado** - Más fácil rastrear problemas
 - ✅ **Ramas críticas** - Features importantes que necesitan trazabilidad
 
+### **🎯 Script Rebase (`git-rebase-squash.sh`)**
+
+**Método:** Git Rebase Interactivo Automatizado
+
+```bash
+git rebase -i HEAD~N                  # Rebase interactivo automático
+# Squash automático de todos los commits
+```
+
+**Ideal para:**
+
+- ✅ **Método estándar** - Usa herramientas nativas de Git
+- ✅ **Workflow natural** - Desde la misma rama
+- ✅ **Preservar estructura** - Mantiene historial de merge
+- ✅ **Sin intervención manual** - Automatizado completamente
+
 ### **🎯 ¿Por qué mantener ambos métodos?**
 
 1. **📚 Educacional** - Muestra dos enfoques diferentes para el mismo problema
 2. **🔧 Flexibilidad** - Diferentes necesidades requieren diferentes herramientas
-3. **🎛️ Control vs Velocidad** - Balance entre rapidez y seguridad
+3. **🎛️ Control vs Estándar** - Balance entre seguridad y herramientas nativas
 4. **🧪 Casos de uso específicos** - Cada método brilla en diferentes escenarios
 
 ---
@@ -577,20 +576,20 @@ git fsck --full
 
 ## 🎯 **Conclusión**
 
-El script `git-simple-squash.sh` automatiza este proceso manual de 5 pasos complejos en **un solo comando simple**.
+Los scripts automatizazan este proceso manual de 5 pasos complejos en **comandos simples**.
 
 **Manual:** 15+ comandos con verificaciones  
-**Script Simple:** `./git-simple-squash.sh rama "mensaje"` ⚡  
+**Script Rebase:** `./git-rebase-squash.sh rama "mensaje"` 🎯  
 **Script Robusto:** `./git-squash-branch.sh rama "mensaje"` 🛡️
 
 Ambos métodos son **superiores** a métodos tradicionales, cada uno optimizado para diferentes casos de uso:
 
-### **🚀 Método Orphan Branch (Script Simple):**
+### **🎯 Método Git Rebase (Script Estándar):**
 
-- ✅ **Más limpio** (sin referencias históricas)
-- ✅ **Más rápido** (no procesa historial)
-- ✅ **Más seguro** (sin posibilidad de conflictos)
-- ✅ **Más simple** (lógica directa y clara)
+- ✅ **Más estándar** (usa herramientas nativas de Git)
+- ✅ **Más natural** (workflow desde la misma rama)
+- ✅ **Más compatible** (preserva estructura de merge)
+- ✅ **Más automático** (sin intervención manual)
 
 ### **🛡️ Método Soft Reset (Script Robusto):**
 
@@ -601,7 +600,7 @@ Ambos métodos son **superiores** a métodos tradicionales, cada uno optimizado 
 
 ### **🎯 Elección del método:**
 
-- **Velocidad y limpieza** → Script Simple
-- **Seguridad y control** → Script Robusto
+- **Workflow estándar y natural** → Script Rebase
+- **Seguridad y control máximo** → Script Robusto
 
 Esta documentación te permite entender exactamente qué hace cada script "bajo el capó" y cómo replicar cualquier método manualmente cuando sea necesario.

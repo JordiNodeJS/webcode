@@ -1,48 +1,11 @@
 # Scripts de Git Squash
 
-Este directorio contiene **tres scripts** para aplanar ramas de Git, cada uno con diferentes enfoques y casos de uso.
+Este directorio contiene **dos scripts** para aplanar ramas de Git, cada uno con diferentes enfoques y casos de uso.
 
 ## 📚 **Documentación Completa**
 
 - **[README.md](README.md)** - Guía de uso y comparación de scripts
 - **[TECHNICAL-DOCUMENTATION.md](TECHNICAL-DOCUMENTATION.md)** - Documentación técnica detallada y método manual paso a paso
-
-## ⚡ git-simple-squash.sh
-
-**Script rápido y directo basado en tu idea original**
-
-### Uso
-
-```bash
-./scripts/git-simple-squash.sh <nombre-de-rama> [mensaje-commit]
-```
-
-### Ejemplo
-
-```bash
-./scripts/git-simple-squash.sh feature/nueva-funcionalidad "feat: Nueva funcionalidad completa"
-```
-
-### Cómo funciona
-
-1. Crea una rama huérfana temporal (sin historial)
-2. Agrega todos los archivos actuales de la rama
-3. Hace un commit único
-4. Renombra forzando sobrescritura (`git branch -M`) ⭐
-
-### Ventajas
-
-- **Súper rápido** y simple
-- **Sin historial previo** - rama completamente limpia
-- **Basado en tu idea original** del orphan + commit + rename
-
-### Desventajas
-
-- **No conserva metadatos** de commits anteriores
-- **No hay backup automático**
-- **Pierde toda referencia** al historial previo
-
----
 
 ## 🎯 git-rebase-squash.sh
 
@@ -137,11 +100,6 @@ Este directorio contiene **tres scripts** para aplanar ramas de Git, cada uno co
 
 Mantenemos **dos métodos diferentes** intencionalmente porque diferentes situaciones requieren diferentes herramientas:
 
-**⚡ Script Simple:** Método `orphan branch` + `git branch -M`
-
-- **Filosofía:** "Velocidad y limpieza absoluta"
-- **Casos:** Feature branches rápidos, experimentos, CI/CD
-
 **🎯 Script Rebase:** Método `git rebase -i` automático
 
 - **Filosofía:** "Estándar Git con workflow natural"
@@ -154,20 +112,13 @@ Mantenemos **dos métodos diferentes** intencionalmente porque diferentes situac
 
 ### **🎓 Valor Educacional**
 
-- **Aprender Git:** Tres enfoques técnicos diferentes para el mismo problema
+- **Aprender Git:** Dos enfoques técnicos diferentes para el mismo problema
 - **Flexibilidad:** Herramienta correcta para cada situación
-- **Mejores prácticas:** Cuándo priorizar velocidad vs seguridad vs estándares
+- **Mejores prácticas:** Cuándo priorizar estándares vs seguridad
 
 ---
 
 ## 🎯 ¿Cuál usar?
-
-### Usa `git-simple-squash.sh` cuando:
-
-- ✅ Quieres **velocidad máxima**
-- ✅ **No te importa perder** el historial detallado
-- ✅ La rama es **experimental** o temporal
-- ✅ Quieres una **solución minimalista**
 
 ### Usa `git-rebase-squash.sh` cuando:
 
@@ -185,24 +136,17 @@ Mantenemos **dos métodos diferentes** intencionalmente porque diferentes situac
 
 ## � Comparación de Scripts
 
-| Característica   | Simple           | Rebase         | Robusto          |
-| ---------------- | ---------------- | -------------- | ---------------- |
-| **Velocidad**    | ⚡ Ultra rápido  | 🔄 Medio       | 🔄 Rápido        |
-| **Control**      | ❌ Todo o nada   | ❌ Todo o nada | ❌ Todo o nada   |
-| **Seguridad**    | ⚠️ Básica        | ✅ Backup auto | ✅ Máxima        |
-| **Complejidad**  | 🟢 Simple        | 🟡 Medio       | 🟠 Avanzado      |
-| **Método**       | Orphan branch    | Git rebase     | Soft reset       |
-| **Backup**       | ❌ Manual        | ✅ Automático  | ✅ Automático    |
-| **Estándar Git** | ❌ Método custom | ✅ Nativo      | ❌ Método custom |
+| Característica   | Rebase         | Robusto          |
+| ---------------- | -------------- | ---------------- |
+| **Velocidad**    | 🔄 Medio       | 🔄 Rápido        |
+| **Control**      | ❌ Todo o nada | ❌ Todo o nada   |
+| **Seguridad**    | ✅ Backup auto | ✅ Máxima        |
+| **Complejidad**  | 🟡 Medio       | 🟠 Avanzado      |
+| **Método**       | Git rebase     | Soft reset       |
+| **Backup**       | ✅ Automático  | ✅ Automático    |
+| **Estándar Git** | ✅ Nativo      | ❌ Método custom |
 
 ## �📝 Ejemplos de uso común
-
-### Para feature branches experimentales
-
-```bash
-# Rápido y directo
-./scripts/git-simple-squash.sh feature/experimento "feat: Experimento con nueva UI"
-```
 
 ### Para desarrollo normal
 
@@ -217,13 +161,6 @@ git checkout feature/nueva-funcionalidad
 ```bash
 # Con backup y seguridad total
 ./scripts/git-squash-branch.sh feature/nueva-funcionalidad "feat: Sistema de autenticación completo"
-```
-
-### Para hotfixes
-
-```bash
-# Rápido para hotfixes
-./scripts/git-simple-squash.sh hotfix/bug-critico "fix: Solución crítica para bug de seguridad"
 ```
 
 ### Para workflow estándar
@@ -244,27 +181,27 @@ echo 'export PATH="$PATH:$(pwd)/scripts"' >> ~/.bashrc
 source ~/.bashrc
 
 # Ahora puedes usar desde cualquier parte:
-git-simple-squash.sh mi-rama
+git-rebase-squash.sh mi-rama
 git-squash-branch.sh mi-rama
 ```
 
 ### Crear alias de Git (recomendado)
 
 ```bash
-# Alias para el script simple
-git config --global alias.squash-simple '!bash scripts/git-simple-squash.sh'
+# Alias para el script rebase
+git config --global alias.squash-rebase '!bash scripts/git-rebase-squash.sh'
 
 # Alias para el script robusto
 git config --global alias.squash-safe '!bash scripts/git-squash-branch.sh'
 
 # Uso:
-git squash-simple feature/mi-rama
+git squash-rebase feature/mi-rama
 git squash-safe feature/mi-rama-importante
 ```
 
 ## ⚠️ Advertencias importantes
 
-1. **Siempre haz backup** de ramas importantes antes de usar `git-simple-squash.sh`
+1. **Siempre haz backup** de ramas importantes antes del squash
 2. **No uses en main/master** - estos scripts son para feature branches
 3. **Coordina con el equipo** si la rama está siendo usada por otros
 4. **Revisa el resultado** con `git log --oneline` después del squash
@@ -273,10 +210,10 @@ git squash-safe feature/mi-rama-importante
 
 ### Para el proyecto WebSnack, recomendamos:
 
-**Feature branches pequeñas** → `git-simple-squash.sh`
+**Feature branches normales** → `git-rebase-squash.sh`
 
 ```bash
-./scripts/git-simple-squash.sh feature/button-component "feat: Nuevo componente Button"
+./scripts/git-rebase-squash.sh feature/button-component "feat: Nuevo componente Button"
 ```
 
 **Feature branches grandes** → `git-squash-branch.sh`
@@ -285,10 +222,10 @@ git squash-safe feature/mi-rama-importante
 ./scripts/git-squash-branch.sh feature/auth-system "feat: Sistema completo de autenticación"
 ```
 
-**Ramas de documentación** → `git-simple-squash.sh`
+**Ramas de documentación** → `git-rebase-squash.sh`
 
 ```bash
-./scripts/git-simple-squash.sh docs/api-documentation "docs: Documentación completa de API"
+./scripts/git-rebase-squash.sh docs/api-documentation "docs: Documentación completa de API"
 ```
 
 ---
