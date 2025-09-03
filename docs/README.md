@@ -135,6 +135,18 @@ WebSnack es una plataforma integral de desarrollo web que ofrece soluciones digi
 
 ---
 
+### 💼 **13. COMERCIALIZACIÓN Y VENTAS**
+
+#### [`13-COMERCIALIZACION-dossier-comercial.md`](./13-COMERCIALIZACION-dossier-comercial.md)
+**Dossier Comercial "Comercio Local Digital"**
+- Material comercial para negocios locales Barcelona
+- Propuesta valor WebSnack adaptada a mercado local
+- Pricing actualizado con tecnología 2025
+- Casos de uso reales y proceso de trabajo definido
+- **Estado:** ✅ Completo
+
+---
+
 ## 🎯 **Guías de Consulta por Rol**
 
 ### 👨‍💼 **Product Manager / Stakeholder**
@@ -142,6 +154,12 @@ WebSnack es una plataforma integral de desarrollo web que ofrece soluciones digi
 2. **Status**: [`00-RESUMEN-implementacion-was.md`](./00-RESUMEN-implementacion-was.md) para estado actual
 3. **Progreso**: [`11-DESARROLLO-checklist-tareas.md`](./11-DESARROLLO-checklist-tareas.md) para seguimiento
 4. **Roadmap**: Revisar KPIs y métricas de éxito definidas
+
+### 💼 **Business Development / Ventas**
+1. **Material Comercial**: [`13-COMERCIALIZACION-dossier-comercial.md`](./13-COMERCIALIZACION-dossier-comercial.md) para presentaciones cliente
+2. **Propuesta Valor**: [`01-PLANIFICACION-requisitos-del-producto.md`](./01-PLANIFICACION-requisitos-del-producto.md) para argumentario técnico
+3. **Casos de Uso**: Revisar personas y escenarios definidos
+4. **Pricing Strategy**: Estructura de precios y paquetes servicios
 
 ### 🎨 **Diseñador UX/UI**
 1. **Base**: [`03-DISENO-guia-estilos-base.md`](./03-DISENO-guia-estilos-base.md) para componentes fundamentales
@@ -174,13 +192,15 @@ WebSnack es una plataforma integral de desarrollo web que ofrece soluciones digi
 - **03-07. Diseño**: 5/5 documentos ✅  
 - **08-11. Desarrollo**: 4/4 documentos ✅
 - **12. Landing Page**: 1/1 documento ✅
-- **Total**: **13/13 documentos ✅**
+- **13. Comercialización**: 1/1 documento ✅
+- **Total**: **14/14 documentos ✅**
 
 ### 🎯 **Próximos Pasos por Prioridad**
 1. **Implementación Inmediata**: Comenzar desarrollo con base en documentación WAS
 2. **Testing y Validación**: Validar sistema WAS en ambiente de desarrollo
-3. **Iteración Continua**: Ajustes basados en feedback de implementación real
-4. **Performance Audit**: Métricas de rendimiento del Sistema WAS
+3. **Lanzamiento Comercial**: Aplicar dossier comercial con primeros clientes
+4. **Iteración Continua**: Ajustes basados en feedback de implementación real
+5. **Performance Audit**: Métricas de rendimiento del Sistema WAS
 
 ### 🏆 **Hitos Alcanzados**
 - ✅ **Sistema WAS Propio**: Migración completa desde referencias externas
