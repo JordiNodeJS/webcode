@@ -1,5 +1,30 @@
 # Fases de Desarrollo - Hero Section
 
+## Fase 0: Configuración del Sistema de Colores WebSnack (CRÍTICA)
+
+### Objetivo
+Implementar automáticamente el sistema de colores Rosa/Aguamarina de WebSnack usando shadcn/ui.
+
+### Tareas
+1. **Ejecutar comando de tema personalizado**
+   ```bash
+   pnpm dlx shadcn@latest init
+   pnpm dlx shadcn@latest add https://tweakcn.com/r/themes/cmex1abh7000c04l4h2avft17
+   pnpm dlx shadcn@latest add button card input form label textarea select
+   ```
+
+2. **Verificar implementación**
+   - Variables CSS disponibles en `globals.css`
+   - Colores Rosa `#dc7cb3` y Aguamarina `#bce3e5` implementados
+   - Componentes shadcn/ui con tema personalizado
+   - Sombras 3D y efectos visuales disponibles
+
+### Criterios de Aceptación
+- Sistema de colores WebSnack completamente funcional
+- Variables CSS accesibles en todo el proyecto
+- Componentes base funcionando con el nuevo tema
+- Verificación visual de colores correctos
+
 ## Fase 1: Estructura Base y Componentes Principales
 
 ### Objetivo

@@ -1,5 +1,40 @@
 # Desglose de Tareas - Fase 1: Estructura Base
 
+## Tarea 0: Configuración del Sistema de Colores WebSnack (CRÍTICA)
+
+### Descripción
+Implementar automáticamente el sistema de colores Rosa/Aguamarina de WebSnack usando el comando de shadcn/ui.
+
+### Subtareas
+1. Ejecutar comando de inicialización de shadcn/ui
+2. Instalar tema personalizado WebSnack
+3. Instalar componentes base con el tema
+4. Verificar implementación del sistema de colores
+
+### Detalles técnicos
+- Usar pnpm dlx para comandos shadcn/ui
+- Verificar que las variables CSS se hayan implementado
+- Confirmar disponibilidad de colores Rosa `#dc7cb3` y Aguamarina `#bce3e5`
+- Probar componentes base con el nuevo tema
+
+### Comandos a ejecutar
+```bash
+# 1. Inicializar shadcn/ui
+pnpm dlx shadcn@latest init
+
+# 2. Instalar tema personalizado WebSnack (Rosa/Aguamarina con efectos 3D)
+pnpm dlx shadcn@latest add https://tweakcn.com/r/themes/cmex1abh7000c04l4h2avft17
+
+# 3. Instalar componentes base con el tema
+pnpm dlx shadcn@latest add button card input form label textarea select
+```
+
+### Criterios de aceptación
+- Sistema de colores WebSnack implementado
+- Variables CSS disponibles en `globals.css`
+- Componentes shadcn/ui con tema personalizado
+- Verificación de colores: `#dc7cb3` (Rosa), `#bce3e5` (Aguamarina)
+
 ## Tarea 1: Crear estructura de directorios y componentes
 
 ### Descripción

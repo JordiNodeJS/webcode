@@ -49,6 +49,9 @@
 - [ ] Carga optimizada de fuentes
 
 ### Colores y Branding
+- [ ] **Sistema de colores WebSnack implementado** con comando automático
+- [ ] **Colores principales**: Rosa `#dc7cb3` (primary), Aguamarina `#bce3e5` (secondary)
+- [ ] **Variables CSS disponibles**: `--primary`, `--secondary`, `--accent`, `--background`, `--foreground`
 - [ ] Paleta de colores brand consistente
 - [ ] Soporte para dark mode
 - [ ] Transiciones suaves entre modos
