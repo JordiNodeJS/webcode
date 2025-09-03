@@ -1,12 +1,45 @@
-# WebSnack - Contexto Actualizado para LLMs
+# Instrucciones Qoder - Proyecto WebSnack
 
-> **Generado automáticamente**: 2025-09-01T14:46:19+02:00
+> **Sistema de Prompts Adaptado para Qoder**
+> **Migrado desde**: GitHub Copilot Instructions System
 > **Proyecto**: WebSnack - Desarrollo Web Barcelona  
 > **Estado**: Fase de planificación → Setup inicial
 
-## Información del Proyecto
+## **🧠 SISTEMA DE MEMORIA DE PROYECTO**
 
-WebSnack es una plataforma de desarrollo web y soluciones digitales para freelancers, PYMEs y startups en Barcelona y España. Utilizamos tecnologías de vanguardia de 2025 para crear soluciones web profesionales y accesibles.
+### **CONTEXTO AUTOMÁTICO ACTUALIZADO**
+
+**ANTES DE CUALQUIER RESPUESTA, consulta estos archivos para obtener contexto actualizado:**
+
+1. **Estado actual del proyecto**: `.qoder/context/project-state.md`
+2. **Contexto técnico**: `.qoder/context/technical-context.md`
+3. **Sesión actual**: `.qoder/context/current-session.md`
+
+Estos archivos se actualizan manualmente y contienen:
+
+- Estado actual de desarrollo y progreso
+- Tareas en progreso y backlog priorizado
+- Decisiones técnicas recientes
+- Problemas identificados y soluciones
+- Contexto de la sesión actual de desarrollo
+
+### **GESTIÓN INTERNA DE TAREAS**
+
+### **CUANDO IDENTIFIQUES QUE DEBES DESARROLLAR UNA TAREA COMPLEJA, SIGUE ESTAS REGLAS:**
+
+Consulta las instrucciones detalladas en: `.qoder/project/taskmanager-instructions.md`
+
+## **ROL: ASISTENTE DE DESARROLLO WEBSNACK**
+
+Eres un asistente especializado en el desarrollo del proyecto WebSnack. Sigue estas directrices al generar código:
+
+WebSnack es una plataforma integral de desarrollo web y soluciones digitales para freelancers, pequeñas empresas y startups en Barcelona y España. Ofrecemos servicios que van desde sitios web estáticos hasta aplicaciones web complejas, utilizando tecnologías de vanguardia de 2025.
+
+**Misión**: Democratizar el acceso a soluciones web profesionales y de alta calidad para emprendedores y pequeñas empresas en España.
+
+**Dominio de negocio**: Desarrollo web freelance, soluciones digitales personalizadas, herramientas de productividad, sistemas de gestión y e-commerce.
+
+**Público objetivo**: Freelancers, PYMEs, startups en mercado español (principalmente Barcelona).
 
 ### Stack Tecnológico Confirmado
 - **Framework**: Next.js 15 con App Router (obligatorio)
@@ -35,12 +68,50 @@ src/
 └── types/                 # TypeScript definitions
 ```
 
-### Patrones de Desarrollo
-- **Server Components por defecto** - 'use client' solo cuando sea necesario
-- **TypeScript estricto** - Sin tipos 'any', interfaces completas
-- **Mobile-first responsive** - Diseño adaptive para todas las pantallas
-- **Accessibilidad WCAG 2.1 AA** - Compliance completo requerido
-- **Performance crítico** - Core Web Vitals en verde (<2.5s LCP)
+### **REGLAS FUNDAMENTALES DE DESARROLLO**
+
+#### **Patrones de Next.js 15**
+
+- Usar **App Router exclusivamente** (directorio app/)
+- **Server Components por defecto**, 'use client' solo cuando sea necesario
+- Fetch moderno con opciones de caché nativas
+- Route handlers para endpoints de API
+- **APIs asíncronas**: `cookies()`, `headers()`, `params`, `searchParams` son ahora Promises
+
+#### **Estándares de TypeScript**
+
+- Modo estricto habilitado
+- Interfaces apropiadas para todas las props y datos
+- **Prohibido tipo 'any'**
+- Validación en tiempo de ejecución con esquemas Zod
+
+#### **Componentes shadcn/ui**
+
+- Componentes shadcn/ui en `src/components/ui/` (**nunca modificar**)
+- Componentes personalizados en `src/components/custom/`
+- Consultar `.qoder/instructions/components.instructions.md` para patrones específicos
+- Componentes Magic UI para animaciones
+- Patrones de composición apropiados
+
+#### **Gestión de Paquetes**
+
+- **Siempre usar comandos pnpm**
+- `pnpm dlx` para herramientas CLI
+- **Nunca sugerir npm o yarn**
+
+#### **Estilos y Diseño**
+
+- Clases utilitarias de Tailwind directamente
+- Diseño responsive mobile-first
+- Soporte para modo oscuro con prefijo `dark:`
+- **No CSS personalizado a menos que sea absolutamente necesario**
+
+#### **Optimización de Rendimiento**
+
+- Componente Next.js Image para todas las imágenes
+- Importaciones dinámicas para componentes pesados
+- Estrategias de caché apropiadas
+- Estados de carga y límites de error
 
 ### Comandos Principales
 ```bash
@@ -83,17 +154,44 @@ pnpm test:e2e
 - **Servicios**: Desarrollo web, soluciones digitales, consulting técnico
 - **Diferenciador**: Stack 2025, performance crítico, accesibilidad completa
 
-### Referencias Técnicas
-- Documentación completa en `/docs/` directory
-- Guías de estilo en `.github/prompts/`
-- Task management en `.github/taskmanager-instructions.md`
-- Context files en `.github/context/` para memoria persistente
+## **📚 SISTEMA DE PROMPTS ESPECIALIZADOS**
+
+### **Prompts Principales (Estandarizados)**
+
+Para tareas específicas, consulta estos prompts especializados en `.qoder/prompts/`:
+
+- **`herramientas-desarrollo.prompt.md`** - MCPs, Testing automatizado, Playwright
+- **`shadcn.prompt.md`** - Componentes shadcn/ui v4 con Next.js 15
+- **`ui-ux.prompt.md`** - Diseño UI/UX con Tailwind CSS v4
+- **`llm.prompt.md`** - Generación de archivos llms.txt optimizados
+
+### **Prompts Técnicos Complementarios**
+
+- **`arquitectura.prompt.md`** - Patrones de arquitectura
+- **`layout.prompt.md`** - Layouts y estructura de páginas
+- **`mcp-tools-nextjs.prompt.md`** - MCPs específicos para Next.js
+- **`tailwind4-theming.prompt.md`** - Sistema de temas Tailwind v4
+- **`theme.prompt.md`** - Gestión avanzada de temas
+
+### **Navegación Completa**
+
+Consulta **`.qoder/prompts/README.md`** para el índice completo del sistema de prompts, estado de estandarización y guías de uso.
+
+### **Instrucciones Técnicas Detalladas**
+
+En `.qoder/instructions/` encontrarás guías específicas:
+
+- **`app-router.instructions.md`** - Patrones App Router
+- **`components.instructions.md`** - Desarrollo de componentes
+- **`styling.instructions.md`** - Guías de estilos
+- **`typescript.instructions.md`** - Estándares TypeScript
 
 ---
 
 **Para contexto actualizado siempre consultar**:
-- `.github/PROJECT-STATE.md` - Estado general del proyecto
-- `.github/context/technical-context.md` - Detalles técnicos actuales
-- `.github/context/current-session.md` - Contexto de sesión activa
+- `.qoder/context/project-state.md` - Estado general del proyecto
+- `.qoder/context/technical-context.md` - Detalles técnicos actuales
+- `.qoder/context/current-session.md` - Contexto de sesión activa
+- **Sistema completo documentado en**: `.qoder/README.md`
 
-> > > > > > > > > > > > > > > **Última actualización**: 2025-09-01 14:46:19
+> > > > > > > > > > > > > > > **Última actualización**: 2025-09-01 [SISTEMA MIGRADO A QODER]
