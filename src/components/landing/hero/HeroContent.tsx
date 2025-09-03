@@ -27,15 +27,16 @@ export function HeroContent() {
         en Barcelona y España
       </p>
 
-      {/* Badge de tecnología */}
+      {/* Badge de tecnología - contraste aumentado para mejorar legibilidad */}
       <div className="flex flex-wrap justify-center gap-3 mt-8">
-        <span className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium shadow-3d-sm">
+        {/* Aumentar opacidad de fondo y añadir ring sutil para mejor contraste */}
+        <span className="inline-flex items-center px-4 py-2 bg-primary/30 text-primary-foreground rounded-full text-sm font-medium shadow-3d-sm ring-1 ring-primary/30">
           🚀 Next.js 15
         </span>
-        <span className="inline-flex items-center px-4 py-2 bg-secondary/20 text-secondary-foreground rounded-full text-sm font-medium shadow-3d-sm">
+        <span className="inline-flex items-center px-4 py-2 bg-secondary/30 text-secondary-foreground rounded-full text-sm font-medium shadow-3d-sm ring-1 ring-secondary/30">
           ⚡ React 19
         </span>
-        <span className="inline-flex items-center px-4 py-2 bg-accent text-accent-foreground rounded-full text-sm font-medium shadow-3d-sm">
+        <span className="inline-flex items-center px-4 py-2 bg-accent/80 text-accent-foreground rounded-full text-sm font-medium shadow-3d-sm ring-1 ring-accent/30">
           📱 Barcelona Local
         </span>
       </div>
