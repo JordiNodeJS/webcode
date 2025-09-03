@@ -84,10 +84,10 @@
             "problemMatcher": [
                 "$tsc"
             ],
-            "detail": "Inicializa el proyecto Next.js 15 con configuración WebSnack",
-            "runOptions": {
-                "runOn": "folderOpen"
-            }
+            "detail": "Inicializa el proyecto Next.js 15 con configuración WebSnack (DESHABILITADO - ejecutar manualmente si es necesario)"
+            // "runOptions": {
+            //     "runOn": "folderOpen"
+            // }
         }
     ]
 }
