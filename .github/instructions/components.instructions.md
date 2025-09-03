@@ -38,6 +38,17 @@ applyTo: "src/components/**/*.{ts,tsx}"
 
 ### Ejemplo de Estructura:
 
+### Patrones de Exportación
+
+#### **Named Exports para Componentes Reutilizables**
+- Usar `export function` para todos los componentes reutilizables
+- Mejor tree-shaking y optimización del bundle
+- IntelliSense mejorado y debugging más claro
+
+#### **Default Exports Solo para Páginas Next.js**
+- Usar `export default` únicamente en `page.tsx` y `layout.tsx`
+- Requerido por el App Router de Next.js 15
+
 ```tsx
 // src/components/custom/hero-section.tsx
 interface HeroSectionProps {
@@ -46,7 +57,7 @@ interface HeroSectionProps {
   ctaText?: string;
 }
 
-export default function HeroSection({
+export function HeroSection({
   title,
   subtitle,
   ctaText,

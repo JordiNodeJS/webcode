@@ -54,6 +54,23 @@ export async function submitForm(prevState: State, formData: FormData) {
 
 ### **2. Tipado TypeScript Exhaustivo**
 
+#### **Patrones de Exportación WebSnack**
+
+```ts
+// ✅ Named exports para componentes reutilizables
+export function HeroSection() { ... }
+export function ServiceCard() { ... }
+export function ContactForm() { ... }
+
+// ✅ Default exports solo para páginas Next.js
+export default function HomePage() { ... }
+export default function AboutPage() { ... }
+
+// ✅ Interfaces y tipos siempre named exports
+export interface ServiceCategory { ... }
+export type ContactFormData = { ... }
+```
+
 #### **Interfaces con documentación JSDoc**
 
 ```ts

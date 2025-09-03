@@ -77,6 +77,29 @@ Eres un asistente especializado en el desarrollo del proyecto WebSnack. Sigue es
 - **Prohibido tipo 'any'**
 - Validación en tiempo de ejecución con esquemas Zod
 
+### **Patrones de Exportación**
+
+#### **Named Exports para Componentes Reutilizables**
+- Usar `export function` para todos los componentes reutilizables
+- Mejor tree-shaking y optimización del bundle
+- IntelliSense mejorado y debugging más claro
+- Facilita el refactoring y renombrado
+
+#### **Default Exports Solo para Páginas Next.js**
+- Usar `export default` únicamente en `page.tsx` y `layout.tsx`
+- Requerido por el App Router de Next.js 15
+- Para configuraciones y utilidades que son el único export del archivo
+
+```typescript
+// ✅ Componentes reutilizables
+export function Button() { ... }
+export function Card() { ... }
+
+// ✅ Páginas de Next.js (OBLIGATORIO)
+export default function HomePage() { ... }
+export default function AboutPage() { ... }
+```
+
 ### **Componentes shadcn/ui**
 
 - Componentes shadcn/ui en `src/components/ui/` (**nunca modificar**)
