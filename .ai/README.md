@@ -1,126 +1,153 @@
-# WebSnack AI Development Rules
+# WebSnack AI - Reglas de Desarrollo
 
-Este directorio contiene todas las reglas de codificación, instrucciones y directrices para el desarrollo de WebSnack, extraídas y consolidadas desde las carpetas `.github` y `.qoder`.
+> **Sistema simplificado y unificado** para el desarrollo de WebSnack  
+> **Estado**: ✅ IMPLEMENTADO Y OPTIMIZADO  
+> **Última actualización**: 2025-01-21
 
-## 📁 Estructura del Directorio
+---
 
-### `/rules` - Reglas Específicas de Desarrollo
-Contiene las reglas específicas y estándares de desarrollo del proyecto:
+## 📁 ESTRUCTURA SIMPLIFICADA
 
-- **[App-Router-APIs.md](./rules/App-Router-APIs.md)** - Reglas para APIs del App Router de Next.js
-- **[Form-Validation-Progressive.md](./rules/Form-Validation-Progressive.md)** - Sistema de validación progresiva de formularios
-- **[Git-Squash-Tools.md](./rules/Git-Squash-Tools.md)** - Herramientas para gestión de commits con squash
-- **[shadcn-Components.md](./rules/shadcn-Components.md)** - Estándares para componentes shadcn/ui
-- **[Testing-Development-Tools.md](./rules/Testing-Development-Tools.md)** - Herramientas de testing y desarrollo
-- **[Theming-Color-System.md](./rules/Theming-Color-System.md)** - Sistema de colores y tematización
-- **[UI-UX-Design.md](./rules/UI-UX-Design.md)** - Directrices de diseño UI/UX
-- **[WebSnack-Development-Standards.md](./rules/WebSnack-Development-Standards.md)** - Estándares generales de desarrollo
+### **🎯 Archivos Maestros (Nivel Raíz)**
+- **[CONFIG.md](./CONFIG.md)** - Configuración central del proyecto
+- **[COLORS.md](./COLORS.md)** - Sistema de colores brutalistas unificado  
+- **[TAILWIND.md](./TAILWIND.md)** - Configuración TailwindCSS v4 definitiva
 
-### `/instructions` - Instrucciones Técnicas
-Instrucciones específicas para implementación técnica:
+### **📋 Directorios Organizados**
 
-- **[app-router.instructions.md](./instructions/app-router.instructions.md)** - Instrucciones para App Router
-- **[components.instructions.md](./instructions/components.instructions.md)** - Instrucciones para componentes
-- **[styling.instructions.md](./instructions/styling.instructions.md)** - Instrucciones de estilizado
-- **[typescript.instructions.md](./instructions/typescript.instructions.md)** - Instrucciones de TypeScript
+#### **`/instructions` (3 archivos)**
+Instrucciones técnicas específicas para desarrollo:
+- **[app-router.instructions.md](./instructions/app-router.instructions.md)** - Patrones Next.js 15 App Router
+- **[components.instructions.md](./instructions/components.instructions.md)** - Desarrollo de componentes
+- **[typescript.instructions.md](./instructions/typescript.instructions.md)** - Patrones TypeScript estricto
 
-### `/prompts` - Prompts para LLMs
-Prompts especializados para diferentes aspectos del desarrollo:
+#### **`/prompts` (5 archivos)**
+Prompts especializados para LLMs:
+- **[arquitectura.prompt.md](./prompts/arquitectura.prompt.md)** - Patrones de arquitectura
+- **[herramientas-desarrollo.prompt.md](./prompts/herramientas-desarrollo.prompt.md)** - Herramientas de desarrollo
+- **[mcp-tools-nextjs.prompt.md](./prompts/mcp-tools-nextjs.prompt.md)** - MCPs Next.js específicos
+- **[shadcn.prompt.md](./prompts/shadcn.prompt.md)** - Componentes shadcn/ui
+- **[ui-ux.prompt.md](./prompts/ui-ux.prompt.md)** - Diseño UI/UX brutalista
 
-- **[_template-estandar.md](./prompts/_template-estandar.md)** - Template estándar para prompts
-- **[arquitectura.prompt.md](./prompts/arquitectura.prompt.md)** - Prompt de arquitectura
-- **[herramientas-desarrollo.prompt.md](./prompts/herramientas-desarrollo.prompt.md)** - Prompt de herramientas
-- **[layout.prompt.md](./prompts/layout.prompt.md)** - Prompt de layout
-- **[llm.prompt.md](./prompts/llm.prompt.md)** - Prompt general para LLMs
-- **[mcp-tools-nextjs.prompt.md](./prompts/mcp-tools-nextjs.prompt.md)** - Prompt MCP Tools Next.js
-- **[politica-privacidad.prompt.md](./prompts/politica-privacidad.prompt.md)** - Prompt política de privacidad
-- **[shadcn.prompt.md](./prompts/shadcn.prompt.md)** - Prompt shadcn/ui
-- **[tailwind4-theming.prompt.md](./prompts/tailwind4-theming.prompt.md)** - Prompt TailwindCSS v4
-- **[theme.prompt.md](./prompts/theme.prompt.md)** - Prompt de tematización
-- **[ui-ux.prompt.md](./prompts/ui-ux.prompt.md)** - Prompt UI/UX
+#### **`/rules` (6 archivos)**
+Reglas específicas de desarrollo:
+- **[App-Router-APIs.md](./rules/App-Router-APIs.md)** - APIs del App Router
+- **[Form-Validation-Progressive.md](./rules/Form-Validation-Progressive.md)** - Validación progresiva
+- **[Git-Squash-Tools.md](./rules/Git-Squash-Tools.md)** - Herramientas Git
+- **[shadcn-Components.md](./rules/shadcn-Components.md)** - Estándares shadcn/ui
+- **[Testing-Development-Tools.md](./rules/Testing-Development-Tools.md)** - Testing y herramientas
+- **[UI-UX-Design.md](./rules/UI-UX-Design.md)** - Directrices de diseño
 
-### `/docs` - Documentación de Reglas
-Documentación técnica de sistemas:
-
-- **[COLOR-SYSTEM-RULES.md](./docs/COLOR-SYSTEM-RULES.md)** - Reglas del sistema de colores
-- **[THEMING.md](./docs/THEMING.md)** - Sistema de tematización
-
-### `/support` - Archivos de Soporte
-Archivos de apoyo y mejores prácticas:
-
-- **[anti-patterns-to-avoid.md](./support/anti-patterns-to-avoid.md)** - Anti-patrones a evitar
-- **[git-commit-standards.md](./support/git-commit-standards.md)** - Estándares de commits Git
-- **[instructions.md](./support/instructions.md)** - Instrucciones generales
+#### **`/support` (4 archivos)**
+Archivos de soporte y mejores prácticas:
+- **[anti-patterns-to-avoid.md](./support/anti-patterns-to-avoid.md)** - Anti-patrones prohibidos
+- **[git-commit-standards.md](./support/git-commit-standards.md)** - Estándares de commits
 - **[magicui-animations.md](./support/magicui-animations.md)** - Animaciones Magic UI
-- **[nextjs-app-router.md](./support/nextjs-app-router.md)** - Soporte App Router
 - **[performance-optimization.md](./support/performance-optimization.md)** - Optimización de rendimiento
-- **[pnpm-package-management.md](./support/pnpm-package-management.md)** - Gestión de paquetes pnpm
-- **[project-structure.md](./support/project-structure.md)** - Estructura del proyecto
-- **[shadcn-ui-components.md](./support/shadcn-ui-components.md)** - Componentes shadcn/ui
-- **[tailwind-css-best-practices.md](./support/tailwind-css-best-practices.md)** - Mejores prácticas TailwindCSS
-- **[typescript-best-practices.md](./support/typescript-best-practices.md)** - Mejores prácticas TypeScript
-- **[websnack-unified-rules.md](./support/websnack-unified-rules.md)** - Reglas unificadas WebSnack
 
-## 🎯 Reglas Principales
+---
 
-### Stack Tecnológico
-- **Framework**: Next.js 15 con App Router
-- **Estilizado**: TailwindCSS v4
+## 🚀 **CÓMO USAR ESTE SISTEMA**
+
+### **1. Para Desarrollo General**
+1. **Leer**: [CONFIG.md](./CONFIG.md) - Configuración central
+2. **Aplicar**: [COLORS.md](./COLORS.md) - Sistema de colores
+3. **Configurar**: [TAILWIND.md](./TAILWIND.md) - TailwindCSS v4
+
+### **2. Para Tareas Específicas**
+- **Componentes** → `instructions/components.instructions.md`
+- **APIs** → `rules/App-Router-APIs.md`
+- **Formularios** → `rules/Form-Validation-Progressive.md`
+- **Diseño** → `prompts/ui-ux.prompt.md`
+
+### **3. Para LLMs/IA**
+- **Consultar prompts** en `/prompts/` según la tarea
+- **Referenciar archivos maestros** para contexto completo
+- **Seguir reglas** específicas en `/rules/`
+
+---
+
+## ✨ **CARACTERÍSTICAS DEL SISTEMA**
+
+### **🎨 Estilo Unificado: Brutalismo + Pasteles**
+- **Colores**: Rosa `#ff6680`, Naranja `#ff8f66`, Púrpura `#9333ea`
+- **Tipografía**: Font-weight bold, tracking wide
+- **Elementos**: Bordes gruesos, sombras brutales, geometrías marcadas
+
+### **⚙️ Stack Tecnológico**
+- **Next.js**: 15.4.0 con App Router exclusivo
+- **React**: 19.0.0 con TypeScript 5.7.2 estricto
+- **TailwindCSS**: v4.1.12 con variables CSS
 - **Componentes**: shadcn/ui + Magic UI
-- **Gestión**: pnpm como package manager
-- **Validación**: Zod + React Hook Form
-- **TypeScript**: Strict mode habilitado
+- **Package Manager**: pnpm exclusivo
 
-### Estilo de Código
-- Commits en inglés
-- Uso de `pnpm` y `pnpm dlx` (NO usar npm)
-- Estructura de archivos clara y organizada
-- Componentes reutilizables y modulares
+### **📦 Gestión de Dependencias**
+```bash
+# Instalación base
+pnpm add next@15.4.0 react@19.0.0 react-dom@19.0.0
+pnpm add tailwindcss@4.1.12 typescript@5.7.2
 
-### Enfoque de Diseño
-- **Estilo**: Brutalista con tonos pasteles
-- **Colores**: Rosa #ff6680, Naranja #ff8f66
-- **UI/UX**: Componentes Magic UI para animaciones
-- **Responsive**: Mobile-first approach
+# shadcn/ui y Magic UI
+pnpm dlx shadcn@latest init
+pnpm dlx shadcn@latest add "https://magicui.design/r/sparkles-text.json"
+```
 
-## 📝 Uso
+---
 
-Para aplicar estas reglas:
+## 🎯 **REGLAS FUNDAMENTALES**
 
-1. **Consulta las reglas específicas** en `/rules` para el área que estés desarrollando
-2. **Revisa las instrucciones** en `/instructions` para implementación técnica
-3. **Utiliza los prompts** en `/prompts` para guiar el desarrollo con LLMs
-4. **Sigue la documentación** en `/docs` para sistemas complejos
-5. **Aplica las mejores prácticas** en `/support` para calidad de código
+### **✅ OBLIGATORIO**
+- **Colores**: Usar variables CSS del sistema brutalista
+- **Package Manager**: pnpm exclusivo (NUNCA npm/yarn)
+- **TypeScript**: Modo estricto, sin tipos `any`
+- **Componentes**: shadcn/ui en `src/components/ui/` (NUNCA MODIFICAR)
+- **TailwindCSS**: Patrón v4 sin `@apply` en clases custom
 
-## 🚨 ANÁLISIS DE COHERENCIA
+### **❌ PROHIBIDO**
+- **Colores hardcodeados**: `#264e70`, `#3B82F6`, etc.
+- **npm/yarn**: Solo pnpm y pnpm dlx
+- **@apply con clases custom**: Causa errores en TailwindCSS v4
+- **Modificar shadcn/ui**: Crear custom en `src/components/custom/`
+- **Tipos any**: TypeScript estricto obligatorio
 
-### ⚠️ **CONFLICTOS IDENTIFICADOS**
+---
 
-Se han detectado **incoherencias críticas** entre los archivos consolidados:
+## 📊 **BENEFICIOS DE LA SIMPLIFICACIÓN**
 
-- **[COHERENCIA-ANALYSIS.md](./COHERENCIA-ANALYSIS.md)** - Análisis detallado de todos los conflictos encontrados
-- **[UNIFIED-SOLUTIONS.md](./UNIFIED-SOLUTIONS.md)** - Soluciones propuestas para resolver las incoherencias
+### **🎯 Estructura Simplificada**
+- **De 50+ archivos** → **20 archivos esenciales**
+- **Nomenclatura clara**: CONFIG, COLORS, TAILWIND
+- **Cero redundancia**: Una sola fuente de verdad por tema
+- **Navegación rápida**: Menos carpetas, más claridad
 
-#### 🔥 **Conflictos Críticos Detectados:**
+### **⚡ Desarrollo Más Rápido**
+- **Menos confusión**: Reglas claras y únicas
+- **Referencias directas**: Sin búsqueda en múltiples archivos
+- **Sistema coherente**: Sin contradicciones
+- **Fácil mantenimiento**: Actualizar un solo lugar
 
-1. **Sistema de Colores**: 3 paletas diferentes (brutalista vs estándar)
-2. **TailwindCSS v4**: Patrones incompatibles entre archivos
-3. **Versiones**: Especificaciones inconsistentes
-4. **Componentes**: Reglas contradictorias de organización
-5. **Validación**: Diferentes enfoques para esquemas Zod
+### **🧠 Mejor para LLMs**
+- **Contexto concentrado**: Información esencial unificada
+- **Prompts específicos**: Tareas claras y directas
+- **Reglas consistentes**: Sin interpretaciones ambiguas
+- **Menos tokens**: Contenido optimizado
 
-#### 🛠️ **Estado de Resolución:**
-- 🚨 **Crítico**: Sistema de colores y TailwindCSS - Requiere acción inmediata
-- ⚠️ **Medio**: Versiones y estructura de componentes
-- 📝 **Bajo**: Patrones de validación
+---
 
-> **⚡ Acción Requerida**: Revisar y aprobar las soluciones unificadas antes de continuar el desarrollo.
+## 🔄 **MANTENIMIENTO**
 
-## 🔄 Actualización
+### **Para Actualizar el Sistema**
+1. **Modificar archivos maestros**: CONFIG.md, COLORS.md, TAILWIND.md
+2. **Actualizar instrucciones específicas** si es necesario
+3. **Mantener coherencia** entre todos los archivos
+4. **Documentar cambios** con fecha
 
-Este directorio es una extracción consolidada de:
-- `.github/` (instrucciones, prompts, documentación, soporte)
-- `.qoder/` (reglas específicas, instrucciones, prompts)
+### **Para Añadir Nuevas Reglas**
+1. **Identificar categoría**: ¿Es config, color, tailwind, instrucción, regla o soporte?
+2. **Actualizar archivo correspondiente** o crear uno específico
+3. **Referenciar en este README** si es relevante
+4. **Mantener principio de simplicidad**
 
-Para mantenerlo actualizado, sincroniza periódicamente con los directorios fuente y resuelve las incoherencias identificadas.
+---
+
+> **🚀 Sistema WebSnack optimizado para desarrollo escalable, coherente y eficiente con estilo brutalista único.**
