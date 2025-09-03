@@ -26,7 +26,7 @@ WebSnack se desarrollará utilizando el stack tecnológico más avanzado disponi
 **Instalación:** Fase 1 - Setup inicial
 
 ```bash
-pnpm create next-app@latest websnack --typescript --tailwind --eslint --app --src-dir --import-alias "@/*"
+pnpm create next-app@latest --typescript --tailwind --eslint --app --src-dir --import-alias "@/*" --turbo
 pnpm add next@latest react@latest react-dom@latest
 ```
 
@@ -329,7 +329,7 @@ pnpm dlx shadcn@latest add button card input form
 **Versión:** `0.11.x` (latest stable)
 **Instalación:** Fase 3 - Microanimaciones
 
-```bash
+``bash
 pnpm add framer-motion lucide-react
 pnpm dlx magicui-cli add animated-beam
 pnpm dlx magicui-cli add text-reveal
@@ -647,7 +647,7 @@ pnpm exec husky init
 
 **Pre-commit hooks:**
 
-```json
+``json
 // package.json
 {
   "lint-staged": {
@@ -829,7 +829,7 @@ pnpm add -D husky lint-staged prettier eslint-config-prettier
 - 🔧 Typography scale y spacing system
 - 🔧 Dark mode implementation
 
-```bash
+``bash
 # Scripts Fase 2
 pnpm dlx shadcn@latest init
 # Tema personalizado WebSnack con efectos 3D
@@ -896,7 +896,7 @@ pnpm create playwright@latest
 - 🔧 CDN optimization
 - 🔧 Monitoring & alerts
 
-```bash
+``bash
 # Scripts Fase 6
 pnpm add -D vercel
 pnpm exec vercel --prod
