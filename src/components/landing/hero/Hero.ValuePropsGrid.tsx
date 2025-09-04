@@ -155,12 +155,12 @@ const ValuePropCard = ({ prop }: { prop: ValueProp }) => {
       onMouseLeave={handleMouseLeave}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
-      className="relative h-full group"
+      className="relative h-full group transition-transform duration-200 ease-out will-change-transform"
     >
       {/* Efecto de brillo tenue rosa detrás de la tarjeta al hacer hover */}
       <div className="absolute inset-0 rounded-xl bg-primary/5 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10"></div>
       
-      <Card className="h-full bg-background/80 backdrop-blur-sm border-border/30 shadow-3d-sm group-hover:shadow-3d-md transition-all duration-700 relative z-0 overflow-hidden transform translate-y-0 group-hover:-translate-y-1">
+      <Card className="h-full bg-background/80 backdrop-blur-sm border-border/30 shadow-3d-sm group-hover:shadow-3d-md transition-all duration-700 relative z-0 overflow-hidden">
         {/* Elemento para el efecto de brillo */}
         <div className="glare absolute inset-0 pointer-events-none"></div>
         
