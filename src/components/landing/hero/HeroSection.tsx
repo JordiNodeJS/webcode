@@ -1,9 +1,9 @@
-import { HeaderNavigation } from "./HeaderNavigation";
-import { HeroContent } from "./HeroContent";
-import { ValuePropsGrid } from "./ValuePropsGrid";
-import { CallToAction } from "./CallToAction";
-import { TrustIndicators } from "./TrustIndicators";
-import { WavesBackground } from "./WavesBackground";
+import { HeaderNavigation } from "./Hero.HeaderNavigation";
+import { HeroContent } from "./Hero.Content";
+import { ValuePropsGrid } from "./Hero.ValuePropsGrid";
+import { CallToAction } from "./Hero.CallToAction";
+import { TrustIndicators } from "./Hero.TrustIndicators";
+import { WavesBackground } from "./Hero.WavesBackground";
 
 /**
  * Hero Section principal de WebSnack
@@ -12,6 +12,15 @@ import { WavesBackground } from "./WavesBackground";
  * con navegación, contenido principal, propuesta de valor y CTAs.
  *
  * Utiliza el sistema de colores WebSnack (Rosa/Aguamarina) y efectos 3D.
+ * 
+ * ESTRUCTURA JERÁRQUICA:
+ * - HeroSection (principal)
+ *   ├── WavesBackground (fondo animado)
+ *   ├── HeaderNavigation (navegación superior)
+ *   ├── HeroContent (título y subtítulo)
+ *   ├── CallToAction (botones de acción)
+ *   ├── TrustIndicators (indicadores de confianza)
+ *   └── ValuePropsGrid (propuestas de valor)
  */
 export function HeroSection() {
   return (
