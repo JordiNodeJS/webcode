@@ -94,7 +94,7 @@ export function middleware(request: NextRequest) {
   
   // Si es un request malicioso, devolver 403 inmediatamente
   if (isMaliciousPath || isSuspiciousUA) {
-    console.log(`🚫 Blocked malicious request: ${pathname} from ${request.ip || 'unknown'} (UA: ${userAgent})`);
+    console.log(`🚫 Blocked malicious request: ${pathname} from unknown (UA: ${userAgent})`);
     
     return new NextResponse('Forbidden', {
       status: 403,
