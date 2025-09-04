@@ -73,6 +73,18 @@ const ValuePropCard = ({ prop }: { prop: ValueProp }) => {
     };
   }, []);
 
+  // Efecto para aplicar un degradado sutil por defecto
+  useEffect(() => {
+    if (cardRef.current) {
+      const card = cardRef.current;
+      const glare = card.querySelector('.glare') as HTMLElement;
+      if (glare) {
+        // Aplicar un degradado sutil por defecto (50% rosa, 50% acuamarina)
+        glare.style.background = `radial-gradient(circle at 50% 50%, rgba(111, 137, 193, 0.15), transparent)`;
+      }
+    }
+  }, []);
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (cardRef.current) {
       const card = cardRef.current;
@@ -147,10 +159,10 @@ const ValuePropCard = ({ prop }: { prop: ValueProp }) => {
       const card = cardRef.current;
       card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
       
-      // Resetear brillo
+      // Restaurar el brillo sutil por defecto
       const glare = card.querySelector('.glare') as HTMLElement;
       if (glare) {
-        glare.style.background = 'transparent';
+        glare.style.background = `radial-gradient(circle at 50% 50%, rgba(111, 137, 193, 0.15), transparent)`;
       }
     }
   };
@@ -160,10 +172,10 @@ const ValuePropCard = ({ prop }: { prop: ValueProp }) => {
       const card = cardRef.current;
       card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
       
-      // Resetear brillo
+      // Restaurar el brillo sutil por defecto
       const glare = card.querySelector('.glare') as HTMLElement;
       if (glare) {
-        glare.style.background = 'transparent';
+        glare.style.background = `radial-gradient(circle at 50% 50%, rgba(111, 137, 193, 0.15), transparent)`;
       }
     }
   };
@@ -200,7 +212,7 @@ const ValuePropCard = ({ prop }: { prop: ValueProp }) => {
             {prop.features.map((feature, featureIndex) => (
               <li
                 key={featureIndex}
-                className="flex items-center justify-center text-center group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-pink-500 group-hover:to-teal-500 group-hover:drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)]"
+                className="flex items-center justify-center text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-500 drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)]"
               >
                 {feature}
               </li>
