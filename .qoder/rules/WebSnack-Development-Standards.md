@@ -95,6 +95,7 @@ const floristeriaSchema = ContactSchema.extend({
 
 ### Convenciones de Nombres
 - Para componentes relacionados jerárquicamente, usar la convención: `ComponentePrincipal.Subcomponente.tsx`
+- Ver regla general: [Convención de Nombres para Componentes](./Component-Naming-Convention.md)
 - Ver regla específica: [Convención de Nombres para Componentes de la Sección Hero](./Hero-Component-Naming-Convention.md)
 
 ### Contexto WebSnack

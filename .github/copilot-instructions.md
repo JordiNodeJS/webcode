@@ -252,7 +252,29 @@ package.json                   # Dependencias del proyecto - PENDIENTE INSTALACI
   ❌ Card.tsx (demasiado genérico)
   ```
 
-#### **7. Organización de Estilos**
+#### **7. Convención de Nombres Jerárquica para Componentes**
+- **Para mejorar la identificación del componente principal y la jerarquía**, se debe aplicar la siguiente convención de nombres jerárquica:
+  ```
+  [NombreSección].[Subsección].[Componente].tsx
+  ```
+- **Para Componentes Principales de Páginas**:
+  - `Page.Section.tsx` - Componente principal de una página
+- **Para Componentes Secundarios**:
+  - `Page.NombreComponente.tsx` - Componentes de primer nivel
+  - `Page.Sección.Componente.tsx` - Componentes de segundo nivel
+  - `Page.Sección.Subsección.Componente.tsx` - Componentes de tercer nivel
+
+**Ejemplos**:
+- `Hero.Section.tsx` - Componente principal de la sección Hero
+- `Hero.WavesBackground.tsx` - Fondo animado con olas
+- `Hero.HeaderNavigation.tsx` - Navegación superior
+- `Services.Section.tsx` - Componente principal de la página de servicios
+- `Services.Features.tsx` - Sección de características
+- `Services.Features.Card.tsx` - Tarjeta de características
+
+Para más detalles, consultar: `.github/prompts/component-naming-convention.prompt.md`
+
+#### **8. Organización de Estilos**
 - **Estilos globales**: `src/styles/globals.css`
 - **Estilos específicos**: Junto al componente solo si no se reutilizan
 - **Preferencia por Tailwind**: Evitar CSS personalizado cuando sea posible

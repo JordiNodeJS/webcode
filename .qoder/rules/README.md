@@ -27,6 +27,7 @@ scenario: "Descripción del escenario"  # Solo para Model Decision
 | `Git-Squash-Tools.md` | **Apply Manually** | ✅ YAML Frontmatter | Herramientas Git Squash |
 | `Form-Validation-Progressive.md` | **Specific Files** | ✅ YAML Frontmatter | Validación progresiva con Zod |
 | `Hero-Component-Naming-Convention.md` | **Specific Files** | ✅ YAML Frontmatter | Convención de nombres para Hero |
+| `Component-Naming-Convention.md` | **Specific Files** | ✅ YAML Frontmatter | Convención de nombres general |
 
 ## 🎯 Tipos de Regla Explicados
 
@@ -108,6 +109,12 @@ scenario: "Descripción del escenario"  # Solo para Model Decision
 - **File Patterns**: `src/components/landing/hero/**/*.tsx`
 - **Content**: [Copiar contenido de Hero-Component-Naming-Convention.md]
 
+#### Regla 10: Component Naming Convention
+- **Name**: Component Naming Convention
+- **Type**: Specific Files
+- **File Patterns**: `src/components/**/*.tsx`
+- **Content**: [Copiar contenido de Component-Naming-Convention.md]
+
 ## 🔧 Uso de las Reglas
 
 ### Automáticas
@@ -133,7 +140,7 @@ scenario: "Descripción del escenario"  # Solo para Model Decision
 
 ## 🎯 Estado del Sistema
 
-- ✅ **9 reglas** creadas en formato oficial Qoder
+- ✅ **10 reglas** creadas en formato oficial Qoder
 - ✅ **100% compatibilidad** con sistema anterior
 - ✅ **Documentación completa** incluida
 - ✅ **Listo para configurar** en Qoder Settings

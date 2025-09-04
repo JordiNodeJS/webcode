@@ -32,6 +32,8 @@ Este directorio contiene todos los prompts especializados del proyecto WebSnack,
 | Archivo                         | Propósito          | Estado                       |
 | ------------------------------- | ------------------ | ---------------------------- |
 | `politica-privacidad.prompt.md` | Documentos legales | 📝 Pendiente estandarización |
+| `hero-naming-convention.prompt.md` | Convención nombres Hero | ✅ Estandarizado |
+| `component-naming-convention.prompt.md` | Convención nombres general | ✅ Estandarizado |
 
 ---
 
@@ -94,7 +96,7 @@ Este directorio contiene todos los prompts especializados del proyecto WebSnack,
 
 ### **Estado Actual**
 
-- **Prompts estandarizados**: 4/9 (44%)
+- **Prompts estandarizados**: 6/11 (55%)
 - **Prompts consolidados**: 2 archivos eliminados
 - **Template creado**: ✅ `_template-estandar.md`
 
