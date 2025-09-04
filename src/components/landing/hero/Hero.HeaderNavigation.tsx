@@ -8,8 +8,6 @@ import { ThemeToggle } from "./Hero.ThemeToggle";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
-  SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
@@ -37,6 +35,8 @@ const languages = [
  *
  * Componente Client Component para manejar la interactividad del menú móvil
  * y el selector de idiomas. Usa el sistema de colores WebSnack.
+ * 
+ * Optimizado usando React hooks estándar y Tailwind CSS.
  */
 export function HeaderNavigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -44,26 +44,42 @@ export function HeaderNavigation() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Cuando el usuario hace scroll más de 10px, activamos el estado "scrolled"
-      setIsScrolled(window.scrollY > 10);
+    let ticking = false;
+
+    const updateScrollState = () => {
+      const scrolled = window.scrollY > 10;
+      setIsScrolled(scrolled);
+      ticking = false;
     };
 
-    // Agregamos el event listener
-    window.addEventListener("scroll", handleScroll);
-    
-    // Limpiamos el event listener cuando el componente se desmonta
+    const requestTick = () => {
+      if (!ticking) {
+        requestAnimationFrame(updateScrollState);
+        ticking = true;
+      }
+    };
+
+    // Verificar estado inicial solo en el cliente
+    if (typeof window !== "undefined") {
+      updateScrollState();
+      window.addEventListener("scroll", requestTick, { passive: true });
+    }
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      if (typeof window !== "undefined") {
+        window.removeEventListener("scroll", requestTick);
+      }
     };
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled 
-        ? "bg-background/90 backdrop-blur-lg border-b border-border/40 shadow-xl py-2" 
-        : "bg-background/80 backdrop-blur-md border-b border-border/30 shadow-lg py-4"
-    }`}>
+    <header 
+      className={`sticky top-0 z-50 transition-all duration-300 ease-out ${
+        isScrolled 
+          ? "bg-background/90 backdrop-blur-lg border-b border-border/40 shadow-xl py-2" 
+          : "bg-background/80 backdrop-blur-md border-b border-border/30 shadow-lg py-4"
+      }`}
+    >
       <nav className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -98,10 +114,10 @@ export function HeaderNavigation() {
           {/* Language Selector & Theme Toggle & Mobile Menu Button */}
           <div className="flex items-center space-x-2">
             {/* Language Selector */}
-            <div className={`hidden md:flex items-center space-x-1 transition-all duration-300 ${
+            <div className={`hidden md:flex items-center space-x-1 bg-muted transition-all duration-300 ${
               isScrolled 
-                ? "bg-muted rounded-md p-0.5 scale-90" 
-                : "bg-muted rounded-lg p-1"
+                ? "rounded-md p-0.5 scale-90" 
+                : "rounded-lg p-1"
             }`}>
               {languages.map((lang) => (
                 <button

@@ -25,7 +25,7 @@ import { WavesBackground } from "./Hero.WavesBackground";
 export function HeroSection() {
   return (
     // Aumentar significativamente la opacidad del fondo para que se vea mejor el color
-    <section className="min-h-screen bg-gradient-websnack/80 dark:bg-gradient-websnack/60 relative overflow-hidden">
+    <section className="min-h-screen bg-gradient-websnack/80 dark:bg-gradient-websnack/60 relative">
       {/* Aumentar la opacidad del patrón de fondo para mejor visibilidad */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-secondary/15" />
       
