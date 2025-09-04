@@ -89,10 +89,20 @@ const ValuePropCard = ({ prop }: { prop: ValueProp }) => {
       
       card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
       
-      // Efecto de brillo más sutil con menor opacidad
+      // Efecto de brillo con degradado que cambia según la posición del cursor
       const glare = card.querySelector('.glare') as HTMLElement;
       if (glare) {
-        glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(178, 62, 176, 0.1), transparent)`;
+        // Calcular el color basado en la posición X del cursor
+        // Más rosa a la izquierda (0%), más acuamarina a la derecha (100%)
+        // Usando valores fijos para rosa (178, 62, 176) y acuamarina (45, 212, 191) de Tailwind
+        const pinkRatio = (100 - glareX) / 100;
+        const tealRatio = glareX / 100;
+        
+        const r = Math.round(178 * pinkRatio + 45 * tealRatio);
+        const g = Math.round(62 * pinkRatio + 212 * tealRatio);
+        const b = Math.round(176 * pinkRatio + 191 * tealRatio);
+        
+        glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(${r}, ${g}, ${b}, 0.2), transparent)`;
       }
     }
   };
@@ -114,10 +124,20 @@ const ValuePropCard = ({ prop }: { prop: ValueProp }) => {
       
       card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
       
-      // Efecto de brillo más sutil con menor opacidad
+      // Efecto de brillo con degradado que cambia según la posición del cursor
       const glare = card.querySelector('.glare') as HTMLElement;
       if (glare) {
-        glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(178, 62, 176, 0.1), transparent)`;
+        // Calcular el color basado en la posición X del cursor
+        // Más rosa a la izquierda (0%), más acuamarina a la derecha (100%)
+        // Usando valores fijos para rosa (178, 62, 176) y acuamarina (45, 212, 191) de Tailwind
+        const pinkRatio = (100 - glareX) / 100;
+        const tealRatio = glareX / 100;
+        
+        const r = Math.round(178 * pinkRatio + 45 * tealRatio);
+        const g = Math.round(62 * pinkRatio + 212 * tealRatio);
+        const b = Math.round(176 * pinkRatio + 191 * tealRatio);
+        
+        glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(${r}, ${g}, ${b}, 0.2), transparent)`;
       }
     }
   };
@@ -180,7 +200,7 @@ const ValuePropCard = ({ prop }: { prop: ValueProp }) => {
             {prop.features.map((feature, featureIndex) => (
               <li
                 key={featureIndex}
-                className="flex items-center justify-center text-center"
+                className="flex items-center justify-center text-center group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-pink-500 group-hover:to-teal-500 group-hover:drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)]"
               >
                 {feature}
               </li>
