@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 interface NavigationItem {
   href: string;
@@ -90,8 +91,8 @@ export function HeaderNavigation() {
             ))}
           </div>
 
-          {/* Language Selector & Mobile Menu Button */}
-          <div className="flex items-center space-x-4">
+          {/* Language Selector & Theme Toggle & Mobile Menu Button */}
+          <div className="flex items-center space-x-2">
             {/* Language Selector */}
             <div className={`flex items-center space-x-1 transition-all duration-300 ${
               isScrolled 
@@ -116,6 +117,9 @@ export function HeaderNavigation() {
                 </button>
               ))}
             </div>
+
+            {/* Theme Toggle */}
+            <ThemeToggle />
 
             {/* Mobile Menu Button */}
             <Button
