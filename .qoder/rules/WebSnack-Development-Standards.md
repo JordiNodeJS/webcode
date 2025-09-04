@@ -93,6 +93,10 @@ const floristeriaSchema = ContactSchema.extend({
 - Contraste adecuado
 - Navegación por teclado
 
+### Convenciones de Nombres
+- Para componentes relacionados jerárquicamente, usar la convención: `ComponentePrincipal.Subcomponente.tsx`
+- Ver regla específica: [Convención de Nombres para Componentes de la Sección Hero](./Hero-Component-Naming-Convention.md)
+
 ### Contexto WebSnack
 - Mercado objetivo: Freelancers, PYMEs, startups en España
 - Ubicación: Barcelona como hub principal
