@@ -74,7 +74,7 @@ const ValuePropCard = ({ prop }: { prop: ValueProp }) => {
   }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (cardRef.current && !isMobile) {
+    if (cardRef.current) {
       const card = cardRef.current;
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
@@ -98,7 +98,7 @@ const ValuePropCard = ({ prop }: { prop: ValueProp }) => {
   };
 
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (cardRef.current && isMobile && e.touches.length > 0) {
+    if (cardRef.current && e.touches.length > 0) {
       const card = cardRef.current;
       const rect = card.getBoundingClientRect();
       const touch = e.touches[0];
