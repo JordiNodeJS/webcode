@@ -230,3 +230,43 @@
     color: var(--foreground) !important;
   }
 }
+
+/* Animaciones de olas para la sección Hero */
+@keyframes wave-slow {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(-1200px) translateY(0);
+  }
+}
+
+@keyframes wave-medium {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(-1200px) translateY(0);
+  }
+}
+
+@keyframes wave-fast {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(-1200px) translateY(0);
+  }
+}
+
+.animate-wave-slow {
+  animation: wave-slow 20s linear infinite;
+}
+
+.animate-wave-medium {
+  animation: wave-medium 15s linear infinite;
+}
+
+.animate-wave-fast {
+  animation: wave-fast 10s linear infinite;
+}

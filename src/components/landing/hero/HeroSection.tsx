@@ -3,6 +3,7 @@ import { HeroContent } from "./HeroContent";
 import { ValuePropsGrid } from "./ValuePropsGrid";
 import { CallToAction } from "./CallToAction";
 import { TrustIndicators } from "./TrustIndicators";
+import { WavesBackground } from "./WavesBackground";
 
 /**
  * Hero Section principal de WebSnack
@@ -18,6 +19,9 @@ export function HeroSection() {
     <section className="min-h-screen bg-gradient-websnack/80 dark:bg-gradient-websnack/60 relative overflow-hidden">
       {/* Aumentar la opacidad del patrón de fondo para mejor visibilidad */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-secondary/15" />
+      
+      {/* Waves Background Animation */}
+      <WavesBackground />
 
       {/* Header Navigation */}
       <HeaderNavigation />
