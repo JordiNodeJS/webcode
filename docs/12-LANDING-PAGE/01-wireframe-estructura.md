@@ -71,19 +71,19 @@ Soluciones digitales para cada necesidad
 
 • **Landing pages de alta conversión** — Páginas diseñadas específicamente para convertir tráfico en leads. A/B testing integrado, formularios optimizados y copywriting persuasivo basado en psicología del consumidor.
 
-• **Aplicaciones web personalizadas** — Herramientas SaaS a medida para tu negocio: dashboards de gestión, sistemas de reservas, calculadoras de presupuesto y automatizaciones que ahorran tiempo y aumentan eficiencia.
+• **Aplicaciones web personalizadas** — Herramientas a medida para tu negocio: dashboards de gestión, sistemas de reservas y calculadoras de presupuesto que ahorran tiempo y aumentan eficiencia.
 
 Tecnologías: Next.js 15, React 19, TypeScript — Stack moderno que garantiza performance, escalabilidad y mantenibilidad a largo plazo.
 
 #### Servicio 2: Herramientas de Productividad
 
-⚙️ AUTOMATIZACIÓN INTELIGENTE
+🛠️ SOLUCIONES PRÁCTICAS
 
 • **Sistemas de reservas integrados** — Calendarios online con disponibilidad en tiempo real, confirmación automática por email/SMS y recordatorios programados. Integración nativa con Google Calendar y gestión de zonas horarias.
 
 • **Calculadoras de presupuesto** — Herramientas interactivas que permiten a tus clientes calcular costes de servicios en tiempo real. Configurables según tu estructura de precios y que generan leads cualificados automáticamente.
 
-• **Formularios inteligentes** — Formularios adaptativos que cambian según las respuestas del usuario. Validación en tiempo real, autocompletado y envío a múltiples destinos (email, CRM, Slack) para agilizar tu flujo de trabajo.
+• **Formularios inteligentes** — Formularios adaptativos que cambian según las respuestas del usuario. Validación en tiempo real, autocompletado y envío a múltiples destinos (email, Slack, ...) para agilizar tu flujo de trabajo.
 
 • **Dashboards de gestión** — Paneles de control personalizados que centralizan métricas importantes: ventas, leads, performance web y analytics. Visualización clara de KPIs con reportes automáticos por email.
 
