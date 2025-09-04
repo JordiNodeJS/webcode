@@ -3,8 +3,16 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu } from "lucide-react";
 import { ThemeToggle } from "./Hero.ThemeToggle";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 interface NavigationItem {
   href: string;
@@ -50,10 +58,6 @@ export function HeaderNavigation() {
     };
   }, []);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
@@ -94,7 +98,7 @@ export function HeaderNavigation() {
           {/* Language Selector & Theme Toggle & Mobile Menu Button */}
           <div className="flex items-center space-x-2">
             {/* Language Selector */}
-            <div className={`flex items-center space-x-1 transition-all duration-300 ${
+            <div className={`hidden md:flex items-center space-x-1 transition-all duration-300 ${
               isScrolled 
                 ? "bg-muted rounded-md p-0.5 scale-90" 
                 : "bg-muted rounded-lg p-1"
@@ -122,35 +126,56 @@ export function HeaderNavigation() {
             <ThemeToggle />
 
             {/* Mobile Menu Button */}
-            <Button
-              variant="ghost"
-              size="sm"
-              className="md:hidden"
-              onClick={toggleMobileMenu}
-              aria-label="Toggle mobile menu"
-            >
-              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-            </Button>
-          </div>
-        </div>
+            <div className="md:hidden flex items-center space-x-2">
+              {/* Mobile Language Selector */}
+              <div className="flex items-center space-x-1 bg-muted rounded-md p-0.5">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => setCurrentLanguage(lang.code)}
+                    className={`px-1.5 py-0.5 text-xs font-medium rounded transition-all duration-300 ${
+                      currentLanguage === lang.code
+                        ? "bg-primary text-primary-foreground"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {lang.label}
+                  </button>
+                ))}
+              </div>
 
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-border">
-            <div className="flex flex-col space-y-4 pt-4">
-              {navigationItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.label}
-                </a>
-              ))}
+              {/* Sheet para menú móvil */}
+              <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+                <SheetTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="md:hidden"
+                    aria-label="Toggle mobile menu"
+                  >
+                    <Menu size={20} />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-[200px] sm:w-[50px]">
+                  {/* Título oculto visualmente para accesibilidad */}
+                  <SheetTitle className="sr-only">Navegación</SheetTitle>
+                  <div className="flex flex-col space-y-4 mt-6 ps-4 text-center">
+                    {navigationItems.map((item) => (
+                      <a
+                        key={item.href}
+                        href={item.href}
+                        className="text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.label}
+                      </a>
+                    ))}
+                  </div>
+                </SheetContent>
+              </Sheet>
             </div>
           </div>
-        )}
+        </div>
       </nav>
     </header>
   );
