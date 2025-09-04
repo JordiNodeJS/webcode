@@ -67,7 +67,7 @@ Soluciones digitales para cada necesidad
 
 • **Portafolios creativos que convierten** — Diseños únicos que destacan tu trabajo y generan confianza. Galerías optimizadas, casos de estudio detallados y CTAs estratégicos que transforman visitantes en clientes potenciales.
 
-• **E-commerce optimizado para ventas** — Tiendas online con UX de conversión probada: checkout simplificado, múltiples métodos de pago, gestión de inventario y analytics de ventas. Integración con carriers españoles y cumplimiento fiscal.
+• **Tiendas online listas para vender** — Creamos tiendas fáciles de usar que convierten visitantes en clientes: checkout rápido, pagos múltiples, inventario automático y estadísticas de ventas. Todo integrado y cumpliendo con las normativas españolas.
 
 • **Landing pages de alta conversión** — Páginas diseñadas específicamente para convertir tráfico en leads. A/B testing integrado, formularios optimizados y copywriting persuasivo basado en psicología del consumidor.
 
