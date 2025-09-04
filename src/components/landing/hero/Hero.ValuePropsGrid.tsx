@@ -155,12 +155,12 @@ const ValuePropCard = ({ prop }: { prop: ValueProp }) => {
       onMouseLeave={handleMouseLeave}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
-      className="relative h-full group transition-transform duration-200 ease-out will-change-transform"
+      className="relative h-full group transition-transform duration-200 ease-out will-change-transform [transform-style:preserve-3d]"
     >
       {/* Efecto de brillo tenue rosa detrás de la tarjeta al hacer hover */}
       <div className="absolute inset-0 rounded-xl bg-primary/5 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10"></div>
       
-      <Card className="h-full bg-background/80 backdrop-blur-sm border-border/30 shadow-3d-sm group-hover:shadow-3d-md transition-all duration-700 relative z-0 overflow-hidden">
+      <Card className="h-full bg-background/80 backdrop-blur-sm border-border/30 shadow-3d-sm group-hover:shadow-3d-md transition-all duration-700 relative z-0 overflow-hidden [transform-style:preserve-3d]">
         {/* Elemento para el efecto de brillo */}
         <div className="glare absolute inset-0 pointer-events-none"></div>
         
@@ -171,12 +171,12 @@ const ValuePropCard = ({ prop }: { prop: ValueProp }) => {
           </div>
 
           {/* Título */}
-          <h3 className="text-lg font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-700">
+          <h3 className="text-lg font-bold text-foreground mb-4 group-hover:text-primary transition duration-300 transform-gpu group-hover:[transform:translateZ(20px)] group-hover:drop-shadow-[0_6px_18px_rgba(0,0,0,0.2)]">
             {prop.title}
           </h3>
 
           {/* Lista de características */}
-          <ul className="space-y-2 text-sm text-muted-foreground mt-4">
+          <ul className="space-y-2 text-sm text-muted-foreground mt-4 transition-transform duration-300 transform-gpu group-hover:[transform:translateZ(12px)] group-hover:drop-shadow-[0_4px_12px_rgba(0,0,0,0.15)]">
             {prop.features.map((feature, featureIndex) => (
               <li
                 key={featureIndex}
