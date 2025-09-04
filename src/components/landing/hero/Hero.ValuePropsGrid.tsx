@@ -1,9 +1,9 @@
 "use client";
 
+import React, { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Rocket, Zap, Smartphone, Target } from "lucide-react";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
 
 interface ValueProp {
   icon: React.ReactNode;
@@ -54,6 +54,89 @@ const valueProps: ValueProp[] = [
   },
 ];
 
+// Componente para una tarjeta individual con efecto 3D
+const ValuePropCard = ({ prop }: { prop: ValueProp }) => {
+  const cardRef = React.useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (cardRef.current) {
+      const card = cardRef.current;
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      // Invertir la dirección de la rotación
+      const rotateX = (centerY - y) / 20; // Rotación invertida en eje X
+      const rotateY = (x - centerX) / 20; // Rotación invertida en eje Y
+      const glareX = (x / rect.width) * 100;
+      const glareY = (y / rect.height) * 100;
+      
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+      
+      // Efecto de brillo más sutil con menor opacidad
+      const glare = card.querySelector('.glare') as HTMLElement;
+      if (glare) {
+        glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(178, 62, 176, 0.1), transparent)`;
+      }
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (cardRef.current) {
+      const card = cardRef.current;
+      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+      
+      // Resetear brillo
+      const glare = card.querySelector('.glare') as HTMLElement;
+      if (glare) {
+        glare.style.background = 'transparent';
+      }
+    }
+  };
+
+  return (
+    <div 
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="relative h-full group"
+    >
+      {/* Efecto de brillo tenue rosa detrás de la tarjeta al hacer hover */}
+      <div className="absolute inset-0 rounded-xl bg-primary/5 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10"></div>
+      
+      <Card className="h-full bg-background/80 backdrop-blur-sm border-border/30 shadow-3d-sm group-hover:shadow-3d-md transition-all duration-700 relative z-0 overflow-hidden transform translate-y-0 group-hover:-translate-y-1">
+        {/* Elemento para el efecto de brillo */}
+        <div className="glare absolute inset-0 pointer-events-none"></div>
+        
+        <CardContent className="p-6 text-center h-full flex flex-col relative z-10">
+          {/* Icono */}
+          <div className="flex justify-center mb-4 group-hover:scale-110 transition-transform duration-700">
+            {prop.icon}
+          </div>
+
+          {/* Título */}
+          <h3 className="text-lg font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-700">
+            {prop.title}
+          </h3>
+
+          {/* Lista de características */}
+          <ul className="space-y-2 text-sm text-muted-foreground mt-4">
+            {prop.features.map((feature, featureIndex) => (
+              <li
+                key={featureIndex}
+                className="flex items-center justify-center text-center"
+              >
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
+
 /**
  * Grid de propuestas de valor
  *
@@ -92,31 +175,7 @@ export function ValuePropsGrid() {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className="h-full"
           >
-            <Card className="h-full bg-background/80 backdrop-blur-sm border-border/30 shadow-3d-sm hover:shadow-3d-md transition-all duration-300 transform hover:scale-105 hover:border-primary/30">
-              <CardContent className="p-6 text-center h-full flex flex-col">
-                {/* Icono */}
-                <div className="flex justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {prop.icon}
-                </div>
-
-                {/* Título */}
-                <h3 className="text-lg font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
-                  {prop.title}
-                </h3>
-
-                {/* Lista de características */}
-                <ul className="space-y-2 text-sm text-muted-foreground mt-4">
-                  {prop.features.map((feature, featureIndex) => (
-                    <li
-                      key={featureIndex}
-                      className="flex items-center justify-center text-center"
-                    >
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+            <ValuePropCard prop={prop} />
           </motion.div>
         ))}
       </div>
