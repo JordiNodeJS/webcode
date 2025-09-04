@@ -57,13 +57,53 @@ const valueProps: ValueProp[] = [
 // Componente para una tarjeta individual con efecto 3D
 const ValuePropCard = ({ prop }: { prop: ValueProp }) => {
   const cardRef = React.useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detectar si es dispositivo móvil
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
+    };
+    
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+    };
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (cardRef.current) {
+    if (cardRef.current && !isMobile) {
       const card = cardRef.current;
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      // Invertir la dirección de la rotación
+      const rotateX = (centerY - y) / 20; // Rotación invertida en eje X
+      const rotateY = (x - centerX) / 20; // Rotación invertida en eje Y
+      const glareX = (x / rect.width) * 100;
+      const glareY = (y / rect.height) * 100;
+      
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+      
+      // Efecto de brillo más sutil con menor opacidad
+      const glare = card.querySelector('.glare') as HTMLElement;
+      if (glare) {
+        glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(178, 62, 176, 0.1), transparent)`;
+      }
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (cardRef.current && isMobile && e.touches.length > 0) {
+      const card = cardRef.current;
+      const rect = card.getBoundingClientRect();
+      const touch = e.touches[0];
+      const x = touch.clientX - rect.left;
+      const y = touch.clientY - rect.top;
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
       // Invertir la dirección de la rotación
@@ -95,11 +135,26 @@ const ValuePropCard = ({ prop }: { prop: ValueProp }) => {
     }
   };
 
+  const handleTouchEnd = () => {
+    if (cardRef.current) {
+      const card = cardRef.current;
+      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+      
+      // Resetear brillo
+      const glare = card.querySelector('.glare') as HTMLElement;
+      if (glare) {
+        glare.style.background = 'transparent';
+      }
+    }
+  };
+
   return (
     <div 
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
       className="relative h-full group"
     >
       {/* Efecto de brillo tenue rosa detrás de la tarjeta al hacer hover */}
