@@ -9,7 +9,7 @@ export function HeroContent() {
     <div className="max-w-4xl mx-auto space-y-8">
       {/* Headline Principal */}
       <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-        <span className="text-gradient-websnack">Transformamos ideas</span>
+        <span className="text-gradient-websnack">Transformamos tus ideas</span>
         <br />
         <span className="text-foreground">en experiencias</span>
         <br />
