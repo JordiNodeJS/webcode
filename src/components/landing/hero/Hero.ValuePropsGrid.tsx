@@ -7,11 +7,13 @@ import { motion } from "framer-motion";
 
 // Constantes para efectos 3D
 const CARD_CONFIG = {
-  ROTATION_SENSITIVITY: 20,
-  SCALE_HOVER: 1.02,
-  PERSPECTIVE: 1000,
-  GLARE_OPACITY: 0.2,
-  DEFAULT_GLARE_OPACITY: 0.15,
+  ROTATION_SENSITIVITY: 25, // Aumentado para menor rotación (más sutil)
+  SCALE_HOVER: 1.01, // Reducido para un efecto más sutil
+  PERSPECTIVE: 1000, // Aumentado para menor perspectiva (más sutil)
+  TRANSLATE_Z: 30, // Valor Z reducido para efecto 3D más sutil
+  ROTATE_X: 5, // Rotación en eje X reducida
+  GLARE_OPACITY: 0.15, // Reducido para menos brillo
+  DEFAULT_GLARE_OPACITY: 0.1,
 } as const;
 
 // Constantes para colores del degradado
@@ -136,8 +138,8 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
     const glareX = (x / rect.width) * 100;
     const glareY = (y / rect.height) * 100;
     
-    // Usar transform3d para mejor rendimiento
-    card.style.transform = `perspective(${CARD_CONFIG.PERSPECTIVE}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(${CARD_CONFIG.SCALE_HOVER}, ${CARD_CONFIG.SCALE_HOVER}, ${CARD_CONFIG.SCALE_HOVER})`;
+    // Usar transform3d para mejor rendimiento con efecto 3D más sutil
+    card.style.transform = `perspective(${CARD_CONFIG.PERSPECTIVE}px) rotateX(${rotateX * 0.5}deg) rotateY(${rotateY * 0.5}deg) scale3d(${CARD_CONFIG.SCALE_HOVER}, ${CARD_CONFIG.SCALE_HOVER}, ${CARD_CONFIG.SCALE_HOVER}) translateZ(${CARD_CONFIG.TRANSLATE_Z}px)`;
     
     // Efecto de brillo optimizado
     const glare = card.querySelector('.glare') as HTMLElement;
@@ -164,7 +166,7 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
     const glareX = (x / rect.width) * 100;
     const glareY = (y / rect.height) * 100;
     
-    card.style.transform = `perspective(${CARD_CONFIG.PERSPECTIVE}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(${CARD_CONFIG.SCALE_HOVER}, ${CARD_CONFIG.SCALE_HOVER}, ${CARD_CONFIG.SCALE_HOVER})`;
+    card.style.transform = `perspective(${CARD_CONFIG.PERSPECTIVE}px) rotateX(${rotateX * 0.5}deg) rotateY(${rotateY * 0.5}deg) scale3d(${CARD_CONFIG.SCALE_HOVER}, ${CARD_CONFIG.SCALE_HOVER}, ${CARD_CONFIG.SCALE_HOVER}) translateZ(${CARD_CONFIG.TRANSLATE_Z}px)`;
     
     // Efecto de brillo optimizado
     const glare = card.querySelector('.glare') as HTMLElement;
@@ -178,7 +180,7 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
     if (!cardRef.current) return;
     
     const card = cardRef.current;
-    card.style.transform = `perspective(${CARD_CONFIG.PERSPECTIVE}px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
+    card.style.transform = `perspective(${CARD_CONFIG.PERSPECTIVE}px) rotateX(0) rotateY(0) scale3d(1, 1, 1) translateZ(0)`;
     
     // Restaurar el brillo sutil por defecto
     const glare = card.querySelector('.glare') as HTMLElement;
@@ -191,7 +193,7 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
     if (!cardRef.current) return;
     
     const card = cardRef.current;
-    card.style.transform = `perspective(${CARD_CONFIG.PERSPECTIVE}px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
+    card.style.transform = `perspective(${CARD_CONFIG.PERSPECTIVE}px) rotateX(0) rotateY(0) scale3d(1, 1, 1) translateZ(0)`;
     
     // Restaurar el brillo sutil por defecto
     const glare = card.querySelector('.glare') as HTMLElement;
