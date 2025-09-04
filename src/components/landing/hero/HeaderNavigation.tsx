@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -32,20 +32,42 @@ const languages = [
 export function HeaderNavigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState("es");
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Cuando el usuario hace scroll más de 10px, activamos el estado "scrolled"
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    // Agregamos el event listener
+    window.addEventListener("scroll", handleScroll);
+    
+    // Limpiamos el event listener cuando el componente se desmonta
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/30 shadow-lg">
-      <nav className="container mx-auto px-4 py-4">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled 
+        ? "bg-background/90 backdrop-blur-lg border-b border-border/40 shadow-xl py-2" 
+        : "bg-background/80 backdrop-blur-md border-b border-border/30 shadow-lg py-4"
+    }`}>
+      <nav className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
             <Link
               href="/"
-              className="text-2xl font-bold text-gradient-websnack hover:scale-105 transition-transform duration-200"
+              className={`font-bold text-gradient-websnack transition-all duration-300 ${
+                isScrolled ? "text-xl" : "text-2xl"
+              }`}
             >
               WebSnack
             </Link>
@@ -57,7 +79,11 @@ export function HeaderNavigation() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
+                className={`transition-all duration-300 font-medium ${
+                  isScrolled 
+                    ? "text-foreground hover:text-primary text-sm" 
+                    : "text-foreground hover:text-primary"
+                }`}
               >
                 {item.label}
               </a>
@@ -67,12 +93,20 @@ export function HeaderNavigation() {
           {/* Language Selector & Mobile Menu Button */}
           <div className="flex items-center space-x-4">
             {/* Language Selector */}
-            <div className="flex items-center space-x-1 bg-muted rounded-lg p-1">
+            <div className={`flex items-center space-x-1 transition-all duration-300 ${
+              isScrolled 
+                ? "bg-muted rounded-md p-0.5 scale-90" 
+                : "bg-muted rounded-lg p-1"
+            }`}>
               {languages.map((lang) => (
                 <button
                   key={lang.code}
                   onClick={() => setCurrentLanguage(lang.code)}
-                  className={`px-2 py-1 text-sm font-medium rounded transition-colors duration-200 ${
+                  className={`transition-all duration-300 font-medium rounded ${
+                    isScrolled 
+                      ? "px-1.5 py-0.5 text-xs" 
+                      : "px-2 py-1 text-sm"
+                  } ${
                     currentLanguage === lang.code
                       ? "bg-primary text-primary-foreground"
                       : "text-muted-foreground hover:text-foreground"
