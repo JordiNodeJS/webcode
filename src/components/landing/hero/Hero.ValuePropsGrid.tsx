@@ -234,16 +234,16 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
           </div>
 
           {/* Título */}
-          <h3 className="text-lg font-bold text-foreground mb-4 transition duration-300 transform-gpu group-hover:[transform:translateZ(50px)] group-hover:drop-shadow-[0_15px_30px_rgba(0,0,0,0.5)]">
+          <h3 className="text-lg font-bold text-foreground mb-4 transition duration-300 transform-gpu group-hover:[transform:translateZ(50px)]">
             {prop.title}
           </h3>
 
           {/* Lista de características */}
-          <ul className="space-y-2 text-sm text-muted-foreground mt-4 transition-all duration-300 group-hover:[transform:translateZ(20px)] group-hover:drop-shadow-[0_12px_24px_rgba(0,0,0,0.4)]">
+          <ul className="space-y-2 text-sm text-muted-foreground mt-4 transition-all duration-300 group-hover:[transform:translateZ(20px)]">
             {prop.features.map((feature, featureIndex) => (
               <li
                 key={featureIndex}
-                className="flex items-center justify-center text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-500 drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)] group-hover:[transform:translateZ(15px)_scale(1.05)] group-hover:drop-shadow-[0_8px_16px_rgba(0,0,0,0.3)] font-medium transition-all duration-300"
+                className="flex items-center justify-center text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-500 group-hover:[transform:translateZ(15px)_scale(1.05)] font-medium transition-all duration-300"
               >
                 {feature}
               </li>
