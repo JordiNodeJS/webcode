@@ -5,6 +5,29 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Rocket, Zap, Smartphone, Target } from "lucide-react";
 import { motion } from "framer-motion";
 
+// Constantes para efectos 3D
+const CARD_CONFIG = {
+  ROTATION_SENSITIVITY: 20,
+  SCALE_HOVER: 1.02,
+  PERSPECTIVE: 1000,
+  GLARE_OPACITY: 0.2,
+  DEFAULT_GLARE_OPACITY: 0.15,
+} as const;
+
+// Constantes para colores del degradado
+const GRADIENT_COLORS = {
+  PINK: { r: 178, g: 62, b: 176 },
+  TEAL: { r: 45, g: 212, b: 191 },
+  DEFAULT: { r: 111, g: 137, b: 193 },
+} as const;
+
+// Constantes para animaciones
+const ANIMATION_CONFIG = {
+  SCROLL_THRESHOLD: 100,
+  STAGGER_DELAY: 0.1,
+  DURATION: 0.5,
+} as const;
+
 interface ValueProp {
   icon: React.ReactNode;
   title: string;
@@ -62,7 +85,9 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
   // Detectar si es dispositivo móvil (optimizado)
   useEffect(() => {
     const checkIsMobile = () => {
-      const mobile = window.innerWidth < 768 || 'ontouchstart' in window;
+      const mobile = window.innerWidth < 768 || 
+                    'ontouchstart' in window || 
+                    navigator.maxTouchPoints > 0;
       setIsMobile(prev => prev !== mobile ? mobile : prev);
     };
     
@@ -79,7 +104,7 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
 
   // Memoizar el degradado por defecto
   const defaultGradient = useMemo(() => 
-    `radial-gradient(circle at 50% 50%, rgba(111, 137, 193, 0.15), transparent)`, 
+    `radial-gradient(circle at 50% 50%, rgba(${GRADIENT_COLORS.DEFAULT.r}, ${GRADIENT_COLORS.DEFAULT.g}, ${GRADIENT_COLORS.DEFAULT.b}, ${CARD_CONFIG.DEFAULT_GLARE_OPACITY}), transparent)`, 
     []
   );
 
@@ -89,9 +114,9 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
     const tealRatio = glareX / 100;
     
     return {
-      r: Math.round(178 * pinkRatio + 45 * tealRatio),
-      g: Math.round(62 * pinkRatio + 212 * tealRatio),
-      b: Math.round(176 * pinkRatio + 191 * tealRatio),
+      r: Math.round(GRADIENT_COLORS.PINK.r * pinkRatio + GRADIENT_COLORS.TEAL.r * tealRatio),
+      g: Math.round(GRADIENT_COLORS.PINK.g * pinkRatio + GRADIENT_COLORS.TEAL.g * tealRatio),
+      b: Math.round(GRADIENT_COLORS.PINK.b * pinkRatio + GRADIENT_COLORS.TEAL.b * tealRatio),
     };
   }, []);
 
@@ -106,19 +131,19 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
     const centerY = rect.height / 2;
     
     // Invertir la dirección de la rotación
-    const rotateX = (centerY - y) / 20;
-    const rotateY = (x - centerX) / 20;
+    const rotateX = (centerY - y) / CARD_CONFIG.ROTATION_SENSITIVITY;
+    const rotateY = (x - centerX) / CARD_CONFIG.ROTATION_SENSITIVITY;
     const glareX = (x / rect.width) * 100;
     const glareY = (y / rect.height) * 100;
     
     // Usar transform3d para mejor rendimiento
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    card.style.transform = `perspective(${CARD_CONFIG.PERSPECTIVE}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(${CARD_CONFIG.SCALE_HOVER}, ${CARD_CONFIG.SCALE_HOVER}, ${CARD_CONFIG.SCALE_HOVER})`;
     
     // Efecto de brillo optimizado
     const glare = card.querySelector('.glare') as HTMLElement;
     if (glare) {
       const { r, g, b } = calculateGradientColor(glareX);
-      glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(${r}, ${g}, ${b}, 0.2), transparent)`;
+      glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(${r}, ${g}, ${b}, ${CARD_CONFIG.GLARE_OPACITY}), transparent)`;
     }
   }, [calculateGradientColor]);
 
@@ -134,18 +159,18 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
     const centerY = rect.height / 2;
     
     // Invertir la dirección de la rotación
-    const rotateX = (centerY - y) / 20;
-    const rotateY = (x - centerX) / 20;
+    const rotateX = (centerY - y) / CARD_CONFIG.ROTATION_SENSITIVITY;
+    const rotateY = (x - centerX) / CARD_CONFIG.ROTATION_SENSITIVITY;
     const glareX = (x / rect.width) * 100;
     const glareY = (y / rect.height) * 100;
     
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    card.style.transform = `perspective(${CARD_CONFIG.PERSPECTIVE}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(${CARD_CONFIG.SCALE_HOVER}, ${CARD_CONFIG.SCALE_HOVER}, ${CARD_CONFIG.SCALE_HOVER})`;
     
     // Efecto de brillo optimizado
     const glare = card.querySelector('.glare') as HTMLElement;
     if (glare) {
       const { r, g, b } = calculateGradientColor(glareX);
-      glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(${r}, ${g}, ${b}, 0.2), transparent)`;
+      glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(${r}, ${g}, ${b}, ${CARD_CONFIG.GLARE_OPACITY}), transparent)`;
     }
   }, [calculateGradientColor]);
 
@@ -153,7 +178,7 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
     if (!cardRef.current) return;
     
     const card = cardRef.current;
-    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+    card.style.transform = `perspective(${CARD_CONFIG.PERSPECTIVE}px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
     
     // Restaurar el brillo sutil por defecto
     const glare = card.querySelector('.glare') as HTMLElement;
@@ -166,7 +191,7 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
     if (!cardRef.current) return;
     
     const card = cardRef.current;
-    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+    card.style.transform = `perspective(${CARD_CONFIG.PERSPECTIVE}px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
     
     // Restaurar el brillo sutil por defecto
     const glare = card.querySelector('.glare') as HTMLElement;
@@ -183,6 +208,8 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
       className="relative h-full group transition-transform duration-200 ease-out will-change-transform [transform-style:preserve-3d]"
+      role="article"
+      aria-label={`Propuesta de valor: ${prop.title}`}
     >
       {/* Efecto de brillo tenue rosa detrás de la tarjeta al hacer hover */}
       <div className="absolute inset-0 rounded-xl bg-primary/5 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10"></div>
@@ -219,6 +246,8 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
   );
 });
 
+ValuePropCard.displayName = 'ValuePropCard';
+
 /**
  * Grid de propuestas de valor
  *
@@ -230,14 +259,14 @@ export const ValuePropsGrid = React.memo(() => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
+      if (window.scrollY > ANIMATION_CONFIG.SCROLL_THRESHOLD) {
         setShouldAnimate(true);
         window.removeEventListener('scroll', handleScroll);
       }
     };
 
     // Verificar si ya hemos scrolleado lo suficiente al cargar la página
-    if (window.scrollY > 100) {
+    if (window.scrollY > ANIMATION_CONFIG.SCROLL_THRESHOLD) {
       setShouldAnimate(true);
     } else {
       window.addEventListener('scroll', handleScroll, { passive: true });
@@ -257,7 +286,7 @@ export const ValuePropsGrid = React.memo(() => {
             key={`${prop.title}-${index}`}
             initial={{ opacity: 0, y: 50 }}
             animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            transition={{ duration: ANIMATION_CONFIG.DURATION, delay: index * ANIMATION_CONFIG.STAGGER_DELAY }}
             className="h-full"
           >
             <ValuePropCard prop={prop} />
