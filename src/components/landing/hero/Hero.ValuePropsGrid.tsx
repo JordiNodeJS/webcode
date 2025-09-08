@@ -282,7 +282,7 @@ ValuePropCard.displayName = "ValuePropCard";
  * de WebSnack en un grid responsive con cards y efectos 3D.
  */
 export const ValuePropsGrid = React.memo(() => {
-  const { ref, isIntersecting } = useOnScreen(0.1);
+  const { ref, isIntersecting } = useOnScreen(0.6); 
   const [hasBeenVisible, setHasBeenVisible] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
