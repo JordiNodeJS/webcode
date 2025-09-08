@@ -1,0 +1,1 @@
+Ejecutar una búsqueda más específica para detectar componentes que probablemente causen mismatch (uso de Date.now, Math.random, dependencias que acceden a window en Server Components), y listar candidatos.
