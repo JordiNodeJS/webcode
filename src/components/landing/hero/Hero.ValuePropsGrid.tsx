@@ -12,9 +12,11 @@ const CARD_CONFIG = {
   SCALE_HOVER: 1.01, // Reducido para un efecto más sutil
   PERSPECTIVE: 1000, // Aumentado para menor perspectiva (más sutil)
   TRANSLATE_Z: 30, // Valor Z reducido para efecto 3D más sutil
+  ROTATE_FACTOR: 0.5, // Factor de rotación para suavizar el efecto 3D
   ROTATE_X: 5, // Rotación en eje X reducida
   GLARE_OPACITY: 0.15, // Reducido para menos brillo
   DEFAULT_GLARE_OPACITY: 0.1,
+  GLARE_PERCENTAGE_BASE: 100, // Base para calcular porcentajes de brillo
 } as const;
 
 // Constantes para colores del degradado
@@ -24,11 +26,19 @@ const GRADIENT_COLORS = {
   DEFAULT: { r: 111, g: 137, b: 193 },
 } as const;
 
+// Constantes para el grid de propuestas de valor
+const VALUE_PROPS_GRID_CONFIG = {
+  INTERSECTION_THRESHOLD: 0.6, // Umbral de intersección para detectar visibilidad
+  PLACEHOLDER_COUNT: 4, // Número de placeholders para evitar layout shift
+} as const;
+
 // Constantes para animaciones
 const ANIMATION_CONFIG = {
   SCROLL_THRESHOLD: 100,
   STAGGER_DELAY: 0.1,
   DURATION: 0.5,
+  HOVER_Y_OFFSET: -10, // Desplazamiento vertical en hover
+  HOVER_TRANSITION_DURATION: 0.2, // Duración de la transición en hover
 } as const;
 
 // Interface para el estado de la tarjeta
@@ -149,7 +159,7 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
       return `perspective(${CARD_CONFIG.PERSPECTIVE}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1) translateZ(0px)`;
     }
 
-    return `perspective(${CARD_CONFIG.PERSPECTIVE}px) rotateX(${cardState.rotateX * 0.5}deg) rotateY(${cardState.rotateY * 0.5}deg) scale3d(${CARD_CONFIG.SCALE_HOVER}, ${CARD_CONFIG.SCALE_HOVER}, ${CARD_CONFIG.SCALE_HOVER}) translateZ(${CARD_CONFIG.TRANSLATE_Z}px)`;
+    return `perspective(${CARD_CONFIG.PERSPECTIVE}px) rotateX(${cardState.rotateX * CARD_CONFIG.ROTATE_FACTOR}deg) rotateY(${cardState.rotateY * CARD_CONFIG.ROTATE_FACTOR}deg) scale3d(${CARD_CONFIG.SCALE_HOVER}, ${CARD_CONFIG.SCALE_HOVER}, ${CARD_CONFIG.SCALE_HOVER}) translateZ(${CARD_CONFIG.TRANSLATE_Z}px)`;
   }, [cardState.rotateX, cardState.rotateY, cardState.isHovered]);
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
@@ -162,8 +172,8 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
     // Invertir la dirección de la rotación
     const rotateX = (centerY - y) / CARD_CONFIG.ROTATION_SENSITIVITY;
     const rotateY = (x - centerX) / CARD_CONFIG.ROTATION_SENSITIVITY;
-    const glareX = (x / rect.width) * 100;
-    const glareY = (y / rect.height) * 100;
+    const glareX = (x / rect.width) * CARD_CONFIG.GLARE_PERCENTAGE_BASE;
+    const glareY = (y / rect.height) * CARD_CONFIG.GLARE_PERCENTAGE_BASE;
 
     setCardState((prev) => ({
       ...prev,
@@ -188,8 +198,8 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
     // Invertir la dirección de la rotación
     const rotateX = (centerY - y) / CARD_CONFIG.ROTATION_SENSITIVITY;
     const rotateY = (x - centerX) / CARD_CONFIG.ROTATION_SENSITIVITY;
-    const glareX = (x / rect.width) * 100;
-    const glareY = (y / rect.height) * 100;
+    const glareX = (x / rect.width) * CARD_CONFIG.GLARE_PERCENTAGE_BASE;
+    const glareY = (y / rect.height) * CARD_CONFIG.GLARE_PERCENTAGE_BASE;
 
     setCardState((prev) => ({
       ...prev,
@@ -282,7 +292,7 @@ ValuePropCard.displayName = "ValuePropCard";
  * de WebSnack en un grid responsive con cards y efectos 3D.
  */
 export const ValuePropsGrid = React.memo(() => {
-  const { ref, isIntersecting } = useOnScreen(0.6); 
+  const { ref, isIntersecting } = useOnScreen(VALUE_PROPS_GRID_CONFIG.INTERSECTION_THRESHOLD); 
   const [hasBeenVisible, setHasBeenVisible] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
@@ -317,7 +327,7 @@ export const ValuePropsGrid = React.memo(() => {
       <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 min-h-[384px]" aria-hidden={!hasBeenVisible}>
         {!hasBeenVisible ? (
           // Placeholder para evitar layout shift
-          [...Array(4)].map((_, index) => (
+          [...Array(VALUE_PROPS_GRID_CONFIG.PLACEHOLDER_COUNT)].map((_, index) => (
             <div key={index} className="h-full opacity-0"></div>
           ))
         ) : (
@@ -332,8 +342,8 @@ export const ValuePropsGrid = React.memo(() => {
                 delay: prefersReducedMotion ? 0 : index * ANIMATION_CONFIG.STAGGER_DELAY,
               }}
               whileHover={prefersReducedMotion ? {} : { 
-                y: -10,
-                transition: { duration: 0.2 }
+                y: ANIMATION_CONFIG.HOVER_Y_OFFSET,
+                transition: { duration: ANIMATION_CONFIG.HOVER_TRANSITION_DURATION }
               }}
               className="h-full"
             >
