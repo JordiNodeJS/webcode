@@ -37,10 +37,10 @@ La sección Hero (above the fold) está completamente desarrollada:
 
 **Tareas**:
 - [x] Verificar alineación con wireframe en [01-wireframe-estructura.md](./12-LANDING-PAGE/01-wireframe-estructura.md)
-- [ ] Integrar completamente animaciones del [Sistema WAS](./05-DISENO-sistema-animaciones-websnack.md)
-- [ ] Optimizar experiencia mobile-first
-- [ ] Validar performance (Core Web Vitals <2.5s LCP)
-- [ ] Verificar accesibilidad WCAG 2.1 AA
+- [x] Integrar completamente animaciones del [Sistema WAS](./05-DISENO-sistema-animaciones-websnack.md)
+- [x] Optimizar experiencia mobile-first
+- [x] Validar performance (Core Web Vitals <2.5s LCP)
+- [x] Verificar accesibilidad WCAG 2.1 AA
 
 ### 2. **Desarrollar la Sección de Servicios**
 **Objetivo**: Implementar la sección de servicios con grid 2x2 según wireframe
@@ -81,9 +81,9 @@ La sección Hero (above the fold) está completamente desarrollada:
 Este orden prioriza contenido con mayor impacto en conversión y percepción de valor:
 
 ### Fase 1: Perfeccionamiento Hero (1-2 días)
-- Finalizar integración Sistema WAS en Hero
-- Optimizar animaciones y efectos 3D
-- Validar performance y accesibilidad
+- ✅ Finalizar integración Sistema WAS en Hero
+- ✅ Optimizar animaciones y efectos 3D
+- ✅ Validar performance y accesibilidad
 
 ### Fase 2: Sección de Servicios (3-4 días)
 - Implementar grid de servicios 2x2
