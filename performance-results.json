@@ -1,0 +1,27 @@
+{
+  "timestamp": "2025-09-08T23:43:05.776Z",
+  "url": "http://localhost:3000",
+  "metrics": {
+    "lcp": null,
+    "cls": null,
+    "fid": null,
+    "loadTime": 571
+  },
+  "coreWebVitals": {
+    "lcp": {
+      "value": null,
+      "threshold": 2500,
+      "pass": true
+    },
+    "cls": {
+      "value": null,
+      "threshold": 0.1,
+      "pass": true
+    },
+    "fid": {
+      "value": null,
+      "threshold": 100,
+      "pass": true
+    }
+  }
+}
