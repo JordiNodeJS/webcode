@@ -317,6 +317,38 @@ Resultado: Web funcionando en 7 días, tú gestionándola con confianza.
 Nuestro proceso de desarrollo probado
 ```
 
+### Posición en Wireframe
+**Ubicación estratégica**: Después de "Servicios Especializados", antes de "Casos de Éxito"
+
+**Justificación UX**:
+- Construye confianza después de mostrar servicios
+- Elimina objeciones sobre transparencia del proceso
+- Demuestra profesionalismo y metodología probada
+- Reduce percepción de riesgo antes de mostrar precios
+
+### Layout Visual Recomendado
+
+#### Desktop (1024px+)
+```
+[Fase 1] → [Fase 2] → [Fase 3] → [Fase 4]
+Discovery  Diseño     Desarrollo  Launch
+```
+
+#### Mobile (320px-767px)
+```
+[Fase 1]
+Discovery
+    ↓
+[Fase 2]
+Diseño
+    ↓
+[Fase 3]
+Desarrollo
+    ↓
+[Fase 4]
+Launch
+```
+
 ### Timeline Horizontal (4 fases)
 
 #### Fase 1: Discovery & Strategy (Semana 1)
@@ -384,6 +416,101 @@ Entregables: Sitio completamente funcional, panel de administración, suite de t
 - **Soporte post-lanzamiento** — 30 días de soporte prioritario incluido con respuesta <4h para cualquier incidencia. Monitoreo proactivo de *performance*, optimizaciones menores y resolución de cualquier ajuste necesario tras el *launch*.
 
 **Entregables:** Sitio *live* y optimizado, documentación completa de gestión, credenciales de todas las herramientas y 30 días de soporte *premium*.
+
+### Elementos de Confianza y Transparencia
+
+#### Comunicación Clara
+```
+📞 CANALES DE COMUNICACIÓN
+• Email prioritario — Respuesta <4h en horario laboral
+• WhatsApp Business — Para consultas rápidas
+• Videollamadas — Reuniones semanales de seguimiento
+• Slack/Teams — Para proyectos enterprise
+```
+
+#### Participación del Cliente
+```
+👥 TU PARTICIPACIÓN EN CADA FASE
+• Semana 1: 8-10 horas (discovery, content review)
+• Semana 2-3: 2-3 horas/semana (design feedback)
+• Semana 3-5: 1-2 horas/semana (testing, reviews)
+• Semana 6: 4-6 horas (training, launch)
+• Total: ~25-30 horas de tu tiempo
+```
+
+#### Garantías del Proceso
+```
+✅ COMPROMISOS DE CALIDAD
+• Updates semanales con demos funcionales
+• 2 rounds de revisiones mayores incluidas por fase
+• Acceso completo al código fuente
+• Documentación técnica detallada
+• 30 días de soporte post-lanzamiento incluido
+```
+
+#### Reducción de Riesgo
+```
+🛡️ PROTECCIÓN DEL CLIENTE
+• Contrato claro con entregables específicos
+• Pagos por milestones (40% inicio, 35% mitad, 25% final)
+• Garantía de satisfacción 15 días
+• Escalación directa conmigo si hay problemas
+• Backup y versionado completo del proyecto
+```
+
+### Especificaciones de Diseño
+
+#### Elementos Visuales Requeridos
+```
+🎨 COMPONENTES VISUALES
+• Cards de fase con iconos representativos
+• Timeline conector con gradiente WebSnack
+• Hover effects con elevación 3D
+• Animaciones de entrada suaves
+• Responsive: horizontal desktop, vertical mobile
+```
+
+#### Contenido por Fase
+```
+📋 INFORMACIÓN A MOSTRAR
+• Número de fase (1, 2, 3, 4)
+• Título descriptivo de la fase
+• Duración estimada
+• Icono representativo
+• Lista de entregables clave
+• Tiempo de participación del cliente
+• Descripción breve del proceso
+```
+
+#### Interactividad Requerida
+```
+⚡ MICROINTERACCIONES
+• Hover: Elevación de card + sombra 3D
+• Scroll: Animación de entrada por fases
+• Mobile: Acordeón expandible por fases
+• Timeline: Líneas conectoras animadas
+• CTAs: Botones de "Agendar consulta" por fase
+```
+
+### Métricas de Conversión
+
+#### KPIs a Trackear
+```
+📊 MÉTRICAS DE ENGAGEMENT
+• Tiempo en sección: >2 minutos (objetivo)
+• Scroll depth: 80% llegan hasta el final
+• CTA clicks: "Agendar consulta" después de leer proceso
+• Bounce rate: <15% después de esta sección
+```
+
+#### A/B Testing Recomendado
+```
+🧪 TESTS A IMPLEMENTAR
+• Headlines: "Proceso probado" vs "Metodología transparente"
+• Layout: Timeline horizontal vs vertical
+• CTAs: "Agendar consulta" vs "Ver casos de éxito"
+• Detalles: Expandible vs siempre visible
+```
 
 ---
 
