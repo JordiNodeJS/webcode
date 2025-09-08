@@ -1,20 +1,24 @@
 import { MapPin, Shield, Users } from "lucide-react";
 
 interface TrustIndicator {
+  id: string;
   icon: React.ReactNode;
   text: string;
 }
 
 const trustIndicators: TrustIndicator[] = [
   {
+    id: "rgpd",
     icon: <Shield className="h-4 w-4 text-primary" />,
     text: "Cumplimiento RGPD",
   },
   {
+    id: "spain",
     icon: <MapPin className="h-4 w-4 text-secondary-foreground" />,
     text: "Normativas España",
   },
   {
+    id: "barcelona",
     icon: <Users className="h-4 w-4 text-primary" />,
     text: "Barcelona Local",
   },
@@ -29,9 +33,9 @@ const trustIndicators: TrustIndicator[] = [
 export function TrustIndicators() {
   return (
     <div className="flex flex-wrap justify-center items-center gap-6 mt-6 opacity-90">
-      {trustIndicators.map((indicator, index) => (
+      {trustIndicators.map((indicator) => (
         <div
-          key={index}
+          key={indicator.id}
           className="flex items-center gap-2 text-sm text-muted-foreground bg-background/50 backdrop-blur-sm px-4 py-2 rounded-lg shadow-3d-sm"
         >
           {indicator.icon}

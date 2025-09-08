@@ -51,7 +51,6 @@
   --card-foreground: oklch(0.356 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.356 0 0);
-  --primary: oklch(0.703 0.135 328.5); /* #dc7cb3 - Rosa principal WebSnack */
   /* Increase chroma and lower lightness for better on-gradient contrast */
   --primary: oklch(
     0.57 0.2 328.5
@@ -127,10 +126,12 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    border-color: hsl(var(--border));
+    outline-color: hsl(var(--ring) / 0.5);
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
 }
 
@@ -170,15 +171,14 @@
 
 .text-gradient-websnack {
   /* Broad fallback first (hex) for older UAs, then precise oklch for modern browsers */
-  background: linear-gradient(135deg, #dc7cb3 0%, #bce3e5 100%);
   background: linear-gradient(
     135deg,
     oklch(0.703 0.135 328.5) 0%,
     /* Rosa principal */ oklch(0.873 0.058 184.1) 100% /* Aguamarina */
   );
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   /* Ensure gradient is visible by default */
   color: transparent;
   display: inline-block; /* ensure background positioning and clipping */
@@ -189,11 +189,11 @@
 /* Fallback for browsers that don't support background-clip:text */
 @supports not (-webkit-background-clip: text) {
   .text-gradient-websnack {
-    background: none !important;
-    -webkit-text-fill-color: initial !important;
-    background-clip: initial !important;
-    color: var(--foreground) !important;
-    text-shadow: none !important;
+    background: none;
+    -webkit-text-fill-color: initial;
+    background-clip: initial;
+    color: var(--foreground);
+    text-shadow: none;
   }
 }
 
@@ -201,14 +201,13 @@
 .bg-gradient-websnack .text-gradient-websnack,
 .bg-gradient-websnack > .text-gradient-websnack {
   /* use darker stops to separate from background */
-  background: linear-gradient(135deg, #b35a79 0%, #7fb7b9 100%);
   background: linear-gradient(
     135deg,
     oklch(0.55 0.16 328.5) 0%,
     oklch(0.64 0.08 184.1) 100%
   );
-  -webkit-text-fill-color: transparent !important;
-  color: transparent !important;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
   display: inline-block;
   text-shadow:
     0 3px 12px rgba(0, 0, 0, 0.22),
@@ -216,24 +215,24 @@
   -webkit-text-stroke: 0.35px rgba(0, 0, 0, 0.06);
 }
 
-@media (prefers-contrast: more), (prefers-reduced-transparency: reduce) {
+@media (prefers-contrast: more) {
   .bg-gradient-websnack .text-gradient-websnack,
   .bg-gradient-websnack > .text-gradient-websnack {
-    background: none !important;
-    color: var(--foreground) !important;
-    -webkit-text-stroke: 0 !important;
-    text-shadow: none !important;
+    background: none;
+    color: var(--foreground);
+    -webkit-text-stroke: 0;
+    text-shadow: none;
   }
 }
 
 /* Accessibility: provide a high-contrast fallback for users who request it */
-@media (prefers-contrast: more), (prefers-reduced-transparency: reduce) {
+@media (prefers-contrast: more) {
   .text-gradient-websnack {
-    background: none !important;
-    -webkit-background-clip: initial !important;
-    background-clip: initial !important;
-    -webkit-text-fill-color: initial !important;
-    color: var(--foreground) !important;
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: initial;
+    color: var(--foreground);
   }
 }
 

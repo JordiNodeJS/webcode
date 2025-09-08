@@ -40,6 +40,7 @@ interface CardState {
 }
 
 interface ValueProp {
+  id: string;
   icon: React.ReactNode;
   title: string;
   features: string[];
@@ -47,6 +48,7 @@ interface ValueProp {
 
 const valueProps: ValueProp[] = [
   {
+    id: "tecnologia",
     icon: <Rocket className="h-8 w-8 text-primary" />,
     title: "Tecnología 2025",
     features: [
@@ -57,6 +59,7 @@ const valueProps: ValueProp[] = [
     ],
   },
   {
+    id: "performance",
     icon: <Zap className="h-8 w-8 text-secondary-foreground" />,
     title: "Performance Garantizado",
     features: [
@@ -67,6 +70,7 @@ const valueProps: ValueProp[] = [
     ],
   },
   {
+    id: "mobile",
     icon: <Smartphone className="h-8 w-8 text-primary" />,
     title: "Mobile-First",
     features: [
@@ -77,6 +81,7 @@ const valueProps: ValueProp[] = [
     ],
   },
   {
+    id: "barcelona",
     icon: <Target className="h-8 w-8 text-secondary-foreground" />,
     title: "Barcelona Local",
     features: [
@@ -218,13 +223,12 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
   }, []);
 
   return (
-    <div
+    <article
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
       className="relative h-full group transition-transform duration-200 ease-out will-change-transform [transform-style:preserve-3d]"
-      role="article"
       aria-label={`Propuesta de valor: ${prop.title}`}
       style={{
         transform: cardTransform,
@@ -253,9 +257,9 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
 
           {/* Lista de características */}
           <ul className="space-y-2 text-sm text-muted-foreground mt-4 transition-all duration-300 group-hover:[transform:translateZ(20px)]">
-            {prop.features.map((feature, featureIndex) => (
+            {prop.features.map((feature) => (
               <li
-                key={featureIndex}
+                key={feature}
                 className="flex items-center justify-center text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-500 group-hover:[transform:translateZ(15px)_scale(1.05)] font-medium transition-all duration-300"
               >
                 {feature}
@@ -264,7 +268,7 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
           </ul>
         </CardContent>
       </Card>
-    </div>
+    </article>
   );
 });
 

@@ -29,6 +29,12 @@ export function ThemeToggle() {
     );
   }
 
+  // Determinar si el tema actual es oscuro
+  const isDark = theme === "dark" || 
+    (theme === "system" && 
+      typeof window !== 'undefined' && 
+      window.matchMedia("(prefers-color-scheme: dark)").matches);
+
   return (
     <Button
       variant="ghost"
@@ -37,7 +43,7 @@ export function ThemeToggle() {
       onClick={toggleTheme}
       aria-label="Toggle theme"
     >
-      {theme === "dark" ? (
+      {isDark ? (
         <Sun size={20} className="text-foreground" />
       ) : (
         <Moon size={20} className="text-foreground" />

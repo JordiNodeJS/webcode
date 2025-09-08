@@ -15,7 +15,8 @@
         "useJsxKeyInIterable": "warn"
       },
       "suspicious": {
-        "noExplicitAny": "error"
+        "noExplicitAny": "error",
+        "noUnknownAtRules": "off"
       },
       "style": {
         "noNonNullAssertion": "warn"
@@ -35,7 +36,8 @@
       "linter": {
         "rules": {
           "suspicious": {
-            "noExplicitAny": "error"
+            "noExplicitAny": "error",
+            "noUnknownAtRules": "error"
           }
         }
       }

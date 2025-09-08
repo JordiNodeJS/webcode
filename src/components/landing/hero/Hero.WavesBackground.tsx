@@ -11,7 +11,10 @@ export function WavesBackground() {
         className="absolute bottom-0 left-0 w-[200%] h-full"
         viewBox="0 0 2400 200"
         preserveAspectRatio="none"
+        role="img"
+        aria-label="Olas decorativas animadas en el fondo"
       >
+        <title>Olas decorativas animadas en el fondo</title>
         {/* Ola principal más grande */}
         <path
           d="M0,100 C300,150 900,50 1200,100 C1500,150 2100,50 2400,100 L2400,200 L0,200 Z"

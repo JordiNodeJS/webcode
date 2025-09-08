@@ -28,7 +28,7 @@ export const BorderBeam = ({
       <motion.div
         className={cn("absolute top-0 left-[-100%]", className)}
         style={{
-          width: "100%",
+          width: `${size}%`,
           height: `${borderWidth}px`,
           background: `linear-gradient(90deg, transparent, ${colorFrom}, ${colorTo}, transparent)`,
         }}
@@ -48,7 +48,7 @@ export const BorderBeam = ({
         className={cn("absolute top-[-100%] right-0", className)}
         style={{
           width: `${borderWidth}px`,
-          height: "100%",
+          height: `${size}%`,
           background: `linear-gradient(180deg, transparent, ${colorFrom}, ${colorTo}, transparent)`,
         }}
         animate={{
@@ -66,7 +66,7 @@ export const BorderBeam = ({
       <motion.div
         className={cn("absolute bottom-0 left-[100%]", className)}
         style={{
-          width: "100%",
+          width: `${size}%`,
           height: `${borderWidth}px`,
           background: `linear-gradient(270deg, transparent, ${colorFrom}, ${colorTo}, transparent)`,
         }}
@@ -86,7 +86,7 @@ export const BorderBeam = ({
         className={cn("absolute top-[100%] left-0", className)}
         style={{
           width: `${borderWidth}px`,
-          height: "100%",
+          height: `${size}%`,
           background: `linear-gradient(0deg, transparent, ${colorFrom}, ${colorTo}, transparent)`,
         }}
         animate={{

@@ -121,6 +121,7 @@ export function HeaderNavigation() {
             >
               {languages.map((lang) => (
                 <button
+                  type="button"
                   key={lang.code}
                   onClick={() => setCurrentLanguage(lang.code)}
                   className={`transition-all duration-300 font-medium rounded ${
@@ -145,6 +146,7 @@ export function HeaderNavigation() {
               <div className="flex items-center space-x-1 bg-muted rounded-md p-0.5">
                 {languages.map((lang) => (
                   <button
+                    type="button"
                     key={lang.code}
                     onClick={() => setCurrentLanguage(lang.code)}
                     className={`px-1.5 py-0.5 text-xs font-medium rounded transition-all duration-300 ${
