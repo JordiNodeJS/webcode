@@ -335,17 +335,18 @@ Entregables: Estrategia digital completa, wireframes interactivos, cronograma de
 
 #### Fase 2: Diseño & Experiencia (Semana 2-3)
 
-🎨 DISEÑO UX/UI
+🎨 **DISEÑO UX/UI**
 
-• **Design system personalizado** — Creación de una identidad visual coherente con tipografías, colores, iconografía y componentes reutilizables. Incluye guías de uso, tokens de diseño y versiones para dark mode que reflejan tu marca.
+- **Design system personalizado** — Creación de una identidad visual coherente con tipografías, colores, iconografía y componentes reutilizables. Incluye guías de uso, tokens de diseño y versiones para *dark mode* que reflejan tu marca.
 
-• **Mockups high-fidelity** — Diseños pixel-perfect de todas las páginas y estados (desktop, tablet, mobile). Cada pantalla incluye interacciones, microanimaciones y estados de loading/error para una experiencia fluida.
+- **Wireframes y flujos básicos** — Esquemas estructurales que definen la navegación y jerarquía de contenido. Wireframes simples pero efectivos que validan la arquitectura de información antes del desarrollo, optimizando tiempo y recursos.
 
-• **Wireframes y flujos básicos** — Esquemas estructurales que definen la navegación y jerarquía de contenido. Wireframes simples pero efectivos que validan la arquitectura de información antes del desarrollo, optimizando tiempo y recursos.
+- **Mockups high-fidelity** — Diseños *pixel-perfect* de todas las páginas y estados (desktop, tablet, mobile).
 
-• **Testing de usabilidad** — Sesiones de testing con usuarios reales de tu target para validar la intuitividad del diseño. Identificamos friction points y optimizamos la UX basándonos en comportamiento real, no suposiciones.
+- **Testing de usabilidad + Clarity** — Sesiones de testing con usuarios reales de tu *target* para validar la intuitividad del diseño. Además, integración de **Microsoft Clarity** para registrar mapas térmicos y grabaciones de sesión en prototipos navegables o entornos de prueba. Esto permite identificar *friction points*, patrones de interacción y zonas ignoradas, optimizando la UX basándonos en comportamiento real y datos visuales, no suposiciones.
 
-Entregables: Designs finales listos para desarrollo, guía de estilo completa, wireframes validados y report de testing UX.
+**Entregables:** Designs finales listos para desarrollo, guía de estilo completa, wireframes validados, report de testing UX y análisis de interacción con Clarity.
+
 
 #### Fase 3: Desarrollo & Integración (Semana 3-5)
 
@@ -363,17 +364,26 @@ Entregables: Sitio completamente funcional, panel de administración, suite de t
 
 #### Fase 4: Launch & Optimización (Semana 6)
 
-🚀 LANZAMIENTO
+🚀 **LANZAMIENTO**
 
-• **Deploy en producción** — Lanzamiento controlado con blue-green deployment para zero downtime. Configuración de SSL, CDN global, monitoring automático y rollback inmediato en caso de issues. Tu sitio va live sin interrupciones.
+- **Deploy en producción** — Lanzamiento controlado con *blue-green deployment* para *zero downtime*. Configuración de SSL, CDN global, *monitoring* automático y *rollback* inmediato en caso de incidencias. Tu sitio va *live* sin interrupciones.
 
-• **Configuración de analytics** — Setup completo de Google Analytics 4, Google Tag Manager, Search Console y herramientas de conversión. Tracking de eventos personalizados, goals configurados y dashboards listos para tomar decisiones basadas en datos.
+- **Configuración de analytics** — *Setup* completo de Google Analytics 4, Google Tag Manager, Search Console y herramientas de conversión. Tracking de eventos personalizados, *goals* configurados y *dashboards* listos para tomar decisiones basadas en datos.
 
-• **Training del cliente** — Sesiones de capacitación personalizadas (presencial en BCN o remoto) para gestión de contenido, interpretación de analytics y uso de herramientas integradas. Te empoderamos para ser autónomo en la gestión diaria.
+- **Interpretación de analytics** — Capacitación para leer y comprender métricas clave (usuarios, sesiones, tasa de rebote, conversiones, embudos de conversión, flujos de navegación) y traducir esos datos en acciones concretas de optimización.
 
-• **Soporte post-lanzamiento** — 30 días de soporte prioritario incluido con respuesta <4h para cualquier issue. Monitoreo proactivo de performance, optimizaciones menores y resolución de cualquier ajuste necesario tras el launch.
+- **Uso de herramientas integradas** — Formación práctica en:
+  - **Google Analytics 4**: navegación por informes, creación de segmentos, configuración de eventos.
+  - **Google Tag Manager**: añadir o modificar etiquetas sin tocar el código.
+  - **Search Console**: revisión de rendimiento SEO, indexación y errores.
+  - **Microsoft Clarity**: análisis de mapas térmicos, grabaciones de sesión y métricas de interacción para detectar *friction points* y oportunidades de mejora en la experiencia de usuario.
+  - Otras herramientas conectadas (CRM, chat, automatizaciones, etc.).
 
-Entregables: Sitio live y optimizado, documentación completa de gestión, credenciales de todas las herramientas y 30 días de soporte premium.
+- **Training del cliente** — Sesiones de capacitación personalizadas (presencial en BCN o remoto) para gestión de contenido, interpretación de analytics y uso de herramientas integradas. Te empoderamos para ser autónomo en la gestión diaria.
+
+- **Soporte post-lanzamiento** — 30 días de soporte prioritario incluido con respuesta <4h para cualquier incidencia. Monitoreo proactivo de *performance*, optimizaciones menores y resolución de cualquier ajuste necesario tras el *launch*.
+
+**Entregables:** Sitio *live* y optimizado, documentación completa de gestión, credenciales de todas las herramientas y 30 días de soporte *premium*.
 
 ---
 
