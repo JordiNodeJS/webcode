@@ -4,6 +4,7 @@ import { HeaderNavigation } from "./Hero.HeaderNavigation";
 import { TrustIndicators } from "./Hero.TrustIndicators";
 import { ValuePropsGrid } from "./Hero.ValuePropsGrid";
 import { WavesBackground } from "./Hero.WavesBackground";
+import { WSFadeIn } from "@/components/animations/ws-fade-in";
 
 /**
  * Hero Section principal de WebSnack
@@ -39,16 +40,24 @@ export function HeroSection() {
       <div className="relative z-10 container mx-auto px-4 pt-20 pb-16">
         <div className="flex flex-col items-center text-center space-y-12">
           {/* Hero Content */}
-          <HeroContent />
+          <WSFadeIn delay={0.1}>
+            <HeroContent />
+          </WSFadeIn>
 
           {/* Call to Action */}
-          <CallToAction />
+          <WSFadeIn delay={0.3}>
+            <CallToAction />
+          </WSFadeIn>
 
           {/* Trust Indicators */}
-          <TrustIndicators />
+          <WSFadeIn delay={0.5}>
+            <TrustIndicators />
+          </WSFadeIn>
 
           {/* Value Props Grid */}
-          <ValuePropsGrid />
+          <WSFadeIn delay={0.7}>
+            <ValuePropsGrid />
+          </WSFadeIn>
         </div>
       </div>
 

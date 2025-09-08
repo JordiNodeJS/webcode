@@ -5,6 +5,8 @@ import { Rocket, Smartphone, Target, Zap } from "lucide-react";
 import React, { useCallback, useMemo, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import useOnScreen from "@/hooks/use-on-screen";
+import { WSFadeIn } from "@/components/animations/ws-fade-in";
+import { WSHover } from "@/components/animations/ws-hover";
 
 // Constantes para efectos 3D
 const CARD_CONFIG = {
@@ -234,52 +236,54 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
   }, []);
 
   return (
-    <article
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-      className="relative h-full group transition-transform duration-200 ease-out will-change-transform [transform-style:preserve-3d]"
-      aria-label={`Propuesta de valor: ${prop.title}`}
-      style={{
-        transform: cardTransform,
-      }}
-    >
-      {/* Efecto de brillo tenue rosa detrás de la tarjeta al hacer hover */}
-      <div className="absolute inset-0 rounded-xl bg-primary/5 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10"></div>
+    <WSHover effect="lift">
+      <article
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        className="relative h-full group transition-transform duration-200 ease-out will-change-transform [transform-style:preserve-3d]"
+        aria-label={`Propuesta de valor: ${prop.title}`}
+        style={{
+          transform: cardTransform,
+        }}
+      >
+        {/* Efecto de brillo tenue rosa detrás de la tarjeta al hacer hover */}
+        <div className="absolute inset-0 rounded-xl bg-primary/5 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10"></div>
 
-      <Card className="h-full bg-background/80 backdrop-blur-sm border-border/30 shadow-3d-sm group-hover:shadow-3d-md transition-all duration-700 relative z-0 overflow-hidden [transform-style:preserve-3d]">
-        {/* Elemento para el efecto de brillo - ahora usa el degradado calculado */}
-        <div
-          className="absolute inset-0 pointer-events-none transition-all duration-300"
-          style={{ background: dynamicGradient }}
-        ></div>
+        <Card className="h-full bg-background/80 backdrop-blur-sm border-border/30 shadow-3d-sm group-hover:shadow-3d-md transition-all duration-700 relative z-0 overflow-hidden [transform-style:preserve-3d]">
+          {/* Elemento para el efecto de brillo - ahora usa el degradado calculado */}
+          <div
+            className="absolute inset-0 pointer-events-none transition-all duration-300"
+            style={{ background: dynamicGradient }}
+          ></div>
 
-        <CardContent className="p-6 text-center h-full flex flex-col relative z-10">
-          {/* Icono */}
-          <div className="flex justify-center mb-4 group-hover:scale-125 transition-transform duration-300">
-            {prop.icon}
-          </div>
+          <CardContent className="p-6 text-center h-full flex flex-col relative z-10">
+            {/* Icono */}
+            <div className="flex justify-center mb-4 group-hover:scale-125 transition-transform duration-300">
+              {prop.icon}
+            </div>
 
-          {/* Título */}
-          <h3 className="text-lg font-bold text-foreground mb-4 transition duration-300 transform-gpu group-hover:[transform:translateZ(50px)]">
-            {prop.title}
-          </h3>
+            {/* Título */}
+            <h3 className="text-lg font-bold text-foreground mb-4 transition duration-300 transform-gpu group-hover:[transform:translateZ(50px)]">
+              {prop.title}
+            </h3>
 
-          {/* Lista de características */}
-          <ul className="space-y-2 text-sm text-muted-foreground mt-4 transition-all duration-300 group-hover:[transform:translateZ(20px)]">
-            {prop.features.map((feature) => (
-              <li
-                key={feature}
-                className="flex items-center justify-center text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-500 group-hover:[transform:translateZ(15px)_scale(1.05)] font-medium transition-all duration-300"
-              >
-                {feature}
-              </li>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
-    </article>
+            {/* Lista de características */}
+            <ul className="space-y-2 text-sm text-muted-foreground mt-4 transition-all duration-300 group-hover:[transform:translateZ(20px)]">
+              {prop.features.map((feature) => (
+                <li
+                  key={feature}
+                  className="flex items-center justify-center text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-500 group-hover:[transform:translateZ(15px)_scale(1.05)] font-medium transition-all duration-300"
+                >
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      </article>
+    </WSHover>
   );
 });
 
@@ -333,22 +337,26 @@ export const ValuePropsGrid = React.memo(() => {
         ) : (
           // Renderizar las tarjetas cuando el elemento ha sido visible
           memoizedValueProps.map((prop, index) => (
-            <motion.div
-              key={`${prop.title}-${index}`}
-              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: prefersReducedMotion ? 0 : ANIMATION_CONFIG.DURATION,
-                delay: prefersReducedMotion ? 0 : index * ANIMATION_CONFIG.STAGGER_DELAY,
-              }}
-              whileHover={prefersReducedMotion ? {} : { 
-                y: ANIMATION_CONFIG.HOVER_Y_OFFSET,
-                transition: { duration: ANIMATION_CONFIG.HOVER_TRANSITION_DURATION }
-              }}
-              className="h-full"
+            <WSFadeIn 
+              key={`${prop.title}-${index}`} 
+              delay={0.1 + index * 0.1}
             >
-              <ValuePropCard prop={prop} />
-            </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: prefersReducedMotion ? 0 : ANIMATION_CONFIG.DURATION,
+                  delay: prefersReducedMotion ? 0 : index * ANIMATION_CONFIG.STAGGER_DELAY,
+                }}
+                whileHover={prefersReducedMotion ? {} : { 
+                  y: ANIMATION_CONFIG.HOVER_Y_OFFSET,
+                  transition: { duration: ANIMATION_CONFIG.HOVER_TRANSITION_DURATION }
+                }}
+                className="h-full"
+              >
+                <ValuePropCard prop={prop} />
+              </motion.div>
+            </WSFadeIn>
           ))
         )}
       </div>

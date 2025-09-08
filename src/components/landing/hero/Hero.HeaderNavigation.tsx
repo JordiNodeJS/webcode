@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/sheet";
 import { ThemeToggle } from "./Hero.ThemeToggle";
 import useScrollPosition from "@/hooks/use-scroll-position";
+import { WSFadeIn } from "@/components/animations/ws-fade-in";
 
 interface NavigationItem {
   href: string;
@@ -56,73 +57,54 @@ export function HeaderNavigation() {
       <nav className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center">
-            <Link
-              href="/"
-              className={`font-bold text-gradient-websnack transition-all duration-300 ${
-                isScrolled ? "text-xl" : "text-2xl"
-              }`}
-            >
-              WebSnack
-            </Link>
-          </div>
+          <WSFadeIn delay={0.1}>
+            <div className="flex items-center">
+              <Link
+                href="/"
+                className={`font-bold text-gradient-websnack transition-all duration-300 ${
+                  isScrolled ? "text-xl" : "text-2xl"
+                }`}
+              >
+                WebSnack
+              </Link>
+            </div>
+          </WSFadeIn>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navigationItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className={`transition-all duration-300 font-medium ${
-                  isScrolled
-                    ? "text-foreground hover:text-primary text-sm"
-                    : "text-foreground hover:text-primary"
-                }`}
-              >
-                {item.label}
-              </a>
+            {navigationItems.map((item, index) => (
+              <WSFadeIn key={item.href} delay={0.1 + index * 0.1}>
+                <a
+                  href={item.href}
+                  className={`transition-all duration-300 font-medium ${
+                    isScrolled
+                      ? "text-foreground hover:text-primary text-sm"
+                      : "text-foreground hover:text-primary"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              </WSFadeIn>
             ))}
           </div>
 
           {/* Language Selector & Theme Toggle & Mobile Menu Button */}
           <div className="flex items-center space-x-2">
             {/* Language Selector */}
-            <div
-              className={`hidden md:flex items-center space-x-1 bg-muted transition-all duration-300 ${
-                isScrolled ? "rounded-md p-0.5 scale-90" : "rounded-lg p-1"
-              }`}
-            >
-              {languages.map((lang) => (
-                <button
-                  type="button"
-                  key={lang.code}
-                  onClick={() => setCurrentLanguage(lang.code)}
-                  className={`transition-all duration-300 font-medium rounded ${
-                    isScrolled ? "px-1.5 py-0.5 text-xs" : "px-2 py-1 text-sm"
-                  } ${
-                    currentLanguage === lang.code
-                      ? "bg-primary text-primary-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {lang.label}
-                </button>
-              ))}
-            </div>
-
-            {/* Theme Toggle */}
-            <ThemeToggle />
-
-            {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center space-x-2">
-              {/* Mobile Language Selector */}
-              <div className="flex items-center space-x-1 bg-muted rounded-md p-0.5">
+            <WSFadeIn delay={0.3}>
+              <div
+                className={`hidden md:flex items-center space-x-1 bg-muted transition-all duration-300 ${
+                  isScrolled ? "rounded-md p-0.5 scale-90" : "rounded-lg p-1"
+                }`}
+              >
                 {languages.map((lang) => (
                   <button
                     type="button"
                     key={lang.code}
                     onClick={() => setCurrentLanguage(lang.code)}
-                    className={`px-1.5 py-0.5 text-xs font-medium rounded transition-all duration-300 ${
+                    className={`transition-all duration-300 font-medium rounded ${
+                      isScrolled ? "px-1.5 py-0.5 text-xs" : "px-2 py-1 text-sm"
+                    } ${
                       currentLanguage === lang.code
                         ? "bg-primary text-primary-foreground"
                         : "text-muted-foreground hover:text-foreground"
@@ -132,36 +114,66 @@ export function HeaderNavigation() {
                   </button>
                 ))}
               </div>
+            </WSFadeIn>
+
+            {/* Theme Toggle */}
+            <WSFadeIn delay={0.4}>
+              <ThemeToggle />
+            </WSFadeIn>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden flex items-center space-x-2">
+              {/* Mobile Language Selector */}
+              <WSFadeIn delay={0.3}>
+                <div className="flex items-center space-x-1 bg-muted rounded-md p-0.5">
+                  {languages.map((lang) => (
+                    <button
+                      type="button"
+                      key={lang.code}
+                      onClick={() => setCurrentLanguage(lang.code)}
+                      className={`px-1.5 py-0.5 text-xs font-medium rounded transition-all duration-300 ${
+                        currentLanguage === lang.code
+                          ? "bg-primary text-primary-foreground"
+                          : "text-muted-foreground hover:text-foreground"
+                      }`}
+                    >
+                      {lang.label}
+                    </button>
+                  ))}
+                </div>
+              </WSFadeIn>
 
               {/* Sheet para menú móvil */}
-              <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-                <SheetTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="md:hidden"
-                    aria-label="Toggle mobile menu"
-                  >
-                    <Menu size={20} />
-                  </Button>
-                </SheetTrigger>
-                <SheetContent side="right" className="w-[200px] sm:w-[50px]">
-                  {/* Título oculto visualmente para accesibilidad */}
-                  <SheetTitle className="sr-only">Navegación</SheetTitle>
-                  <div className="flex flex-col space-y-4 mt-6 ps-4 text-center">
-                    {navigationItems.map((item) => (
-                      <a
-                        key={item.href}
-                        href={item.href}
-                        className="text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {item.label}
-                      </a>
-                    ))}
-                  </div>
-                </SheetContent>
-              </Sheet>
+              <WSFadeIn delay={0.4}>
+                <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+                  <SheetTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="md:hidden"
+                      aria-label="Toggle mobile menu"
+                    >
+                      <Menu size={20} />
+                    </Button>
+                  </SheetTrigger>
+                  <SheetContent side="right" className="w-[200px] sm:w-[50px]">
+                    {/* Título oculto visualmente para accesibilidad */}
+                    <SheetTitle className="sr-only">Navegación</SheetTitle>
+                    <div className="flex flex-col space-y-4 mt-6 ps-4 text-center">
+                      {navigationItems.map((item) => (
+                        <a
+                          key={item.href}
+                          href={item.href}
+                          className="text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {item.label}
+                        </a>
+                      ))}
+                    </div>
+                  </SheetContent>
+                </Sheet>
+              </WSFadeIn>
             </div>
           </div>
         </div>

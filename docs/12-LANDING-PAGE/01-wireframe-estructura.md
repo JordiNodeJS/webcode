@@ -51,12 +51,122 @@ pequeñas empresas y startups en Barcelona y España
 
 ---
 
-## 🎯 Servicios (Services Section)
+## 🎯 Soluciones Simples (Quick Start)
 
 ### Título de Sección
 
 ```
-Soluciones digitales para cada necesidad
+Para negocios que necesitan presencia digital rápida y efectiva
+```
+
+### Grid de Soluciones Ligeras (2x2)
+
+#### Solución 1: Web Express
+
+🚀 PRESENCIA DIGITAL EN 7 DÍAS
+
+• **Sitio profesional listo para usar** — Plantilla premium personalizada con tu contenido, colores de marca y logo. Responsive en todos los dispositivos y optimizado para Google desde el primer día.
+
+• **Gestión de contenido fácil** — Panel simple donde puedes editar textos, cambiar imágenes y añadir nuevos servicios sin conocimientos técnicos. Todo visual, todo intuitivo.
+
+• **SEO básico incluido** — Tu negocio aparecerá en Google Maps, tendrás meta descriptions optimizadas y estructura correcta para buscadores. Sin complicaciones técnicas.
+
+• **Formulario de contacto integrado** — Los clientes pueden contactarte directamente desde tu web. Recibes los mensajes por email al instante y puedes responder desde tu móvil.
+
+Perfecto para: Freelancers, consultores, pequeños negocios locales, profesionales que necesitan presencia online YA.
+
+#### Solución 2: Tienda Online Básica
+
+🛒 VENDE ONLINE SIN COMPLICACIONES
+
+• **Catálogo de productos simple** — Sube fotos, añade descripciones y precios. Tus clientes pueden navegar, seleccionar y comprar en 3 clics. Gestión de stock automática.
+
+• **Pagos seguros integrados** — Acepta pagos con tarjeta, Bizum y transferencia. Todo configurado y listo para recibir dinero desde el día uno. Sin mensualidades extra de pasarelas.
+
+• **Pedidos por WhatsApp** — Opción de checkout directo a WhatsApp para clientes que prefieren hablar contigo antes de comprar. Perfecto para productos personalizados.
+
+• **Gestión desde móvil** — Controla pedidos, actualiza stock y responde clientes desde cualquier lugar. App móvil incluida para gestión sobre la marcha.
+
+Ideal para: Artesanos, pequeñas tiendas, productos locales, negocios familiares que quieren vender online.
+
+#### Solución 3: Reservas y Citas
+
+📅 AGENDA DIGITAL AUTOMÁTICA
+
+• **Calendario online 24/7** — Tus clientes reservan cuando quieren, tu agenda se actualiza sola. Evita llamadas constantes y dobles reservas. Sincronización con Google Calendar.
+
+• **Recordatorios automáticos** — SMS y emails de confirmación se envían solos. Menos no-shows, más organización. Tus clientes nunca olvidan su cita.
+
+• **Gestión de servicios** — Define duración, precio y disponibilidad de cada servicio. El sistema calcula automáticamente horarios libres y slots disponibles.
+
+• **Pagos y depósitos** — Opcional: cobra anticipos o el servicio completo al reservar. Reduce cancelaciones de última hora y asegura tu tiempo.
+
+Perfecto para: Peluquerías, consultas, terapeutas, instructores, cualquier negocio por citas.
+
+#### Solución 4: Landing de Captación
+
+🎯 GENERA LEADS MIENTRAS DUERMES
+
+• **Página enfocada en conversión** — Una sola página diseñada para un objetivo: conseguir clientes. Formulario optimizado, testimonios reales y llamada a la acción clara.
+
+• **Lead magnets irresistibles** — Descarga gratuita (PDF, checklist, mini-curso) a cambio del email. Base de datos de clientes potenciales que crece automáticamente.
+
+• **Seguimiento automatizado** — Emails de bienvenida y secuencia de nurturing configurados. Tus leads reciben valor antes de convertirse en clientes.
+
+• **Analytics simples** — Dashboard que muestra visitantes, conversiones y origen del tráfico. Sabes qué funciona sin complicarte con métricas avanzadas.
+
+Ideal para: Coaches, cursos online, servicios premium, lanzamientos de producto.
+
+### Proceso Express (Para Soluciones Simples)
+
+```
+Desarrollo ágil en 3 pasos sencillos
+```
+
+#### Paso 1: Briefing Rápido (Día 1)
+
+💬 CONVERSACIÓN DE 30 MINUTOS
+
+• **Qué necesitas exactamente** — Llamada rápida para entender tu negocio, qué quieres conseguir y cuál es tu presupuesto. Sin tecnicismos, solo una conversación normal.
+
+• **Selección de plantilla** — Te mostramos 3-4 opciones de diseño que encajan con tu sector. Eliges la que más te guste y la personalizamos con tus colores y contenido.
+
+• **Contenido necesario** — Lista simple de lo que necesitamos: logo, fotos, textos básicos y datos de contacto. Te ayudamos si no tienes algo preparado.
+
+Tiempo: 1 día para tenerlo todo claro y arrancar.
+
+#### Paso 2: Desarrollo Express (Días 2-5)
+
+⚡ CONSTRUCCIÓN RÁPIDA
+
+• **Personalización de plantilla** — Aplicamos tu marca, colores y contenido a la plantilla elegida. Todo visual, sin programación desde cero.
+
+• **Configuración básica** — Formularios de contacto, Google Maps, redes sociales y SEO básico. Tu web funcionará desde el primer día.
+
+• **Revisión contigo** — Te enviamos el enlace para que veas tu web funcionando. Cambios menores incluidos hasta que estés 100% contento.
+
+Tiempo: 4 días para tener tu web funcionando.
+
+#### Paso 3: Entrega y Training (Día 6-7)
+
+🎓 TE ENSEÑAMOS A GESTIONARLA
+
+• **Puesta en marcha** — Tu web va en vivo con tu dominio. Todo configurado y funcionando perfectamente.
+
+• **Tutorial personal** — Videollamada de 30 minutos donde te enseñamos a cambiar textos, fotos y gestionar formularios. Super fácil.
+
+• **Soporte inicial** — 15 días de soporte por WhatsApp para resolver cualquier duda o pequeño cambio que necesites.
+
+Resultado: Web funcionando en 7 días, tú gestionándola con confianza.
+
+---
+
+## 🎯 Servicios Avanzados (Custom Development)
+
+### Título de Sección
+
+```
+Soluciones digitales personalizadas para empresas en crecimiento
 ```
 
 ### Grid de Servicios (2x2)
@@ -81,7 +191,7 @@ Tecnologías: Next.js 15, React 19, TypeScript — Stack moderno que garantiza p
 
 • **Sistemas de reservas integrados** — Calendarios online con disponibilidad en tiempo real, confirmación automática por email/SMS y recordatorios programados. Integración nativa con Google Calendar y gestión de zonas horarias.
 
-• **Calculadoras de presupuesto** — Herramientas interactivas que permiten a tus clientes calcular costes de servicios en tiempo real. Configurables según tu estructura de precios y que generan leads cualificados automáticamente.
+• **Formularios de consulta inteligentes** — Capturan necesidades específicas y califican leads automáticamente. Preguntas adaptativas que cambian según el tipo de proyecto, generando propuestas más precisas y reduciendo tiempo de análisis.
 
 • **Formularios inteligentes** — Formularios adaptativos que cambian según las respuestas del usuario. Validación en tiempo real, autocompletado y envío a múltiples destinos (email, Slack, ...) para agilizar tu flujo de trabajo.
 
@@ -196,116 +306,6 @@ Compromisos de servicio para empresas y organizaciones
 • **Capacity planning** — Análisis predictivo de carga y escalado proactivo. Preparación para picos de tráfico (Black Friday, lanzamientos, campañas).
 
 • **Compliance auditing** — Verificación trimestral de RGPD, accessibility, security standards. Documentación completa para auditorías internas/externas.
-
----
-
-## 🎯 Soluciones Simples (Quick Start)
-
-### Título de Sección
-
-```
-Para negocios que necesitan presencia digital rápida y efectiva
-```
-
-### Grid de Soluciones Ligeras (2x2)
-
-#### Solución 1: Web Express
-
-🚀 PRESENCIA DIGITAL EN 7 DÍAS
-
-• **Sitio profesional listo para usar** — Plantilla premium personalizada con tu contenido, colores de marca y logo. Responsive en todos los dispositivos y optimizado para Google desde el primer día.
-
-• **Gestión de contenido fácil** — Panel simple donde puedes editar textos, cambiar imágenes y añadir nuevos servicios sin conocimientos técnicos. Todo visual, todo intuitivo.
-
-• **SEO básico incluido** — Tu negocio aparecerá en Google Maps, tendrás meta descriptions optimizadas y estructura correcta para buscadores. Sin complicaciones técnicas.
-
-• **Formulario de contacto integrado** — Los clientes pueden contactarte directamente desde tu web. Recibes los mensajes por email al instante y puedes responder desde tu móvil.
-
-Perfecto para: Freelancers, consultores, pequeños negocios locales, profesionales que necesitan presencia online YA.
-
-#### Solución 2: Tienda Online Básica
-
-🛒 VENDE ONLINE SIN COMPLICACIONES
-
-• **Catálogo de productos simple** — Sube fotos, añade descripciones y precios. Tus clientes pueden navegar, seleccionar y comprar en 3 clics. Gestión de stock automática.
-
-• **Pagos seguros integrados** — Acepta pagos con tarjeta, Bizum y transferencia. Todo configurado y listo para recibir dinero desde el día uno. Sin mensualidades extra de pasarelas.
-
-• **Pedidos por WhatsApp** — Opción de checkout directo a WhatsApp para clientes que prefieren hablar contigo antes de comprar. Perfecto para productos personalizados.
-
-• **Gestión desde móvil** — Controla pedidos, actualiza stock y responde clientes desde cualquier lugar. App móvil incluida para gestión sobre la marcha.
-
-Ideal para: Artesanos, pequeñas tiendas, productos locales, negocios familiares que quieren vender online.
-
-#### Solución 3: Reservas y Citas
-
-📅 AGENDA DIGITAL AUTOMÁTICA
-
-• **Calendario online 24/7** — Tus clientes reservan cuando quieren, tu agenda se actualiza sola. Evita llamadas constantes y dobles reservas. Sincronización con Google Calendar.
-
-• **Recordatorios automáticos** — SMS y emails de confirmación se envían solos. Menos no-shows, más organización. Tus clientes nunca olvidan su cita.
-
-• **Gestión de servicios** — Define duración, precio y disponibilidad de cada servicio. El sistema calcula automáticamente horarios libres y slots disponibles.
-
-• **Pagos y depósitos** — Opcional: cobra anticipos o el servicio completo al reservar. Reduce cancelaciones de última hora y asegura tu tiempo.
-
-Perfecto para: Peluquerías, consultas, terapeutas, instructores, cualquier negocio por citas.
-
-#### Solución 4: Landing de Captación
-
-🎯 GENERA LEADS MIENTRAS DUERMES
-
-• **Página enfocada en conversión** — Una sola página diseñada para un objetivo: conseguir clientes. Formulario optimizado, testimonios reales y llamada a la acción clara.
-
-• **Lead magnets irresistibles** — Descarga gratuita (PDF, checklist, mini-curso) a cambio del email. Base de datos de clientes potenciales que crece automáticamente.
-
-• **Seguimiento automatizado** — Emails de bienvenida y secuencia de nurturing configurados. Tus leads reciben valor antes de convertirse en clientes.
-
-• **Analytics simples** — Dashboard que muestra visitantes, conversiones y origen del tráfico. Sabes qué funciona sin complicarte con métricas avanzadas.
-
-Ideal para: Coaches, cursos online, servicios premium, lanzamientos de producto.
-
-### Proceso Express (Para Soluciones Simples)
-
-```
-Desarrollo ágil en 3 pasos sencillos
-```
-
-#### Paso 1: Briefing Rápido (Día 1)
-
-💬 CONVERSACIÓN DE 30 MINUTOS
-
-• **Qué necesitas exactamente** — Llamada rápida para entender tu negocio, qué quieres conseguir y cuál es tu presupuesto. Sin tecnicismos, solo una conversación normal.
-
-• **Selección de plantilla** — Te mostramos 3-4 opciones de diseño que encajan con tu sector. Eliges la que más te guste y la personalizamos con tus colores y contenido.
-
-• **Contenido necesario** — Lista simple de lo que necesitamos: logo, fotos, textos básicos y datos de contacto. Te ayudamos si no tienes algo preparado.
-
-Tiempo: 1 día para tenerlo todo claro y arrancar.
-
-#### Paso 2: Desarrollo Express (Días 2-5)
-
-⚡ CONSTRUCCIÓN RÁPIDA
-
-• **Personalización de plantilla** — Aplicamos tu marca, colores y contenido a la plantilla elegida. Todo visual, sin programación desde cero.
-
-• **Configuración básica** — Formularios de contacto, Google Maps, redes sociales y SEO básico. Tu web funcionará desde el primer día.
-
-• **Revisión contigo** — Te enviamos el enlace para que veas tu web funcionando. Cambios menores incluidos hasta que estés 100% contento.
-
-Tiempo: 4 días para tener tu web funcionando.
-
-#### Paso 3: Entrega y Training (Día 6-7)
-
-🎓 TE ENSEÑAMOS A GESTIONARLA
-
-• **Puesta en marcha** — Tu web va en vivo con tu dominio. Todo configurado y funcionando perfectamente.
-
-• **Tutorial personal** — Videollamada de 30 minutos donde te enseñamos a cambiar textos, fotos y gestionar formularios. Super fácil.
-
-• **Soporte inicial** — 15 días de soporte por WhatsApp para resolver cualquier duda o pequeño cambio que necesites.
-
-Resultado: Web funcionando en 7 días, tú gestionándola con confianza.
 
 ---
 

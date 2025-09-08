@@ -1,4 +1,5 @@
 import { MapPin, Shield, Users } from "lucide-react";
+import { WSFadeIn } from "@/components/animations/ws-fade-in";
 
 interface TrustIndicator {
   id: string;
@@ -33,14 +34,15 @@ const trustIndicators: TrustIndicator[] = [
 export function TrustIndicators() {
   return (
     <div className="flex flex-wrap justify-center items-center gap-6 mt-6 opacity-90">
-      {trustIndicators.map((indicator) => (
-        <div
-          key={indicator.id}
-          className="flex items-center gap-2 text-sm text-muted-foreground bg-background/50 backdrop-blur-sm px-4 py-2 rounded-lg shadow-3d-sm"
-        >
-          {indicator.icon}
-          <span className="font-medium">✓ {indicator.text}</span>
-        </div>
+      {trustIndicators.map((indicator, index) => (
+        <WSFadeIn key={indicator.id} delay={0.2 + index * 0.1}>
+          <div
+            className="flex items-center gap-2 text-sm text-muted-foreground bg-background/50 backdrop-blur-sm px-4 py-2 rounded-lg shadow-3d-sm"
+          >
+            {indicator.icon}
+            <span className="font-medium">✓ {indicator.text}</span>
+          </div>
+        </WSFadeIn>
       ))}
     </div>
   );
