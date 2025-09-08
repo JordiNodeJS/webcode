@@ -1,2 +1,2 @@
-export * from "./border-beam";
 export * from "./blur-fade";
+export * from "./border-beam";

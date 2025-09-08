@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
 import { ArrowRight, Eye } from "lucide-react";
 import { BorderBeam } from "@/components/magicui/border-beam";
+import { Button } from "@/components/ui/button";
 
 /**
  * Botones de Call to Action principales

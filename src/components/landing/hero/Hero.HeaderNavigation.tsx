@@ -1,16 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
-import { ThemeToggle } from "./Hero.ThemeToggle";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { ThemeToggle } from "./Hero.ThemeToggle";
 
 interface NavigationItem {
   href: string;
@@ -35,7 +35,7 @@ const languages = [
  *
  * Componente Client Component para manejar la interactividad del menú móvil
  * y el selector de idiomas. Usa el sistema de colores WebSnack.
- * 
+ *
  * Optimizado usando React hooks estándar y Tailwind CSS.
  */
 export function HeaderNavigation() {
@@ -73,10 +73,10 @@ export function HeaderNavigation() {
   }, []);
 
   return (
-    <header 
+    <header
       className={`sticky top-0 z-50 transition-all duration-300 ease-out ${
-        isScrolled 
-          ? "bg-background/90 backdrop-blur-lg border-b border-border/40 shadow-xl py-2" 
+        isScrolled
+          ? "bg-background/90 backdrop-blur-lg border-b border-border/40 shadow-xl py-2"
           : "bg-background/80 backdrop-blur-md border-b border-border/30 shadow-lg py-4"
       }`}
     >
@@ -101,8 +101,8 @@ export function HeaderNavigation() {
                 key={item.href}
                 href={item.href}
                 className={`transition-all duration-300 font-medium ${
-                  isScrolled 
-                    ? "text-foreground hover:text-primary text-sm" 
+                  isScrolled
+                    ? "text-foreground hover:text-primary text-sm"
                     : "text-foreground hover:text-primary"
                 }`}
               >
@@ -114,19 +114,17 @@ export function HeaderNavigation() {
           {/* Language Selector & Theme Toggle & Mobile Menu Button */}
           <div className="flex items-center space-x-2">
             {/* Language Selector */}
-            <div className={`hidden md:flex items-center space-x-1 bg-muted transition-all duration-300 ${
-              isScrolled 
-                ? "rounded-md p-0.5 scale-90" 
-                : "rounded-lg p-1"
-            }`}>
+            <div
+              className={`hidden md:flex items-center space-x-1 bg-muted transition-all duration-300 ${
+                isScrolled ? "rounded-md p-0.5 scale-90" : "rounded-lg p-1"
+              }`}
+            >
               {languages.map((lang) => (
                 <button
                   key={lang.code}
                   onClick={() => setCurrentLanguage(lang.code)}
                   className={`transition-all duration-300 font-medium rounded ${
-                    isScrolled 
-                      ? "px-1.5 py-0.5 text-xs" 
-                      : "px-2 py-1 text-sm"
+                    isScrolled ? "px-1.5 py-0.5 text-xs" : "px-2 py-1 text-sm"
                   } ${
                     currentLanguage === lang.code
                       ? "bg-primary text-primary-foreground"

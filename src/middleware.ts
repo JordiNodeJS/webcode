@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from "next/server";
 
 // Lista de patrones de ataques comunes que queremos bloquear
 const maliciousPatterns = [
@@ -7,13 +7,13 @@ const maliciousPatterns = [
   /wp-admin\/.*\.php$/i,
   /wp-includes\/.*\.php$/i,
   /wp-config\.php$/i,
-  
+
   // Common exploit files
   /\.php$/i,
   /\.asp$/i,
   /\.jsp$/i,
   /\.cgi$/i,
-  
+
   // Specific attack patterns
   /golden\.php$/i,
   /dejavu\.php$/i,
@@ -54,7 +54,7 @@ const maliciousPatterns = [
   /lv\.php$/i,
   /lc\.php$/i,
   /dlex\.php$/i,
-  
+
   // Directory traversal attempts
   /\.\.\//i,
   /\.trash\d+\//i,
@@ -84,27 +84,33 @@ const suspiciousUserAgents = [
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const userAgent = request.headers.get('user-agent') || '';
-  
+  const userAgent = request.headers.get("user-agent") || "";
+
   // Verificar patrones maliciosos en la URL
-  const isMaliciousPath = maliciousPatterns.some(pattern => pattern.test(pathname));
-  
+  const isMaliciousPath = maliciousPatterns.some((pattern) =>
+    pattern.test(pathname),
+  );
+
   // Verificar User-Agent sospechoso
-  const isSuspiciousUA = suspiciousUserAgents.some(pattern => pattern.test(userAgent));
-  
+  const isSuspiciousUA = suspiciousUserAgents.some((pattern) =>
+    pattern.test(userAgent),
+  );
+
   // Si es un request malicioso, devolver 403 inmediatamente
   if (isMaliciousPath || isSuspiciousUA) {
-    console.log(`🚫 Blocked malicious request: ${pathname} from unknown (UA: ${userAgent})`);
-    
-    return new NextResponse('Forbidden', {
+    console.log(
+      `🚫 Blocked malicious request: ${pathname} from unknown (UA: ${userAgent})`,
+    );
+
+    return new NextResponse("Forbidden", {
       status: 403,
       headers: {
-        'X-Robots-Tag': 'noindex, nofollow',
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        "X-Robots-Tag": "noindex, nofollow",
+        "Cache-Control": "no-cache, no-store, must-revalidate",
       },
     });
   }
-  
+
   // Continuar con el request normal
   return NextResponse.next();
 }
@@ -118,6 +124,6 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      */
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
   ],
 };

@@ -1,6 +1,6 @@
 /**
  * Waves Background Component
- * 
+ *
  * Componente que renderiza un fondo con olas animadas SVG
  * que se extienden hasta el final de la sección.
  */

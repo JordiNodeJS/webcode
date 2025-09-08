@@ -1,7 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 interface BorderBeamProps {
   className?: string;
@@ -42,7 +42,7 @@ export const BorderBeam = ({
           delay: delay,
         }}
       />
-      
+
       {/* Right border */}
       <motion.div
         className={cn("absolute top-[-100%] right-0", className)}
@@ -61,7 +61,7 @@ export const BorderBeam = ({
           delay: delay + duration / 4,
         }}
       />
-      
+
       {/* Bottom border */}
       <motion.div
         className={cn("absolute bottom-0 left-[100%]", className)}
@@ -80,7 +80,7 @@ export const BorderBeam = ({
           delay: delay + duration / 2,
         }}
       />
-      
+
       {/* Left border */}
       <motion.div
         className={cn("absolute top-[100%] left-0", className)}

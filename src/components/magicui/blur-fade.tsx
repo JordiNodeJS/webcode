@@ -2,11 +2,11 @@
 
 import {
   AnimatePresence,
+  type MotionProps,
   motion,
+  type UseInViewOptions,
   useInView,
-  UseInViewOptions,
-  Variants,
-  MotionProps,
+  type Variants,
 } from "framer-motion";
 import { useRef } from "react";
 

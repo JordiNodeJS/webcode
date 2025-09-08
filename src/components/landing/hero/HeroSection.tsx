@@ -1,8 +1,8 @@
-import { HeaderNavigation } from "./Hero.HeaderNavigation";
-import { HeroContent } from "./Hero.Content";
-import { ValuePropsGrid } from "./Hero.ValuePropsGrid";
 import { CallToAction } from "./Hero.CallToAction";
+import { HeroContent } from "./Hero.Content";
+import { HeaderNavigation } from "./Hero.HeaderNavigation";
 import { TrustIndicators } from "./Hero.TrustIndicators";
+import { ValuePropsGrid } from "./Hero.ValuePropsGrid";
 import { WavesBackground } from "./Hero.WavesBackground";
 
 /**
@@ -12,7 +12,7 @@ import { WavesBackground } from "./Hero.WavesBackground";
  * con navegación, contenido principal, propuesta de valor y CTAs.
  *
  * Utiliza el sistema de colores WebSnack (Rosa/Aguamarina) y efectos 3D.
- * 
+ *
  * ESTRUCTURA JERÁRQUICA:
  * - HeroSection (principal)
  *   ├── WavesBackground (fondo animado)
@@ -28,7 +28,7 @@ export function HeroSection() {
     <section className="min-h-screen bg-gradient-websnack/80 dark:bg-gradient-websnack/60 relative">
       {/* Aumentar la opacidad del patrón de fondo para mejor visibilidad */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-secondary/15" />
-      
+
       {/* Waves Background Animation */}
       <WavesBackground />
 

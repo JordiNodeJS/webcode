@@ -1,4 +1,4 @@
-import { Shield, MapPin, Users } from "lucide-react";
+import { MapPin, Shield, Users } from "lucide-react";
 
 interface TrustIndicator {
   icon: React.ReactNode;
@@ -41,5 +41,3 @@ export function TrustIndicators() {
     </div>
   );
 }
-
-

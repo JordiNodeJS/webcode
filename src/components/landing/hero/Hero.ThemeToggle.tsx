@@ -1,12 +1,12 @@
 "use client";
 
-import { useTheme } from "@/hooks/use-theme";
-import { Button } from "@/components/ui/button";
 import { Moon, Sun } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useTheme } from "@/hooks/use-theme";
 
 /**
  * Botón para cambiar entre tema oscuro y claro
- * 
+ *
  * Este componente utiliza el hook useTheme para manejar el estado del tema
  * y proporciona una interfaz visual para alternar entre modos.
  */
@@ -16,9 +16,9 @@ export function ThemeToggle() {
   // Evitar hidratación incorrecta
   if (!mounted) {
     return (
-      <Button 
-        variant="ghost" 
-        size="sm" 
+      <Button
+        variant="ghost"
+        size="sm"
         className="md:flex items-center justify-center"
         aria-label="Toggle theme"
         disabled
@@ -30,9 +30,9 @@ export function ThemeToggle() {
   }
 
   return (
-    <Button 
-      variant="ghost" 
-      size="sm" 
+    <Button
+      variant="ghost"
+      size="sm"
       className="md:flex items-center justify-center"
       onClick={toggleTheme}
       aria-label="Toggle theme"
