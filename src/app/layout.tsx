@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -34,9 +34,12 @@ export default function RootLayout({
                   var theme = localStorage.getItem('theme');
                   if (theme === 'dark' || theme === 'light') {
                     document.documentElement.classList.add(theme);
+                    document.documentElement.style.colorScheme = theme;
                   } else {
                     var isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                    document.documentElement.classList.add(isDark ? 'dark' : 'light');
+                    var theme = isDark ? 'dark' : 'light';
+                    document.documentElement.classList.add(theme);
+                    document.documentElement.style.colorScheme = theme;
                   }
                 } catch (e) {}
               })();
@@ -46,6 +49,7 @@ export default function RootLayout({
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
         <ThemeProvider
           attribute="class"

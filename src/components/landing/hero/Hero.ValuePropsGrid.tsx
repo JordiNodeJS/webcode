@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion";
 import { Rocket, Smartphone, Target, Zap } from "lucide-react";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import useOnScreen from "@/hooks/use-on-screen";
 
 // Constantes para efectos 3D
 const CARD_CONFIG = {
@@ -281,46 +282,65 @@ ValuePropCard.displayName = "ValuePropCard";
  * de WebSnack en un grid responsive con cards y efectos 3D.
  */
 export const ValuePropsGrid = React.memo(() => {
-  const [shouldAnimate, setShouldAnimate] = useState(false);
+  const { ref, isIntersecting } = useOnScreen(0.1);
+  const [hasBeenVisible, setHasBeenVisible] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > ANIMATION_CONFIG.SCROLL_THRESHOLD) {
-        setShouldAnimate(true);
-        window.removeEventListener("scroll", handleScroll);
-      }
-    };
-
-    // Verificar si ya hemos scrolleado lo suficiente al cargar la página
-    if (window.scrollY > ANIMATION_CONFIG.SCROLL_THRESHOLD) {
-      setShouldAnimate(true);
-    } else {
-      window.addEventListener("scroll", handleScroll, { passive: true });
+  // Detectar preferencia de movimiento reducido
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      setPrefersReducedMotion(mediaQuery.matches);
+      
+      const handler = (event: MediaQueryListEvent) => {
+        setPrefersReducedMotion(event.matches);
+      };
+      
+      mediaQuery.addEventListener('change', handler);
+      return () => mediaQuery.removeEventListener('change', handler);
     }
-
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Actualizar el estado de visibilidad persistente
+  React.useEffect(() => {
+    if (isIntersecting) {
+      setHasBeenVisible(true);
+    }
+  }, [isIntersecting]);
 
   // Memoizar el array de props para evitar re-renders innecesarios
   const memoizedValueProps = useMemo(() => valueProps, []);
 
   return (
     <div className="w-full max-w-6xl mx-auto mt-16">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {memoizedValueProps.map((prop, index) => (
-          <motion.div
-            key={`${prop.title}-${index}`}
-            initial={{ opacity: 0, y: 50 }}
-            animate={shouldAnimate ? { opacity: 1, y: 0 } : {}}
-            transition={{
-              duration: ANIMATION_CONFIG.DURATION,
-              delay: index * ANIMATION_CONFIG.STAGGER_DELAY,
-            }}
-            className="h-full"
-          >
-            <ValuePropCard prop={prop} />
-          </motion.div>
-        ))}
+      {/* Contenedor con ref para IntersectionObserver */}
+      <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 min-h-[384px]" aria-hidden={!hasBeenVisible}>
+        {!hasBeenVisible ? (
+          // Placeholder para evitar layout shift
+          [...Array(4)].map((_, index) => (
+            <div key={index} className="h-full opacity-0"></div>
+          ))
+        ) : (
+          // Renderizar las tarjetas cuando el elemento ha sido visible
+          memoizedValueProps.map((prop, index) => (
+            <motion.div
+              key={`${prop.title}-${index}`}
+              initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: prefersReducedMotion ? 0 : ANIMATION_CONFIG.DURATION,
+                delay: prefersReducedMotion ? 0 : index * ANIMATION_CONFIG.STAGGER_DELAY,
+              }}
+              whileHover={prefersReducedMotion ? {} : { 
+                y: -10,
+                transition: { duration: 0.2 }
+              }}
+              className="h-full"
+            >
+              <ValuePropCard prop={prop} />
+            </motion.div>
+          ))
+        )}
       </div>
     </div>
   );

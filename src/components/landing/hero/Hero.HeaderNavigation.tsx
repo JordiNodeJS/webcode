@@ -2,7 +2,7 @@
 
 import { Menu } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -11,6 +11,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ThemeToggle } from "./Hero.ThemeToggle";
+import useScrollPosition from "@/hooks/use-scroll-position";
 
 interface NavigationItem {
   href: string;
@@ -41,36 +42,8 @@ const languages = [
 export function HeaderNavigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState("es");
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    let ticking = false;
-
-    const updateScrollState = () => {
-      const scrolled = window.scrollY > 10;
-      setIsScrolled(scrolled);
-      ticking = false;
-    };
-
-    const requestTick = () => {
-      if (!ticking) {
-        requestAnimationFrame(updateScrollState);
-        ticking = true;
-      }
-    };
-
-    // Verificar estado inicial solo en el cliente
-    if (typeof window !== "undefined") {
-      updateScrollState();
-      window.addEventListener("scroll", requestTick, { passive: true });
-    }
-
-    return () => {
-      if (typeof window !== "undefined") {
-        window.removeEventListener("scroll", requestTick);
-      }
-    };
-  }, []);
+  const scrollPosition = useScrollPosition();
+  const isScrolled = scrollPosition.y > 10;
 
   return (
     <header
