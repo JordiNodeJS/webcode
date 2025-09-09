@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
-    "format": "biome format --write ."
+    "format": "biome format --write .",
+    "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
@@ -28,16 +29,19 @@
     "react-dom": "19.1.0",
     "react-hook-form": "^7.62.0",
     "tailwind-merge": "^3.3.1",
+    "web-vitals": "^4.2.4",
     "zod": "^4.1.5"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.3",
+    "@next/bundle-analyzer": "^15.5.2",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "19.1.0-rc.3",
     "chrome-launcher": "^1.2.0",
+    "cross-env": "^7.0.3",
     "lighthouse": "^12.8.2",
     "playwright": "^1.55.0",
     "tailwindcss": "^4",
