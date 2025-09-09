@@ -55,22 +55,15 @@ const WavesBackground = dynamic(() =>
  *   └── ValuePropsGrid (propuestas de valor)
  */
 export function HeroSection() {
-  const isSlowConnection = useSlowConnection();
   const [showHeavyComponents, setShowHeavyComponents] = useState(false);
 
-  // Mostrar componentes pesados después de un tiempo en conexiones rápidas
-  // o inmediatamente en conexiones lentas si es necesario
+  // Mostrar componentes pesados después de un tiempo
   useEffect(() => {
-    if (!isSlowConnection) {
-      const timer = setTimeout(() => {
-        setShowHeavyComponents(true);
-      }, 100);
-      return () => clearTimeout(timer);
-    } else {
-      // En conexiones lentas, mostrar componentes más ligeros
-      setShowHeavyComponents(false);
-    }
-  }, [isSlowConnection]);
+    const timer = setTimeout(() => {
+      setShowHeavyComponents(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     // Aumentar significativamente la opacidad del fondo para que se vea mejor el color

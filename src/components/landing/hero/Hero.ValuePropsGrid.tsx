@@ -5,6 +5,7 @@ import { Rocket, Smartphone, Target, Zap } from "lucide-react";
 import React, { useCallback, useMemo, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import useOnScreen from "@/hooks/use-on-screen";
+
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
 import { WSHover } from "@/components/animations/ws-hover";
 
@@ -36,7 +37,6 @@ const VALUE_PROPS_GRID_CONFIG = {
 
 // Constantes para animaciones
 const ANIMATION_CONFIG = {
-  SCROLL_THRESHOLD: 100,
   STAGGER_DELAY: 0.1,
   DURATION: 0.5,
   HOVER_Y_OFFSET: -10, // Desplazamiento vertical en hover
