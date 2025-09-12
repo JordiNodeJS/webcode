@@ -1,123 +1,62 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
-import dynamic from "next/dynamic";
-import { HeaderNavigation } from "./Hero.HeaderNavigation";
-import { WSFadeIn } from "@/components/animations/ws-fade-in";
-import useSlowConnection from "@/hooks/use-slow-connection";
+import { useState, useEffect } from "react";
+import { ChevronDown, Play } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { HeaderNavigation } from "@/components/landing/hero/Hero.HeaderNavigation";
+import { TrustIndicators } from "@/components/landing/hero/Hero.TrustIndicators";
+import { ValuePropsGrid } from "@/components/landing/hero/Hero.ValuePropsGrid";
+import { WavesBackground } from "@/components/landing/hero/Hero.WavesBackground";
+import { CallToAction } from "@/components/landing/hero/Hero.CallToAction";
 
-// Dynamic imports para componentes pesados
-const CallToAction = dynamic(() => 
-  import("./Hero.CallToAction").then((mod) => mod.CallToAction), {
-  loading: () => <div className="h-12 w-64 bg-muted animate-pulse rounded-lg" />,
-  ssr: true
-});
+const HeroSection = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
 
-const HeroContent = dynamic(() => 
-  import("./Hero.Content").then((mod) => mod.HeroContent), {
-  loading: () => <div className="h-32 w-full bg-muted animate-pulse rounded-lg" />,
-  ssr: true
-});
-
-const TrustIndicators = dynamic(() => 
-  import("./Hero.TrustIndicators").then((mod) => mod.TrustIndicators), {
-  loading: () => <div className="h-16 w-full bg-muted animate-pulse rounded-lg" />,
-  ssr: true
-});
-
-const ValuePropsGrid = dynamic(() => 
-  import("./Hero.ValuePropsGrid").then((mod) => mod.ValuePropsGrid), {
-  loading: () => <div className="h-96 w-full bg-muted animate-pulse rounded-lg" />,
-  ssr: true
-});
-
-const WavesBackground = dynamic(() => 
-  import("./Hero.WavesBackground").then((mod) => mod.WavesBackground), {
-  loading: () => <div className="h-64 w-full bg-muted animate-pulse" />,
-  ssr: true
-});
-
-/**
- * Hero Section principal de WebCode
- *
- * Componente Server Component que renderiza la sección hero completa
- * con navegación, contenido principal, propuesta de valor y CTAs.
- *
- * Utiliza el sistema de colores WebCode (Rosa/Aguamarina) y efectos 3D.
- *
- * ESTRUCTURA JERÁRQUICA:
- * - HeroSection (principal)
- *   ├── WavesBackground (fondo animado)
- *   ├── HeaderNavigation (navegación superior)
- *   ├── HeroContent (título y subtítulo)
- *   ├── CallToAction (botones de acción)
- *   ├── TrustIndicators (indicadores de confianza)
- *   └── ValuePropsGrid (propuestas de valor)
- */
-export function HeroSection() {
-  const [showHeavyComponents, setShowHeavyComponents] = useState(false);
-
-  // Mostrar componentes pesados después de un tiempo
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowHeavyComponents(true);
-    }, 100);
-    return () => clearTimeout(timer);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToContent = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    // Aumentar significativamente la opacidad del fondo para que se vea mejor el color
-    <section className="min-h-screen bg-gradient-webcode/80 dark:bg-gradient-webcode/60 relative">
-      {/* Aumentar la opacidad del patrón de fondo para mejor visibilidad */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-transparent to-secondary/15" />
-
-      {/* Waves Background Animation */}
-      <Suspense fallback={<div className="h-64 w-full bg-muted animate-pulse" />}>
-        <WavesBackground />
-      </Suspense>
-
-      {/* Header Navigation */}
+    <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-cyan-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900">
+      {/* Navigation */}
       <HeaderNavigation />
-
-      {/* Main Hero Content */}
-      <div className="relative z-10 container mx-auto px-4 pt-20 pb-16">
-        <div className="flex flex-col items-center text-center space-y-12">
-          {/* Hero Content */}
-          <WSFadeIn delay={0.1}>
-            <Suspense fallback={<div className="h-32 w-full bg-muted animate-pulse rounded-lg" />}>
-              <HeroContent />
-            </Suspense>
-          </WSFadeIn>
-
+      
+      {/* Waves Background */}
+      <WavesBackground />
+      
+      <div className="container relative z-10 mx-auto px-4 py-20 md:py-32">
+        <div className="flex flex-col items-center text-center">
+          {/* Trust Indicators */}
+          <TrustIndicators />
+          
+          {/* Main Content */}
+          <ValuePropsGrid />
+          
           {/* Call to Action */}
-          <WSFadeIn delay={0.3}>
-            <Suspense fallback={<div className="h-12 w-64 bg-muted animate-pulse rounded-lg" />}>
-              <CallToAction />
-            </Suspense>
-          </WSFadeIn>
-
-          {/* Trust Indicators - Solo en conexiones rápidas */}
-          {showHeavyComponents && (
-            <WSFadeIn delay={0.5}>
-              <Suspense fallback={<div className="h-16 w-full bg-muted animate-pulse rounded-lg" />}>
-                <TrustIndicators />
-              </Suspense>
-            </WSFadeIn>
-          )}
-
-          {/* Value Props Grid - Solo en conexiones rápidas */}
-          {showHeavyComponents && (
-            <WSFadeIn delay={0.7}>
-              <Suspense fallback={<div className="h-96 w-full bg-muted animate-pulse rounded-lg" />}>
-                <ValuePropsGrid />
-              </Suspense>
-            </WSFadeIn>
-          )}
+          <CallToAction />
         </div>
       </div>
 
-      {/* Bottom gradient overlay */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
-    </section>
+      {/* Scroll Indicator */}
+      <div 
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer transition-all duration-300 hover:scale-110"
+        onClick={scrollToContent}
+      >
+        <ChevronDown className="h-8 w-8 text-gray-400 animate-bounce" />
+      </div>
+    </div>
   );
-}
+};
+
+export default HeroSection;
