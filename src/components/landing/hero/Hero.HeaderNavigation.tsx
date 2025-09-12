@@ -48,7 +48,7 @@ export function HeaderNavigation() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ease-out ${
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ease-out ${
         isScrolled
           ? "bg-background/90 backdrop-blur-lg border-b border-border/40 shadow-xl py-2"
           : "bg-background/80 backdrop-blur-md border-b border-border/30 shadow-lg py-4"
