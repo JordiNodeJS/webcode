@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { wsConfig } from "@/lib/websnack-motion-config";
+import { wsConfig } from "@/lib/webcode-motion-config";
 
 interface WSHoverProps {
   children: React.ReactNode;

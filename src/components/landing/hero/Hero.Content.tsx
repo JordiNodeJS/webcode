@@ -13,11 +13,11 @@ export function HeroContent() {
       {/* Headline Principal */}
       <WSFadeIn delay={0.2}>
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-          <WSLetterReveal text="Transformamos tus ideas" className="text-gradient-websnack" />
+          <WSLetterReveal text="Transformamos tus ideas" className="text-gradient-webcode" />
           <br />
           <span className="text-foreground">en experiencias</span>
           <br />
-          <WSLetterReveal text="digitales excepcionales" className="text-gradient-websnack" />
+          <WSLetterReveal text="digitales excepcionales" className="text-gradient-webcode" />
         </h1>
       </WSFadeIn>
 

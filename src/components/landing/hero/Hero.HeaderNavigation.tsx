@@ -61,7 +61,7 @@ export function HeaderNavigation() {
             <div className="flex items-center">
               <Link
                 href="/"
-                className={`font-bold text-gradient-websnack transition-all duration-300 ${
+                className={`font-bold text-gradient-webcode transition-all duration-300 ${
                   isScrolled ? "text-xl" : "text-2xl"
                 }`}
               >

@@ -161,7 +161,7 @@
 }
 
 /* Utilidades para gradientes WebSnack */
-.bg-gradient-websnack {
+.bg-gradient-webcode {
   background: linear-gradient(
     135deg,
     oklch(0.703 0.135 328.5) 0%,
@@ -169,7 +169,7 @@
   );
 }
 
-.text-gradient-websnack {
+.text-gradient-webcode {
   /* Broad fallback first (hex) for older UAs, then precise oklch for modern browsers */
   background: linear-gradient(
     135deg,
@@ -188,7 +188,7 @@
 
 /* Fallback for browsers that don't support background-clip:text */
 @supports not (-webkit-background-clip: text) {
-  .text-gradient-websnack {
+  .text-gradient-webcode {
     background: none;
     -webkit-text-fill-color: initial;
     background-clip: initial;
@@ -198,8 +198,8 @@
 }
 
 /* When the gradient text sits on the gradient background, increase contrast */
-.bg-gradient-websnack .text-gradient-websnack,
-.bg-gradient-websnack > .text-gradient-websnack {
+.bg-gradient-webcode .text-gradient-webcode,
+.bg-gradient-webcode > .text-gradient-webcode {
   /* use darker stops to separate from background */
   background: linear-gradient(
     135deg,
@@ -216,8 +216,8 @@
 }
 
 @media (prefers-contrast: more) {
-  .bg-gradient-websnack .text-gradient-websnack,
-  .bg-gradient-websnack > .text-gradient-websnack {
+  .bg-gradient-webcode .text-gradient-webcode,
+  .bg-gradient-webcode > .text-gradient-webcode {
     background: none;
     color: var(--foreground);
     -webkit-text-stroke: 0;
@@ -227,7 +227,7 @@
 
 /* Accessibility: provide a high-contrast fallback for users who request it */
 @media (prefers-contrast: more) {
-  .text-gradient-websnack {
+  .text-gradient-webcode {
     background: none;
     -webkit-background-clip: initial;
     background-clip: initial;

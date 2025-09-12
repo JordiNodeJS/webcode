@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
-import { wsConfig } from "@/lib/websnack-motion-config";
+import { wsConfig } from "@/lib/webcode-motion-config";
 
 interface WSImageRevealProps {
   src: string;

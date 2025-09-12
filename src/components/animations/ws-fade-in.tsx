@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { wsConfig } from "@/lib/websnack-motion-config";
+import { wsConfig } from "@/lib/webcode-motion-config";
 
 interface WSFadeInProps {
   children: React.ReactNode;
