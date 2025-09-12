@@ -293,3 +293,6 @@ src/
 ---
 
 **Nota**: Este prompt es **obligatorio** para todos los desarrollos de la landing page WebSnack. La performance es crítica para la conversión y experiencia de usuario. Siempre verificar métricas antes de hacer deploy a producción.
+
+
+
