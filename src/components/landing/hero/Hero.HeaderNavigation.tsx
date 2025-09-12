@@ -65,7 +65,7 @@ export function HeaderNavigation() {
                   isScrolled ? "text-xl" : "text-2xl"
                 }`}
               >
-                WebSnack
+                WebCode
               </Link>
             </div>
           </WSFadeIn>

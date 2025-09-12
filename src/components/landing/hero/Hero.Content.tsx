@@ -5,7 +5,7 @@ import { WSFadeIn } from "@/components/animations/ws-fade-in";
  * Contenido principal de la Hero Section
  *
  * Server Component que renderiza el headline principal y subheadline
- * con la propuesta de valor de WebSnack.
+ * con la propuesta de valor de WebCode.
  */
 export function HeroContent() {
   return (

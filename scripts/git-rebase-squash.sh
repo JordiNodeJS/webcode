@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Script para squashing de ramas usando git rebase interactivo
-# Parte del sistema WebSnack de herramientas Git
-# Autor: WebSnack Team
+# Parte del sistema WebCode de herramientas Git
+# Autor: WebCode Team
 # Versión: 1.0.0
 
 set -e

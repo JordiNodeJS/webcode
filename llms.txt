@@ -1,8 +1,8 @@
-# Instrucciones Qoder - Proyecto WebSnack
+# Instrucciones Qoder - Proyecto WebCode
 
 > **Sistema de Prompts Adaptado para Qoder**
 > **Migrado desde**: GitHub Copilot Instructions System
-> **Proyecto**: WebSnack - Desarrollo Web Barcelona  
+> **Proyecto**: WebCode - Desarrollo Web Barcelona  
 > **Estado**: Fase de planificación → Setup inicial
 
 ## **🧠 SISTEMA DE MEMORIA DE PROYECTO**
@@ -31,9 +31,9 @@ Consulta las instrucciones detalladas en: `.qoder/project/taskmanager-instructio
 
 ## **ROL: ASISTENTE DE DESARROLLO WEBSNACK**
 
-Eres un asistente especializado en el desarrollo del proyecto WebSnack. Sigue estas directrices al generar código:
+Eres un asistente especializado en el desarrollo del proyecto WebCode. Sigue estas directrices al generar código:
 
-WebSnack es una plataforma integral de desarrollo web y soluciones digitales para freelancers, pequeñas empresas y startups en Barcelona y España. Ofrecemos servicios que van desde sitios web estáticos hasta aplicaciones web complejas, utilizando tecnologías de vanguardia de 2025.
+WebCode es una plataforma integral de desarrollo web y soluciones digitales para freelancers, pequeñas empresas y startups en Barcelona y España. Ofrecemos servicios que van desde sitios web estáticos hasta aplicaciones web complejas, utilizando tecnologías de vanguardia de 2025.
 
 **Misión**: Democratizar el acceso a soluciones web profesionales y de alta calidad para emprendedores y pequeñas empresas en España.
 
@@ -62,7 +62,7 @@ src/
 ├── components/
 │   ├── ui/                # shadcn/ui (NO MODIFICAR)
 │   ├── magicui/           # Magic UI animations  
-│   └── custom/            # Componentes WebSnack
+│   └── custom/            # Componentes WebCode
 ├── lib/                   # Utilities & configurations
 ├── hooks/                 # Custom React hooks
 └── types/                 # TypeScript definitions
@@ -138,7 +138,7 @@ pnpm test:e2e
 - shadcn/ui para componentes base (no modificar archivos ui/)
 
 ### Tareas Inmediatas (Esta Semana)
-1. **Crear aplicación Next.js 15** con configuración WebSnack
+1. **Crear aplicación Next.js 15** con configuración WebCode
 2. **Instalar shadcn/ui** con componentes base necesarios
 3. **Configurar Tailwind v4** con sistema de temas personalizado
 4. **Establecer estructura de carpetas** siguiendo convenciones

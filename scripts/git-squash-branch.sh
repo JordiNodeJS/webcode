@@ -2,7 +2,7 @@
 
 # Git Branch Squash Script
 # Aplana una rama completa a un único commit manteniendo el historial de forma segura
-# Autor: WebSnack Development Team
+# Autor: WebCode Development Team
 # Fecha: 2025-09-01
 
 set -e  # Salir si hay algún error

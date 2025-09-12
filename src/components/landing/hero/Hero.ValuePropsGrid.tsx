@@ -293,7 +293,7 @@ ValuePropCard.displayName = "ValuePropCard";
  * Grid de propuestas de valor
  *
  * Server Component que renderiza las 4 propuestas de valor principales
- * de WebSnack en un grid responsive con cards y efectos 3D.
+ * de WebCode en un grid responsive con cards y efectos 3D.
  */
 export const ValuePropsGrid = React.memo(() => {
   const { ref, isIntersecting } = useOnScreen(VALUE_PROPS_GRID_CONFIG.INTERSECTION_THRESHOLD); 

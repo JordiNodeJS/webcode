@@ -38,12 +38,12 @@ const WavesBackground = dynamic(() =>
 });
 
 /**
- * Hero Section principal de WebSnack
+ * Hero Section principal de WebCode
  *
  * Componente Server Component que renderiza la sección hero completa
  * con navegación, contenido principal, propuesta de valor y CTAs.
  *
- * Utiliza el sistema de colores WebSnack (Rosa/Aguamarina) y efectos 3D.
+ * Utiliza el sistema de colores WebCode (Rosa/Aguamarina) y efectos 3D.
  *
  * ESTRUCTURA JERÁRQUICA:
  * - HeroSection (principal)

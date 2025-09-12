@@ -206,9 +206,9 @@ git squash-safe feature/mi-rama-importante
 3. **Coordina con el equipo** si la rama está siendo usada por otros
 4. **Revisa el resultado** con `git log --oneline` después del squash
 
-## 🚀 Casos de uso WebSnack
+## 🚀 Casos de uso WebCode
 
-### Para el proyecto WebSnack, recomendamos:
+### Para el proyecto WebCode, recomendamos:
 
 **Feature branches normales** → `git-rebase-squash.sh`
 
@@ -248,4 +248,4 @@ git squash-safe feature/mi-rama-importante
 
 - [Git Documentation - git checkout --orphan](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt---orphanltnew-branchgt)
 - [Git Documentation - git branch -M](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt--M)
-- [WebSnack Project Guidelines](../.github/support/git-commit-standards.md)
+- [WebCode Project Guidelines](../.github/support/git-commit-standards.md)

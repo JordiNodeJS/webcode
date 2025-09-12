@@ -135,7 +135,7 @@
   }
 }
 
-/* Sombras 3D personalizadas WebSnack */
+/* Sombras 3D personalizadas WebCode */
 .shadow-3d-sm {
   box-shadow:
     0 2px 4px rgba(220, 124, 179, 0.1),
@@ -160,7 +160,7 @@
     0 8px 10px rgba(220, 124, 179, 0.04);
 }
 
-/* Utilidades para gradientes WebSnack */
+/* Utilidades para gradientes WebCode */
 .bg-gradient-webcode {
   background: linear-gradient(
     135deg,
