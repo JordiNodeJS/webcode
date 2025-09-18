@@ -98,10 +98,9 @@ const valueProps: ValueProp[] = [
     icon: <Target className="h-8 w-8 text-secondary-foreground" />,
     title: "Barcelona Local",
     features: [
-      "Conocimiento del mercado",
-      "Soporte en ES/CA/EN",
-      "Reuniones presenciales",
-      "Cumplimiento normativo",
+      "Experiencia con empresas locales",
+      "Integración con proveedores locales",
+      "Consultas presenciales",
     ],
   },
 ];
