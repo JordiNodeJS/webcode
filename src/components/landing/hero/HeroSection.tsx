@@ -48,8 +48,8 @@ const HeroSection = () => {
           
           <WSFadeIn delay={0.2}>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl">
-              Creamos experiencias digitales excepcionales con las últimas tecnologías. 
-              Next.js, React, Astro y más para tu proyecto en Barcelona.
+              Creamos experiencias digitales excepcionales con las últimas tecnologías: 
+              Next.js, React, Astro y más para tu negocio en Barcelona.
             </p>
           </WSFadeIn>
           
