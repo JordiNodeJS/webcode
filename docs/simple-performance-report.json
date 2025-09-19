@@ -1,0 +1,43 @@
+{
+  "timestamp": "2025-09-19T20:00:51.636Z",
+  "testDuration": 15,
+  "averageFPS": 278,
+  "minimumFPS": 137,
+  "maxMemoryUsage": 21,
+  "fpsReadings": [
+    137,
+    291,
+    300,
+    297,
+    295,
+    299,
+    254,
+    294,
+    293,
+    291,
+    290,
+    293,
+    261,
+    299,
+    277
+  ],
+  "memoryReadings": [
+    18,
+    19,
+    20,
+    19,
+    20,
+    21,
+    18,
+    19,
+    20,
+    21,
+    17,
+    19,
+    17,
+    18,
+    20
+  ],
+  "performanceScore": 100,
+  "issues": []
+}
