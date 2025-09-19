@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { initWebVitals } from "@/lib/web-vitals";
+import { AnimationProvider } from "@/contexts/AnimationContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -61,7 +62,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <AnimationProvider>{children}</AnimationProvider>
         </ThemeProvider>
       </body>
     </html>

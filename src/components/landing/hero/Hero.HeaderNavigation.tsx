@@ -46,6 +46,27 @@ export function HeaderNavigation() {
   const scrollPosition = useScrollPosition();
   const isScrolled = scrollPosition.y > 10;
 
+  // Función para manejar el smooth scroll con offset para el header responsive
+  const handleSmoothScroll = (
+    href: string,
+    event: React.MouseEvent<HTMLAnchorElement>
+  ) => {
+    event.preventDefault();
+
+    if (href.startsWith("#")) {
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        // Scroll simple - el título ya tiene scroll-mt-20 para el offset del header
+        targetElement.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }
+  };
+
   return (
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ease-out ${
@@ -76,7 +97,8 @@ export function HeaderNavigation() {
               <WSFadeIn key={item.href} delay={0.1 + index * 0.1}>
                 <a
                   href={item.href}
-                  className={`transition-all duration-300 font-medium ${
+                  onClick={(e) => handleSmoothScroll(item.href, e)}
+                  className={`transition-all duration-300 font-medium cursor-pointer ${
                     isScrolled
                       ? "text-foreground hover:text-primary text-sm"
                       : "text-foreground hover:text-primary"
@@ -145,7 +167,10 @@ export function HeaderNavigation() {
 
               {/* Sheet para menú móvil */}
               <WSFadeIn delay={0.4}>
-                <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+                <Sheet
+                  open={isMobileMenuOpen}
+                  onOpenChange={setIsMobileMenuOpen}
+                >
                   <SheetTrigger asChild>
                     <Button
                       variant="ghost"
@@ -164,8 +189,11 @@ export function HeaderNavigation() {
                         <a
                           key={item.href}
                           href={item.href}
-                          className="text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2"
-                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2 cursor-pointer"
+                          onClick={(e) => {
+                            handleSmoothScroll(item.href, e);
+                            setIsMobileMenuOpen(false);
+                          }}
                         >
                           {item.label}
                         </a>
