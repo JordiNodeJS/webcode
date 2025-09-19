@@ -7,6 +7,7 @@ export { HeaderNavigation } from "./Hero.HeaderNavigation";
 export { ThemeToggle } from "./Hero.ThemeToggle";
 export { TrustIndicators } from "./Hero.TrustIndicators";
 export { ValuePropsGrid } from "./Hero.ValuePropsGrid";
+export { IdleOptimizedValuePropsGrid } from "./Hero.ValuePropsGrid.Idle-Optimized";
 export { WavesBackground } from "./Hero.WavesBackground";
 import HeroSection from "./HeroSection";
 
