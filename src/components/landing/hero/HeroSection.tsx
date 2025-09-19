@@ -9,9 +9,18 @@ import { IdleOptimizedValuePropsGrid } from "@/components/landing/hero/Hero.Valu
 import { WavesBackground } from "@/components/landing/hero/Hero.WavesBackground";
 import { CallToAction } from "@/components/landing/hero/Hero.CallToAction";
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
+import { useReversibleScrollVisibility } from "@/hooks/use-reversible-scroll-visibility";
 
 const HeroSection = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+
+  // Hook optimizado para la flecha de scroll
+  const scrollIndicator = useReversibleScrollVisibility({
+    fadeStartThreshold: 0.1, // Comienza a desaparecer al 10% del scroll
+    fadeOutThreshold: 0.5, // Completamente invisible al 50% del scroll
+    transitionDuration: 400,
+    respectReducedMotion: true,
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,12 +79,34 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - Optimizado para Performance */}
       <div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer transition-all duration-300 hover:scale-110"
+        ref={scrollIndicator.setElementRef}
+        className="absolute bottom-8 left-1/2 cursor-pointer transition-transform duration-200 will-change-transform hover:scale-110 focus:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
         onClick={scrollToContent}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            scrollToContent();
+          }
+        }}
+        tabIndex={0}
+        role="button"
+        aria-label="Desplazarse hacia abajo para ver más contenido"
+        style={{
+          transform: `translateX(-50%) translateY(0)`,
+          opacity: scrollIndicator.opacity,
+          visibility: scrollIndicator.opacity > 0 ? "visible" : "hidden",
+          transition: scrollIndicator.isReducedMotion
+            ? "opacity 0.2s ease-out, visibility 0.2s ease-out"
+            : "opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s ease-out",
+        }}
       >
-        <ChevronDown className="h-8 w-8 text-gray-400 animate-bounce" />
+        <ChevronDown
+          className={`h-8 w-8 text-gray-400 dark:text-gray-500 transition-colors duration-200 ${
+            !scrollIndicator.isReducedMotion ? "animate-bounce" : ""
+          }`}
+        />
       </div>
     </div>
   );
