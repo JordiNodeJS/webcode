@@ -287,6 +287,25 @@
   animation: wave-fast 10s linear infinite;
 }
 
+/* 🎯 ESTRATEGIA DE SUSPENSIÓN DE ANIMACIONES PARA RENDIMIENTO */
+
+/* Suspender animaciones costosas cuando llegamos a Services */
+.animation-suspended {
+  animation-play-state: paused !important;
+  will-change: auto !important;
+}
+
+/* Reducir motion en header cuando está en Services */
+.reduce-motion * {
+  transition-duration: 0.1s !important;
+  animation-duration: 0.1s !important;
+}
+
+/* Suspender completamente las olas cuando están fuera del viewport */
+.waves-background.out-of-view {
+  display: none;
+}
+
 /* Configuración de scroll suave y offsets para navegación */
 :root {
   --header-height: 80px;

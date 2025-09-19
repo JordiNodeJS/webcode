@@ -3,10 +3,47 @@
  *
  * Componente que renderiza un fondo con olas animadas SVG
  * que se extienden hasta el final de la sección.
+ * Se suspende automáticamente cuando no está visible para optimizar rendimiento.
  */
+"use client";
+
+import { useEffect, useRef } from "react";
+
 export function WavesBackground() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === containerRef.current) {
+            if (!entry.isIntersecting) {
+              // Cuando no está visible, pausar animaciones para ahorrar CPU/GPU
+              entry.target.classList.add("out-of-view");
+            } else {
+              entry.target.classList.remove("out-of-view");
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "100px 0px 100px 0px",
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div
+      ref={containerRef}
+      className="waves-background absolute inset-0 overflow-hidden pointer-events-none"
+    >
       <svg
         className="absolute bottom-0 left-0 w-[200%] h-full"
         viewBox="0 0 2400 200"

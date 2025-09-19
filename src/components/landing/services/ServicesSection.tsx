@@ -1,21 +1,66 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { ServiceCard, ServiceHeader } from ".";
-// import { useAnimationControl } from "@/hooks/useAnimationControl";
-// import { useAnimationContext } from "@/contexts/AnimationContext";
+import { useAnimationContext } from "@/contexts/AnimationContext";
 
 export function ServicesSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  // const { disableAnimationsForSection } = useAnimationContext();
+  const { disableAnimationsForSection } = useAnimationContext();
 
-  // Hook personalizado para controlar animaciones cuando la sección entra al viewport
-  // useAnimationControl(sectionRef, {
-  //   onEnterViewport: () => {
-  //     // Desactivar animaciones de la sección hero cuando se llega a Services
-  //     disableAnimationsForSection("hero");
-  //   },
-  // });
+  // Sistema bidireccional: suspender animaciones en Services, reactivar en Hero
+  useEffect(() => {
+    const servicesObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Entrando a Services: suspender animaciones costosas
+            disableAnimationsForSection("hero");
+
+            const waveElements = document.querySelectorAll(
+              '[class*="animate-wave"]'
+            );
+            waveElements.forEach((wave) => {
+              wave.classList.add("animation-suspended");
+            });
+
+            const header = document.querySelector("header");
+            if (header) {
+              header.classList.add("reduce-motion");
+            }
+          } else {
+            // Saliendo de Services (volviendo a Hero): reactivar animaciones
+            const waveElements = document.querySelectorAll(
+              '[class*="animate-wave"]'
+            );
+            waveElements.forEach((wave) => {
+              wave.classList.remove("animation-suspended");
+            });
+
+            const header = document.querySelector("header");
+            if (header) {
+              header.classList.remove("reduce-motion");
+            }
+
+            const wavesBackground = document.querySelector(".waves-background");
+            if (wavesBackground) {
+              wavesBackground.classList.remove("out-of-view");
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+        rootMargin: "0px 0px -20% 0px",
+      }
+    );
+
+    if (sectionRef.current) {
+      servicesObserver.observe(sectionRef.current);
+    }
+
+    return () => servicesObserver.disconnect();
+  }, [disableAnimationsForSection]);
 
   const services = [
     {
@@ -87,7 +132,7 @@ export function ServicesSection() {
   return (
     <section
       ref={sectionRef}
-      className="min-h-screen bg-gradient-to-b from-background via-background/95 to-muted/20 pt-16 pb-20 px-4 sm:px-6 lg:px-8"
+      className="min-h-screen bg-gradient-to-b from-slate-50/80 via-slate-100/60 to-slate-200/40 dark:from-gray-950/90 dark:via-gray-900/80 dark:to-gray-800/60 pt-16 pb-20 px-4 sm:px-6 lg:px-8"
       data-animation-section="services"
       data-testid="services-section"
     >
