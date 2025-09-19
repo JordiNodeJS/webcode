@@ -137,26 +137,22 @@
 
 /* Sombras 3D personalizadas WebCode */
 .shadow-3d-sm {
-  box-shadow:
-    0 2px 4px rgba(220, 124, 179, 0.1),
+  box-shadow: 0 2px 4px rgba(220, 124, 179, 0.1),
     0 1px 2px rgba(220, 124, 179, 0.06);
 }
 
 .shadow-3d-md {
-  box-shadow:
-    0 4px 6px rgba(220, 124, 179, 0.1),
+  box-shadow: 0 4px 6px rgba(220, 124, 179, 0.1),
     0 2px 4px rgba(220, 124, 179, 0.06);
 }
 
 .shadow-3d-lg {
-  box-shadow:
-    0 10px 15px rgba(220, 124, 179, 0.1),
+  box-shadow: 0 10px 15px rgba(220, 124, 179, 0.1),
     0 4px 6px rgba(220, 124, 179, 0.05);
 }
 
 .shadow-3d-xl {
-  box-shadow:
-    0 20px 25px rgba(220, 124, 179, 0.1),
+  box-shadow: 0 20px 25px rgba(220, 124, 179, 0.1),
     0 8px 10px rgba(220, 124, 179, 0.04);
 }
 
@@ -209,9 +205,7 @@
   -webkit-text-fill-color: transparent;
   color: transparent;
   display: inline-block;
-  text-shadow:
-    0 3px 12px rgba(0, 0, 0, 0.22),
-    0 1px 0 rgba(255, 255, 255, 0.02);
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.22), 0 1px 0 rgba(255, 255, 255, 0.02);
   -webkit-text-stroke: 0.35px rgba(0, 0, 0, 0.06);
 }
 
@@ -273,7 +267,7 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+
   /* Desactivar animaciones específicas de Framer Motion */
   .motion-reduce {
     animation: none !important;
@@ -291,4 +285,44 @@
 
 .animate-wave-fast {
   animation: wave-fast 10s linear infinite;
+}
+
+/* Configuración de scroll suave y offsets para navegación */
+:root {
+  --header-height: 80px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offset automático para todas las secciones con ID para compensar el header fixed */
+section[id] {
+  scroll-margin-top: calc(var(--header-height));
+}
+
+/* Congelar transiciones del header durante navegación programática */
+header.scroll-freeze {
+  transition: none !important;
+}
+
+/* Eliminar gaps entre secciones principales */
+main > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Asegurar que las secciones se conecten sin espacios */
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Forzar conexión perfecta entre secciones Hero y Services */
+main > div:first-child {
+  margin-bottom: 0;
+}
+
+main > section:first-of-type {
+  margin-top: 0;
 }

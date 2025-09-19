@@ -29,7 +29,10 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-cyan-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900">
+    <div
+      className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-cyan-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900"
+      data-animation-section="hero"
+    >
       {/* Navigation */}
       <HeaderNavigation />
 
@@ -39,7 +42,7 @@ const HeroSection = () => {
       <div className="container relative z-10 mx-auto px-4 py-20 md:py-32">
         <div className="flex flex-col items-center text-center">
           {/* Hero Content */}
-          <WSFadeIn delay={0.1}>
+          <WSFadeIn delay={0.1} sectionId="hero">
             <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
               <span className="block">Desarrollo Web</span>
               <span className="block text-gradient-webcode">
@@ -48,7 +51,7 @@ const HeroSection = () => {
             </h1>
           </WSFadeIn>
 
-          <WSFadeIn delay={0.2}>
+          <WSFadeIn delay={0.2} sectionId="hero">
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl">
               Creamos experiencias digitales excepcionales con las últimas
               tecnologías: Next.js, React, Astro y más para tu negocio en
