@@ -58,12 +58,15 @@
   --primary-foreground: oklch(
     0.98 0 0
   ); /* near-white for strong contrast on primary */
+  /* RGB values for neon effects */
+  --primary-rgb: 220, 124, 179; /* Aproximación RGB del primary */
   --secondary: oklch(
     0.43 0.18 184.1
   ); /* stronger aquamarine with more chroma */
   --secondary-foreground: oklch(
     0.12 0 0
   ); /* darker text for better readability */
+  --secondary-rgb: 130, 200, 210; /* Aproximación RGB del secondary */
   --muted: oklch(0.975 0.008 184.1); /* keep light muted background */
   --muted-foreground: oklch(0.26 0 0); /* darker muted text for accessibility */
   --accent: oklch(0.98 0.03 60); /* slightly richer accent color */
@@ -99,8 +102,10 @@
   /* Slightly brighter primary for dark mode to keep buttons and gradients readable */
   --primary: oklch(0.84 0.16 328.5);
   --primary-foreground: oklch(0.08 0 0);
+  --primary-rgb: 255, 170, 215; /* RGB más brillante para modo oscuro */
   --secondary: oklch(0.45 0.18 184.1);
   --secondary-foreground: oklch(0.985 0 0);
+  --secondary-rgb: 100, 180, 200; /* RGB más brillante para modo oscuro */
   --muted: oklch(0.149 0 0); /* #262626 */
   --muted-foreground: oklch(0.78 0 0); /* lighter muted text in dark mode */
   --accent: oklch(0.24 0.03 60);
@@ -158,10 +163,24 @@
 
 /* Utilidades para gradientes WebCode */
 .bg-gradient-webcode {
+  /* Modo claro: gradiente suave con colores del tema */
   background: linear-gradient(
     135deg,
-    oklch(0.703 0.135 328.5) 0%,
-    /* Rosa principal */ oklch(0.873 0.058 184.1) 100% /* Aguamarina */
+    oklch(0.98 0.008 328.5) 0%,
+    /* Rosa muy claro */ oklch(0.99 0.005 184.1) 50%,
+    /* Blanco aguamarina */ oklch(0.97 0.01 184.1) 100%
+      /* Aguamarina muy claro */
+  );
+}
+
+/* Modo oscuro: gradiente suave con tonos grises */
+.dark .bg-gradient-webcode {
+  background: linear-gradient(
+    135deg,
+    oklch(0.094 0 0) 0%,
+    /* gray-900 */ oklch(0.1 0.02 328.5) 30%,
+    /* Sutil tinte rosa */ oklch(0.11 0.02 184.1) 70%,
+    /* Sutil tinte aguamarina */ oklch(0.102 0 0) 100% /* gray-850 */
   );
 }
 
@@ -555,5 +574,322 @@ main > section:first-of-type {
   .cloud-lightning-background canvas {
     /* Mejor renderizado en pantallas retina */
     image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* 🌟 BOTONES NEON - Reproducción exacta de CodePen botones 3 y 7 */
+
+/* BOTÓN 3 - Efecto de relleno deslizante de izquierda a derecha */
+.neon-btn-3 {
+  position: relative;
+  display: inline-block;
+  padding: 16px 32px;
+  color: oklch(var(--primary));
+  font-family: inherit;
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  background: transparent;
+  border: 2px solid oklch(var(--primary));
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  /* Pre-glow sutil */
+  box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.1),
+    inset 0 0 10px rgba(var(--primary-rgb), 0.05);
+}
+
+.neon-btn-3::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: oklch(var(--primary));
+  transition: left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: -1;
+}
+
+.neon-btn-3:hover {
+  color: oklch(var(--primary-foreground));
+  border-color: oklch(var(--primary));
+  /* Glow neon intenso */
+  box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.6),
+    0 0 20px rgba(var(--primary-rgb), 0.4),
+    0 0 30px rgba(var(--primary-rgb), 0.3),
+    0 0 40px rgba(var(--primary-rgb), 0.2),
+    inset 0 0 15px rgba(var(--primary-rgb), 0.1);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.9),
+    0 0 10px rgba(255, 255, 255, 0.7), 0 0 15px rgba(var(--primary-rgb), 0.5);
+  transform: translateY(-2px);
+}
+
+.neon-btn-3:hover::before {
+  left: 0;
+}
+
+/* BOTÓN 7 - Efecto de línea que barre desde abajo con glow */
+.neon-btn-7 {
+  position: relative;
+  display: inline-block;
+  padding: 16px 32px;
+  color: oklch(var(--muted-foreground));
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  background: transparent;
+  border: 2px solid oklch(var(--border));
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  /* Pre-estado sutil */
+  box-shadow: 0 0 5px rgba(var(--primary-rgb), 0.05),
+    inset 0 0 5px rgba(var(--muted-rgb), 0.1);
+}
+
+.neon-btn-7::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: linear-gradient(
+    45deg,
+    oklch(var(--primary)),
+    oklch(var(--primary) / 0.9),
+    oklch(var(--primary) / 0.8)
+  );
+  transition: height 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: -1;
+}
+
+.neon-btn-7::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(
+    circle,
+    rgba(var(--primary-rgb), 0.2) 0%,
+    transparent 70%
+  );
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translate(-50%, -50%);
+  z-index: -2;
+}
+
+.neon-btn-7:hover {
+  color: oklch(var(--primary-foreground));
+  border-color: oklch(var(--primary));
+  /* Glow suave pero visible */
+  box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.4),
+    0 0 25px rgba(var(--primary-rgb), 0.2),
+    0 0 35px rgba(var(--primary-rgb), 0.1),
+    inset 0 0 10px rgba(var(--primary-rgb), 0.1);
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.8),
+    0 0 8px rgba(var(--primary-rgb), 0.4);
+  transform: translateY(-1px);
+}
+
+.neon-btn-7:hover::after {
+  height: 100%;
+}
+
+.neon-btn-7:hover::before {
+  width: 120%;
+  height: 120%;
+}
+
+/* Animación de aparición progresiva */
+.neon-btn-3,
+.neon-btn-7 {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.neon-btn-7 {
+  animation-delay: 0.3s;
+}
+
+/* Pulso sutil y brillo ocasional para el botón principal */
+.neon-btn-3 {
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+    subtlePulse 3s ease-in-out 1s infinite;
+}
+
+/* Efecto de brillo que pasa por el botón ocasionalmente */
+.neon-btn-3::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.8s ease;
+  z-index: 1;
+  animation: shine 4s ease-in-out 2s infinite;
+}
+
+@keyframes shine {
+  0%,
+  90%,
+  100% {
+    left: -100%;
+  }
+  10%,
+  80% {
+    left: 100%;
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes subtlePulse {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.1),
+      inset 0 0 10px rgba(var(--primary-rgb), 0.05);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.2),
+      inset 0 0 15px rgba(var(--primary-rgb), 0.1);
+  }
+}
+
+/* Estados de interacción mejorados */
+.neon-btn-3:focus,
+.neon-btn-7:focus {
+  outline: none;
+  box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.5),
+    0 0 0 3px rgba(var(--primary-rgb), 0.3);
+}
+
+.neon-btn-3:active {
+  transform: translateY(0px) scale(0.98);
+  box-shadow: 0 0 5px rgba(var(--primary-rgb), 0.8),
+    inset 0 0 20px rgba(var(--primary-rgb), 0.2);
+}
+
+.neon-btn-7:active {
+  transform: translateY(0px) scale(0.98);
+  box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.6),
+    inset 0 0 15px rgba(var(--primary-rgb), 0.15);
+}
+
+/* Efectos de hover mejorados */
+.neon-btn-3:hover,
+.neon-btn-7:hover {
+  transform: translateY(-2px);
+}
+
+/* Responsive Design Mejorado */
+@media (max-width: 640px) {
+  .neon-btn-3,
+  .neon-btn-7 {
+    padding: 14px 28px;
+    font-size: 1rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* Reducir efectos en móviles para mejor rendimiento */
+  .neon-btn-3:hover,
+  .neon-btn-7:hover {
+    transform: translateY(-1px);
+  }
+}
+
+@media (max-width: 480px) {
+  .neon-btn-3,
+  .neon-btn-7 {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Mejoras de accesibilidad y usabilidad */
+.neon-btn-3,
+.neon-btn-7 {
+  /* Mejor accesibilidad táctil */
+  min-height: 44px;
+  min-width: 44px;
+
+  /* Evitar selección de texto */
+  user-select: none;
+  -webkit-user-select: none;
+
+  /* Mejorar rendimiento de animaciones */
+  will-change: transform, box-shadow;
+
+  /* Soporte para pantallas táctiles */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Estados de carga/disabled (para futuras mejoras) */
+.neon-btn-3:disabled,
+.neon-btn-7:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Desactivar efectos para reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .neon-btn-3,
+  .neon-btn-7 {
+    animation: none !important;
+    opacity: 1;
+    transform: none !important;
+    will-change: auto;
+  }
+
+  .neon-btn-3::before,
+  .neon-btn-3::after,
+  .neon-btn-7::before,
+  .neon-btn-7::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .neon-btn-3:hover,
+  .neon-btn-7:hover {
+    transform: none !important;
+  }
+}
+
+/* Mejorar contraste en modo de alto contraste */
+@media (prefers-contrast: high) {
+  .neon-btn-3,
+  .neon-btn-7 {
+    border-width: 3px;
+  }
+
+  .neon-btn-3:hover,
+  .neon-btn-7:hover {
+    box-shadow: none;
+    background: oklch(var(--primary));
+    color: oklch(var(--primary-foreground));
   }
 }
