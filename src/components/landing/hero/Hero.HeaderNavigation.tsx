@@ -2,6 +2,7 @@
 
 import { Menu } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
 import { Button } from "@/components/ui/button";
@@ -44,6 +45,7 @@ export function HeaderNavigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState("es");
   const scrollPosition = useScrollPosition();
+  const pathname = usePathname();
   const isScrolled = scrollPosition.y > 10;
 
   // Opacidad dinámica del fondo según scroll (1 en top -> 0 tras fadeEnd px)
@@ -79,6 +81,17 @@ export function HeaderNavigation() {
     }
   };
 
+  // Maneja el click en el logo: si ya estamos en la página raíz, hacemos
+  // un smooth scroll hacia el inicio en lugar de forzar una navegación.
+  const handleLogoClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    // Si estamos ya en la página raíz, evitamos la navegación y hacemos scroll suave
+    if (pathname === "/") {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    // Si no estamos en la raíz, dejamos que <Link> navegue normalmente a '/'
+  };
+
   return (
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ease-out ${
@@ -98,6 +111,7 @@ export function HeaderNavigation() {
             <div className="flex items-center">
               <Link
                 href="/"
+                onClick={handleLogoClick}
                 className={`font-bold text-gradient-webcode transition-all duration-300 ${
                   isScrolled ? "text-xl" : "text-2xl"
                 }`}
