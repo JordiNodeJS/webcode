@@ -5,6 +5,7 @@ import { ThemeProvider } from "next-themes";
 import { AnimationProvider } from "@/contexts/AnimationContext";
 import { initWebVitals } from "@/lib/web-vitals";
 import { DefaultBackground } from "@/components/ui/DefaultBackground";
+import { FooterSection } from "@/components/landing/Footer.Section";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -66,7 +67,10 @@ export default function RootLayout({
         >
           <AnimationProvider>
             <DefaultBackground />
-            {children}
+            <div className="min-h-screen flex flex-col">
+              <main className="flex-1">{children}</main>
+              <FooterSection />
+            </div>
           </AnimationProvider>
         </ThemeProvider>
       </body>

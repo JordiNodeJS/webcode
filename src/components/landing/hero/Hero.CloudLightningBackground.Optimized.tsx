@@ -357,7 +357,7 @@ export function CloudLightningBackgroundOptimized() {
 
       const { width, height } = canvas;
       const particles = particlePoolRef.current.getActiveParticles();
-      const mouse = mouseRef.current;
+      const mouse = mouseRef.current ?? { x: -1000, y: -1000, timestamp: 0 };
 
       // Limpiar canvas con fondo optimizado
       ctx.fillStyle = currentConfig.BACKGROUND_COLOR;
