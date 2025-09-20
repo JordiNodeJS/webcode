@@ -79,7 +79,7 @@ export function ServiceCard({
           </div>
           <div className="flex-1">
             <CardTitle
-              className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300"
+              className="neon-cyan-card-title text-foreground group-hover:text-primary transition-colors duration-300"
               id={`service-title-${id}`}
             >
               {title}
