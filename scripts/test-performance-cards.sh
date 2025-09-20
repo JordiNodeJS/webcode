@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script para ejecutar pruebas de rendimiento de las tarjetas WebSnack
+# Script para ejecutar pruebas de rendimiento de las tarjetas WebCode
 # Requiere navegador con DevTools y herramientas de performance
 
 echo "🔬 INICIANDO ANÁLISIS DE RENDIMIENTO - TARJETAS WEBSNACK"
@@ -119,7 +119,7 @@ open_analysis_tools() {
 
 # Función principal
 main() {
-    echo "🎯 WebSnack Performance Test Suite"
+    echo "🎯 WebCode Performance Test Suite"
     echo "Analizando rendimiento de tarjetas en reposo vs activo"
     echo ""
     
