@@ -135,19 +135,92 @@
   text-align: center;
   font-size: 50px;
   font-weight: bold;
+  /* Modo claro: gradiente suave con colores del tema */
+  background: linear-gradient(
+    135deg,
+    oklch(0.703 0.135 328.5) 0%,
+    /* Rosa principal */ oklch(0.873 0.058 184.1) 100% /* Aguamarina */
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+}
+
+/* Modo oscuro: mantener el efecto neón con degradado del tema */
+.dark .neon-cyan-title {
+  background: linear-gradient(
+    135deg,
+    oklch(0.84 0.16 328.5) 0%,
+    /* Rosa brillante modo oscuro */ oklch(0.75 0.18 184.1) 100% /* Aguamarina modo oscuro */
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
   text-shadow: 0 0 3px #0bf4f3, 0 0 6px #0bf4f3, 0 0 12px #0bf4f3;
+  display: inline-block;
 }
 
 .neon-cyan-card-title {
   position: relative;
   font-size: 24px;
   font-weight: bold;
+  /* Modo claro: gradiente suave con colores del tema */
+  background: linear-gradient(
+    135deg,
+    oklch(0.703 0.135 328.5) 0%,
+    /* Rosa principal */ oklch(0.873 0.058 184.1) 100% /* Aguamarina */
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+/* Modo oscuro: mantener el efecto neón con degradado del tema */
+.dark .neon-cyan-card-title {
+  background: linear-gradient(
+    135deg,
+    oklch(0.84 0.16 328.5) 0%,
+    /* Rosa brillante modo oscuro */ oklch(0.75 0.18 184.1) 100% /* Aguamarina modo oscuro */
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
   text-shadow: 0 0 1px #0bf4f3, 0 0 2px #0bf4f3;
-  transition: text-shadow 0.3s ease;
+  display: inline-block;
 }
 
 .neon-cyan-card-title:hover {
-  text-shadow: none;
+  /* Efecto hover: intensificar el degradado en modo claro */
+  background: linear-gradient(
+    135deg,
+    oklch(0.65 0.16 328.5) 0%,
+    /* Rosa más intenso */ oklch(0.82 0.08 184.1) 100% /* Aguamarina más intenso */
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Efecto hover en modo oscuro */
+.dark .neon-cyan-card-title:hover {
+  background: linear-gradient(
+    135deg,
+    oklch(0.89 0.18 328.5) 0%,
+    /* Rosa más brillante */ oklch(0.80 0.20 184.1) 100% /* Aguamarina más brillante */
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 0 0 2px #0bf4f3, 0 0 4px #0bf4f3, 0 0 8px #0bf4f3;
 }
 
 @layer base {
