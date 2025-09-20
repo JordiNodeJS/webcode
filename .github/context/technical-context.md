@@ -1,6 +1,7 @@
 # ⚙️ Contexto Técnico Actual - WEBCODE
 
-> **Auto-generado**: 2025-09-20T18:45:47+02:00
+> **Auto-generado**: 2025-09-20T22:45:00+02:00
+> **Última optimización**: Animaciones neon optimizadas para rendimiento
 
 ## **Stack Tecnológico Confirmado**
 
@@ -38,6 +39,23 @@
   "git": "Husky pre-commit hooks"
 }
 ```
+
+### **🚀 Optimizaciones de Rendimiento Recientes**
+
+```json
+{
+  "neonAnimations": "Convertidas a hover-only (eliminadas infinitas)",
+  "backgroundEffects": "Opacidad dinámica por scroll optimizada",
+  "textEffects": "Gradientes neon con GPU acceleration",
+  "languageSelector": "Backdrop blur mejorado sin impacto performance"
+}
+```
+
+**Mejoras Críticas Implementadas:**
+- ✅ Eliminadas animaciones CSS infinitas (`shine`, `subtlePulse`)
+- ✅ Optimizado rendering de partículas en background
+- ✅ Implementado lazy loading para efectos pesados
+- ✅ Reducido repainting en scroll events
 
 ---
 
