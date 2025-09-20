@@ -200,7 +200,7 @@ export function CloudLightningBackground() {
 
     const { width, height } = canvas;
     const particles = particlesRef.current;
-    const mouse = mouseRef.current;
+    const mouse = mouseRef.current ?? { x: -1000, y: -1000 };
     const opacityVal = Math.max(0, Math.min(1, opacityRef.current));
 
     // Radio de luz y número de partículas efectivos según opacidad
@@ -256,9 +256,13 @@ export function CloudLightningBackground() {
     // Dibujar y animar solo las partículas activas
     for (let i = 0; i < activeCount; i++) {
       const particle = particles[i];
-      // Actualizar posición
-      particle.x += particle.vx;
-      particle.y += particle.vy;
+      // Protección defensiva: si la partícula no existe (p. ej. la animación
+      // arrancó antes de que se rellenara particlesRef), evitar el crash.
+      if (!particle) continue;
+
+      // Actualizar posición (usar valores por defecto si faltan propiedades)
+      particle.x = (particle.x ?? 0) + (particle.vx ?? 0);
+      particle.y = (particle.y ?? 0) + (particle.vy ?? 0);
 
       // Rebotar en los bordes
       if (particle.x < 0 || particle.x > width) particle.vx *= -1;
