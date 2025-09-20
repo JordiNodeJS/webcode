@@ -1,4 +1,4 @@
-// 🔬 Analizador Completo de Performance - Todos los Componentes WebSnack
+// 🔬 Analizador Completo de Performance - Todos los Componentes WebCode
 // src/scripts/full-performance-analysis.ts
 
 export interface ComponentMetrics {
@@ -537,7 +537,7 @@ export class FullPerformanceAnalyzer {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebSnack - Análisis Completo de Rendimiento</title>
+    <title>WebCode - Análisis Completo de Rendimiento</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -558,7 +558,7 @@ export class FullPerformanceAnalyzer {
     <div class="container mx-auto p-8 max-w-7xl">
         <header class="mb-8">
             <h1 class="text-4xl font-bold text-primary mb-2">🔬 Análisis Completo de Rendimiento</h1>
-            <p class="text-gray-600">WebSnack - Todos los Componentes</p>
+            <p class="text-gray-600">WebCode - Todos los Componentes</p>
             <div class="mt-4 flex gap-4">
                 <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
                     📅 ${new Date(report.timestamp).toLocaleString("es-ES")}

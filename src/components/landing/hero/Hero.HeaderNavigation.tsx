@@ -36,7 +36,7 @@ const languages = [
  * Navegación principal del header
  *
  * Componente Client Component para manejar la interactividad del menú móvil
- * y el selector de idiomas. Usa el sistema de colores WebSnack.
+ * y el selector de idiomas. Usa el sistema de colores WebCode.
  *
  * Optimizado usando React hooks estándar y Tailwind CSS.
  */
@@ -46,10 +46,22 @@ export function HeaderNavigation() {
   const scrollPosition = useScrollPosition();
   const isScrolled = scrollPosition.y > 10;
 
+  // Opacidad dinámica del fondo según scroll (1 en top -> 0 tras fadeEnd px)
+  const fadeStart = 0; // px desde el top donde empieza a desvanecerse
+  const fadeEnd = 240; // px a partir de los cuales la opacidad llega a 0
+  const progress = Math.min(
+    1,
+    Math.max(
+      0,
+      (scrollPosition.y - fadeStart) / Math.max(1, fadeEnd - fadeStart)
+    )
+  );
+  const bgOpacity = 1 - progress; // 1 -> 0
+
   // Función para manejar el smooth scroll con offset para el header responsive
   const handleSmoothScroll = (
     href: string,
-    event: React.MouseEvent<HTMLAnchorElement>,
+    event: React.MouseEvent<HTMLAnchorElement>
   ) => {
     event.preventDefault();
 
@@ -71,9 +83,13 @@ export function HeaderNavigation() {
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ease-out ${
         isScrolled
-          ? "bg-background/90 backdrop-blur-lg border-b border-border/40 shadow-xl py-2"
-          : "bg-background/80 backdrop-blur-md border-b border-border/30 shadow-lg py-4"
+          ? "backdrop-blur-lg border-b border-border/40 shadow-xl py-2"
+          : "backdrop-blur-md border-b border-border/30 shadow-lg py-4"
       }`}
+      // Usamos tokens CSS del tema para que funcione en light/dark: hsl(var(--background)/alpha)
+      style={{
+        backgroundColor: `hsl(var(--background) / ${bgOpacity.toFixed(3)})`,
+      }}
     >
       <nav className="container mx-auto px-4">
         <div className="flex items-center justify-between">
@@ -115,7 +131,7 @@ export function HeaderNavigation() {
             {/* Language Selector */}
             <WSFadeIn delay={0.3}>
               <div
-                className={`hidden md:flex items-center space-x-1 bg-muted transition-all duration-300 ${
+                className={`hidden md:flex items-center space-x-1 bg-muted/40 backdrop-blur-sm transition-all duration-300 ${
                   isScrolled ? "rounded-md p-0.5 scale-90" : "rounded-lg p-1"
                 }`}
               >
@@ -128,8 +144,8 @@ export function HeaderNavigation() {
                       isScrolled ? "px-1.5 py-0.5 text-xs" : "px-2 py-1 text-sm"
                     } ${
                       currentLanguage === lang.code
-                        ? "bg-primary text-primary-foreground"
-                        : "text-muted-foreground hover:text-foreground"
+                        ? "bg-primary/60 text-primary-foreground/80 backdrop-blur-sm"
+                        : "text-muted-foreground/50 hover:text-foreground/80 hover:bg-muted/30"
                     }`}
                   >
                     {lang.label}
@@ -147,7 +163,7 @@ export function HeaderNavigation() {
             <div className="md:hidden flex items-center space-x-2">
               {/* Mobile Language Selector */}
               <WSFadeIn delay={0.3}>
-                <div className="flex items-center space-x-1 bg-muted rounded-md p-0.5">
+                <div className="flex items-center space-x-1 bg-muted/40 backdrop-blur-sm rounded-md p-0.5">
                   {languages.map((lang) => (
                     <button
                       type="button"
@@ -155,8 +171,8 @@ export function HeaderNavigation() {
                       onClick={() => setCurrentLanguage(lang.code)}
                       className={`px-1.5 py-0.5 text-xs font-medium rounded transition-all duration-300 ${
                         currentLanguage === lang.code
-                          ? "bg-primary text-primary-foreground"
-                          : "text-muted-foreground hover:text-foreground"
+                          ? "bg-primary/60 text-primary-foreground/80 backdrop-blur-sm"
+                          : "text-muted-foreground/50 hover:text-foreground/80 hover:bg-muted/30"
                       }`}
                     >
                       {lang.label}

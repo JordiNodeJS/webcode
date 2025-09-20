@@ -519,7 +519,7 @@ function generateHTMLReport(report) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebSnack - Análisis Completo de Rendimiento</title>
+    <title>WebCode - Análisis Completo de Rendimiento</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -540,7 +540,7 @@ function generateHTMLReport(report) {
     <div class="container mx-auto p-8 max-w-7xl">
         <header class="mb-8">
             <h1 class="text-4xl font-bold text-primary mb-2">🔬 Análisis Completo de Rendimiento</h1>
-            <p class="text-gray-600">WebSnack - Todos los Componentes (Playwright Automation)</p>
+            <p class="text-gray-600">WebCode - Todos los Componentes (Playwright Automation)</p>
             <div class="mt-4 flex gap-4">
                 <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
                     📅 ${new Date(report.timestamp).toLocaleString("es-ES")}
@@ -628,7 +628,7 @@ function generateHTMLReport(report) {
                     <div class="flex justify-between items-start mb-4">
                         <div>
                             <h3 class="text-xl font-semibold">${comp.name}</h3>
-                            <div class="text-sm text-gray-600">WebSnack Component</div>
+                            <div class="text-sm text-gray-600">WebCode Component</div>
                         </div>
                         <div class="text-right">
                             <div class="text-sm text-gray-600">FPS</div>
@@ -719,7 +719,7 @@ function generateHTMLReport(report) {
         </div>
         
         <footer class="mt-8 pt-8 border-t text-center text-gray-500">
-            <p>🤖 Generated automatically with Playwright • WebSnack Performance Lab</p>
+            <p>🤖 Generated automatically with Playwright • WebCode Performance Lab</p>
         </footer>
     </div>
 </body>
