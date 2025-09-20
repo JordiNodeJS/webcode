@@ -29,6 +29,25 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Recursos y Herramientas
+
+### Favicon y App Icons
+
+Para generar favicons y app icons optimizados para todas las plataformas:
+
+**🔗 [Favicon Generator](https://www.favicon-generator.org/)**
+
+Esta herramienta genera automáticamente:
+
+- Favicons para navegadores (16x16, 32x32, 96x96)
+- Apple Touch Icons para iOS (7 tamaños diferentes)
+- Android Icons para PWA (6 tamaños diferentes)
+- Microsoft Tiles para Windows (4 tamaños diferentes)
+- `manifest.json` para Web App
+- `browserconfig.xml` para Windows
+
+**Ubicación**: Todos los archivos se almacenan en `/public/` y están referenciados en `src/app/layout.tsx`.
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
