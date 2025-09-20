@@ -46,10 +46,22 @@ export function HeaderNavigation() {
   const scrollPosition = useScrollPosition();
   const isScrolled = scrollPosition.y > 10;
 
+  // Opacidad dinámica del fondo según scroll (1 en top -> 0 tras fadeEnd px)
+  const fadeStart = 0; // px desde el top donde empieza a desvanecerse
+  const fadeEnd = 240; // px a partir de los cuales la opacidad llega a 0
+  const progress = Math.min(
+    1,
+    Math.max(
+      0,
+      (scrollPosition.y - fadeStart) / Math.max(1, fadeEnd - fadeStart)
+    )
+  );
+  const bgOpacity = 1 - progress; // 1 -> 0
+
   // Función para manejar el smooth scroll con offset para el header responsive
   const handleSmoothScroll = (
     href: string,
-    event: React.MouseEvent<HTMLAnchorElement>,
+    event: React.MouseEvent<HTMLAnchorElement>
   ) => {
     event.preventDefault();
 
@@ -71,9 +83,13 @@ export function HeaderNavigation() {
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ease-out ${
         isScrolled
-          ? "bg-background/90 backdrop-blur-lg border-b border-border/40 shadow-xl py-2"
-          : "bg-background/80 backdrop-blur-md border-b border-border/30 shadow-lg py-4"
+          ? "backdrop-blur-lg border-b border-border/40 shadow-xl py-2"
+          : "backdrop-blur-md border-b border-border/30 shadow-lg py-4"
       }`}
+      // Usamos tokens CSS del tema para que funcione en light/dark: hsl(var(--background)/alpha)
+      style={{
+        backgroundColor: `hsl(var(--background) / ${bgOpacity.toFixed(3)})`,
+      }}
     >
       <nav className="container mx-auto px-4">
         <div className="flex items-center justify-between">
