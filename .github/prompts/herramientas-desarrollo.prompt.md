@@ -55,7 +55,43 @@ Utilizar el MCP Context7 para:
 
 ---
 
-## **3. SHADCN/UI MCP - Gestión de Componentes**
+## **3. HERRAMIENTAS DE RECURSOS Y ASSETS**
+
+### **Favicon Generator**
+
+**🔗 Herramienta**: [https://www.favicon-generator.org/](https://www.favicon-generator.org/)
+
+**Propósito**: Generación completa de favicons y app icons para todas las plataformas
+
+**Características**:
+
+- **Generación automática** de todos los tamaños requeridos (16x16 hasta 310x310)
+- **Soporte multiplataforma**: iOS, Android, Windows, navegadores web
+- **Archivos generados**:
+  - `favicon.ico` - Favicon básico para navegadores
+  - Apple Touch Icons (7 tamaños diferentes)
+  - Android Icons (6 tamaños diferentes)
+  - Microsoft Tiles (4 tamaños diferentes)
+  - `manifest.json` - Web App Manifest
+  - `browserconfig.xml` - Configuración para Windows
+
+**Integración en WEBCODE**:
+
+- Todos los archivos se ubican en `/public/`
+- Referencias configuradas en `src/app/layout.tsx`
+- Manifest personalizado para PWA
+- Meta tags optimizadas para SEO
+
+**Uso recomendado**:
+
+1. Subir logo en alta resolución (mínimo 260x260px)
+2. Descargar el paquete completo
+3. Copiar archivos a `/public/`
+4. Actualizar referencias en layout si es necesario
+
+---
+
+## **4. SHADCN/UI MCP - Gestión de Componentes**
 
 ### **Integración con shadcn/ui**
 
@@ -69,7 +105,7 @@ Para uso detallado de shadcn/ui, consultar: `./shadcn.prompt.md`
 
 ---
 
-## **Flujo de Trabajo Integrado**
+## **5. FLUJO DE TRABAJO INTEGRADO**
 
 ### **Desarrollo → Testing → Verificación**
 

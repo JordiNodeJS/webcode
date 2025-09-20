@@ -112,11 +112,26 @@ export function HeaderNavigation() {
               <Link
                 href="/"
                 onClick={handleLogoClick}
-                className={`font-bold text-gradient-webcode transition-all duration-300 ${
+                style={{ display: "inline-flex", alignItems: "center" }}
+                className={`font-bold text-gradient-webcode transition-all duration-300 whitespace-nowrap ${
                   isScrolled ? "text-xl" : "text-2xl"
                 }`}
               >
-                WebCode
+                <span
+                  className={`inline-flex items-center gap-2`}
+                  style={{ display: "inline-flex", alignItems: "center" }}
+                >
+                  <img
+                    src="/favicon-32x32.png"
+                    alt="WEBCODE Logo"
+                    width={32}
+                    height={32}
+                    className={`transition-all duration-300 flex-shrink-0 object-contain ${
+                      isScrolled ? "w-6 h-6" : "w-8 h-8"
+                    }`}
+                  />
+                  <span className="leading-none">WebCode</span>
+                </span>
               </Link>
             </div>
           </WSFadeIn>
