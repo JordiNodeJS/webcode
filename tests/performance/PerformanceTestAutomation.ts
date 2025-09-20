@@ -210,7 +210,7 @@ class PerformanceTestAutomation {
     console.log("=".repeat(50));
 
     let report = `
-# 🔬 Reporte Automatizado de Rendimiento WebSnack
+# 🔬 Reporte Automatizado de Rendimiento WebCode
 ## Generado: ${new Date().toLocaleString()}
 
 ### 📊 Resultados por Escenario

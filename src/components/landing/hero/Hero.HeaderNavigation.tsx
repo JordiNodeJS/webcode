@@ -36,7 +36,7 @@ const languages = [
  * Navegación principal del header
  *
  * Componente Client Component para manejar la interactividad del menú móvil
- * y el selector de idiomas. Usa el sistema de colores WebSnack.
+ * y el selector de idiomas. Usa el sistema de colores WebCode.
  *
  * Optimizado usando React hooks estándar y Tailwind CSS.
  */
