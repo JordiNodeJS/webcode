@@ -129,6 +129,27 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Estilos personalizados para títulos con efecto neón cyan suavizado */
+.neon-cyan-title {
+  position: relative;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 0 0 3px #0bf4f3, 0 0 6px #0bf4f3, 0 0 12px #0bf4f3;
+}
+
+.neon-cyan-card-title {
+  position: relative;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 0 0 1px #0bf4f3, 0 0 2px #0bf4f3;
+  transition: text-shadow 0.3s ease;
+}
+
+.neon-cyan-card-title:hover {
+  text-shadow: none;
+}
+
 @layer base {
   * {
     border-color: hsl(var(--border));
@@ -892,20 +913,4 @@ main > section:first-of-type {
     background: oklch(var(--primary));
     color: oklch(var(--primary-foreground));
   }
-}
-
-/* Estilos personalizados para títulos con efecto neón cyan suavizado */
-.neon-cyan-title {
-  position: relative;
-  text-align: center;
-  font-size: 50px;
-  font-weight: bold;
-  text-shadow: 0 0 3px #0bf4f3, 0 0 6px #0bf4f3, 0 0 12px #0bf4f3;
-}
-
-.neon-cyan-card-title {
-  position: relative;
-  font-size: 24px;
-  font-weight: bold;
-  text-shadow: 0 0 2px #0bf4f3, 0 0 4px #0bf4f3, 0 0 8px #0bf4f3;
 }
