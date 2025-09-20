@@ -1,6 +1,6 @@
-# ⚙️ Contexto Técnico Actual - WebSnack
+# ⚙️ Contexto Técnico Actual - WEBCODE
 
-> **Auto-generado**: 2025-09-03T18:45:47+02:00
+> **Auto-generado**: 2025-09-20T18:45:47+02:00
 
 ## **Stack Tecnológico Confirmado**
 

@@ -1,12 +1,12 @@
 # Documento de Requisitos del Producto (PRD)
 
-## WebSnack - Plataforma de Desarrollo Web Freelance
+## WEBCODE - Plataforma de Desarrollo Web Freelance
 
 ---
 
 ### 1. Título
 
-WebSnack: Plataforma Integral de Desarrollo Web y Soluciones Digitales para Freelancers y Pequeñas Empresas
+WEBCODE: Plataforma Integral de Desarrollo Web y Soluciones Digitales para Freelancers y Pequeñas Empresas
 
 ---
 
