@@ -76,11 +76,10 @@ ed79b9e feat: Add comprehensive rules for WebSnack development standards, includ
 
 - **Package.json exists**: ✅ Sí - Configurado para Next.js 15
 - **Next.js installed**: ✅ Sí - v15.4.0 con App Router
-<<<<<<< HEAD
-- **TypeScript config**: ✅ Sí - Modo estricto habilitado  
-=======
+  <<<<<<< HEAD
+- # **TypeScript config**: ✅ Sí - Modo estricto habilitado
 - **TypeScript config**: ✅ Sí - Modo estricto habilitado
->>>>>>> feat/11-1
+  > > > > > > > feat/11-1
 - **shadcn/ui**: ✅ Instalado y configurado
 - **Performance**: ✅ Optimizado - Animaciones críticas arregladas
 
