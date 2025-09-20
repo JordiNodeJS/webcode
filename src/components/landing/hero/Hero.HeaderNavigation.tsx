@@ -131,7 +131,7 @@ export function HeaderNavigation() {
             {/* Language Selector */}
             <WSFadeIn delay={0.3}>
               <div
-                className={`hidden md:flex items-center space-x-1 bg-muted transition-all duration-300 ${
+                className={`hidden md:flex items-center space-x-1 bg-muted/40 backdrop-blur-sm transition-all duration-300 ${
                   isScrolled ? "rounded-md p-0.5 scale-90" : "rounded-lg p-1"
                 }`}
               >
@@ -144,8 +144,8 @@ export function HeaderNavigation() {
                       isScrolled ? "px-1.5 py-0.5 text-xs" : "px-2 py-1 text-sm"
                     } ${
                       currentLanguage === lang.code
-                        ? "bg-primary text-primary-foreground"
-                        : "text-muted-foreground hover:text-foreground"
+                        ? "bg-primary/60 text-primary-foreground/80 backdrop-blur-sm"
+                        : "text-muted-foreground/50 hover:text-foreground/80 hover:bg-muted/30"
                     }`}
                   >
                     {lang.label}
@@ -163,7 +163,7 @@ export function HeaderNavigation() {
             <div className="md:hidden flex items-center space-x-2">
               {/* Mobile Language Selector */}
               <WSFadeIn delay={0.3}>
-                <div className="flex items-center space-x-1 bg-muted rounded-md p-0.5">
+                <div className="flex items-center space-x-1 bg-muted/40 backdrop-blur-sm rounded-md p-0.5">
                   {languages.map((lang) => (
                     <button
                       type="button"
@@ -171,8 +171,8 @@ export function HeaderNavigation() {
                       onClick={() => setCurrentLanguage(lang.code)}
                       className={`px-1.5 py-0.5 text-xs font-medium rounded transition-all duration-300 ${
                         currentLanguage === lang.code
-                          ? "bg-primary text-primary-foreground"
-                          : "text-muted-foreground hover:text-foreground"
+                          ? "bg-primary/60 text-primary-foreground/80 backdrop-blur-sm"
+                          : "text-muted-foreground/50 hover:text-foreground/80 hover:bg-muted/30"
                       }`}
                     >
                       {lang.label}
