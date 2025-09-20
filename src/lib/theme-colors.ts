@@ -1,7 +1,13 @@
 /**
  * Sistema de colores del tema WebCode
  *
- * Colores extraídos del sistema de variables CSS del proyecto
+ * Col    gradients: {
+      hero: {
+        from: "rgb(255, 252, 247)", // #fffcf7 - Crema suave
+        via: "rgb(244, 251, 252)", // #f4fbfc - Azul muy claro
+        to: "rgb(236, 254, 255)", // cyan-50 equivalent
+      },
+    },traídos del sistema de variables CSS del proyecto
  * para ser utilizados en componentes JavaScript/Canvas que no pueden
  * acceder directamente a las variables CSS.
  */
@@ -45,9 +51,9 @@ export const THEME_COLORS = {
       muted: "rgb(100, 116, 139)", // slate-500
     },
     accent: {
-      // Basado en el primary del tema: oklch(0.57 0.2 328.5) ≈ pink/magenta
-      primary: "rgb(220, 124, 179)", // primary color
-      secondary: "rgb(59, 130, 246)", // blue-500 para secondary
+      // Colores del tema WebSnack: rosa principal y aguamarina
+      primary: "rgb(220, 124, 179)", // #dc7cb3 - Rosa WebSnack
+      secondary: "rgb(188, 227, 229)", // #bce3e5 - Aguamarina WebSnack
       border: "rgb(203, 213, 225)", // slate-300
     },
     gradients: {
@@ -71,9 +77,9 @@ export const THEME_COLORS = {
       muted: "rgb(148, 163, 184)", // slate-400
     },
     accent: {
-      // Colores más brillantes para modo oscuro
-      primary: "rgb(240, 171, 252)", // purple-300 equivalent
-      secondary: "rgb(96, 165, 250)", // blue-400
+      // Colores WebSnack para modo oscuro - tonos más sutiles pero manteniendo la paleta
+      primary: "rgb(240, 171, 252)", // Rosa más claro para modo oscuro
+      secondary: "rgb(165, 243, 252)", // Aguamarina más claro para modo oscuro
       border: "rgb(75, 85, 99)", // gray-600
     },
     gradients: {

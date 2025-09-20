@@ -129,6 +129,29 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Sombras 3D del Sistema WAS - WebSnack Animation System */
+:root {
+  --shadow-3d-xs: 2px 2px 0px 0px oklch(0.57 0.2 328.5 / 0.4);
+  --shadow-3d-sm: 3px 3px 0px 0px oklch(0.57 0.2 328.5 / 0.6);
+  --shadow-3d-md: 3px 3px 0px 0px oklch(0.57 0.2 328.5 / 0.8),
+    1px 1px 2px -1px oklch(0.57 0.2 328.5 / 0.4);
+  --shadow-3d-lg: 4px 4px 0px 0px oklch(0.57 0.2 328.5 / 0.8),
+    2px 2px 4px -1px oklch(0.57 0.2 328.5 / 0.4);
+  --shadow-3d-xl: 6px 6px 0px 0px oklch(0.57 0.2 328.5 / 0.9),
+    3px 3px 6px -1px oklch(0.57 0.2 328.5 / 0.5);
+}
+
+.dark {
+  --shadow-3d-xs: 2px 2px 0px 0px oklch(0.84 0.16 328.5 / 0.4);
+  --shadow-3d-sm: 3px 3px 0px 0px oklch(0.84 0.16 328.5 / 0.6);
+  --shadow-3d-md: 3px 3px 0px 0px oklch(0.84 0.16 328.5 / 0.8),
+    1px 1px 2px -1px oklch(0.84 0.16 328.5 / 0.4);
+  --shadow-3d-lg: 4px 4px 0px 0px oklch(0.84 0.16 328.5 / 0.8),
+    2px 2px 4px -1px oklch(0.84 0.16 328.5 / 0.4);
+  --shadow-3d-xl: 6px 6px 0px 0px oklch(0.84 0.16 328.5 / 0.9),
+    3px 3px 6px -1px oklch(0.84 0.16 328.5 / 0.5);
+}
+
 /* Estilos personalizados para títulos con efecto neón cyan suavizado */
 .neon-cyan-title {
   position: relative;
@@ -153,7 +176,8 @@
   background: linear-gradient(
     135deg,
     oklch(0.84 0.16 328.5) 0%,
-    /* Rosa brillante modo oscuro */ oklch(0.75 0.18 184.1) 100% /* Aguamarina modo oscuro */
+    /* Rosa brillante modo oscuro */ oklch(0.75 0.18 184.1) 100%
+      /* Aguamarina modo oscuro */
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -186,7 +210,8 @@
   background: linear-gradient(
     135deg,
     oklch(0.84 0.16 328.5) 0%,
-    /* Rosa brillante modo oscuro */ oklch(0.75 0.18 184.1) 100% /* Aguamarina modo oscuro */
+    /* Rosa brillante modo oscuro */ oklch(0.75 0.18 184.1) 100%
+      /* Aguamarina modo oscuro */
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -201,7 +226,8 @@
   background: linear-gradient(
     135deg,
     oklch(0.65 0.16 328.5) 0%,
-    /* Rosa más intenso */ oklch(0.82 0.08 184.1) 100% /* Aguamarina más intenso */
+    /* Rosa más intenso */ oklch(0.82 0.08 184.1) 100%
+      /* Aguamarina más intenso */
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -214,7 +240,8 @@
   background: linear-gradient(
     135deg,
     oklch(0.89 0.18 328.5) 0%,
-    /* Rosa más brillante */ oklch(0.80 0.20 184.1) 100% /* Aguamarina más brillante */
+    /* Rosa más brillante */ oklch(0.8 0.2 184.1) 100%
+      /* Aguamarina más brillante */
   );
   -webkit-background-clip: text;
   background-clip: text;

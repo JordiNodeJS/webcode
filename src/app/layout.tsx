@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { AnimationProvider } from "@/contexts/AnimationContext";
 import { initWebVitals } from "@/lib/web-vitals";
+import { DefaultBackground } from "@/components/ui/DefaultBackground";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -63,7 +64,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <AnimationProvider>{children}</AnimationProvider>
+          <AnimationProvider>
+            <DefaultBackground />
+            {children}
+          </AnimationProvider>
         </ThemeProvider>
       </body>
     </html>
