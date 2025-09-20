@@ -16,6 +16,7 @@
 import { useTheme } from "next-themes";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { getThemeColors, parseRgbColor } from "@/lib/theme-colors";
+import useScrollPosition from "@/hooks/use-scroll-position";
 
 interface CloudParticle {
   x: number;
@@ -44,6 +45,13 @@ const BASE_CONFIG = {
   LIGHT_INTENSITY: 0.8,
   ANIMATION_SPEED: 60, // FPS target
 } as const;
+
+// Límites dinámicos para ahorro de CPU cuando el fondo se desvanece
+const MIN_LIGHT_RADIUS = Math.max(
+  40,
+  Math.floor(BASE_CONFIG.LIGHT_RADIUS * 0.3)
+);
+const MIN_PARTICLE_COUNT = 8; // mínimo para mantener algo de presencia si no está totalmente oculto
 
 // Función para crear configuraciones específicas por tema usando los colores del sistema
 const createThemeConfig = (theme: "light" | "dark") => {
@@ -85,6 +93,18 @@ export function CloudLightningBackground() {
   const isVisibleRef = useRef(true);
   const containerRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
+  const [isIntersecting, setIsIntersecting] = useState<boolean>(true);
+  const opacityRef = useRef<number>(1);
+
+  // Scroll -> opacidad dinámica del fondo (1 en top -> 0 tras fadeEnd px)
+  const scroll = useScrollPosition();
+  const fadeStart = 0; // px
+  const fadeEnd = 800; // px hasta desaparecer
+  const progress = Math.min(
+    1,
+    Math.max(0, (scroll.y - fadeStart) / Math.max(1, fadeEnd - fadeStart))
+  );
+  const opacity = 1 - progress; // 1 -> 0
 
   // Evitar hidratación mismatch - solo inicializar después del mount
   useEffect(() => {
@@ -139,16 +159,20 @@ export function CloudLightningBackground() {
 
   // Función para calcular la iluminación de una partícula
   const calculateLighting = useCallback(
-    (particle: CloudParticle, mouseX: number, mouseY: number): number => {
+    (
+      particle: CloudParticle,
+      mouseX: number,
+      mouseY: number,
+      effectiveRadius: number
+    ): number => {
       const dx = particle.x - mouseX;
       const dy = particle.y - mouseY;
       const distance = Math.sqrt(dx * dx + dy * dy);
 
-      if (distance > currentConfig.LIGHT_RADIUS) return 0;
+      if (distance > effectiveRadius) return 0;
 
       const intensity =
-        (1 - distance / currentConfig.LIGHT_RADIUS) *
-        currentConfig.LIGHT_INTENSITY;
+        (1 - distance / effectiveRadius) * currentConfig.LIGHT_INTENSITY;
       return intensity ** 2; // Exponential falloff para efecto más dramático
     },
     [currentConfig]
@@ -156,7 +180,13 @@ export function CloudLightningBackground() {
 
   // Función principal de animación
   const animate = useCallback(() => {
-    if (!canvasRef.current || !isVisibleRef.current) return;
+    if (
+      !canvasRef.current ||
+      !isVisibleRef.current ||
+      opacityRef.current <= 0.01
+    ) {
+      return;
+    }
 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -165,6 +195,23 @@ export function CloudLightningBackground() {
     const { width, height } = canvas;
     const particles = particlesRef.current;
     const mouse = mouseRef.current;
+    const opacityVal = Math.max(0, Math.min(1, opacityRef.current));
+
+    // Radio de luz y número de partículas efectivos según opacidad
+    const effectiveRadius =
+      MIN_LIGHT_RADIUS +
+      (BASE_CONFIG.LIGHT_RADIUS - MIN_LIGHT_RADIUS) * opacityVal;
+    const activeCount =
+      opacityVal <= 0.01
+        ? 0
+        : Math.max(
+            MIN_PARTICLE_COUNT,
+            Math.floor(BASE_CONFIG.PARTICLE_COUNT * opacityVal)
+          );
+
+    // Aplicar opacidad global según scroll
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, Math.min(1, opacityRef.current));
 
     // Limpiar canvas con fondo adaptado al tema
     ctx.fillStyle = currentConfig.BACKGROUND_COLOR;
@@ -178,7 +225,7 @@ export function CloudLightningBackground() {
         0,
         mouse.x,
         mouse.y,
-        currentConfig.LIGHT_RADIUS
+        effectiveRadius
       );
       gradient.addColorStop(
         0,
@@ -205,8 +252,9 @@ export function CloudLightningBackground() {
       ctx.fillRect(0, 0, width, height);
     }
 
-    // Dibujar y animar partículas
-    particles.forEach((particle) => {
+    // Dibujar y animar solo las partículas activas
+    for (let i = 0; i < activeCount; i++) {
+      const particle = particles[i];
       // Actualizar posición
       particle.x += particle.vx;
       particle.y += particle.vy;
@@ -220,7 +268,12 @@ export function CloudLightningBackground() {
       particle.y = Math.max(0, Math.min(height, particle.y));
 
       // Calcular iluminación
-      const lighting = calculateLighting(particle, mouse.x, mouse.y);
+      const lighting = calculateLighting(
+        particle,
+        mouse.x,
+        mouse.y,
+        effectiveRadius
+      );
       particle.brightness = lighting;
 
       // Preparar para dibujar
@@ -274,7 +327,9 @@ export function CloudLightningBackground() {
       ctx.fill();
 
       ctx.restore();
-    });
+    }
+
+    ctx.restore();
 
     animationRef.current = requestAnimationFrame(animate);
   }, [calculateLighting, currentConfig]);
@@ -328,12 +383,7 @@ export function CloudLightningBackground() {
       (entries) => {
         entries.forEach((entry) => {
           isVisibleRef.current = entry.isIntersecting;
-          if (entry.isIntersecting && !animationRef.current) {
-            animate();
-          } else if (!entry.isIntersecting && animationRef.current) {
-            cancelAnimationFrame(animationRef.current);
-            animationRef.current = null;
-          }
+          setIsIntersecting(entry.isIntersecting);
         });
       },
       {
@@ -346,8 +396,10 @@ export function CloudLightningBackground() {
       observer.observe(containerRef.current);
     }
 
-    // Iniciar animación
-    animate();
+    // Iniciar animación (si corresponde)
+    if (isVisibleRef.current && opacityRef.current > 0.01) {
+      animate();
+    }
 
     // Cleanup
     return () => {
@@ -361,10 +413,23 @@ export function CloudLightningBackground() {
     };
   }, [animate, handleMouseMove, handleMouseLeave, resizeCanvas]);
 
+  // Arrancar/parar animación según intersección u opacidad
+  useEffect(() => {
+    opacityRef.current = opacity;
+    const shouldAnimate = isIntersecting && opacity > 0.01;
+    if (shouldAnimate && !animationRef.current) {
+      animate();
+    } else if (!shouldAnimate && animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+      animationRef.current = null;
+    }
+  }, [isIntersecting, opacity, animate]);
+
   return (
     <div
       ref={containerRef}
-      className="cloud-lightning-background absolute inset-0 overflow-hidden pointer-events-none bg-gradient-webcode"
+      className="cloud-lightning-background absolute inset-0 overflow-hidden pointer-events-none bg-gradient-webcode transition-opacity duration-300 ease-out will-change-[opacity]"
+      style={{ opacity }}
     >
       <canvas
         ref={canvasRef}
