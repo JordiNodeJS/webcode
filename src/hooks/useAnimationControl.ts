@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useState } from "react";
+import { type RefObject, useState } from "react";
 import useIsomorphicEffect from "./use-isomorphic-effect";
 
 interface AnimationControlOptions {
@@ -14,7 +14,7 @@ interface AnimationControlOptions {
  */
 export function useAnimationControl(
   ref: RefObject<HTMLElement | null>,
-  options: AnimationControlOptions = {}
+  options: AnimationControlOptions = {},
 ) {
   const {
     onEnterViewport,
@@ -33,7 +33,7 @@ export function useAnimationControl(
 
     // Respetar preferencias de accesibilidad
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
 
     if (prefersReducedMotion) {
@@ -65,7 +65,7 @@ export function useAnimationControl(
       {
         threshold,
         rootMargin,
-      }
+      },
     );
 
     if (ref.current) {

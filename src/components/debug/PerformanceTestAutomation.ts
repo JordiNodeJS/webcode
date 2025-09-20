@@ -1,7 +1,7 @@
 // Script de automatización de pruebas de rendimiento con Playwright
 // Este script se ejecutará cuando el servidor esté disponible
 
-import { test, expect, Browser, Page } from "@playwright/test";
+import { expect, type Page, test } from "@playwright/test";
 
 interface PerformanceMetrics {
   fps: number;
@@ -46,16 +46,16 @@ class PerformanceTestAutomation {
     const fps = await this.page.textContent('[data-testid="fps-value"]');
     const memory = await this.page.textContent('[data-testid="memory-value"]');
     const renderCount = await this.page.textContent(
-      '[data-testid="render-count"]'
+      '[data-testid="render-count"]',
     );
     const state = await this.page.textContent(
-      '[data-testid="state-indicator"]'
+      '[data-testid="state-indicator"]',
     );
 
     return {
-      fps: parseInt(fps?.replace(" FPS", "") || "0"),
-      memory: parseInt(memory?.replace(" MB", "") || "0"),
-      renderCount: parseInt(renderCount || "0"),
+      fps: parseInt(fps?.replace(" FPS", "") || "0", 10),
+      memory: parseInt(memory?.replace(" MB", "") || "0", 10),
+      renderCount: parseInt(renderCount || "0", 10),
       state: state?.includes("REPOSO") ? "REPOSO" : "ACTIVO",
       scenario: await this.getCurrentScenario(),
       timestamp: Date.now(),
@@ -64,7 +64,7 @@ class PerformanceTestAutomation {
 
   async getCurrentScenario(): Promise<string> {
     const activeScenario = await this.page.textContent(
-      '[data-testid="active-scenario"]'
+      '[data-testid="active-scenario"]',
     );
     return activeScenario || "unknown";
   }
@@ -86,7 +86,7 @@ class PerformanceTestAutomation {
 
   async measureIdlePerformance(
     scenario: string,
-    duration: number = 30000
+    duration: number = 30000,
   ): Promise<TestResults> {
     console.log(`🔍 Midiendo rendimiento en reposo para: ${scenario}`);
 
@@ -112,7 +112,7 @@ class PerformanceTestAutomation {
 
   async measureActivePerformance(
     scenario: string,
-    duration: number = 20000
+    duration: number = 20000,
   ): Promise<TestResults> {
     console.log(`⚡ Midiendo rendimiento activo para: ${scenario}`);
 
@@ -151,7 +151,7 @@ class PerformanceTestAutomation {
 
   private calculateResults(
     scenario: string,
-    metrics: PerformanceMetrics[]
+    metrics: PerformanceMetrics[],
   ): TestResults {
     const fpsList = metrics.map((m) => m.fps);
     const memoryList = metrics.map((m) => m.memory);
@@ -164,7 +164,7 @@ class PerformanceTestAutomation {
       minFPS: Math.min(...fpsList),
       maxFPS: Math.max(...fpsList),
       avgMemory: Math.round(
-        memoryList.reduce((a, b) => a + b, 0) / memoryList.length
+        memoryList.reduce((a, b) => a + b, 0) / memoryList.length,
       ),
       idleTime: idleMetrics.length,
       activeTime: activeMetrics.length,
@@ -192,7 +192,7 @@ class PerformanceTestAutomation {
       // Prueba activa (20 segundos)
       const activeResults = await this.measureActivePerformance(
         scenario,
-        20000
+        20000,
       );
       activeResults.scenario += "-active";
       results.push(activeResults);
@@ -232,10 +232,10 @@ class PerformanceTestAutomation {
 - **Memoria Promedio**: ${result.avgMemory} MB
 - **Muestras Totales**: ${result.totalSamples}
 - **Tiempo en Reposo**: ${Math.round(
-        (result.idleTime / result.totalSamples) * 100
+        (result.idleTime / result.totalSamples) * 100,
       )}%
 - **Tiempo Activo**: ${Math.round(
-        (result.activeTime / result.totalSamples) * 100
+        (result.activeTime / result.totalSamples) * 100,
       )}%
 
 `;
@@ -243,10 +243,10 @@ class PerformanceTestAutomation {
 
     // Análisis comparativo
     const originalIdle = this.results.find(
-      (r) => r.scenario === "original-idle"
+      (r) => r.scenario === "original-idle",
     );
     const optimizedIdle = this.results.find(
-      (r) => r.scenario === "optimized-idle"
+      (r) => r.scenario === "optimized-idle",
     );
     const staticIdle = this.results.find((r) => r.scenario === "static-idle");
 
@@ -260,7 +260,7 @@ class PerformanceTestAutomation {
         staticIdle.avgFPS
       } | ${(
         ((optimizedIdle.avgFPS - originalIdle.avgFPS) / originalIdle.avgFPS) *
-        100
+          100
       ).toFixed(1)}% |
 | FPS Mínimo | ${originalIdle.minFPS} | ${optimizedIdle.minFPS} | ${
         staticIdle.minFPS
@@ -305,7 +305,7 @@ ${
 
 // Función para ejecutar las pruebas
 export async function runAutomatedPerformanceTests(
-  page: Page
+  page: Page,
 ): Promise<string> {
   const automation = new PerformanceTestAutomation(page);
 

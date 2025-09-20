@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import { ServiceCard, ServiceHeader } from ".";
+import { useEffect, useRef } from "react";
 import { useAnimationContext } from "@/contexts/AnimationContext";
+import { ServiceCard, ServiceHeader } from ".";
 
 export function ServicesSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -18,7 +18,7 @@ export function ServicesSection() {
             disableAnimationsForSection("hero");
 
             const waveElements = document.querySelectorAll(
-              '[class*="animate-wave"]'
+              '[class*="animate-wave"]',
             );
             waveElements.forEach((wave) => {
               wave.classList.add("animation-suspended");
@@ -31,7 +31,7 @@ export function ServicesSection() {
           } else {
             // Saliendo de Services (volviendo a Hero): reactivar animaciones
             const waveElements = document.querySelectorAll(
-              '[class*="animate-wave"]'
+              '[class*="animate-wave"]',
             );
             waveElements.forEach((wave) => {
               wave.classList.remove("animation-suspended");
@@ -52,7 +52,7 @@ export function ServicesSection() {
       {
         threshold: 0.3,
         rootMargin: "0px 0px -20% 0px",
-      }
+      },
     );
 
     if (sectionRef.current) {

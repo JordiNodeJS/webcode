@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import { initWebVitals } from "@/lib/web-vitals";
 import { AnimationProvider } from "@/contexts/AnimationContext";
+import { initWebVitals } from "@/lib/web-vitals";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Script necesario para prevenir el parpadeo del tema - contenido controlado y seguro */}
         <script
           dangerouslySetInnerHTML={{
             __html: `

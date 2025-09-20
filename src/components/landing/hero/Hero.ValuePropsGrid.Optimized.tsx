@@ -3,10 +3,9 @@
 import { motion } from "framer-motion";
 import { Rocket, Smartphone, Target, Zap } from "lucide-react";
 import React, { useCallback, useMemo, useState } from "react";
+import { WSFadeIn } from "@/components/animations/ws-fade-in";
 import { Card, CardContent } from "@/components/ui/card";
 import useOnScreen from "@/hooks/use-on-screen";
-
-import { WSFadeIn } from "@/components/animations/ws-fade-in";
 
 // Constantes optimizadas para mejor rendimiento
 const CARD_CONFIG = {
@@ -115,9 +114,9 @@ const valueProps: ValueProp[] = [
 ];
 
 // Hook para throttling de eventos (optimización de rendimiento)
-const useThrottledCallback = <T extends (...args: any[]) => void>(
+const useThrottledCallback = <T extends (...args: never[]) => void>(
   callback: T,
-  delay: number = 16
+  delay: number = 16,
 ): T => {
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
@@ -130,7 +129,7 @@ const useThrottledCallback = <T extends (...args: any[]) => void>(
         timeoutRef.current = null;
       }, delay);
     }) as T,
-    [callback, delay]
+    [],
   );
 };
 
@@ -154,7 +153,7 @@ const PerformanceOptimizedCard = React.memo(({ prop }: { prop: ValueProp }) => {
       glareY: 50,
       isHovered: false,
     }),
-    []
+    [],
   );
 
   // Cálculo del color optimizado con memoización
@@ -164,13 +163,13 @@ const PerformanceOptimizedCard = React.memo(({ prop }: { prop: ValueProp }) => {
 
     return {
       r: Math.round(
-        GRADIENT_COLORS.PINK.r * pinkRatio + GRADIENT_COLORS.TEAL.r * tealRatio
+        GRADIENT_COLORS.PINK.r * pinkRatio + GRADIENT_COLORS.TEAL.r * tealRatio,
       ),
       g: Math.round(
-        GRADIENT_COLORS.PINK.g * pinkRatio + GRADIENT_COLORS.TEAL.g * tealRatio
+        GRADIENT_COLORS.PINK.g * pinkRatio + GRADIENT_COLORS.TEAL.g * tealRatio,
       ),
       b: Math.round(
-        GRADIENT_COLORS.PINK.b * pinkRatio + GRADIENT_COLORS.TEAL.b * tealRatio
+        GRADIENT_COLORS.PINK.b * pinkRatio + GRADIENT_COLORS.TEAL.b * tealRatio,
       ),
     };
   }, []);
@@ -230,7 +229,7 @@ const PerformanceOptimizedCard = React.memo(({ prop }: { prop: ValueProp }) => {
         isHovered: true,
       }));
     },
-    16
+    16,
   ); // 60fps máximo
 
   const handleMouseEnter = useCallback(() => {
@@ -354,7 +353,7 @@ PerformanceOptimizedCard.displayName = "PerformanceOptimizedCard";
  */
 export const ValuePropsGridOptimized = React.memo(() => {
   const { ref, isIntersecting } = useOnScreen(
-    VALUE_PROPS_GRID_CONFIG.INTERSECTION_THRESHOLD
+    VALUE_PROPS_GRID_CONFIG.INTERSECTION_THRESHOLD,
   );
   const [hasBeenVisible, setHasBeenVisible] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -391,7 +390,13 @@ export const ValuePropsGridOptimized = React.memo(() => {
       >
         {!hasBeenVisible
           ? [...Array(VALUE_PROPS_GRID_CONFIG.PLACEHOLDER_COUNT)].map(
-              (_, index) => <div key={index} className="h-full opacity-0"></div>
+              (_, index) => (
+                <div
+                  // biome-ignore lint/suspicious/noArrayIndexKey: Placeholders estáticos sin cambio de orden
+                  key={`placeholder-optimized-${index}`}
+                  className="h-full opacity-0"
+                ></div>
+              ),
             )
           : memoizedValueProps.map((prop, index) => (
               <WSFadeIn

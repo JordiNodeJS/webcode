@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 interface ScrollVisibilityOptions {
   /** Umbral de scroll donde la flecha debe desaparecer completamente (0-1) */
@@ -38,12 +38,11 @@ interface ScrollVisibilityState extends ScrollVisibilityInternalState {
  * - Evita re-renders innecesarios con useCallback
  */
 export function useReversibleScrollVisibility(
-  options: ScrollVisibilityOptions = {}
+  options: ScrollVisibilityOptions = {},
 ): ScrollVisibilityState {
   const {
     fadeOutThreshold = 0.5, // Desaparece completamente a mitad del scroll
     fadeStartThreshold = 0.2, // Comienza a desaparecer al 20% del scroll
-    transitionDuration = 300,
     respectReducedMotion = true,
   } = options;
 
@@ -89,11 +88,11 @@ export function useReversibleScrollVisibility(
       const progress = (scrollProgress - fadeStartThreshold) / range;
 
       // Usar easing suave (ease-out cubic)
-      const eased = 1 - Math.pow(progress, 3);
+      const eased = 1 - progress ** 3;
 
       return Math.max(0, Math.min(1, eased));
     },
-    [fadeStartThreshold, fadeOutThreshold]
+    [fadeStartThreshold, fadeOutThreshold],
   );
 
   // Handler de scroll optimizado con RAF
@@ -148,7 +147,7 @@ export function useReversibleScrollVisibility(
       {
         threshold: 0.1, // Detectar cuando al menos 10% esté visible
         rootMargin: "20px", // Agregar margen para detección temprana
-      }
+      },
     );
 
     observer.observe(element);

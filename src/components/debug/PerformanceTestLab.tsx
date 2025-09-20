@@ -1,28 +1,28 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
-  Rocket,
-  Smartphone,
-  Target,
-  Zap,
   Activity,
-  Monitor,
+  AlertTriangle,
+  BarChart3,
+  CheckCircle,
+  Clock,
   Cpu,
   MemoryStick,
+  Monitor,
+  Pause,
+  Play,
+  Rocket,
+  RotateCcw,
+  Target,
   TrendingDown,
   TrendingUp,
-  AlertTriangle,
-  CheckCircle,
-  Play,
-  Pause,
-  RotateCcw,
-  BarChart3,
-  Clock,
+  Zap,
 } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import React, { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 // Componentes UI simplificados para evitar dependencias
 const Badge = ({
   children,
@@ -38,10 +38,10 @@ const Badge = ({
       variant === "success"
         ? "bg-green-100 text-green-800"
         : variant === "warning"
-        ? "bg-yellow-100 text-yellow-800"
-        : variant === "destructive"
-        ? "bg-red-100 text-red-800"
-        : "bg-blue-100 text-blue-800"
+          ? "bg-yellow-100 text-yellow-800"
+          : variant === "destructive"
+            ? "bg-red-100 text-red-800"
+            : "bg-blue-100 text-blue-800"
     } ${className}`}
   >
     {children}
@@ -69,12 +69,12 @@ const Progress = ({
     </div>
   );
 };
-import {
-  usePerformanceMonitor,
-  useComponentPerformanceMonitor,
-} from "@/hooks/use-performance-monitor";
+
 import { WSHover } from "@/components/animations/ws-hover";
-import { WSFadeIn } from "@/components/animations/ws-fade-in";
+import {
+  useComponentPerformanceMonitor,
+  usePerformanceMonitor,
+} from "@/hooks/use-performance-monitor";
 
 interface TestScenario {
   id: string;
@@ -167,7 +167,7 @@ const OriginalCard = React.memo(() => {
 
 // Versión optimizada sin animaciones costosas
 const OptimizedCard = React.memo(() => {
-  const { logRender } = useComponentPerformanceMonitor("OptimizedCard");
+  useComponentPerformanceMonitor("OptimizedCard");
 
   return (
     <Card className="h-full bg-background border-border/30 shadow-sm hover:shadow-md transition-shadow duration-200">
@@ -193,7 +193,7 @@ const OptimizedCard = React.memo(() => {
 
 // Versión sin animaciones (control)
 const StaticCard = React.memo(() => {
-  const { logRender } = useComponentPerformanceMonitor("StaticCard");
+  useComponentPerformanceMonitor("StaticCard");
 
   return (
     <div className="h-full bg-white border border-gray-200 rounded-lg p-6 text-center">
@@ -420,25 +420,29 @@ export function PerformanceTestLab() {
 
   const [activeScenario, setActiveScenario] = useState("original");
   const [perfHistory, setPerfHistory] = useState<
+    // biome-ignore lint/suspicious/noExplicitAny: Datos de performance complejos
     Array<{ scenario: string; data: any; timestamp: number }>
   >([]);
   const [isRecording, setIsRecording] = useState(false);
+  // biome-ignore lint/suspicious/noExplicitAny: Resultados de test diversos
   const [testResults, setTestResults] = useState<Record<string, any>>({});
   const [startTime, setStartTime] = useState<number>(Date.now());
 
   // Funciones de validación para evitar NaN en el render
-  const safeNumber = (
-    value: number | undefined | null,
-    fallback: number = 0
-  ): number => {
-    return typeof value === "number" && !isNaN(value) && isFinite(value)
-      ? value
-      : fallback;
-  };
+  const safeNumber = useCallback(
+    (value: number | undefined | null, fallback: number = 0): number => {
+      return typeof value === "number" &&
+        !Number.isNaN(value) &&
+        Number.isFinite(value)
+        ? value
+        : fallback;
+    },
+    [],
+  );
 
   const formatMetric = (
     value: number | undefined | null,
-    fallback: string = "--"
+    fallback: string = "--",
   ): string => {
     const safe = safeNumber(value);
     return safe === 0 && (value === undefined || value === null)
@@ -453,7 +457,7 @@ export function PerformanceTestLab() {
           perfHistory
             .slice(-10)
             .reduce((acc, entry) => acc + safeNumber(entry.data.fps), 0) /
-            Math.min(perfHistory.length, 10)
+            Math.min(perfHistory.length, 10),
         )
       : 0;
 
@@ -485,11 +489,11 @@ export function PerformanceTestLab() {
           avgFPS: safeNumber(avgFPS) || safeNumber(summary.fps),
           minFPS: Math.min(
             safeNumber(prev[activeScenario]?.minFPS, 60),
-            safeNumber(summary.fps)
+            safeNumber(summary.fps),
           ),
           maxFPS: Math.max(
             safeNumber(prev[activeScenario]?.maxFPS, 0),
-            safeNumber(summary.fps)
+            safeNumber(summary.fps),
           ),
           avgMemory: safeNumber(performanceData.memory),
           samples: (prev[activeScenario]?.samples || 0) + 1,
@@ -499,7 +503,15 @@ export function PerformanceTestLab() {
         },
       }));
     }
-  }, [performanceData, activeScenario, isRecording, avgFPS, isIdle]);
+  }, [
+    performanceData,
+    activeScenario,
+    isRecording,
+    avgFPS,
+    isIdle,
+    getPerformanceSummary,
+    safeNumber,
+  ]);
 
   const ActiveComponent =
     testScenarios.find((s) => s.id === activeScenario)?.component ||
@@ -660,8 +672,8 @@ export function PerformanceTestLab() {
                           memoryTrend > 0
                             ? "text-red-500"
                             : memoryTrend < 0
-                            ? "text-green-500"
-                            : ""
+                              ? "text-green-500"
+                              : ""
                         }
                       >
                         {memoryTrend > 0
@@ -849,7 +861,7 @@ export function PerformanceTestLab() {
                   {perfHistory
                     .slice(-8)
                     .reverse()
-                    .map((entry, index) => (
+                    .map((entry, _index) => (
                       <motion.div
                         key={entry.timestamp}
                         initial={{ opacity: 0, x: -20 }}

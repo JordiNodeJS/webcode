@@ -3,12 +3,10 @@
 import { useTheme as useNextTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-type Theme = "light" | "dark" | "system";
-
 /**
  * Hook personalizado para manejar el tema oscuro/claro
  *
- * Este hook utiliza next-themes para manejar la persistencia del tema 
+ * Este hook utiliza next-themes para manejar la persistencia del tema
  * y sincroniza con las preferencias del sistema.
  */
 export function useTheme() {

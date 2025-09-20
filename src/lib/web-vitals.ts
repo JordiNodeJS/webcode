@@ -1,11 +1,11 @@
-import { onCLS, onFID, onFCP, onLCP, onTTFB } from 'web-vitals';
+import { type Metric, onCLS, onFCP, onFID, onLCP, onTTFB } from "web-vitals";
 
 /**
  * Reporta las métricas Web Vitals a la consola
- * 
+ *
  * @param metric - La métrica Web Vitals
  */
-const reportWebVitals = (metric: any) => {
+const reportWebVitals = (metric: Metric) => {
   console.log(metric);
 };
 
@@ -13,7 +13,7 @@ const reportWebVitals = (metric: any) => {
  * Inicializa el monitoreo de Web Vitals
  */
 export const initWebVitals = () => {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     onCLS(reportWebVitals);
     onFID(reportWebVitals);
     onFCP(reportWebVitals);

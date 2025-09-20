@@ -22,7 +22,7 @@ export function WSLetterReveal({
     <span ref={ref} className={className}>
       {text.split("").map((letter, index) => (
         <motion.span
-          key={index}
+          key={`${text}-${index}-${letter}`}
           initial={{ opacity: 0, y: 20, rotateX: 90 }}
           animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
           transition={{

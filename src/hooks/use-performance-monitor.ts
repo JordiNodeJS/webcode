@@ -1,6 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+
+interface PerformanceMemory {
+  usedJSHeapSize: number;
+  totalJSHeapSize: number;
+  jsHeapSizeLimit: number;
+}
+
+interface PerformanceWithMemory extends Performance {
+  memory?: PerformanceMemory;
+}
 
 interface PerformanceData {
   fps: number;
@@ -46,7 +56,7 @@ export function usePerformanceMonitor(options: PerformanceMonitorOptions = {}) {
   // Detectar actividad del usuario para determinar si está "en reposo"
   const [isIdle, setIsIdle] = useState(true);
 
-  const resetIdleTimer = () => {
+  const resetIdleTimer = useCallback(() => {
     setIsIdle(false);
     if (idleTimeoutRef.current) {
       clearTimeout(idleTimeoutRef.current);
@@ -54,10 +64,10 @@ export function usePerformanceMonitor(options: PerformanceMonitorOptions = {}) {
     idleTimeoutRef.current = setTimeout(() => {
       setIsIdle(true);
     }, 2000); // 2 segundos sin actividad = reposo
-  };
+  }, []);
 
   // Monitor de FPS
-  const measureFPS = () => {
+  const measureFPS = useCallback(() => {
     frameCountRef.current++;
     const now = performance.now();
     const delta = now - lastTimeRef.current;
@@ -68,8 +78,9 @@ export function usePerformanceMonitor(options: PerformanceMonitorOptions = {}) {
       lastTimeRef.current = now;
 
       // Obtener información de memoria si está disponible
-      const memory = (performance as any).memory
-        ? Math.round((performance as any).memory.usedJSHeapSize / 1024 / 1024)
+      const perfWithMemory = performance as PerformanceWithMemory;
+      const memory = perfWithMemory.memory
+        ? Math.round(perfWithMemory.memory.usedJSHeapSize / 1024 / 1024)
         : 0;
 
       // Contar nodos DOM
@@ -100,7 +111,7 @@ export function usePerformanceMonitor(options: PerformanceMonitorOptions = {}) {
     if (enabled) {
       animationFrameRef.current = requestAnimationFrame(measureFPS);
     }
-  };
+  }, [enabled, isIdle, logToConsole, sampleInterval]);
 
   // Hook para contar renders
   useEffect(() => {
@@ -140,7 +151,11 @@ export function usePerformanceMonitor(options: PerformanceMonitorOptions = {}) {
         document.removeEventListener(event, resetIdleTimer);
       });
     };
-  }, [enabled, sampleInterval]);
+  }, [
+    enabled,
+    measureFPS, // Inicializar como idle
+    resetIdleTimer,
+  ]);
 
   return {
     performanceData,

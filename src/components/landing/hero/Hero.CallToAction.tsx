@@ -1,8 +1,8 @@
 import { ArrowRight, Eye } from "lucide-react";
+import { WSFadeIn } from "@/components/animations/ws-fade-in";
+import { WSHover } from "@/components/animations/ws-hover";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { Button } from "@/components/ui/button";
-import { WSHover } from "@/components/animations/ws-hover";
-import { WSFadeIn } from "@/components/animations/ws-fade-in";
 
 /**
  * Botones de Call to Action principales
