@@ -137,26 +137,22 @@
 
 /* Sombras 3D personalizadas WebCode */
 .shadow-3d-sm {
-  box-shadow:
-    0 2px 4px rgba(220, 124, 179, 0.1),
+  box-shadow: 0 2px 4px rgba(220, 124, 179, 0.1),
     0 1px 2px rgba(220, 124, 179, 0.06);
 }
 
 .shadow-3d-md {
-  box-shadow:
-    0 4px 6px rgba(220, 124, 179, 0.1),
+  box-shadow: 0 4px 6px rgba(220, 124, 179, 0.1),
     0 2px 4px rgba(220, 124, 179, 0.06);
 }
 
 .shadow-3d-lg {
-  box-shadow:
-    0 10px 15px rgba(220, 124, 179, 0.1),
+  box-shadow: 0 10px 15px rgba(220, 124, 179, 0.1),
     0 4px 6px rgba(220, 124, 179, 0.05);
 }
 
 .shadow-3d-xl {
-  box-shadow:
-    0 20px 25px rgba(220, 124, 179, 0.1),
+  box-shadow: 0 20px 25px rgba(220, 124, 179, 0.1),
     0 8px 10px rgba(220, 124, 179, 0.04);
 }
 
@@ -209,9 +205,7 @@
   -webkit-text-fill-color: transparent;
   color: transparent;
   display: inline-block;
-  text-shadow:
-    0 3px 12px rgba(0, 0, 0, 0.22),
-    0 1px 0 rgba(255, 255, 255, 0.02);
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.22), 0 1px 0 rgba(255, 255, 255, 0.02);
   -webkit-text-stroke: 0.35px rgba(0, 0, 0, 0.06);
 }
 
@@ -350,4 +344,106 @@ main > div:first-child {
 
 main > section:first-of-type {
   margin-top: 0;
+}
+
+/* ⚡ CLOUD LIGHTNING BACKGROUND STYLES */
+
+/* Estilos específicos para el componente CloudLightningBackground */
+.cloud-lightning-background {
+  /* Optimizaciones de rendimiento para canvas */
+  contain: layout style paint;
+  will-change: auto;
+}
+
+.cloud-lightning-background canvas {
+  /* Optimizaciones específicas del canvas */
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+
+  /* Prevenir selección y context menu */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-context-menu: none;
+
+  /* Forzar aceleración por hardware cuando sea necesario */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Reducir intensidad en dispositivos con batería baja */
+@media (prefers-reduced-motion: reduce) {
+  .cloud-lightning-background {
+    opacity: 0.7;
+  }
+
+  .cloud-lightning-background canvas {
+    filter: blur(1px);
+  }
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+  .cloud-lightning-background {
+    /* Reducir intensidad en móviles para ahorrar batería */
+    opacity: 0.8;
+  }
+}
+
+/* Soporte para temas claro y oscuro */
+@media (prefers-color-scheme: dark) {
+  .cloud-lightning-background {
+    /* Fallback para modo oscuro cuando JS no ha cargado */
+    background: linear-gradient(
+      135deg,
+      rgb(15, 23, 42) 0%,
+      rgb(30, 41, 59) 50%,
+      rgb(15, 23, 42) 100%
+    );
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .cloud-lightning-background {
+    /* Fallback para modo claro cuando JS no ha cargado */
+    background: linear-gradient(
+      135deg,
+      rgb(248, 250, 252) 0%,
+      rgb(241, 245, 249) 50%,
+      rgb(248, 250, 252) 100%
+    );
+  }
+}
+
+/* Soporte específico para clases de tema (cuando next-themes está activo) */
+.dark .cloud-lightning-background {
+  /* Modo oscuro forzado */
+  background: linear-gradient(
+    135deg,
+    rgb(15, 23, 42) 0%,
+    rgb(30, 41, 59) 50%,
+    rgb(15, 23, 42) 100%
+  );
+}
+
+.light .cloud-lightning-background {
+  /* Modo claro forzado */
+  background: linear-gradient(
+    135deg,
+    rgb(248, 250, 252) 0%,
+    rgb(241, 245, 249) 50%,
+    rgb(248, 250, 252) 100%
+  );
+}
+
+/* Optimización para pantallas de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .cloud-lightning-background canvas {
+    /* Mejor renderizado en pantallas retina */
+    image-rendering: -webkit-optimize-contrast;
+  }
 }
