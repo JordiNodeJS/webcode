@@ -56,7 +56,7 @@ async function simplePerformanceTest() {
     });
 
     // Navigate to the site
-    console.log("📡 Navigating to WebSnack...");
+    console.log("📡 Navigating to WebCode...");
     await page.goto("http://localhost:3001", {
       waitUntil: "networkidle",
       timeout: 10000,
@@ -216,14 +216,14 @@ function generateSimpleHTMLReport(data) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebSnack - Simple Performance Report</title>
+    <title>WebCode - Simple Performance Report</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-gray-50">
     <div class="container mx-auto p-8 max-w-4xl">
         <header class="mb-8">
-            <h1 class="text-3xl font-bold text-blue-600 mb-2">🔬 WebSnack Performance Report</h1>
+            <h1 class="text-3xl font-bold text-blue-600 mb-2">🔬 WebCode Performance Report</h1>
             <p class="text-gray-600">Simple Automated Analysis • ${new Date(
               data.timestamp
             ).toLocaleString("es-ES")}</p>
