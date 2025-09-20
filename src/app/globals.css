@@ -353,6 +353,27 @@ main > section:first-of-type {
   /* Optimizaciones de rendimiento para canvas */
   contain: layout style paint;
   will-change: auto;
+
+  /* Optimizaciones v2.0 para versión mejorada */
+  content-visibility: auto;
+  contain-intrinsic-size: 100vw 100vh;
+}
+
+/* Optimizaciones específicas por calidad de dispositivo */
+.cloud-lightning-background[data-quality="high"] {
+  /* Dispositivos de alta gama: máxima calidad */
+  will-change: transform;
+}
+
+.cloud-lightning-background[data-quality="medium"] {
+  /* Dispositivos medios: balance performance/calidad */
+  will-change: auto;
+}
+
+.cloud-lightning-background[data-quality="low"] {
+  /* Dispositivos de baja gama: máxima eficiencia */
+  will-change: auto;
+  transform: translateZ(0); /* Forzar layer de aceleración */
 }
 
 .cloud-lightning-background canvas {
@@ -373,24 +394,113 @@ main > section:first-of-type {
   /* Forzar aceleración por hardware cuando sea necesario */
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
+
+  /* Optimizaciones v2.0 */
+  image-rendering: -webkit-optimize-contrast;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Optimizaciones específicas para calidad alta */
+.cloud-lightning-background[data-quality="high"] canvas {
+  image-rendering: auto; /* Mejor calidad para dispositivos potentes */
+}
+
+/* Optimizaciones para calidad baja (móviles) */
+.cloud-lightning-background[data-quality="low"] canvas {
+  image-rendering: pixelated; /* Renderizado rápido */
+  filter: contrast(1.1); /* Compensar pérdida de calidad */
 }
 
 /* Reducir intensidad en dispositivos con batería baja */
 @media (prefers-reduced-motion: reduce) {
   .cloud-lightning-background {
+    opacity: 0.6;
+  }
+
+  .cloud-lightning-background canvas {
+    filter: blur(1px) brightness(0.8);
+  }
+
+  /* Versión optimizada: pausa animaciones completamente */
+  .cloud-lightning-background[data-quality] {
+    animation-play-state: paused;
+  }
+}
+
+/* Ajustes progresivos para dispositivos móviles */
+@media (max-width: 480px) {
+  .cloud-lightning-background {
+    /* Móviles pequeños: máxima eficiencia */
     opacity: 0.7;
   }
 
   .cloud-lightning-background canvas {
-    filter: blur(1px);
+    image-rendering: pixelated;
   }
 }
 
-/* Ajustes para dispositivos móviles */
 @media (max-width: 768px) {
   .cloud-lightning-background {
-    /* Reducir intensidad en móviles para ahorrar batería */
+    /* Tablets y móviles grandes */
     opacity: 0.8;
+  }
+}
+
+/* Optimizaciones para pantallas retina */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  .cloud-lightning-background[data-quality="high"] canvas {
+    image-rendering: auto; /* Aprovechar alta densidad */
+  }
+
+  .cloud-lightning-background[data-quality="low"] canvas {
+    image-rendering: pixelated; /* Evitar sobrecarga en móviles retina */
+  }
+}
+
+/* Optimizaciones para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .cloud-lightning-background[data-quality="low"] {
+    /* En modo oscuro y baja calidad, reducir aún más la carga */
+    opacity: 0.6;
+  }
+}
+
+/* Optimizaciones para conexiones lentas */
+@media (prefers-reduced-data: reduce) {
+  .cloud-lightning-background {
+    opacity: 0.5;
+    will-change: auto;
+  }
+
+  .cloud-lightning-background canvas {
+    image-rendering: pixelated;
+    filter: brightness(0.9);
+  }
+}
+
+/* Debug styles para desarrollo */
+.cloud-lightning-background[data-quality]::before {
+  content: attr(data-quality) " quality - " attr(data-fps) "fps";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-family: monospace;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Mostrar debug info solo en desarrollo */
+@media (max-width: 0px) {
+  /* Hack: nunca se activa por defecto */
+  .cloud-lightning-background[data-quality]::before {
+    opacity: 1;
   }
 }
 
