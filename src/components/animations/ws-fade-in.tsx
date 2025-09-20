@@ -2,8 +2,8 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { wsConfig } from "@/lib/webcode-motion-config";
 import { useAnimationContext } from "@/contexts/AnimationContext";
+import { wsConfig } from "@/lib/webcode-motion-config";
 
 interface WSFadeInProps {
   children: React.ReactNode;

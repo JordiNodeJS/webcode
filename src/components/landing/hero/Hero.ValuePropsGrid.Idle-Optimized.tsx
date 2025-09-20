@@ -3,11 +3,10 @@
 import { motion } from "framer-motion";
 import { Rocket, Smartphone, Target, Zap } from "lucide-react";
 import React, { useCallback, useMemo, useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import useOnScreen from "@/hooks/use-on-screen";
-
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
 import { WSHover } from "@/components/animations/ws-hover";
+import { Card, CardContent } from "@/components/ui/card";
+import useOnScreen from "@/hooks/use-on-screen";
 
 // Constantes para efectos 3D
 const CARD_CONFIG = {
@@ -133,15 +132,15 @@ const IdleOptimizedCard = React.memo(
       return {
         r: Math.round(
           GRADIENT_COLORS.PINK.r * pinkRatio +
-            GRADIENT_COLORS.TEAL.r * tealRatio
+            GRADIENT_COLORS.TEAL.r * tealRatio,
         ),
         g: Math.round(
           GRADIENT_COLORS.PINK.g * pinkRatio +
-            GRADIENT_COLORS.TEAL.g * tealRatio
+            GRADIENT_COLORS.TEAL.g * tealRatio,
         ),
         b: Math.round(
           GRADIENT_COLORS.PINK.b * pinkRatio +
-            GRADIENT_COLORS.TEAL.b * tealRatio
+            GRADIENT_COLORS.TEAL.b * tealRatio,
         ),
       };
     }, []);
@@ -208,7 +207,7 @@ const IdleOptimizedCard = React.memo(
           isHovered: true,
         });
       },
-      []
+      [],
     );
 
     const handleMouseEnter = useCallback(() => {
@@ -253,7 +252,7 @@ const IdleOptimizedCard = React.memo(
           isHovered: true,
         });
       },
-      []
+      [],
     );
 
     const handleTouchEnd = useCallback(() => {
@@ -337,7 +336,7 @@ const IdleOptimizedCard = React.memo(
         </article>
       </WSHover>
     );
-  }
+  },
 );
 
 IdleOptimizedCard.displayName = "IdleOptimizedCard";
@@ -355,7 +354,7 @@ IdleOptimizedCard.displayName = "IdleOptimizedCard";
  */
 export const IdleOptimizedValuePropsGrid = React.memo(() => {
   const { ref, isIntersecting } = useOnScreen(
-    VALUE_PROPS_GRID_CONFIG.INTERSECTION_THRESHOLD
+    VALUE_PROPS_GRID_CONFIG.INTERSECTION_THRESHOLD,
   );
   const [hasBeenVisible, setHasBeenVisible] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -393,7 +392,7 @@ export const IdleOptimizedValuePropsGrid = React.memo(() => {
             length: VALUE_PROPS_GRID_CONFIG.PLACEHOLDER_COUNT,
           }).map((_, index) => (
             <div
-              key={`placeholder-${index}`}
+              key={`placeholder-idle-${VALUE_PROPS_GRID_CONFIG.PLACEHOLDER_COUNT}-${index}`}
               className="h-full opacity-0"
               aria-hidden="true"
             />

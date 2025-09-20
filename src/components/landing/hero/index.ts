@@ -9,6 +9,7 @@ export { TrustIndicators } from "./Hero.TrustIndicators";
 export { ValuePropsGrid } from "./Hero.ValuePropsGrid";
 export { IdleOptimizedValuePropsGrid } from "./Hero.ValuePropsGrid.Idle-Optimized";
 export { WavesBackground } from "./Hero.WavesBackground";
+
 import HeroSection from "./HeroSection";
 
 export { HeroSection };

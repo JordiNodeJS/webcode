@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -102,7 +102,11 @@ export function ServiceCard({
             .map((feature, index) => {
               const [title, description] = feature.split(" — ");
               return (
-                <div key={index} className="group/feature">
+                <div
+                  // biome-ignore lint/suspicious/noArrayIndexKey: Features ordenados por posición, key incluye título único
+                  key={`${title}-${index}`}
+                  className="group/feature"
+                >
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0 group-hover/feature:scale-125 transition-transform duration-200" />
                     <div>
@@ -124,6 +128,7 @@ export function ServiceCard({
         {/* Ver más/menos button */}
         {features.length > 2 && (
           <button
+            type="button"
             onClick={() => setIsExpanded(!isExpanded)}
             className="text-primary hover:text-primary/80 text-sm font-medium transition-colors duration-200 flex items-center gap-1"
           >

@@ -3,6 +3,7 @@
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { WSFadeIn } from "@/components/animations/ws-fade-in";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -10,9 +11,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { ThemeToggle } from "./Hero.ThemeToggle";
 import useScrollPosition from "@/hooks/use-scroll-position";
-import { WSFadeIn } from "@/components/animations/ws-fade-in";
+import { ThemeToggle } from "./Hero.ThemeToggle";
 
 interface NavigationItem {
   href: string;
@@ -49,7 +49,7 @@ export function HeaderNavigation() {
   // Función para manejar el smooth scroll con offset para el header responsive
   const handleSmoothScroll = (
     href: string,
-    event: React.MouseEvent<HTMLAnchorElement>
+    event: React.MouseEvent<HTMLAnchorElement>,
   ) => {
     event.preventDefault();
 

@@ -33,7 +33,7 @@ export const wsConfig = {
 
 // Hook para transiciones WebCode
 export function useWSTransition(
-  type: keyof typeof wsConfig.durations = "normal"
+  type: keyof typeof wsConfig.durations = "normal",
 ) {
   return {
     duration: wsConfig.durations[type],

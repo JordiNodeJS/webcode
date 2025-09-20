@@ -3,11 +3,10 @@
 import { motion } from "framer-motion";
 import { Rocket, Smartphone, Target, Zap } from "lucide-react";
 import React, { useCallback, useMemo, useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import useOnScreen from "@/hooks/use-on-screen";
-
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
 import { WSHover } from "@/components/animations/ws-hover";
+import { Card, CardContent } from "@/components/ui/card";
+import useOnScreen from "@/hooks/use-on-screen";
 
 // Constantes para efectos 3D
 const CARD_CONFIG = {
@@ -160,7 +159,13 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
       return `perspective(${CARD_CONFIG.PERSPECTIVE}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1) translateZ(0px)`;
     }
 
-    return `perspective(${CARD_CONFIG.PERSPECTIVE}px) rotateX(${cardState.rotateX * CARD_CONFIG.ROTATE_FACTOR}deg) rotateY(${cardState.rotateY * CARD_CONFIG.ROTATE_FACTOR}deg) scale3d(${CARD_CONFIG.SCALE_HOVER}, ${CARD_CONFIG.SCALE_HOVER}, ${CARD_CONFIG.SCALE_HOVER}) translateZ(${CARD_CONFIG.TRANSLATE_Z}px)`;
+    return `perspective(${CARD_CONFIG.PERSPECTIVE}px) rotateX(${
+      cardState.rotateX * CARD_CONFIG.ROTATE_FACTOR
+    }deg) rotateY(${
+      cardState.rotateY * CARD_CONFIG.ROTATE_FACTOR
+    }deg) scale3d(${CARD_CONFIG.SCALE_HOVER}, ${CARD_CONFIG.SCALE_HOVER}, ${
+      CARD_CONFIG.SCALE_HOVER
+    }) translateZ(${CARD_CONFIG.TRANSLATE_Z}px)`;
   }, [cardState.rotateX, cardState.rotateY, cardState.isHovered]);
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
@@ -295,22 +300,24 @@ ValuePropCard.displayName = "ValuePropCard";
  * de WebCode en un grid responsive con cards y efectos 3D.
  */
 export const ValuePropsGrid = React.memo(() => {
-  const { ref, isIntersecting } = useOnScreen(VALUE_PROPS_GRID_CONFIG.INTERSECTION_THRESHOLD); 
+  const { ref, isIntersecting } = useOnScreen(
+    VALUE_PROPS_GRID_CONFIG.INTERSECTION_THRESHOLD,
+  );
   const [hasBeenVisible, setHasBeenVisible] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   // Detectar preferencia de movimiento reducido
   React.useEffect(() => {
     if (typeof window !== "undefined") {
-      const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
       setPrefersReducedMotion(mediaQuery.matches);
-      
+
       const handler = (event: MediaQueryListEvent) => {
         setPrefersReducedMotion(event.matches);
       };
-      
-      mediaQuery.addEventListener('change', handler);
-      return () => mediaQuery.removeEventListener('change', handler);
+
+      mediaQuery.addEventListener("change", handler);
+      return () => mediaQuery.removeEventListener("change", handler);
     }
   }, []);
 
@@ -327,37 +334,56 @@ export const ValuePropsGrid = React.memo(() => {
   return (
     <div className="w-full max-w-6xl mx-auto mt-16">
       {/* Contenedor con ref para IntersectionObserver */}
-      <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 min-h-[384px]" aria-hidden={!hasBeenVisible}>
-        {!hasBeenVisible ? (
-          // Placeholder para evitar layout shift
-          [...Array(VALUE_PROPS_GRID_CONFIG.PLACEHOLDER_COUNT)].map((_, index) => (
-            <div key={index} className="h-full opacity-0"></div>
-          ))
-        ) : (
-          // Renderizar las tarjetas cuando el elemento ha sido visible
-          memoizedValueProps.map((prop, index) => (
-            <WSFadeIn 
-              key={`${prop.title}-${index}`} 
-              delay={0.1 + index * 0.1}
-            >
-              <motion.div
-                initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: prefersReducedMotion ? 0 : ANIMATION_CONFIG.DURATION,
-                  delay: prefersReducedMotion ? 0 : index * ANIMATION_CONFIG.STAGGER_DELAY,
-                }}
-                whileHover={prefersReducedMotion ? {} : { 
-                  y: ANIMATION_CONFIG.HOVER_Y_OFFSET,
-                  transition: { duration: ANIMATION_CONFIG.HOVER_TRANSITION_DURATION }
-                }}
-                className="h-full"
+      <div
+        ref={ref}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 min-h-[384px]"
+        aria-hidden={!hasBeenVisible}
+      >
+        {!hasBeenVisible
+          ? // Placeholder para evitar layout shift
+            [...Array(VALUE_PROPS_GRID_CONFIG.PLACEHOLDER_COUNT)].map(
+              (_, index) => (
+                <div
+                  // biome-ignore lint/suspicious/noArrayIndexKey: Placeholders estáticos sin cambio de orden
+                  key={`placeholder-basic-${index}`}
+                  className="h-full opacity-0"
+                ></div>
+              ),
+            )
+          : // Renderizar las tarjetas cuando el elemento ha sido visible
+            memoizedValueProps.map((prop, index) => (
+              <WSFadeIn
+                key={`${prop.title}-${index}`}
+                delay={0.1 + index * 0.1}
               >
-                <ValuePropCard prop={prop} />
-              </motion.div>
-            </WSFadeIn>
-          ))
-        )}
+                <motion.div
+                  initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: prefersReducedMotion
+                      ? 0
+                      : ANIMATION_CONFIG.DURATION,
+                    delay: prefersReducedMotion
+                      ? 0
+                      : index * ANIMATION_CONFIG.STAGGER_DELAY,
+                  }}
+                  whileHover={
+                    prefersReducedMotion
+                      ? {}
+                      : {
+                          y: ANIMATION_CONFIG.HOVER_Y_OFFSET,
+                          transition: {
+                            duration:
+                              ANIMATION_CONFIG.HOVER_TRANSITION_DURATION,
+                          },
+                        }
+                  }
+                  className="h-full"
+                >
+                  <ValuePropCard prop={prop} />
+                </motion.div>
+              </WSFadeIn>
+            ))}
       </div>
     </div>
   );

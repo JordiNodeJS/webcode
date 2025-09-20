@@ -26,9 +26,11 @@ export interface PerformanceReport {
 }
 
 export class FullPerformanceAnalyzer {
+  // biome-ignore lint/suspicious/noExplicitAny: Tipo Playwright Page dinámico
   private page: any;
   private baseURL = "http://localhost:3001";
 
+  // biome-ignore lint/suspicious/noExplicitAny: Tipo Playwright Page dinámico
   constructor(page: any) {
     this.page = page;
   }
@@ -101,10 +103,10 @@ export class FullPerformanceAnalyzer {
     await this.page.click('[data-testid="mobile-menu-toggle"]').catch(() => {});
     await this.page.waitForTimeout(500);
 
-    const afterInteraction = await this.measurePerformance(2000);
+    const _afterInteraction = await this.measurePerformance(2000);
 
     await this.page.evaluate(() =>
-      window.scrollTo({ top: 0, behavior: "smooth" })
+      window.scrollTo({ top: 0, behavior: "smooth" }),
     );
 
     const warnings = [];
@@ -141,7 +143,7 @@ export class FullPerformanceAnalyzer {
     // Scroll to cards section
     await this.page.evaluate(() => {
       const cardsSection = document.querySelector(
-        '[data-testid="value-props-grid"]'
+        '[data-testid="value-props-grid"]',
       );
       if (cardsSection) {
         cardsSection.scrollIntoView({ behavior: "smooth" });
@@ -210,7 +212,7 @@ export class FullPerformanceAnalyzer {
 
     // Scroll to top to make sure waves are visible
     await this.page.evaluate(() =>
-      window.scrollTo({ top: 0, behavior: "smooth" })
+      window.scrollTo({ top: 0, behavior: "smooth" }),
     );
     await this.page.waitForTimeout(1000);
 
@@ -270,7 +272,7 @@ export class FullPerformanceAnalyzer {
 
     if (fadeInCount > 10) {
       warnings.push(
-        `${fadeInCount} WSFadeIn components may cause performance issues`
+        `${fadeInCount} WSFadeIn components may cause performance issues`,
       );
       recommendations.push("Implement shared IntersectionObserver");
       recommendations.push("Use lazy loading for non-critical animations");
@@ -312,7 +314,7 @@ export class FullPerformanceAnalyzer {
     await this.page.click('[data-testid="theme-toggle"]').catch(() => {});
     await this.page.waitForTimeout(1000);
 
-    const finalMetrics = await this.measurePerformance(1000);
+    const _finalMetrics = await this.measurePerformance(1000);
 
     const warnings = [];
     const recommendations = [];
@@ -402,7 +404,7 @@ export class FullPerformanceAnalyzer {
 
     // Full page scroll test
     await this.page.evaluate(() =>
-      window.scrollTo({ top: 0, behavior: "instant" })
+      window.scrollTo({ top: 0, behavior: "instant" }),
     );
     await this.page.waitForTimeout(500);
 
@@ -423,7 +425,7 @@ export class FullPerformanceAnalyzer {
     const averageFPS =
       scrollMetrics.reduce((sum, m) => sum + m.fps, 0) / scrollMetrics.length;
     const totalMemoryUsage = Math.max(
-      ...scrollMetrics.map((m) => m.memoryUsage)
+      ...scrollMetrics.map((m) => m.memoryUsage),
     );
 
     // Performance score calculation
@@ -442,7 +444,7 @@ export class FullPerformanceAnalyzer {
   private async measurePerformance(duration: number) {
     const startTime = performance.now();
     let frameCount = 0;
-    let lastTime = startTime;
+    const _lastTime = startTime;
 
     return new Promise<{ fps: number; memoryUsage: number }>((resolve) => {
       const measure = () => {
@@ -451,16 +453,19 @@ export class FullPerformanceAnalyzer {
 
         if (currentTime - startTime >= duration) {
           const fps = Math.round(
-            (frameCount * 1000) / (currentTime - startTime)
+            (frameCount * 1000) / (currentTime - startTime),
           );
 
           // Estimate memory usage (simplified)
+          // biome-ignore lint/suspicious/noExplicitAny: Performance API memory extension
           const memoryUsage = (performance as any).memory
             ? Math.round(
+                // biome-ignore lint/suspicious/noExplicitAny: Performance API memory extension
                 ((performance as any).memory.usedJSHeapSize -
+                  // biome-ignore lint/suspicious/noExplicitAny: Performance API memory extension
                   (performance as any).memory.totalJSHeapSize) /
                   1024 /
-                  1024
+                  1024,
               )
             : 0;
 
@@ -486,7 +491,7 @@ export class FullPerformanceAnalyzer {
       }
       if (comp.memoryUsage > 15) {
         critical.push(
-          `${comp.name}: High memory usage (${comp.memoryUsage}MB)`
+          `${comp.name}: High memory usage (${comp.memoryUsage}MB)`,
         );
       }
     });
@@ -497,28 +502,27 @@ export class FullPerformanceAnalyzer {
   private prioritizeOptimizations(components: ComponentMetrics[]): string[] {
     const priorities: string[] = [];
 
-    // High priority: Components with multiple warnings
     components
       .filter((c) => c.warnings.length > 2)
-      .forEach((c) =>
+      .forEach((c) => {
         priorities.push(
-          `HIGH: Optimize ${c.name} - ${c.warnings.length} issues`
-        )
-      );
+          `HIGH: Optimize ${c.name} - ${c.warnings.length} issues`,
+        );
+      });
 
-    // Medium priority: FPS issues
+    // Medium priority: Performance issues
     components
       .filter((c) => c.fpsIdle < 55 || c.fpsActive < 50)
-      .forEach((c) =>
-        priorities.push(`MEDIUM: Performance issues in ${c.name}`)
-      );
+      .forEach((c) => {
+        priorities.push(`MEDIUM: Performance issues in ${c.name}`);
+      });
 
     // Low priority: Memory optimizations
     components
       .filter((c) => c.memoryUsage > 5)
-      .forEach((c) =>
-        priorities.push(`LOW: Memory optimization for ${c.name}`)
-      );
+      .forEach((c) => {
+        priorities.push(`LOW: Memory optimization for ${c.name}`);
+      });
 
     return priorities;
   }
@@ -595,8 +599,8 @@ export class FullPerformanceAnalyzer {
                   report.overallMetrics.performanceScore >= 90
                     ? "text-success"
                     : report.overallMetrics.performanceScore >= 70
-                    ? "text-warning"
-                    : "text-danger"
+                      ? "text-warning"
+                      : "text-danger"
                 }">
                     ${report.overallMetrics.performanceScore}/100
                 </div>
@@ -618,7 +622,7 @@ export class FullPerformanceAnalyzer {
                     <span class="text-red-500 mt-1">⚠️</span>
                     <span class="text-red-700">${issue}</span>
                 </li>
-                `
+                `,
                   )
                   .join("")}
             </ul>
@@ -676,7 +680,7 @@ export class FullPerformanceAnalyzer {
                               .map(
                                 (warning) => `
                             <li class="text-orange-700">• ${warning}</li>
-                            `
+                            `,
                               )
                               .join("")}
                         </ul>
@@ -695,7 +699,7 @@ export class FullPerformanceAnalyzer {
                               .map(
                                 (rec) => `
                             <li class="text-blue-700">• ${rec}</li>
-                            `
+                            `,
                               )
                               .join("")}
                         </ul>
@@ -704,7 +708,7 @@ export class FullPerformanceAnalyzer {
                         : ""
                     }
                 </div>
-                `
+                `,
                   )
                   .join("")}
             </div>
@@ -721,21 +725,21 @@ export class FullPerformanceAnalyzer {
                   priority.startsWith("HIGH")
                     ? "bg-red-50"
                     : priority.startsWith("MEDIUM")
-                    ? "bg-yellow-50"
-                    : "bg-blue-50"
+                      ? "bg-yellow-50"
+                      : "bg-blue-50"
                 }">
                     <span class="text-lg">
                         ${
                           priority.startsWith("HIGH")
                             ? "🚨"
                             : priority.startsWith("MEDIUM")
-                            ? "⚠️"
-                            : "💡"
+                              ? "⚠️"
+                              : "💡"
                         }
                     </span>
                     <span class="flex-1">${priority}</span>
                 </div>
-                `
+                `,
                   )
                   .join("")}
             </div>

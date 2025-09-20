@@ -1,18 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { ChevronDown, Play } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ChevronDown } from "lucide-react";
+import { useEffect, useState } from "react";
+import { WSFadeIn } from "@/components/animations/ws-fade-in";
+import { CallToAction } from "@/components/landing/hero/Hero.CallToAction";
 import { HeaderNavigation } from "@/components/landing/hero/Hero.HeaderNavigation";
 import { TrustIndicators } from "@/components/landing/hero/Hero.TrustIndicators";
 import { IdleOptimizedValuePropsGrid } from "@/components/landing/hero/Hero.ValuePropsGrid.Idle-Optimized";
 import { WavesBackground } from "@/components/landing/hero/Hero.WavesBackground";
-import { CallToAction } from "@/components/landing/hero/Hero.CallToAction";
-import { WSFadeIn } from "@/components/animations/ws-fade-in";
 import { useReversibleScrollVisibility } from "@/hooks/use-reversible-scroll-visibility";
 
 const HeroSection = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [_isScrolled, setIsScrolled] = useState(false);
 
   // Hook optimizado para la flecha de scroll
   const scrollIndicator = useReversibleScrollVisibility({
@@ -80,18 +79,11 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll Indicator - Optimizado para Performance */}
-      <div
+      <button
         ref={scrollIndicator.setElementRef}
-        className="absolute bottom-8 left-1/2 cursor-pointer transition-transform duration-200 will-change-transform hover:scale-110 focus:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        type="button"
+        className="absolute bottom-8 left-1/2 cursor-pointer transition-transform duration-200 will-change-transform hover:scale-110 focus:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 bg-transparent border-none p-2"
         onClick={scrollToContent}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            scrollToContent();
-          }
-        }}
-        tabIndex={0}
-        role="button"
         aria-label="Desplazarse hacia abajo para ver más contenido"
         style={{
           transform: `translateX(-50%) translateY(0)`,
@@ -107,7 +99,7 @@ const HeroSection = () => {
             !scrollIndicator.isReducedMotion ? "animate-bounce" : ""
           }`}
         />
-      </div>
+      </button>
     </div>
   );
 };
