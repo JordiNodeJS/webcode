@@ -9,7 +9,6 @@ import { TrustIndicators } from "@/components/landing/hero/Hero.TrustIndicators"
 import { IdleOptimizedValuePropsGrid } from "@/components/landing/hero/Hero.ValuePropsGrid.Idle-Optimized";
 import { WavesBackground } from "@/components/landing/hero/Hero.WavesBackground";
 import { useReversibleScrollVisibility } from "@/hooks/use-reversible-scroll-visibility";
-import { CloudLightningBackground } from "./Hero.CloudLightningBackground";
 
 const HeroSection = () => {
   const [_isScrolled, setIsScrolled] = useState(false);
@@ -39,15 +38,11 @@ const HeroSection = () => {
 
   return (
     <div
-      className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-cyan-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900"
+      className="relative min-h-screen w-full overflow-hidden"
       data-animation-section="hero"
     >
       {/* Navigation */}
       <HeaderNavigation />
-
-      {/* Waves Background */}
-      {/* <WavesBackground /> */}
-      <CloudLightningBackground />
 
       <div className="container relative z-10 mx-auto px-4 py-20 md:py-32">
         <div className="flex flex-col items-center text-center">

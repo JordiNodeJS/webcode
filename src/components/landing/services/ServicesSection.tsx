@@ -132,7 +132,7 @@ export function ServicesSection() {
   return (
     <section
       ref={sectionRef}
-      className="min-h-screen bg-gradient-to-b from-slate-50/80 via-slate-100/60 to-slate-200/40 dark:from-gray-950/90 dark:via-gray-900/80 dark:to-gray-800/60 pt-16 pb-20 px-4 sm:px-6 lg:px-8"
+      className="min-h-screen pt-16 pb-20 px-4 sm:px-6 lg:px-8"
       data-animation-section="services"
       data-testid="services-section"
     >
