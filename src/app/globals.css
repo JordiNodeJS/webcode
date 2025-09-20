@@ -398,6 +398,20 @@
   }
 }
 
+/* Reusable neon effect using CSS variables (prefers secondary-rgb as turquoise) */
+.neon-theme {
+  color: rgb(var(--secondary-rgb, 100, 180, 200));
+  text-shadow: 0 0 6px rgba(var(--secondary-rgb, 100, 180, 200), 0.8),
+    0 0 12px rgba(var(--secondary-rgb, 100, 180, 200), 0.55),
+    0 0 24px rgba(var(--secondary-rgb, 100, 180, 200), 0.3);
+}
+
+.neon-theme-soft {
+  color: rgba(var(--secondary-rgb, 100, 180, 200), 0.85);
+  text-shadow: 0 0 4px rgba(var(--secondary-rgb, 100, 180, 200), 0.6),
+    0 0 10px rgba(var(--secondary-rgb, 100, 180, 200), 0.35);
+}
+
 /* Soporte para prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -1014,5 +1028,109 @@ main > section:first-of-type {
     box-shadow: none;
     background: oklch(var(--primary));
     color: oklch(var(--primary-foreground));
+  }
+}
+
+/* === FOOTER ANIMATED LOGO STYLES === */
+/* Estilos específicos para el footer con logo animado inspirado en el CodePen */
+
+/* Animación optimizada para el logo del footer - solo se activa en hover */
+@keyframes footer-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Keyframe para efecto de pulsación sutil en el logo */
+@keyframes footer-logo-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.95;
+  }
+}
+
+/* Variables específicas para el footer usando los colores del tema */
+:root {
+  --footer-primary-glow: oklch(var(--primary) / 0.15);
+  --footer-secondary-glow: oklch(var(--secondary) / 0.15);
+  --footer-mixed-glow: linear-gradient(
+    135deg,
+    oklch(var(--primary) / 0.1),
+    oklch(var(--secondary) / 0.1)
+  );
+}
+
+.dark {
+  --footer-primary-glow: oklch(var(--primary) / 0.2);
+  --footer-secondary-glow: oklch(var(--secondary) / 0.2);
+  --footer-mixed-glow: linear-gradient(
+    135deg,
+    oklch(var(--primary) / 0.15),
+    oklch(var(--secondary) / 0.15)
+  );
+}
+
+/* Clases específicas para el footer animado - performance optimized */
+.footer-animated-logo {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Animaciones solo en dispositivos que las soportan */
+@media (prefers-reduced-motion: no-preference) {
+  .footer-animated-logo:hover .logo-spinner {
+    animation: footer-logo-spin 4s linear infinite;
+  }
+
+  .footer-animated-logo:hover .logo-text {
+    animation: footer-logo-pulse 2s ease-in-out infinite;
+  }
+}
+
+/* Fallback para usuarios que prefieren movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .footer-animated-logo:hover .logo-spinner {
+    animation: none;
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+
+  .footer-animated-logo:hover .logo-text {
+    animation: none;
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+  }
+}
+
+/* Estilos para los gradientes SVG del footer */
+.footer-svg-gradient-shapes {
+  filter: drop-shadow(0 0 8px var(--footer-primary-glow));
+  transition: filter 0.3s ease;
+}
+
+.footer-svg-gradient-shapes:hover {
+  filter: drop-shadow(0 0 12px var(--footer-primary-glow))
+    drop-shadow(0 0 20px var(--footer-secondary-glow));
+}
+
+/* Estilos responsive para el footer */
+@media (max-width: 768px) {
+  .footer-animated-logo {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-animated-logo {
+    transform: scale(0.7);
   }
 }
