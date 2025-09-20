@@ -50,7 +50,7 @@ export function ServiceCard({
 
   return (
     <Card
-      className={`group relative overflow-hidden border-0 bg-gradient-to-br from-card via-card to-muted/20 focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 ${
+      className={`group relative overflow-hidden border-0 bg-gradient-to-br from-card/80 via-card/60 to-muted/10 focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 ${
         prefersReducedMotion
           ? "hover:shadow-lg"
           : "hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
@@ -79,7 +79,7 @@ export function ServiceCard({
           </div>
           <div className="flex-1">
             <CardTitle
-              className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300"
+              className="neon-cyan-card-title text-foreground group-hover:text-primary transition-colors duration-300"
               id={`service-title-${id}`}
             >
               {title}

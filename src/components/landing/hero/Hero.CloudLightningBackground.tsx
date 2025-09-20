@@ -14,8 +14,9 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { getThemeColors, parseRgbColor } from "@/lib/theme-colors";
+import useScrollPosition from "@/hooks/use-scroll-position";
 
 interface CloudParticle {
   x: number;
@@ -33,75 +34,114 @@ interface MousePosition {
   y: number;
 }
 
-// Configuración base del efecto
+// Configuración base optimizada para rendimiento
 const BASE_CONFIG = {
-  PARTICLE_COUNT: 80, // Número de partículas de nube
-  PARTICLE_MIN_SIZE: 20,
-  PARTICLE_MAX_SIZE: 60,
-  PARTICLE_MIN_SPEED: 0.1,
-  PARTICLE_MAX_SPEED: 0.3,
-  LIGHT_RADIUS: 200, // Radio de iluminación del cursor
-  LIGHT_INTENSITY: 0.8,
-  ANIMATION_SPEED: 60, // FPS target
+  PARTICLE_COUNT: 60, // Reducido para mejor rendimiento
+  PARTICLE_MIN_SIZE: 15,
+  PARTICLE_MAX_SIZE: 50,
+  PARTICLE_MIN_SPEED: 0.08,
+  PARTICLE_MAX_SPEED: 0.25,
+  LIGHT_RADIUS: 180, // Reducido para mejor rendimiento
+  LIGHT_INTENSITY: 0.7,
+  ANIMATION_SPEED: 50, // Reducido FPS para ahorro de CPU
 } as const;
+
+// Límites dinámicos para ahorro de CPU cuando el fondo se desvanece
+const MIN_LIGHT_RADIUS = Math.max(
+  40,
+  Math.floor(BASE_CONFIG.LIGHT_RADIUS * 0.3)
+);
+const MIN_PARTICLE_COUNT = 8; // mínimo para mantener algo de presencia si no está totalmente oculto
 
 // Función para crear configuraciones específicas por tema usando los colores del sistema
 const createThemeConfig = (theme: "light" | "dark") => {
   const colors = getThemeColors(theme);
 
   if (theme === "dark") {
-    // Modo oscuro: tonalidades más sutiles con colores del tema
-    const cloudColor = parseRgbColor(colors.foreground.muted); // Gris suave para las nubes
-    const lightningColor = parseRgbColor(colors.accent.primary); // Color principal para iluminación
+    // Modo oscuro: paleta WebSnack con tonos más sutiles pero vibrantes
+    const cloudColor = parseRgbColor(colors.accent.secondary); // Aguamarina sutil para nubes
+    const lightningColor = parseRgbColor(colors.accent.primary); // Rosa brillante para iluminación
 
     return {
       CLOUD_COLOR: cloudColor,
       LIGHTNING_COLOR: lightningColor,
-      BACKGROUND_COLOR: `rgba(17, 24, 39, 0.85)`, // gray-900 con transparencia
-      LIGHT_OPACITY: 0.7,
-      CLOUD_BASE_OPACITY: 0.08,
+      BACKGROUND_COLOR: `rgba(15, 23, 42, 0.9)`, // Color de fondo oscuro del tema (#0f172a)
+      LIGHT_OPACITY: 0.75,
+      CLOUD_BASE_OPACITY: 0.06,
     };
   } else {
-    // Modo claro: tonalidades más suaves
-    const cloudColor = parseRgbColor(colors.foreground.muted); // Colores sutiles
-    const lightningColor = parseRgbColor(colors.accent.primary); // Color principal para iluminación
+    // Modo claro: paleta completa WebSnack rosa-aguamarina
+    const cloudColor = parseRgbColor(colors.accent.secondary); // Aguamarina para nubes sutiles
+    const lightningColor = parseRgbColor(colors.accent.primary); // Rosa WebSnack para iluminación
 
     return {
       CLOUD_COLOR: cloudColor,
       LIGHTNING_COLOR: lightningColor,
-      BACKGROUND_COLOR: `rgba(238, 242, 255, 0.85)`, // indigo-50 con transparencia
-      LIGHT_OPACITY: 0.5,
-      CLOUD_BASE_OPACITY: 0.15,
+      BACKGROUND_COLOR: `rgba(244, 251, 252, 0.85)`, // Fondo claro del tema (#f4fbfc)
+      LIGHT_OPACITY: 0.6,
+      CLOUD_BASE_OPACITY: 0.12,
     };
   }
 };
 
 export function CloudLightningBackground() {
-  const { theme } = useTheme();
+  const { theme, resolvedTheme } = useTheme();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number | null>(null);
   const particlesRef = useRef<CloudParticle[]>([]);
   const mouseRef = useRef<MousePosition>({ x: -1000, y: -1000 });
   const isVisibleRef = useRef(true);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+  const [isIntersecting, setIsIntersecting] = useState<boolean>(true);
+  const opacityRef = useRef<number>(1);
 
-  // Configuración actual basada en el tema
+  // Scroll -> opacidad dinámica del fondo (1 en top -> 0 tras fadeEnd px)
+  const scroll = useScrollPosition();
+  const fadeStart = 0; // px
+  const fadeEnd = 800; // px hasta desaparecer
+  const progress = Math.min(
+    1,
+    Math.max(0, (scroll.y - fadeStart) / Math.max(1, fadeEnd - fadeStart))
+  );
+  const opacity = 1 - progress; // 1 -> 0
+
+  // Evitar hidratación mismatch - solo inicializar después del mount
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Configuración actual basada en el tema resuelto (evita problemas de hidratación)
   const currentConfig = useMemo(() => {
-    const isDark = theme === "dark";
+    if (!mounted) {
+      // Durante SSR/hidratación, usar configuración neutral
+      return {
+        ...BASE_CONFIG,
+        ...createThemeConfig("light"), // Default neutral
+      };
+    }
+
+    const isDark = resolvedTheme === "dark" || theme === "dark";
     const themeConfig = createThemeConfig(isDark ? "dark" : "light");
 
     return {
       ...BASE_CONFIG,
       ...themeConfig,
     };
-  }, [theme]);
+  }, [theme, resolvedTheme, mounted]);
 
-  // Función para crear partículas de nube
+  // Función para crear partículas de nube con optimización para móviles
   const createParticles = useCallback(
     (width: number, height: number): CloudParticle[] => {
       const particles: CloudParticle[] = [];
 
-      for (let i = 0; i < currentConfig.PARTICLE_COUNT; i++) {
+      // Optimizar número de partículas según el tamaño de pantalla
+      const isMobile = width < 768; // Breakpoint típico para móviles
+      const particleCount = isMobile
+        ? Math.max(15, Math.floor(BASE_CONFIG.PARTICLE_COUNT * 0.4)) // 40% para móviles
+        : BASE_CONFIG.PARTICLE_COUNT;
+
+      for (let i = 0; i < particleCount; i++) {
         particles.push({
           x: Math.random() * width,
           y: Math.random() * height,
@@ -112,8 +152,8 @@ export function CloudLightningBackground() {
             Math.random() *
               (currentConfig.PARTICLE_MAX_SIZE -
                 currentConfig.PARTICLE_MIN_SIZE),
-          opacity: currentConfig.CLOUD_BASE_OPACITY + Math.random() * 0.2,
-          baseOpacity: currentConfig.CLOUD_BASE_OPACITY + Math.random() * 0.2,
+          opacity: currentConfig.CLOUD_BASE_OPACITY + Math.random() * 0.15,
+          baseOpacity: currentConfig.CLOUD_BASE_OPACITY + Math.random() * 0.15,
           brightness: 0,
         });
       }
@@ -125,16 +165,20 @@ export function CloudLightningBackground() {
 
   // Función para calcular la iluminación de una partícula
   const calculateLighting = useCallback(
-    (particle: CloudParticle, mouseX: number, mouseY: number): number => {
+    (
+      particle: CloudParticle,
+      mouseX: number,
+      mouseY: number,
+      effectiveRadius: number
+    ): number => {
       const dx = particle.x - mouseX;
       const dy = particle.y - mouseY;
       const distance = Math.sqrt(dx * dx + dy * dy);
 
-      if (distance > currentConfig.LIGHT_RADIUS) return 0;
+      if (distance > effectiveRadius) return 0;
 
       const intensity =
-        (1 - distance / currentConfig.LIGHT_RADIUS) *
-        currentConfig.LIGHT_INTENSITY;
+        (1 - distance / effectiveRadius) * currentConfig.LIGHT_INTENSITY;
       return intensity ** 2; // Exponential falloff para efecto más dramático
     },
     [currentConfig]
@@ -142,7 +186,13 @@ export function CloudLightningBackground() {
 
   // Función principal de animación
   const animate = useCallback(() => {
-    if (!canvasRef.current || !isVisibleRef.current) return;
+    if (
+      !canvasRef.current ||
+      !isVisibleRef.current ||
+      opacityRef.current <= 0.01
+    ) {
+      return;
+    }
 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -151,12 +201,29 @@ export function CloudLightningBackground() {
     const { width, height } = canvas;
     const particles = particlesRef.current;
     const mouse = mouseRef.current;
+    const opacityVal = Math.max(0, Math.min(1, opacityRef.current));
+
+    // Radio de luz y número de partículas efectivos según opacidad
+    const effectiveRadius =
+      MIN_LIGHT_RADIUS +
+      (BASE_CONFIG.LIGHT_RADIUS - MIN_LIGHT_RADIUS) * opacityVal;
+    const activeCount =
+      opacityVal <= 0.01
+        ? 0
+        : Math.max(
+            MIN_PARTICLE_COUNT,
+            Math.floor(BASE_CONFIG.PARTICLE_COUNT * opacityVal)
+          );
+
+    // Aplicar opacidad global según scroll
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, Math.min(1, opacityRef.current));
 
     // Limpiar canvas con fondo adaptado al tema
     ctx.fillStyle = currentConfig.BACKGROUND_COLOR;
     ctx.fillRect(0, 0, width, height);
 
-    // Crear gradiente radial para el efecto de luz del cursor si está dentro del canvas
+    // Crear gradiente radial para el efecto de luz del cursor mejorado
     if (mouse.x >= 0 && mouse.y >= 0 && mouse.x <= width && mouse.y <= height) {
       const gradient = ctx.createRadialGradient(
         mouse.x,
@@ -164,35 +231,31 @@ export function CloudLightningBackground() {
         0,
         mouse.x,
         mouse.y,
-        currentConfig.LIGHT_RADIUS
+        effectiveRadius
       );
-      gradient.addColorStop(
-        0,
-        `rgba(${currentConfig.LIGHTNING_COLOR.r}, ${
-          currentConfig.LIGHTNING_COLOR.g
-        }, ${currentConfig.LIGHTNING_COLOR.b}, ${
-          currentConfig.LIGHT_OPACITY * 0.125
-        })`
-      );
-      gradient.addColorStop(
-        0.5,
-        `rgba(${currentConfig.LIGHTNING_COLOR.r}, ${
-          currentConfig.LIGHTNING_COLOR.g
-        }, ${currentConfig.LIGHTNING_COLOR.b}, ${
-          currentConfig.LIGHT_OPACITY * 0.0625
-        })`
-      );
-      gradient.addColorStop(
-        1,
-        `rgba(${currentConfig.LIGHTNING_COLOR.r}, ${currentConfig.LIGHTNING_COLOR.g}, ${currentConfig.LIGHTNING_COLOR.b}, 0)`
-      );
+
+      // Colores del tema WebSnack para el efecto de iluminación
+      const centerColor =
+        theme === "dark"
+          ? `rgba(255, 170, 215, ${currentConfig.LIGHT_OPACITY * 0.15})` // Rosa brillante modo oscuro
+          : `rgba(220, 124, 179, ${currentConfig.LIGHT_OPACITY * 0.15})`; // Rosa principal
+
+      const midColor =
+        theme === "dark"
+          ? `rgba(165, 243, 252, ${currentConfig.LIGHT_OPACITY * 0.08})` // Aguamarina modo oscuro
+          : `rgba(188, 227, 229, ${currentConfig.LIGHT_OPACITY * 0.08})`; // Aguamarina principal
+
+      gradient.addColorStop(0, centerColor);
+      gradient.addColorStop(0.5, midColor);
+      gradient.addColorStop(1, "rgba(255, 255, 255, 0)"); // Transparente al final
 
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
     }
 
-    // Dibujar y animar partículas
-    particles.forEach((particle) => {
+    // Dibujar y animar solo las partículas activas
+    for (let i = 0; i < activeCount; i++) {
+      const particle = particles[i];
       // Actualizar posición
       particle.x += particle.vx;
       particle.y += particle.vy;
@@ -206,7 +269,12 @@ export function CloudLightningBackground() {
       particle.y = Math.max(0, Math.min(height, particle.y));
 
       // Calcular iluminación
-      const lighting = calculateLighting(particle, mouse.x, mouse.y);
+      const lighting = calculateLighting(
+        particle,
+        mouse.x,
+        mouse.y,
+        effectiveRadius
+      );
       particle.brightness = lighting;
 
       // Preparar para dibujar
@@ -230,12 +298,18 @@ export function CloudLightningBackground() {
       // Dibujar partícula con efecto de resplandor
       ctx.save();
 
-      // Efecto de resplandor si hay iluminación
+      // Efecto de resplandor mejorado con sombras 3D del sistema WAS
       if (lighting > 0.1) {
-        ctx.shadowColor = `rgba(${r}, ${g}, ${b}, ${lighting * 0.8})`;
+        // Usar colores del tema WebSnack para el resplandor
+        const glowColor =
+          theme === "dark"
+            ? `rgba(255, 170, 215, ${lighting * 0.8})` // Rosa brillante modo oscuro
+            : `rgba(220, 124, 179, ${lighting * 0.8})`; // Rosa principal modo claro
+
+        ctx.shadowColor = glowColor;
         ctx.shadowBlur = glowSize * 0.5;
-        ctx.shadowOffsetX = 0;
-        ctx.shadowOffsetY = 0;
+        ctx.shadowOffsetX = lighting * 2; // Efecto 3D sutil
+        ctx.shadowOffsetY = lighting * 2;
       }
 
       // Dibujar la partícula principal
@@ -260,7 +334,9 @@ export function CloudLightningBackground() {
       ctx.fill();
 
       ctx.restore();
-    });
+    }
+
+    ctx.restore();
 
     animationRef.current = requestAnimationFrame(animate);
   }, [calculateLighting, currentConfig]);
@@ -314,12 +390,7 @@ export function CloudLightningBackground() {
       (entries) => {
         entries.forEach((entry) => {
           isVisibleRef.current = entry.isIntersecting;
-          if (entry.isIntersecting && !animationRef.current) {
-            animate();
-          } else if (!entry.isIntersecting && animationRef.current) {
-            cancelAnimationFrame(animationRef.current);
-            animationRef.current = null;
-          }
+          setIsIntersecting(entry.isIntersecting);
         });
       },
       {
@@ -332,8 +403,10 @@ export function CloudLightningBackground() {
       observer.observe(containerRef.current);
     }
 
-    // Iniciar animación
-    animate();
+    // Iniciar animación (si corresponde)
+    if (isVisibleRef.current && opacityRef.current > 0.01) {
+      animate();
+    }
 
     // Cleanup
     return () => {
@@ -347,26 +420,23 @@ export function CloudLightningBackground() {
     };
   }, [animate, handleMouseMove, handleMouseLeave, resizeCanvas]);
 
-  // Gradientes específicos por tema usando los colores del sistema
-  const backgroundGradient = useMemo(() => {
-    const colors = getThemeColors(theme === "dark" ? "dark" : "light");
-
-    if (theme === "dark") {
-      // Gradiente oscuro: gray-900 -> gray-800 -> gray-900
-      return `linear-gradient(135deg, ${colors.background.primary} 0%, ${colors.background.secondary} 50%, ${colors.background.primary} 100%)`;
-    } else {
-      // Gradiente claro: indigo-50 -> white -> cyan-50
-      return `linear-gradient(135deg, ${colors.gradients.hero.from} 0%, ${colors.gradients.hero.via} 50%, ${colors.gradients.hero.to} 100%)`;
+  // Arrancar/parar animación según intersección u opacidad
+  useEffect(() => {
+    opacityRef.current = opacity;
+    const shouldAnimate = isIntersecting && opacity > 0.01;
+    if (shouldAnimate && !animationRef.current) {
+      animate();
+    } else if (!shouldAnimate && animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+      animationRef.current = null;
     }
-  }, [theme]);
+  }, [isIntersecting, opacity, animate]);
 
   return (
     <div
       ref={containerRef}
-      className="cloud-lightning-background absolute inset-0 overflow-hidden pointer-events-none"
-      style={{
-        background: backgroundGradient,
-      }}
+      className="cloud-lightning-background absolute inset-0 overflow-hidden pointer-events-none bg-gradient-webcode transition-opacity duration-300 ease-out will-change-[opacity]"
+      style={{ opacity }}
     >
       <canvas
         ref={canvasRef}

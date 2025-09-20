@@ -556,7 +556,7 @@ export function PerformanceTestLab() {
           <div className="flex items-center justify-center gap-3">
             <Activity className="h-8 w-8 text-primary" />
             <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Performance Lab WebSnack
+              Performance Lab WebCode
             </h1>
           </div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">

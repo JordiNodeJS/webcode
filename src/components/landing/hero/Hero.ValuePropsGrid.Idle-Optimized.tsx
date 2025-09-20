@@ -132,15 +132,15 @@ const IdleOptimizedCard = React.memo(
       return {
         r: Math.round(
           GRADIENT_COLORS.PINK.r * pinkRatio +
-            GRADIENT_COLORS.TEAL.r * tealRatio,
+            GRADIENT_COLORS.TEAL.r * tealRatio
         ),
         g: Math.round(
           GRADIENT_COLORS.PINK.g * pinkRatio +
-            GRADIENT_COLORS.TEAL.g * tealRatio,
+            GRADIENT_COLORS.TEAL.g * tealRatio
         ),
         b: Math.round(
           GRADIENT_COLORS.PINK.b * pinkRatio +
-            GRADIENT_COLORS.TEAL.b * tealRatio,
+            GRADIENT_COLORS.TEAL.b * tealRatio
         ),
       };
     }, []);
@@ -207,7 +207,7 @@ const IdleOptimizedCard = React.memo(
           isHovered: true,
         });
       },
-      [],
+      []
     );
 
     const handleMouseEnter = useCallback(() => {
@@ -252,7 +252,7 @@ const IdleOptimizedCard = React.memo(
           isHovered: true,
         });
       },
-      [],
+      []
     );
 
     const handleTouchEnd = useCallback(() => {
@@ -293,12 +293,12 @@ const IdleOptimizedCard = React.memo(
 
           <Card
             className={`
-        h-full bg-background/80 backdrop-blur-sm border-border/30 relative z-0 overflow-hidden
+        h-full bg-white/10 dark:bg-black/10 backdrop-blur-sm border-white/20 dark:border-white/10 relative z-0 overflow-hidden
         ${
           cardState.isHovered
-            ? // Durante hover: sombras 3D y efectos avanzados - IGUAL QUE ORIGINAL
-              "shadow-3d-sm group-hover:shadow-3d-md transition-all duration-700 [transform-style:preserve-3d]"
-            : // En idle: sombra simple - OPTIMIZACIÓN CLAVE
+            ? // Durante hover: sombras 3D y efectos avanzados - más visibilidad
+              "shadow-3d-sm group-hover:shadow-3d-md transition-all duration-700 [transform-style:preserve-3d] bg-white/20 dark:bg-black/20"
+            : // En idle: sombra simple y transparente
               "shadow-3d-sm transition-shadow duration-300"
         }
       `}
@@ -315,17 +315,18 @@ const IdleOptimizedCard = React.memo(
                 {prop.icon}
               </div>
 
-              {/* Título - IGUAL QUE ORIGINAL */}
-              <h3 className="text-lg font-bold text-foreground mb-4 transition duration-300 transform-gpu group-hover:[transform:translateZ(50px)]">
+              {/* Título - Con sombra para mejor legibilidad en fondo transparente */}
+              <h3 className="text-lg font-bold text-foreground mb-4 transition duration-300 transform-gpu group-hover:[transform:translateZ(50px)] drop-shadow-sm">
                 {prop.title}
               </h3>
 
-              {/* Lista de características - IGUAL QUE ORIGINAL */}
+              {/* Lista de características - Con mejor contraste para fondo transparente */}
               <ul className="space-y-2 text-sm text-muted-foreground mt-4 transition-all duration-300 group-hover:[transform:translateZ(20px)]">
                 {prop.features.map((feature) => (
                   <li
                     key={feature}
-                    className="flex items-center justify-center text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-500 group-hover:[transform:translateZ(15px)_scale(1.05)] font-medium transition-all duration-300"
+                    className="flex items-center justify-center text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-500 group-hover:[transform:translateZ(15px)_scale(1.05)] font-medium transition-all duration-300 drop-shadow-sm"
+                    style={{ textShadow: "0 1px 2px rgba(0, 0, 0, 0.2)" }}
                   >
                     {feature}
                   </li>
@@ -336,7 +337,7 @@ const IdleOptimizedCard = React.memo(
         </article>
       </WSHover>
     );
-  },
+  }
 );
 
 IdleOptimizedCard.displayName = "IdleOptimizedCard";
@@ -354,7 +355,7 @@ IdleOptimizedCard.displayName = "IdleOptimizedCard";
  */
 export const IdleOptimizedValuePropsGrid = React.memo(() => {
   const { ref, isIntersecting } = useOnScreen(
-    VALUE_PROPS_GRID_CONFIG.INTERSECTION_THRESHOLD,
+    VALUE_PROPS_GRID_CONFIG.INTERSECTION_THRESHOLD
   );
   const [hasBeenVisible, setHasBeenVisible] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
