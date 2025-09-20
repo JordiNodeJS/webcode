@@ -13,8 +13,10 @@
  */
 "use client";
 
-import { useEffect, useRef, useCallback, useMemo } from "react";
 import { useTheme } from "next-themes";
+import { useCallback, useEffect, useMemo, useRef } from "react";
+import { getThemeColors, parseRgbColor } from "@/lib/theme-colors";
+
 interface CloudParticle {
   x: number;
   y: number;
@@ -43,23 +45,36 @@ const BASE_CONFIG = {
   ANIMATION_SPEED: 60, // FPS target
 } as const;
 
-// Configuraciones específicas por tema
-const THEME_CONFIGS = {
-  dark: {
-    CLOUD_COLOR: { r: 150, g: 150, b: 200 },
-    LIGHTNING_COLOR: { r: 180, g: 200, b: 255 },
-    BACKGROUND_COLOR: "rgba(15, 23, 42, 0.95)", // Dark slate
-    LIGHT_OPACITY: 0.8,
-    CLOUD_BASE_OPACITY: 0.1,
-  },
-  light: {
-    CLOUD_COLOR: { r: 200, g: 220, b: 240 },
-    LIGHTNING_COLOR: { r: 100, g: 150, b: 255 },
-    BACKGROUND_COLOR: "rgba(248, 250, 252, 0.95)", // Light slate
-    LIGHT_OPACITY: 0.6,
-    CLOUD_BASE_OPACITY: 0.3,
-  },
-} as const;
+// Función para crear configuraciones específicas por tema usando los colores del sistema
+const createThemeConfig = (theme: "light" | "dark") => {
+  const colors = getThemeColors(theme);
+
+  if (theme === "dark") {
+    // Modo oscuro: tonalidades más sutiles con colores del tema
+    const cloudColor = parseRgbColor(colors.foreground.muted); // Gris suave para las nubes
+    const lightningColor = parseRgbColor(colors.accent.primary); // Color principal para iluminación
+
+    return {
+      CLOUD_COLOR: cloudColor,
+      LIGHTNING_COLOR: lightningColor,
+      BACKGROUND_COLOR: `rgba(17, 24, 39, 0.85)`, // gray-900 con transparencia
+      LIGHT_OPACITY: 0.7,
+      CLOUD_BASE_OPACITY: 0.08,
+    };
+  } else {
+    // Modo claro: tonalidades más suaves
+    const cloudColor = parseRgbColor(colors.foreground.muted); // Colores sutiles
+    const lightningColor = parseRgbColor(colors.accent.primary); // Color principal para iluminación
+
+    return {
+      CLOUD_COLOR: cloudColor,
+      LIGHTNING_COLOR: lightningColor,
+      BACKGROUND_COLOR: `rgba(238, 242, 255, 0.85)`, // indigo-50 con transparencia
+      LIGHT_OPACITY: 0.5,
+      CLOUD_BASE_OPACITY: 0.15,
+    };
+  }
+};
 
 export function CloudLightningBackground() {
   const { theme } = useTheme();
@@ -73,7 +88,7 @@ export function CloudLightningBackground() {
   // Configuración actual basada en el tema
   const currentConfig = useMemo(() => {
     const isDark = theme === "dark";
-    const themeConfig = isDark ? THEME_CONFIGS.dark : THEME_CONFIGS.light;
+    const themeConfig = createThemeConfig(isDark ? "dark" : "light");
 
     return {
       ...BASE_CONFIG,
@@ -120,7 +135,7 @@ export function CloudLightningBackground() {
       const intensity =
         (1 - distance / currentConfig.LIGHT_RADIUS) *
         currentConfig.LIGHT_INTENSITY;
-      return Math.pow(intensity, 2); // Exponential falloff para efecto más dramático
+      return intensity ** 2; // Exponential falloff para efecto más dramático
     },
     [currentConfig]
   );
@@ -332,12 +347,16 @@ export function CloudLightningBackground() {
     };
   }, [animate, handleMouseMove, handleMouseLeave, resizeCanvas]);
 
-  // Gradientes específicos por tema
+  // Gradientes específicos por tema usando los colores del sistema
   const backgroundGradient = useMemo(() => {
+    const colors = getThemeColors(theme === "dark" ? "dark" : "light");
+
     if (theme === "dark") {
-      return "linear-gradient(135deg, rgb(15, 23, 42) 0%, rgb(30, 41, 59) 50%, rgb(15, 23, 42) 100%)";
+      // Gradiente oscuro: gray-900 -> gray-800 -> gray-900
+      return `linear-gradient(135deg, ${colors.background.primary} 0%, ${colors.background.secondary} 50%, ${colors.background.primary} 100%)`;
     } else {
-      return "linear-gradient(135deg, rgb(248, 250, 252) 0%, rgb(241, 245, 249) 50%, rgb(248, 250, 252) 100%)";
+      // Gradiente claro: indigo-50 -> white -> cyan-50
+      return `linear-gradient(135deg, ${colors.gradients.hero.from} 0%, ${colors.gradients.hero.via} 50%, ${colors.gradients.hero.to} 100%)`;
     }
   }, [theme]);
 
