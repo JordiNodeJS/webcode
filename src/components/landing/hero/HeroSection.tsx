@@ -9,6 +9,7 @@ import { TrustIndicators } from "@/components/landing/hero/Hero.TrustIndicators"
 import { IdleOptimizedValuePropsGrid } from "@/components/landing/hero/Hero.ValuePropsGrid.Idle-Optimized";
 import { WavesBackground } from "@/components/landing/hero/Hero.WavesBackground";
 import { useReversibleScrollVisibility } from "@/hooks/use-reversible-scroll-visibility";
+import { CloudLightningBackground } from "./Hero.CloudLightningBackground";
 
 const HeroSection = () => {
   const [_isScrolled, setIsScrolled] = useState(false);
@@ -45,7 +46,8 @@ const HeroSection = () => {
       <HeaderNavigation />
 
       {/* Waves Background */}
-      <WavesBackground />
+      {/* <WavesBackground /> */}
+      <CloudLightningBackground />
 
       <div className="container relative z-10 mx-auto px-4 py-20 md:py-32">
         <div className="flex flex-col items-center text-center">
