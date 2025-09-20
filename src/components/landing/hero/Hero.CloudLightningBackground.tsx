@@ -14,7 +14,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { getThemeColors, parseRgbColor } from "@/lib/theme-colors";
 
 interface CloudParticle {
@@ -77,24 +77,38 @@ const createThemeConfig = (theme: "light" | "dark") => {
 };
 
 export function CloudLightningBackground() {
-  const { theme } = useTheme();
+  const { theme, resolvedTheme } = useTheme();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number | null>(null);
   const particlesRef = useRef<CloudParticle[]>([]);
   const mouseRef = useRef<MousePosition>({ x: -1000, y: -1000 });
   const isVisibleRef = useRef(true);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
 
-  // Configuración actual basada en el tema
+  // Evitar hidratación mismatch - solo inicializar después del mount
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Configuración actual basada en el tema resuelto (evita problemas de hidratación)
   const currentConfig = useMemo(() => {
-    const isDark = theme === "dark";
+    if (!mounted) {
+      // Durante SSR/hidratación, usar configuración neutral
+      return {
+        ...BASE_CONFIG,
+        ...createThemeConfig("light"), // Default neutral
+      };
+    }
+
+    const isDark = resolvedTheme === "dark" || theme === "dark";
     const themeConfig = createThemeConfig(isDark ? "dark" : "light");
 
     return {
       ...BASE_CONFIG,
       ...themeConfig,
     };
-  }, [theme]);
+  }, [theme, resolvedTheme, mounted]);
 
   // Función para crear partículas de nube
   const createParticles = useCallback(
@@ -347,26 +361,10 @@ export function CloudLightningBackground() {
     };
   }, [animate, handleMouseMove, handleMouseLeave, resizeCanvas]);
 
-  // Gradientes específicos por tema usando los colores del sistema
-  const backgroundGradient = useMemo(() => {
-    const colors = getThemeColors(theme === "dark" ? "dark" : "light");
-
-    if (theme === "dark") {
-      // Gradiente oscuro: gray-900 -> gray-800 -> gray-900
-      return `linear-gradient(135deg, ${colors.background.primary} 0%, ${colors.background.secondary} 50%, ${colors.background.primary} 100%)`;
-    } else {
-      // Gradiente claro: indigo-50 -> white -> cyan-50
-      return `linear-gradient(135deg, ${colors.gradients.hero.from} 0%, ${colors.gradients.hero.via} 50%, ${colors.gradients.hero.to} 100%)`;
-    }
-  }, [theme]);
-
   return (
     <div
       ref={containerRef}
-      className="cloud-lightning-background absolute inset-0 overflow-hidden pointer-events-none"
-      style={{
-        background: backgroundGradient,
-      }}
+      className="cloud-lightning-background absolute inset-0 overflow-hidden pointer-events-none bg-gradient-webcode"
     >
       <canvas
         ref={canvasRef}
