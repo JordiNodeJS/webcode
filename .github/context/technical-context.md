@@ -52,6 +52,10 @@
 ```
 
 **Mejoras Críticas Implementadas:**
+<<<<<<< HEAD
+=======
+
+>>>>>>> feat/11-1
 - ✅ Eliminadas animaciones CSS infinitas (`shine`, `subtlePulse`)
 - ✅ Optimizado rendering de partículas en background
 - ✅ Implementado lazy loading para efectos pesados
