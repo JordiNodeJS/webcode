@@ -1,10 +1,10 @@
-# Instrucciones de Copilot - Proyecto WebSnack
+# Instrucciones de Copilot - Proyecto WEBCODE
 
 ## **CONTEXTO DEL PROYECTO**
 
-### ¿Qué es WebSnack?
+### ¿Qué es WEBCODE?
 
-WebSnack es una plataforma integral de desarrollo web y soluciones digitales para freelancers, pequeñas empresas y startups en Barcelona y España. Ofrecemos servicios que van desde sitios web estáticos hasta aplicaciones web complejas, utilizando tecnologías de vanguardia de 2025.
+WEBCODE es una plataforma integral de desarrollo web y soluciones digitales para freelancers, pequeñas empresas y startups en Barcelona y España. Ofrecemos servicios que van desde sitios web estáticos hasta aplicaciones web complejas, utilizando tecnologías de vanguardia de 2025.
 
 **Misión**: Democratizar el acceso a soluciones web profesionales y de alta calidad para emprendedores y pequeñas empresas en España.
 
@@ -36,9 +36,9 @@ Estos archivos se actualizan automáticamente y contienen:
 
 Consulta las instrucciones detalladas en: `.github/project/taskmanager-instructions.md`
 
-## **ROL: ASISTENTE DE DESARROLLO WEBSNACK**
+## **ROL: ASISTENTE DE DESARROLLO WEBCODE**
 
-Eres un asistente especializado en el desarrollo del proyecto WebSnack. Sigue estas directrices al generar código:
+Eres un asistente especializado en el desarrollo del proyecto WEBCODE. Sigue estas directrices al generar código:
 
 ## **STACK TECNOLÓGICO DEL PROYECTO**
 
@@ -80,12 +80,14 @@ Eres un asistente especializado en el desarrollo del proyecto WebSnack. Sigue es
 ### **Patrones de Exportación**
 
 #### **Named Exports para Componentes Reutilizables**
+
 - Usar `export function` para todos los componentes reutilizables
 - Mejor tree-shaking y optimización del bundle
 - IntelliSense mejorado y debugging más claro
 - Facilita el refactoring y renombrado
 
 #### **Default Exports Solo para Páginas Next.js**
+
 - Usar `export default` únicamente en `page.tsx` y `layout.tsx`
 - Requerido por el App Router de Next.js 15
 - Para configuraciones y utilidades que son el único export del archivo
@@ -199,6 +201,7 @@ package.json                   # Dependencias del proyecto - PENDIENTE INSTALACI
 ### **REGLAS DE ORGANIZACIÓN DE ARCHIVOS**
 
 #### **1. Colocación Cercana (Colocation) - ENFOQUE PREFERIDO**
+
 - **Componentes específicos de página**: Si un componente solo se usa en una página o sección, debe guardarse en una carpeta `components/` dentro de la carpeta de esa ruta.
   ```
   app/dashboard/analytics/components/Chart.tsx
@@ -209,16 +212,19 @@ package.json                   # Dependencias del proyecto - PENDIENTE INSTALACI
 **🎯 RECOMENDACIÓN PRINCIPAL**: Usar colocación cercana siempre que sea posible. Es más fácil de mantener, más claro para el contexto, y sigue las mejores prácticas de Next.js 15.
 
 #### **2. Componentes Compartidos**
+
 - **Elementos atómicos** → `src/components/ui/` (botones, inputs, modales)
 - **Bloques funcionales** → `src/components/features/` (carrito, buscador, formularios complejos)
 - **Animaciones** → `src/components/magicui/` (componentes con animaciones especiales)
 
 #### **3. Layouts Jerárquicos**
+
 - **Layout raíz**: `app/layout.tsx` - Estructura base de toda la aplicación
 - **Layouts de sección**: `app/(marketing)/layout.tsx` - Header/footer específicos
 - **Layouts de funcionalidad**: `app/(dashboard)/layout.tsx` - Sidebar, navegación admin
 
 #### **4. Agrupación de Rutas (Route Groups)**
+
 - Usar `(nombreGrupo)` para agrupar rutas sin afectar la URL:
   ```
   app/(marketing)/about/page.tsx     → /about
@@ -227,6 +233,7 @@ package.json                   # Dependencias del proyecto - PENDIENTE INSTALACI
   ```
 
 #### **5. Archivos Privados y Utilidades**
+
 - **Carpetas con `_` inicial**: No generan rutas públicas
   ```
   app/_private/utils/     # Utilidades internas
@@ -240,19 +247,22 @@ package.json                   # Dependencias del proyecto - PENDIENTE INSTALACI
   ```
 
 #### **6. Nomenclatura Clara**
+
 - **Evitar `index.tsx` genéricos** en componentes
 - **Usar nombres descriptivos**:
+
   ```
   ✅ UserProfileCard.tsx
   ✅ ProductListItem.tsx
   ✅ ContactFormSubmit.tsx
-  
+
   ❌ index.tsx
   ❌ Component.tsx
   ❌ Card.tsx (demasiado genérico)
   ```
 
 #### **7. Convención de Nombres Jerárquica para Componentes**
+
 - **Para mejorar la identificación del componente principal y la jerarquía**, se debe aplicar la siguiente convención de nombres jerárquica:
   ```
   [NombreSección].[Subsección].[Componente].tsx
@@ -265,6 +275,7 @@ package.json                   # Dependencias del proyecto - PENDIENTE INSTALACI
   - `Page.Sección.Subsección.Componente.tsx` - Componentes de tercer nivel
 
 **Ejemplos**:
+
 - `Hero.Section.tsx` - Componente principal de la sección Hero
 - `Hero.WavesBackground.tsx` - Fondo animado con olas
 - `Hero.HeaderNavigation.tsx` - Navegación superior
@@ -275,6 +286,7 @@ package.json                   # Dependencias del proyecto - PENDIENTE INSTALACI
 Para más detalles, consultar: `.github/prompts/component-naming-convention.prompt.md`
 
 #### **8. Organización de Estilos**
+
 - **Estilos globales**: `src/styles/globals.css`
 - **Estilos específicos**: Junto al componente solo si no se reutilizan
 - **Preferencia por Tailwind**: Evitar CSS personalizado cuando sea posible
@@ -282,18 +294,21 @@ Para más detalles, consultar: `.github/prompts/component-naming-convention.prom
 #### **8. Guía de Decisión: Colocación Cercana vs Features**
 
 **🎯 USAR COLOCACIÓN CERCANA (app/components/) cuando:**
+
 - El componente solo se usa en una página específica
 - Es parte de la funcionalidad principal de esa ruta
 - Quieres mantener todo el código relacionado junto
 - Es un componente de presentación sin lógica de negocio compleja
 
 **🔧 USAR FEATURES (src/components/features/) cuando:**
+
 - El componente se reutiliza en múltiples páginas
 - Tiene lógica de negocio compleja
 - Es un módulo funcional completo (ej: carrito de compras)
 - Necesitas separar claramente la lógica de negocio
 
 **📱 EJEMPLO PRÁCTICO:**
+
 ```
 # ✅ Colocación Cercana - Página principal
 app/components/HeroSection.tsx
@@ -411,7 +426,9 @@ const contactSchema = z.object({
   name: z.string().min(2, "Nombre debe tener al menos 2 caracteres"),
   email: z.string().email("Email inválido"),
   message: z.string().min(10, "Mensaje debe tener al menos 10 caracteres"),
-  gdprConsent: z.boolean().refine(val => val === true, "Debes aceptar la política de privacidad"),
+  gdprConsent: z
+    .boolean()
+    .refine((val) => val === true, "Debes aceptar la política de privacidad"),
 });
 
 // ✅ Validación Progresiva por Nicho
@@ -419,7 +436,9 @@ const floristeriaSchema = contactSchema.extend({
   businessInfo: z.object({
     name: z.string().min(2),
     location: z.string().min(5, "Incluye barrio de Barcelona"),
-    specialties: z.array(z.enum(["bodas", "funerales", "eventos_corporativos"])).min(1),
+    specialties: z
+      .array(z.enum(["bodas", "funerales", "eventos_corporativos"]))
+      .min(1),
   }),
 });
 
