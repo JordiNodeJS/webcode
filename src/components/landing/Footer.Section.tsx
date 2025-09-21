@@ -17,9 +17,9 @@ export function FooterSection() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-background border-t border-border/50 overflow-hidden">
-      {/* Fondo con gradiente sutil */}
-      <div className="absolute inset-0 bg-gradient-to-t from-muted/30 via-transparent to-transparent" />
+    <footer className="relative footer-verdoso footer-verdoso-test border-t border-border/50 overflow-hidden mt-16">
+      {/* Fondo con gradiente sutil verdoso */}
+      <div className="absolute inset-0 footer-verdoso-overlay"></div>
 
       <div className="relative container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
@@ -234,7 +234,7 @@ export function FooterSection() {
         </div>
 
         {/* Línea divisoria */}
-        <div className="border-t border-border/30 mt-12 pt-8">
+        <div className="border-t border-border/40 dark:border-border/60 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Copyright */}
             <div className="text-sm text-muted-foreground">
