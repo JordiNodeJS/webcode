@@ -6,6 +6,7 @@ import { AnimationProvider } from "@/contexts/AnimationContext";
 import { initWebVitals } from "@/lib/web-vitals";
 import { DefaultBackground } from "@/components/ui/DefaultBackground";
 import { FooterSection } from "@/components/landing/Footer.Section";
+import { CookieBanner } from "@/components/ui/CookieBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -181,6 +182,7 @@ export default function RootLayout({
               <main className="flex-1">{children}</main>
               <FooterSection />
             </div>
+            <CookieBanner />
           </AnimationProvider>
         </ThemeProvider>
       </body>
