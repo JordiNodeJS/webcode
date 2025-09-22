@@ -47,19 +47,21 @@ const HeroSection = () => {
         <div className="flex flex-col items-center text-center">
           {/* Hero Content */}
           <WSFadeIn delay={0.1} sectionId="hero">
-            <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
               <span className="block">Desarrollo Web</span>
-              <span className="block text-gradient-webcode">
-                Profesional Barcelona
-              </span>
+              <span className="block text-gradient-webcode">Profesional</span>
+              <span className="block text-gradient-webcode">Barcelona</span>
             </h1>
           </WSFadeIn>
 
           <WSFadeIn delay={0.2} sectionId="hero">
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl">
-              Creamos experiencias digitales excepcionales con las últimas
-              tecnologías: Next.js, React, Astro y más para tu negocio en
-              Barcelona.
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl leading-relaxed">
+              <span className="block">
+                Creamos experiencias digitales excepcionales
+              </span>
+              <span className="block">con las últimas tecnologías:</span>
+              <span className="block">Next.js, React, Astro y más</span>
+              <span className="block">para tu negocio en Barcelona.</span>
             </p>
           </WSFadeIn>
 
