@@ -277,8 +277,17 @@ export function ContactForm() {
                       </FormLabel>
                       <FormDescription className="text-xs">
                         Al marcar esta casilla, consientes el tratamiento de tu
-                        email para responder a tu consulta según nuestra
-                        política de privacidad.
+                        email para responder a tu consulta según nuestra{" "}
+                        <Link
+                          href="/politica-de-privacidad"
+                          className="underline text-primary"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="Ir a la política de privacidad (se abre en una nueva pestaña)"
+                        >
+                          política de privacidad
+                        </Link>
+                        .
                       </FormDescription>
                     </div>
                   </div>
