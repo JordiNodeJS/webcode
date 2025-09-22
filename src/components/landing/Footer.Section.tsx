@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { AnimatedLogo } from "./Footer.AnimatedLogo";
 
 /**
@@ -100,11 +100,9 @@ export function FooterSection() {
                 info@webcode.es
               </a>
               <Link
-                href="/about"
+                href="/contacto"
                 className="block transition-colors duration-200"
-                style={{
-                  color: "oklch(var(--muted-foreground))",
-                }}
+                style={{ color: "oklch(var(--muted-foreground))" }}
                 onMouseEnter={(e) =>
                   (e.currentTarget.style.color = "oklch(var(--secondary))")
                 }
@@ -113,10 +111,13 @@ export function FooterSection() {
                     "oklch(var(--muted-foreground))")
                 }
               >
-                Sobre Nosotros
+                Contacto
               </Link>
-              <Link
-                href="/portfolio"
+
+              <a
+                href="https://jordinodejs.github.io/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block transition-colors duration-200"
                 style={{
                   color: "oklch(var(--muted-foreground))",
@@ -130,7 +131,7 @@ export function FooterSection() {
                 }
               >
                 Portfolio
-              </Link>
+              </a>
             </div>
 
             {/* Enlaces sociales - Colores corregidos del tema */}

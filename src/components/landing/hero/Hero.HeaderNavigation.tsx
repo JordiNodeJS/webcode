@@ -23,7 +23,7 @@ interface NavigationItem {
 const navigationItems: NavigationItem[] = [
   { href: "#servicios", label: "Servicios" },
   { href: "#proceso", label: "Proceso" },
-  { href: "#portfolio", label: "Portfolio" },
+  { href: "https://jordinodejs.github.io/", label: "Portfolio" },
   { href: "/contacto", label: "Contacto" },
 ];
 
@@ -68,6 +68,12 @@ export function HeaderNavigation() {
   ) => {
     // Always prevent default and control navigation via router or scroll
     event.preventDefault();
+
+    // Si es una URL externa, abrir en nueva pestaña
+    if (href.startsWith("http")) {
+      window.open(href, "_blank", "noopener,noreferrer");
+      return;
+    }
 
     if (href.startsWith("#")) {
       const targetId = href.substring(1);
@@ -159,7 +165,20 @@ export function HeaderNavigation() {
           <div className="hidden md:flex items-center space-x-8">
             {navigationItems.map((item, index) => (
               <WSFadeIn key={item.href} delay={0.1 + index * 0.1}>
-                {item.href.startsWith("#") ? (
+                {item.href.startsWith("http") ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`transition-all duration-300 font-medium cursor-pointer ${
+                      isScrolled
+                        ? "text-foreground hover:text-primary text-sm"
+                        : "text-foreground hover:text-primary"
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                ) : item.href.startsWith("#") ? (
                   <a
                     href={item.href}
                     onClick={(e) => handleSmoothScroll(item.href, e)}
@@ -269,7 +288,17 @@ export function HeaderNavigation() {
                     <SheetTitle className="sr-only">Navegación</SheetTitle>
                     <div className="flex flex-col space-y-4 mt-6 ps-4 text-center">
                       {navigationItems.map((item) =>
-                        item.href.startsWith("#") ? (
+                        item.href.startsWith("http") ? (
+                          <a
+                            key={item.href}
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2 cursor-pointer"
+                          >
+                            {item.label}
+                          </a>
+                        ) : item.href.startsWith("#") ? (
                           <a
                             key={item.href}
                             href={item.href}
