@@ -1209,7 +1209,8 @@ html body main + footer.footer-verdoso.footer-verdoso-test {
     hue-rotate(var(--footer-glass-hue));
 
   /* === BORDERS === */
-  border: 1px solid var(--footer-border-dark);
+  /* Avoid double border: remove global full border and keep only visual separators inside the component */
+  border-top: none;
 
   /* === SHADOWS & DEPTH === */
   box-shadow: var(--footer-shadow-primary), var(--footer-shadow-secondary),
@@ -1239,7 +1240,8 @@ html.dark body main + footer.footer-verdoso.footer-verdoso-test {
     hue-rotate(var(--footer-glass-hue));
 
   /* === BORDERS === */
-  border: 1px solid var(--footer-border-dark);
+  /* Avoid double border: remove global full border and keep only visual separators inside the component */
+  border-top: none;
 
   /* === SHADOWS & DEPTH === */
   box-shadow: var(--footer-shadow-dark-primary),
