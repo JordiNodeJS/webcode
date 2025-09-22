@@ -4,6 +4,10 @@ export const metadata: Metadata = {
   title: "Política de Privacidad - WEBCODE",
   description:
     "Política de privacidad y cookies de WEBCODE - Tu privacidad es importante para nosotros",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function PoliticaPrivacidadPage() {
