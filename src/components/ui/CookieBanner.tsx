@@ -28,7 +28,7 @@ export function CookieBanner({ className }: CookieBannerProps) {
         } else {
           setIsLoading(false);
         }
-      } catch (error) {
+      } catch (_error) {
         // Si localStorage no está disponible, mostrar el banner por defecto
         setIsVisible(true);
         setIsLoading(false);
@@ -43,10 +43,10 @@ export function CookieBanner({ className }: CookieBannerProps) {
       localStorage.setItem("webcode-cookie-consent", "accepted");
       localStorage.setItem(
         "webcode-cookie-consent-date",
-        new Date().toISOString(),
+        new Date().toISOString()
       );
-    } catch (error) {
-      console.warn("No se pudo guardar la preferencia de cookies:", error);
+    } catch (_error) {
+      console.warn("No se pudo guardar la preferencia de cookies:", _error);
     }
     setIsVisible(false);
   };
@@ -56,7 +56,7 @@ export function CookieBanner({ className }: CookieBannerProps) {
     // Solo guarda que fue cerrado temporalmente, no que fue aceptado
     try {
       sessionStorage.setItem("webcode-cookie-banner-dismissed", "true");
-    } catch (error) {
+    } catch (_error) {
       // Si sessionStorage no está disponible, continuamos sin problema
     }
   };
@@ -67,7 +67,7 @@ export function CookieBanner({ className }: CookieBannerProps) {
   }
 
   return (
-    <div
+    <header
       className={cn(
         // Posicionamiento fijo en la parte inferior
         "fixed bottom-0 left-0 right-0 z-50",
@@ -75,17 +75,15 @@ export function CookieBanner({ className }: CookieBannerProps) {
         "animate-in slide-in-from-bottom-full duration-500",
         // Fondo con blur y transparencia
         "backdrop-blur-md",
-        className,
+        className
       )}
-      role="banner"
-      aria-label="Banner de cookies"
     >
       <div
         className={cn(
           // Fondo siguiendo el sistema de colores del tema - semitransparente
           "bg-background/80 border-t border-border/50",
           // Sombra sutil para elevación
-          "shadow-lg",
+          "shadow-lg"
         )}
       >
         <div className="container mx-auto max-w-7xl px-4 py-3">
@@ -134,6 +132,6 @@ export function CookieBanner({ className }: CookieBannerProps) {
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 }

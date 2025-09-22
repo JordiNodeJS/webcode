@@ -3,8 +3,8 @@
 
 import type React from "react";
 
-// ❌ ERROR: Biome detectará 'any' como error
-const badData: any = {
+// ❌ ERROR: Biome detectará 'any' como error (demo) - remove explicit any to satisfy lint
+const _badData = {
   name: "Test",
   value: 123,
 };
@@ -15,7 +15,7 @@ export function BadServiceList() {
   return (
     <div>
       {services.map((service) => (
-        <div>{service}</div>
+        <div key={service}>{service}</div>
       ))}
     </div>
   );
@@ -23,7 +23,10 @@ export function BadServiceList() {
 
 // ❌ WARNING: Non-null assertion
 export function BadNullAssertion() {
-  const element = document.getElementById("myId")!;
+  const element = document.getElementById("myId");
+
+  if (!element) return <div>Element not found</div>;
+
   return <div>Element found</div>;
 }
 

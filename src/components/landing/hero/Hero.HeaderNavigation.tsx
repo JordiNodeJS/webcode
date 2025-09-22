@@ -4,7 +4,7 @@ import { Menu } from "lucide-react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { Link } from "next-view-transitions";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
 import { Button } from "@/components/ui/button";
 import {
@@ -50,6 +50,81 @@ export function HeaderNavigation() {
   const router = useRouter();
   const isScrolled = scrollPosition.y > 10;
 
+  // Active navigation tracking (page or section)
+  const [activeHref, setActiveHref] = useState<string | null>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  // Update active link when pathname changes (handles page links like '/contacto')
+  useEffect(() => {
+    // Prefer exact path matches for non-hash, non-external links
+    const pathMatch = navigationItems.find((it) => {
+      if (it.href.startsWith("#") || it.href.startsWith("http")) return false;
+      // treat root hrefs and simple startsWith for subroutes
+      return pathname === it.href || pathname.startsWith(`${it.href}/`);
+    });
+
+    if (pathMatch) {
+      setActiveHref(pathMatch.href);
+      return;
+    }
+
+    // If no path match, fallback to hash (if present)
+    if (typeof window !== "undefined") {
+      setActiveHref(window.location.hash || null);
+    }
+  }, [pathname]);
+
+  // Scroll-spy for hash sections when on the root path
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const hashItems = navigationItems.filter((it) => it.href.startsWith("#"));
+
+    // Only enable intersection observer for hash links when we're on the root
+    if (pathname !== "/" || hashItems.length === 0) {
+      // ensure observer is disconnected
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+        observerRef.current = null;
+      }
+      return;
+    }
+
+    const elements = hashItems
+      .map((it) => document.getElementById(it.href.substring(1)))
+      .filter(Boolean) as HTMLElement[];
+
+    if (elements.length === 0) return;
+
+    // Use a single observer and update activeHref when a section intersects
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        // Pick the entry with highest intersectionRatio
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (visible.length > 0) {
+          setActiveHref(`#${visible[0].target.id}`);
+        }
+      },
+      {
+        root: null,
+        rootMargin: "-40% 0px -40% 0px",
+        threshold: [0.25, 0.5, 0.75],
+      }
+    );
+
+    for (const el of elements) {
+      observerRef.current?.observe(el);
+    }
+
+    return () => {
+      observerRef.current?.disconnect();
+      observerRef.current = null;
+    };
+  }, [pathname]);
+
   // Opacidad dinámica del fondo según scroll (1 en top -> 0 tras fadeEnd px)
   const fadeStart = 0; // px desde el top donde empieza a desvanecerse
   const fadeEnd = 240; // px a partir de los cuales la opacidad llega a 0
@@ -57,15 +132,15 @@ export function HeaderNavigation() {
     1,
     Math.max(
       0,
-      (scrollPosition.y - fadeStart) / Math.max(1, fadeEnd - fadeStart),
-    ),
+      (scrollPosition.y - fadeStart) / Math.max(1, fadeEnd - fadeStart)
+    )
   );
   const bgOpacity = 1 - progress; // 1 -> 0
 
   // Función para manejar el smooth scroll con offset para el header responsive
   const handleSmoothScroll = (
     href: string,
-    event: React.MouseEvent<HTMLAnchorElement>,
+    event: React.MouseEvent<HTMLAnchorElement>
   ) => {
     // Always prevent default and control navigation via router or scroll
     event.preventDefault();
@@ -89,6 +164,8 @@ export function HeaderNavigation() {
             behavior: "smooth",
             block: "start",
           });
+          // mark active immediately for better feedback
+          setActiveHref(href);
           return;
         }
 
@@ -171,25 +248,33 @@ export function HeaderNavigation() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`transition-all duration-300 font-medium cursor-pointer ${
+                    className={`relative transition-all duration-300 font-medium cursor-pointer ${
                       isScrolled
                         ? "text-foreground hover:text-primary text-sm"
                         : "text-foreground hover:text-primary"
                     }`}
                   >
                     {item.label}
+                    {/* External links shouldn't receive active state */}
                   </a>
                 ) : item.href.startsWith("#") ? (
                   <a
                     href={item.href}
                     onClick={(e) => handleSmoothScroll(item.href, e)}
-                    className={`transition-all duration-300 font-medium cursor-pointer ${
+                    aria-current={activeHref === item.href ? "true" : undefined}
+                    className={`relative transition-all duration-300 font-medium cursor-pointer ${
                       isScrolled
                         ? "text-foreground hover:text-primary text-sm"
                         : "text-foreground hover:text-primary"
-                    }`}
+                    } ${activeHref === item.href ? "text-primary" : ""}`}
                   >
                     {item.label}
+                    <span
+                      className={`absolute left-0 -bottom-1 h-0.5 w-full rounded bg-primary transition-all duration-300 transform ${
+                        activeHref === item.href ? "scale-x-100" : "scale-x-0"
+                      } origin-left`}
+                      aria-hidden
+                    />
                   </a>
                 ) : (
                   <Link
@@ -197,13 +282,20 @@ export function HeaderNavigation() {
                     onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
                       handleSmoothScroll(item.href, e)
                     }
-                    className={`transition-all duration-300 font-medium cursor-pointer ${
+                    aria-current={activeHref === item.href ? "true" : undefined}
+                    className={`relative transition-all duration-300 font-medium cursor-pointer ${
                       isScrolled
                         ? "text-foreground hover:text-primary text-sm"
                         : "text-foreground hover:text-primary"
-                    }`}
+                    } ${activeHref === item.href ? "text-primary" : ""}`}
                   >
                     {item.label}
+                    <span
+                      className={`absolute left-0 -bottom-1 h-0.5 w-full rounded bg-primary transition-all duration-300 transform ${
+                        activeHref === item.href ? "scale-x-100" : "scale-x-0"
+                      } origin-left`}
+                      aria-hidden
+                    />
                   </Link>
                 )}
               </WSFadeIn>
@@ -298,6 +390,7 @@ export function HeaderNavigation() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2 cursor-pointer"
+                            onClick={() => setIsMobileMenuOpen(false)}
                           >
                             {item.label}
                           </a>
@@ -305,29 +398,55 @@ export function HeaderNavigation() {
                           <a
                             key={item.href}
                             href={item.href}
-                            className="text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2 cursor-pointer"
+                            aria-current={
+                              activeHref === item.href ? "true" : undefined
+                            }
+                            className={`text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2 cursor-pointer ${
+                              activeHref === item.href ? "text-primary" : ""
+                            }`}
                             onClick={(e) => {
                               handleSmoothScroll(item.href, e);
                               setIsMobileMenuOpen(false);
                             }}
                           >
                             {item.label}
+                            <span
+                              className={`block h-0.5 w-full rounded bg-primary mt-1 transition-all duration-200 ${
+                                activeHref === item.href
+                                  ? "opacity-100"
+                                  : "opacity-0"
+                              }`}
+                              aria-hidden
+                            />
                           </a>
                         ) : (
                           <Link
                             key={item.href}
                             href={item.href}
-                            className="text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2 cursor-pointer"
+                            aria-current={
+                              activeHref === item.href ? "true" : undefined
+                            }
+                            className={`text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2 cursor-pointer ${
+                              activeHref === item.href ? "text-primary" : ""
+                            }`}
                             onClick={(
-                              e: React.MouseEvent<HTMLAnchorElement>,
+                              e: React.MouseEvent<HTMLAnchorElement>
                             ) => {
                               handleSmoothScroll(item.href, e);
                               setIsMobileMenuOpen(false);
                             }}
                           >
                             {item.label}
+                            <span
+                              className={`block h-0.5 w-full rounded bg-primary mt-1 transition-all duration-200 ${
+                                activeHref === item.href
+                                  ? "opacity-100"
+                                  : "opacity-0"
+                              }`}
+                              aria-hidden
+                            />
                           </Link>
-                        ),
+                        )
                       )}
                     </div>
                   </SheetContent>
