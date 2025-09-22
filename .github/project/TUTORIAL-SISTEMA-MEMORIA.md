@@ -67,154 +67,11 @@ chmod +x .git/hooks/pre-commit
 ### **🔄 Método 1: Desde VSCode (Recomendado)**
 
 1. **Ctrl+Shift+P** en VSCode
-2. Escribir: `Tasks: Run Task`
-3. Seleccionar: `🔄 Update Project Context`
+   Este tutorial ha sido reemplazado por la documentación unificada:
 
-**¿Cuándo usarlo?**
+- `.github/project/MEMORY-SYSTEM.md`
 
-- ⏰ Antes de sesiones importantes con LLMs
-- 🔧 Después de cambios significativos en el código
-- 📝 Al cambiar de rama o hacer commits importantes
-- 🎯 Antes de demos o reviews
-
-### **🔄 Método 2: Desde Terminal**
-
-```bash
-bash .github/automation/scripts/update-context.sh
-```
-
-### **🔄 Método 3: Automático con Git**
-
-Si configuraste el git hook, se ejecuta automáticamente:
-
-```bash
-git commit -m "feat: nueva funcionalidad"
-# ↑ El contexto se actualiza automáticamente
-```
-
----
-
-## 🎮 **Comandos y Tasks Disponibles**
-
-### **En VSCode (Ctrl+Shift+P → "Tasks: Run Task")**
-
-| Task                        | Qué hace                   | Cuándo usar                       |
-| --------------------------- | -------------------------- | --------------------------------- |
-| `🔄 Update Project Context` | Actualiza todo el contexto | Antes de sesiones LLM importantes |
-| `🧠 Generate LLM Context`   | Genera contexto optimizado | Para preparar contexto específico |
-| `📊 Project Status Report`  | Muestra resumen del estado | Para revisar estado general       |
-| `🚀 Setup WebSnack Project` | Inicializa Next.js 15      | Solo al inicio del proyecto       |
-
-### **En Terminal**
-
-```bash
-# Actualizar contexto
-bash .github/automation/scripts/update-context.sh
-
-# Ver estado del git hook
-ls -la .git/hooks/pre-commit
-
-# Ver archivos de contexto
-ls -la .github/context/
-```
-
----
-
-## 🎯 **Casos de Uso Prácticos**
-
-### **📝 Caso 1: Nueva Sesión con Claude**
-
-**Problema**: Abres un nuevo chat y Claude no sabe nada del proyecto.
-
-**Solución**:
-
-1. Ejecutar: `🔄 Update Project Context` en VSCode
-2. Iniciar chat normalmente
-3. VS Code automáticamente adjunta `copilot-instructions.md`
-4. Claude tiene contexto completo desde el primer mensaje
-
-**Antes:**
-
-```
-Tú: "Ayúdame con el componente ContactForm"
-Claude: "¿Puedes contarme más sobre tu proyecto?"
-```
-
-**Después:**
-
-```
-Tú: "Ayúdame con el componente ContactForm"
-Claude: "Veo que estás en WebSnack usando Next.js 15 con React 19.
-Para el ContactForm, basándome en tu stack con React Hook Form + Zod..."
-```
-
-### **📝 Caso 2: Después de una Sesión de Trabajo Intensa**
-
-**Escenario**: Has trabajado 3 horas, hecho 8 commits, cambiado 15 archivos.
-
-**Workflow**:
-
-1. Antes de cerrar: `🔄 Update Project Context`
-2. Mañana siguiente: Nuevo chat con contexto actualizado
-3. El LLM sabe exactamente qué trabajaste ayer
-
-### **📝 Caso 3: Cambio de Rama o Feature**
-
-**Escenario**: Cambias de `main` a `feature/payment-system`
-
-```bash
-git checkout feature/payment-system
-bash .github/automation/scripts/update-context.sh  # Actualiza contexto
-```
-
-Ahora cualquier LLM sabrá que estás trabajando en la rama de pagos.
-
-### **📝 Caso 4: Antes de un Demo**
-
-```bash
-# Actualizar todo el contexto
-🔄 Update Project Context
-
-# Ver resumen del estado
-📊 Project Status Report
-```
-
-Tienes documentación actualizada para presentar el estado real del proyecto.
-
----
-
-## 📁 **¿Qué Archivos se Actualizan?**
-
-### **`.github/context/current-session.md`**
-
-```markdown
-# 🔄 Sesión Actual - WebSnack
-
-> **Actualizado**: 2025-09-01 15:30:00
-
-## **Estado de la Sesión Actual**
-
-### **Git Status**
-
-- **Rama activa**: feature/contact-form
-- **Último commit**: abc1234 - feat: add contact form validation
-- **Archivos modificados recientes**: 8 archivos
-
-### **Archivos Modificados Recientemente**
-
-- src/components/custom/ContactForm.tsx
-- src/lib/validations.ts
-- src/app/contact/page.tsx
-```
-
-### **`.github/project/PROJECT-STATE.md`**
-
-```markdown
-# 🎯 Estado Actual del Proyecto WebSnack
-
-> **Última actualización**: 2025-09-01
-> **Fase actual**: DESARROLLO → COMPONENTES UI
-> **Progreso general**: 45% completado
+Consulta el documento unificado para el setup, uso diario, comandos y ejemplos. El contenido histórico sigue disponible en el historial de Git si necesitas referencias previas.
 
 ## 🚧 **TAREAS EN PROGRESO**
 
@@ -222,7 +79,8 @@ Tienes documentación actualizada para presentar el estado real del proyecto.
 
 1. **ContactForm con validación** - Status: ✅ Completado
 2. **Landing page responsive** - Status: ⏳ En progreso
-```
+
+````
 
 ### **`llms.txt`**
 
@@ -239,7 +97,7 @@ Tienes documentación actualizada para presentar el estado real del proyecto.
 
 - abc1234 - feat: add contact form validation (2 min ago)
 - def5678 - style: improve responsive design (1 hour ago)
-```
+````
 
 ---
 

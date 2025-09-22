@@ -174,13 +174,13 @@ const typedData: ResponseData = response as ResponseData;
 # Formatear archivos
 pnpm biome format --write src/
 
-# Linting con corrección automática
-pnpm biome check --write src/
+# Linting con corrección automática (recomendado en CI/local)
+pnpm biome check --write .
 
 # Solo linting sin correcciones
 pnpm biome lint src/
 
-# Verificar todo el proyecto
+# Verificar todo el proyecto sin aplicar correcciones (útil para CI checks)
 pnpm biome check .
 ```
 
