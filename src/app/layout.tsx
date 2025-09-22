@@ -8,6 +8,7 @@ import { DefaultBackground } from "@/components/ui/DefaultBackground";
 import { FooterSection } from "@/components/landing/Footer.Section";
 import { CookieBanner } from "@/components/ui/CookieBanner";
 import { HeaderNavigation } from "@/components/landing/hero/Hero.HeaderNavigation";
+import { ViewTransitions } from "next-view-transitions";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -69,8 +70,9 @@ export default function RootLayout({
   initWebVitals();
 
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
+    <ViewTransitions>
+      <html lang="en" suppressHydrationWarning>
+        <head>
         {/* Favicons and App Icons */}
         <link
           rel="apple-touch-icon"
@@ -195,5 +197,6 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
+  </ViewTransitions>
   );
 }

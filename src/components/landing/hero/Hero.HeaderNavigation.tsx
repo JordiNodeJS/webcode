@@ -1,7 +1,7 @@
 "use client";
 
 import { Menu } from "lucide-react";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
