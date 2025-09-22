@@ -92,7 +92,6 @@ WEBCODE ha alcanzado su **primer hito crítico** con una landing page de calidad
   "utilities": [
     "next-themes@0.4.6",
     "class-variance-authority@0.7.1",
-    "canvas-confetti@1.9.3",
     "web-vitals@4.2.4"
   ]
 }
