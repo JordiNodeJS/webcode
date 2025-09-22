@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /cookies
+Disallow: /politica-privacidad
+Disallow: /privacy
+
+# Allow all other paths
+Allow: /
+
+# Optional: sitemap
+Sitemap: /sitemap.xml

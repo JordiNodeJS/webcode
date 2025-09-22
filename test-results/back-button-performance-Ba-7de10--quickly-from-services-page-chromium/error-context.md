@@ -1,0 +1,99 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - img "Patrón de ondas decorativas" [ref=e4]
+  - generic [ref=e6]:
+    - banner [ref=e7]:
+      - navigation [ref=e8]:
+        - generic [ref=e9]:
+          - link "WEBCODE Logo WebCode" [ref=e12] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e13] [cursor=pointer]:
+              - img "WEBCODE Logo" [ref=e14] [cursor=pointer]
+              - generic [ref=e15] [cursor=pointer]: WebCode
+          - generic [ref=e16]:
+            - link "Servicios" [ref=e18] [cursor=pointer]:
+              - /url: "#servicios"
+            - link "Proceso" [ref=e20] [cursor=pointer]:
+              - /url: "#proceso"
+            - link "Portfolio" [ref=e22] [cursor=pointer]:
+              - /url: https://jordinodejs.github.io/
+            - link "Contacto" [ref=e24] [cursor=pointer]:
+              - /url: /contacto
+          - generic [ref=e25]:
+            - generic [ref=e27]:
+              - button "ES" [ref=e28]
+              - button "CA" [ref=e29]
+              - button "EN" [ref=e30]
+            - button "Toggle theme" [ref=e32]:
+              - img
+    - main [ref=e33]:
+      - generic [ref=e34]:
+        - heading "Desarrollo Web" [level=1] [ref=e35]
+        - paragraph [ref=e36]: Placeholder for the Web Development service page.
+    - contentinfo [ref=e37]:
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - heading "Servicios" [level=3] [ref=e42]
+            - generic [ref=e43]:
+              - link "Desarrollo Web" [ref=e44] [cursor=pointer]:
+                - /url: /services/web-development
+              - link "E-commerce" [ref=e45] [cursor=pointer]:
+                - /url: /services/e-commerce
+              - link "SEO & Marketing" [ref=e46] [cursor=pointer]:
+                - /url: /services/seo
+              - link "Consultoría" [ref=e47] [cursor=pointer]:
+                - /url: /services/consulting
+            - generic [ref=e48]:
+              - 'img "Ubicación: Barcelona" [ref=e49]'
+              - generic [ref=e51]: Barcelona, España
+          - generic [ref=e52]:
+            - generic "Logo animado WEBCODE":
+              - generic:
+                - img "Logo animado WEBCODE"
+              - generic:
+                - heading "WebCode" [level=2]:
+                  - generic: Web
+                  - generic: Code
+                - generic:
+                  - generic: WEB
+                  - generic: Design
+          - generic [ref=e53]:
+            - heading "Contacto" [level=3] [ref=e54]
+            - generic [ref=e55]:
+              - link "info@webcode.es" [ref=e56] [cursor=pointer]:
+                - /url: mailto:info@webcode.es
+              - link "Contacto" [ref=e57] [cursor=pointer]:
+                - /url: /contacto
+              - link "Portfolio" [ref=e58] [cursor=pointer]:
+                - /url: https://jordinodejs.github.io/
+            - generic [ref=e59]:
+              - link "LinkedIn" [ref=e60] [cursor=pointer]:
+                - /url: https://linkedin.com/company/webcode
+                - img "LinkedIn" [ref=e61] [cursor=pointer]
+              - link "GitHub" [ref=e63] [cursor=pointer]:
+                - /url: https://github.com/webcode-es
+                - img "GitHub" [ref=e64] [cursor=pointer]
+              - link "Twitter" [ref=e66] [cursor=pointer]:
+                - /url: https://twitter.com/webcode_es
+                - img "Twitter" [ref=e67] [cursor=pointer]
+        - generic [ref=e70]:
+          - generic [ref=e71]: © 2025 WEBCODE. Todos los derechos reservados.
+          - generic [ref=e72]:
+            - link "Privacidad" [ref=e73] [cursor=pointer]:
+              - /url: /privacy
+            - link "Términos" [ref=e74] [cursor=pointer]:
+              - /url: /terms
+            - link "Cookies" [ref=e75] [cursor=pointer]:
+              - /url: /cookies
+          - generic [ref=e76]:
+            - generic [ref=e77]: Desarrollado con
+            - generic [ref=e78]: Next.js
+            - generic [ref=e79]: "&"
+            - generic [ref=e80]: React
+  - button "Open Next.js Dev Tools" [ref=e87] [cursor=pointer]:
+    - img [ref=e88] [cursor=pointer]
+  - alert [ref=e91]
+```

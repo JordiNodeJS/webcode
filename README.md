@@ -53,3 +53,16 @@ Esta herramienta genera automáticamente:
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Reglas de Linting y Formateo (Bioma)
+
+Para facilitar la generación de código consistente y libre de errores, este repositorio incluye una referencia rápida con las reglas críticas y comandos de Biome (lint + format).
+
+- 📘 `.github/instructions/biome-quick-reference.md` — Resumen rápido con las reglas más importantes y ejemplos para desarrolladores y herramientas automáticas (Copilot).
+
+Se recomienda revisar ese archivo antes de generar o commitear código y ejecutar:
+
+```bash
+pnpm lint     # corre Biome para detectar errores/warnings
+pnpm lint:fix # intenta corregir automáticamente problemas detectados
+```

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 /**
  * Props para el componente AnimatedLogo
@@ -36,6 +36,7 @@ export function AnimatedLogo({
 }: AnimatedLogoProps) {
   const [isInView, setIsInView] = useState(false);
   const logoRef = useRef<HTMLDivElement>(null);
+  const reactId = useId();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -45,7 +46,7 @@ export function AnimatedLogo({
       {
         threshold: 0.1,
         rootMargin: "50px",
-      }
+      },
     );
 
     if (logoRef.current) {
@@ -109,20 +110,23 @@ export function AnimatedLogo({
         <svg
           viewBox="0 0 500 500"
           className="logo-spinner footer-svg-gradient-shapes w-full h-full"
+          role="img"
+          aria-hidden={false}
           style={{
             animation: disabled ? "none" : "spin 8s linear infinite",
             animationPlayState: disabled
               ? "paused"
               : isInView
-              ? "running"
-              : "paused",
+                ? "running"
+                : "paused",
           }}
         >
+          <title>{title}</title>
           {/* Definición de gradientes usando colores del tema WEBCODE */}
           <defs>
             {/* Gradiente Rosa Principal */}
             <linearGradient
-              id="webcode-grad-primary"
+              id={`webcode-grad-primary-${reactId}`}
               x1="0%"
               y1="0%"
               x2="0%"
@@ -137,7 +141,7 @@ export function AnimatedLogo({
             </linearGradient>
             {/* Gradiente Aquamarina Secundario */}
             <linearGradient
-              id="webcode-grad-secondary"
+              id={`webcode-grad-secondary-${reactId}`}
               x1="100%"
               y1="0%"
               x2="0%"
@@ -152,7 +156,7 @@ export function AnimatedLogo({
             </linearGradient>
             {/* Gradiente Mixto */}
             <linearGradient
-              id="webcode-grad-mixed"
+              id={`webcode-grad-mixed-${reactId}`}
               x1="100%"
               y1="100%"
               x2="0%"
@@ -172,40 +176,40 @@ export function AnimatedLogo({
           {/* Círculo 1 - Rosa Principal */}
           <path
             className="opacity-20"
-            fill="url(#webcode-grad-primary)"
+            fill={`url(#webcode-grad-primary-${reactId})`}
             d={paths.circle1}
           />
 
           {/* Círculo 2 - Aquamarina Secundario */}
           <path
             className="opacity-50"
-            fill="url(#webcode-grad-secondary)"
+            fill={`url(#webcode-grad-secondary-${reactId})`}
             d={paths.circle2}
           />
 
           {/* Círculo 3 - Gradiente Mixto */}
           <path
             className="opacity-60"
-            fill="url(#webcode-grad-mixed)"
+            fill={`url(#webcode-grad-mixed-${reactId})`}
             d={paths.circle3}
           />
 
           {/* Círculos invertidos para más profundidad */}
           <path
             className="opacity-25"
-            fill="url(#webcode-grad-primary)"
+            fill={`url(#webcode-grad-primary-${reactId})`}
             d={paths.circle4}
           />
 
           <path
             className="opacity-40"
-            fill="url(#webcode-grad-secondary)"
+            fill={`url(#webcode-grad-secondary-${reactId})`}
             d={paths.circle5}
           />
 
           <path
             className="opacity-45"
-            fill="url(#webcode-grad-mixed)"
+            fill={`url(#webcode-grad-mixed-${reactId})`}
             d={paths.circle6}
           />
         </svg>
