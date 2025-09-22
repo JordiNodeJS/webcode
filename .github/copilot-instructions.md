@@ -329,7 +329,7 @@ src/components/features/search/SearchBar.tsx
 ### **Estándares de Calidad**
 
 1. **Server Components por defecto** - Solo usar 'use client' cuando sea estrictamente necesario
-2. **Compliance Biome obligatorio** - Todo código debe pasar `pnpm biome check` sin errores ni warnings
+2. **Compliance Biome obligatorio** - Todo código debe pasar `pnpm biome check --write .` sin errores ni warnings
 3. **Tipado TypeScript apropiado** - Interfaces completas, **prohibido tipo 'any'** (error en Biome)
 4. **Keys en JSX obligatorias** - Todos los elementos iterables requieren `key` única (warning en Biome)
 5. **Estados de carga y error** - Implementar manejo robusto de estados
