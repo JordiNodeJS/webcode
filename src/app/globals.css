@@ -255,9 +255,13 @@
     border-color: hsl(var(--border));
     outline-color: hsl(var(--ring) / 0.5);
   }
+  html {
+    overflow-x: hidden;
+  }
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
+    overflow-x: hidden;
   }
 }
 
