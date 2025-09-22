@@ -162,7 +162,7 @@ export function ContactForm() {
           Solicitar información
         </CardTitle>
       </CardHeader>
-      <CardContent className="p-6 relative z-10">
+      <CardContent className="p-6">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             {/* Email */}
@@ -272,20 +272,8 @@ export function ContactForm() {
                     </FormControl>
                     <div className="grid gap-1.5 leading-none">
                       <FormLabel className="text-sm font-normal cursor-pointer">
-                        <span className="block"></span>
-                          Acepto la{" "}
-                   <Link
-                            href="/politica-privacidad"
-                            className="text-primary hover:underline"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            política de privacidad
-                          </Link>
-                        </span>
-                        <span className="block">
-                          y el tratamiento de mis datos para responder a esta consulta *
-                        </span>
+                        Acepto la política de privacidad y el tratamiento de mis
+                        datos para responder a esta consulta *
                       </FormLabel>
                       <FormDescription className="text-xs">
                         Al marcar esta casilla, consientes el tratamiento de tu
@@ -326,19 +314,20 @@ export function ContactForm() {
           </form>
         </Form>
       </CardContent>
-      <CardFooter className="p-4 md:p-6 bg-muted/30 rounded-b-2xl relative z-10">
-        <h4 className="text-sm font-medium text-foreground mb-2">
-          Compromiso de privacidad
-        </h4>
-        <p className="text-xs text-muted-foreground">
-          WEBCODE se compromete a proteger tu privacidad. Solo recopilamos tu
-          dirección de email para responder a tu consulta. No utilizamos cookies
-          de seguimiento ni compartimos tus datos con terceros. Puedes ejercer
-          tus derechos de acceso, rectificación o supresión en cualquier
-          momento.
-        </p>
+      <CardFooter className="p-4 md:p-6 bg-muted/30 rounded-b-2xl">
+        <div className="w-full">
+          <h4 className="text-sm font-medium text-foreground mb-2">
+            Compromiso de privacidad
+          </h4>
+          <p className="text-xs text-muted-foreground">
+            WEBCODE se compromete a proteger tu privacidad. Solo recopilamos tu
+            dirección de email para responder a tu consulta. No utilizamos
+            cookies de seguimiento ni compartimos tus datos con terceros. Puedes
+            ejercer tus derechos de acceso, rectificación o supresión en
+            cualquier momento.
+          </p>
+        </div>
       </CardFooter>
-      {/* BorderBeam placed last so it sits behind rounded content but is not clipped badly */}
     </Card>
   );
 }
