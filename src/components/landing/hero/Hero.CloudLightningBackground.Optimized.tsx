@@ -62,9 +62,9 @@ const detectDeviceCapabilities = (): DeviceCapabilities => {
   // Heurísticas basadas en características del navegador
   const hasWebGL = !!gl;
   const hasOffscreenCanvas = typeof OffscreenCanvas !== "undefined";
-  const hasWorkers = typeof Worker !== "undefined";
+  const _hasWorkers = typeof Worker !== "undefined";
   const deviceMemory = (navigator as any).deviceMemory || 4; // GB
-  const hardwareConcurrency = navigator.hardwareConcurrency || 2;
+  const _hardwareConcurrency = navigator.hardwareConcurrency || 2;
 
   // Detectar tipo de dispositivo
   const isMobile = /Mobi|Android/i.test(navigator.userAgent);
@@ -215,7 +215,7 @@ const createThemeConfig = (
 export function CloudLightningBackgroundOptimized() {
   const { theme } = useTheme();
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const offscreenCanvasRef = useRef<OffscreenCanvas | null>(null);
+  const _offscreenCanvasRef = useRef<OffscreenCanvas | null>(null);
   const animationRef = useRef<number | null>(null);
   const particlePoolRef = useRef<ParticlePool | null>(null);
   const mouseRef = useRef<MousePosition>({ x: -1000, y: -1000, timestamp: 0 });
@@ -564,7 +564,7 @@ export function CloudLightningBackgroundOptimized() {
       const pool = particlePoolRef.current;
       pool.releaseAll();
 
-      const newParticles = createParticles(canvas.width, canvas.height);
+      const _newParticles = createParticles(canvas.width, canvas.height);
       // Las partículas ya están en el pool activo por createParticles
     }
   }, [createParticles, currentConfig]);

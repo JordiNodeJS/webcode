@@ -3,29 +3,52 @@
 
 import type React from "react";
 
-// ❌ ERROR: Biome detectará 'any' como error
-const badData: any = {
+// ❌ ERROR: Biome detectará 'any' como error (ejemplo comentado)
+// const badData: any = {
+//   name: "Test",
+//   value: 123,
+// };
+
+// ✅ CORRECTO: Tipo específico en lugar de any
+interface DemoData {
+  name: string;
+  value: number;
+}
+
+const _goodData: DemoData = {
   name: "Test",
   value: 123,
 };
 
-// ❌ WARNING: Missing key in JSX iterable
+// ❌ WARNING: Missing key in JSX iterable (ejemplo comentado)
+// const services = ["web", "ecommerce", "consulting"];
+// export function BadServiceList() {
+//   return (
+//     <div>
+//       {services.map((service) => (
+//         <div>{service}</div>
+//       ))}
+//     </div>
+//   );
+// }
+
+// ✅ CORRECTO: Con keys apropiados
 const services = ["web", "ecommerce", "consulting"];
-export function BadServiceList() {
+export function GoodServiceListDemo() {
   return (
     <div>
       {services.map((service) => (
-        <div>{service}</div>
+        <div key={service}>{service}</div>
       ))}
     </div>
   );
 }
 
-// ❌ WARNING: Non-null assertion
-export function BadNullAssertion() {
-  const element = document.getElementById("myId")!;
-  return <div>Element found</div>;
-}
+// ❌ WARNING: Non-null assertion (ejemplo comentado)
+// export function BadNullAssertion() {
+//   const element = document.getElementById("myId")!;
+//   return <div>Element found</div>;
+// }
 
 // ✅ CORRECTO: Código que pasa Biome sin problemas
 interface ServiceData {

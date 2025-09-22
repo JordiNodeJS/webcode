@@ -343,7 +343,7 @@ export function CloudLightningBackground() {
     ctx.restore();
 
     animationRef.current = requestAnimationFrame(animate);
-  }, [calculateLighting, currentConfig]);
+  }, [calculateLighting, currentConfig, theme]);
 
   // Manejador de movimiento del mouse
   const handleMouseMove = useCallback((event: MouseEvent) => {

@@ -558,7 +558,6 @@ main > section:first-of-type {
 
 .cloud-lightning-background canvas {
   /* Optimizaciones específicas del canvas */
-  image-rendering: optimizeSpeed;
   image-rendering: -moz-crisp-edges;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
