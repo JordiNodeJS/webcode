@@ -1,15 +1,3 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Política de Privacidad - WEBCODE",
-  description:
-    "Política de privacidad y cookies de WEBCODE - Tu privacidad es importante para nosotros",
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
-
 export default function PoliticaPrivacidadPage() {
   return (
     <div className="container mx-auto max-w-4xl px-4 py-12">

@@ -1,12 +1,3 @@
-export const metadata = {
-  title: "Cookies - WEBCODE",
-  description: "Información sobre el uso de cookies en WEBCODE.",
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
-
 export default function CookiesPage() {
   return (
     <div className="container mx-auto max-w-4xl px-4 py-12">
