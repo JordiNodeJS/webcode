@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Cookie, X } from "lucide-react";
 import { Link } from "next-view-transitions";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { X, Cookie } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface CookieBannerProps {
@@ -43,7 +43,7 @@ export function CookieBanner({ className }: CookieBannerProps) {
       localStorage.setItem("webcode-cookie-consent", "accepted");
       localStorage.setItem(
         "webcode-cookie-consent-date",
-        new Date().toISOString()
+        new Date().toISOString(),
       );
     } catch (error) {
       console.warn("No se pudo guardar la preferencia de cookies:", error);
@@ -75,7 +75,7 @@ export function CookieBanner({ className }: CookieBannerProps) {
         "animate-in slide-in-from-bottom-full duration-500",
         // Fondo con blur y transparencia
         "backdrop-blur-md",
-        className
+        className,
       )}
       role="banner"
       aria-label="Banner de cookies"
@@ -85,7 +85,7 @@ export function CookieBanner({ className }: CookieBannerProps) {
           // Fondo siguiendo el sistema de colores del tema - semitransparente
           "bg-background/80 border-t border-border/50",
           // Sombra sutil para elevación
-          "shadow-lg"
+          "shadow-lg",
         )}
       >
         <div className="container mx-auto max-w-7xl px-4 py-3">

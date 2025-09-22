@@ -13,24 +13,26 @@ import Link from "next/link";
  */
 export function CallToAction() {
   // Simple CTA: usamos Link para navegación y hacemos un intento de view-transition
-  const onClickCTA = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const onClickCTA = (_e: React.MouseEvent<HTMLAnchorElement>) => {
     // Marca temporal que permite a la CSS detectar la transición
-    if (
-      typeof document !== "undefined" &&
-      (document as any).startViewTransition
-    ) {
-      try {
-        (document as any).startViewTransition(() => {
-          document.documentElement.setAttribute("data-vtx-cta", "true");
-          // La navegación será manejada por el enlace <Link>
-          // Limpieza programada
-          setTimeout(
-            () => document.documentElement.removeAttribute("data-vtx-cta"),
-            900
-          );
-        });
-      } catch (e) {
-        // Silenciar y dejar que Link realice la navegación
+    if (typeof document !== "undefined") {
+      const doc = document as unknown as {
+        startViewTransition?: (cb: () => void) => void;
+      };
+
+      if (typeof doc.startViewTransition === "function") {
+        try {
+          doc.startViewTransition(() => {
+            document.documentElement.setAttribute("data-vtx-cta", "true");
+            // Limpieza programada
+            setTimeout(
+              () => document.documentElement.removeAttribute("data-vtx-cta"),
+              900,
+            );
+          });
+        } catch (_err) {
+          // noop - permitir que Link realice la navegación normalmente
+        }
       }
     }
   };

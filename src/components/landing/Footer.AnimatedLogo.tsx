@@ -45,7 +45,7 @@ export function AnimatedLogo({
       {
         threshold: 0.1,
         rootMargin: "50px",
-      }
+      },
     );
 
     if (logoRef.current) {
@@ -114,8 +114,8 @@ export function AnimatedLogo({
             animationPlayState: disabled
               ? "paused"
               : isInView
-              ? "running"
-              : "paused",
+                ? "running"
+                : "paused",
           }}
         >
           {/* Definición de gradientes usando colores del tema WEBCODE */}

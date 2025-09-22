@@ -1,22 +1,23 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
+import { AlertCircle, CheckCircle, Loader2, Send } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-  FormDescription,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -24,8 +25,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Loader2, Send, CheckCircle, AlertCircle } from "lucide-react";
-import Link from "next/link";
+import { Textarea } from "@/components/ui/textarea";
 
 // Esquema de validación Zod
 const contactFormSchema = z.object({
@@ -110,7 +110,7 @@ export function ContactForm() {
       setErrorMessage(
         error instanceof Error
           ? error.message
-          : "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo."
+          : "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.",
       );
     }
   };

@@ -1,8 +1,8 @@
 "use client";
 
 import { Menu } from "lucide-react";
-import { Link } from "next-view-transitions";
 import { usePathname, useRouter } from "next/navigation";
+import { Link } from "next-view-transitions";
 import { useState } from "react";
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
 import { Button } from "@/components/ui/button";
@@ -56,15 +56,15 @@ export function HeaderNavigation() {
     1,
     Math.max(
       0,
-      (scrollPosition.y - fadeStart) / Math.max(1, fadeEnd - fadeStart)
-    )
+      (scrollPosition.y - fadeStart) / Math.max(1, fadeEnd - fadeStart),
+    ),
   );
   const bgOpacity = 1 - progress; // 1 -> 0
 
   // Función para manejar el smooth scroll con offset para el header responsive
   const handleSmoothScroll = (
     href: string,
-    event: React.MouseEvent<HTMLAnchorElement>
+    event: React.MouseEvent<HTMLAnchorElement>,
   ) => {
     // Always prevent default and control navigation via router or scroll
     event.preventDefault();
@@ -322,7 +322,7 @@ export function HeaderNavigation() {
                           >
                             {item.label}
                           </Link>
-                        )
+                        ),
                       )}
                     </div>
                   </SheetContent>

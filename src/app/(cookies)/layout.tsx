@@ -1,6 +1,6 @@
+import { ViewTransitions } from "next-view-transitions";
 import { WavesBackground } from "@/components/landing/hero";
 import { BackButton } from "@/components/ui/BackButton";
-import { ViewTransitions } from "next-view-transitions";
 
 export const metadata = {
   title: "Políticas - WEBCODE",

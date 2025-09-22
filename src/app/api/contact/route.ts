@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
 // Esquema de validación para el servidor
@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
           error: "Datos del formulario inválidos",
           details: error.issues,
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -87,13 +87,13 @@ export async function POST(request: NextRequest) {
         message:
           "No se pudo procesar tu mensaje. Por favor, inténtalo de nuevo.",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
 // Función preparada para integración con Resend
-async function sendEmailWithResend(contactData: any) {
+async function _sendEmailWithResend(_contactData: unknown) {
   // TODO: Implementar cuando se configure Resend
   // const { Resend } = await import('resend');
   // const resend = new Resend(process.env.RESEND_API_KEY);
@@ -113,7 +113,27 @@ async function sendEmailWithResend(contactData: any) {
 }
 
 // Template de email preparado para Resend
-function generateEmailTemplate(data: any): string {
+function toSafeContact(data: unknown) {
+  // Extrae de forma defensiva las propiedades que esperamos del body
+  const unk = (data as unknown) as Record<string, unknown> | undefined;
+
+  const safe = {
+    email: typeof unk?.email === "string" ? unk.email : "desconocido@webcode.es",
+    subject: typeof unk?.subject === "string" ? unk.subject : "(sin asunto)",
+    serviceType: typeof unk?.serviceType === "string" ? unk.serviceType : "other",
+    message: typeof unk?.message === "string" ? unk.message : "",
+    consentTimestamp:
+      typeof unk?.consentTimestamp === "string" ? unk.consentTimestamp : new Date().toISOString(),
+    timestamp: typeof unk?.timestamp === "string" ? unk.timestamp : new Date().toISOString(),
+    metadata: typeof unk?.metadata === "object" && unk?.metadata !== null ? (unk.metadata as Record<string, unknown>) : {},
+  } as const;
+
+  return safe;
+}
+
+function _generateEmailTemplate(data: unknown): string {
+  // Obtener una versión segura del objeto
+  const safe = toSafeContact(data);
   const serviceTypeLabels: Record<string, string> = {
     "web-development": "Desarrollo Web",
     "e-commerce": "Tienda Online (E-commerce)",
@@ -143,46 +163,40 @@ function generateEmailTemplate(data: any): string {
       <div class="container">
         <div class="header">
           <h1>🚀 Nueva consulta de WEBCODE</h1>
-          <p>Recibida el ${new Date(data.timestamp).toLocaleString("es-ES")}</p>
+          <p>Recibida el ${new Date(safe.timestamp).toLocaleString("es-ES")}</p>
         </div>
         
         <div class="content">
           <div class="field">
             <div class="label">Email del cliente:</div>
-            <div>${data.email}</div>
+            <div>${safe.email}</div>
           </div>
           
           <div class="field">
             <div class="label">Asunto:</div>
-            <div>${data.subject}</div>
+            <div>${safe.subject}</div>
           </div>
           
           <div class="field">
             <div class="label">Tipo de servicio:</div>
-            <div>${
-              serviceTypeLabels[data.serviceType] || data.serviceType
-            }</div>
+            <div>${serviceTypeLabels[safe.serviceType] || safe.serviceType}</div>
           </div>
           
           <div class="field">
             <div class="label">Mensaje:</div>
-            <div style="white-space: pre-wrap; background: white; padding: 15px; border-radius: 4px; border: 1px solid #d1d5db;">${
-              data.message
-            }</div>
+            <div style="white-space: pre-wrap; background: white; padding: 15px; border-radius: 4px; border: 1px solid #d1d5db;">${safe.message}</div>
           </div>
           
           <div class="consent">
             <div class="label">✅ Consentimiento RGPD:</div>
-            <div>El usuario ha aceptado la política de privacidad el ${new Date(
-              data.consentTimestamp
-            ).toLocaleString("es-ES")}</div>
+            <div>El usuario ha aceptado la política de privacidad el ${new Date(safe.consentTimestamp).toLocaleString("es-ES")}</div>
           </div>
           
           <div class="field" style="margin-top: 20px; font-size: 12px; color: #6b7280;">
             <div><strong>Información técnica:</strong></div>
-            <div>IP: ${data.metadata.ip}</div>
-            <div>User Agent: ${data.metadata.userAgent}</div>
-            <div>Referer: ${data.metadata.referer}</div>
+            <div>IP: ${safe.metadata?.ip ?? "unknown"}</div>
+            <div>User Agent: ${safe.metadata?.userAgent ?? "unknown"}</div>
+            <div>Referer: ${safe.metadata?.referer ?? "direct"}</div>
           </div>
         </div>
         
