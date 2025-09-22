@@ -6,7 +6,15 @@ import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { BorderBeam } from "@/components/magicui/border-beam";
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
@@ -110,7 +118,7 @@ export function ContactForm() {
       setErrorMessage(
         error instanceof Error
           ? error.message
-          : "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.",
+          : "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo."
       );
     }
   };
@@ -141,189 +149,193 @@ export function ContactForm() {
   }
 
   return (
-    <div className="bg-card border rounded-lg p-6 shadow-sm">
-      <h2 className="text-2xl font-semibold mb-6 text-foreground">
-        Solicitar información
-      </h2>
-
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          {/* Email */}
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email *</FormLabel>
-                <FormControl>
-                  <Input
-                    type="email"
-                    placeholder="tu@email.com"
-                    {...field}
-                    disabled={formStatus === "submitting"}
-                  />
-                </FormControl>
-                <FormDescription>
-                  Solo utilizaremos tu email para responder a tu consulta
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          {/* Asunto */}
-          <FormField
-            control={form.control}
-            name="subject"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Asunto *</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Ej: Solicitud de presupuesto para web corporativa"
-                    {...field}
-                    disabled={formStatus === "submitting"}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          {/* Tipo de servicio */}
-          <FormField
-            control={form.control}
-            name="serviceType"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Tipo de servicio *</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                  disabled={formStatus === "submitting"}
-                >
+    <Card className="relative border-gray-200 dark:border-gray-800 rounded-2xl p-0 overflow-hidden">
+      <BorderBeam
+        size={150}
+        duration={12}
+        colorFrom="#3b82f6"
+        colorTo="#8b5cf6"
+        borderWidth={2}
+      />
+      <CardHeader className="pt-6">
+        <CardTitle className="text-2xl font-semibold mb-2 text-foreground">
+          Solicitar información
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="p-6">
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            {/* Email */}
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email *</FormLabel>
                   <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Selecciona un servicio" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {serviceOptions.map((option) => (
-                      <SelectItem key={option.value} value={option.value}>
-                        {option.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          {/* Mensaje */}
-          <FormField
-            control={form.control}
-            name="message"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Mensaje *</FormLabel>
-                <FormControl>
-                  <Textarea
-                    placeholder="Describe tu proyecto, necesidades, presupuesto estimado, plazos, etc."
-                    className="min-h-32"
-                    {...field}
-                    disabled={formStatus === "submitting"}
-                  />
-                </FormControl>
-                <FormDescription>
-                  {field.value?.length || 0}/1000 caracteres
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          {/* Consentimiento RGPD */}
-          <FormField
-            control={form.control}
-            name="gdprConsent"
-            render={({ field }) => (
-              <FormItem>
-                <div className="flex items-start space-x-3 space-y-0">
-                  <FormControl>
-                    <Checkbox
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
+                    <Input
+                      type="email"
+                      placeholder="tu@email.com"
+                      {...field}
                       disabled={formStatus === "submitting"}
                     />
                   </FormControl>
-                  <div className="grid gap-1.5 leading-none">
-                    <FormLabel className="text-sm font-normal cursor-pointer">
-                      Acepto la{" "}
-                      <Link
-                        href="/politica-privacidad"
-                        className="text-primary hover:underline"
-                        target="_blank"
-                      >
-                        política de privacidad
-                      </Link>{" "}
-                      y el tratamiento de mis datos para responder a esta
-                      consulta *
-                    </FormLabel>
-                    <FormDescription className="text-xs">
-                      Al marcar esta casilla, consientes el tratamiento de tu
-                      email para responder a tu consulta según nuestra política
-                      de privacidad.
-                    </FormDescription>
+                  <FormDescription>
+                    Solo utilizaremos tu email para responder a tu consulta
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            {/* Asunto */}
+            <FormField
+              control={form.control}
+              name="subject"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Asunto *</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Ej: Solicitud de presupuesto para web corporativa"
+                      {...field}
+                      disabled={formStatus === "submitting"}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            {/* Tipo de servicio */}
+            <FormField
+              control={form.control}
+              name="serviceType"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Tipo de servicio *</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                    disabled={formStatus === "submitting"}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Selecciona un servicio" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {serviceOptions.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            {/* Mensaje */}
+            <FormField
+              control={form.control}
+              name="message"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Mensaje *</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder="Describe tu proyecto, necesidades, presupuesto estimado, plazos, etc."
+                      className="min-h-32"
+                      {...field}
+                      disabled={formStatus === "submitting"}
+                    />
+                  </FormControl>
+                  <FormDescription>
+                    {field.value?.length || 0}/1000 caracteres
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            {/* Consentimiento RGPD */}
+            <FormField
+              control={form.control}
+              name="gdprConsent"
+              render={({ field }) => (
+                <FormItem>
+                  <div className="flex items-start space-x-3 space-y-0">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                        disabled={formStatus === "submitting"}
+                      />
+                    </FormControl>
+                    <div className="grid gap-1.5 leading-none">
+                      <FormLabel className="text-sm font-normal cursor-pointer">
+                        Acepto la{" "}
+                        <Link
+                          href="/politica-privacidad"
+                          className="text-primary hover:underline"
+                          target="_blank"
+                        >
+                          política de privacidad
+                        </Link>{" "}
+                        y el tratamiento de mis datos para responder a esta
+                        consulta *
+                      </FormLabel>
+                      <FormDescription className="text-xs">
+                        Al marcar esta casilla, consientes el tratamiento de tu
+                        email para responder a tu consulta según nuestra
+                        política de privacidad.
+                      </FormDescription>
+                    </div>
                   </div>
-                </div>
-                <FormMessage />
-              </FormItem>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            {/* Mensaje de error */}
+            {formStatus === "error" && (
+              <div className="flex items-center gap-2 p-3 text-sm text-red-600 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800 rounded-md">
+                <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                <span>{errorMessage}</span>
+              </div>
             )}
-          />
-
-          {/* Mensaje de error */}
-          {formStatus === "error" && (
-            <div className="flex items-center gap-2 p-3 text-sm text-red-600 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800 rounded-md">
-              <AlertCircle className="w-4 h-4 flex-shrink-0" />
-              <span>{errorMessage}</span>
-            </div>
-          )}
-
-          {/* Botón de envío */}
-          <Button
-            type="submit"
-            className="w-full"
-            disabled={formStatus === "submitting"}
-          >
-            {formStatus === "submitting" ? (
-              <>
-                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                Enviando...
-              </>
-            ) : (
-              <>
-                <Send className="w-4 h-4 mr-2" />
-                Enviar mensaje
-              </>
-            )}
-          </Button>
-        </form>
-      </Form>
-
-      {/* Nota informativa sobre privacidad */}
-      <div className="mt-6 p-4 bg-muted/30 rounded-md border">
-        <h4 className="text-sm font-medium text-foreground mb-2">
-          Compromiso de privacidad
-        </h4>
-        <p className="text-xs text-muted-foreground">
-          WEBCODE se compromete a proteger tu privacidad. Solo recopilamos tu
-          dirección de email para responder a tu consulta. No utilizamos cookies
-          de seguimiento ni compartimos tus datos con terceros. Puedes ejercer
-          tus derechos de acceso, rectificación o supresión en cualquier
-          momento.
-        </p>
-      </div>
-    </div>
+            {/* Botón de envío */}
+            <Button
+              type="submit"
+              className="w-full"
+              disabled={formStatus === "submitting"}
+            >
+              {formStatus === "submitting" ? (
+                <>
+                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                  Enviando...
+                </>
+              ) : (
+                <>
+                  <Send className="w-4 h-4 mr-2" />
+                  Enviar mensaje
+                </>
+              )}
+            </Button>
+          </form>
+        </Form>
+      </CardContent>
+      <CardFooter className="p-4 md:p-6 bg-muted/30 rounded-b-2xl">
+        <div className="w-full">
+          <h4 className="text-sm font-medium text-foreground mb-2">
+            Compromiso de privacidad
+          </h4>
+          <p className="text-xs text-muted-foreground">
+            WEBCODE se compromete a proteger tu privacidad. Solo recopilamos tu
+            dirección de email para responder a tu consulta. No utilizamos
+            cookies de seguimiento ni compartimos tus datos con terceros. Puedes
+            ejercer tus derechos de acceso, rectificación o supresión en
+            cualquier momento.
+          </p>
+        </div>
+      </CardFooter>
+    </Card>
   );
 }
