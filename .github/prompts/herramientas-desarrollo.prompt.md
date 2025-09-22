@@ -25,15 +25,6 @@ Prompt especializado para el uso de herramientas de desarrollo y testing en el p
 
 ### **Comandos Típicos**
 
-```javascript
-// Navegación y captura
-await page.goto("http://localhost:3000/ruta-a-verificar");
-await page.screenshot({ path: "verification.png", fullPage: true });
-
-// Verificación de elementos específicos
-await page.locator('[data-testid="componente"]').screenshot();
-```
-
 ---
 
 ## **2. CONTEXT7 MCP - Mejora de Patrones**
