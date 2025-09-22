@@ -255,13 +255,16 @@ export function HeaderNavigation() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="md:hidden"
+                      className="md:hidden text-foreground"
+                      data-testid="mobile-menu-toggle"
                       aria-label="Toggle mobile menu"
+                      aria-expanded={isMobileMenuOpen}
                     >
                       <Menu size={20} />
                     </Button>
                   </SheetTrigger>
-                  <SheetContent side="right" className="w-[200px] sm:w-[50px]">
+                  {/* Fix: use sensible mobile-first widths (was inverted sm:w) */}
+                  <SheetContent side="right" className="w-56 sm:w-64">
                     {/* Título oculto visualmente para accesibilidad */}
                     <SheetTitle className="sr-only">Navegación</SheetTitle>
                     <div className="flex flex-col space-y-4 mt-6 ps-4 text-center">
