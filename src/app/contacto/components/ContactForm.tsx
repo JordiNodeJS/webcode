@@ -118,7 +118,7 @@ export function ContactForm() {
       setErrorMessage(
         error instanceof Error
           ? error.message
-          : "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo."
+          : "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.",
       );
     }
   };
