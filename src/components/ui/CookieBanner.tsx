@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { X, Cookie } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -99,14 +100,12 @@ export function CookieBanner({ className }: CookieBannerProps) {
                 <p className="text-sm text-foreground/90 leading-relaxed">
                   Utilizamos cookies para mejorar tu experiencia en nuestro
                   sitio web. Al continuar navegando, aceptas nuestra{" "}
-                  <a
+                  <Link
                     href="/politica-privacidad"
                     className="text-primary hover:text-primary/80 underline underline-offset-2 transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
                   >
                     política de privacidad
-                  </a>{" "}
+                  </Link>{" "}
                   y el uso de cookies.
                 </p>
               </div>

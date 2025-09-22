@@ -2,7 +2,7 @@
 
 import { Menu } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
 import { Button } from "@/components/ui/button";
@@ -46,6 +46,7 @@ export function HeaderNavigation() {
   const [currentLanguage, setCurrentLanguage] = useState("es");
   const scrollPosition = useScrollPosition();
   const pathname = usePathname();
+  const router = useRouter();
   const isScrolled = scrollPosition.y > 10;
 
   // Opacidad dinámica del fondo según scroll (1 en top -> 0 tras fadeEnd px)
@@ -65,20 +66,38 @@ export function HeaderNavigation() {
     href: string,
     event: React.MouseEvent<HTMLAnchorElement>
   ) => {
+    // Always prevent default and control navigation via router or scroll
     event.preventDefault();
 
     if (href.startsWith("#")) {
       const targetId = href.substring(1);
-      const targetElement = document.getElementById(targetId);
 
-      if (targetElement) {
-        // Scroll simple - el título ya tiene scroll-mt-20 para el offset del header
-        targetElement.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
+      // If we're on the root path, try to smooth scroll to the element
+      if (pathname === "/") {
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          // Scroll simple - el título ya tiene scroll-mt-20 para el offset del header
+          targetElement.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+          return;
+        }
+
+        // If element not found on the page (edge-case), update the hash as fallback
+        window.location.hash = targetId;
+        return;
       }
+
+      // If we're on any other route (e.g. (cookies)), navigate to the root with the hash
+      // so the browser will land on the servicios section: /#servicios
+      router.push(`/${href}`);
+      return;
     }
+
+    // Non-hash links (external sections/pages) - navigate via router
+    router.push(href);
   };
 
   // Maneja el click en el logo: si ya estamos en la página raíz, hacemos
