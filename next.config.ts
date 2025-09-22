@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   experimental: {
     reactCompiler: true,
+    viewTransition: true,
   },
   // Configurar orígenes permitidos para desarrollo
   allowedDevOrigins: [

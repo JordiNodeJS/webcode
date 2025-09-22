@@ -182,7 +182,7 @@ class ParticlePool {
 // Función para crear configuraciones específicas por tema
 const createThemeConfig = (
   theme: "light" | "dark",
-  quality: DeviceCapabilities["quality"]
+  quality: DeviceCapabilities["quality"],
 ) => {
   const colors = getThemeColors(theme === "dark" ? "dark" : "light");
 
@@ -240,7 +240,7 @@ export function CloudLightningBackgroundOptimized() {
     const isDark = theme === "dark";
     const themeConfig = createThemeConfig(
       isDark ? "dark" : "light",
-      deviceCapabilities.quality
+      deviceCapabilities.quality,
     );
 
     return {
@@ -293,7 +293,7 @@ export function CloudLightningBackgroundOptimized() {
 
       return particles;
     },
-    [currentConfig]
+    [currentConfig],
   );
 
   // Función optimizada para calcular iluminación con early exit
@@ -317,7 +317,7 @@ export function CloudLightningBackgroundOptimized() {
         currentConfig.LIGHT_INTENSITY;
       return intensity ** 2;
     },
-    [currentConfig]
+    [currentConfig],
   );
 
   // Función principal de animación optimizada
@@ -343,7 +343,7 @@ export function CloudLightningBackgroundOptimized() {
       fpsCounter.frames++;
       if (currentTime - fpsCounter.lastTime >= 1000) {
         fpsCounter.currentFps = Math.round(
-          (fpsCounter.frames * 1000) / (currentTime - fpsCounter.lastTime)
+          (fpsCounter.frames * 1000) / (currentTime - fpsCounter.lastTime),
         );
         fpsCounter.frames = 0;
         fpsCounter.lastTime = currentTime;
@@ -374,7 +374,7 @@ export function CloudLightningBackgroundOptimized() {
           0,
           mouse.x,
           mouse.y,
-          currentConfig.LIGHT_RADIUS
+          currentConfig.LIGHT_RADIUS,
         );
 
         const lightColor = currentConfig.LIGHTNING_COLOR;
@@ -382,17 +382,17 @@ export function CloudLightningBackgroundOptimized() {
           0,
           `rgba(${lightColor.r}, ${lightColor.g}, ${lightColor.b}, ${
             currentConfig.LIGHT_OPACITY * 0.15
-          })`
+          })`,
         );
         gradient.addColorStop(
           0.5,
           `rgba(${lightColor.r}, ${lightColor.g}, ${lightColor.b}, ${
             currentConfig.LIGHT_OPACITY * 0.075
-          })`
+          })`,
         );
         gradient.addColorStop(
           1,
-          `rgba(${lightColor.r}, ${lightColor.g}, ${lightColor.b}, 0)`
+          `rgba(${lightColor.r}, ${lightColor.g}, ${lightColor.b}, 0)`,
         );
 
         ctx.fillStyle = gradient;
@@ -448,13 +448,13 @@ export function CloudLightningBackgroundOptimized() {
         const cloudColor = currentConfig.CLOUD_COLOR;
         const lightColor = currentConfig.LIGHTNING_COLOR;
         const r = Math.round(
-          cloudColor.r + lighting * (lightColor.r - cloudColor.r)
+          cloudColor.r + lighting * (lightColor.r - cloudColor.r),
         );
         const g = Math.round(
-          cloudColor.g + lighting * (lightColor.g - cloudColor.g)
+          cloudColor.g + lighting * (lightColor.g - cloudColor.g),
         );
         const b = Math.round(
-          cloudColor.b + lighting * (lightColor.b - cloudColor.b)
+          cloudColor.b + lighting * (lightColor.b - cloudColor.b),
         );
 
         // Dibujar con nivel de detalle adaptativo
@@ -471,12 +471,12 @@ export function CloudLightningBackgroundOptimized() {
             0,
             particle.x,
             particle.y,
-            glowSize
+            glowSize,
           );
           gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${finalOpacity})`);
           gradient.addColorStop(
             0.4,
-            `rgba(${r}, ${g}, ${b}, ${finalOpacity * 0.6})`
+            `rgba(${r}, ${g}, ${b}, ${finalOpacity * 0.6})`,
           );
           gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
 
@@ -505,13 +505,13 @@ export function CloudLightningBackgroundOptimized() {
         ctx.fillText(
           `FPS: ${fpsCounter.currentFps} | Particles: ${visibleParticles}/${particles.length} | Quality: ${currentConfig.quality}`,
           10,
-          20
+          20,
         );
       }
 
       animationRef.current = requestAnimationFrame(animate);
     },
-    [calculateLighting, currentConfig]
+    [calculateLighting, currentConfig],
   );
 
   // Manejador de movimiento del mouse con throttling
@@ -530,7 +530,7 @@ export function CloudLightningBackgroundOptimized() {
         timestamp: now,
       };
     },
-    [currentConfig]
+    [currentConfig],
   );
 
   // Manejador optimizado para mouse leave
@@ -610,7 +610,7 @@ export function CloudLightningBackgroundOptimized() {
       {
         threshold: 0.05,
         rootMargin: "50px 0px 50px 0px",
-      }
+      },
     );
 
     if (containerRef.current) {

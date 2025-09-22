@@ -1,8 +1,9 @@
 "use client";
 
 import { Menu } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
+import { Link } from "next-view-transitions";
 import { useState } from "react";
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
 import { Button } from "@/components/ui/button";
@@ -23,8 +24,8 @@ interface NavigationItem {
 const navigationItems: NavigationItem[] = [
   { href: "#servicios", label: "Servicios" },
   { href: "#proceso", label: "Proceso" },
-  { href: "#portfolio", label: "Portfolio" },
-  { href: "#contacto", label: "Contacto" },
+  { href: "https://jordinodejs.github.io/", label: "Portfolio" },
+  { href: "/contacto", label: "Contacto" },
 ];
 
 const languages = [
@@ -46,6 +47,7 @@ export function HeaderNavigation() {
   const [currentLanguage, setCurrentLanguage] = useState("es");
   const scrollPosition = useScrollPosition();
   const pathname = usePathname();
+  const router = useRouter();
   const isScrolled = scrollPosition.y > 10;
 
   // Opacidad dinámica del fondo según scroll (1 en top -> 0 tras fadeEnd px)
@@ -55,30 +57,54 @@ export function HeaderNavigation() {
     1,
     Math.max(
       0,
-      (scrollPosition.y - fadeStart) / Math.max(1, fadeEnd - fadeStart)
-    )
+      (scrollPosition.y - fadeStart) / Math.max(1, fadeEnd - fadeStart),
+    ),
   );
   const bgOpacity = 1 - progress; // 1 -> 0
 
   // Función para manejar el smooth scroll con offset para el header responsive
   const handleSmoothScroll = (
     href: string,
-    event: React.MouseEvent<HTMLAnchorElement>
+    event: React.MouseEvent<HTMLAnchorElement>,
   ) => {
+    // Always prevent default and control navigation via router or scroll
     event.preventDefault();
+
+    // Si es una URL externa, abrir en nueva pestaña
+    if (href.startsWith("http")) {
+      window.open(href, "_blank", "noopener,noreferrer");
+      return;
+    }
 
     if (href.startsWith("#")) {
       const targetId = href.substring(1);
-      const targetElement = document.getElementById(targetId);
 
-      if (targetElement) {
-        // Scroll simple - el título ya tiene scroll-mt-20 para el offset del header
-        targetElement.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
+      // If we're on the root path, try to smooth scroll to the element
+      if (pathname === "/") {
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          // Scroll simple - el título ya tiene scroll-mt-20 para el offset del header
+          targetElement.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+          return;
+        }
+
+        // If element not found on the page (edge-case), update the hash as fallback
+        window.location.hash = targetId;
+        return;
       }
+
+      // If we're on any other route (e.g. (cookies)), navigate to the root with the hash
+      // so the browser will land on the servicios section: /#servicios
+      router.push(`/${href}`);
+      return;
     }
+
+    // Non-hash links (external sections/pages) - navigate via router
+    router.push(href);
   };
 
   // Maneja el click en el logo: si ya estamos en la página raíz, hacemos
@@ -121,7 +147,7 @@ export function HeaderNavigation() {
                   className={`inline-flex items-center gap-2`}
                   style={{ display: "inline-flex", alignItems: "center" }}
                 >
-                  <img
+                  <Image
                     src="/favicon-32x32.png"
                     alt="WEBCODE Logo"
                     width={32}
@@ -140,17 +166,46 @@ export function HeaderNavigation() {
           <div className="hidden md:flex items-center space-x-8">
             {navigationItems.map((item, index) => (
               <WSFadeIn key={item.href} delay={0.1 + index * 0.1}>
-                <a
-                  href={item.href}
-                  onClick={(e) => handleSmoothScroll(item.href, e)}
-                  className={`transition-all duration-300 font-medium cursor-pointer ${
-                    isScrolled
-                      ? "text-foreground hover:text-primary text-sm"
-                      : "text-foreground hover:text-primary"
-                  }`}
-                >
-                  {item.label}
-                </a>
+                {item.href.startsWith("http") ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`transition-all duration-300 font-medium cursor-pointer ${
+                      isScrolled
+                        ? "text-foreground hover:text-primary text-sm"
+                        : "text-foreground hover:text-primary"
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                ) : item.href.startsWith("#") ? (
+                  <a
+                    href={item.href}
+                    onClick={(e) => handleSmoothScroll(item.href, e)}
+                    className={`transition-all duration-300 font-medium cursor-pointer ${
+                      isScrolled
+                        ? "text-foreground hover:text-primary text-sm"
+                        : "text-foreground hover:text-primary"
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    href={item.href}
+                    onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
+                      handleSmoothScroll(item.href, e)
+                    }
+                    className={`transition-all duration-300 font-medium cursor-pointer ${
+                      isScrolled
+                        ? "text-foreground hover:text-primary text-sm"
+                        : "text-foreground hover:text-primary"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                )}
               </WSFadeIn>
             ))}
           </div>
@@ -183,8 +238,10 @@ export function HeaderNavigation() {
               </div>
             </WSFadeIn>
 
+            {/* CTA Button removed per user request; keep header minimal (only anchor links). */}
+
             {/* Theme Toggle */}
-            <WSFadeIn delay={0.4}>
+            <WSFadeIn delay={0.5}>
               <ThemeToggle />
             </WSFadeIn>
 
@@ -220,29 +277,58 @@ export function HeaderNavigation() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="md:hidden"
+                      className="md:hidden text-foreground"
+                      data-testid="mobile-menu-toggle"
                       aria-label="Toggle mobile menu"
+                      aria-expanded={isMobileMenuOpen}
                     >
                       <Menu size={20} />
                     </Button>
                   </SheetTrigger>
-                  <SheetContent side="right" className="w-[200px] sm:w-[50px]">
+                  {/* Fix: use sensible mobile-first widths (was inverted sm:w) */}
+                  <SheetContent side="right" className="w-56 sm:w-64">
                     {/* Título oculto visualmente para accesibilidad */}
                     <SheetTitle className="sr-only">Navegación</SheetTitle>
                     <div className="flex flex-col space-y-4 mt-6 ps-4 text-center">
-                      {navigationItems.map((item) => (
-                        <a
-                          key={item.href}
-                          href={item.href}
-                          className="text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2 cursor-pointer"
-                          onClick={(e) => {
-                            handleSmoothScroll(item.href, e);
-                            setIsMobileMenuOpen(false);
-                          }}
-                        >
-                          {item.label}
-                        </a>
-                      ))}
+                      {navigationItems.map((item) =>
+                        item.href.startsWith("http") ? (
+                          <a
+                            key={item.href}
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2 cursor-pointer"
+                          >
+                            {item.label}
+                          </a>
+                        ) : item.href.startsWith("#") ? (
+                          <a
+                            key={item.href}
+                            href={item.href}
+                            className="text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2 cursor-pointer"
+                            onClick={(e) => {
+                              handleSmoothScroll(item.href, e);
+                              setIsMobileMenuOpen(false);
+                            }}
+                          >
+                            {item.label}
+                          </a>
+                        ) : (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className="text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2 cursor-pointer"
+                            onClick={(
+                              e: React.MouseEvent<HTMLAnchorElement>,
+                            ) => {
+                              handleSmoothScroll(item.href, e);
+                              setIsMobileMenuOpen(false);
+                            }}
+                          >
+                            {item.label}
+                          </Link>
+                        ),
+                      )}
                     </div>
                   </SheetContent>
                 </Sheet>

@@ -2,12 +2,18 @@ const nextConfig = {
   experimental: {
     reactCompiler: true,
   },
+  // Redirects: keep English `/privacy` pointing to Spanish `/politica-privacidad`
+  async redirects() {
+    return [
+      {
+        source: "/privacy",
+        destination: "/politica-privacidad",
+        permanent: true,
+      },
+    ];
+  },
   // Configurar orígenes permitidos para desarrollo
-  allowedDevOrigins: [
-    "192.168.0.15:3000",
-    "localhost:3000",
-    "127.0.0.1:3000",
-  ],
+  allowedDevOrigins: ["192.168.0.15:3000", "localhost:3000", "127.0.0.1:3000"],
   // Headers de seguridad para proteger contra ataques automatizados
   async headers() {
     return [
@@ -33,8 +39,8 @@ const nextConfig = {
 };
 
 // Solo habilitar el bundle analyzer en modo análisis
-if (process.env.ANALYZE === 'true') {
-  const withBundleAnalyzer = require('@next/bundle-analyzer')({
+if (process.env.ANALYZE === "true") {
+  const withBundleAnalyzer = require("@next/bundle-analyzer")({
     enabled: true,
   });
   module.exports = withBundleAnalyzer(nextConfig);

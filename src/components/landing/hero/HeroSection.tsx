@@ -7,7 +7,6 @@ import { CallToAction } from "@/components/landing/hero/Hero.CallToAction";
 import { HeaderNavigation } from "@/components/landing/hero/Hero.HeaderNavigation";
 import { TrustIndicators } from "@/components/landing/hero/Hero.TrustIndicators";
 import { IdleOptimizedValuePropsGrid } from "@/components/landing/hero/Hero.ValuePropsGrid.Idle-Optimized";
-import { WavesBackground } from "@/components/landing/hero/Hero.WavesBackground";
 import { useReversibleScrollVisibility } from "@/hooks/use-reversible-scroll-visibility";
 
 const HeroSection = () => {
