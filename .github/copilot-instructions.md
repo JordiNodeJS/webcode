@@ -51,6 +51,7 @@ Eres un asistente especializado en el desarrollo del proyecto WEBCODE. Sigue est
 ### **Herramientas de Desarrollo**
 
 - **pnpm** como gestor de paquetes (nunca npm/yarn)
+- **Biome v2.2.3** como linter y formateador principal (**CONFIGURADO** ✅)
 - **Tailwind CSS v4** para estilos
 - **shadcn/ui** para componentes base (**PENDIENTE INSTALACIÓN**)
 - **Magic UI** para animaciones (**PENDIENTE INSTALACIÓN**)
@@ -328,14 +329,16 @@ src/components/features/search/SearchBar.tsx
 ### **Estándares de Calidad**
 
 1. **Server Components por defecto** - Solo usar 'use client' cuando sea estrictamente necesario
-2. **Tipado TypeScript apropiado** - Interfaces completas, sin tipos 'any'
-3. **Estados de carga y error** - Implementar manejo robusto de estados
-4. **Mejores prácticas de accesibilidad** - Seguir estándares WCAG 2.1 AA
-5. **Validación de formularios** - React Hook Form + Zod con patrones progresivos para validación robusta
-6. **Elementos HTML semánticos** - Usar etiquetas apropiadas para SEO y accesibilidad
-7. **Diseño responsive** - Mobile-first, adaptive para todas las pantallas
-8. **Optimización de rendimiento** - Core Web Vitals en verde
-9. **Sugerencias de mensajes de commit** - Siguiendo convenciones del proyecto
+2. **Compliance Biome obligatorio** - Todo código debe pasar `pnpm biome check` sin errores ni warnings
+3. **Tipado TypeScript apropiado** - Interfaces completas, **prohibido tipo 'any'** (error en Biome)
+4. **Keys en JSX obligatorias** - Todos los elementos iterables requieren `key` única (warning en Biome)
+5. **Estados de carga y error** - Implementar manejo robusto de estados
+6. **Mejores prácticas de accesibilidad** - Seguir estándares WCAG 2.1 AA
+7. **Validación de formularios** - React Hook Form + Zod con patrones progresivos para validación robusta
+8. **Elementos HTML semánticos** - Usar etiquetas apropiadas para SEO y accesibilidad
+9. **Diseño responsive** - Mobile-first, adaptive para todas las pantallas
+10. **Optimización de rendimiento** - Core Web Vitals en verde
+11. **Sugerencias de mensajes de commit** - Siguiendo convenciones del proyecto
 
 ### **Patrones Específicos de WebSnack**
 
@@ -345,12 +348,12 @@ src/components/features/search/SearchBar.tsx
 - **Accesibilidad completa** - 100% compliance WCAG 2.1 AA
 - **Gestión de errores centralizada** - Error boundaries y logging apropiado
 
-### **Testing y Calidad** (PENDIENTE CONFIGURACIÓN)
+### **Testing y Calidad**
 
-- **Testing unitario** - Jest + React Testing Library
-- **Testing de integración** - Cypress o Playwright
-- **Linting y formateo** - ESLint + Prettier configurado
-- **Pre-commit hooks** - Husky para validación automática
+- **Linting y formateo** - **Biome v2.2.3 configurado** ✅
+- **Testing unitario** - Jest + React Testing Library (PENDIENTE CONFIGURACIÓN)
+- **Testing de integración** - Cypress o Playwright (PENDIENTE CONFIGURACIÓN)
+- **Pre-commit hooks** - Husky para validación automática (PENDIENTE CONFIGURACIÓN)
 
 ### **Deploy y CI/CD** (PENDIENTE CONFIGURACIÓN)
 
@@ -493,3 +496,17 @@ Para tareas específicas, consulta estos prompts especializados en `.github/prom
 ### **Navegación Completa**
 
 Consulta **`.github/prompts/README.md`** para el índice completo del sistema de prompts, estado de estandarización y guías de uso.
+
+## **INSTRUCCIONES ESPECÍFICAS POR TIPO DE ARCHIVO**
+
+### **Referencias detalladas**:
+
+- Consulta los archivos en `.github/support/` para patrones específicos, mejores prácticas y anti-patrones a evitar
+- Revisa `.github/instructions/` para guías específicas por tipo de archivo:
+  - **`biome.instructions.md`** - Reglas de linting y formateo con Biome v2.2.3
+  - **`biome-quick-reference.md`** - Resumen rápido con reglas críticas y comandos Biome
+  - **`typescript.instructions.md`** - Patrones TypeScript y validación
+  - **`components.instructions.md`** - Componentes React y shadcn/ui
+  - **`styling.instructions.md`** - Estilos con Tailwind CSS v4
+  - **`app-router.instructions.md`** - App Router de Next.js 15
+- Sistema de prompts disponible en `.github/prompts/`

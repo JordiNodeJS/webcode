@@ -1,6 +1,7 @@
 "use client";
 
 import { Menu } from "lucide-react";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { Link } from "next-view-transitions";
 import { useState } from "react";
@@ -146,7 +147,7 @@ export function HeaderNavigation() {
                   className={`inline-flex items-center gap-2`}
                   style={{ display: "inline-flex", alignItems: "center" }}
                 >
-                  <img
+                  <Image
                     src="/favicon-32x32.png"
                     alt="WEBCODE Logo"
                     width={32}
@@ -193,7 +194,9 @@ export function HeaderNavigation() {
                 ) : (
                   <Link
                     href={item.href}
-                    onClick={(e: any) => handleSmoothScroll(item.href, e)}
+                    onClick={(e: React.MouseEvent<HTMLAnchorElement>) =>
+                      handleSmoothScroll(item.href, e)
+                    }
                     className={`transition-all duration-300 font-medium cursor-pointer ${
                       isScrolled
                         ? "text-foreground hover:text-primary text-sm"
@@ -315,7 +318,9 @@ export function HeaderNavigation() {
                             key={item.href}
                             href={item.href}
                             className="text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2 cursor-pointer"
-                            onClick={(e: any) => {
+                            onClick={(
+                              e: React.MouseEvent<HTMLAnchorElement>,
+                            ) => {
                               handleSmoothScroll(item.href, e);
                               setIsMobileMenuOpen(false);
                             }}

@@ -264,13 +264,13 @@ export function FooterSection() {
                 href="/privacy"
                 className="transition-colors duration-200"
                 style={{ color: "oklch(var(--muted-foreground))" }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = "oklch(var(--foreground))")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color =
-                    "oklch(var(--muted-foreground))")
-                }
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "oklch(var(--foreground))";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color =
+                    "oklch(var(--muted-foreground))";
+                }}
               >
                 Privacidad
               </Link>
@@ -278,13 +278,13 @@ export function FooterSection() {
                 href="/terms"
                 className="transition-colors duration-200"
                 style={{ color: "oklch(var(--muted-foreground))" }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = "oklch(var(--foreground))")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color =
-                    "oklch(var(--muted-foreground))")
-                }
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "oklch(var(--foreground))";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color =
+                    "oklch(var(--muted-foreground))";
+                }}
               >
                 Términos
               </Link>
@@ -292,13 +292,13 @@ export function FooterSection() {
                 href="/cookies"
                 className="transition-colors duration-200"
                 style={{ color: "oklch(var(--muted-foreground))" }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = "oklch(var(--foreground))")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color =
-                    "oklch(var(--muted-foreground))")
-                }
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "oklch(var(--foreground))";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color =
+                    "oklch(var(--muted-foreground))";
+                }}
               >
                 Cookies
               </Link>

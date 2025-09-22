@@ -8,11 +8,13 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 
 export function DefaultBackground() {
   const { theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+
+  const reactId = useId();
 
   useEffect(() => {
     setMounted(true);
@@ -39,6 +41,7 @@ export function DefaultBackground() {
   }
 
   // Modo claro: gradiente WebSnack rosa-aguamarina
+
   return (
     <div className="fixed inset-0 -z-10 bg-gradient-to-br from-rose-50 via-white to-cyan-50">
       {/* Patrón sutil de ondas para mayor elegancia */}
@@ -47,10 +50,17 @@ export function DefaultBackground() {
           className="w-full h-full"
           viewBox="0 0 100 100"
           preserveAspectRatio="none"
+          role="img"
+          aria-labelledby={`webcode-background-title-${reactId}`}
         >
+          <title id={`webcode-background-title-${reactId}`}>
+            Patrón de ondas decorativas
+          </title>
           <defs>
+            {/* useId para evitar colisiones de id en SSR y múltiples instancias */}
+            {/* reactId es estable entre SSR y cliente */}
             <pattern
-              id="wave-pattern"
+              id={`wave-pattern-${reactId}`}
               x="0"
               y="0"
               width="20"
@@ -64,7 +74,11 @@ export function DefaultBackground() {
               />
             </pattern>
           </defs>
-          <rect width="100%" height="100%" fill="url(#wave-pattern)" />
+          <rect
+            width="100%"
+            height="100%"
+            fill={`url(#wave-pattern-${reactId})`}
+          />
         </svg>
       </div>
     </div>

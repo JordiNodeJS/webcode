@@ -27,7 +27,7 @@ export function CallToAction() {
             // Limpieza programada
             setTimeout(
               () => document.documentElement.removeAttribute("data-vtx-cta"),
-              900
+              900,
             );
           });
         } catch (_err) {

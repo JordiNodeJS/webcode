@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useId } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 /**
  * Props para el componente AnimatedLogo
@@ -46,7 +46,7 @@ export function AnimatedLogo({
       {
         threshold: 0.1,
         rootMargin: "50px",
-      }
+      },
     );
 
     if (logoRef.current) {
@@ -117,8 +117,8 @@ export function AnimatedLogo({
             animationPlayState: disabled
               ? "paused"
               : isInView
-              ? "running"
-              : "paused",
+                ? "running"
+                : "paused",
           }}
         >
           <title>{title}</title>

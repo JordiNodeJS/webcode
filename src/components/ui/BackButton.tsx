@@ -13,30 +13,8 @@ export function BackButton({ fallbackHref = "/", className = "" }: Props) {
 
   const handleBack = (e: React.MouseEvent) => {
     e.preventDefault();
-    
-    // Intentar usar view transitions si están disponibles
-    if (typeof document !== "undefined") {
-      const doc = document as unknown as {
-        startViewTransition?: (cb: () => void) => void;
-      };
 
-      if (typeof doc.startViewTransition === "function") {
-        try {
-          doc.startViewTransition(() => {
-            if (typeof window !== "undefined" && window.history.length > 1) {
-              router.back();
-            } else {
-              router.push(fallbackHref);
-            }
-          });
-          return;
-        } catch (_err) {
-          // Si falla la transición, continuar con navegación normal
-        }
-      }
-    }
-    
-    // Navegación normal si las transiciones no están disponibles
+    // Navegación inmediata sin transiciones complejas que puedan causar lentitud
     if (typeof window !== "undefined" && window.history.length > 1) {
       router.back();
     } else {
@@ -46,6 +24,7 @@ export function BackButton({ fallbackHref = "/", className = "" }: Props) {
 
   return (
     <button
+      type="button"
       onClick={handleBack}
       aria-label="Volver"
       className={`inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary ${className}`}

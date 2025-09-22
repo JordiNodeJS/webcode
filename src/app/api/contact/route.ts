@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
           error: "Datos del formulario inválidos",
           details: error.issues,
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
         message:
           "No se pudo procesar tu mensaje. Por favor, inténtalo de nuevo.",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -204,7 +204,7 @@ function _generateEmailTemplate(data: unknown): string {
           <div class="consent">
             <div class="label">✅ Consentimiento RGPD:</div>
             <div>El usuario ha aceptado la política de privacidad el ${new Date(
-              safe.consentTimestamp
+              safe.consentTimestamp,
             ).toLocaleString("es-ES")}</div>
           </div>
           
