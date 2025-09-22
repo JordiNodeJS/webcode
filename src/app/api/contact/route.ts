@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
           error: "Datos del formulario inválidos",
           details: error.issues,
         },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
         message:
           "No se pudo procesar tu mensaje. Por favor, inténtalo de nuevo.",
       },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
@@ -115,17 +115,27 @@ async function _sendEmailWithResend(_contactData: unknown) {
 // Template de email preparado para Resend
 function toSafeContact(data: unknown) {
   // Extrae de forma defensiva las propiedades que esperamos del body
-  const unk = (data as unknown) as Record<string, unknown> | undefined;
+  const unk = data as unknown as Record<string, unknown> | undefined;
 
   const safe = {
-    email: typeof unk?.email === "string" ? unk.email : "desconocido@webcode.es",
+    email:
+      typeof unk?.email === "string" ? unk.email : "desconocido@webcode.es",
     subject: typeof unk?.subject === "string" ? unk.subject : "(sin asunto)",
-    serviceType: typeof unk?.serviceType === "string" ? unk.serviceType : "other",
+    serviceType:
+      typeof unk?.serviceType === "string" ? unk.serviceType : "other",
     message: typeof unk?.message === "string" ? unk.message : "",
     consentTimestamp:
-      typeof unk?.consentTimestamp === "string" ? unk.consentTimestamp : new Date().toISOString(),
-    timestamp: typeof unk?.timestamp === "string" ? unk.timestamp : new Date().toISOString(),
-    metadata: typeof unk?.metadata === "object" && unk?.metadata !== null ? (unk.metadata as Record<string, unknown>) : {},
+      typeof unk?.consentTimestamp === "string"
+        ? unk.consentTimestamp
+        : new Date().toISOString(),
+    timestamp:
+      typeof unk?.timestamp === "string"
+        ? unk.timestamp
+        : new Date().toISOString(),
+    metadata:
+      typeof unk?.metadata === "object" && unk?.metadata !== null
+        ? (unk.metadata as Record<string, unknown>)
+        : {},
   } as const;
 
   return safe;
@@ -179,17 +189,23 @@ function _generateEmailTemplate(data: unknown): string {
           
           <div class="field">
             <div class="label">Tipo de servicio:</div>
-            <div>${serviceTypeLabels[safe.serviceType] || safe.serviceType}</div>
+            <div>${
+              serviceTypeLabels[safe.serviceType] || safe.serviceType
+            }</div>
           </div>
           
           <div class="field">
             <div class="label">Mensaje:</div>
-            <div style="white-space: pre-wrap; background: white; padding: 15px; border-radius: 4px; border: 1px solid #d1d5db;">${safe.message}</div>
+            <div style="white-space: pre-wrap; background: white; padding: 15px; border-radius: 4px; border: 1px solid #d1d5db;">${
+              safe.message
+            }</div>
           </div>
           
           <div class="consent">
             <div class="label">✅ Consentimiento RGPD:</div>
-            <div>El usuario ha aceptado la política de privacidad el ${new Date(safe.consentTimestamp).toLocaleString("es-ES")}</div>
+            <div>El usuario ha aceptado la política de privacidad el ${new Date(
+              safe.consentTimestamp
+            ).toLocaleString("es-ES")}</div>
           </div>
           
           <div class="field" style="margin-top: 20px; font-size: 12px; color: #6b7280;">

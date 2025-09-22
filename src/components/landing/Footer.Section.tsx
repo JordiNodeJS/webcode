@@ -63,7 +63,14 @@ export function FooterSection() {
                 color: "oklch(var(--secondary))",
               }}
             >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <svg
+                className="w-4 h-4"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                role="img"
+                aria-hidden={false}
+              >
+                <title>Ubicación: Barcelona</title>
                 <path
                   fillRule="evenodd"
                   d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
@@ -89,13 +96,13 @@ export function FooterSection() {
                 style={{
                   color: "oklch(var(--muted-foreground))",
                 }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = "oklch(var(--secondary))")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color =
-                    "oklch(var(--muted-foreground))")
-                }
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "oklch(var(--secondary))";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color =
+                    "oklch(var(--muted-foreground))";
+                }}
               >
                 info@webcode.es
               </a>
@@ -103,13 +110,13 @@ export function FooterSection() {
                 href="/contacto"
                 className="block transition-colors duration-200"
                 style={{ color: "oklch(var(--muted-foreground))" }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = "oklch(var(--secondary))")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color =
-                    "oklch(var(--muted-foreground))")
-                }
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "oklch(var(--secondary))";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color =
+                    "oklch(var(--muted-foreground))";
+                }}
               >
                 Contacto
               </Link>
@@ -122,13 +129,13 @@ export function FooterSection() {
                 style={{
                   color: "oklch(var(--muted-foreground))",
                 }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = "oklch(var(--secondary))")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color =
-                    "oklch(var(--muted-foreground))")
-                }
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "oklch(var(--secondary))";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color =
+                    "oklch(var(--muted-foreground))";
+                }}
               >
                 Portfolio
               </a>
