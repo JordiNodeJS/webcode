@@ -63,7 +63,13 @@ const detectDeviceCapabilities = (): DeviceCapabilities => {
   const hasWebGL = !!gl;
   const hasOffscreenCanvas = typeof OffscreenCanvas !== "undefined";
   const _hasWorkers = typeof Worker !== "undefined";
-  const deviceMemory = (navigator as any).deviceMemory || 4; // GB
+  // Type-safe access to deviceMemory using interface extension
+  interface NavigatorMemory {
+    deviceMemory?: number;
+  }
+
+  const deviceMemory =
+    (navigator as unknown as NavigatorMemory).deviceMemory || 4; // GB
   const _hardwareConcurrency = navigator.hardwareConcurrency || 2;
 
   // Detectar tipo de dispositivo

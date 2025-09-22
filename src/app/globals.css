@@ -558,10 +558,7 @@ main > section:first-of-type {
 
 .cloud-lightning-background canvas {
   /* Optimizaciones específicas del canvas */
-  image-rendering: -moz-crisp-edges;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  image-rendering: pixelated;
+  image-rendering: crisp-edges; /* Modern browsers */
 
   /* Prevenir selección y context menu */
   -webkit-user-select: none;
@@ -575,7 +572,6 @@ main > section:first-of-type {
   -webkit-transform: translateZ(0);
 
   /* Optimizaciones v2.0 */
-  image-rendering: -webkit-optimize-contrast;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
@@ -627,7 +623,7 @@ main > section:first-of-type {
 }
 
 /* Optimizaciones para pantallas retina */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+@media (min-resolution: 2dppx) {
   .cloud-lightning-background[data-quality="high"] canvas {
     image-rendering: auto; /* Aprovechar alta densidad */
   }
@@ -730,10 +726,10 @@ main > section:first-of-type {
 }
 
 /* Optimización para pantallas de alta densidad */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media (min-resolution: 192dpi) {
   .cloud-lightning-background canvas {
     /* Mejor renderizado en pantallas retina */
-    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
   }
 }
 
@@ -1031,25 +1027,25 @@ main > section:first-of-type {
 
 /* Desactivar efectos para reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .neon-btn-3,
-  .neon-btn-7 {
-    animation: none !important;
+  html .neon-btn-3,
+  html .neon-btn-7 {
+    animation: none;
     opacity: 1;
-    transform: none !important;
+    transform: none;
     will-change: auto;
   }
 
-  .neon-btn-3::before,
-  .neon-btn-3::after,
-  .neon-btn-7::before,
-  .neon-btn-7::after {
-    transition: none !important;
-    animation: none !important;
+  html .neon-btn-3::before,
+  html .neon-btn-3::after,
+  html .neon-btn-7::before,
+  html .neon-btn-7::after {
+    transition: none;
+    animation: none;
   }
 
-  .neon-btn-3:hover,
-  .neon-btn-7:hover {
-    transform: none !important;
+  html .neon-btn-3:hover,
+  html .neon-btn-7:hover {
+    transform: none;
   }
 }
 
