@@ -13,11 +13,15 @@ export function BackButton({ fallbackHref = "/", className = "" }: Props) {
 
   const handleBack = (e: React.MouseEvent) => {
     e.preventDefault();
+    e.stopPropagation();
 
-    // Navegación inmediata sin transiciones complejas que puedan causar lentitud
+    // Navegación inmediata optimizada para performance
     if (typeof window !== "undefined" && window.history.length > 1) {
+      // Usar router.back() para navegación instantánea
       router.back();
     } else {
+      // Fallback optimizado con prefetch
+      router.prefetch(fallbackHref);
       router.push(fallbackHref);
     }
   };
@@ -27,12 +31,12 @@ export function BackButton({ fallbackHref = "/", className = "" }: Props) {
       type="button"
       onClick={handleBack}
       aria-label="Volver"
-      className={`inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary ${className}`}
+      className={`inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors duration-200 ${className}`}
     >
       <span aria-hidden className="text-2xl">
         ←
       </span>
-      <span className="sr-only">Volver</span>
+      <span>Volver</span>
     </button>
   );
 }
