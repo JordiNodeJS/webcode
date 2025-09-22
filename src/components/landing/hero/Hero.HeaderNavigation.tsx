@@ -24,7 +24,7 @@ const navigationItems: NavigationItem[] = [
   { href: "#servicios", label: "Servicios" },
   { href: "#proceso", label: "Proceso" },
   { href: "#portfolio", label: "Portfolio" },
-  { href: "#contacto", label: "Contacto" },
+  { href: "/contacto", label: "Contacto" },
 ];
 
 const languages = [
@@ -159,17 +159,31 @@ export function HeaderNavigation() {
           <div className="hidden md:flex items-center space-x-8">
             {navigationItems.map((item, index) => (
               <WSFadeIn key={item.href} delay={0.1 + index * 0.1}>
-                <a
-                  href={item.href}
-                  onClick={(e) => handleSmoothScroll(item.href, e)}
-                  className={`transition-all duration-300 font-medium cursor-pointer ${
-                    isScrolled
-                      ? "text-foreground hover:text-primary text-sm"
-                      : "text-foreground hover:text-primary"
-                  }`}
-                >
-                  {item.label}
-                </a>
+                {item.href.startsWith("#") ? (
+                  <a
+                    href={item.href}
+                    onClick={(e) => handleSmoothScroll(item.href, e)}
+                    className={`transition-all duration-300 font-medium cursor-pointer ${
+                      isScrolled
+                        ? "text-foreground hover:text-primary text-sm"
+                        : "text-foreground hover:text-primary"
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    href={item.href}
+                    onClick={(e: any) => handleSmoothScroll(item.href, e)}
+                    className={`transition-all duration-300 font-medium cursor-pointer ${
+                      isScrolled
+                        ? "text-foreground hover:text-primary text-sm"
+                        : "text-foreground hover:text-primary"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                )}
               </WSFadeIn>
             ))}
           </div>
@@ -202,8 +216,10 @@ export function HeaderNavigation() {
               </div>
             </WSFadeIn>
 
+            {/* CTA Button removed per user request; keep header minimal (only anchor links). */}
+
             {/* Theme Toggle */}
-            <WSFadeIn delay={0.4}>
+            <WSFadeIn delay={0.5}>
               <ThemeToggle />
             </WSFadeIn>
 
@@ -249,19 +265,33 @@ export function HeaderNavigation() {
                     {/* Título oculto visualmente para accesibilidad */}
                     <SheetTitle className="sr-only">Navegación</SheetTitle>
                     <div className="flex flex-col space-y-4 mt-6 ps-4 text-center">
-                      {navigationItems.map((item) => (
-                        <a
-                          key={item.href}
-                          href={item.href}
-                          className="text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2 cursor-pointer"
-                          onClick={(e) => {
-                            handleSmoothScroll(item.href, e);
-                            setIsMobileMenuOpen(false);
-                          }}
-                        >
-                          {item.label}
-                        </a>
-                      ))}
+                      {navigationItems.map((item) =>
+                        item.href.startsWith("#") ? (
+                          <a
+                            key={item.href}
+                            href={item.href}
+                            className="text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2 cursor-pointer"
+                            onClick={(e) => {
+                              handleSmoothScroll(item.href, e);
+                              setIsMobileMenuOpen(false);
+                            }}
+                          >
+                            {item.label}
+                          </a>
+                        ) : (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className="text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2 cursor-pointer"
+                            onClick={(e: any) => {
+                              handleSmoothScroll(item.href, e);
+                              setIsMobileMenuOpen(false);
+                            }}
+                          >
+                            {item.label}
+                          </Link>
+                        )
+                      )}
                     </div>
                   </SheetContent>
                 </Sheet>
