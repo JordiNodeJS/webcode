@@ -151,17 +151,23 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  var theme = localStorage.getItem('theme');
-                  if (theme === 'dark' || theme === 'light') {
-                    document.documentElement.classList.add(theme);
-                    document.documentElement.style.colorScheme = theme;
+                  const stored = localStorage.getItem('theme');
+                  let theme;
+
+                  if (stored === 'dark' || stored === 'light') {
+                    theme = stored;
                   } else {
-                    var isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                    var theme = isDark ? 'dark' : 'light';
-                    document.documentElement.classList.add(theme);
-                    document.documentElement.style.colorScheme = theme;
+                    const prefersDark =
+                      typeof window.matchMedia === 'function' &&
+                      window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    theme = prefersDark ? 'dark' : 'light';
                   }
-                } catch (e) {}
+
+                  document.documentElement.classList.add(theme);
+                  document.documentElement.style.colorScheme = theme;
+                } catch (e) {
+                  // Fall back silently si localStorage o matchMedia fallan
+                }
               })();
             `,
           }}
