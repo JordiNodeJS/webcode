@@ -65,15 +65,25 @@ Se ha configurado un sistema completo de reglas de Biome para que GitHub Copilot
 
 ## **COMANDOS DISPONIBLES**
 
-```bash
+````bash
 # Scripts en package.json
 pnpm lint          # biome check .
 pnpm lint:fix      # biome check --write .
 pnpm format        # biome format --write .
 
-# Tareas en VS Code (Ctrl+Shift+P → "Tasks: Run Task")
-🔍 Biome Check     # Verificación sin correcciones
-🔧 Biome Fix       # Verificación con correcciones automáticas
+# Tareas desde terminal (evitar depender de Tasks de VS Code)
+
+```bash
+# Verificación sin correcciones (CI-friendly)
+pnpm biome check .
+
+# Verificación con correcciones automáticas (recomendado localmente)
+pnpm biome check --write .
+
+# Formateo
+pnpm biome format --write .
+````
+
 ```
 
 ## **FLUJO DE DESARROLLO RECOMENDADO**
@@ -123,3 +133,4 @@ pnpm format        # biome format --write .
 ---
 
 **🎯 OBJETIVO CUMPLIDO**: Copilot ahora tiene reglas claras y herramientas configuradas para generar código que pasa todas las verificaciones de Biome sin errores ni warnings.
+```
