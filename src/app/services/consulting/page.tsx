@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Consultoría - WEBCODE",
-  description: "Servicios de consultoría tecnológica y estratégica.",
+  description: "Servicios de consultoría tecnológica y estratégica."
 };
 
 export default function ConsultingPage() {

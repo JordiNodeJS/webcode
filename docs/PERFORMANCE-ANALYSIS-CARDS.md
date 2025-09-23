@@ -99,7 +99,7 @@ const STATIC_GRADIENTS = {
   pink: "radial-gradient(circle at 30% 30%, rgba(178, 62, 176, 0.1), transparent)",
   teal: "radial-gradient(circle at 70% 70%, rgba(45, 212, 191, 0.1), transparent)",
   default:
-    "radial-gradient(circle at 50% 50%, rgba(111, 137, 193, 0.08), transparent)",
+    "radial-gradient(circle at 50% 50%, rgba(111, 137, 193, 0.08), transparent)"
 } as const;
 
 // Usar gradientes estáticos en reposo, dinámicos solo en hover
@@ -113,12 +113,12 @@ const gradientStyle = isHovered ? dynamicGradient : STATIC_GRADIENTS.default;
 const useConditionalAnimations = () => {
   const [ref, isIntersecting] = useIntersectionObserver({
     threshold: 0.1,
-    rootMargin: "50px",
+    rootMargin: "50px"
   });
 
   return {
     ref,
-    enableAnimations: isIntersecting, // Solo animar si está visible
+    enableAnimations: isIntersecting // Solo animar si está visible
   };
 };
 ```
@@ -158,7 +158,7 @@ const PerformanceOptimizedCard = React.memo(({ prop }: { prop: ValueProp }) => {
         ${isActive ? "will-change-transform [transform-style:preserve-3d]" : ""}
       `}
       style={{
-        transform: isActive ? cardTransform : "none", // Solo transformar cuando está activo
+        transform: isActive ? cardTransform : "none" // Solo transformar cuando está activo
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -171,7 +171,7 @@ const PerformanceOptimizedCard = React.memo(({ prop }: { prop: ValueProp }) => {
           ${isActive ? "transition-all duration-300" : "transition-none"}
         `}
         style={{
-          background: isActive ? dynamicGradient : STATIC_GRADIENTS.default,
+          background: isActive ? dynamicGradient : STATIC_GRADIENTS.default
         }}
       />
 

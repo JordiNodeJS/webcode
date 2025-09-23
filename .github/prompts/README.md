@@ -29,11 +29,11 @@ Este directorio contiene todos los prompts especializados del proyecto WebSnack,
 
 ### **📋 Prompts Especializados**
 
-| Archivo                         | Propósito          | Estado                       |
-| ------------------------------- | ------------------ | ---------------------------- |
-| `politica-privacidad.prompt.md` | Documentos legales | 📝 Pendiente estandarización |
-| `hero-naming-convention.prompt.md` | Convención nombres Hero | ✅ Estandarizado |
-| `component-naming-convention.prompt.md` | Convención nombres general | ✅ Estandarizado |
+| Archivo                                 | Propósito                  | Estado                       |
+| --------------------------------------- | -------------------------- | ---------------------------- |
+| `politica-privacidad.prompt.md`         | Documentos legales         | 📝 Pendiente estandarización |
+| `hero-naming-convention.prompt.md`      | Convención nombres Hero    | ✅ Estandarizado             |
+| `component-naming-convention.prompt.md` | Convención nombres general | ✅ Estandarizado             |
 
 ---
 

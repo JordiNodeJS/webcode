@@ -67,7 +67,7 @@ export const wsConfig = {
     smooth: [0.4, 0, 0.2, 1] as const,
     bounce: [0.68, -0.55, 0.265, 1.55] as const,
     subtle: [0.23, 1, 0.32, 1] as const,
-    dramatic: [0.87, 0, 0.13, 1] as const,
+    dramatic: [0.87, 0, 0.13, 1] as const
   },
 
   durations: {
@@ -76,13 +76,13 @@ export const wsConfig = {
     normal: 0.3,
     smooth: 0.5,
     dramatic: 0.8,
-    slow: 1.2,
+    slow: 1.2
   },
 
   stagger: {
     tight: 0.05, // Letters
     normal: 0.1, // List items
-    loose: 0.2, // Sections
+    loose: 0.2 // Sections
   },
 
   // Efectos específicos WebSnack
@@ -90,8 +90,8 @@ export const wsConfig = {
     lift: { y: -4, scale: 1.02 },
     glow: { filter: "brightness(1.1) blur(0.5px)" },
     fade: { opacity: 0.8 },
-    scale: { scale: 1.05 },
-  },
+    scale: { scale: 1.05 }
+  }
 } as const;
 
 // Hook para transiciones WebSnack
@@ -100,7 +100,7 @@ export function useWSTransition(
 ) {
   return {
     duration: wsConfig.durations[type],
-    ease: wsConfig.easings.primary,
+    ease: wsConfig.easings.primary
   };
 }
 ```
@@ -132,7 +132,7 @@ export function WSFadeIn({
   delay = 0,
   direction = "up",
   distance = 20,
-  className = "",
+  className = ""
 }: WSFadeInProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
@@ -141,7 +141,7 @@ export function WSFadeIn({
     up: { y: distance },
     down: { y: -distance },
     left: { x: distance },
-    right: { x: -distance },
+    right: { x: -distance }
   };
 
   return (
@@ -153,7 +153,7 @@ export function WSFadeIn({
       transition={{
         duration: wsConfig.durations.smooth,
         ease: wsConfig.easings.primary,
-        delay,
+        delay
       }}
     >
       {children}
@@ -181,7 +181,7 @@ interface WSLetterRevealProps {
 export function WSLetterReveal({
   text,
   delay = 0,
-  className = "",
+  className = ""
 }: WSLetterRevealProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -196,7 +196,7 @@ export function WSLetterReveal({
           transition={{
             duration: wsConfig.durations.normal,
             ease: wsConfig.easings.primary,
-            delay: delay + index * wsConfig.stagger.tight,
+            delay: delay + index * wsConfig.stagger.tight
           }}
           style={{ display: "inline-block" }}
         >
@@ -226,13 +226,13 @@ interface WSHoverProps {
 export function WSHover({
   children,
   effect = "lift",
-  className = "",
+  className = ""
 }: WSHoverProps) {
   const effects = {
     lift: wsConfig.effects.lift,
     glow: wsConfig.effects.glow,
     fade: wsConfig.effects.fade,
-    scale: wsConfig.effects.scale,
+    scale: wsConfig.effects.scale
   };
 
   return (
@@ -241,7 +241,7 @@ export function WSHover({
       whileHover={effects[effect]}
       transition={{
         duration: wsConfig.durations.quick,
-        ease: wsConfig.easings.smooth,
+        ease: wsConfig.easings.smooth
       }}
     >
       {children}
@@ -276,7 +276,7 @@ export function WSImageReveal({
   width,
   height,
   className = "",
-  priority = false,
+  priority = false
 }: WSImageRevealProps) {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -287,7 +287,7 @@ export function WSImageReveal({
       animate={isLoaded ? { scale: 1, opacity: 1 } : {}}
       transition={{
         duration: wsConfig.durations.dramatic,
-        ease: wsConfig.easings.primary,
+        ease: wsConfig.easings.primary
       }}
     >
       <Image
@@ -430,7 +430,7 @@ export function useWSResponsive() {
     if (prefersReducedMotion) {
       return {
         ...baseConfig,
-        transition: { duration: 0.01 },
+        transition: { duration: 0.01 }
       };
     }
 
@@ -439,8 +439,8 @@ export function useWSResponsive() {
         ...baseConfig,
         transition: {
           ...baseConfig.transition,
-          duration: (baseConfig.transition?.duration || 0.3) * 0.7,
-        },
+          duration: (baseConfig.transition?.duration || 0.3) * 0.7
+        }
       };
     }
 
@@ -469,7 +469,7 @@ interface WSAccessibleMotionProps {
 export function WSAccessibleMotion({
   children,
   animation,
-  className = "",
+  className = ""
 }: WSAccessibleMotionProps) {
   const { getResponsiveConfig } = useWSResponsive();
 
@@ -494,7 +494,7 @@ export function WSAccessibleMotion({
 import {
   WSFadeIn,
   WSLetterReveal,
-  WSImageReveal,
+  WSImageReveal
 } from "@/components/animations";
 
 export function HeroSection() {

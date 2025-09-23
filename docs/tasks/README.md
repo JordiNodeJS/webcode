@@ -60,4 +60,5 @@ Cada tarea debe incluir:
 Esta documentación se actualiza con cada cambio significativo en el proyecto. Para añadir una nueva tarea, utilizar la plantilla [TASK-TEMPLATE.md](./TASK-TEMPLATE.md).
 
 ---
-*Última actualización: 09/09/2025*
+
+_Última actualización: 09/09/2025_

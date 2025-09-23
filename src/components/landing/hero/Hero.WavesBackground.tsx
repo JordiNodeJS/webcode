@@ -28,8 +28,8 @@ export function WavesBackground() {
       },
       {
         threshold: 0.1,
-        rootMargin: "100px 0px 100px 0px",
-      },
+        rootMargin: "100px 0px 100px 0px"
+      }
     );
 
     if (containerRef.current) {

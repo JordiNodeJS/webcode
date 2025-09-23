@@ -11,7 +11,7 @@ async function simplePerformanceTest() {
   const browser = await chromium.launch({
     headless: false,
     devtools: false,
-    args: ["--enable-memory-info"],
+    args: ["--enable-memory-info"]
   });
 
   try {
@@ -22,7 +22,7 @@ async function simplePerformanceTest() {
       window.performanceData = {
         fps: [],
         memory: [],
-        timestamps: [],
+        timestamps: []
       };
 
       let frameCount = 0;
@@ -59,7 +59,7 @@ async function simplePerformanceTest() {
     console.log("📡 Navigating to WebCode...");
     await page.goto("http://localhost:3001", {
       waitUntil: "networkidle",
-      timeout: 10000,
+      timeout: 10000
     });
 
     console.log("✅ Page loaded, starting measurements...");
@@ -81,7 +81,7 @@ async function simplePerformanceTest() {
     await page.evaluate(() => {
       window.scrollTo({
         top: document.body.scrollHeight / 2,
-        behavior: "smooth",
+        behavior: "smooth"
       });
     });
     await page.waitForTimeout(2000);
@@ -119,7 +119,7 @@ async function simplePerformanceTest() {
           const data = window.performanceData;
           return {
             fps: data.fps[data.fps.length - 1] || 0,
-            memory: data.memory[data.memory.length - 1] || 0,
+            memory: data.memory[data.memory.length - 1] || 0
           };
         });
 
@@ -149,7 +149,7 @@ async function simplePerformanceTest() {
       fpsReadings: finalData.fps,
       memoryReadings: finalData.memory,
       performanceScore: Math.min(100, Math.round((minFPS / 60) * 100)),
-      issues: [],
+      issues: []
     };
 
     // Identify issues
@@ -262,8 +262,8 @@ function generateSimpleHTMLReport(data) {
                   data.performanceScore >= 90
                     ? "text-green-600"
                     : data.performanceScore >= 70
-                    ? "text-yellow-600"
-                    : "text-red-600"
+                      ? "text-yellow-600"
+                      : "text-red-600"
                 }">
                     ${data.performanceScore}/100
                 </div>

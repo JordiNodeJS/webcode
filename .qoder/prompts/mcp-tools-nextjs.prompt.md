@@ -113,6 +113,7 @@
 
 - **Compatibility**: Next.js 15.4+ | React 19+ | Turbopack
 - **Implementation**:
+
   ```typescript
   // Use Server Components for data fetching
   async function ProductPage({ params }: { params: { id: string } }) {

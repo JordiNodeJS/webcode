@@ -17,7 +17,7 @@ const CARD_CONFIG = {
   ROTATE_FACTOR: 0.5,
   GLARE_OPACITY: 0.15,
   DEFAULT_GLARE_OPACITY: 0.1,
-  GLARE_PERCENTAGE_BASE: 100,
+  GLARE_PERCENTAGE_BASE: 100
 } as const;
 
 // Gradientes estáticos para estado idle (NO calculados dinámicamente)
@@ -30,26 +30,26 @@ const STATIC_GRADIENTS = {
   card3:
     "radial-gradient(circle at 40% 70%, rgba(178, 62, 176, 0.15), transparent)",
   card4:
-    "radial-gradient(circle at 60% 50%, rgba(45, 212, 191, 0.15), transparent)",
+    "radial-gradient(circle at 60% 50%, rgba(45, 212, 191, 0.15), transparent)"
 } as const;
 
 // Constantes para colores del degradado (solo para hover)
 const GRADIENT_COLORS = {
   PINK: { r: 178, g: 62, b: 176 },
   TEAL: { r: 45, g: 212, b: 191 },
-  DEFAULT: { r: 111, g: 137, b: 193 },
+  DEFAULT: { r: 111, g: 137, b: 193 }
 } as const;
 
 const VALUE_PROPS_GRID_CONFIG = {
   INTERSECTION_THRESHOLD: 0.6,
-  PLACEHOLDER_COUNT: 4,
+  PLACEHOLDER_COUNT: 4
 } as const;
 
 const ANIMATION_CONFIG = {
   STAGGER_DELAY: 0.1,
   DURATION: 0.5,
   HOVER_Y_OFFSET: -10, // Desplazamiento vertical en hover
-  HOVER_TRANSITION_DURATION: 0.2, // Duración de la transición en hover
+  HOVER_TRANSITION_DURATION: 0.2 // Duración de la transición en hover
 } as const;
 
 interface CardState {
@@ -76,8 +76,8 @@ const valueProps: ValueProp[] = [
       "Next.js 15 - App Router",
       "React 19 - Server Components",
       "Astro 5 - Static sites",
-      "Tailwind CSS v4 - Performance",
-    ],
+      "Tailwind CSS v4 - Performance"
+    ]
   },
   {
     id: "performance",
@@ -87,8 +87,8 @@ const valueProps: ValueProp[] = [
       "<2.5s tiempo de carga",
       "99.9% uptime garantizado",
       "Core Web Vitals en verde",
-      "CDN global optimizado",
-    ],
+      "CDN global optimizado"
+    ]
   },
   {
     id: "mobile",
@@ -98,8 +98,8 @@ const valueProps: ValueProp[] = [
       "Responsive design",
       "Accesible WCAG 2.1 AA",
       "Progressive Web Apps",
-      "Touch-friendly UX",
-    ],
+      "Touch-friendly UX"
+    ]
   },
   {
     id: "barcelona",
@@ -108,9 +108,9 @@ const valueProps: ValueProp[] = [
     features: [
       "Experiencia con empresas locales",
       "Integración con proveedores locales",
-      "Consultas presenciales",
-    ],
-  },
+      "Consultas presenciales"
+    ]
+  }
 ];
 
 // Componente de tarjeta OPTIMIZADO para idle performance
@@ -121,7 +121,7 @@ const IdleOptimizedCard = React.memo(
       rotateY: 0,
       glareX: 50,
       glareY: 50,
-      isHovered: false,
+      isHovered: false
     });
 
     // Solo calcular gradiente dinámico durante hover
@@ -132,16 +132,16 @@ const IdleOptimizedCard = React.memo(
       return {
         r: Math.round(
           GRADIENT_COLORS.PINK.r * pinkRatio +
-            GRADIENT_COLORS.TEAL.r * tealRatio,
+            GRADIENT_COLORS.TEAL.r * tealRatio
         ),
         g: Math.round(
           GRADIENT_COLORS.PINK.g * pinkRatio +
-            GRADIENT_COLORS.TEAL.g * tealRatio,
+            GRADIENT_COLORS.TEAL.g * tealRatio
         ),
         b: Math.round(
           GRADIENT_COLORS.PINK.b * pinkRatio +
-            GRADIENT_COLORS.TEAL.b * tealRatio,
-        ),
+            GRADIENT_COLORS.TEAL.b * tealRatio
+        )
       };
     }, []);
 
@@ -162,7 +162,7 @@ const IdleOptimizedCard = React.memo(
       cardState.glareY,
       cardState.isHovered,
       calculateGradientColor,
-      index,
+      index
     ]);
 
     // Transform 3D solo durante hover
@@ -204,10 +204,10 @@ const IdleOptimizedCard = React.memo(
           rotateY,
           glareX,
           glareY,
-          isHovered: true,
+          isHovered: true
         });
       },
-      [],
+      []
     );
 
     const handleMouseEnter = useCallback(() => {
@@ -220,7 +220,7 @@ const IdleOptimizedCard = React.memo(
         rotateY: 0,
         glareX: 50,
         glareY: 50,
-        isHovered: false,
+        isHovered: false
       });
     }, []);
 
@@ -249,10 +249,10 @@ const IdleOptimizedCard = React.memo(
           rotateY,
           glareX,
           glareY,
-          isHovered: true,
+          isHovered: true
         });
       },
-      [],
+      []
     );
 
     const handleTouchEnd = useCallback(() => {
@@ -261,7 +261,7 @@ const IdleOptimizedCard = React.memo(
         rotateY: 0,
         glareX: 50,
         glareY: 50,
-        isHovered: false,
+        isHovered: false
       });
     }, []);
 
@@ -285,7 +285,7 @@ const IdleOptimizedCard = React.memo(
         `}
           aria-label={`Propuesta de valor: ${prop.title}`}
           style={{
-            transform: cardTransform,
+            transform: cardTransform
           }}
         >
           {/* Efecto de brillo tenue rosa detrás de la tarjeta al hacer hover - IGUAL QUE ORIGINAL */}
@@ -337,7 +337,7 @@ const IdleOptimizedCard = React.memo(
         </article>
       </WSHover>
     );
-  },
+  }
 );
 
 IdleOptimizedCard.displayName = "IdleOptimizedCard";
@@ -355,7 +355,7 @@ IdleOptimizedCard.displayName = "IdleOptimizedCard";
  */
 export const IdleOptimizedValuePropsGrid = React.memo(() => {
   const { ref, isIntersecting } = useOnScreen(
-    VALUE_PROPS_GRID_CONFIG.INTERSECTION_THRESHOLD,
+    VALUE_PROPS_GRID_CONFIG.INTERSECTION_THRESHOLD
   );
   const [hasBeenVisible, setHasBeenVisible] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -390,7 +390,7 @@ export const IdleOptimizedValuePropsGrid = React.memo(() => {
           data-testid="value-props-grid"
         >
           {Array.from({
-            length: VALUE_PROPS_GRID_CONFIG.PLACEHOLDER_COUNT,
+            length: VALUE_PROPS_GRID_CONFIG.PLACEHOLDER_COUNT
           }).map((_, index) => (
             <div
               key={`placeholder-idle-${VALUE_PROPS_GRID_CONFIG.PLACEHOLDER_COUNT}-${index}`}
@@ -425,7 +425,7 @@ export const IdleOptimizedValuePropsGrid = React.memo(() => {
                 duration: prefersReducedMotion ? 0 : ANIMATION_CONFIG.DURATION,
                 delay: prefersReducedMotion
                   ? 0
-                  : index * ANIMATION_CONFIG.STAGGER_DELAY,
+                  : index * ANIMATION_CONFIG.STAGGER_DELAY
               }}
               whileHover={
                 prefersReducedMotion
@@ -433,8 +433,8 @@ export const IdleOptimizedValuePropsGrid = React.memo(() => {
                   : {
                       y: ANIMATION_CONFIG.HOVER_Y_OFFSET,
                       transition: {
-                        duration: ANIMATION_CONFIG.HOVER_TRANSITION_DURATION,
-                      },
+                        duration: ANIMATION_CONFIG.HOVER_TRANSITION_DURATION
+                      }
                     }
               }
               className="h-full"

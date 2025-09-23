@@ -11,7 +11,7 @@ import {
   Sheet,
   SheetContent,
   SheetTitle,
-  SheetTrigger,
+  SheetTrigger
 } from "@/components/ui/sheet";
 import useScrollPosition from "@/hooks/use-scroll-position";
 import { ThemeToggle } from "./Hero.ThemeToggle";
@@ -25,13 +25,13 @@ const navigationItems: NavigationItem[] = [
   { href: "#servicios", label: "Servicios" },
   { href: "#proceso", label: "Proceso" },
   { href: "https://jordinodejs.github.io/", label: "Portfolio" },
-  { href: "/contacto", label: "Contacto" },
+  { href: "/contacto", label: "Contacto" }
 ];
 
 const languages = [
   { code: "es", label: "ES" },
   { code: "ca", label: "CA" },
-  { code: "en", label: "EN" },
+  { code: "en", label: "EN" }
 ];
 
 /**
@@ -111,8 +111,8 @@ export function HeaderNavigation() {
       {
         root: null,
         rootMargin: "-40% 0px -40% 0px",
-        threshold: [0.25, 0.5, 0.75],
-      },
+        threshold: [0.25, 0.5, 0.75]
+      }
     );
 
     for (const el of elements) {
@@ -132,15 +132,15 @@ export function HeaderNavigation() {
     1,
     Math.max(
       0,
-      (scrollPosition.y - fadeStart) / Math.max(1, fadeEnd - fadeStart),
-    ),
+      (scrollPosition.y - fadeStart) / Math.max(1, fadeEnd - fadeStart)
+    )
   );
   const bgOpacity = 1 - progress; // 1 -> 0
 
   // Función para manejar el smooth scroll con offset para el header responsive
   const handleSmoothScroll = (
     href: string,
-    event: React.MouseEvent<HTMLAnchorElement>,
+    event: React.MouseEvent<HTMLAnchorElement>
   ) => {
     // Always prevent default and control navigation via router or scroll
     event.preventDefault();
@@ -162,7 +162,7 @@ export function HeaderNavigation() {
           // Scroll simple - el título ya tiene scroll-mt-20 para el offset del header
           targetElement.scrollIntoView({
             behavior: "smooth",
-            block: "start",
+            block: "start"
           });
           // mark active immediately for better feedback
           setActiveHref(href);
@@ -204,7 +204,7 @@ export function HeaderNavigation() {
       }`}
       // Usamos tokens CSS del tema para que funcione en light/dark: hsl(var(--background)/alpha)
       style={{
-        backgroundColor: `hsl(var(--background) / ${bgOpacity.toFixed(3)})`,
+        backgroundColor: `hsl(var(--background) / ${bgOpacity.toFixed(3)})`
       }}
     >
       <nav className="container mx-auto px-4">
@@ -430,7 +430,7 @@ export function HeaderNavigation() {
                               activeHref === item.href ? "text-primary" : ""
                             }`}
                             onClick={(
-                              e: React.MouseEvent<HTMLAnchorElement>,
+                              e: React.MouseEvent<HTMLAnchorElement>
                             ) => {
                               handleSmoothScroll(item.href, e);
                               setIsMobileMenuOpen(false);
@@ -446,7 +446,7 @@ export function HeaderNavigation() {
                               aria-hidden
                             />
                           </Link>
-                        ),
+                        )
                       )}
                     </div>
                   </SheetContent>

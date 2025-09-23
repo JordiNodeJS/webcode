@@ -18,7 +18,7 @@ export function ServicesSection() {
             disableAnimationsForSection("hero");
 
             const waveElements = document.querySelectorAll(
-              '[class*="animate-wave"]',
+              '[class*="animate-wave"]'
             );
             waveElements.forEach((wave) => {
               wave.classList.add("animation-suspended");
@@ -31,7 +31,7 @@ export function ServicesSection() {
           } else {
             // Saliendo de Services (volviendo a Hero): reactivar animaciones
             const waveElements = document.querySelectorAll(
-              '[class*="animate-wave"]',
+              '[class*="animate-wave"]'
             );
             waveElements.forEach((wave) => {
               wave.classList.remove("animation-suspended");
@@ -51,8 +51,8 @@ export function ServicesSection() {
       },
       {
         threshold: 0.3,
-        rootMargin: "0px 0px -20% 0px",
-      },
+        rootMargin: "0px 0px -20% 0px"
+      }
     );
 
     if (sectionRef.current) {
@@ -72,12 +72,12 @@ export function ServicesSection() {
         "Sitio profesional listo para usar — Plantilla premium personalizada con tu contenido, colores de marca y logo. Responsive en todos los dispositivos y optimizado para Google desde el primer día.",
         "Gestión de contenido fácil — Panel simple donde puedes editar textos, cambiar imágenes y añadir nuevos servicios sin conocimientos técnicos. Todo visual, todo intuitivo.",
         "SEO básico incluido — Tu negocio aparecerá en Google Maps, tendrás meta descriptions optimizadas y estructura correcta para buscadores. Sin complicaciones técnicas.",
-        "Formulario de contacto integrado — Los clientes pueden contactarte directamente desde tu web. Recibes los mensajes por email al instante y puedes responder desde tu móvil.",
+        "Formulario de contacto integrado — Los clientes pueden contactarte directamente desde tu web. Recibes los mensajes por email al instante y puedes responder desde tu móvil."
       ],
       target:
         "Freelancers, consultores, pequeños negocios locales, profesionales que necesitan presencia online YA.",
       ctaText: "Empezar Web Express",
-      delay: 0,
+      delay: 0
     },
     {
       id: 2,
@@ -88,12 +88,12 @@ export function ServicesSection() {
         "Catálogo de productos simple — Sube fotos, añade descripciones y precios. Tus clientes pueden navegar, seleccionar y comprar en 3 clics. Gestión de stock automática.",
         "Pagos seguros integrados — Acepta pagos con tarjeta, Bizum y transferencia. Todo configurado y listo para recibir dinero desde el día uno. Sin mensualidades extra de pasarelas.",
         "Pedidos por WhatsApp — Opción de checkout directo a WhatsApp para clientes que prefieren hablar contigo antes de comprar. Perfecto para productos personalizados.",
-        "Gestión desde móvil — Controla pedidos, actualiza stock y responde clientes desde cualquier lugar. App móvil incluida para gestión sobre la marcha.",
+        "Gestión desde móvil — Controla pedidos, actualiza stock y responde clientes desde cualquier lugar. App móvil incluida para gestión sobre la marcha."
       ],
       target:
         "Artesanos, pequeñas tiendas, productos locales, negocios familiares que quieren vender online.",
       ctaText: "Crear Mi Tienda",
-      delay: 0.1,
+      delay: 0.1
     },
     {
       id: 3,
@@ -104,12 +104,12 @@ export function ServicesSection() {
         "Calendario online 24/7 — Tus clientes reservan cuando quieren, tu agenda se actualiza sola. Evita llamadas constantes y dobles reservas. Sincronización con Google Calendar.",
         "Recordatorios automáticos — SMS y emails de confirmación se envían solos. Menos no-shows, más organización. Tus clientes nunca olvidan su cita.",
         "Gestión de servicios — Define duración, precio y disponibilidad de cada servicio. El sistema calcula automáticamente horarios libres y slots disponibles.",
-        "Pagos y depósitos — Opcional: cobra anticipos o el servicio completo al reservar. Reduce cancelaciones de última hora y asegura tu tiempo.",
+        "Pagos y depósitos — Opcional: cobra anticipos o el servicio completo al reservar. Reduce cancelaciones de última hora y asegura tu tiempo."
       ],
       target:
         "Peluquerías, consultas, terapeutas, instructores, cualquier negocio por citas.",
       ctaText: "Configurar Agenda",
-      delay: 0.2,
+      delay: 0.2
     },
     {
       id: 4,
@@ -120,13 +120,13 @@ export function ServicesSection() {
         "Página enfocada en conversión — Una sola página diseñada para un objetivo: conseguir clientes. Formulario optimizado, testimonios reales y llamada a la acción clara.",
         "Lead magnets irresistibles — Descarga gratuita (PDF, checklist, mini-curso) a cambio del email. Base de datos de clientes potenciales que crece automáticamente.",
         "Seguimiento automatizado — Emails de bienvenida y secuencia de nurturing configurados. Tus leads reciben valor antes de convertirse en clientes.",
-        "Analytics simples — Dashboard que muestra visitantes, conversiones y origen del tráfico. Sabes qué funciona sin complicarte con métricas avanzadas.",
+        "Analytics simples — Dashboard que muestra visitantes, conversiones y origen del tráfico. Sabes qué funciona sin complicarte con métricas avanzadas."
       ],
       target:
         "Coaches, cursos online, servicios premium, lanzamientos de producto.",
       ctaText: "Generar Leads",
-      delay: 0.3,
-    },
+      delay: 0.3
+    }
   ];
 
   return (
@@ -144,7 +144,7 @@ export function ServicesSection() {
           style={{
             // Optimización: subgrid cuando esté disponible
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))"
           }}
         >
           {services.map((service, index) => (
@@ -152,7 +152,7 @@ export function ServicesSection() {
               key={service.id}
               style={{
                 // Usar will-change solo durante las animaciones
-                willChange: index < 2 ? "transform, opacity" : "auto",
+                willChange: index < 2 ? "transform, opacity" : "auto"
               }}
             >
               <ServiceCard {...service} />

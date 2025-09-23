@@ -40,14 +40,12 @@ Por qué unificamos
 1. Componentes del sistema
 
 - Archivos de estado:
-
   - `.github/PROJECT-STATE.md`
   - `.github/context/current-session.md`
   - `.github/context/technical-context.md`
   - `llms.txt`
 
 - Scripts y hooks:
-
   - `.github/automation/scripts/update-context.sh` (script principal)
   - `.github/automation/hooks/pre-commit` (hook opcional)
 

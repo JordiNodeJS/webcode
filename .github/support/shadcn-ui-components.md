@@ -53,13 +53,13 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
   username: z.string().min(2, "Username must be at least 2 characters"),
-  email: z.string().email("Invalid email address"),
+  email: z.string().email("Invalid email address")
 });
 
 export function ProfileForm() {
@@ -67,8 +67,8 @@ export function ProfileForm() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: "",
-      email: "",
-    },
+      email: ""
+    }
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
@@ -133,7 +133,7 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow,
+  TableRow
 } from "@/components/ui/table";
 
 interface DataTableProps<T> {

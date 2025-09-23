@@ -177,7 +177,7 @@ class SharedIntersectionObserver {
     if (!this.instance) {
       this.instance = new IntersectionObserver(this.handleIntersections, {
         rootMargin: "-50px",
-        threshold: 0.1,
+        threshold: 0.1
       });
     }
 

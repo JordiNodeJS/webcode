@@ -78,22 +78,17 @@ Cuando se ejecute este prompt, devuélveme una lista de cambios con patch aplica
 ## Reglas de auditoría técnica (integración MCP-tools)
 
 - Cuando analices la configuración de Astro del proyecto, realiza una auditoría técnica específica por versión que incluya las siguientes acciones:
-
   1. Comparar la configuración actual del proyecto frente a fuentes autorizadas:
-
   - Documentación oficial de Astro (changelogs, guías de migración y RFCs)
   - Documentación de Context7 (si aplica al alcance del proyecto)
   - Starters y repositorios comunitarios verificados como referencia
-
   2. Extraer recomendaciones accionables usando este formato (en las respuestas):
 
   ### [Tipo de recomendación]
-
   - **Compatibilidad**: Astro vX.X+ (especificar rango)
   - **Implementación**: patrón de código o ejemplo conciso
   - **Fuente**: URL | Recuperado: YYYY-MM-DD
   - **Prioridad**: [Crítico/Recomendado/Opcional]
-
   3. Priorizar soluciones que mantengan compatibilidad con el stack del proyecto (ej.: TypeScript, Vite, Cloudflare Pages). Especifica claramente las suposiciones de stack cuando deslices una recomendación.
   4. Señalar patrones deprecados y proporcionar rutas de migración directas extraídas de las guías oficiales de migración de Astro.
   5. Validar todas las recomendaciones contra la versión estable más reciente de Astro; verifica la versión listada en `package.json` y anota cualquier diferencia de versión que afecte la recomendación.

@@ -14,7 +14,7 @@ interface ScrollPosition {
 const useScrollPosition = (): ScrollPosition => {
   const [scrollPosition, setScrollPosition] = useState<ScrollPosition>({
     x: 0,
-    y: 0,
+    y: 0
   });
 
   useIsomorphicEffect(() => {
@@ -31,7 +31,7 @@ const useScrollPosition = (): ScrollPosition => {
         throttleTimeout = setTimeout(() => {
           setScrollPosition({
             x: window.scrollX || window.pageXOffset,
-            y: window.scrollY || window.pageYOffset,
+            y: window.scrollY || window.pageYOffset
           });
           throttleTimeout = null;
         }, 100); // Actualizar cada 100ms como máximo
