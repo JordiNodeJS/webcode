@@ -1,174 +1,153 @@
 {
-    "version": "2.0.0",
-    "tasks": [
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "🔄 Update Project Context",
+      "type": "shell",
+      "command": "bash",
+      "args": [".github/automation/scripts/update-context.sh"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": [],
+      "detail": "Actualiza automáticamente los archivos de contexto del proyecto para mantener memoria entre sesiones LLM"
+    },
+    {
+      "label": "🧠 Generate LLM Context",
+      "type": "shell",
+      "command": "echo",
+      "args": ["Generando contexto actualizado para LLMs..."],
+      "group": "build",
+      "dependsOn": "🔄 Update Project Context",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": [],
+      "detail": "Genera contexto completo para nuevas sesiones de LLM"
+    },
+    {
+      "label": "📊 Project Status Report",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-c",
+        "echo '=== WEBSNACK PROJECT STATUS ===' && echo '' && echo 'Estado del Proyecto:' && head -20 .github/project/PROJECT-STATE.md && echo '' && echo 'Contexto Técnico:' && head -15 .github/context/technical-context.md && echo '' && echo 'Última Sesión:' && head -10 .github/context/current-session.md"
+      ],
+      "group": "test",
+      "presentation": {
+        "echo": false,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": [],
+      "detail": "Muestra un resumen completo del estado actual del proyecto"
+    },
+    {
+      "label": "🚀 Setup WebSnack Project",
+      "type": "shell",
+      "command": "pnpm",
+      "args": [
+        "create",
+        "next-app@latest",
+        "websnack-app",
+        "--typescript",
+        "--tailwind",
+        "--eslint",
+        "--app",
+        "--src-dir",
+        "--import-alias",
+        "@/*"
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": ["$tsc"],
+      "detail": "Inicializa el proyecto Next.js 15 con configuración WebSnack (DESHABILITADO - ejecutar manualmente si es necesario)"
+      // "runOptions": {
+      //     "runOn": "folderOpen"
+      // }
+    },
+    {
+      "label": "🔍 Biome Check",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["biome", "check", "."],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": [
         {
-            "label": "🔄 Update Project Context",
-            "type": "shell",
-            "command": "bash",
-            "args": [
-                ".github/automation/scripts/update-context.sh"
-            ],
-            "group": "build",
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared",
-                "showReuseMessage": true,
-                "clear": false
-            },
-            "problemMatcher": [],
-            "detail": "Actualiza automáticamente los archivos de contexto del proyecto para mantener memoria entre sesiones LLM"
-        },
-        {
-            "label": "🧠 Generate LLM Context",
-            "type": "shell",
-            "command": "echo",
-            "args": [
-                "Generando contexto actualizado para LLMs..."
-            ],
-            "group": "build",
-            "dependsOn": "🔄 Update Project Context",
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared"
-            },
-            "problemMatcher": [],
-            "detail": "Genera contexto completo para nuevas sesiones de LLM"
-        },
-        {
-            "label": "📊 Project Status Report",
-            "type": "shell",
-            "command": "bash",
-            "args": [
-                "-c",
-                "echo '=== WEBSNACK PROJECT STATUS ===' && echo '' && echo 'Estado del Proyecto:' && head -20 .github/project/PROJECT-STATE.md && echo '' && echo 'Contexto Técnico:' && head -15 .github/context/technical-context.md && echo '' && echo 'Última Sesión:' && head -10 .github/context/current-session.md"
-            ],
-            "group": "test",
-            "presentation": {
-                "echo": false,
-                "reveal": "always",
-                "focus": true,
-                "panel": "dedicated",
-                "clear": true
-            },
-            "problemMatcher": [],
-            "detail": "Muestra un resumen completo del estado actual del proyecto"
-        },
-        {
-            "label": "🚀 Setup WebSnack Project",
-            "type": "shell",
-            "command": "pnpm",
-            "args": [
-                "create",
-                "next-app@latest",
-                "websnack-app",
-                "--typescript",
-                "--tailwind",
-                "--eslint",
-                "--app",
-                "--src-dir",
-                "--import-alias",
-                "@/*"
-            ],
-            "group": "build",
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": true,
-                "panel": "dedicated",
-                "clear": true
-            },
-            "problemMatcher": [
-                "$tsc"
-            ],
-            "detail": "Inicializa el proyecto Next.js 15 con configuración WebSnack (DESHABILITADO - ejecutar manualmente si es necesario)"
-            // "runOptions": {
-            //     "runOn": "folderOpen"
-            // }
-        },
-        {
-            "label": "🔍 Biome Check",
-            "type": "shell",
-            "command": "pnpm",
-            "args": [
-                "biome",
-                "check",
-                "."
-            ],
-            "group": "test",
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared",
-                "showReuseMessage": true,
-                "clear": false
-            },
-            "problemMatcher": [
-                {
-                    "owner": "biome",
-                    "fileLocation": [
-                        "relative",
-                        "${workspaceFolder}"
-                    ],
-                    "pattern": [
-                        {
-                            "regexp": "^(.*):(\\d+):(\\d+)\\s+(\\w+)\\/(\\w+)\\/(\\w+)\\s+(.*)$",
-                            "file": 1,
-                            "line": 2,
-                            "column": 3,
-                            "severity": 4,
-                            "code": 6,
-                            "message": 7
-                        }
-                    ]
-                }
-            ],
-            "detail": "Verifica el código con Biome (linting + format) sin aplicar correcciones"
-        },
-        {
-            "label": "🔧 Biome Fix",
-            "type": "shell",
-            "command": "pnpm",
-            "args": [
-                "biome",
-                "check",
-                "--write",
-                "."
-            ],
-            "group": "build",
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared",
-                "showReuseMessage": true,
-                "clear": false
-            },
-            "problemMatcher": [
-                {
-                    "owner": "biome",
-                    "fileLocation": [
-                        "relative",
-                        "${workspaceFolder}"
-                    ],
-                    "pattern": [
-                        {
-                            "regexp": "^(.*):(\\d+):(\\d+)\\s+(\\w+)\\/(\\w+)\\/(\\w+)\\s+(.*)$",
-                            "file": 1,
-                            "line": 2,
-                            "column": 3,
-                            "severity": 4,
-                            "code": 6,
-                            "message": 7
-                        }
-                    ]
-                }
-            ],
-            "detail": "Ejecuta Biome con corrección automática de errores y warnings"
+          "owner": "biome",
+          "fileLocation": ["relative", "${workspaceFolder}"],
+          "pattern": [
+            {
+              "regexp": "^(.*):(\\d+):(\\d+)\\s+(\\w+)\\/(\\w+)\\/(\\w+)\\s+(.*)$",
+              "file": 1,
+              "line": 2,
+              "column": 3,
+              "severity": 4,
+              "code": 6,
+              "message": 7
+            }
+          ]
         }
-    ]
+      ],
+      "detail": "Verifica el código con Biome (linting + format) sin aplicar correcciones"
+    },
+    {
+      "label": "🔧 Biome Fix",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["biome", "check", "--write", "."],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": [
+        {
+          "owner": "biome",
+          "fileLocation": ["relative", "${workspaceFolder}"],
+          "pattern": [
+            {
+              "regexp": "^(.*):(\\d+):(\\d+)\\s+(\\w+)\\/(\\w+)\\/(\\w+)\\s+(.*)$",
+              "file": 1,
+              "line": 2,
+              "column": 3,
+              "severity": 4,
+              "code": 6,
+              "message": 7
+            }
+          ]
+        }
+      ],
+      "detail": "Ejecuta Biome con corrección automática de errores y warnings"
+    }
+  ]
 }

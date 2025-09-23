@@ -23,23 +23,19 @@ Proveer una guía comprensible y estricta para que un agente automatizado utilic
 ## Flujo de trabajo recomendado
 
 1. Preparación
-
    - Verifica la URL base de la app y navega a la página objetivo.
    - Espera que la página cargue (usa wait_for o espera por un selector clave).
 
 2. Interacción y escenario
-
    - Define el escenario/historia de usuario que vas a comprobar (p.ej. "Inicio -> Login -> Dashboard" o "Página de producto muestra precio correcto").
    - Por cada paso: usa las acciones MCP para realizar la interacción (click, type, select, etc.).
    - Tras cada paso crítico, espera por un selector que confirme el estado esperado.
 
 3. Captura de evidencias
-
    - Toma al menos una captura de pantalla representativa del estado final.
    - Opcional: toma un snapshot de accesibilidad si está disponible.
 
 4. Validación automática
-
    - Analiza el DOM mediante evaluate para comprobar textos, atributos o estados importantes.
    - Compara visualmente (manual review recomendado) la screenshot con el criterio esperado y marca OK/FAIL.
 

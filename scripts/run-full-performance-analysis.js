@@ -23,13 +23,13 @@ async function runFullPerformanceAnalysis() {
         "--enable-memory-info",
         "--enable-precise-memory-info",
         "--disable-web-security",
-        "--allow-running-insecure-content",
-      ],
+        "--allow-running-insecure-content"
+      ]
     });
 
     context = await browser.newContext({
       viewport: { width: 1920, height: 1080 },
-      deviceScaleFactor: 1,
+      deviceScaleFactor: 1
     });
 
     page = await context.newPage();
@@ -53,7 +53,7 @@ async function runFullPerformanceAnalysis() {
       try {
         await page.goto("http://localhost:3001", {
           waitUntil: "networkidle",
-          timeout: 5000,
+          timeout: 5000
         });
         serverReady = true;
         console.log("✅ Development server is ready");
@@ -157,7 +157,7 @@ async function runFullPerformanceAnalysis() {
         memoryUsage: Math.max(scrollMemory, interactionMemory),
         warnings: scrollFPS < 55 ? ["FPS drops during scroll"] : [],
         recommendations:
-          scrollFPS < 55 ? ["Implement throttled scroll listener"] : [],
+          scrollFPS < 55 ? ["Implement throttled scroll listener"] : []
       };
     });
 
@@ -235,7 +235,7 @@ async function runFullPerformanceAnalysis() {
         fpsActive: activeFPS,
         memoryUsage: idleMemory,
         warnings,
-        recommendations,
+        recommendations
       };
     });
 
@@ -270,7 +270,7 @@ async function runFullPerformanceAnalysis() {
         fpsActive: fps,
         memoryUsage: memory,
         warnings,
-        recommendations,
+        recommendations
       };
     });
 
@@ -317,7 +317,7 @@ async function runFullPerformanceAnalysis() {
         fpsActive: fps,
         memoryUsage: memory,
         warnings,
-        recommendations,
+        recommendations
       };
     });
 
@@ -367,7 +367,7 @@ async function runFullPerformanceAnalysis() {
         fpsActive: afterFPS,
         memoryUsage: memory,
         warnings,
-        recommendations,
+        recommendations
       };
     });
 
@@ -401,7 +401,7 @@ async function runFullPerformanceAnalysis() {
       return {
         averageFPS: Math.round(averageFPS * 10) / 10,
         totalMemoryUsage,
-        performanceScore,
+        performanceScore
       };
     });
 
@@ -413,7 +413,7 @@ async function runFullPerformanceAnalysis() {
       valuePropsAnalysis,
       wavesAnalysis,
       animationSystemAnalysis,
-      themeAnalysis,
+      themeAnalysis
     ];
 
     // Identify critical issues
@@ -456,7 +456,7 @@ async function runFullPerformanceAnalysis() {
       components: allComponents,
       overallMetrics: overallAnalysis,
       criticalIssues,
-      optimizationsPriority,
+      optimizationsPriority
     };
 
     // **8. GENERATE HTML REPORT**
@@ -581,8 +581,8 @@ function generateHTMLReport(report) {
                   report.overallMetrics.performanceScore >= 90
                     ? "text-success"
                     : report.overallMetrics.performanceScore >= 70
-                    ? "text-warning"
-                    : "text-danger"
+                      ? "text-warning"
+                      : "text-danger"
                 }">
                     ${report.overallMetrics.performanceScore}/100
                 </div>
@@ -698,16 +698,16 @@ function generateHTMLReport(report) {
                   priority.startsWith("HIGH")
                     ? "bg-red-50"
                     : priority.startsWith("MEDIUM")
-                    ? "bg-yellow-50"
-                    : "bg-blue-50"
+                      ? "bg-yellow-50"
+                      : "bg-blue-50"
                 }">
                     <span class="text-lg">
                         ${
                           priority.startsWith("HIGH")
                             ? "🚨"
                             : priority.startsWith("MEDIUM")
-                            ? "⚠️"
-                            : "💡"
+                              ? "⚠️"
+                              : "💡"
                         }
                     </span>
                     <span class="flex-1">${priority}</span>

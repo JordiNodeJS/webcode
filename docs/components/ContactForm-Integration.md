@@ -45,7 +45,7 @@ async function sendEmailWithResend(contactData: any) {
     to: process.env.RESEND_TO_EMAIL || "info@webcode.es",
     subject: `Nueva consulta: ${contactData.subject}`,
     html: generateEmailTemplate(contactData),
-    replyTo: contactData.email,
+    replyTo: contactData.email
   };
 
   const result = await resend.emails.send(emailContent);

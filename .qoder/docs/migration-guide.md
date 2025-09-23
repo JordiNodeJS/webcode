@@ -10,13 +10,13 @@ Tu sistema de prompts de GitHub Copilot ha sido completamente migrado al editor 
 
 ### **✅ Estructura Completa**
 
-| Elemento Original | Ubicación GitHub | Ubicación Qoder | Estado |
-|-------------------|------------------|-----------------|--------|
-| **Archivo principal** | `copilot-instructions.md` | `llms.txt` | ✅ Adaptado |
-| **Prompts especializados** | `.github/prompts/` | `.qoder/prompts/` | ✅ Migrados |
-| **Instrucciones técnicas** | `.github/instructions/` | `.qoder/instructions/` | ✅ Migrados |
-| **Contexto dinámico** | `.github/context/` | `.qoder/context/` | ✅ Migrados |
-| **Gestión de proyecto** | `.github/project/` | `.qoder/project/` | ✅ Migrados |
+| Elemento Original          | Ubicación GitHub          | Ubicación Qoder        | Estado      |
+| -------------------------- | ------------------------- | ---------------------- | ----------- |
+| **Archivo principal**      | `copilot-instructions.md` | `llms.txt`             | ✅ Adaptado |
+| **Prompts especializados** | `.github/prompts/`        | `.qoder/prompts/`      | ✅ Migrados |
+| **Instrucciones técnicas** | `.github/instructions/`   | `.qoder/instructions/` | ✅ Migrados |
+| **Contexto dinámico**      | `.github/context/`        | `.qoder/context/`      | ✅ Migrados |
+| **Gestión de proyecto**    | `.github/project/`        | `.qoder/project/`      | ✅ Migrados |
 
 ### **📁 Nueva Estructura**
 
@@ -48,12 +48,15 @@ Tu archivo `llms.txt` actualizado es el punto de entrada que lee Qoder:
 # Instrucciones Qoder - Proyecto WebSnack
 
 ## Sistema de Prompts Especializado
+
 Para tareas específicas, consulta estos prompts en .qoder/prompts/:
+
 - Componentes shadcn/ui: .qoder/prompts/shadcn.prompt.md
 - Diseño UI/UX: .qoder/prompts/ui-ux.prompt.md
 - Arquitectura: .qoder/prompts/arquitectura.prompt.md
 
 ## Contexto Actualizado
+
 - Estado del proyecto: .qoder/context/project-state.md
 - Contexto técnico: .qoder/context/technical-context.md
 ```
@@ -80,13 +83,13 @@ En tus conversaciones con Qoder, puedes referenciar directamente:
 
 ### **Funcionalidad**
 
-| Aspecto | GitHub Copilot | Qoder |
-|---------|---------------|-------|
-| **Activación** | Automática en contexto | Manual por referencia explícita |
-| **Archivo principal** | `copilot-instructions.md` | `llms.txt` |
-| **Referencias** | Automáticas | Explícitas en conversación |
-| **Personalización** | Limitada | Completa |
-| **Mantenimiento** | Automático parcial | Manual completo |
+| Aspecto               | GitHub Copilot            | Qoder                           |
+| --------------------- | ------------------------- | ------------------------------- |
+| **Activación**        | Automática en contexto    | Manual por referencia explícita |
+| **Archivo principal** | `copilot-instructions.md` | `llms.txt`                      |
+| **Referencias**       | Automáticas               | Explícitas en conversación      |
+| **Personalización**   | Limitada                  | Completa                        |
+| **Mantenimiento**     | Automático parcial        | Manual completo                 |
 
 ### **Ventajas del Sistema Qoder**
 
@@ -103,7 +106,7 @@ En tus conversaciones con Qoder, puedes referenciar directamente:
 
 ```markdown
 Conversación con Qoder:
-"Necesito crear un botón personalizado para WebSnack. 
+"Necesito crear un botón personalizado para WebSnack.
 Consulta: .qoder/prompts/shadcn.prompt.md para las guías de componentes."
 ```
 
@@ -111,7 +114,7 @@ Consulta: .qoder/prompts/shadcn.prompt.md para las guías de componentes."
 
 ```markdown
 Conversación con Qoder:
-"Voy a diseñar la página de servicios. 
+"Voy a diseñar la página de servicios.
 Revisa: .qoder/prompts/ui-ux.prompt.md para los patrones de diseño
 Estado actual: .qoder/context/project-state.md"
 ```
@@ -160,7 +163,7 @@ Si quieres mantener ambos sistemas:
 cp .github/prompts/nuevo-prompt.md .qoder/prompts/
 # Adaptar referencias .github/ → .qoder/
 
-# Sincronizar cambios de Qoder a GitHub  
+# Sincronizar cambios de Qoder a GitHub
 cp .qoder/prompts/nuevo-prompt.md .github/prompts/
 # Adaptar referencias .qoder/ → .github/
 ```
@@ -190,6 +193,7 @@ cp .qoder/prompts/nuevo-prompt.md .github/prompts/
 ### **Problema: Qoder no encuentra archivos**
 
 **Solución**: Verificar rutas relativas
+
 ```bash
 # Verificar que existe
 ls -la .qoder/prompts/shadcn.prompt.md
@@ -201,14 +205,17 @@ ls -la .qoder/prompts/shadcn.prompt.md
 ### **Problema: Referencias no funcionan**
 
 **Solución**: Usar referencias explícitas en conversaciones
+
 ```markdown
 # En lugar de: "usa el prompt de shadcn"
+
 # Usar: "consulta: .qoder/prompts/shadcn.prompt.md"
 ```
 
 ### **Problema: Información desactualizada**
 
 **Solución**: Actualizar archivos de contexto
+
 ```bash
 # Editar archivos relevantes
 nano .qoder/context/project-state.md

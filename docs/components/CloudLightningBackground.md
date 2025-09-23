@@ -61,7 +61,7 @@ const CONFIG = {
   LIGHT_RADIUS: 200, // Radio de iluminación del cursor
   LIGHT_INTENSITY: 0.8, // Intensidad del efecto de relámpago
   PARTICLE_MIN_SIZE: 20, // Tamaño mínimo de partículas
-  PARTICLE_MAX_SIZE: 60, // Tamaño máximo de partículas
+  PARTICLE_MAX_SIZE: 60 // Tamaño máximo de partículas
   // ... más opciones
 };
 ```

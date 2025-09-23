@@ -5,7 +5,7 @@ import {
   type ReactNode,
   useContext,
   useEffect,
-  useState,
+  useState
 } from "react";
 
 interface AnimationContextType {
@@ -16,7 +16,7 @@ interface AnimationContextType {
 }
 
 const AnimationContext = createContext<AnimationContextType | undefined>(
-  undefined,
+  undefined
 );
 
 interface AnimationProviderProps {
@@ -25,7 +25,7 @@ interface AnimationProviderProps {
 
 export function AnimationProvider({ children }: AnimationProviderProps) {
   const [disabledSections, setDisabledSections] = useState<Set<string>>(
-    new Set(),
+    new Set()
   );
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
@@ -62,7 +62,7 @@ export function AnimationProvider({ children }: AnimationProviderProps) {
         isAnimationEnabled,
         disableAnimationsForSection,
         enableAnimationsForSection,
-        disabledSections,
+        disabledSections
       }}
     >
       {children}
@@ -74,7 +74,7 @@ export function useAnimationContext() {
   const context = useContext(AnimationContext);
   if (context === undefined) {
     throw new Error(
-      "useAnimationContext must be used within an AnimationProvider",
+      "useAnimationContext must be used within an AnimationProvider"
     );
   }
   return context;

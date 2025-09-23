@@ -29,7 +29,7 @@ const HeroSectionExample = () => {
     fadeStartThreshold: 0.1,
     fadeOutThreshold: 0.5,
     transitionDuration: 400,
-    respectReducedMotion: true,
+    respectReducedMotion: true
   });
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const HeroSectionExample = () => {
   const scrollToContent = () => {
     window.scrollTo({
       top: window.innerHeight,
-      behavior: "smooth",
+      behavior: "smooth"
     });
   };
 
@@ -100,7 +100,7 @@ const HeroSectionExample = () => {
           onClick={scrollToContent}
           style={{
             opacity: scrollIndicator.opacity,
-            transition: "opacity 300ms ease-out",
+            transition: "opacity 300ms ease-out"
           }}
         >
           <ChevronDown className="w-6 h-6 text-muted-foreground" />

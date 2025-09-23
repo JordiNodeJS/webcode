@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Desarrollo Web - WEBCODE",
-  description: "Servicios de desarrollo web ofrecidos por WEBCODE.",
+  description: "Servicios de desarrollo web ofrecidos por WEBCODE."
 };
 
 export default function WebDevelopmentPage() {

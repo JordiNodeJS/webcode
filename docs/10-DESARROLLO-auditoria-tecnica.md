@@ -44,7 +44,7 @@ export default async function Page() {
 // Add to server components
 const data = await fetch("/api/data", {
   cache: "force-cache", // or 'no-store' for dynamic
-  next: { revalidate: 3600 }, // 1 hour cache
+  next: { revalidate: 3600 } // 1 hour cache
 });
 ```
 
@@ -321,7 +321,7 @@ const HeavyComponent = dynamic(() => import("./HeavyComponent"), {
 // app/layout.tsx or page.tsx
 export const metadata = {
   title: "WebSnack Designer",
-  description: "Professional web design services",
+  description: "Professional web design services"
 };
 ```
 
@@ -378,12 +378,12 @@ const nextConfig = {
         headers: [
           {
             key: "Content-Security-Policy",
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval';",
-          },
-        ],
-      },
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval';"
+          }
+        ]
+      }
     ];
-  },
+  }
 };
 ```
 

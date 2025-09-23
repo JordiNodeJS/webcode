@@ -50,7 +50,7 @@ export function Button({
   variant = "primary",
   size = "md",
   disabled = false,
-  onClick,
+  onClick
 }: ButtonProps) {
   return (
     <button
@@ -101,22 +101,26 @@ import { z } from "zod";
 const baseContactSchema = z.object({
   name: z.string().min(2, "Nombre debe tener al menos 2 caracteres"),
   email: z.string().email("Email inválido"),
-  gdprConsent: z.boolean().refine(val => val === true, "Debes aceptar la política de privacidad"),
+  gdprConsent: z
+    .boolean()
+    .refine((val) => val === true, "Debes aceptar la política de privacidad")
 });
 
 // Progressive validation - extending base schemas
 const webServiceSchema = baseContactSchema.extend({
   projectType: z.enum(["landing", "corporate", "portfolio", "blog"]),
   budget: z.enum(["1000-3000", "3000-7000", "7000-15000", "15000+"]),
-  features: z.array(z.enum(["responsive_design", "cms", "seo_basic"])).min(1),
+  features: z.array(z.enum(["responsive_design", "cms", "seo_basic"])).min(1)
 });
 
 // Niche-specific validation
 const floristeriaSchema = webServiceSchema.extend({
   businessInfo: z.object({
     location: z.string().min(5, "Incluye barrio de Barcelona"),
-    specialties: z.array(z.enum(["bodas", "funerales", "eventos_corporativos"])).min(1),
-  }),
+    specialties: z
+      .array(z.enum(["bodas", "funerales", "eventos_corporativos"]))
+      .min(1)
+  })
 });
 
 type ContactFormData = z.infer<typeof baseContactSchema>;
@@ -127,7 +131,7 @@ function UserForm() {
   const [formData, setFormData] = useState<UserFormData>({
     name: "",
     email: "",
-    age: 0,
+    age: 0
   });
 
   const handleSubmit = (data: UserFormData) => {

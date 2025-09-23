@@ -4,13 +4,13 @@ const fs = require("fs");
 (async () => {
   const browser = await chromium.launch();
   const page = await browser.newPage({
-    viewport: { width: 1280, height: 900 },
+    viewport: { width: 1280, height: 900 }
   });
 
   const urls = [
     { path: "/cookies", name: "cookies" },
     { path: "/politica-privacidad", name: "politica-privacidad" },
-    { path: "/privacy", name: "privacy" },
+    { path: "/privacy", name: "privacy" }
   ];
 
   const outDir = "test-results/screenshots/playwright";

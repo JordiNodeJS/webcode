@@ -7,15 +7,18 @@ Se ha identificado un componente con alto potencial de causar errores de mismatc
 ## ⚠️ Componentes Problemáticos Identificados
 
 ### 1. Hero.ValuePropsGrid.tsx
+
 **Ubicación:** `src/components/landing/hero/Hero.ValuePropsGrid.tsx`
 **Tipo:** Client Component con efectos de scroll
 
 **Problemas detectados:**
+
 - Utiliza `window` directamente en un `useEffect` para detectar scroll
 - Event listener global para scroll sin verificación de entorno
 - Estado que depende de condiciones del navegador
 
 **Fragmento problemático:**
+
 ```tsx
 useEffect(() => {
   const handleScroll = () => {
@@ -37,15 +40,18 @@ useEffect(() => {
 ```
 
 ### 2. Hero.HeaderNavigation.tsx
+
 **Ubicación:** `src/components/landing/hero/Hero.HeaderNavigation.tsx`
 **Tipo:** Client Component con efectos de scroll
 
 **Problemas detectados:**
+
 - Utiliza `window` directamente en un `useEffect` para detectar scroll
 - Event listener global para scroll con optimización requestAnimationFrame
 - Verificación de `typeof window !== "undefined"` pero sigue siendo problemático
 
 **Fragmento problemático:**
+
 ```tsx
 useEffect(() => {
   let ticking = false;
@@ -80,11 +86,13 @@ useEffect(() => {
 ## ✅ Componentes Correctos
 
 ### use-theme.ts
+
 **Ubicación:** `src/hooks/use-theme.ts`
 **Estado:** ✅ Correcto
 **Detalles:** Aunque utiliza `useEffect`, no accede directamente a APIs del navegador. El estado se inicializa correctamente con `useState(false)` y solo se actualiza en el cliente.
 
 ### layout.tsx
+
 **Ubicación:** `src/app/layout.tsx`
 **Estado:** ✅ Correcto
 **Detalles:** El script inline para inicialización temprana del tema está correctamente implementado con manejo de errores y verificación de `localStorage` y `window.matchMedia`.
@@ -92,11 +100,13 @@ useEffect(() => {
 ## 🛠️ Recomendaciones de Solución
 
 ### Para Hero.ValuePropsGrid.tsx:
+
 1. **Mover la lógica de detección de scroll a un custom hook** que verifique el entorno
 2. **Utilizar una solución basada en Intersection Observer** en su lugar
 3. **Implementar lazy loading condicional** para las animaciones
 
 ### Para Hero.HeaderNavigation.tsx:
+
 1. **Refactorizar el useEffect** para usar una solución que no dependa directamente de `window` en el efecto
 2. **Considerar el uso de CSS scroll-driven animations** como alternativa moderna
 3. **Implementar una verificación más robusta del entorno** antes de acceder a APIs del navegador
@@ -104,6 +114,7 @@ useEffect(() => {
 ## 📈 Impacto Potencial
 
 Si no se resuelven estos problemas:
+
 - Errores de hidratación en navegadores
 - Problemas de SEO debido a contenido no indexable
 - Experiencia de usuario inconsistente

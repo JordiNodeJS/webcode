@@ -101,7 +101,7 @@ const CONFIG = {
   LIGHT_INTENSITY: 0.8, // Intensidad del efecto
   PARTICLE_MIN_SIZE: 20, // Tamaño mínimo
   PARTICLE_MAX_SIZE: 60, // Tamaño máximo
-  BACKGROUND_COLOR: "rgba(15, 23, 42, 0.95)",
+  BACKGROUND_COLOR: "rgba(15, 23, 42, 0.95)"
   // ...más opciones
 };
 ```
@@ -120,13 +120,11 @@ const CONFIG = {
 ## 🧪 Pruebas Recomendadas
 
 1. **Verifica el rendimiento**:
-
    - Abre DevTools → Performance
    - Mueve el cursor sobre el fondo
    - Verifica que el FPS se mantenga >55
 
 2. **Prueba en móvil**:
-
    - El efecto debe ser sutil pero visible
    - No debe causar lag al hacer scroll
 

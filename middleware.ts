@@ -19,9 +19,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    "/cookies/:path*",
-    "/politica-privacidad/:path*",
-    "/privacy/:path*",
-  ],
+  matcher: ["/cookies/:path*", "/politica-privacidad/:path*", "/privacy/:path*"]
 };

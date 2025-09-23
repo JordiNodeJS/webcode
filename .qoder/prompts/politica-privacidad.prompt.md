@@ -2,7 +2,6 @@ Quiero que generes la página **politica-privacidad** en mi proyecto con Astro, 
 Genera los siguientes archivos HTML dentro de mi proyecto:
 
 1. **politica-privacidad**
-
    - Adaptada a la normativa española (RGPD y LOPDGDD).
    - Redactada en español de España.
    - Incluir:
@@ -16,7 +15,6 @@ Genera los siguientes archivos HTML dentro de mi proyecto:
      h) Procedimiento para presentar reclamación ante la AEPD.
 
 2. **politica-cookies**
-
    - Cumpliendo RGPD, LOPDGDD y LSSI-CE.
    - Explicar qué son las cookies y para qué sirven.
    - Detallar cookies usadas por Google Analytics (nombre, duración, finalidad, proveedor).

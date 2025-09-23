@@ -12,7 +12,7 @@ Para mejorar significativamente el rendimiento de tu `CloudLightningBackground` 
 // CAMBIAR ESTA LÍNEA:
 import {
   CloudLightningBackground, // ← Versión original
-  HeroSection,
+  HeroSection
 } from "@/components/landing/hero";
 
 // POR ESTA:
@@ -112,7 +112,7 @@ Si por alguna razón necesitas volver a la versión original:
 // Volver al import original
 import {
   CloudLightningBackground,
-  HeroSection,
+  HeroSection
 } from "@/components/landing/hero";
 ```
 
@@ -147,7 +147,7 @@ Si quieres optimizar aún más, puedes:
    ```tsx
    import {
      CloudLightningBackground,
-     HeroSection,
+     HeroSection
    } from "@/components/landing/hero";
    ```
 

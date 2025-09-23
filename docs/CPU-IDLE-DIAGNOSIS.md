@@ -141,7 +141,7 @@ const cardTransform = cardState.isHovered
 const STATIC_GRADIENTS = {
   idle: "radial-gradient(circle at 50% 50%, rgba(111, 137, 193, 0.1), transparent)",
   card1:
-    "radial-gradient(circle at 30% 40%, rgba(178, 62, 176, 0.15), transparent)",
+    "radial-gradient(circle at 30% 40%, rgba(178, 62, 176, 0.15), transparent)"
   // ... más gradientes pre-calculados
 };
 
@@ -293,7 +293,7 @@ import { IdleOptimizedValuePropsGrid } from "@/components/landing/hero/Hero.Valu
 const performanceThresholds = {
   idleFPS: 55, // Mínimo FPS en reposo
   maxMemoryIncrease: 10, // MB máximo adicional
-  maxGPULayers: 5, // Capas GPU máximas en idle
+  maxGPULayers: 5 // Capas GPU máximas en idle
 };
 ```
 

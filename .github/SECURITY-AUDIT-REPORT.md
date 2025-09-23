@@ -91,18 +91,15 @@
 ### **Archivos Modificados:**
 
 1. **`.github/automation/scripts/update-context.sh`**
-
    - ✅ Mapeo automático de rutas reorganizadas
    - ✅ Fallbacks para archivos no encontrados
 
 2. **`.github/project/TUTORIAL-SISTEMA-MEMORIA.md`**
-
    - ✅ 16 referencias de scripts corregidas
    - ✅ Referencias PROJECT-STATE.md actualizadas
    - ✅ Comandos Git hooks corregidos
 
 3. **`.github/docs/THEMING.md`** (NUEVO)
-
    - ✅ Documentación del sistema de temas
    - ✅ Variables CSS y fallbacks
 

@@ -83,7 +83,7 @@ export function ServiceCard({
   id,
   title,
   description,
-  price,
+  price
 }: ServiceCardProps) {
   const [isActive, setIsActive] = useState(false);
 

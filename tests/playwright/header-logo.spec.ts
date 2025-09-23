@@ -6,7 +6,7 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Header logo layout", () => {
   test("logo appears to the left of the text and vertically centered", async ({
-    page,
+    page
   }) => {
     await page.goto("http://localhost:3000/");
 
