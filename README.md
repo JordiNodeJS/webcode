@@ -79,11 +79,4 @@ pnpm format      # ejecuta Prettier sobre el repo
 pnpm lint        # ejecuta Biome (solo lint)
 ```
 
-Hemos añadido Husky + lint-staged para ejecutar Prettier en los archivos staged antes del commit. Para activarlo en tu entorno local:
-
-```bash
-pnpm install
-npx husky install
-```
-
-Si prefieres no usar Husky, asegúrate de ejecutar `pnpm format` manualmente antes de commitear.
+Ejecuta `pnpm format` antes de commitear si no usas hooks automáticos.

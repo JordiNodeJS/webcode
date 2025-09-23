@@ -9,20 +9,16 @@ Gracias por contribuir a WEBCODE. Estas son las reglas y el flujo recomendado pa
 
 ## Pre-commit hooks
 
-Usamos Husky + lint-staged para ejecutar Prettier automáticamente sobre los archivos staged antes de cada commit.
+Este repositorio ha eliminado hooks automáticos (Husky). Para evitar conflictos y dependencia de hooks en CI, por favor ejecuta manualmente Prettier antes de commitear.
 
-Pasos para activar en local:
+Pasos recomendados:
 
 ```bash
 pnpm install
-npx husky install
-```
-
-Confirmar que el hook está presente:
-
-```bash
-ls .husky
-# deberías ver pre-commit
+pnpm format      # ejecuta Prettier en todo el repo
+pnpm lint        # ejecuta Biome para linting
+git add -A
+git commit -m "mensaje"
 ```
 
 ## Cómo formatear manualmente
