@@ -1,2 +1,3 @@
 #!/usr/bin/env sh
-pnpm dlx lint-staged
+# Node-runner pre-commit hook (invokes pre-commit.cjs with Node)
+node "$(dirname "$0")/pre-commit.cjs" || exit $?
