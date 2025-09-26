@@ -10,36 +10,36 @@ const nextConfig: NextConfig = {
   },
   // Configurar orígenes permitidos para desarrollo
   allowedDevOrigins: ["192.168.0.15:3000", "localhost:3000", "127.0.0.1:3000"],
-  
+
   // Optimizaciones para mejor SEO y Performance
   poweredByHeader: false,
   compress: true,
-  
+
   // Image optimization
   images: {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    formats: ['image/webp', 'image/avif'],
+    formats: ["image/webp", "image/avif"],
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
     dangerouslyAllowSVG: false,
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: '**.vercel.app',
-        port: '',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "**.vercel.app",
+        port: "",
+        pathname: "/**"
       },
       {
-        protocol: 'https', 
-        hostname: 'webcode.es',
-        port: '',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "webcode.es",
+        port: "",
+        pathname: "/**"
       }
     ],
     unoptimized: false,
     disableStaticImages: false
   },
-  
+
   // Bundle optimizations
   webpack: (config, { dev, isServer }) => {
     // Optimizaciones para reducir bundle size
@@ -47,39 +47,39 @@ const nextConfig: NextConfig = {
       config.optimization = {
         ...config.optimization,
         splitChunks: {
-          chunks: 'all',
+          chunks: "all",
           cacheGroups: {
             // Separar vendor chunks por tamaño
             framework: {
-              chunks: 'all',
-              name: 'framework',
+              chunks: "all",
+              name: "framework",
               test: /(?<!node_modules.*)[\\/]node_modules[\\/](react|react-dom|scheduler|prop-types|use-subscription)[\\/]/,
               priority: 40,
-              enforce: true,
+              enforce: true
             },
             animations: {
-              name: 'animations',
+              name: "animations",
               test: /[\\/]node_modules[\\/](framer-motion|motion)[\\/]/,
-              chunks: 'all',
+              chunks: "all",
               priority: 30,
-              enforce: true,
+              enforce: true
             },
             icons: {
-              name: 'icons', 
+              name: "icons",
               test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
-              chunks: 'all',
+              chunks: "all",
               priority: 25,
-              enforce: true,
+              enforce: true
             },
             commons: {
-              name: 'commons',
-              chunks: 'all',
+              name: "commons",
+              chunks: "all",
               minChunks: 2,
               priority: 20,
-              reuseExistingChunk: true,
-            },
-          },
-        },
+              reuseExistingChunk: true
+            }
+          }
+        }
       };
     }
 
@@ -87,12 +87,12 @@ const nextConfig: NextConfig = {
     config.resolve.alias = {
       ...config.resolve.alias,
       // Force tree shaking for heavy packages
-      'framer-motion': 'framer-motion/dist/framer-motion',
+      "framer-motion": "framer-motion/dist/framer-motion"
     };
 
     return config;
   },
-  
+
   // Headers de seguridad mejorados para SEO y Best Practices
   async headers() {
     return [
@@ -126,7 +126,8 @@ const nextConfig: NextConfig = {
           },
           {
             key: "Content-Security-Policy",
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';"
+            value:
+              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';"
           }
         ]
       },
@@ -151,7 +152,7 @@ const nextConfig: NextConfig = {
       }
     ];
   },
-  
+
   // Rewrites para SEO-friendly URLs
   async rewrites() {
     return [
@@ -169,7 +170,7 @@ const nextConfig: NextConfig = {
       }
     ];
   },
-  
+
   // Redirects para URLs obsoletas o mejoradas
   async redirects() {
     return [

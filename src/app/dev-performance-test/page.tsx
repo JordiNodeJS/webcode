@@ -11,10 +11,7 @@ export const metadata = {
 export default function PerformanceTestPage() {
   return (
     <main className="min-h-screen bg-background">
-      <OptimizedSuspense 
-        size="lg"
-        className="min-h-[200px]"
-      >
+      <OptimizedSuspense size="lg" className="min-h-[200px]">
         <PerformanceTestLabWrapper />
       </OptimizedSuspense>
     </main>

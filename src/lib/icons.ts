@@ -9,7 +9,7 @@
 // Theme Toggle Icons
 // UI Components Icons
 // Debug Lab Icons (Dynamic import candidate)
-export { 
+export {
   Activity,
   AlertCircle,
   ArrowRight,
@@ -20,7 +20,7 @@ export {
   ChevronDownIcon as ChevronDownUI,
   ChevronUpIcon as ChevronUpUI,
   Clock,
-  Cookie, 
+  Cookie,
   Cpu,
   Eye,
   Gauge,
@@ -28,7 +28,7 @@ export {
   Info,
   MapPin,
   MemoryStick,
-  Menu, 
+  Menu,
   MonitorSpeaker,
   Moon,
   PlayCircle,
@@ -36,16 +36,16 @@ export {
   Rocket,
   Server,
   Shield,
-  Smartphone, 
+  Smartphone,
   StopCircle,
-  Sun, 
+  Sun,
   Target,
   Thermometer,
   TrendingDown,
   TrendingUp,
-  Users, 
+  Users,
   Wifi,
-  XIcon as X, 
-  Zap, 
+  XIcon as X,
+  Zap,
   Zap as ZapDebug
 } from "lucide-react";
