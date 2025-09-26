@@ -1,7 +1,7 @@
 "use client";
 
-import { ArrowRight, Eye } from "lucide-react";
 import Link from "next/link";
+import { ArrowRight, Eye } from "@/lib/icons";
 
 /**
  * Botones de Call to Action principales con efectos neon
