@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-  "dev": "next dev --turbopack",
-  "build:internal": "next build --turbopack",
-  "build": "next build --turbopack",
-  "start": "next start",
+    "dev": "next dev --turbopack",
+    "build:internal": "next build --turbopack",
+    "build": "next build --turbopack",
+    "start": "next start",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "format": "pnpm dlx prettier --write .",
@@ -50,6 +50,7 @@
     "lighthouse": "^12.8.2",
     "lint-staged": "^14.0.0",
     "playwright": "^1.55.0",
+    "prettier": "^3.6.2",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.3.8",
     "typescript": "^5"
