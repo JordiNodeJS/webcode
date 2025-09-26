@@ -5,8 +5,10 @@ import { ThemeProvider } from "next-themes";
 import { ViewTransitions } from "next-view-transitions";
 import { FooterSection } from "@/components/landing/Footer.Section";
 import { HeaderNavigation } from "@/components/landing/hero/Hero.HeaderNavigation";
+import { StructuredData } from "@/components/seo/StructuredData";
 import { DefaultBackground } from "@/components/ui/DefaultBackground";
 import { AnimationProvider } from "@/contexts/AnimationContext";
+import { generateSEOMetadata } from "@/lib/seo-metadata";
 import { initWebVitals } from "@/lib/web-vitals";
 
 const geistSans = Geist({
@@ -19,46 +21,26 @@ const geistMono = Geist_Mono({
   subsets: ["latin"]
 });
 
-export const metadata: Metadata = {
-  title: "WEBCODE - Soluciones Web Profesionales",
-  description:
-    "Plataforma integral de desarrollo web y soluciones digitales para freelancers, pequeñas empresas y startups en Barcelona y España.",
-  keywords:
-    "desarrollo web, freelancer, sitios web, Barcelona, España, soluciones digitales, e-commerce",
-  authors: [{ name: "WEBCODE Team" }],
-  creator: "WEBCODE",
-  publisher: "WEBCODE",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false
-  },
-  manifest: "/manifest.json",
-  icons: {
-    icon: [
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" }
-    ],
-    apple: [
-      { url: "/apple-icon-57x57.png", sizes: "57x57", type: "image/png" },
-      { url: "/apple-icon-60x60.png", sizes: "60x60", type: "image/png" },
-      { url: "/apple-icon-72x72.png", sizes: "72x72", type: "image/png" },
-      { url: "/apple-icon-76x76.png", sizes: "76x76", type: "image/png" },
-      { url: "/apple-icon-114x114.png", sizes: "114x114", type: "image/png" },
-      { url: "/apple-icon-120x120.png", sizes: "120x120", type: "image/png" },
-      { url: "/apple-icon-144x144.png", sizes: "144x144", type: "image/png" },
-      { url: "/apple-icon-152x152.png", sizes: "152x152", type: "image/png" },
-      { url: "/apple-icon-180x180.png", sizes: "180x180", type: "image/png" }
-    ],
-    other: [
-      {
-        rel: "apple-touch-icon-precomposed",
-        url: "/apple-icon-precomposed.png"
-      }
-    ]
-  }
-};
+export const metadata: Metadata = generateSEOMetadata({
+  title: "WEBCODE - Desarrollo Web Profesional en Barcelona | Soluciones Digitales",
+  description: "Desarrollo web profesional, e-commerce y aplicaciones web para freelancers, PYMEs y startups en Barcelona y España. Soluciones digitales de calidad con tecnologías de vanguardia 2025.",
+  keywords: [
+    "desarrollo web Barcelona",
+    "freelancer desarrollo web",
+    "sitios web profesionales España",
+    "e-commerce Barcelona",
+    "aplicaciones web Catalunya",
+    "soluciones digitales Barcelona",
+    "diseño web responsive",
+    "SEO Barcelona",
+    "desarrollo web moderno",
+    "startup web solutions",
+    "Next.js desarrollo",
+    "React Barcelona",
+    "TypeScript web development"
+  ],
+  canonical: "https://webcode.es"
+});
 
 export default function RootLayout({
   children
@@ -70,8 +52,12 @@ export default function RootLayout({
 
   return (
     <ViewTransitions>
-      <html lang="en" suppressHydrationWarning>
+      <html lang="es" suppressHydrationWarning>
         <head>
+          {/* DNS Prefetch and Preconnect for better performance */}
+          <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+          
           {/* Favicons and App Icons */}
           <link
             rel="apple-touch-icon"
@@ -146,6 +132,12 @@ export default function RootLayout({
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
           <meta name="theme-color" content="#ffffff" />
+          
+          {/* Structured Data */}
+          <StructuredData type="Organization" />
+          <StructuredData type="WebSite" />
+          <StructuredData type="LocalBusiness" />
+          
           {/* Script necesario para prevenir el parpadeo del tema - cargado desde public/theme-init.js */}
           <script src="/theme-init.js" />
         </head>
