@@ -69,14 +69,6 @@ export async function POST(request: NextRequest) {
       throw new Error(emailResult.error || "Error enviando email");
     }
 
-    console.log("✅ Email enviado correctamente:", {
-      emailId: emailResult.id,
-      email: contactData.email,
-      subject: contactData.subject,
-      serviceType: contactData.serviceType,
-      timestamp: contactData.metadata.timestamp
-    });
-
     // Respuesta de éxito
     return NextResponse.json({
       success: true,
@@ -123,11 +115,7 @@ async function sendEmailWithResend(
       replyTo: contactData.email
     };
 
-    console.log("📧 Enviando email con Resend...", {
-      from: emailContent.from,
-      to: emailContent.to,
-      subject: emailContent.subject
-    });
+    // Email send initiated (logs removed for production cleanliness)
 
     const resend = await getResend();
     const result = await resend.emails.send(emailContent);
