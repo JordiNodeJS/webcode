@@ -44,7 +44,7 @@ const ContactFormSchema = z.object({
   email: z.string().email("Email inválido"),
   phone: z.string().optional(),
   message: z.string().min(10, "Mensaje debe tener al menos 10 caracteres"),
-  service: z.enum(["web", "ecommerce", "consulting"]),
+  service: z.enum(["web", "ecommerce", "consulting"])
 });
 
 type ContactFormData = z.infer<typeof ContactFormSchema>;

@@ -10,17 +10,20 @@ files: ["src/components/**/*.tsx", "src/app/**/*.tsx", "src/hooks/**/*.ts"]
 ## Formularios Identificados (8-12 tipos)
 
 ### 🎯 Formularios Principales
+
 1. **Contacto general** - Landing page principal
 2. **Solicitud de presupuesto** - Con selección de servicios
 3. **Consulta gratuita** - CTA principal del hero
 4. **Newsletter/Updates** - Para leads y marketing
 
 ### 💼 Formularios Comerciales
+
 5. **Cotización por proyecto** - Diferentes nichos (floristerías, clínicas, startups)
 6. **Formulario de onboarding** - Nuevos clientes con requerimientos específicos
 7. **Feedback/Testimonios** - Para casos de estudio y reviews
 
 ### 🔧 Formularios Avanzados
+
 8. **Soporte técnico** - Para clientes existentes
 9. **Registro de clientes** - Dashboard/portal de clientes
 10. **Programación de reuniones** - Integración con calendario
@@ -28,50 +31,68 @@ files: ["src/components/**/*.tsx", "src/app/**/*.tsx", "src/hooks/**/*.ts"]
 ## Implementación Progresiva de Validación
 
 ### Nivel 1: Esquemas Base
+
 ```typescript
 // src/lib/validations/base.ts
 const baseContactSchema = z.object({
   name: z.string().min(2, "Nombre debe tener al menos 2 caracteres"),
   email: z.string().email("Email inválido"),
-  phone: z.string().regex(/^[679]\d{8}$/, "Teléfono español inválido").optional(),
-  gdprConsent: z.boolean().refine(val => val === true, "Debes aceptar la política de privacidad"),
-  marketingConsent: z.boolean().optional(),
+  phone: z
+    .string()
+    .regex(/^[679]\d{8}$/, "Teléfono español inválido")
+    .optional(),
+  gdprConsent: z
+    .boolean()
+    .refine((val) => val === true, "Debes aceptar la política de privacidad"),
+  marketingConsent: z.boolean().optional()
 });
 
 const messageSchema = z.object({
   subject: z.string().min(5, "Asunto debe tener al menos 5 caracteres"),
-  message: z.string().min(10, "Mensaje debe tener al menos 10 caracteres"),
+  message: z.string().min(10, "Mensaje debe tener al menos 10 caracteres")
 });
 ```
 
 ### Nivel 2: Esquemas por Servicio
+
 ```typescript
 // src/lib/validations/services.ts
 const webServiceSchema = baseContactSchema.extend({
   projectType: z.enum(["landing", "corporate", "portfolio", "blog"]),
   budget: z.enum(["1000-3000", "3000-7000", "7000-15000", "15000+"]),
   timeline: z.enum(["1-2weeks", "2-4weeks", "1-3months", "3months+"]),
-  features: z.array(z.enum([
-    "responsive_design", "cms", "multilingual", "seo_basic", "animations"
-  ])).min(1, "Selecciona al menos una funcionalidad"),
+  features: z
+    .array(
+      z.enum([
+        "responsive_design",
+        "cms",
+        "multilingual",
+        "seo_basic",
+        "animations"
+      ])
+    )
+    .min(1, "Selecciona al menos una funcionalidad")
 });
 
 const ecommerceSchema = baseContactSchema.extend({
   storeType: z.enum(["fashion", "food", "services", "digital", "other"]),
   productsCount: z.enum(["1-50", "51-200", "201-1000", "1000+"]),
-  paymentMethods: z.array(z.enum([
-    "stripe", "paypal", "bizum", "bank_transfer", "cash_on_delivery"
-  ])).min(1),
-  shippingZones: z.array(z.enum([
-    "barcelona", "catalonia", "spain", "europe", "worldwide"
-  ])),
+  paymentMethods: z
+    .array(
+      z.enum(["stripe", "paypal", "bizum", "bank_transfer", "cash_on_delivery"])
+    )
+    .min(1),
+  shippingZones: z.array(
+    z.enum(["barcelona", "catalonia", "spain", "europe", "worldwide"])
+  ),
   gdprCompliant: z.literal(true, {
     errorMap: () => ({ message: "El e-commerce debe cumplir RGPD" })
-  }),
+  })
 });
 ```
 
 ### Nivel 3: Esquemas por Nicho de Mercado
+
 ```typescript
 // src/lib/validations/niches.ts
 const floristeriaSchema = ecommerceSchema.extend({
@@ -79,32 +100,56 @@ const floristeriaSchema = ecommerceSchema.extend({
     name: z.string().min(2),
     location: z.string().min(5, "Incluye barrio de Barcelona"),
     yearsInBusiness: z.number().min(0).max(100),
-    specialties: z.array(z.enum([
-      "bodas", "funerales", "eventos_corporativos", "decoracion", "plantas"
-    ])).min(1),
+    specialties: z
+      .array(
+        z.enum([
+          "bodas",
+          "funerales",
+          "eventos_corporativos",
+          "decoracion",
+          "plantas"
+        ])
+      )
+      .min(1)
   }),
   seasonalNeeds: z.boolean(),
   deliveryService: z.boolean(),
-  socialMediaPresence: z.array(z.enum(["instagram", "facebook", "tiktok"])),
+  socialMediaPresence: z.array(z.enum(["instagram", "facebook", "tiktok"]))
 });
 
 const veterinariaSchema = baseContactSchema.extend({
   clinicInfo: z.object({
     name: z.string().min(2),
     address: z.string().min(10),
-    services: z.array(z.enum([
-      "consultas_generales", "cirugias", "urgencias_24h", "exoticos", 
-      "peluqueria", "hotel", "farmacia"
-    ])).min(1),
-    staff: z.number().min(1).max(50),
+    services: z
+      .array(
+        z.enum([
+          "consultas_generales",
+          "cirugias",
+          "urgencias_24h",
+          "exoticos",
+          "peluqueria",
+          "hotel",
+          "farmacia"
+        ])
+      )
+      .min(1),
+    staff: z.number().min(1).max(50)
   }),
-  digitalNeeds: z.array(z.enum([
-    "citas_online", "historiales_digitales", "comunicacion_clientes", 
-    "tienda_online", "blog_consejos"
-  ])).min(1),
+  digitalNeeds: z
+    .array(
+      z.enum([
+        "citas_online",
+        "historiales_digitales",
+        "comunicacion_clientes",
+        "tienda_online",
+        "blog_consejos"
+      ])
+    )
+    .min(1),
   rgpdMedical: z.literal(true, {
     errorMap: () => ({ message: "Debe cumplir RGPD médico específico" })
-  }),
+  })
 });
 
 const fintechSchema = baseContactSchema.extend({
@@ -112,22 +157,31 @@ const fintechSchema = baseContactSchema.extend({
     name: z.string().min(2),
     stage: z.enum(["idea", "mvp", "early_stage", "growth", "scale"]),
     funding: z.enum(["bootstrap", "angel", "seed", "series_a", "series_b+"]),
-    team_size: z.number().min(1).max(1000),
+    team_size: z.number().min(1).max(1000)
   }),
-  technicalNeeds: z.array(z.enum([
-    "landing_validation", "dashboard_users", "api_integrations", 
-    "payment_processing", "kyc_integration", "regulatory_compliance"
-  ])).min(1),
-  complianceRequirements: z.array(z.enum([
-    "pci_dss", "gdpr", "psd2", "mifid", "banco_espana"
-  ])),
-  launchTimeline: z.enum(["1month", "3months", "6months", "1year"]),
+  technicalNeeds: z
+    .array(
+      z.enum([
+        "landing_validation",
+        "dashboard_users",
+        "api_integrations",
+        "payment_processing",
+        "kyc_integration",
+        "regulatory_compliance"
+      ])
+    )
+    .min(1),
+  complianceRequirements: z.array(
+    z.enum(["pci_dss", "gdpr", "psd2", "mifid", "banco_espana"])
+  ),
+  launchTimeline: z.enum(["1month", "3months", "6months", "1year"])
 });
 ```
 
 ## Hooks y Componentes Reutilizables
 
 ### Hook de Validación
+
 ```typescript
 // src/hooks/useFormValidation.ts
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -140,18 +194,19 @@ export function useFormValidation<T extends z.ZodSchema>(
 ) {
   const form = useForm<z.infer<T>>({
     resolver: zodResolver(schema),
-    defaultValues,
+    defaultValues
   });
 
   return {
     ...form,
     isSubmitting: form.formState.isSubmitting,
-    hasErrors: Object.keys(form.formState.errors).length > 0,
+    hasErrors: Object.keys(form.formState.errors).length > 0
   };
 }
 ```
 
 ### Componente de Formulario Progresivo
+
 ```typescript
 // src/components/custom/progressive-form.tsx
 "use client";
@@ -174,8 +229,8 @@ export function ProgressiveForm<T extends z.ZodSchema>({
   return (
     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
       {children(form)}
-      <Button 
-        type="submit" 
+      <Button
+        type="submit"
         disabled={form.isSubmitting}
         className="w-full"
       >
@@ -187,6 +242,7 @@ export function ProgressiveForm<T extends z.ZodSchema>({
 ```
 
 ### Componente de Campo con Validación
+
 ```typescript
 // src/components/custom/form-field.tsx
 import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
@@ -226,9 +282,9 @@ export function FormFieldComponent({
           </FormLabel>
           <FormControl>
             {type === "textarea" ? (
-              <Textarea 
-                placeholder={placeholder} 
-                {...field} 
+              <Textarea
+                placeholder={placeholder}
+                {...field}
                 className="min-h-[100px]"
               />
             ) : type === "select" ? (
@@ -267,6 +323,7 @@ export function FormFieldComponent({
 ## Ejemplo de Implementación Completa
 
 ### Formulario de Contacto por Nicho
+
 ```typescript
 // src/components/custom/niche-contact-form.tsx
 "use client";
@@ -305,7 +362,7 @@ export function NicheContactForm({ niche }: NicheContactFormProps) {
       });
 
       if (!response.ok) throw new Error("Error al enviar");
-      
+
       // Handle success
       console.log("Formulario enviado exitosamente");
     } catch (error) {
@@ -332,7 +389,7 @@ export function NicheContactForm({ niche }: NicheContactFormProps) {
                 required
                 placeholder="Tu nombre"
               />
-              
+
               <FormFieldComponent
                 form={form}
                 name="email"
@@ -341,7 +398,7 @@ export function NicheContactForm({ niche }: NicheContactFormProps) {
                 required
                 placeholder="tu@email.com"
               />
-              
+
               <FormFieldComponent
                 form={form}
                 name="phone"
@@ -359,7 +416,7 @@ export function NicheContactForm({ niche }: NicheContactFormProps) {
                     required
                     placeholder="Flores Barcelona"
                   />
-                  
+
                   <FormFieldComponent
                     form={form}
                     name="businessInfo.location"
@@ -367,7 +424,7 @@ export function NicheContactForm({ niche }: NicheContactFormProps) {
                     required
                     placeholder="Gracia, Barcelona"
                   />
-                  
+
                   <FormFieldComponent
                     form={form}
                     name="businessInfo.specialties"
@@ -393,7 +450,7 @@ export function NicheContactForm({ niche }: NicheContactFormProps) {
                 required
                 placeholder="Acepto la política de privacidad y el tratamiento de mis datos"
               />
-              
+
               <FormFieldComponent
                 form={form}
                 name="marketingConsent"

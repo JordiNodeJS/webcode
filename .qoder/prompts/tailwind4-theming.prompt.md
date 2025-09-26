@@ -82,11 +82,11 @@ export default defineConfig({
   theme: {
     extend: {
       colors: {
-        primary: withOpacity("--color-primary"),
+        primary: withOpacity("--color-primary")
         // NO crear alias que conflicten: 'text-primary', 'bg-primary'
-      },
-    },
-  },
+      }
+    }
+  }
 });
 ```
 

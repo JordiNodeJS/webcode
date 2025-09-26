@@ -72,7 +72,7 @@ import { Suspense } from "react";
 // ✅ CORRECT - Lazy load heavy components
 const HeavyChart = dynamic(() => import("@/components/heavy-chart"), {
   loading: () => <div className="animate-pulse bg-gray-200 h-64 rounded" />,
-  ssr: false, // If component doesn't need SSR
+  ssr: false // If component doesn't need SSR
 });
 
 const DashboardModal = dynamic(() => import("@/components/dashboard-modal"));
@@ -115,7 +115,7 @@ export default function DashboardLoading() {
 // Static data (equivalent to getStaticProps)
 async function getStaticData() {
   const data = await fetch("https://api.example.com/static-data", {
-    cache: "force-cache",
+    cache: "force-cache"
   });
   return data.json();
 }
@@ -123,7 +123,7 @@ async function getStaticData() {
 // Dynamic data (equivalent to getServerSideProps)
 async function getDynamicData() {
   const data = await fetch("https://api.example.com/dynamic-data", {
-    cache: "no-store",
+    cache: "no-store"
   });
   return data.json();
 }
@@ -131,7 +131,7 @@ async function getDynamicData() {
 // ISR behavior (revalidate every hour)
 async function getISRData() {
   const data = await fetch("https://api.example.com/isr-data", {
-    next: { revalidate: 3600 },
+    next: { revalidate: 3600 }
   });
   return data.json();
 }
@@ -140,7 +140,7 @@ async function getISRData() {
 async function getCachedData() {
   const data = await fetch("https://api.example.com/data", {
     cache: "force-cache",
-    next: { tags: ["data"] },
+    next: { tags: ["data"] }
   });
   return data.json();
 }
@@ -208,7 +208,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 
 export default function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode;
 }) {

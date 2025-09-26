@@ -6,7 +6,7 @@ import type React from "react";
 // ❌ ERROR: Biome detectará 'any' como error (demo) - remove explicit any to satisfy lint
 const _badData = {
   name: "Test",
-  value: 123,
+  value: 123
 };
 
 // ❌ WARNING: Missing key in JSX iterable
@@ -71,15 +71,15 @@ export function GoodServiceList() {
       id: "1",
       name: "Desarrollo Web",
       description: "Sitios web profesionales",
-      price: 1200,
+      price: 1200
     },
     { id: "2", name: "E-commerce", description: "Tiendas online", price: 2500 },
     {
       id: "3",
       name: "Consultoría",
       description: "Asesoramiento técnico",
-      price: 800,
-    },
+      price: 800
+    }
   ];
 
   return (

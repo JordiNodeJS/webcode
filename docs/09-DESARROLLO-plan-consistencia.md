@@ -101,12 +101,15 @@
 
 ```css
 --shadow-3d-sm: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1);
---shadow-3d-md: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1), 3px 2px
-    4px -1px hsl(325.5319 58.0247% 68.2353% / 1);
---shadow-3d-lg: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1), 3px 4px
-    6px -1px hsl(325.5319 58.0247% 68.2353% / 1);
---shadow-3d-xl: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1), 3px 8px
-    10px -1px hsl(325.5319 58.0247% 68.2353% / 1);
+--shadow-3d-md:
+  3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1),
+  3px 2px 4px -1px hsl(325.5319 58.0247% 68.2353% / 1);
+--shadow-3d-lg:
+  3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1),
+  3px 4px 6px -1px hsl(325.5319 58.0247% 68.2353% / 1);
+--shadow-3d-xl:
+  3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1),
+  3px 8px 10px -1px hsl(325.5319 58.0247% 68.2353% / 1);
 ```
 
 ### Border Radius Tokens

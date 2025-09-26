@@ -7,6 +7,7 @@ Este informe documenta el proceso de migración del sistema de linting y formate
 ## 1. Contexto del Proyecto
 
 El proyecto WebSnack es una aplicación web moderna basada en:
+
 - Next.js 15.5.2 con App Router
 - React 19.1.0
 - TypeScript en modo estricto
@@ -28,6 +29,7 @@ Antes de la migración, el proyecto utilizaba ESLint como linter principal y Pre
 ### 2.2 Estado previo del proyecto
 
 Antes de la migración, el proyecto tenía:
+
 - Configuración de ESLint en `eslint.config.mjs`
 - Dependencias de ESLint y configuraciones relacionadas
 - Scripts de npm/pnpm que ejecutaban ESLint
@@ -122,6 +124,7 @@ pnpm remove @eslint/eslintrc eslint eslint-config-next
 ### 3.5 Eliminación de archivos obsoletos
 
 Se eliminó el archivo de configuración de ESLint:
+
 - `eslint.config.mjs`
 
 ## 4. Problemas Encontrados y Soluciones Aplicadas
@@ -192,6 +195,7 @@ pnpm format      # Formatea el código
 ### 5.2 Pruebas de integración
 
 Se ejecutaron los comandos en el proyecto completo para asegurar que:
+
 1. Biome procesara correctamente los archivos
 2. Los archivos en `node_modules` fueran ignorados automáticamente
 3. Solo se procesaran archivos en el directorio `src`

@@ -157,7 +157,7 @@ const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-sans",
-  display: "swap",
+  display: "swap"
 });
 
 // Fuente para títulos y elementos destacados
@@ -165,7 +165,7 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-display",
-  display: "swap",
+  display: "swap"
 });
 
 // Fuente para contenido largo y citas
@@ -173,7 +173,7 @@ const lora = Lora({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-serif",
-  display: "swap",
+  display: "swap"
 });
 
 // Fuente para código
@@ -181,11 +181,11 @@ const firaCode = Fira_Code({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-mono",
-  display: "swap",
+  display: "swap"
 });
 
 export default function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode;
 }) {
@@ -544,7 +544,7 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 
 // Card de servicio con microanimaciones
@@ -598,7 +598,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 
 // Formulario de contacto WebSnack

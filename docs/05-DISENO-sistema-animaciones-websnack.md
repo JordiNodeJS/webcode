@@ -31,7 +31,7 @@ const wsCurves = {
   primary: [0.25, 0.46, 0.45, 0.94],
   smooth: [0.4, 0, 0.2, 1],
   bounce: [0.68, -0.55, 0.265, 1.55],
-  dramatic: [0.87, 0, 0.13, 1],
+  dramatic: [0.87, 0, 0.13, 1]
 };
 
 const timings = {
@@ -40,7 +40,7 @@ const timings = {
   normal: 0.3,
   smooth: 0.5,
   dramatic: 0.8,
-  slow: 1.2,
+  slow: 1.2
 };
 
 // Fade in con dirección
@@ -48,7 +48,7 @@ export function WSFadeIn({
   children,
   delay = 0,
   direction = "up",
-  className = "",
+  className = ""
 }: {
   children: React.ReactNode;
   delay?: number;
@@ -62,7 +62,7 @@ export function WSFadeIn({
     up: { y: 20 },
     down: { y: -20 },
     left: { x: 20 },
-    right: { x: -20 },
+    right: { x: -20 }
   };
 
   return (
@@ -74,7 +74,7 @@ export function WSFadeIn({
       transition={{
         duration: timings.smooth,
         ease: wsCurves.primary,
-        delay,
+        delay
       }}
     >
       {children}
@@ -86,7 +86,7 @@ export function WSFadeIn({
 export function WSLetterReveal({
   text,
   delay = 0,
-  className = "",
+  className = ""
 }: {
   text: string;
   delay?: number;
@@ -105,7 +105,7 @@ export function WSLetterReveal({
           transition={{
             duration: timings.normal,
             ease: wsCurves.primary,
-            delay: delay + index * 0.03,
+            delay: delay + index * 0.03
           }}
           style={{ display: "inline-block" }}
         >
@@ -121,7 +121,7 @@ export function WSHover({
   children,
   scale = 1.02,
   lift = -4,
-  className = "",
+  className = ""
 }: {
   children: React.ReactNode;
   scale?: number;
@@ -134,11 +134,11 @@ export function WSHover({
       whileHover={{
         scale,
         y: lift,
-        opacity: 0.8, // WebSnack standard
+        opacity: 0.8 // WebSnack standard
       }}
       transition={{
         duration: timings.quick,
-        ease: wsCurves.smooth,
+        ease: wsCurves.smooth
       }}
     >
       {children}
@@ -150,7 +150,7 @@ export function WSHover({
 export function WSParallax({
   children,
   offset = 50,
-  className = "",
+  className = ""
 }: {
   children: React.ReactNode;
   offset?: number;
@@ -163,7 +163,7 @@ export function WSParallax({
       ref={ref}
       className={className}
       style={{
-        y: useMotionValue(0),
+        y: useMotionValue(0)
       }}
       onViewportBoxUpdate={(_, delta) => {
         if (ref.current) {
@@ -181,7 +181,7 @@ export function WSParallax({
 export function WSGlow({
   children,
   intensity = 1.1,
-  className = "",
+  className = ""
 }: {
   children: React.ReactNode;
   intensity?: number;
@@ -191,11 +191,11 @@ export function WSGlow({
     <motion.div
       className={className}
       whileHover={{
-        filter: `brightness(${intensity}) blur(0.5px)`,
+        filter: `brightness(${intensity}) blur(0.5px)`
       }}
       transition={{
         duration: timings.quick,
-        ease: wsCurves.primary,
+        ease: wsCurves.primary
       }}
     >
       {children}
@@ -210,7 +210,7 @@ export function WSImageReveal({
   width,
   height,
   className = "",
-  priority = false,
+  priority = false
 }: {
   src: string;
   alt: string;
@@ -228,7 +228,7 @@ export function WSImageReveal({
       animate={isLoaded ? { scale: 1, opacity: 1 } : {}}
       transition={{
         duration: timings.dramatic,
-        ease: wsCurves.primary,
+        ease: wsCurves.primary
       }}
     >
       <Image
@@ -340,7 +340,11 @@ export function WSGradientText({
 
 ```tsx
 // app/components/sections/hero-section.tsx
-import { WSFadeIn, WSLetterReveal, WSImageReveal } from "@/components/animations";
+import {
+  WSFadeIn,
+  WSLetterReveal,
+  WSImageReveal
+} from "@/components/animations";
 
 export function HeroSection() {
   return (
@@ -356,9 +360,19 @@ export function HeroSection() {
           <WSTextWithImages
             segments={[
               { type: "text", content: "Web" },
-              { type: "image", src: "/icons/rocket.svg", alt: "Rocket", content: "" },
+              {
+                type: "image",
+                src: "/icons/rocket.svg",
+                alt: "Rocket",
+                content: ""
+              },
               { type: "text", content: "Snack" },
-              { type: "image", src: "/icons/zap.svg", alt: "Lightning", content: "" },
+              {
+                type: "image",
+                src: "/icons/zap.svg",
+                alt: "Lightning",
+                content: ""
+              }
             ]}
             className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
           />
@@ -399,7 +413,7 @@ export function HeroSection() {
           transition={{
             duration: 0.8,
             ease: wsCurves.primary,
-            delay: 2.0,
+            delay: 2.0
           }}
         >
           <WSImageReveal
@@ -427,18 +441,18 @@ const features = [
   {
     icon: "⚡",
     title: "Velocidad Extrema",
-    description: "Páginas que cargan en menos de 2 segundos",
+    description: "Páginas que cargan en menos de 2 segundos"
   },
   {
     icon: "🎨",
     title: "Diseño Premium",
-    description: "Layouts profesionales que impresionan",
+    description: "Layouts profesionales que impresionan"
   },
   {
     icon: "📱",
     title: "100% Responsive",
-    description: "Perfecto en móvil, tablet y desktop",
-  },
+    description: "Perfecto en móvil, tablet y desktop"
+  }
 ];
 
 export function FeaturesSection() {
@@ -514,7 +528,7 @@ const wsTiming = {
   normal: { duration: 0.3, ease: wsCurves.primary },
   smooth: { duration: 0.5, ease: wsCurves.primary },
   dramatic: { duration: 0.8, ease: wsCurves.dramatic },
-  slow: { duration: 1.2, ease: wsCurves.primary },
+  slow: { duration: 1.2, ease: wsCurves.primary }
 };
 
 // Aplicación en componentes
@@ -557,7 +571,7 @@ const wsTiming = {
 export function WSLetterReveal({
   text,
   startDelay = 0,
-  staggerDelay = 0.03,
+  staggerDelay = 0.03
 }: {
   text: string;
   startDelay?: number;
@@ -574,25 +588,25 @@ export function WSLetterReveal({
           initial={{
             opacity: 0,
             y: 20,
-            rotateX: 90, // Efecto 3D WebSnack
+            rotateX: 90 // Efecto 3D WebSnack
           }}
           animate={
             isInView
               ? {
                   opacity: 1,
                   y: 0,
-                  rotateX: 0,
+                  rotateX: 0
                 }
               : {}
           }
           transition={{
             duration: 0.3,
             ease: wsCurves.primary,
-            delay: startDelay + index * staggerDelay,
+            delay: startDelay + index * staggerDelay
           }}
           style={{
             display: "inline-block",
-            transformOrigin: "center bottom",
+            transformOrigin: "center bottom"
           }}
         >
           {letter === " " ? "\u00A0" : letter}
@@ -609,7 +623,7 @@ export function WSLetterReveal({
 // Sistema para integrar iconos/imágenes en texto
 export function WSTextWithMedia({
   children,
-  mediaElements,
+  mediaElements
 }: {
   children: string;
   mediaElements?: Array<{
@@ -618,11 +632,11 @@ export function WSTextWithMedia({
   }>;
 }) {
   const words = children.split(" ");
-  
+
   return (
     <span className="inline-flex items-center flex-wrap gap-1">
       {words.map((word, index) => {
-        const media = mediaElements?.find(m => m.position === index);
+        const media = mediaElements?.find((m) => m.position === index);
         return (
           <React.Fragment key={index}>
             <WSLetterReveal text={word} delay={index * 0.05} />
@@ -647,12 +661,12 @@ export function WSTextWithMedia({
   <WSTextWithMedia
     mediaElements={[
       { position: 1, element: <Zap className="w-8 h-8 text-primary" /> },
-      { position: 3, element: <Rocket className="w-8 h-8 text-secondary" /> },
+      { position: 3, element: <Rocket className="w-8 h-8 text-secondary" /> }
     ]}
   >
     Web Snack Acelera
   </WSTextWithMedia>
-</h1>
+</h1>;
 ```
 
 ---
@@ -775,7 +789,7 @@ import { motion } from "framer-motion";
 import { wsConfig } from "@/lib/websnack-motion-config";
 
 export default function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode;
 }) {
@@ -822,7 +836,7 @@ export function MagicWSHero() {
         animate={{ opacity: 1 }}
         transition={{
           duration: 0.3,
-          ease: wsCurves.primary,
+          ease: wsCurves.primary
         }}
       >
         <TextReveal text="WebSnack: Acelera tu Negocio" />
@@ -874,7 +888,7 @@ export const wsConfig = {
     primary: [0.25, 0.46, 0.45, 0.94] as const,
     smooth: [0.4, 0, 0.2, 1] as const,
     bounce: [0.68, -0.55, 0.265, 1.55] as const,
-    dramatic: [0.87, 0, 0.13, 1] as const,
+    dramatic: [0.87, 0, 0.13, 1] as const
   },
 
   timings: {
@@ -883,20 +897,20 @@ export const wsConfig = {
     normal: 0.3,
     smooth: 0.5,
     dramatic: 0.8,
-    slow: 1.2,
+    slow: 1.2
   },
 
   stagger: {
-    tight: 0.03,   // Letters
-    normal: 0.1,   // List items
-    loose: 0.2,    // Sections
+    tight: 0.03, // Letters
+    normal: 0.1, // List items
+    loose: 0.2 // Sections
   },
 
   offsets: {
     lift: -4,
     scale: 1.02,
-    opacity: 0.8, // WebSnack standard
-  },
+    opacity: 0.8 // WebSnack standard
+  }
 } as const;
 
 // Hook personalizado para transiciones WebSnack
@@ -905,7 +919,7 @@ export function useWSTransition(
 ) {
   return {
     duration: wsConfig.timings[type],
-    ease: wsConfig.easings.primary,
+    ease: wsConfig.easings.primary
   };
 }
 ```
@@ -926,7 +940,7 @@ export function useWSScroll(options?: {
   const isInView = useInView(ref, {
     once: options?.once ?? true,
     margin: options?.margin ?? "-50px", // Activación temprana
-    amount: options?.threshold ?? 0.1,
+    amount: options?.threshold ?? 0.1
   });
 
   return { ref, isInView };
@@ -960,7 +974,7 @@ import { useMemo } from "react";
 
 export function PerformantWSAnimation({
   children,
-  type = "fadeIn",
+  type = "fadeIn"
 }: {
   children: React.ReactNode;
   type?: "fadeIn" | "slideUp" | "scale";
@@ -972,31 +986,31 @@ export function PerformantWSAnimation({
       return {
         initial: { opacity: 0 },
         animate: { opacity: 1 },
-        transition: { duration: 0.01 },
+        transition: { duration: 0.01 }
       };
     }
 
     const variants = {
       fadeIn: {
         initial: { opacity: 0 },
-        animate: { opacity: 1 },
+        animate: { opacity: 1 }
       },
       slideUp: {
         initial: { opacity: 0, y: 20 },
-        animate: { opacity: 1, y: 0 },
+        animate: { opacity: 1, y: 0 }
       },
       scale: {
         initial: { opacity: 0, scale: 0.8 },
-        animate: { opacity: 1, scale: 1 },
-      },
+        animate: { opacity: 1, scale: 1 }
+      }
     };
 
     return {
       ...variants[type],
       transition: {
         duration: wsConfig.timings.normal,
-        ease: wsConfig.easings.primary,
-      },
+        ease: wsConfig.easings.primary
+      }
     };
   }, [prefersReducedMotion, type]);
 
@@ -1018,13 +1032,15 @@ import { wsConfig } from "@/lib/websnack-motion-config";
 export function useWSResponsive() {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const isTablet = useMediaQuery("(max-width: 1024px)");
-  const prefersReducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
+  const prefersReducedMotion = useMediaQuery(
+    "(prefers-reduced-motion: reduce)"
+  );
 
   const getAnimation = (baseAnimation: any) => {
     if (prefersReducedMotion) {
       return {
         ...baseAnimation,
-        transition: { duration: 0.01 },
+        transition: { duration: 0.01 }
       };
     }
 
@@ -1033,8 +1049,8 @@ export function useWSResponsive() {
         ...baseAnimation,
         transition: {
           ...baseAnimation.transition,
-          duration: (baseAnimation.transition?.duration || 0.3) * 0.7,
-        },
+          duration: (baseAnimation.transition?.duration || 0.3) * 0.7
+        }
       };
     }
 
@@ -1045,17 +1061,13 @@ export function useWSResponsive() {
 }
 
 // Implementación en componente
-export function ResponsiveWSCard({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function ResponsiveWSCard({ children }: { children: React.ReactNode }) {
   const { getAnimation } = useWSResponsive();
 
   const baseAnimation = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.3, ease: wsConfig.easings.primary },
+    transition: { duration: 0.3, ease: wsConfig.easings.primary }
   };
 
   return <motion.div {...getAnimation(baseAnimation)}>{children}</motion.div>;
@@ -1070,7 +1082,7 @@ export function ResponsiveWSCard({
   .animate-ws-fade-in {
     animation-duration: 0.3s; /* Más rápido en móvil */
   }
-  
+
   .ws-hover:hover {
     transform: translateY(-2px) scale(1.01); /* Menos exagerado */
   }
@@ -1082,7 +1094,7 @@ export function ResponsiveWSCard({
   .animate-ws-image-pop {
     animation: none;
   }
-  
+
   .transition-ws,
   .transition-ws-quick,
   .transition-ws-smooth {
@@ -1104,12 +1116,14 @@ export function ResponsiveWSCard({
 ### **Roadmap WebSnack Animation System v1.1**
 
 #### **Nuevas Funcionalidades**
+
 1. **🎮 Gestos Táctiles**: Swipe animations para móvil
 2. **🔄 Loading States**: Skeleton loaders con animaciones WebSnack
 3. **🎨 Theme Transitions**: Cambio suave entre tema claro/oscuro
 4. **📊 Data Visualizations**: Animaciones para gráficos y métricas
 
 #### **Optimizaciones Performance**
+
 1. **⚡ Bundle Splitting**: Carga lazy de animaciones complejas
 2. **🎯 Intersection Observer Pool**: Reutilización de observadores
 3. **💾 Animation Caching**: Cache de estados para mejor performance
@@ -1134,7 +1148,7 @@ export function DashboardWithAnimations() {
           chartAnimations="websnack"
         />
       </WSFadeIn>
-      
+
       <WSFadeIn delay={0.3}>
         <WSEcommerce
           products={products}
@@ -1176,11 +1190,11 @@ describe("WebSnack Animation System", () => {
 
   it("performs within 16ms budget", async () => {
     const startTime = performance.now();
-    
+
     render(
       <WSLetterReveal text="Performance Test" />
     );
-    
+
     const endTime = performance.now();
     expect(endTime - startTime).toBeLessThan(16);
   });
@@ -1198,6 +1212,6 @@ El **Sistema de Animaciones WebSnack (WAS)** proporciona:
 ✅ **Accesibilidad Completa**: WCAG 2.1 AA compliant  
 ✅ **Stack Integration**: Perfecta integración con Next.js 15 + Tailwind v4  
 ✅ **Brand Consistency**: Coherente con identidad visual WebSnack  
-✅ **Developer Experience**: APIs simples y componentes reutilizables  
+✅ **Developer Experience**: APIs simples y componentes reutilizables
 
 **El sistema está listo para implementación completa en la plataforma WebSnack.**

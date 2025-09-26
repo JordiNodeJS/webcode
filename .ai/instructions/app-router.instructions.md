@@ -26,7 +26,7 @@ applyTo: "src/app/**/*.{ts,tsx}"
 // ✅ CORRECTO - APIs son Promises en Next.js 15
 export default async function Page({
   params,
-  searchParams,
+  searchParams
 }: {
   params: Promise<{ id: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -36,7 +36,7 @@ export default async function Page({
 
   // Fetch de datos del servidor
   const data = await fetch(`/api/items/${id}`, {
-    cache: "force-cache", // Cache estático
+    cache: "force-cache" // Cache estático
   });
 
   return <div>...</div>;
@@ -53,7 +53,7 @@ import { z } from "zod";
 const contactSchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
-  message: z.string().min(10),
+  message: z.string().min(10)
 });
 
 export async function POST(request: NextRequest) {
@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
 // Metadata estática
 export const metadata: Metadata = {
   title: "WebSnack - Servicios",
-  description: "Servicios de desarrollo web profesional",
+  description: "Servicios de desarrollo web profesional"
 };
 
 // Metadata dinámica
@@ -93,7 +93,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${service.title} - WebSnack`,
-    description: service.description,
+    description: service.description
   };
 }
 ```

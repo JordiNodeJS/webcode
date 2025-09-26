@@ -27,33 +27,19 @@ Este paquete está diseñado para que cualquier comercio local de Barcelona pued
 Este servicio "llave en mano" incluye todo lo que necesitas para tener una presencia digital sólida y efectiva:
 
 - **Diseño web personalizado**
-    
-    Creamos una web adaptada a tu identidad visual, colores, logotipo y estilo de comunicación. No es una plantilla genérica: es tu escaparate digital.
-    
+  Creamos una web adaptada a tu identidad visual, colores, logotipo y estilo de comunicación. No es una plantilla genérica: es tu escaparate digital.
 - **Tienda online o catálogo de servicios**
-    
-    Puedes vender productos directamente desde tu web o mostrar tus servicios con opción de reserva. Hasta 50 000 ítems disponibles.
-    
+  Puedes vender productos directamente desde tu web o mostrar tus servicios con opción de reserva. Hasta 50 000 ítems disponibles.
 - **Dominio gratis durante 1 año**
-    
-    Tu nombre comercial en internet, por ejemplo: www.tutiendaenbarcelona.com
-    
+  Tu nombre comercial en internet, por ejemplo: www.tutiendaenbarcelona.com
 - **Optimización SEO local**
-    
-    Para que tu negocio aparezca en búsquedas relevantes en tu barrio, distrito o ciudad. Incluye configuración de Google My Business.
-    
+  Para que tu negocio aparezca en búsquedas relevantes en tu barrio, distrito o ciudad. Incluye configuración de Google My Business.
 - **Integración con redes sociales**
-    
-    Conectamos tu web con Instagram, Facebook, WhatsApp y otras plataformas para que tus clientes te encuentren fácilmente.
-    
+  Conectamos tu web con Instagram, Facebook, WhatsApp y otras plataformas para que tus clientes te encuentren fácilmente.
 - **Formación básica**
-    
-    Te enseño a gestionar tu web: subir productos, cambiar precios, publicar novedades. Tú tienes el control.
-    
+  Te enseño a gestionar tu web: subir productos, cambiar precios, publicar novedades. Tú tienes el control.
 - **Soporte técnico incluido**
-    
-    Durante los primeros 30 días, tendrás soporte directo por WhatsApp o email para cualquier duda o ajuste.
-    
+  Durante los primeros 30 días, tendrás soporte directo por WhatsApp o email para cualquier duda o ajuste.
 
 ---
 
@@ -74,14 +60,14 @@ Todo está pensado para que no tengas que preocuparte por aspectos técnicos. T�
 
 ### 4. Precio del paquete
 
-| Concepto | Precio |
-| --- | --- |
-| Diseño y configuración inicial | **200 €** (pago único) |
-| Plan Wix Studio (1 año) | **240 €** |
-| **Total primer año** | **440 €** |
-| *Mantenimiento mensual opcional* | +30€/mes |
+| Concepto                         | Precio                 |
+| -------------------------------- | ---------------------- |
+| Diseño y configuración inicial   | **200 €** (pago único) |
+| Plan Wix Studio (1 año)          | **240 €**              |
+| **Total primer año**             | **440 €**              |
+| _Mantenimiento mensual opcional_ | +30€/mes               |
 
-💡 *Precio cerrado, sin sorpresas. Puedes empezar a vender desde la primera semana.*
+💡 _Precio cerrado, sin sorpresas. Puedes empezar a vender desde la primera semana._
 
 ---
 
@@ -90,17 +76,11 @@ Todo está pensado para que no tengas que preocuparte por aspectos técnicos. T�
 Estos son algunos ejemplos reales de cómo este paquete puede transformar tu negocio:
 
 - **Panadería en Gràcia**
-    
-    Web con catálogo de productos, pedidos online y recogida en tienda.
-    
+  Web con catálogo de productos, pedidos online y recogida en tienda.
 - **Peluquería en Sants**
-    
-    Sistema de reservas online, integración con Instagram y promociones mensuales.
-    
+  Sistema de reservas online, integración con Instagram y promociones mensuales.
 - **Tienda de ropa en El Born**
-    
-    Catálogo digital, pagos online, conexión con redes sociales y campañas de email marketing.
-    
+  Catálogo digital, pagos online, conexión con redes sociales y campañas de email marketing.
 
 ---
 

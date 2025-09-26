@@ -20,7 +20,7 @@ export const BorderBeam = ({
   delay = 0,
   borderWidth = 1.5,
   colorFrom = "#ffffff",
-  colorTo = "#ffffff",
+  colorTo = "#ffffff"
 }: BorderBeamProps) => {
   return (
     <div className="absolute inset-0 rounded-[inherit] overflow-hidden pointer-events-none">
@@ -30,16 +30,16 @@ export const BorderBeam = ({
         style={{
           width: `${size}%`,
           height: `${borderWidth}px`,
-          background: `linear-gradient(90deg, transparent, ${colorFrom}, ${colorTo}, transparent)`,
+          background: `linear-gradient(90deg, transparent, ${colorFrom}, ${colorTo}, transparent)`
         }}
         animate={{
-          x: ["0%", "200%"],
+          x: ["0%", "200%"]
         }}
         transition={{
           duration: duration,
           repeat: Infinity,
           ease: "linear",
-          delay: delay,
+          delay: delay
         }}
       />
 
@@ -49,16 +49,16 @@ export const BorderBeam = ({
         style={{
           width: `${borderWidth}px`,
           height: `${size}%`,
-          background: `linear-gradient(180deg, transparent, ${colorFrom}, ${colorTo}, transparent)`,
+          background: `linear-gradient(180deg, transparent, ${colorFrom}, ${colorTo}, transparent)`
         }}
         animate={{
-          y: ["0%", "200%"],
+          y: ["0%", "200%"]
         }}
         transition={{
           duration: duration,
           repeat: Infinity,
           ease: "linear",
-          delay: delay + duration / 4,
+          delay: delay + duration / 4
         }}
       />
 
@@ -68,16 +68,16 @@ export const BorderBeam = ({
         style={{
           width: `${size}%`,
           height: `${borderWidth}px`,
-          background: `linear-gradient(270deg, transparent, ${colorFrom}, ${colorTo}, transparent)`,
+          background: `linear-gradient(270deg, transparent, ${colorFrom}, ${colorTo}, transparent)`
         }}
         animate={{
-          x: ["0%", "-200%"],
+          x: ["0%", "-200%"]
         }}
         transition={{
           duration: duration,
           repeat: Infinity,
           ease: "linear",
-          delay: delay + duration / 2,
+          delay: delay + duration / 2
         }}
       />
 
@@ -87,16 +87,16 @@ export const BorderBeam = ({
         style={{
           width: `${borderWidth}px`,
           height: `${size}%`,
-          background: `linear-gradient(0deg, transparent, ${colorFrom}, ${colorTo}, transparent)`,
+          background: `linear-gradient(0deg, transparent, ${colorFrom}, ${colorTo}, transparent)`
         }}
         animate={{
-          y: ["0%", "-200%"],
+          y: ["0%", "-200%"]
         }}
         transition={{
           duration: duration,
           repeat: Infinity,
           ease: "linear",
-          delay: delay + (3 * duration) / 4,
+          delay: delay + (3 * duration) / 4
         }}
       />
     </div>

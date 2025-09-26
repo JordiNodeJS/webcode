@@ -3,6 +3,7 @@
 ## 🎨 Sistema de Colores WebSnack - IMPLEMENTACIÓN AUTOMÁTICA
 
 ### **Comando Crítico para Implementar Tema Rosa/Aguamarina**
+
 ```bash
 # 1. Inicializar shadcn/ui
 pnpm dlx shadcn@latest init
@@ -15,6 +16,7 @@ pnpm dlx shadcn@latest add button card input form label textarea select
 ```
 
 ### **Colores del Tema WebSnack Implementados Automáticamente**
+
 - **Primary**: `#dc7cb3` (Rosa principal WebSnack)
 - **Secondary**: `#bce3e5` (Aguamarina WebSnack)
 - **Accent**: `#fffcf7` (Crema suave)
@@ -22,6 +24,7 @@ pnpm dlx shadcn@latest add button card input form label textarea select
 - **Dark Mode**: Adaptación automática completa
 
 ### **⚠️ IMPORTANTE: Ejecutar ANTES de implementar componentes**
+
 Este comando debe ejecutarse **INMEDIATAMENTE** al iniciar el proyecto para asegurar que todos los componentes de la Hero Section usen el sistema de colores correcto.
 
 ## Orden Recomendado de Implementación
@@ -29,6 +32,7 @@ Este comando debe ejecutarse **INMEDIATAMENTE** al iniciar el proyecto para aseg
 Basado en el impacto en conversión y la importancia técnica, se recomienda implementar los componentes en el siguiente orden:
 
 ### 1. HeaderNavigation (Alta prioridad)
+
 - Logo WebSnack
 - Menú de navegación (Servicios, Proceso, Portfolio, Contacto)
 - Selector de idioma (ES/CA/EN)
@@ -36,6 +40,7 @@ Basado en el impacto en conversión y la importancia técnica, se recomienda imp
 **Razón**: Elemento crítico para la navegación del sitio y branding.
 
 ### 2. HeroContent (Máxima prioridad)
+
 - Headline principal
 - Subheadline
 - Call to Action buttons
@@ -43,18 +48,21 @@ Basado en el impacto en conversión y la importancia técnica, se recomienda imp
 **Razón**: Contenido principal que determina si el usuario se queda o abandona la página.
 
 ### 3. CallToAction (Máxima prioridad)
+
 - Botón primario "Consulta Gratuita"
 - Botón secundario "Ver Portfolio"
 
 **Razón**: Elementos de conversión principal, deben estar disponibles lo antes posible.
 
 ### 4. ValuePropsGrid (Alta prioridad)
+
 - Grid de 3 columnas con value propositions
 - Iconos y características
 
 **Razón**: Construye credibilidad y refuerza el valor del servicio.
 
 ### 5. TrustIndicators (Media prioridad)
+
 - Badges de confianza (RGPD, Normativas España, Barcelona Local)
 
 **Razón**: Aumenta la confianza pero no es crítico para la primera impresión.

@@ -318,9 +318,11 @@ Nuestro proceso de desarrollo probado
 ```
 
 ### Posición en Wireframe
+
 **Ubicación estratégica**: Después de "Servicios Especializados", antes de "Casos de Éxito"
 
 **Justificación UX**:
+
 - Construye confianza después de mostrar servicios
 - Elimina objeciones sobre transparencia del proceso
 - Demuestra profesionalismo y metodología probada
@@ -329,12 +331,14 @@ Nuestro proceso de desarrollo probado
 ### Layout Visual Recomendado
 
 #### Desktop (1024px+)
+
 ```
 [Fase 1] → [Fase 2] → [Fase 3] → [Fase 4]
 Discovery  Diseño     Desarrollo  Launch
 ```
 
 #### Mobile (320px-767px)
+
 ```
 [Fase 1]
 Discovery
@@ -369,16 +373,15 @@ Entregables: Estrategia digital completa, wireframes interactivos, cronograma de
 
 🎨 **DISEÑO UX/UI**
 
-- **Design system personalizado** — Creación de una identidad visual coherente con tipografías, colores, iconografía y componentes reutilizables. Incluye guías de uso, tokens de diseño y versiones para *dark mode* que reflejan tu marca.
+- **Design system personalizado** — Creación de una identidad visual coherente con tipografías, colores, iconografía y componentes reutilizables. Incluye guías de uso, tokens de diseño y versiones para _dark mode_ que reflejan tu marca.
 
 - **Wireframes y flujos básicos** — Esquemas estructurales que definen la navegación y jerarquía de contenido. Wireframes simples pero efectivos que validan la arquitectura de información antes del desarrollo, optimizando tiempo y recursos.
 
-- **Mockups high-fidelity** — Diseños *pixel-perfect* de todas las páginas y estados (desktop, tablet, mobile).
+- **Mockups high-fidelity** — Diseños _pixel-perfect_ de todas las páginas y estados (desktop, tablet, mobile).
 
-- **Testing de usabilidad + Clarity** — Sesiones de testing con usuarios reales de tu *target* para validar la intuitividad del diseño. Además, integración de **Microsoft Clarity** para registrar mapas térmicos y grabaciones de sesión en prototipos navegables o entornos de prueba. Esto permite identificar *friction points*, patrones de interacción y zonas ignoradas, optimizando la UX basándonos en comportamiento real y datos visuales, no suposiciones.
+- **Testing de usabilidad + Clarity** — Sesiones de testing con usuarios reales de tu _target_ para validar la intuitividad del diseño. Además, integración de **Microsoft Clarity** para registrar mapas térmicos y grabaciones de sesión en prototipos navegables o entornos de prueba. Esto permite identificar _friction points_, patrones de interacción y zonas ignoradas, optimizando la UX basándonos en comportamiento real y datos visuales, no suposiciones.
 
 **Entregables:** Designs finales listos para desarrollo, guía de estilo completa, wireframes validados, report de testing UX y análisis de interacción con Clarity.
-
 
 #### Fase 3: Desarrollo & Integración (Semana 3-5)
 
@@ -398,9 +401,9 @@ Entregables: Sitio completamente funcional, panel de administración, suite de t
 
 🚀 **LANZAMIENTO**
 
-- **Deploy en producción** — Lanzamiento controlado con *blue-green deployment* para *zero downtime*. Configuración de SSL, CDN global, *monitoring* automático y *rollback* inmediato en caso de incidencias. Tu sitio va *live* sin interrupciones.
+- **Deploy en producción** — Lanzamiento controlado con _blue-green deployment_ para _zero downtime_. Configuración de SSL, CDN global, _monitoring_ automático y _rollback_ inmediato en caso de incidencias. Tu sitio va _live_ sin interrupciones.
 
-- **Configuración de analytics** — *Setup* completo de Google Analytics 4, Google Tag Manager, Search Console y herramientas de conversión. Tracking de eventos personalizados, *goals* configurados y *dashboards* listos para tomar decisiones basadas en datos.
+- **Configuración de analytics** — _Setup_ completo de Google Analytics 4, Google Tag Manager, Search Console y herramientas de conversión. Tracking de eventos personalizados, _goals_ configurados y _dashboards_ listos para tomar decisiones basadas en datos.
 
 - **Interpretación de analytics** — Capacitación para leer y comprender métricas clave (usuarios, sesiones, tasa de rebote, conversiones, embudos de conversión, flujos de navegación) y traducir esos datos en acciones concretas de optimización.
 
@@ -408,18 +411,19 @@ Entregables: Sitio completamente funcional, panel de administración, suite de t
   - **Google Analytics 4**: navegación por informes, creación de segmentos, configuración de eventos.
   - **Google Tag Manager**: añadir o modificar etiquetas sin tocar el código.
   - **Search Console**: revisión de rendimiento SEO, indexación y errores.
-  - **Microsoft Clarity**: análisis de mapas térmicos, grabaciones de sesión y métricas de interacción para detectar *friction points* y oportunidades de mejora en la experiencia de usuario.
+  - **Microsoft Clarity**: análisis de mapas térmicos, grabaciones de sesión y métricas de interacción para detectar _friction points_ y oportunidades de mejora en la experiencia de usuario.
   - Otras herramientas conectadas (CRM, chat, automatizaciones, etc.).
 
 - **Training del cliente** — Sesiones de capacitación personalizadas (presencial en BCN o remoto) para gestión de contenido, interpretación de analytics y uso de herramientas integradas. Te empoderamos para ser autónomo en la gestión diaria.
 
-- **Soporte post-lanzamiento** — 30 días de soporte prioritario incluido con respuesta <4h para cualquier incidencia. Monitoreo proactivo de *performance*, optimizaciones menores y resolución de cualquier ajuste necesario tras el *launch*.
+- **Soporte post-lanzamiento** — 30 días de soporte prioritario incluido con respuesta <4h para cualquier incidencia. Monitoreo proactivo de _performance_, optimizaciones menores y resolución de cualquier ajuste necesario tras el _launch_.
 
-**Entregables:** Sitio *live* y optimizado, documentación completa de gestión, credenciales de todas las herramientas y 30 días de soporte *premium*.
+**Entregables:** Sitio _live_ y optimizado, documentación completa de gestión, credenciales de todas las herramientas y 30 días de soporte _premium_.
 
 ### Elementos de Confianza y Transparencia
 
 #### Comunicación Clara
+
 ```
 📞 CANALES DE COMUNICACIÓN
 • Email prioritario — Respuesta <4h en horario laboral
@@ -429,6 +433,7 @@ Entregables: Sitio completamente funcional, panel de administración, suite de t
 ```
 
 #### Participación del Cliente
+
 ```
 👥 TU PARTICIPACIÓN EN CADA FASE
 • Semana 1: 8-10 horas (discovery, content review)
@@ -439,6 +444,7 @@ Entregables: Sitio completamente funcional, panel de administración, suite de t
 ```
 
 #### Garantías del Proceso
+
 ```
 ✅ COMPROMISOS DE CALIDAD
 • Updates semanales con demos funcionales
@@ -449,6 +455,7 @@ Entregables: Sitio completamente funcional, panel de administración, suite de t
 ```
 
 #### Reducción de Riesgo
+
 ```
 🛡️ PROTECCIÓN DEL CLIENTE
 • Contrato claro con entregables específicos
@@ -461,6 +468,7 @@ Entregables: Sitio completamente funcional, panel de administración, suite de t
 ### Especificaciones de Diseño
 
 #### Elementos Visuales Requeridos
+
 ```
 🎨 COMPONENTES VISUALES
 • Cards de fase con iconos representativos
@@ -471,6 +479,7 @@ Entregables: Sitio completamente funcional, panel de administración, suite de t
 ```
 
 #### Contenido por Fase
+
 ```
 📋 INFORMACIÓN A MOSTRAR
 • Número de fase (1, 2, 3, 4)
@@ -483,6 +492,7 @@ Entregables: Sitio completamente funcional, panel de administración, suite de t
 ```
 
 #### Interactividad Requerida
+
 ```
 ⚡ MICROINTERACCIONES
 • Hover: Elevación de card + sombra 3D
@@ -495,6 +505,7 @@ Entregables: Sitio completamente funcional, panel de administración, suite de t
 ### Métricas de Conversión
 
 #### KPIs a Trackear
+
 ```
 📊 MÉTRICAS DE ENGAGEMENT
 • Tiempo en sección: >2 minutos (objetivo)
@@ -504,6 +515,7 @@ Entregables: Sitio completamente funcional, panel de administración, suite de t
 ```
 
 #### A/B Testing Recomendado
+
 ```
 🧪 TESTS A IMPLEMENTAR
 • Headlines: "Proceso probado" vs "Metodología transparente"

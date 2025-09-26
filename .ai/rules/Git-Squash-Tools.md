@@ -7,6 +7,7 @@ trigger: manual
 ## Git Squash Strategy and Merge Compatibility
 
 ### Script Capabilities
+
 - `git-squash-branch.sh` and `git-rebase-squash.sh` support merging with main branch by preserving common ancestry via reset --soft and rebase methods
 - `git-simple-squash.sh` originally created orphan branches (no common history), breaking merge capability, but has been updated to use reset --soft, making it merge-compatible
 
@@ -26,16 +27,19 @@ trigger: manual
 ## Available Scripts
 
 ### git-simple-squash.sh
+
 - **Purpose**: Simple squash operation with merge compatibility
 - **Method**: Uses reset --soft (updated from orphan branch)
 - **Use case**: Quick squash operations while preserving history
 
-### git-squash-branch.sh  
+### git-squash-branch.sh
+
 - **Purpose**: Safe squash with automatic backups
 - **Method**: reset --soft with branch backup
 - **Use case**: Important branches requiring safety measures
 
 ### git-rebase-squash.sh
+
 - **Purpose**: Interactive rebase squash
 - **Method**: rebase -i with squash commits
 - **Use case**: Standard workflow integration with commit message editing
@@ -43,6 +47,7 @@ trigger: manual
 ## Best Practices
 
 1. **Backup important branches**: Before using any squash operation on critical branches
+
 ```bash
 git branch backup-branch-name
 ```
@@ -81,16 +86,20 @@ git merge --abort  # Cancel the test merge
 ## Troubleshooting
 
 ### Problem: Merge conflicts after squash
+
 **Solution**: Ensure common history is preserved using reset --soft method
 
 ### Problem: Orphan branch created
+
 **Solution**: Use updated scripts that implement reset --soft instead of --orphan
 
 ### Problem: Lost commit history
+
 **Solution**: Restore from backup branch created by git-squash-branch.sh
 
 ## Related Files
+
 - `scripts/git-simple-squash.sh`
-- `scripts/git-squash-branch.sh` 
+- `scripts/git-squash-branch.sh`
 - `scripts/git-rebase-squash.sh`
 - `scripts/test-git-simple-squash.sh`

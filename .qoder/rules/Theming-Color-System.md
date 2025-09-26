@@ -8,11 +8,13 @@ glob: ["**/*.css", "**/*.scss", "src/styles/**/*.css", "tailwind.config.js"]
 ## 🚨 REGLA CRÍTICA: Sistema de Theming Centralizado
 
 ### NUNCA usar colores hardcodeados
+
 - ❌ **Prohibido**: `#264e70`, `rgb(38, 78, 112)`, `rgba(38, 78, 112, 0.5)`
 - ❌ **Prohibido**: Estilos inline con colores
 - ❌ **Prohibido**: Props de color en componentes sin mapear
 
 ### ✅ SIEMPRE usar sistema centralizado
+
 - **Variables CSS**: `rgba(var(--color-primary), 0.8)` en `src/styles/theme.css`
 - **Clases del sistema**: Utilidades de Tailwind CSS v4
 - **Mapeo automático**: Variables CSS mapeadas en `tailwind.config.js`
@@ -32,31 +34,31 @@ src/styles/
 /* src/styles/theme.css */
 :root {
   /* Colores principales WebSnack */
-  --color-primary: 38 78 112;      /* #264e70 - Azul corporativo */
-  --color-secondary: 103 145 134;  /* #679186 - Verde complementario */
-  --color-accent: 249 180 171;     /* #f9b4ab - Rosa coral CTA */
-  --color-highlight: 250 227 96;   /* #fae360 - Amarillo destacados */
-  --color-neutral: 187 212 206;    /* #bbd4ce - Verde neutro */
-  
+  --color-primary: 38 78 112; /* #264e70 - Azul corporativo */
+  --color-secondary: 103 145 134; /* #679186 - Verde complementario */
+  --color-accent: 249 180 171; /* #f9b4ab - Rosa coral CTA */
+  --color-highlight: 250 227 96; /* #fae360 - Amarillo destacados */
+  --color-neutral: 187 212 206; /* #bbd4ce - Verde neutro */
+
   /* Estados y feedback */
-  --color-success: 16 185 129;     /* Emerald-500 */
-  --color-warning: 245 158 11;     /* Amber-500 */
-  --color-error: 239 68 68;        /* Red-500 */
-  --color-info: 59 130 246;        /* Blue-500 */
-  
+  --color-success: 16 185 129; /* Emerald-500 */
+  --color-warning: 245 158 11; /* Amber-500 */
+  --color-error: 239 68 68; /* Red-500 */
+  --color-info: 59 130 246; /* Blue-500 */
+
   /* Neutrales */
   --color-background: 255 255 255; /* White */
-  --color-foreground: 15 23 42;    /* Slate-900 */
-  --color-muted: 241 245 249;      /* Slate-100 */
-  --color-border: 226 232 240;     /* Slate-200 */
+  --color-foreground: 15 23 42; /* Slate-900 */
+  --color-muted: 241 245 249; /* Slate-100 */
+  --color-border: 226 232 240; /* Slate-200 */
 }
 
 /* Dark mode */
 [data-theme="dark"] {
-  --color-background: 15 23 42;    /* Slate-900 */
+  --color-background: 15 23 42; /* Slate-900 */
   --color-foreground: 248 250 252; /* Slate-50 */
-  --color-muted: 30 41 59;         /* Slate-800 */
-  --color-border: 51 65 85;        /* Slate-600 */
+  --color-muted: 30 41 59; /* Slate-800 */
+  --color-border: 51 65 85; /* Slate-600 */
 }
 ```
 
@@ -120,10 +122,10 @@ export default {
         background: withOpacity("--color-background"),
         foreground: withOpacity("--color-foreground"),
         muted: withOpacity("--color-muted"),
-        border: withOpacity("--color-border"),
-      },
-    },
-  },
+        border: withOpacity("--color-border")
+      }
+    }
+  }
 };
 ```
 
@@ -132,19 +134,23 @@ export default {
 ```tsx
 // Componente con theming correcto
 interface ComponentProps {
-  variant?: 'primary' | 'secondary' | 'accent';
+  variant?: "primary" | "secondary" | "accent";
   className?: string;
 }
 
-export function ThemedComponent({ variant = 'primary', className }: ComponentProps) {
+export function ThemedComponent({
+  variant = "primary",
+  className
+}: ComponentProps) {
   return (
     <div
       className={cn(
         "px-4 py-2 rounded-lg transition-colors",
         {
-          "bg-primary text-white hover:bg-primary/90": variant === 'primary',
-          "bg-secondary text-white hover:bg-secondary/90": variant === 'secondary',
-          "bg-accent text-white hover:bg-accent/90": variant === 'accent',
+          "bg-primary text-white hover:bg-primary/90": variant === "primary",
+          "bg-secondary text-white hover:bg-secondary/90":
+            variant === "secondary",
+          "bg-accent text-white hover:bg-accent/90": variant === "accent"
         },
         className
       )}
@@ -159,25 +165,26 @@ export function ThemedComponent({ variant = 'primary', className }: ComponentPro
 
 ```tsx
 // Dark mode toggle
-'use client';
+"use client";
 
-import { useTheme } from 'next-themes';
+import { useTheme } from "next-themes";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
 
   return (
     <button
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       className="p-2 rounded-lg bg-muted hover:bg-border transition-colors"
     >
-      {theme === 'dark' ? '☀️' : '🌙'}
+      {theme === "dark" ? "☀️" : "🌙"}
     </button>
   );
 }
 ```
 
 ## Criterios de Aceptación
+
 - Sistema de variables CSS implementado correctamente
 - Dark mode funcional
 - Colores hardcodeados eliminados

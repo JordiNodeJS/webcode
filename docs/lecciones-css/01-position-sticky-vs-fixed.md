@@ -10,6 +10,7 @@ Para headers de navegación que deben permanecer visibles al hacer scroll:
 ## 🔍 **¿Por qué sticky puede fallar?**
 
 ### **Causas comunes:**
+
 1. **`overflow: hidden`** en contenedores padre
 2. **`z-index`** más alto en otros elementos
 3. **Contenedor padre** sin suficiente altura
@@ -18,6 +19,7 @@ Para headers de navegación que deben permanecer visibles al hacer scroll:
 ## ✅ **Solución Elegante: Principio de Responsabilidad Única**
 
 ### **❌ ANTES: overflow-hidden "global" que bloquea todo**
+
 ```tsx
 <section className="... overflow-hidden">
   <WavesBackground /> {/* overflow-hidden innecesario aquí */}
@@ -26,6 +28,7 @@ Para headers de navegación que deben permanecer visibles al hacer scroll:
 ```
 
 ### **✅ DESPUÉS: overflow-hidden específico donde se necesita**
+
 ```tsx
 <section className="..."> {/* sin overflow-hidden */}
   <WavesBackground> {/* overflow-hidden solo aquí */}
@@ -44,11 +47,13 @@ Para headers de navegación que deben permanecer visibles al hacer scroll:
 ## 🛠️ **Cuándo usar cada uno**
 
 ### **Usar `position: sticky` cuando:**
+
 - El elemento debe "pegarse" dentro de su contenedor
 - No hay restricciones de overflow en contenedores padre
 - Quieres comportamiento natural del layout
 
 ### **Usar `position: fixed` cuando:**
+
 - sticky está bloqueado por overflow o z-index issues
 - Necesitas posicionamiento absoluto relativo al viewport
 - El elemento debe permanecer fijo independientemente del scroll
@@ -56,6 +61,7 @@ Para headers de navegación que deben permanecer visibles al hacer scroll:
 ## 🎯 **Caso de Estudio: WebSnack Header**
 
 ### **Problema inicial:**
+
 ```tsx
 // HeroSection tenía overflow-hidden que bloqueaba sticky
 <section className="min-h-screen ... overflow-hidden">
@@ -64,6 +70,7 @@ Para headers de navegación que deben permanecer visibles al hacer scroll:
 ```
 
 ### **Solución implementada:**
+
 ```tsx
 // Movimos overflow-hidden al componente que lo necesita
 <section className="min-h-screen ..."> {/* sin overflow-hidden */}

@@ -26,21 +26,25 @@ WebSnack se desarrollará utilizando el stack tecnológico más avanzado disponi
 **Instalación:** Fase 1 - Setup inicial
 
 Para crear el proyecto en una nueva carpeta con un nombre específico:
+
 ```bash
 pnpm dlx create-next-app@latest . --turbo --typescript --tailwind --eslint --app --src-dir --import-alias "@/*"
 ```
 
 Para crear el proyecto en la carpeta actual (asegúrate de que esté vacía):
+
 ```bash
 pnpm create next-app@latest . --turbo --typescript --tailwind --eslint --app --src-dir --import-alias "@/*"
 ```
 
 **Alternativa usando `pnpm dlx` (recomendado para evitar problemas de interpretación de parámetros):**
+
 ```bash
 pnpm dlx create-next-app@latest . --turbo --typescript --tailwind --eslint --app --src-dir --import-alias "@/*"
 ```
 
-> **Nota Importante**: 
+> **Nota Importante**:
+>
 > 1. La opción `--turbo` debe ir después del nombre del proyecto o `.` para ser interpretada correctamente.
 > 2. Si ejecutas el comando en una carpeta que ya existe y no está vacía, puede interpretar `--turbo` como el nombre del proyecto.
 > 3. Asegúrate de estar en una carpeta vacía o especifica un nombre de proyecto para evitar problemas.
@@ -172,16 +176,21 @@ pnpm add tailwindcss@next @tailwindcss/postcss@next
   --radius: 0.4rem;
   --shadow-2xs: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 0.5);
   --shadow-xs: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 0.5);
-  --shadow-sm: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1), 3px 1px
-      2px -1px hsl(325.5319 58.0247% 68.2353% / 1);
-  --shadow: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1), 3px 1px
-      2px -1px hsl(325.5319 58.0247% 68.2353% / 1);
-  --shadow-md: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1), 3px 2px
-      4px -1px hsl(325.5319 58.0247% 68.2353% / 1);
-  --shadow-lg: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1), 3px 4px
-      6px -1px hsl(325.5319 58.0247% 68.2353% / 1);
-  --shadow-xl: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1), 3px 8px
-      10px -1px hsl(325.5319 58.0247% 68.2353% / 1);
+  --shadow-sm:
+    3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1),
+    3px 1px 2px -1px hsl(325.5319 58.0247% 68.2353% / 1);
+  --shadow:
+    3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1),
+    3px 1px 2px -1px hsl(325.5319 58.0247% 68.2353% / 1);
+  --shadow-md:
+    3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1),
+    3px 2px 4px -1px hsl(325.5319 58.0247% 68.2353% / 1);
+  --shadow-lg:
+    3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1),
+    3px 4px 6px -1px hsl(325.5319 58.0247% 68.2353% / 1);
+  --shadow-xl:
+    3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1),
+    3px 8px 10px -1px hsl(325.5319 58.0247% 68.2353% / 1);
   --shadow-2xl: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 2.5);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
@@ -226,16 +235,21 @@ pnpm add tailwindcss@next @tailwindcss/postcss@next
   --radius: 0.4rem;
   --shadow-2xs: 3px 3px 0px 0px hsl(206.8085 28.1437% 32.7451% / 0.5);
   --shadow-xs: 3px 3px 0px 0px hsl(206.8085 28.1437% 32.7451% / 0.5);
-  --shadow-sm: 3px 3px 0px 0px hsl(206.8085 28.1437% 32.7451% / 1), 3px 1px
-      2px -1px hsl(206.8085 28.1437% 32.7451% / 1);
-  --shadow: 3px 3px 0px 0px hsl(206.8085 28.1437% 32.7451% / 1), 3px 1px
-      2px -1px hsl(206.8085 28.1437% 32.7451% / 1);
-  --shadow-md: 3px 3px 0px 0px hsl(206.8085 28.1437% 32.7451% / 1), 3px 2px
-      4px -1px hsl(206.8085 28.1437% 32.7451% / 1);
-  --shadow-lg: 3px 3px 0px 0px hsl(206.8085 28.1437% 32.7451% / 1), 3px 4px
-      6px -1px hsl(206.8085 28.1437% 32.7451% / 1);
-  --shadow-xl: 3px 3px 0px 0px hsl(206.8085 28.1437% 32.7451% / 1), 3px 8px
-      10px -1px hsl(206.8085 28.1437% 32.7451% / 1);
+  --shadow-sm:
+    3px 3px 0px 0px hsl(206.8085 28.1437% 32.7451% / 1),
+    3px 1px 2px -1px hsl(206.8085 28.1437% 32.7451% / 1);
+  --shadow:
+    3px 3px 0px 0px hsl(206.8085 28.1437% 32.7451% / 1),
+    3px 1px 2px -1px hsl(206.8085 28.1437% 32.7451% / 1);
+  --shadow-md:
+    3px 3px 0px 0px hsl(206.8085 28.1437% 32.7451% / 1),
+    3px 2px 4px -1px hsl(206.8085 28.1437% 32.7451% / 1);
+  --shadow-lg:
+    3px 3px 0px 0px hsl(206.8085 28.1437% 32.7451% / 1),
+    3px 4px 6px -1px hsl(206.8085 28.1437% 32.7451% / 1);
+  --shadow-xl:
+    3px 3px 0px 0px hsl(206.8085 28.1437% 32.7451% / 1),
+    3px 8px 10px -1px hsl(206.8085 28.1437% 32.7451% / 1);
   --shadow-2xl: 3px 3px 0px 0px hsl(206.8085 28.1437% 32.7451% / 2.5);
 }
 
@@ -333,6 +347,7 @@ pnpm dlx shadcn@latest add button card input form
 // components/custom/ - Extensiones para WebSnack
 // components/sections/ - Secciones de landing page
 // components/forms/ - Formularios específicos del negocio
+
 ```
 
 **Beneficios para WebSnack:**
@@ -481,6 +496,7 @@ pnpm add @radix-ui/react-dialog
 
 ``bash
 pnpm add framer-motion
+
 ```
 
 **Implementación en WebSnack:**
@@ -539,7 +555,7 @@ export function trackEvent(eventName: string, parameters?: object) {
   if (typeof window !== "undefined" && window.gtag) {
     window.gtag("event", eventName, {
       anonymize_ip: true, // RGPD compliance
-      ...parameters,
+      ...parameters
     });
   }
 }
@@ -591,24 +607,24 @@ export const defaultSEO = {
         url: "https://websnack.es/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "WebSnack - Desarrollo Web Barcelona",
-      },
-    ],
+        alt: "WebSnack - Desarrollo Web Barcelona"
+      }
+    ]
   },
   additionalMetaTags: [
     {
       name: "geo.region",
-      content: "ES-CT",
+      content: "ES-CT"
     },
     {
       name: "geo.placename",
-      content: "Barcelona",
+      content: "Barcelona"
     },
     {
       name: "geo.position",
-      content: "41.3874;2.1686",
-    },
-  ],
+      content: "41.3874;2.1686"
+    }
+  ]
 };
 ```
 
@@ -670,12 +686,13 @@ pnpm exec husky init
 ``json
 // package.json
 {
-  "lint-staged": {
-    "*.{ts,tsx}": ["eslint --fix", "prettier --write"],
-    "*.{css,md}": ["prettier --write"]
-  }
+"lint-staged": {
+"_.{ts,tsx}": ["eslint --fix", "prettier --write"],
+"_.{css,md}": ["prettier --write"]
 }
-```
+}
+
+````
 
 ---
 
@@ -689,7 +706,7 @@ pnpm exec husky init
 pnpm add -D vitest @vitejs/plugin-react
 pnpm add -D @testing-library/react @testing-library/jest-dom
 pnpm add -D @testing-library/user-event
-```
+````
 
 **Configuración `vitest.config.ts`:**
 
@@ -702,13 +719,13 @@ export default defineConfig({
   plugins: [react()],
   test: {
     environment: "jsdom",
-    setupFiles: ["./src/test/setup.ts"],
+    setupFiles: ["./src/test/setup.ts"]
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
+      "@": path.resolve(__dirname, "./src")
+    }
+  }
 });
 ```
 
@@ -832,11 +849,14 @@ pnpm exec vercel --prod
 - ✅ Git repository + Husky hooks
 
 ``bash
+
 # Scripts Fase 1
+
 pnpm create next-app@latest websnack --typescript --tailwind --eslint --app --src-dir
 cd websnack
 pnpm add tailwindcss@next @tailwindcss/postcss@next
 pnpm add -D husky lint-staged prettier eslint-config-prettier
+
 ```
 
 ---
@@ -869,10 +889,13 @@ pnpm dlx shadcn@latest add alert badge separator
 - 🔧 Contact form con validación
 
 ``bash
+
 # Scripts Fase 3
+
 pnpm add framer-motion react-hook-form zod @hookform/resolvers
 pnpm dlx magicui-cli add animated-beam text-reveal
-```
+
+````
 
 ---
 
@@ -888,7 +911,7 @@ pnpm dlx magicui-cli add animated-beam text-reveal
 # Scripts Fase 4
 pnpm add next-seo gtag @vercel/analytics
 pnpm add react-hook-form zod @hookform/resolvers
-```
+````
 
 ---
 
@@ -901,9 +924,12 @@ pnpm add react-hook-form zod @hookform/resolvers
 - 🔧 SEO validation
 
 ``bash
+
 # Scripts Fase 5
+
 pnpm add -D vitest @vitejs/plugin-react @testing-library/react
 pnpm create playwright@latest
+
 ```
 
 ---

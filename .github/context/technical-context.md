@@ -126,12 +126,12 @@ export async function GET() {
 const ContactSchema = z.object({
   name: z.string().min(2, "Mínimo 2 caracteres"),
   email: z.string().email("Email inválido"),
-  message: z.string().min(10, "Mensaje muy corto"),
+  message: z.string().min(10, "Mensaje muy corto")
 });
 
 // ✅ React Hook Form Integration
 const form = useForm<z.infer<typeof ContactSchema>>({
-  resolver: zodResolver(ContactSchema),
+  resolver: zodResolver(ContactSchema)
 });
 ```
 
@@ -156,8 +156,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: "WebSnack",
     description: "Tu partner en desarrollo web",
-    images: ["/og-image.jpg"],
-  },
+    images: ["/og-image.jpg"]
+  }
 };
 ```
 

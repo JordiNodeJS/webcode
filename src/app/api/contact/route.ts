@@ -1,5 +1,20 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import type { EmailResponse } from "@/types/resend";
+
+// Importación dinámica de Resend para evitar problemas de Edge Runtime
+async function getResend() {
+  const { Resend } = await import("resend");
+  return new Resend(process.env.RESEND_API_KEY);
+}
+
+// Tipo para los metadatos de la request
+interface RequestMetadata {
+  ip: string;
+  referer: string;
+  timestamp: string;
+  userAgent: string;
+}
 
 // Esquema de validación para el servidor
 const contactFormServerSchema = z.object({
@@ -10,7 +25,7 @@ const contactFormServerSchema = z.object({
     "e-commerce",
     "seo",
     "consulting",
-    "other",
+    "other"
   ]),
   message: z.string().min(10).max(1000),
   gdprConsent: z
@@ -18,7 +33,7 @@ const contactFormServerSchema = z.object({
     .refine((val) => val === true, "Consentimiento RGPD requerido"),
   consentTimestamp: z.string(),
   userAgent: z.string().optional(),
-  timestamp: z.string(),
+  timestamp: z.string()
 });
 
 export async function POST(request: NextRequest) {
@@ -42,31 +57,23 @@ export async function POST(request: NextRequest) {
         ip: clientIP,
         referer,
         timestamp: new Date().toISOString(),
-        userAgent: validatedData.userAgent || "unknown",
-      },
+        userAgent: validatedData.userAgent || "unknown"
+      }
     };
 
-    // TODO: Implementar envío con Resend cuando esté configurado
-    // await sendEmailWithResend(contactData);
+    // Enviar email con Resend
+    const emailResult = await sendEmailWithResend(contactData);
 
-    // Por ahora, solo simulamos el envío y logeamos
-    console.log("📧 Nueva consulta de contacto:", {
-      email: contactData.email,
-      subject: contactData.subject,
-      serviceType: contactData.serviceType,
-      timestamp: contactData.metadata.timestamp,
-      consentGiven: contactData.gdprConsent,
-      consentTimestamp: contactData.consentTimestamp,
-    });
-
-    // Simular delay de envío
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    if (!emailResult.success) {
+      console.error("❌ Error enviando email:", emailResult.error);
+      throw new Error(emailResult.error || "Error enviando email");
+    }
 
     // Respuesta de éxito
     return NextResponse.json({
       success: true,
       message: "Mensaje enviado correctamente",
-      timestamp: new Date().toISOString(),
+      timestamp: new Date().toISOString()
     });
   } catch (error) {
     console.error("❌ Error en formulario de contacto:", error);
@@ -75,9 +82,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error: "Datos del formulario inválidos",
-          details: error.issues,
+          details: error.issues
         },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
@@ -85,31 +92,46 @@ export async function POST(request: NextRequest) {
       {
         error: "Error interno del servidor",
         message:
-          "No se pudo procesar tu mensaje. Por favor, inténtalo de nuevo.",
+          "No se pudo procesar tu mensaje. Por favor, inténtalo de nuevo."
       },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
 
-// Función preparada para integración con Resend
-async function _sendEmailWithResend(_contactData: unknown) {
-  // TODO: Implementar cuando se configure Resend
-  // const { Resend } = await import('resend');
-  // const resend = new Resend(process.env.RESEND_API_KEY);
+// Función para enviar email con Resend
+async function sendEmailWithResend(
+  contactData: z.infer<typeof contactFormServerSchema> & {
+    metadata: RequestMetadata;
+  }
+): Promise<EmailResponse> {
+  try {
+    const emailContent = {
+      from: process.env.RESEND_FROM_EMAIL || "contacto@webcode.es",
+      to: process.env.RESEND_TO_EMAIL || "info@webcode.es",
+      subject: `Nueva consulta: ${contactData.subject}`,
+      html: _generateEmailTemplate(contactData),
+      text: generatePlainTextEmail(contactData),
+      replyTo: contactData.email
+    };
 
-  // const emailContent = {
-  //   from: process.env.RESEND_FROM_EMAIL || 'contacto@webcode.es',
-  //   to: process.env.RESEND_TO_EMAIL || 'info@webcode.es',
-  //   subject: `Nueva consulta: ${contactData.subject}`,
-  //   html: generateEmailTemplate(contactData),
-  //   replyTo: contactData.email,
-  // };
+    // Email send initiated (logs removed for production cleanliness)
 
-  // const result = await resend.emails.send(emailContent);
-  // return result;
+    const resend = await getResend();
+    const result = await resend.emails.send(emailContent);
 
-  throw new Error("Resend no configurado aún");
+    if (result.error) {
+      return { success: false, error: result.error.message };
+    }
+
+    return { success: true, id: result.data?.id };
+  } catch (error) {
+    console.error("❌ Error en sendEmailWithResend:", error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Error desconocido"
+    };
+  }
 }
 
 // Template de email preparado para Resend
@@ -135,7 +157,7 @@ function toSafeContact(data: unknown) {
     metadata:
       typeof unk?.metadata === "object" && unk?.metadata !== null
         ? (unk.metadata as Record<string, unknown>)
-        : {},
+        : {}
   } as const;
 
   return safe;
@@ -149,7 +171,7 @@ function _generateEmailTemplate(data: unknown): string {
     "e-commerce": "Tienda Online (E-commerce)",
     seo: "SEO y Posicionamiento",
     consulting: "Consultoría Digital",
-    other: "Otro",
+    other: "Otro"
   };
 
   return `
@@ -204,7 +226,7 @@ function _generateEmailTemplate(data: unknown): string {
           <div class="consent">
             <div class="label">✅ Consentimiento RGPD:</div>
             <div>El usuario ha aceptado la política de privacidad el ${new Date(
-              safe.consentTimestamp,
+              safe.consentTimestamp
             ).toLocaleString("es-ES")}</div>
           </div>
           
@@ -224,4 +246,43 @@ function _generateEmailTemplate(data: unknown): string {
     </body>
     </html>
   `;
+}
+
+// Template de email en texto plano
+function generatePlainTextEmail(data: unknown): string {
+  const safe = toSafeContact(data);
+  const serviceTypeLabels: Record<string, string> = {
+    "web-development": "Desarrollo Web",
+    "e-commerce": "Tienda Online (E-commerce)",
+    seo: "SEO y Posicionamiento",
+    consulting: "Consultoría Digital",
+    other: "Otro"
+  };
+
+  return `
+🚀 NUEVA CONSULTA DE WEBCODE
+
+Recibida el ${new Date(safe.timestamp).toLocaleString("es-ES")}
+
+EMAIL DEL CLIENTE: ${safe.email}
+ASUNTO: ${safe.subject}
+TIPO DE SERVICIO: ${serviceTypeLabels[safe.serviceType] || safe.serviceType}
+
+MENSAJE:
+${safe.message}
+
+✅ CONSENTIMIENTO RGPD:
+El usuario ha aceptado la política de privacidad el ${new Date(
+    safe.consentTimestamp
+  ).toLocaleString("es-ES")}
+
+INFORMACIÓN TÉCNICA:
+IP: ${safe.metadata?.ip ?? "unknown"}
+User Agent: ${safe.metadata?.userAgent ?? "unknown"}
+Referer: ${safe.metadata?.referer ?? "direct"}
+
+---
+Este email fue generado automáticamente por el formulario de contacto de WEBCODE.
+Para responder al cliente, simplemente responde a este email.
+  `.trim();
 }

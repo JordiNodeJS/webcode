@@ -66,3 +66,17 @@ Se recomienda revisar ese archivo antes de generar o commitear código y ejecuta
 pnpm lint     # corre Biome para detectar errores/warnings
 pnpm lint:fix # intenta corregir automáticamente problemas detectados
 ```
+
+## Política de formateo
+
+- Prettier es la fuente de verdad para formateo (incluido `trailingComma`). El archivo de configuración está en `.prettierrc`.
+- Biome está configurado para _no_ formatear automáticamente (`formatter.enabled: false`) y se usa sólo para linting.
+
+Para formatear localmente y antes de commitear ejecuta:
+
+```bash
+pnpm format      # ejecuta Prettier sobre el repo
+pnpm lint        # ejecuta Biome (solo lint)
+```
+
+Ejecuta `pnpm format` antes de commitear si no usas hooks automáticos.

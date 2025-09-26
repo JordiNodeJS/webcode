@@ -47,10 +47,14 @@ Se ha implementado exitosamente la Hero Section de WebSnack siguiendo las especi
 
 ```css
 .shadow-3d-sm {
-  box-shadow: 0 2px 4px rgba(220, 124, 179, 0.1), 0 1px 2px rgba(220, 124, 179, 0.06);
+  box-shadow:
+    0 2px 4px rgba(220, 124, 179, 0.1),
+    0 1px 2px rgba(220, 124, 179, 0.06);
 }
 .shadow-3d-md {
-  box-shadow: 0 4px 6px rgba(220, 124, 179, 0.1), 0 2px 4px rgba(220, 124, 179, 0.06);
+  box-shadow:
+    0 4px 6px rgba(220, 124, 179, 0.1),
+    0 2px 4px rgba(220, 124, 179, 0.06);
 }
 ```
 

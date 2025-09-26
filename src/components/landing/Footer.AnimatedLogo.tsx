@@ -32,7 +32,7 @@ export function AnimatedLogo({
   width,
   height,
   disabled = false,
-  title = "Logo animado WEBCODE",
+  title = "Logo animado WEBCODE"
 }: AnimatedLogoProps) {
   const [isInView, setIsInView] = useState(false);
   const logoRef = useRef<HTMLDivElement>(null);
@@ -45,8 +45,8 @@ export function AnimatedLogo({
       },
       {
         threshold: 0.1,
-        rootMargin: "50px",
-      },
+        rootMargin: "50px"
+      }
     );
 
     if (logoRef.current) {
@@ -68,7 +68,7 @@ export function AnimatedLogo({
       sm: "w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48",
       md: "w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56",
       lg: "w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80", // Valores actuales por defecto
-      xl: "w-56 h-56 md:w-80 md:h-80 lg:w-96 lg:h-96",
+      xl: "w-56 h-56 md:w-80 md:h-80 lg:w-96 lg:h-96"
     };
 
     return sizeMap[size] || sizeMap.lg;
@@ -79,7 +79,7 @@ export function AnimatedLogo({
     width || height
       ? {
           width: width || "auto",
-          height: height || "auto",
+          height: height || "auto"
         }
       : {};
 
@@ -96,7 +96,7 @@ export function AnimatedLogo({
     circle5:
       "M252.697,421.303c98.48,0,178.314-79.834,178.315-178.316c0-98.479-79.834-178.314-178.315-178.314S74.383,144.508,74.383,242.986C74.383,341.469,154.216,421.303,252.697,421.303z M252.696,93.157c82.749,0,149.83,67.08,149.83,149.829c0,82.752-67.081,149.832-149.83,149.832s-149.828-67.081-149.828-149.832C102.868,160.237,169.947,93.157,252.696,93.157z",
     circle6:
-      "M232.773,438.498c98.48,0,178.314-79.834,178.314-178.315c0-98.48-79.834-178.315-178.314-178.315c-98.481,0-178.314,79.835-178.314,178.315C54.459,358.664,134.292,438.498,232.773,438.498z M232.773,110.353c82.748,0,149.829,67.079,149.829,149.83c-0.001,82.749-67.081,149.831-149.829,149.831c-82.752,0-149.829-67.082-149.829-149.831C82.944,177.432,150.021,110.353,232.773,110.353z",
+      "M232.773,438.498c98.48,0,178.314-79.834,178.314-178.315c0-98.48-79.834-178.315-178.314-178.315c-98.481,0-178.314,79.835-178.314,178.315C54.459,358.664,134.292,438.498,232.773,438.498z M232.773,110.353c82.748,0,149.829,67.079,149.829,149.83c-0.001,82.749-67.081,149.831-149.829,149.831c-82.752,0-149.829-67.082-149.829-149.831C82.944,177.432,150.021,110.353,232.773,110.353z"
   };
 
   return (
@@ -118,7 +118,7 @@ export function AnimatedLogo({
               ? "paused"
               : isInView
                 ? "running"
-                : "paused",
+                : "paused"
           }}
         >
           <title>{title}</title>

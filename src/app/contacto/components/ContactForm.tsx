@@ -13,7 +13,7 @@ import {
   CardContent,
   CardFooter,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -23,7 +23,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import {
@@ -31,7 +31,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -46,7 +46,7 @@ const contactFormSchema = z.object({
     .enum(["web-development", "e-commerce", "seo", "consulting", "other"])
     .optional()
     .refine((val) => val !== undefined, {
-      message: "Por favor, selecciona un tipo de servicio",
+      message: "Por favor, selecciona un tipo de servicio"
     }),
   message: z
     .string()
@@ -54,7 +54,7 @@ const contactFormSchema = z.object({
     .max(1000, "El mensaje no puede exceder los 1000 caracteres"),
   gdprConsent: z
     .boolean()
-    .refine((val) => val === true, "Debes aceptar la política de privacidad"),
+    .refine((val) => val === true, "Debes aceptar la política de privacidad")
 });
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
@@ -64,7 +64,7 @@ const serviceOptions = [
   { value: "e-commerce", label: "Tienda Online (E-commerce)" },
   { value: "seo", label: "SEO y Posicionamiento" },
   { value: "consulting", label: "Consultoría Digital" },
-  { value: "other", label: "Otro (especificar en mensaje)" },
+  { value: "other", label: "Otro (especificar en mensaje)" }
 ];
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
@@ -80,8 +80,8 @@ export function ContactForm() {
       subject: "",
       serviceType: undefined,
       message: "",
-      gdprConsent: false,
-    },
+      gdprConsent: false
+    }
   });
 
   const onSubmit = async (data: ContactFormData) => {
@@ -94,15 +94,15 @@ export function ContactForm() {
         ...data,
         consentTimestamp: new Date().toISOString(),
         userAgent: navigator.userAgent,
-        timestamp: new Date().toISOString(),
+        timestamp: new Date().toISOString()
       };
 
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formData)
       });
 
       if (!response.ok) {
@@ -127,7 +127,7 @@ export function ContactForm() {
   if (formStatus === "success") {
     return (
       <div className="text-center py-8 space-y-4">
-        <CheckCircle className="w-16 h-16 text-green-500 mx-auto" />
+        <CheckCircle className="w-16 h-16 text-primary mx-auto" />
         <h3 className="text-2xl font-semibold text-foreground">
           ¡Mensaje enviado!
         </h3>

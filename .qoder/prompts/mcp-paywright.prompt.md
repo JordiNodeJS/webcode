@@ -10,7 +10,7 @@
 6. Escribe el código en el MCP de playwright.
 
 ## No utilices:
- * npx playwright test tests/playwright/simple-back-button-test.spec.ts --project=chromium
- * no escribas código de Playwright en el archivo de prueba
- * no utilices el comando npx playwright test
 
+- npx playwright test tests/playwright/simple-back-button-test.spec.ts --project=chromium
+- no escribas código de Playwright en el archivo de prueba
+- no utilices el comando npx playwright test

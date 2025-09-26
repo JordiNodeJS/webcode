@@ -43,7 +43,6 @@ Prompt especializado para diseño UI/UX en el proyecto WebSnack, enfocado en cre
 ### **Proceso de Análisis**
 
 1. **Solicitar contexto adicional** antes de proponer soluciones:
-
    - Público objetivo del mercado español
    - Marco de diseño existente en WebSnack
    - Restricciones técnicas específicas

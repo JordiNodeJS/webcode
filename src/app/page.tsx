@@ -1,6 +1,6 @@
 import {
   CloudLightningBackground,
-  HeroSection,
+  HeroSection
 } from "@/components/landing/hero";
 import { ServicesSection } from "@/components/landing/services";
 

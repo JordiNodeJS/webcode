@@ -91,25 +91,24 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 
 const features = [
   {
     title: "Modern Framework",
-    description:
-      "Built with Next.js 15 and App Router for optimal performance.",
+    description: "Built with Next.js 15 and App Router for optimal performance."
   },
   {
     title: "Beautiful UI",
     description:
-      "Crafted with shadcn/ui and Tailwind CSS for stunning interfaces.",
+      "Crafted with shadcn/ui and Tailwind CSS for stunning interfaces."
   },
   {
     title: "Smooth Animations",
     description:
-      "Enhanced with Magic UI components for delightful interactions.",
-  },
+      "Enhanced with Magic UI components for delightful interactions."
+  }
 ];
 
 export function AnimatedFeatures() {
@@ -230,7 +229,7 @@ const AnimatedHero = dynamic(() => import("@/components/animated-hero"), {
         <div className="h-6 bg-gray-200 rounded w-64 mx-auto" />
       </div>
     </div>
-  ),
+  )
 });
 
 export function HomePage() {

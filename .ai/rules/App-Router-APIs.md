@@ -8,11 +8,13 @@ glob: ["src/app/**/*.tsx", "src/app/**/*.ts", "src/app/**/route.ts"]
 ## App Router Next.js 15
 
 ### Estructura de Rutas
+
 - Usar App Router exclusivamente (directorio `src/app/`)
 - Server Components por defecto en páginas
 - Route handlers para endpoints API en `route.ts`
 
 ### Páginas y Layouts
+
 - `layout.tsx` para layouts compartidos
 - `page.tsx` para páginas de ruta
 - `loading.tsx` para estados de carga
@@ -25,7 +27,7 @@ glob: ["src/app/**/*.tsx", "src/app/**/*.ts", "src/app/**/route.ts"]
 // ✅ CORRECTO - APIs son Promises en Next.js 15
 export default async function Page({
   params,
-  searchParams,
+  searchParams
 }: {
   params: Promise<{ id: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -35,7 +37,7 @@ export default async function Page({
 
   // Fetch de datos del servidor
   const data = await fetch(`/api/items/${id}`, {
-    cache: "force-cache", // Cache estático
+    cache: "force-cache" // Cache estático
   });
 
   return <div>...</div>;
@@ -52,7 +54,7 @@ import { z } from "zod";
 const contactSchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
-  message: z.string().min(10),
+  message: z.string().min(10)
 });
 
 export async function POST(request: NextRequest) {
@@ -70,6 +72,7 @@ export async function POST(request: NextRequest) {
 ```
 
 ## Optimización de Rendimiento
+
 - Usar `next/image` para todas las imágenes
 - Importaciones dinámicas para componentes pesados
 - Caché apropiado para fetch de datos
@@ -81,7 +84,7 @@ export async function POST(request: NextRequest) {
 // Metadata estática
 export const metadata: Metadata = {
   title: "WebSnack - Servicios",
-  description: "Servicios de desarrollo web profesional",
+  description: "Servicios de desarrollo web profesional"
 };
 
 // Metadata dinámica
@@ -91,7 +94,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${service.title} - WebSnack`,
-    description: service.description,
+    description: service.description
   };
 }
 ```
@@ -101,15 +104,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 ```tsx
 // ✅ Server Component con cache
 async function getServices() {
-  const res = await fetch('/api/services', {
-    cache: 'force-cache'
+  const res = await fetch("/api/services", {
+    cache: "force-cache"
   });
   return res.json();
 }
 
 // ✅ Revalidate con tiempo específico
 async function getNews() {
-  const res = await fetch('/api/news', {
+  const res = await fetch("/api/news", {
     next: { revalidate: 3600 } // 1 hour
   });
   return res.json();
@@ -118,7 +121,7 @@ async function getNews() {
 // ✅ No cache para datos dinámicos
 async function getUserData(userId: string) {
   const res = await fetch(`/api/users/${userId}`, {
-    cache: 'no-store'
+    cache: "no-store"
   });
   return res.json();
 }
@@ -128,11 +131,11 @@ async function getUserData(userId: string) {
 
 ```tsx
 // src/app/error.tsx
-'use client';
+"use client";
 
 export default function Error({
   error,
-  reset,
+  reset
 }: {
   error: Error & { digest?: string };
   reset: () => void;
@@ -173,6 +176,7 @@ export default function Loading() {
 ```
 
 ## Criterios de Aceptación
+
 - App Router exclusivamente usado
 - Server Components por defecto
 - APIs asíncronas manejadas correctamente

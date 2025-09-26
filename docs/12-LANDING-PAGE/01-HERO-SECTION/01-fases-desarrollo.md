@@ -3,10 +3,13 @@
 ## Fase 0: Configuración del Sistema de Colores WebSnack (CRÍTICA)
 
 ### Objetivo
+
 Implementar automáticamente el sistema de colores Rosa/Aguamarina de WebSnack usando shadcn/ui.
 
 ### Tareas
+
 1. **Ejecutar comando de tema personalizado**
+
    ```bash
    pnpm dlx shadcn@latest init
    pnpm dlx shadcn@latest add https://tweakcn.com/r/themes/cmex1abh7000c04l4h2avft17
@@ -20,6 +23,7 @@ Implementar automáticamente el sistema de colores Rosa/Aguamarina de WebSnack u
    - Sombras 3D y efectos visuales disponibles
 
 ### Criterios de Aceptación
+
 - Sistema de colores WebSnack completamente funcional
 - Variables CSS accesibles en todo el proyecto
 - Componentes base funcionando con el nuevo tema
@@ -28,9 +32,11 @@ Implementar automáticamente el sistema de colores Rosa/Aguamarina de WebSnack u
 ## Fase 1: Estructura Base y Componentes Principales
 
 ### Objetivo
+
 Crear la estructura fundamental de la Hero Section con todos los componentes principales funcionando correctamente.
 
 ### Tareas
+
 1. **Crear estructura de directorios**
    - Crear componentes específicos para Hero Section
    - Organizar archivos según estándares de WebSnack
@@ -53,6 +59,7 @@ Crear la estructura fundamental de la Hero Section con todos los componentes pri
    - Verificar funcionamiento básico en móvil y desktop
 
 ### Criterios de Aceptación
+
 - Estructura HTML semántica correcta
 - Responsive design mobile-first
 - WCAG 2.1 AA compliance
@@ -61,9 +68,11 @@ Crear la estructura fundamental de la Hero Section con todos los componentes pri
 ## Fase 2: Estilado y Diseño Visual
 
 ### Objetivo
+
 Aplicar estilos visuales coherentes con el brand y optimizados para performance.
 
 ### Tareas
+
 1. **Implementar estilos con Tailwind CSS v4**
    - Sistema de tipografías responsive
    - Paleta de colores brand
@@ -84,6 +93,7 @@ Aplicar estilos visuales coherentes con el brand y optimizados para performance.
    - Verificar contraste en ambos modos
 
 ### Criterios de Aceptación
+
 - Consistencia con design system
 - Performance <2.5s load time
 - Accesibilidad WCAG 2.1 AA verificada
@@ -92,9 +102,11 @@ Aplicar estilos visuales coherentes con el brand y optimizados para performance.
 ## Fase 3: Interactividad y Funcionalidades Avanzadas
 
 ### Objetivo
+
 Añadir interactividad y funcionalidades que mejoren la experiencia del usuario.
 
 ### Tareas
+
 1. **Implementar client components**
    - Selector de idioma funcional
    - Navegación mobile (hamburger menu)
@@ -116,6 +128,7 @@ Añadir interactividad y funcionalidades que mejoren la experiencia del usuario.
    - Loading states
 
 ### Criterios de Aceptación
+
 - 100% funcionalidad client-side
 - 60fps animations
 - Progressive enhancement
@@ -124,9 +137,11 @@ Añadir interactividad y funcionalidades que mejoren la experiencia del usuario.
 ## Fase 4: Optimización y Testing
 
 ### Objetivo
+
 Optimizar para performance y verificar que todo funciona correctamente en diferentes entornos.
 
 ### Tareas
+
 1. **Optimización de performance**
    - Image optimization con Next.js Image
    - Code splitting
@@ -148,6 +163,7 @@ Optimizar para performance y verificar que todo funciona correctamente en difere
    - Orientation changes
 
 ### Criterios de Aceptación
+
 - Lighthouse score >95 mobile/desktop
 - 100% cobertura de tests requeridos
 - Zero accessibility violations
@@ -156,9 +172,11 @@ Optimizar para performance y verificar que todo funciona correctamente en difere
 ## Fase 5: Documentación y Entrega
 
 ### Objetivo
+
 Documentar la implementación y preparar para entrega.
 
 ### Tareas
+
 1. **Documentación técnica**
    - Component API documentation
    - Guía de estilos
@@ -180,6 +198,7 @@ Documentar la implementación y preparar para entrega.
    - Preparación para próxima sección
 
 ### Criterios de Aceptación
+
 - Documentación completa y clara
 - Código limpio y mantenible
 - Integración sin conflictos

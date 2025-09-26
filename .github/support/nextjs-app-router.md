@@ -10,7 +10,7 @@ When generating Next.js code, always follow these patterns:
 // ✅ PREFERRED: Server Component (default)
 export default async function Page() {
   const data = await fetch("https://api.example.com/data", {
-    cache: "force-cache", // Static generation
+    cache: "force-cache" // Static generation
   });
   const posts = await data.json();
 

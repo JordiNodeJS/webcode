@@ -49,12 +49,15 @@ Basado en el stack tecnológico de Next.js 15 + React 19 + Tailwind CSS v4, nues
   --ring: #f0aacd;
   /* Sombras 3D personalizadas */
   --shadow-3d-sm: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1);
-  --shadow-3d-md: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1), 3px 2px
-      4px -1px hsl(325.5319 58.0247% 68.2353% / 1);
-  --shadow-3d-lg: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1), 3px 4px
-      6px -1px hsl(325.5319 58.0247% 68.2353% / 1);
-  --shadow-3d-xl: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1), 3px 8px
-      10px -1px hsl(325.5319 58.0247% 68.2353% / 1);
+  --shadow-3d-md:
+    3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1),
+    3px 2px 4px -1px hsl(325.5319 58.0247% 68.2353% / 1);
+  --shadow-3d-lg:
+    3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1),
+    3px 4px 6px -1px hsl(325.5319 58.0247% 68.2353% / 1);
+  --shadow-3d-xl:
+    3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1),
+    3px 8px 10px -1px hsl(325.5319 58.0247% 68.2353% / 1);
 }
 
 /* Dark Mode - WebSnack Theme */
@@ -73,10 +76,12 @@ Basado en el stack tecnológico de Next.js 15 + React 19 + Tailwind CSS v4, nues
   --accent-foreground: #ffffff;
   /* Sombras 3D para dark mode */
   --shadow-3d-sm: 3px 3px 0px 0px hsl(206.8085 28.1437% 32.7451% / 1);
-  --shadow-3d-md: 3px 3px 0px 0px hsl(206.8085 28.1437% 32.7451% / 1), 3px 2px
-      4px -1px hsl(206.8085 28.1437% 32.7451% / 1);
-  --shadow-3d-lg: 3px 3px 0px 0px hsl(206.8085 28.1437% 32.7451% / 1), 3px 4px
-      6px -1px hsl(206.8085 28.1437% 32.7451% / 1);
+  --shadow-3d-md:
+    3px 3px 0px 0px hsl(206.8085 28.1437% 32.7451% / 1),
+    3px 2px 4px -1px hsl(206.8085 28.1437% 32.7451% / 1);
+  --shadow-3d-lg:
+    3px 3px 0px 0px hsl(206.8085 28.1437% 32.7451% / 1),
+    3px 4px 6px -1px hsl(206.8085 28.1437% 32.7451% / 1);
 }
 ```
 
@@ -219,12 +224,15 @@ Basado en el stack tecnológico de Next.js 15 + React 19 + Tailwind CSS v4, nues
 /* Sombras 3D con colores del tema WebSnack */
 --shadow-3d-xs: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 0.5);
 --shadow-3d-sm: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1);
---shadow-3d-md: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1), 3px 2px
-    4px -1px hsl(325.5319 58.0247% 68.2353% / 1);
---shadow-3d-lg: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1), 3px 4px
-    6px -1px hsl(325.5319 58.0247% 68.2353% / 1);
---shadow-3d-xl: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1), 3px 8px
-    10px -1px hsl(325.5319 58.0247% 68.2353% / 1);
+--shadow-3d-md:
+  3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1),
+  3px 2px 4px -1px hsl(325.5319 58.0247% 68.2353% / 1);
+--shadow-3d-lg:
+  3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1),
+  3px 4px 6px -1px hsl(325.5319 58.0247% 68.2353% / 1);
+--shadow-3d-xl:
+  3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1),
+  3px 8px 10px -1px hsl(325.5319 58.0247% 68.2353% / 1);
 ```
 
 ### Border Radius (shadcn/ui Compatible)
@@ -326,7 +334,7 @@ const wsCurves = {
   primary: [0.25, 0.46, 0.45, 0.94],
   smooth: [0.4, 0, 0.2, 1],
   bounce: [0.68, -0.55, 0.265, 1.55],
-  dramatic: [0.87, 0, 0.13, 1],
+  dramatic: [0.87, 0, 0.13, 1]
 };
 
 // Transición WebSnack en componentes
@@ -335,7 +343,7 @@ const wsCurves = {
   animate={{ opacity: 1, y: 0 }}
   transition={{
     duration: 0.3,
-    ease: wsCurves.primary,
+    ease: wsCurves.primary
   }}
 >
   Contenido con animación WebSnack
@@ -542,7 +550,7 @@ export function Navigation() {
 
 function NavLink({
   href,
-  children,
+  children
 }: {
   href: string;
   children: React.ReactNode;
@@ -632,7 +640,9 @@ function NavLink({
 
 /* Focus para botones */
 .button:focus-visible {
-  box-shadow: var(--shadow-3d-md), 0 0 0 2px hsl(var(--primary) / 0.3);
+  box-shadow:
+    var(--shadow-3d-md),
+    0 0 0 2px hsl(var(--primary) / 0.3);
 }
 ```
 
