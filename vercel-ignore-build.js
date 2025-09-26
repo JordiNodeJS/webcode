@@ -3,14 +3,20 @@
  * Root wrapper for Vercel Ignored Build Step.
  * Loads and runs `scripts/vercel-ignore-build.js` from the repository.
  */
-const path = require('path');
-const fs = require('fs');
+const path = require("path");
+const fs = require("fs");
 
-const scriptPath = path.resolve(process.cwd(), 'scripts', 'vercel-ignore-build.js');
+const scriptPath = path.resolve(
+  process.cwd(),
+  "scripts",
+  "vercel-ignore-build.js"
+);
 
 if (!fs.existsSync(scriptPath)) {
   console.error(`Required script not found at: ${scriptPath}`);
-  console.error('Make sure scripts/vercel-ignore-build.js exists in the repository root.');
+  console.error(
+    "Make sure scripts/vercel-ignore-build.js exists in the repository root."
+  );
   process.exit(1);
 }
 
