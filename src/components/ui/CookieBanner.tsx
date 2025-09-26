@@ -1,9 +1,9 @@
 "use client";
 
-import { Cookie, X } from "lucide-react";
 import { Link } from "next-view-transitions";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Cookie, X } from "@/lib/icons";
 import { cn } from "@/lib/utils";
 
 interface CookieBannerProps {

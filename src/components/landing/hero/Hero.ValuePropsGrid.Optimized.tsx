@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Rocket, Smartphone, Target, Zap } from "lucide-react";
 import React, { useCallback, useMemo, useState } from "react";
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
 import { Card, CardContent } from "@/components/ui/card";
 import useOnScreen from "@/hooks/use-on-screen";
+import { Rocket, Smartphone, Target, Zap } from "@/lib/icons";
 
 // Constantes optimizadas para mejor rendimiento
 const CARD_CONFIG = {

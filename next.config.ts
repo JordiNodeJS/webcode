@@ -3,7 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   experimental: {
     reactCompiler: true,
-    viewTransition: true
+    viewTransition: true,
+    // Optimizaciones experimentales para bundle
+    optimizePackageImports: ["lucide-react", "framer-motion"],
+    serverComponentsHmrCache: false
   },
   // Configurar orígenes permitidos para desarrollo
   allowedDevOrigins: ["192.168.0.15:3000", "localhost:3000", "127.0.0.1:3000"],
@@ -11,6 +14,84 @@ const nextConfig: NextConfig = {
   // Optimizaciones para mejor SEO y Performance
   poweredByHeader: false,
   compress: true,
+  
+  // Image optimization
+  images: {
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    formats: ['image/webp', 'image/avif'],
+    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
+    dangerouslyAllowSVG: false,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.vercel.app',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https', 
+        hostname: 'webcode.es',
+        port: '',
+        pathname: '/**',
+      }
+    ],
+    unoptimized: false,
+    disableStaticImages: false
+  },
+  
+  // Bundle optimizations
+  webpack: (config, { dev, isServer }) => {
+    // Optimizaciones para reducir bundle size
+    if (!dev && !isServer) {
+      config.optimization = {
+        ...config.optimization,
+        splitChunks: {
+          chunks: 'all',
+          cacheGroups: {
+            // Separar vendor chunks por tamaño
+            framework: {
+              chunks: 'all',
+              name: 'framework',
+              test: /(?<!node_modules.*)[\\/]node_modules[\\/](react|react-dom|scheduler|prop-types|use-subscription)[\\/]/,
+              priority: 40,
+              enforce: true,
+            },
+            animations: {
+              name: 'animations',
+              test: /[\\/]node_modules[\\/](framer-motion|motion)[\\/]/,
+              chunks: 'all',
+              priority: 30,
+              enforce: true,
+            },
+            icons: {
+              name: 'icons', 
+              test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
+              chunks: 'all',
+              priority: 25,
+              enforce: true,
+            },
+            commons: {
+              name: 'commons',
+              chunks: 'all',
+              minChunks: 2,
+              priority: 20,
+              reuseExistingChunk: true,
+            },
+          },
+        },
+      };
+    }
+
+    // Optimización de tree shaking
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      // Force tree shaking for heavy packages
+      'framer-motion': 'framer-motion/dist/framer-motion',
+    };
+
+    return config;
+  },
   
   // Headers de seguridad mejorados para SEO y Best Practices
   async headers() {
