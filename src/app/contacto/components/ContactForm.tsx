@@ -126,7 +126,7 @@ export function ContactForm() {
   // Estado de éxito
   if (formStatus === "success") {
     return (
-      <div className="text-center py-8 space-y-4">
+      <div data-testid="contact-form-success" className="text-center py-8 space-y-4">
         <CheckCircle className="w-16 h-16 text-primary mx-auto" />
         <h3 className="text-2xl font-semibold text-foreground">
           ¡Mensaje enviado!
@@ -173,12 +173,13 @@ export function ContactForm() {
                 <FormItem>
                   <FormLabel>Email *</FormLabel>
                   <FormControl>
-                    <Input
-                      type="email"
-                      placeholder="tu@email.com"
-                      {...field}
-                      disabled={formStatus === "submitting"}
-                    />
+                      <Input
+                        type="email"
+                        placeholder="tu@email.com"
+                        data-testid="contact-form-email"
+                        {...field}
+                        disabled={formStatus === "submitting"}
+                      />
                   </FormControl>
                   <FormDescription>
                     Solo utilizaremos tu email para responder a tu consulta
@@ -197,6 +198,7 @@ export function ContactForm() {
                   <FormControl>
                     <Input
                       placeholder="Ej: Solicitud de presupuesto para web corporativa"
+                      data-testid="contact-form-subject"
                       {...field}
                       disabled={formStatus === "submitting"}
                     />
@@ -218,13 +220,17 @@ export function ContactForm() {
                     disabled={formStatus === "submitting"}
                   >
                     <FormControl>
-                      <SelectTrigger>
+                      <SelectTrigger data-testid="contact-form-service-trigger">
                         <SelectValue placeholder="Selecciona un servicio" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
                       {serviceOptions.map((option) => (
-                        <SelectItem key={option.value} value={option.value}>
+                        <SelectItem
+                          key={option.value}
+                          value={option.value}
+                          data-testid={`contact-form-service-${option.value}`}
+                        >
                           {option.label}
                         </SelectItem>
                       ))}
@@ -245,6 +251,7 @@ export function ContactForm() {
                     <Textarea
                       placeholder="Describe tu proyecto, necesidades, presupuesto estimado, plazos, etc."
                       className="min-h-32"
+                      data-testid="contact-form-message"
                       {...field}
                       disabled={formStatus === "submitting"}
                     />
@@ -268,6 +275,7 @@ export function ContactForm() {
                         checked={field.value}
                         onCheckedChange={field.onChange}
                         disabled={formStatus === "submitting"}
+                        data-testid="contact-form-gdpr"
                       />
                     </FormControl>
                     <div className="grid gap-1.5 leading-none">
@@ -307,6 +315,7 @@ export function ContactForm() {
               type="submit"
               className="w-full"
               disabled={formStatus === "submitting"}
+              data-testid="contact-form-submit"
             >
               {formStatus === "submitting" ? (
                 <>
