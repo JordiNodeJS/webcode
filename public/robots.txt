@@ -1,10 +1,21 @@
 User-agent: *
-Disallow: /cookies
-Disallow: /politica-privacidad
-Disallow: /privacy
-
-# Allow all other paths
 Allow: /
 
-# Optional: sitemap
-Sitemap: /sitemap.xml
+# Disallow sensitive pages
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /dashboard/
+
+# SEO-friendly paths - explicitly allow important pages
+Allow: /servicios/
+Allow: /sobre-nosotros/
+Allow: /contacto/
+Allow: /casos-de-exito/
+
+# Sitemap location
+Sitemap: https://webcode.es/sitemap.xml
+Sitemap: https://webcode.es/sitemap-0.xml
+
+# Crawl-delay for better server performance
+Crawl-delay: 1
