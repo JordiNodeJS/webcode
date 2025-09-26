@@ -20,7 +20,7 @@ export function WSFadeIn({
   direction = "up",
   distance = 20,
   className = "",
-  sectionId = "",
+  sectionId = ""
 }: WSFadeInProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
@@ -30,7 +30,7 @@ export function WSFadeIn({
     up: { y: distance },
     down: { y: -distance },
     left: { x: distance },
-    right: { x: -distance },
+    right: { x: -distance }
   };
 
   // Determinar si la animación debe ejecutarse
@@ -51,7 +51,7 @@ export function WSFadeIn({
       transition={{
         duration: wsConfig.durations.smooth,
         ease: wsConfig.easings.primary,
-        delay,
+        delay
       }}
     >
       {children}

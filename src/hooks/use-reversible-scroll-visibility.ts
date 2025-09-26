@@ -38,19 +38,19 @@ interface ScrollVisibilityState extends ScrollVisibilityInternalState {
  * - Evita re-renders innecesarios con useCallback
  */
 export function useReversibleScrollVisibility(
-  options: ScrollVisibilityOptions = {},
+  options: ScrollVisibilityOptions = {}
 ): ScrollVisibilityState {
   const {
     fadeOutThreshold = 0.5, // Desaparece completamente a mitad del scroll
     fadeStartThreshold = 0.2, // Comienza a desaparecer al 20% del scroll
-    respectReducedMotion = true,
+    respectReducedMotion = true
   } = options;
 
   const [state, setState] = useState<ScrollVisibilityInternalState>({
     opacity: 0,
     isInViewport: false,
     scrollProgress: 0,
-    isReducedMotion: false,
+    isReducedMotion: false
   });
 
   const elementRef = useRef<HTMLElement | null>(null);
@@ -92,7 +92,7 @@ export function useReversibleScrollVisibility(
 
       return Math.max(0, Math.min(1, eased));
     },
-    [fadeStartThreshold, fadeOutThreshold],
+    [fadeStartThreshold, fadeOutThreshold]
   );
 
   // Handler de scroll optimizado con RAF
@@ -115,7 +115,7 @@ export function useReversibleScrollVisibility(
       setState((prev) => ({
         ...prev,
         scrollProgress,
-        opacity: newOpacity,
+        opacity: newOpacity
       }));
     });
   }, [calculateOpacity]);
@@ -146,8 +146,8 @@ export function useReversibleScrollVisibility(
       },
       {
         threshold: 0.1, // Detectar cuando al menos 10% esté visible
-        rootMargin: "20px", // Agregar margen para detección temprana
-      },
+        rootMargin: "20px" // Agregar margen para detección temprana
+      }
     );
 
     observer.observe(element);
@@ -170,6 +170,6 @@ export function useReversibleScrollVisibility(
 
   return {
     ...state,
-    setElementRef,
+    setElementRef
   };
 }

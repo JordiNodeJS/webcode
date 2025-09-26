@@ -8,6 +8,7 @@ description: "Generate unit tests, E2E tests, visual testing, or development too
 ## Testing Automatizado
 
 ### Framework de Testing
+
 - Jest + React Testing Library para unit tests
 - Playwright para testing E2E
 - Testing con TypeScript estricto
@@ -28,9 +29,9 @@ describe("ContactForm Component", () => {
   it("validates required fields", async () => {
     render(<ContactForm />);
     const submitButton = screen.getByRole("button", { name: /enviar/i });
-    
+
     await userEvent.click(submitButton);
-    
+
     expect(screen.getByText("Nombre es requerido")).toBeInTheDocument();
     expect(screen.getByText("Email es requerido")).toBeInTheDocument();
   });
@@ -45,13 +46,13 @@ import { test, expect } from "@playwright/test";
 
 test("contact form submission", async ({ page }) => {
   await page.goto("/contact");
-  
+
   await page.fill("[data-testid=name]", "Test User");
   await page.fill("[data-testid=email]", "test@example.com");
   await page.fill("[data-testid=message]", "Mensaje de prueba");
-  
+
   await page.click("[data-testid=submit]");
-  
+
   await expect(page.locator(".success-message")).toBeVisible();
 });
 ```
@@ -59,6 +60,7 @@ test("contact form submission", async ({ page }) => {
 ## Verificación Visual con Playwright
 
 ### Flujo de Trabajo Estándar
+
 1. Asumir que el servidor de desarrollo está en marcha
 2. Utilizar Playwright para verificar cambios implementados
 3. Tomar screenshots para validar el resultado visualmente
@@ -81,6 +83,7 @@ await page.screenshot({ path: "mobile-view.png" });
 ```
 
 ## Criterios de Aceptación
+
 - Servidor de desarrollo funcionando
 - Screenshots reflejan cambios esperados
 - Componentes siguen patrones establecidos

@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Portfolio - WEBCODE",
-  description: "Ejemplos de trabajos y proyectos realizados por WEBCODE.",
+  description: "Ejemplos de trabajos y proyectos realizados por WEBCODE."
 };
 
 export default function PortfolioPage() {

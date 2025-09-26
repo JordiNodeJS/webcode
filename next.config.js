@@ -1,6 +1,6 @@
 const nextConfig = {
   experimental: {
-    reactCompiler: true,
+    reactCompiler: true
   },
   // Redirects: keep English `/privacy` pointing to Spanish `/politica-privacidad`
   async redirects() {
@@ -8,8 +8,8 @@ const nextConfig = {
       {
         source: "/privacy",
         destination: "/politica-privacidad",
-        permanent: true,
-      },
+        permanent: true
+      }
     ];
   },
   // Configurar orígenes permitidos para desarrollo
@@ -22,26 +22,26 @@ const nextConfig = {
         headers: [
           {
             key: "X-Content-Type-Options",
-            value: "nosniff",
+            value: "nosniff"
           },
           {
             key: "Referrer-Policy",
-            value: "strict-origin-when-cross-origin",
+            value: "strict-origin-when-cross-origin"
           },
           {
             key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=()",
-          },
-        ],
-      },
+            value: "camera=(), microphone=(), geolocation=()"
+          }
+        ]
+      }
     ];
-  },
+  }
 };
 
 // Solo habilitar el bundle analyzer en modo análisis
 if (process.env.ANALYZE === "true") {
   const withBundleAnalyzer = require("@next/bundle-analyzer")({
-    enabled: true,
+    enabled: true
   });
   module.exports = withBundleAnalyzer(nextConfig);
 } else {

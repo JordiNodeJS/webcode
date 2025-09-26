@@ -7,12 +7,12 @@ export const metadata = {
   description: "Páginas de políticas y cookies - no indexar en buscadores",
   robots: {
     index: false,
-    follow: false,
-  },
+    follow: false
+  }
 };
 
 export default function CookiesLayout({
-  children,
+  children
 }: {
   children: React.ReactNode;
 }) {

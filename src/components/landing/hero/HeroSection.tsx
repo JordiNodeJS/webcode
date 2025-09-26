@@ -17,7 +17,7 @@ const HeroSection = () => {
     fadeStartThreshold: 0.1, // Comienza a desaparecer al 10% del scroll
     fadeOutThreshold: 0.5, // Completamente invisible al 50% del scroll
     transitionDuration: 400,
-    respectReducedMotion: true,
+    respectReducedMotion: true
   });
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const HeroSection = () => {
   const scrollToContent = () => {
     window.scrollTo({
       top: window.innerHeight,
-      behavior: "smooth",
+      behavior: "smooth"
     });
   };
 
@@ -87,7 +87,7 @@ const HeroSection = () => {
           visibility: scrollIndicator.opacity > 0 ? "visible" : "hidden",
           transition: scrollIndicator.isReducedMotion
             ? "opacity 0.2s ease-out, visibility 0.2s ease-out"
-            : "opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s ease-out",
+            : "opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s ease-out"
         }}
       >
         <ChevronDown

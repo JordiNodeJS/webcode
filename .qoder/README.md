@@ -37,27 +37,35 @@ Este sistema adapta el sistema de prompts de GitHub Copilot al editor Qoder, man
 ## 🚀 Cómo Usar Este Sistema
 
 ### 1. **Archivo Principal: llms.txt**
+
 El archivo raíz `llms.txt` es el punto de entrada principal que lee Qoder. Contiene:
+
 - Contexto general del proyecto
 - Referencias a prompts especializados
 - Estado actual del desarrollo
 - Instrucciones fundamentales
 
 ### 2. **Prompts Especializados**
+
 Ubicados en `.qoder/prompts/`, cada prompt se enfoca en una tarea específica:
+
 - **Desarrollo de componentes**: `shadcn.prompt.md`
-- **Diseño UI/UX**: `ui-ux.prompt.md` 
+- **Diseño UI/UX**: `ui-ux.prompt.md`
 - **Arquitectura**: `arquitectura.prompt.md`
 - **Y muchos más...**
 
 ### 3. **Contexto Dinámico**
+
 Los archivos en `.qoder/context/` se actualizan automáticamente:
+
 - Estado del proyecto en tiempo real
 - Decisiones técnicas recientes
 - Progreso y tareas pendientes
 
 ### 4. **Instrucciones Técnicas**
+
 Guías específicas en `.qoder/instructions/` para:
+
 - TypeScript patterns
 - Component development
 - Styling guidelines
@@ -66,18 +74,19 @@ Guías específicas en `.qoder/instructions/` para:
 ## 🔄 Migración desde GitHub
 
 Este sistema mantiene **compatibilidad completa** con tu estructura anterior:
+
 - Todos los prompts se han migrado
 - La lógica de referencias se mantiene
 - Los patrones de desarrollo son idénticos
 
 ### Diferencias Clave con GitHub Copilot
 
-| Aspecto | GitHub Copilot | Qoder |
-|---------|---------------|-------|
-| Archivo principal | `copilot-instructions.md` | `llms.txt` |
-| Directorio base | `.github/` | `.qoder/` |
-| Referencias | Automáticas en contexto | Explícitas en llms.txt |
-| Actualización | Manual/automática | Manual con herramientas |
+| Aspecto           | GitHub Copilot            | Qoder                   |
+| ----------------- | ------------------------- | ----------------------- |
+| Archivo principal | `copilot-instructions.md` | `llms.txt`              |
+| Directorio base   | `.github/`                | `.qoder/`               |
+| Referencias       | Automáticas en contexto   | Explícitas en llms.txt  |
+| Actualización     | Manual/automática         | Manual con herramientas |
 
 ## 📝 Cómo Referenciar Prompts
 

@@ -10,26 +10,30 @@
 6. Escribe el código en el MCP de playwright.
 
 ## No utilices:
- * npx playwright test tests/playwright/simple-back-button-test.spec.ts --project=chromium
- * no escribas código de Playwright en el archivo de prueba
- * no utilices el comando npx playwright test
+
+- npx playwright test tests/playwright/simple-back-button-test.spec.ts --project=chromium
+- no escribas código de Playwright en el archivo de prueba
+- no utilices el comando npx playwright test
 
 ## Solución al Problema del Botón de Retroceso
 
 El componente BackButton ha sido optimizado para mejorar el rendimiento de navegación:
 
 ### Mejoras Implementadas:
+
 1. **Optimización de navegación**: Uso directo de `router.back()` para navegación instantánea
 2. **Prefetching**: Implementación de prefetch para el fallbackHref para cargar la página de destino anticipadamente
 3. **Transiciones suaves**: Añadida transición de colores para mejor experiencia de usuario
 4. **Prevención de eventos**: Añadido `stopPropagation()` para evitar burbujeo de eventos
 
 ### Verificación de Rendimiento:
+
 - El tiempo de navegación hacia atrás debe ser menor a 500ms
 - Se ha creado una prueba específica en `simple-back-button-test.spec.ts`
 - Las pruebas verifican que la navegación es inmediata y sin retrasos perceptibles
 
 ### Criterios de Éxito:
+
 - Navegación instantánea entre páginas
 - Transiciones suaves sin parpadeos
 - Tiempo de respuesta menor a 500ms

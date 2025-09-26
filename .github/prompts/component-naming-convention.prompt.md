@@ -11,9 +11,11 @@ Esta regla define la convención de nombres jerárquica para todos los component
 ```
 
 ### Para Componentes Principales de Páginas:
+
 - `Page.Section.tsx` - Componente principal de una página
 
 ### Para Componentes Secundarios:
+
 - `Page.NombreComponente.tsx` - Componentes de primer nivel
 - `Page.Sección.Componente.tsx` - Componentes de segundo nivel
 - `Page.Sección.Subsección.Componente.tsx` - Componentes de tercer nivel
@@ -21,18 +23,21 @@ Esta regla define la convención de nombres jerárquica para todos los component
 ## Ejemplos por Secciones
 
 ### Página Principal (Landing)
+
 - `Hero.Section.tsx` - Componente principal de la sección Hero
 - `Hero.WavesBackground.tsx` - Fondo animado
 - `Hero.HeaderNavigation.tsx` - Navegación
 - `Hero.Content.tsx` - Contenido principal
 
 ### Página de Servicios
+
 - `Services.Section.tsx` - Componente principal
 - `Services.Header.tsx` - Encabezado
 - `Services.Intro.tsx` - Introducción
 - `Services.Features.tsx` - Características
 
 ### Componentes Anidados
+
 - `Services.Features.Card.tsx` - Tarjeta de características
 - `Contact.Form.Input.tsx` - Input personalizado
 

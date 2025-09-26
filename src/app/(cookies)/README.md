@@ -7,7 +7,6 @@ Why we use a route group
 
 - Files inside a route group like `(cookies)` are not reflected in the
   generated URL. For example:
-
   - `src/app/(cookies)/privacy/page.tsx` -> served at `/privacy`
   - `src/app/(cookies)/politica-privacidad/page.tsx` -> served at `/politica-privacidad`
   - `src/app/(cookies)/cookies/page.tsx` -> served at `/cookies`

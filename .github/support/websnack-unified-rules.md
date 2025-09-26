@@ -1,6 +1,6 @@
 # 🚀 WebSnack - Reglas Unificadas de Desarrollo
 
-*Guía completa para desarrollo con Next.js 15, TailwindCSS v4, shadcn/ui, Magic UI y MCPs*
+_Guía completa para desarrollo con Next.js 15, TailwindCSS v4, shadcn/ui, Magic UI y MCPs_
 
 ---
 
@@ -22,6 +22,7 @@ Eres un **arquitecto de software certificado** especializado en **Next.js 15**, 
 ### **1. Arquitectura Next.js 15**
 
 #### **App Router Estricto**
+
 - 90% Server Components (contenidos estáticos) + 10% Client Components (interacciones críticas)
 - Estructura de carpetas MCP-validada:
 
@@ -42,8 +43,8 @@ Eres un **arquitecto de software certificado** especializado en **Next.js 15**, 
 
 ```tsx
 // MCP: Validación segura en Server Actions
-'use server';
-import { contactSchema } from '@/lib/validations';
+"use server";
+import { contactSchema } from "@/lib/validations";
 
 export async function submitForm(prevState: State, formData: FormData) {
   const validated = contactSchema.safeParse(Object.fromEntries(formData));
@@ -74,12 +75,12 @@ export type ContactFormData = { ... }
 #### **Interfaces con documentación JSDoc**
 
 ```ts
-/** 
+/**
  * MCP: Estructura tipada para schema.org en servicios
  * @see https://schema.org/Service
  */
 export interface ServiceCategory {
-  id: 'floristeria' | 'veterinaria' | 'foodtruck';
+  id: "floristeria" | "veterinaria" | "foodtruck";
   title: string;
   icon: LucideIcon;
   seoKeywords: [primary: string, ...secondary: string[]]; // MCP: Keyword prioritization
@@ -89,7 +90,9 @@ export interface ServiceCategory {
 #### **Manejo de errores con Result<T, E>**
 
 ```ts
-type Result<T, E = string> = { success: true; data: T } | { success: false; error: E };
+type Result<T, E = string> =
+  | { success: true; data: T }
+  | { success: false; error: E };
 ```
 
 ---
@@ -111,18 +114,27 @@ type Result<T, E = string> = { success: true; data: T } | { success: false; erro
   --color-background: 0 0% 100%;
   --color-foreground: 222.2 84% 4.9%;
   --radius: 0.5rem;
-  
+
   /* Animaciones para Magic UI */
   --animate-shimmer: shimmer 2s ease-in-out infinite;
   --animate-sparkle: sparkle 1.5s ease-in-out infinite;
-  
+
   @keyframes shimmer {
-    to { transform: translateX(100%); }
+    to {
+      transform: translateX(100%);
+    }
   }
-  
+
   @keyframes sparkle {
-    0%, 100% { opacity: 0; transform: scale(0); }
-    50% { opacity: 1; transform: scale(1); }
+    0%,
+    100% {
+      opacity: 0;
+      transform: scale(0);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 }
 
@@ -162,10 +174,8 @@ type Result<T, E = string> = { success: true; data: T } | { success: false; erro
 ```javascript
 // ✅ CORRECTO para v4 - Solo paths de contenido
 export default {
-  content: [
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
-}
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"]
+};
 ```
 
 ### **Gestión de Caché Obligatoria**
@@ -189,6 +199,7 @@ export default {
 ### **Context7 MCP Integration**
 
 Utilizar el MCP de Context7 para:
+
 - Consultar últimas actualizaciones de librerías
 - Validar implementaciones según estándares MCP
 - Obtener ejemplos de código actualizados
@@ -196,6 +207,7 @@ Utilizar el MCP de Context7 para:
 ### **shadcn/ui y Magic UI MCP**
 
 Utilizar MCPs para:
+
 - Instalar componentes con la sintaxis más reciente
 - Verificar compatibilidad entre shadcn/ui y Magic UI
 - Obtener patrones de implementación validados
@@ -241,30 +253,27 @@ pnpm add framer-motion
 // MCP: Componente con testing visual integrado
 export function HeroSection() {
   return (
-    <section 
-      itemScope 
+    <section
+      itemScope
       itemType="https://schema.org/Service"
       className="relative min-h-screen flex items-center justify-center"
       data-testid="hero-section"
     >
       <RetroGrid className="absolute inset-0" />
       <div className="relative z-10 container text-center">
-        <SparklesText 
-          text="WebSnack Studio" 
+        <SparklesText
+          text="WebSnack Studio"
           className="text-6xl font-bold mb-8"
           data-testid="hero-title"
         />
-        <TextAnimate 
+        <TextAnimate
           text="Creamos experiencias digitales excepcionales"
-          animation="slideUp" 
-          by="word" 
+          animation="slideUp"
+          by="word"
           className="text-xl"
           data-testid="hero-subtitle"
         />
-        <ShimmerButton 
-          className="mt-8"
-          data-testid="hero-cta"
-        >
+        <ShimmerButton className="mt-8" data-testid="hero-cta">
           Comenzar Proyecto
         </ShimmerButton>
       </div>
@@ -283,11 +292,7 @@ export function HeroSection() {
 // MCP: Server Component con schema.org embebido
 export default function FloristeriaSection() {
   return (
-    <section 
-      itemScope 
-      itemType="https://schema.org/Service"
-      className="py-20"
-    >
+    <section itemScope itemType="https://schema.org/Service" className="py-20">
       <meta itemProp="provider" content="WebSnack" />
       <meta itemProp="serviceType" content="Diseño web para floristerías" />
       {/* ... contenido visible */}
@@ -301,16 +306,21 @@ export default function FloristeriaSection() {
 ```ts
 // MCP: Route Handler para SEO hipersegmentado
 // /app/api/seo/[niche]/route.ts
-export async function GET(request: Request, { params }: { params: { niche: string } }) {
+export async function GET(
+  request: Request,
+  { params }: { params: { niche: string } }
+) {
   const metadata = {
     floristeria: {
       title: "Diseño Web para Floristerías | WebSnack",
-      description: "Aumenta ventas online con sitios web para floristerías optimizados...",
+      description:
+        "Aumenta ventas online con sitios web para floristerías optimizados...",
       keywords: ["diseño web floristería", "página web para flores"]
     },
     veterinaria: {
       title: "Diseño Web para Veterinarias | WebSnack",
-      description: "Sitios web para clínicas veterinarias que mejoran la comunicación...",
+      description:
+        "Sitios web para clínicas veterinarias que mejoran la comunicación...",
       keywords: ["diseño web veterinaria", "página web clínica veterinaria"]
     },
     foodtruck: {
@@ -319,7 +329,7 @@ export async function GET(request: Request, { params }: { params: { niche: strin
       keywords: ["diseño web food truck", "página web comida móvil"]
     }
   };
-  
+
   return NextResponse.json(metadata[params.niche]);
 }
 ```
@@ -334,34 +344,37 @@ export async function GET(request: Request, { params }: { params: { niche: strin
 // MCP: Componente reutilizable con tipado nicho-específico
 interface ServiceCardProps {
   category: ServiceCategory;
-  variant?: 'floristeria' | 'veterinaria' | 'foodtruck';
+  variant?: "floristeria" | "veterinaria" | "foodtruck";
 }
 
 export function ServiceCard({ category, variant }: ServiceCardProps) {
   return (
-    <MagicCard className={cn(
-      "p-6 transition-all duration-300",
-      variant === 'floristeria' && 'border-rose-200 hover:border-rose-300',
-      variant === 'veterinaria' && 'border-emerald-200 hover:border-emerald-300',
-      variant === 'foodtruck' && 'border-orange-200 hover:border-orange-300'
-    )}>
+    <MagicCard
+      className={cn(
+        "p-6 transition-all duration-300",
+        variant === "floristeria" && "border-rose-200 hover:border-rose-300",
+        variant === "veterinaria" &&
+          "border-emerald-200 hover:border-emerald-300",
+        variant === "foodtruck" && "border-orange-200 hover:border-orange-300"
+      )}
+    >
       <div className="flex items-center gap-3 mb-4">
-        <category.icon className={cn(
-          'h-8 w-8',
-          variant === 'floristeria' && 'text-rose-500',
-          variant === 'veterinaria' && 'text-emerald-500',
-          variant === 'foodtruck' && 'text-orange-500'
-        )} />
+        <category.icon
+          className={cn(
+            "h-8 w-8",
+            variant === "floristeria" && "text-rose-500",
+            variant === "veterinaria" && "text-emerald-500",
+            variant === "foodtruck" && "text-orange-500"
+          )}
+        />
         <h3 className="text-xl font-semibold">{category.title}</h3>
       </div>
-      
+
       <AnimatedGradientText className="mb-4">
         {category.description}
       </AnimatedGradientText>
-      
-      <ShimmerButton className="w-full">
-        Ver Más Detalles
-      </ShimmerButton>
+
+      <ShimmerButton className="w-full">Ver Más Detalles</ShimmerButton>
     </MagicCard>
   );
 }
@@ -371,43 +384,56 @@ export function ServiceCard({ category, variant }: ServiceCardProps) {
 
 ```tsx
 // MCP: Cumplimiento WCAG 2.1 + schema.org + Magic UI
-export function Testimonial({ quote, author, business, niche }: TestimonialProps) {
+export function Testimonial({
+  quote,
+  author,
+  business,
+  niche
+}: TestimonialProps) {
   return (
     <BlurFade delay={0.2} inView>
-      <MagicCard 
-        itemScope 
+      <MagicCard
+        itemScope
         itemType="https://schema.org/Review"
         className="relative p-6"
       >
-        <div aria-hidden="true" className="absolute -top-2 -left-2 text-4xl opacity-20">❝</div>
-        
-        <SparklesText 
-          itemProp="reviewBody" 
+        <div
+          aria-hidden="true"
+          className="absolute -top-2 -left-2 text-4xl opacity-20"
+        >
+          ❝
+        </div>
+
+        <SparklesText
+          itemProp="reviewBody"
           text={quote}
           className="text-lg italic mb-4"
         />
-        
+
         <footer className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
             <User className="w-6 h-6" />
           </div>
           <div>
-            <cite 
-              itemProp="author" 
-              itemScope 
+            <cite
+              itemProp="author"
+              itemScope
               itemType="https://schema.org/Person"
               className="font-semibold not-italic"
             >
               <span itemProp="name">{author}</span>
             </cite>
-            <div 
-              itemProp="itemReviewed" 
-              itemScope 
+            <div
+              itemProp="itemReviewed"
+              itemScope
               itemType="https://schema.org/LocalBusiness"
               className="text-sm text-muted-foreground"
             >
               <span itemProp="name">{business}</span>
-              <meta itemProp="businessType" content={nicheToBusinessType(niche)} />
+              <meta
+                itemProp="businessType"
+                content={nicheToBusinessType(niche)}
+              />
             </div>
           </div>
         </footer>
@@ -421,12 +447,12 @@ export function Testimonial({ quote, author, business, niche }: TestimonialProps
 
 ## ⚡ **Requisitos de Performance Críticos**
 
-| Métrica           | Umbral MCP | Implementación                          |
-|-------------------|------------|-----------------------------------------|
-| **LCP**           | < 2.5s     | `next/image` + WebP + priority loading |
-| **CLS**           | < 0.1      | Dimensiones fijas en imágenes           |
-| **TTFB**          | < 400ms    | Server Actions + Edge Functions         |
-| **Tamaño JS**     | < 300KB    | Code splitting + dynamic imports        |
+| Métrica       | Umbral MCP | Implementación                         |
+| ------------- | ---------- | -------------------------------------- |
+| **LCP**       | < 2.5s     | `next/image` + WebP + priority loading |
+| **CLS**       | < 0.1      | Dimensiones fijas en imágenes          |
+| **TTFB**      | < 400ms    | Server Actions + Edge Functions        |
+| **Tamaño JS** | < 300KB    | Code splitting + dynamic imports       |
 
 ### **Optimizaciones Obligatorias**
 
@@ -441,11 +467,13 @@ export function Testimonial({ quote, author, business, niche }: TestimonialProps
 ## 📦 **Herramientas y Dependencias**
 
 ### **Gestión de Paquetes**
+
 - **Utilizar exclusivamente `pnpm`** y `pnpm dlx`
 - **NO utilizar `npm`**
 - Generar commits en inglés cuando se use git
 
 ### **Estructura de Testing**
+
 - Observar directorio `.github/prompts` para reglas adicionales de Cursor
 - Implementar data-testids en componentes críticos
 - Validar responsive design con Playwright
@@ -455,21 +483,25 @@ export function Testimonial({ quote, author, business, niche }: TestimonialProps
 ## 🚀 **Flujo de Desarrollo Completo**
 
 ### **1. Configuración Inicial**
+
 1. Verificar configuración TailwindCSS v4
 2. Instalar componentes Magic UI necesarios
 3. Configurar MCPs de Context7 y shadcn/ui
 
 ### **2. Desarrollo de Componentes**
+
 1. Crear Server Components con schema.org
 2. Implementar animaciones con Magic UI
 3. Aplicar theming específico por nicho
 
 ### **3. Testing y Validación**
+
 1. Ejecutar Playwright MCP para screenshots
 2. Validar performance con Lighthouse
 3. Verificar SEO técnico con meta tags
 
 ### **4. Optimización Final**
+
 1. Limpiar caché de Next.js
 2. Verificar Core Web Vitals
 3. Commit con descripción en inglés
@@ -481,18 +513,19 @@ export function Testimonial({ quote, author, business, niche }: TestimonialProps
 ```tsx
 // MCP: Página completa para nicho floristería
 // /app/(marketing)/services/floristerias/page.tsx
-import { Metadata } from 'next';
-import { BlurFade } from '@/components/magicui/blur-fade';
-import { SparklesText } from '@/components/magicui/sparkles-text';
-import { RetroGrid } from '@/components/magicui/retro-grid';
+import { Metadata } from "next";
+import { BlurFade } from "@/components/magicui/blur-fade";
+import { SparklesText } from "@/components/magicui/sparkles-text";
+import { RetroGrid } from "@/components/magicui/retro-grid";
 
 export const metadata: Metadata = {
-  title: 'Diseño Web para Floristerías | WebSnack',
-  description: 'Sitios web para floristerías que aumentan ventas online y mejoran la presencia digital',
+  title: "Diseño Web para Floristerías | WebSnack",
+  description:
+    "Sitios web para floristerías que aumentan ventas online y mejoran la presencia digital",
   keywords: [
-    'diseño web floristería profesional',
-    'página web para flores online',
-    'sitio web para arreglo floral'
+    "diseño web floristería profesional",
+    "página web para flores online",
+    "sitio web para arreglo floral"
   ]
 };
 
@@ -500,8 +533,8 @@ export default function FloristeriaPage() {
   return (
     <main className="min-h-screen">
       {/* Hero Section con Magic UI y schema.org */}
-      <section 
-        itemScope 
+      <section
+        itemScope
         itemType="https://schema.org/Service"
         className="relative py-20"
         data-testid="floristeria-hero"
@@ -509,24 +542,25 @@ export default function FloristeriaPage() {
         <RetroGrid className="absolute inset-0" />
         <div className="relative z-10 container">
           <BlurFade delay={0.1} inView>
-            <SparklesText 
+            <SparklesText
               text="Diseño Web para Floristerías"
               className="text-6xl font-bold text-center mb-8"
             />
           </BlurFade>
-          
+
           <BlurFade delay={0.3} inView>
             <p className="text-xl text-center text-muted-foreground max-w-3xl mx-auto">
-              Transforma tu floristería con una presencia online que florece. 
-              Diseños únicos que capturan la belleza de tus arreglos y aumentan tus ventas.
+              Transforma tu floristería con una presencia online que florece.
+              Diseños únicos que capturan la belleza de tus arreglos y aumentan
+              tus ventas.
             </p>
           </BlurFade>
-          
+
           <meta itemProp="provider" content="WebSnack" />
           <meta itemProp="serviceType" content="Diseño web para floristerías" />
         </div>
       </section>
-      
+
       {/* Más secciones... */}
     </main>
   );
@@ -538,6 +572,7 @@ export default function FloristeriaPage() {
 ## 🎯 **Checklist de Validación Final**
 
 ### **Técnico**
+
 - [ ] 100% tipado TypeScript (interfaces en /lib/types)
 - [ ] Schema.org implementado en 3+ componentes
 - [ ] TailwindCSS v4 configurado correctamente
@@ -545,11 +580,13 @@ export default function FloristeriaPage() {
 - [ ] Performance: Lighthouse > 90 en mobile
 
 ### **SEO por Nicho**
+
 - [ ] 3+ keywords específicas por nicho en meta tags
 - [ ] Copywriting adaptado a floristerías/veterinarias/food trucks
 - [ ] URLs amigables: `/servicios/floristerias` (no query params)
 
 ### **Testing**
+
 - [ ] Screenshots tomados con Playwright MCP
 - [ ] Componentes validados visualmente
 - [ ] Responsive design verificado
@@ -557,4 +594,4 @@ export default function FloristeriaPage() {
 
 ---
 
-> **Regla de Oro**: *"Código MCP-compliant, diseño centrado en conversiones, testing visual continuo y performance optimizada. Siempre validar con Playwright antes de dar por finalizado."*
+> **Regla de Oro**: _"Código MCP-compliant, diseño centrado en conversiones, testing visual continuo y performance optimizada. Siempre validar con Playwright antes de dar por finalizado."_

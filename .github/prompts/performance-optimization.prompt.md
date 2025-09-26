@@ -49,16 +49,18 @@ function ExpensiveSection() {
 ### **Estructura de Carga por Fases**
 
 #### **Fase 1: Above the Fold (Crítico)**
+
 ```typescript
 // Máximo 85KB de JS inicial - Carga en <1s
 const CriticalComponents = [
-  'HeroSection',      // 45KB
-  'Navigation',       // 8KB
-  'QuickStartSection' // 32KB
+  "HeroSection", // 45KB
+  "Navigation", // 8KB
+  "QuickStartSection" // 32KB
 ];
 ```
 
 #### **Fase 2: Below the Fold (Diferido)**
+
 ```typescript
 // Carga progresiva según scroll
 const DeferredComponents = [
@@ -106,12 +108,14 @@ import Image from 'next/image';
 
 ```css
 /* ✅ OBLIGATORIO: CSS crítico inline en <head> */
-.hero, .navigation, .quick-start {
+.hero,
+.navigation,
+.quick-start {
   /* Solo estilos esenciales para above the fold */
 }
 
 /* ✅ OBLIGATORIO: CSS no crítico con carga diferida */
-@import url('./non-critical.css') media="print" onload="this.media='all'";
+@import url("./non-critical.css") media= "print" onload= "this.media='all'";
 ```
 
 ---
@@ -119,17 +123,20 @@ import Image from 'next/image';
 ## **Performance Targets Obligatorios**
 
 ### **Web Vitals**
+
 - **LCP (Largest Contentful Paint)**: <2.5s
 - **FID (First Input Delay)**: <100ms
 - **CLS (Cumulative Layout Shift)**: <0.1
 - **TTFB (Time to First Byte)**: <600ms
 
 ### **Bundle Size**
+
 - **First Load**: <150KB JS inicial
 - **Total Bundle**: <500KB (con lazy loading)
 - **Images**: WebP/AVIF con fallbacks
 
 ### **Mobile Performance**
+
 - **3G Connection**: Funcional en conexiones lentas
 - **Touch Response**: <100ms
 - **Scroll Performance**: 60fps
@@ -188,7 +195,7 @@ useEffect(() => {
   if ('connection' in navigator) {
     const connection = (navigator as any).connection;
     setIsSlowConnection(
-      connection.effectiveType === 'slow-2g' || 
+      connection.effectiveType === 'slow-2g' ||
       connection.effectiveType === '2g'
     );
   }
@@ -218,7 +225,7 @@ pnpm dlx @next/bundle-analyzer
 
 ```typescript
 // ✅ OBLIGATORIO: Monitoreo de métricas
-import { getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals';
+import { getCLS, getFID, getFCP, getLCP, getTTFB } from "web-vitals";
 
 // En _app.tsx o layout.tsx
 useEffect(() => {
@@ -293,8 +300,3 @@ src/
 ---
 
 **Nota**: Este prompt es **obligatorio** para todos los desarrollos de la landing page WebSnack. La performance es crítica para la conversión y experiencia de usuario. Siempre verificar métricas antes de hacer deploy a producción.
-
-
-
-
-

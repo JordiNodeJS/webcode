@@ -49,7 +49,7 @@ interface HeroSectionProps {
 export default function HeroSection({
   title,
   subtitle,
-  ctaText,
+  ctaText
 }: HeroSectionProps) {
   return (
     <section className="container mx-auto px-4 py-12">

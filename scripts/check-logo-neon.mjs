@@ -22,7 +22,7 @@ import fs from "fs";
     const style = window.getComputedStyle(el);
     return {
       color: style.color,
-      textShadow: style.textShadow,
+      textShadow: style.textShadow
     };
   }, heading);
 
@@ -40,14 +40,14 @@ import fs from "fs";
           x: Math.max(0, box.x),
           y: Math.max(0, box.y),
           width: Math.min(box.width, 1200),
-          height: Math.min(box.height, 1200),
-        },
+          height: Math.min(box.height, 1200)
+        }
       });
       console.log("Saved screenshot to", screenshotPath);
     } else {
       await page.screenshot({
         path: "scripts/footer-logo-neon-full.png",
-        fullPage: true,
+        fullPage: true
       });
       console.log(
         "Saved full-page screenshot to scripts/footer-logo-neon-full.png"
@@ -56,7 +56,7 @@ import fs from "fs";
   } else {
     await page.screenshot({
       path: "scripts/footer-logo-neon-fallback.png",
-      fullPage: true,
+      fullPage: true
     });
     console.log(
       "Saved fallback screenshot to scripts/footer-logo-neon-fallback.png"

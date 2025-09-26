@@ -9,11 +9,13 @@
 ## **🎯 Estado General**
 
 ### **Fase Actual**
+
 - **Estado**: ✅ Sistema de prompts migrado a Qoder
 - **Progreso**: 100% migración completada
 - **Próximo hito**: Uso del sistema con Qoder
 
 ### **Resumen Ejecutivo**
+
 El sistema completo de prompts de GitHub Copilot ha sido exitosamente migrado a Qoder, manteniendo toda la funcionalidad y organización original, pero adaptado para las capacidades específicas de Qoder.
 
 ---
@@ -22,14 +24,14 @@ El sistema completo de prompts de GitHub Copilot ha sido exitosamente migrado a 
 
 ### **Elementos Migrados**
 
-| Componente | Estado | Ubicación Original | Ubicación Qoder |
-|------------|--------|-------------------|-----------------|
-| **Archivo principal** | ✅ Migrado | `copilot-instructions.md` | `llms.txt` |
-| **Sistema de prompts** | ✅ Migrado | `.github/prompts/` | `.qoder/prompts/` |
-| **Instrucciones técnicas** | ✅ Migrado | `.github/instructions/` | `.qoder/instructions/` |
-| **Contexto dinámico** | ✅ Migrado | `.github/context/` | `.qoder/context/` |
-| **Gestión de proyecto** | ✅ Migrado | `.github/project/` | `.qoder/project/` |
-| **Documentación** | ✅ Creada | N/A | `.qoder/docs/` |
+| Componente                 | Estado     | Ubicación Original        | Ubicación Qoder        |
+| -------------------------- | ---------- | ------------------------- | ---------------------- |
+| **Archivo principal**      | ✅ Migrado | `copilot-instructions.md` | `llms.txt`             |
+| **Sistema de prompts**     | ✅ Migrado | `.github/prompts/`        | `.qoder/prompts/`      |
+| **Instrucciones técnicas** | ✅ Migrado | `.github/instructions/`   | `.qoder/instructions/` |
+| **Contexto dinámico**      | ✅ Migrado | `.github/context/`        | `.qoder/context/`      |
+| **Gestión de proyecto**    | ✅ Migrado | `.github/project/`        | `.qoder/project/`      |
+| **Documentación**          | ✅ Creada  | N/A                       | `.qoder/docs/`         |
 
 ### **Validación de Migración**
 
@@ -97,13 +99,13 @@ El sistema completo de prompts de GitHub Copilot ha sido exitosamente migrado a 
 
 ### **Vs GitHub Copilot**
 
-| Aspecto | GitHub Copilot | Qoder |
-|---------|---------------|-------|
-| Archivo principal | copilot-instructions.md | llms.txt |
-| Activación | Automática | Manual por referencia |
-| Personalización | Limitada | Completa |
-| Estructura | .github/ | .qoder/ |
-| Mantenimiento | Automático parcial | Manual completo |
+| Aspecto           | GitHub Copilot          | Qoder                 |
+| ----------------- | ----------------------- | --------------------- |
+| Archivo principal | copilot-instructions.md | llms.txt              |
+| Activación        | Automática              | Manual por referencia |
+| Personalización   | Limitada                | Completa              |
+| Estructura        | .github/                | .qoder/               |
+| Mantenimiento     | Automático parcial      | Manual completo       |
 
 ---
 

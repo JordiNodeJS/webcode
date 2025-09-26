@@ -1,6 +1,6 @@
 export const metadata = {
   title: "E-commerce - WEBCODE",
-  description: "Servicios de tienda online ofrecidos por WEBCODE.",
+  description: "Servicios de tienda online ofrecidos por WEBCODE."
 };
 
 export default function EcommercePage() {

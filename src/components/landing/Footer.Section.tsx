@@ -60,7 +60,7 @@ export function FooterSection() {
               className="inline-flex items-center space-x-2 px-3 py-2 rounded-full text-sm"
               style={{
                 backgroundColor: "oklch(var(--secondary) / 0.1)",
-                color: "oklch(var(--secondary))",
+                color: "oklch(var(--secondary))"
               }}
             >
               <svg
@@ -94,7 +94,7 @@ export function FooterSection() {
                 href="mailto:info@webcode.es"
                 className="block transition-colors duration-200"
                 style={{
-                  color: "oklch(var(--muted-foreground))",
+                  color: "oklch(var(--muted-foreground))"
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = "oklch(var(--secondary))";
@@ -127,7 +127,7 @@ export function FooterSection() {
                 rel="noopener noreferrer"
                 className="block transition-colors duration-200"
                 style={{
-                  color: "oklch(var(--muted-foreground))",
+                  color: "oklch(var(--muted-foreground))"
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = "oklch(var(--secondary))";
@@ -150,7 +150,7 @@ export function FooterSection() {
                 className="w-10 h-10 rounded-full transition-all duration-200 flex items-center justify-center group"
                 style={{
                   backgroundColor: "oklch(var(--muted))",
-                  color: "oklch(var(--muted-foreground))",
+                  color: "oklch(var(--muted-foreground))"
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor =
@@ -183,7 +183,7 @@ export function FooterSection() {
                 className="w-10 h-10 rounded-full transition-all duration-200 flex items-center justify-center group"
                 style={{
                   backgroundColor: "oklch(var(--muted))",
-                  color: "oklch(var(--muted-foreground))",
+                  color: "oklch(var(--muted-foreground))"
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor =
@@ -220,7 +220,7 @@ export function FooterSection() {
                 className="w-10 h-10 rounded-full transition-all duration-200 flex items-center justify-center group"
                 style={{
                   backgroundColor: "oklch(var(--muted))",
-                  color: "oklch(var(--muted-foreground))",
+                  color: "oklch(var(--muted-foreground))"
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor =
@@ -326,7 +326,7 @@ export function FooterSection() {
             oklch(var(--primary)), 
             oklch(var(--secondary)), 
             oklch(var(--primary))
-          )`,
+          )`
         }}
       />
     </footer>

@@ -1,9 +1,11 @@
 # T007 - Corrección de la Aplicación y Visibilidad de ValuePropsGrid con Scroll
 
 ## 🎯 Objetivo
+
 Corregir los problemas en la aplicación WebSnack y modificar el componente [Hero.ValuePropsGrid.tsx](file://g:\DEV\WEBSNACK-PROJECT\websnack\src\components\landing\hero\Hero.ValuePropsGrid.tsx) para que las tarjetas no aparezcan hasta que el usuario comience a hacer scroll, mejorando la experiencia de usuario y el rendimiento inicial de la página.
 
 ## 📋 Problemas Identificados
+
 1. **Componente Hero.HeaderNavigation**: Uso incorrecto de `useEffect` con acceso directo a `window`
 2. **Componente Hero.ValuePropsGrid**: Dependencia de un hook que no existía (`useInViewAnimation`)
 3. **Hooks faltantes**: No existían los hooks necesarios para manejar el scroll y la visibilidad
@@ -13,33 +15,39 @@ Corregir los problemas en la aplicación WebSnack y modificar el componente [Her
 ### 1. Creación de Hooks Personalizados
 
 #### useIsomorphicEffect
+
 - **Propósito**: Reemplazar `useLayoutEffect` en entornos donde no está disponible (SSR)
 - **Ubicación**: `src/hooks/use-isomorphic-effect.ts`
-- **Implementación**: 
+- **Implementación**:
   ```typescript
-  const useIsomorphicEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
+  const useIsomorphicEffect =
+    typeof window !== "undefined" ? useLayoutEffect : useEffect;
   ```
 
 #### useScrollPosition
+
 - **Propósito**: Obtener la posición actual del scroll de forma segura en ambos entornos
 - **Ubicación**: `src/hooks/use-scroll-position.ts`
-- **Implementación**: 
+- **Implementación**:
   - Utiliza `useIsomorphicEffect` para evitar errores de hidratación
   - Solo se suscribe a eventos de scroll en el cliente
   - Devuelve posición `{x: 0, y: 0}` en el servidor
 
 #### useScrollVisibility
+
 - **Propósito**: Manejar la visibilidad de elementos basada en el scroll
 - **Ubicación**: `src/hooks/use-scroll-visibility.ts`
-- **Implementación**: 
+- **Implementación**:
   - Utiliza `useIsomorphicEffect` para evitar errores de hidratación
   - Solo se suscribe a eventos de scroll en el cliente
   - Devuelve un booleano que indica si el elemento debe ser visible
 
 ### 2. Corrección de Hero.HeaderNavigation.tsx
+
 Se modificó el archivo [src/components/landing/hero/Hero.HeaderNavigation.tsx](file://g:\DEV\WEBSNACK-PROJECT\websnack\src\components\landing\hero\Hero.HeaderNavigation.tsx) para:
 
 1. **Eliminar el `useEffect` problemático**:
+
    ```typescript
    // Antes (problemático)
    useEffect(() => {
@@ -54,13 +62,15 @@ Se modificó el archivo [src/components/landing/hero/Hero.HeaderNavigation.tsx](
    ```
 
 ### 3. Actualización de Hero.ValuePropsGrid.tsx
+
 Se modificó el archivo [src/components/landing/hero/Hero.ValuePropsGrid.tsx](file://g:\DEV\WEBSNACK-PROJECT\websnack\src\components\landing\hero\Hero.ValuePropsGrid.tsx) para:
 
 1. **Eliminar la dependencia del hook que no existía**
 2. **Implementar el nuevo comportamiento de visibilidad**:
+
    ```typescript
    const isVisible = useScrollVisibility(100);
-   
+
    // Renderizado condicional
    if (!isVisible) {
      return (
@@ -131,6 +141,7 @@ Se modificó el archivo [src/components/landing/hero/Hero.ValuePropsGrid.tsx](fi
 Se han corregido correctamente los problemas en la aplicación WebSnack y se ha implementado el comportamiento solicitado para que las tarjetas de propuestas de valor no aparezcan hasta que el usuario comience a hacer scroll. Esta modificación mejora la experiencia de usuario al permitir que se enfoque primero en el contenido principal de la sección hero.
 
 Las implementaciones:
+
 - Eliminan los errores de hidratación
 - Mantienen todas las funcionalidades existentes
 - No introducen errores de compilación

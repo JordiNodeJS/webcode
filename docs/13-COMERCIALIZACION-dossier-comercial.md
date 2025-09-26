@@ -29,32 +29,19 @@ Este paquete está diseñado para que cualquier comercio local de Barcelona pued
 Este servicio "llave en mano" incluye todo lo que necesitas para tener una presencia digital sólida y efectiva:
 
 - **Diseño web personalizado**
-    
-    Creamos una web adaptada a tu identidad visual, colores, logotipo y estilo de comunicación. No es una plantilla genérica: es tu escaparate digital.
-    
+  Creamos una web adaptada a tu identidad visual, colores, logotipo y estilo de comunicación. No es una plantilla genérica: es tu escaparate digital.
 - **Tienda online o catálogo de servicios**
-    
-    Puedes vender productos directamente desde tu web o mostrar tus servicios con opción de reserva. Sistema escalable y profesional.
-    
+  Puedes vender productos directamente desde tu web o mostrar tus servicios con opción de reserva. Sistema escalable y profesional.
 - **Dominio gratis durante 1 año**
-    
-    Tu nombre comercial en internet, por ejemplo: www.tutiendaenbarcelona.com
-    
+  Tu nombre comercial en internet, por ejemplo: www.tutiendaenbarcelona.com
 - **Optimización SEO local**
-    
-    Para que tu negocio aparezca en búsquedas relevantes en tu barrio, distrito o ciudad. Incluye configuración de Google My Business.
-    
+  Para que tu negocio aparezca en búsquedas relevantes en tu barrio, distrito o ciudad. Incluye configuración de Google My Business.
 - **Integración con redes sociales**
-    
-    Conectamos tu web con Instagram, Facebook, WhatsApp y otras plataformas para que tus clientes te encuentren fácilmente.
-    
+  Conectamos tu web con Instagram, Facebook, WhatsApp y otras plataformas para que tus clientes te encuentren fácilmente.
 - **Formación básica**
-    
-    Te enseñamos a gestionar tu web: subir productos, cambiar precios, publicar novedades. Tú tienes el control.
-    
+  Te enseñamos a gestionar tu web: subir productos, cambiar precios, publicar novedades. Tú tienes el control.
 - **Soporte técnico incluido**
-    
-    Durante los primeros 30 días, tendrás soporte directo por WhatsApp o email para cualquier duda o ajuste.
+  Durante los primeros 30 días, tendrás soporte directo por WhatsApp o email para cualquier duda o ajuste.
 
 ---
 
@@ -80,6 +67,7 @@ Utilizamos **Wix Studio**, plataforma especializada en comercio electrónico:
 - **Analíticas**: Dashboard completo ventas y comportamiento cliente
 
 **Hosting profesional incluido en ambos casos:**
+
 - Disponibilidad 99.9% garantizada
 - CDN global para velocidad máxima
 - Certificado SSL automático
@@ -91,16 +79,17 @@ Todo está pensado para que no tengas que preocuparte por aspectos técnicos. T�
 
 ### 4. Precio del paquete
 
-| Concepto | Precio |
-| --- | --- |
-| Diseño y desarrollo profesional | **890 €** (pago único) |
-| Hosting + dominio (1 año) | **180 €** |
-| **Total primer año** | **1.070 €** |
-| *Mantenimiento mensual opcional* | +50€/mes |
+| Concepto                         | Precio                 |
+| -------------------------------- | ---------------------- |
+| Diseño y desarrollo profesional  | **890 €** (pago único) |
+| Hosting + dominio (1 año)        | **180 €**              |
+| **Total primer año**             | **1.070 €**            |
+| _Mantenimiento mensual opcional_ | +50€/mes               |
 
-💡 *Precio cerrado, sin sorpresas. Incluye todo lo necesario para empezar a vender desde la primera semana.*
+💡 _Precio cerrado, sin sorpresas. Incluye todo lo necesario para empezar a vender desde la primera semana._
 
 **💳 Opciones de pago:**
+
 - Pago único: 5% descuento (1.017€)
 - 50% inicio + 50% entrega
 - 3 pagos mensuales sin intereses
@@ -112,30 +101,24 @@ Todo está pensado para que no tengas que preocuparte por aspectos técnicos. T�
 #### **E-commerce con Wix Studio:**
 
 - **Tienda de ropa en El Born**
-    
-    Catálogo completo 200+ productos, pagos seguros, inventario automático, conexión redes sociales. Expansión clientes internacionales en 6 meses.
-    
+  Catálogo completo 200+ productos, pagos seguros, inventario automático, conexión redes sociales. Expansión clientes internacionales en 6 meses.
 - **Panadería en Gràcia**
-    
-    Pedidos online con recogida tienda, catálogo productos diario, integración Instagram. Aumento 35% ventas digitales.
+
+  Pedidos online con recogida tienda, catálogo productos diario, integración Instagram. Aumento 35% ventas digitales.
 
 - **Farmacia en Sants**
-    
-    Venta productos parafarmacia, reserva medicamentos, entrega domicilio. Sistema completo gestión stock.
+  Venta productos parafarmacia, reserva medicamentos, entrega domicilio. Sistema completo gestión stock.
 
 #### **Corporativo con Next.js + WAS:**
 
 - **Startup fintech (22@)**
-    
-    Landing validation, dashboard usuarios, integraciones APIs bancarias, animaciones WAS exclusivas. Captación €500K inversión.
-    
+  Landing validation, dashboard usuarios, integraciones APIs bancarias, animaciones WAS exclusivas. Captación €500K inversión.
 - **Estudio arquitectura (Poblenou)**
-    
-    Portfolio interactivo proyectos, animaciones 3D, formularios contacto avanzados, blog técnico. +150% leads calificados.
+
+  Portfolio interactivo proyectos, animaciones 3D, formularios contacto avanzados, blog técnico. +150% leads calificados.
 
 - **Clínica dental (Eixample)**
-    
-    Sistema citas online, fichas pacientes, compliance RGPD médico, integración software clínico. Digitalización completa.
+  Sistema citas online, fichas pacientes, compliance RGPD médico, integración software clínico. Digitalización completa.
 
 ---
 
@@ -149,8 +132,9 @@ Todo está pensado para que no tengas que preocuparte por aspectos técnicos. T�
 - ✅ **Solución apropiada**: Elegimos la tecnología perfecta para cada proyecto
 
 **Diferencia WebSnack:**
+
 - **E-commerce**: Setup rápido Wix Studio para venta inmediata
-- **Corporativo**: Stack más avanzado del mercado + Sistema WAS exclusivo  
+- **Corporativo**: Stack más avanzado del mercado + Sistema WAS exclusivo
 - **Enfoque híbrido**: Mejor tecnología según necesidades reales cliente
 - **Expertise local**: Comprensión profunda mercado barcelonés y regulaciones
 
@@ -159,22 +143,28 @@ Todo está pensado para que no tengas que preocuparte por aspectos técnicos. T�
 ### 7. Proceso de trabajo
 
 #### **E-commerce (Wix Studio) - 7 días:**
+
 **Semana 1:**
+
 - Día 1-2: Reunión inicial + configuración tienda
 - Día 3-4: Diseño personalizado + carga productos
 - Día 5-6: Configuración pagos + pruebas
 - Día 7: Lanzamiento + formación gestión
 
 #### **Corporativo (Next.js + WAS) - 14 días:**
+
 **Semana 1:**
+
 - Día 1-3: Análisis + diseño UX/UI
 - Día 4-7: Desarrollo + integración WAS
 
 **Semana 2:**
+
 - Día 8-11: Testing + optimizaciones
 - Día 12-14: Lanzamiento + SEO + formación
 
 #### **Seguimiento (ambos proyectos):**
+
 - 30 días soporte incluido
 - Optimización continua SEO
 - Métricas y reporting mensual
@@ -204,6 +194,7 @@ Todo está pensado para que no tengas que preocuparte por aspectos técnicos. T�
 💼 **LinkedIn**: /company/websnack-barcelona
 
 **Horarios consulta:**
+
 - Lunes a Viernes: 9:00-18:00
 - Respuesta WhatsApp: <2h laborables
 - Reuniones presenciales: Barcelona + área metropolitana
@@ -223,4 +214,4 @@ Todo está pensado para que no tengas que preocuparte por aspectos técnicos. T�
 
 ---
 
-*¿Necesitas este material en catalán para presentaciones en asociaciones de comerciantes? ¿Quieres una versión visual para reuniones presenciales? Contactanos y te preparamos el formato que necesites.*
+_¿Necesitas este material en catalán para presentaciones en asociaciones de comerciantes? ¿Quieres una versión visual para reuniones presenciales? Contactanos y te preparamos el formato que necesites._
