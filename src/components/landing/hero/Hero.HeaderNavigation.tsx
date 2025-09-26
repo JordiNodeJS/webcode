@@ -1,6 +1,5 @@
 "use client";
 
-import { Menu } from "lucide-react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { Link } from "next-view-transitions";
@@ -14,6 +13,7 @@ import {
   SheetTrigger
 } from "@/components/ui/sheet";
 import useScrollPosition from "@/hooks/use-scroll-position";
+import { Menu } from "@/lib/icons";
 import { ThemeToggle } from "./Hero.ThemeToggle";
 
 interface NavigationItem {
