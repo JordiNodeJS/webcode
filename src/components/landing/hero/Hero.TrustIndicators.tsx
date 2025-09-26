@@ -1,5 +1,5 @@
-import { MapPin, Shield, Users } from "lucide-react";
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
+import { MapPin, Shield, Users } from "@/lib/icons";
 
 interface TrustIndicator {
   id: string;

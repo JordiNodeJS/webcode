@@ -1,8 +1,8 @@
 "use client";
 
-import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/use-theme";
+import { Moon, Sun } from "@/lib/icons";
 
 /**
  * Botón para cambiar entre tema oscuro y claro

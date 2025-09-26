@@ -1,6 +1,5 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
 import { CallToAction } from "@/components/landing/hero/Hero.CallToAction";
@@ -8,6 +7,7 @@ import { HeaderNavigation } from "@/components/landing/hero/Hero.HeaderNavigatio
 import { TrustIndicators } from "@/components/landing/hero/Hero.TrustIndicators";
 import { IdleOptimizedValuePropsGrid } from "@/components/landing/hero/Hero.ValuePropsGrid.Idle-Optimized";
 import { useReversibleScrollVisibility } from "@/hooks/use-reversible-scroll-visibility";
+import { ChevronDown } from "@/lib/icons";
 
 const HeroSection = () => {
   const [_isScrolled, setIsScrolled] = useState(false);
