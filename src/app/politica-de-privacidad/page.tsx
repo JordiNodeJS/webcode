@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Política de privacidad - WEBCODE',
-  description: 'Política de privacidad básica para WEBCODE'
+  title: "Política de privacidad - WEBCODE",
+  description: "Política de privacidad básica para WEBCODE"
 };
 
 export default function PrivacyPage() {
@@ -14,11 +14,17 @@ export default function PrivacyPage() {
       </p>
       <section className="prose max-w-none">
         <h2>Datos que recogemos</h2>
-        <p>Recogemos tu email para responder a consultas. No compartimos datos con terceros.</p>
+        <p>
+          Recogemos tu email para responder a consultas. No compartimos datos
+          con terceros.
+        </p>
         <h2>Finalidad</h2>
         <p>Responder a tu consulta y prestar el servicio solicitado.</p>
         <h2>Derechos</h2>
-        <p>Puedes ejercer tus derechos de acceso, rectificación o supresión contactando con info@webcode.es.</p>
+        <p>
+          Puedes ejercer tus derechos de acceso, rectificación o supresión
+          contactando con info@webcode.es.
+        </p>
       </section>
     </main>
   );

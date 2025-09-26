@@ -126,7 +126,10 @@ export function ContactForm() {
   // Estado de éxito
   if (formStatus === "success") {
     return (
-      <div data-testid="contact-form-success" className="text-center py-8 space-y-4">
+      <div
+        data-testid="contact-form-success"
+        className="text-center py-8 space-y-4"
+      >
         <CheckCircle className="w-16 h-16 text-primary mx-auto" />
         <h3 className="text-2xl font-semibold text-foreground">
           ¡Mensaje enviado!
@@ -173,13 +176,13 @@ export function ContactForm() {
                 <FormItem>
                   <FormLabel>Email *</FormLabel>
                   <FormControl>
-                      <Input
-                        type="email"
-                        placeholder="tu@email.com"
-                        data-testid="contact-form-email"
-                        {...field}
-                        disabled={formStatus === "submitting"}
-                      />
+                    <Input
+                      type="email"
+                      placeholder="tu@email.com"
+                      data-testid="contact-form-email"
+                      {...field}
+                      disabled={formStatus === "submitting"}
+                    />
                   </FormControl>
                   <FormDescription>
                     Solo utilizaremos tu email para responder a tu consulta
