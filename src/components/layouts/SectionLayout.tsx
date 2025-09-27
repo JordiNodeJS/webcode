@@ -6,13 +6,14 @@ interface SectionLayoutProps {
 
 export function SectionLayout({ children }: SectionLayoutProps) {
   return (
-    <div
+    <section
       style={{ paddingTop: "var(--header-height)" }}
       className="min-h-screen"
+      aria-label="Main content"
     >
-      <div className="container mx-auto px-4 py-8">{children}</div>
-    </div>
+      <div className="container mx-auto px-4 pb-8">{children}</div>
+    </section>
   );
 }
 
-export default SectionLayout;
+// Note: default export removed to follow project convention (named exports for components)
