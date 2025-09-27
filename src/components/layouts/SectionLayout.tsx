@@ -19,4 +19,3 @@ export function SectionLayout({ children }: SectionLayoutProps) {
 
 // Keep a default export for compatibility with existing imports in the app
 export default SectionLayout;
-
