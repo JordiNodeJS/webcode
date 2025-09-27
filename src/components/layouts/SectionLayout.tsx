@@ -6,14 +6,13 @@ interface SectionLayoutProps {
 
 export function SectionLayout({ children }: SectionLayoutProps) {
   return (
-    <div
+    <section
       style={{ paddingTop: "var(--header-height)" }}
       className="min-h-screen"
-      role="region"
       aria-label="Main content"
     >
       <div className="container mx-auto px-4 pb-8">{children}</div>
-    </div>
+    </section>
   );
 }
 
