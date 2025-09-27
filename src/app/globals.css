@@ -492,7 +492,7 @@
 
 /* Configuración de scroll suave y offsets para navegación */
 :root {
-  --header-height: 80px;
+  --header-height: 40px;
 }
 
 html {
