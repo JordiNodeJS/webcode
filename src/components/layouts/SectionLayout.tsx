@@ -9,10 +9,14 @@ export function SectionLayout({ children }: SectionLayoutProps) {
     <div
       style={{ paddingTop: "var(--header-height)" }}
       className="min-h-screen"
+      role="region"
+      aria-label="Main content"
     >
-      <div className="container mx-auto px-4 py-8">{children}</div>
+      <div className="container mx-auto px-4 pb-8">{children}</div>
     </div>
   );
 }
 
+// Keep a default export for compatibility with existing imports in the app
 export default SectionLayout;
+
