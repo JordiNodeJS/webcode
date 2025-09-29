@@ -1,4 +1,4 @@
-# PLAYWRIGHT MCP - Verificación Visual Automatizada
+# 🎭 PLAYWRIGHT MCP - Verificación Visual Automatizada
 
 ## **CONTEXTO DEL PROYECTO WEBCODE**
 
@@ -39,10 +39,11 @@ Proporcionar una guía estructurada y precisa para validar visualmente funcional
 
 ### ❌ **PROHIBIDO**
 
-- No ejecutar comandos de terminal o externos
-- No asumir estados fuera de las herramientas MCP
-- No usar selectores CSS frágiles o dependientes del estilo
-- No hacer suposiciones sobre autenticación o datos
+- ❌ No ejecutar comandos de terminal o externos
+- ❌ No asumir estados fuera de las herramientas MCP
+- ❌ No usar selectores CSS frágiles o dependientes del estilo
+- ❌ No hacer suposiciones sobre autenticación o datos
+- ❌ No devolver informes en formato JSON (usar Markdown)
 
 ### 🔍 **VALIDACIÓN DEL SERVIDOR**
 
@@ -113,19 +114,21 @@ Por cada paso del escenario:
 
 **Screenshots obligatorios**:
 
-- 📷 **Estado inicial** de la página
-- 📷 **Estado final** después de interacciones
-- 📷 **Estados de error** si ocurren fallos
+- 📷 **Estado inicial** de la página - Antes de cualquier interacción
+- 📷 **Estados intermedios** en pasos críticos (formularios, navegación)
+- 📷 **Estado final** después de completar el escenario
+- 📷 **Estados de error** si ocurren fallos inesperados
 
-**Nomenclatura de archivos**:
+**Nomenclatura simplificada de archivos**:
 
 ```
-{escenario}-{paso}-{timestamp}.png
+{escenario}-{momento}-{timestamp}.png
 
 Ejemplos:
-navegacion-header-servicios-20250929-143052.png
-formulario-contacto-validation-20250929-143125.png
-responsive-mobile-view-20250929-143200.png
+navegacion-servicios-inicial-20250929-143052.png
+navegacion-servicios-final-20250929-143055.png
+formulario-contacto-error-20250929-143125.png
+responsive-mobile-20250929-143200.png
 ```
 
 ### **FASE 5: VALIDACIÓN Y ANÁLISIS** 🔍
@@ -142,10 +145,11 @@ window.getComputedStyle(el).display; // Visibilidad elementos
 
 **Criterios de éxito**:
 
-- ✅ **Funcional**: La acción se completa sin errores
-- ✅ **Visual**: El resultado es el esperado en screenshot
-- ✅ **Accesible**: Elementos focusables y con texto alt
-- ✅ **Responsive**: Funciona en diferentes viewports
+- ✅ **Funcional**: La acción se completa sin errores de ejecución
+- ✅ **Visual**: Screenshots muestran el comportamiento esperado
+- ✅ **DOM**: Validaciones programáticas retornan valores correctos
+- ✅ **Performance**: Tiempos de respuesta dentro de límites aceptables
+- ✅ **Accesible**: Elementos interactivos son localizables y funcionales
 
 ## **PLANTILLAS DE ESCENARIOS WEBCODE**
 
@@ -267,81 +271,122 @@ window.getComputedStyle(el).display; // Visibilidad elementos
 
 ## **FORMATO DE INFORME ESTANDARIZADO**
 
-### **Estructura JSON Obligatoria**
+### **Estructura Markdown Obligatoria**
 
-```json
-{
-  "timestamp": "2025-09-29T14:30:52Z",
-  "proyecto": "WEBCODE",
-  "version": "1.0.0",
-  "entorno": "http://localhost:3000",
+El informe final debe seguir esta estructura en Markdown:
 
-  "resumen": {
-    "estado_general": "OK | FAIL | WARNING",
-    "pasos_exitosos": 4,
-    "pasos_fallidos": 0,
-    "tiempo_ejecucion": "2.3s",
-    "descripcion": "Breve párrafo con estado general"
-  },
+```markdown
+# 🧪 Informe de Verificación Visual - WEBCODE
 
-  "escenario": {
-    "nombre": "string descriptivo",
-    "objetivo": "qué se validó",
-    "url_inicial": "http://localhost:3000/ruta",
-    "viewport": { "width": 1920, "height": 1080 }
-  },
+**📅 Fecha**: 2025-09-29 | **⏰ Hora**: 14:30:52  
+**🌐 Entorno**: http://localhost:3000  
+**📱 Viewport**: 1920x1080
 
-  "pasos_ejecutados": [
-    {
-      "orden": 1,
-      "timestamp": "14:30:53",
-      "accion_mcp": "mcp_playwright_browser_navigate",
-      "parametros": { "url": "http://localhost:3000/" },
-      "criterio": "Página carga correctamente",
-      "resultado": "OK | FAIL",
-      "tiempo_ms": 1250,
-      "error": "mensaje si FAIL"
-    }
-  ],
+---
 
-  "evidencias": [
-    {
-      "tipo": "screenshot",
-      "archivo": "navegacion-servicios-20250929-143052.png",
-      "timestamp": "14:30:52",
-      "descripcion": "Estado final después de navegación",
-      "viewport": "1920x1080"
-    }
-  ],
+## 📋 Resumen Ejecutivo
 
-  "validaciones_dom": [
-    {
-      "descripcion": "Verificar título de página",
-      "expresion": "document.title",
-      "esperado": "Servicios - WEBCODE",
-      "obtenido": "Servicios - WEBCODE",
-      "status": "OK | FAIL"
-    }
-  ],
+**🎯 Estado General**: OK | FAIL | WARNING  
+**✅ Pasos Exitosos**: 8/8  
+**❌ Pasos Fallidos**: 0/8  
+**⏱️ Tiempo Total**: 3.2s
 
-  "problemas": [
-    "Lista de problemas encontrados (si los hay)",
-    "Errores de carga o funcionalidad"
-  ],
+### Descripción
 
-  "recomendaciones": [
-    "Lista de mejoras sugeridas",
-    "Optimizaciones de rendimiento",
-    "Correcciones de accesibilidad"
-  ],
+Navegación a página de servicios exitosa. Todos los elementos se cargan correctamente y la funcionalidad responde según esperado.
 
-  "metricas": {
-    "tiempo_carga_inicial": "1.2s",
-    "elementos_encontrados": 15,
-    "errores_consola": 0,
-    "warnings_consola": 2
-  }
-}
+---
+
+## 🎬 Escenario Ejecutado
+
+**📝 Nombre**: Validar navegación a página de servicios  
+**🎯 Objetivo**: Verificar que la navegación desde home a servicios funciona  
+**🚀 URL Inicial**: http://localhost:3000/
+
+---
+
+## 📊 Pasos Ejecutados
+
+### ✅ Paso 1: Preparación (14:30:53)
+
+- **Acción**: `mcp_playwright_browser_tabs`
+- **Parámetros**: `{ action: "new" }`
+- **Criterio**: Nueva pestaña activa disponible
+- **Resultado**: OK ✅
+- **Tiempo**: 245ms
+
+### ✅ Paso 2: Navegación Inicial (14:30:53)
+
+- **Acción**: `mcp_playwright_browser_navigate`
+- **Parámetros**: `{ url: "http://localhost:3000/" }`
+- **Criterio**: Página carga correctamente
+- **Resultado**: OK ✅
+- **Tiempo**: 1,250ms
+
+[... continuar con todos los pasos ...]
+
+---
+
+## 📸 Evidencias Capturadas
+
+### Screenshot 1: Estado Inicial
+
+- **📁 Archivo**: `inicio-estado-inicial-20250929-143052.png`
+- **⏰ Timestamp**: 14:30:52
+- **📝 Descripción**: Estado inicial de la página principal
+- **📱 Viewport**: 1920x1080
+
+### Screenshot 2: Estado Final
+
+- **📁 Archivo**: `servicios-estado-final-20250929-143055.png`
+- **⏰ Timestamp**: 14:30:55
+- **📝 Descripción**: Página de servicios cargada correctamente
+- **📱 Viewport**: 1920x1080
+
+---
+
+## 🔍 Validaciones DOM
+
+### ✅ Título de Página
+
+- **🎯 Expresión**: `document.title`
+- **✅ Esperado**: "Servicios - WEBCODE"
+- **📝 Obtenido**: "Servicios - WEBCODE"
+- **📊 Estado**: OK
+
+### ✅ Heading Principal
+
+- **🎯 Expresión**: `document.querySelector('h1')?.textContent`
+- **✅ Esperado**: "Servicios"
+- **📝 Obtenido**: "Servicios"
+- **📊 Estado**: OK
+
+---
+
+## ⚠️ Problemas Identificados
+
+- Sin problemas detectados ✅
+
+---
+
+## 💡 Recomendaciones
+
+1. **✅ Navegación funciona correctamente** - Sin acciones requeridas
+2. **✅ Tiempos de carga aceptables** - Performance dentro de límites
+3. **💡 Considerar loading states** - Para mejorar UX durante navegación
+
+---
+
+## 📈 Métricas de Performance
+
+- **⚡ Tiempo de Carga Inicial**: 1.2s
+- **🔍 Elementos Encontrados**: 15
+- **❌ Errores de Consola**: 0
+- **⚠️ Warnings de Consola**: 2
+
+---
+
+**✨ Informe generado automáticamente por Playwright MCP - WEBCODE v3.0**
 ```
 
 ## **CRITERIOS DE ÉXITO Y FALLOS**
@@ -532,78 +577,166 @@ await mcp_playwright_browser_take_screenshot({
 // ↳ Criterio: Screenshot con página de servicios completa
 
 // 10. GENERAR INFORME
-// Compilar toda la información en formato JSON estándar
+// Compilar toda la información en formato Markdown estándar
 ```
 
 ### 📊 **Informe Final Esperado**
 
-```json
-{
-  "timestamp": "2025-09-29T14:30:52Z",
-  "proyecto": "WEBCODE",
-  "entorno": "http://localhost:3000",
-  "resumen": {
-    "estado_general": "OK",
-    "pasos_exitosos": 8,
-    "pasos_fallidos": 0,
-    "tiempo_ejecucion": "3.2s",
-    "descripcion": "Navegación a página de servicios exitosa. Todos los elementos se cargan correctamente y la funcionalidad responde según esperado."
-  },
-  "escenario": {
-    "nombre": "Validar navegación a página de servicios",
-    "objetivo": "Verificar que la navegación desde home a servicios funciona",
-    "url_inicial": "http://localhost:3000/"
-  },
-  "pasos_ejecutados": [...], // Todos los pasos detallados
-  "evidencias": [
-    {
-      "tipo": "screenshot",
-      "archivo": "inicio-estado-inicial-20250929-143052.png",
-      "descripcion": "Estado inicial de la página principal"
-    },
-    {
-      "tipo": "screenshot",
-      "archivo": "servicios-estado-final-20250929-143055.png",
-      "descripcion": "Página de servicios cargada correctamente"
-    }
-  ],
-  "validaciones_dom": [
-    {
-      "descripcion": "Título de página de servicios",
-      "expresion": "document.querySelector('h1')?.textContent",
-      "esperado": "Servicios",
-      "obtenido": "Servicios",
-      "status": "OK"
-    }
-  ],
-  "recomendaciones": [
-    "✅ Navegación funciona correctamente",
-    "✅ Tiempos de carga aceptables",
-    "💡 Considerar añadir loading states para mejor UX"
-  ]
-}
+```markdown
+# 🧪 Informe de Verificación Visual - WEBCODE
+
+**📅 Fecha**: 2025-09-29 | **⏰ Hora**: 14:30:52  
+**🌐 Entorno**: http://localhost:3000  
+**📱 Viewport**: 1920x1080
+
+---
+
+## 📋 Resumen Ejecutivo
+
+**🎯 Estado General**: OK ✅  
+**✅ Pasos Exitosos**: 8/8  
+**❌ Pasos Fallidos**: 0/8  
+**⏱️ Tiempo Total**: 3.2s
+
+### Descripción
+
+Navegación a página de servicios exitosa. Todos los elementos se cargan correctamente y la funcionalidad responde según esperado.
+
+---
+
+## 🎬 Escenario Ejecutado
+
+**📝 Nombre**: Validar navegación a página de servicios  
+**🎯 Objetivo**: Verificar que la navegación desde home a servicios funciona  
+**🚀 URL Inicial**: http://localhost:3000/
+
+---
+
+## 📊 Pasos Ejecutados
+
+### ✅ Paso 1: Preparación (14:30:53)
+
+- **Acción**: `mcp_playwright_browser_tabs` → Nueva pestaña
+- **Resultado**: OK ✅ (245ms)
+
+### ✅ Paso 2: Navegación Inicial (14:30:53)
+
+- **Acción**: `mcp_playwright_browser_navigate` → http://localhost:3000/
+- **Resultado**: OK ✅ (1,250ms)
+
+### ✅ Paso 3: Validación Header (14:30:54)
+
+- **Acción**: `mcp_playwright_browser_wait_for` → [data-testid='header-nav']
+- **Resultado**: OK ✅ (180ms)
+
+### ✅ Paso 4: Screenshot Inicial (14:30:54)
+
+- **Acción**: `mcp_playwright_browser_take_screenshot` → inicio-estado-inicial.png
+- **Resultado**: OK ✅ (320ms)
+
+### ✅ Paso 5: Click Servicios (14:30:54)
+
+- **Acción**: `mcp_playwright_browser_click` → a:has-text('Servicios')
+- **Resultado**: OK ✅ (95ms)
+
+### ✅ Paso 6: Esperar Carga (14:30:55)
+
+- **Acción**: `mcp_playwright_browser_wait_for` → h1:has-text('Servicios')
+- **Resultado**: OK ✅ (890ms)
+
+### ✅ Paso 7: Validación DOM (14:30:55)
+
+- **Acción**: `mcp_playwright_browser_evaluate` → document.querySelector('h1')?.textContent
+- **Resultado**: OK ✅ (45ms) → "Servicios"
+
+### ✅ Paso 8: Screenshot Final (14:30:55)
+
+- **Acción**: `mcp_playwright_browser_take_screenshot` → servicios-estado-final.png
+- **Resultado**: OK ✅ (280ms)
+
+---
+
+## 📸 Evidencias Capturadas
+
+### Screenshot 1: Estado Inicial ✅
+
+- **📁 Archivo**: `inicio-estado-inicial-20250929-143052.png`
+- **📝 Descripción**: Estado inicial de la página principal
+
+### Screenshot 2: Estado Final ✅
+
+- **📁 Archivo**: `servicios-estado-final-20250929-143055.png`
+- **📝 Descripción**: Página de servicios cargada correctamente
+
+---
+
+## 🔍 Validaciones DOM
+
+### ✅ Título de Página de Servicios
+
+- **🎯 Expresión**: `document.querySelector('h1')?.textContent`
+- **✅ Esperado**: "Servicios"
+- **📝 Obtenido**: "Servicios"
+- **📊 Estado**: OK
+
+---
+
+## 💡 Recomendaciones
+
+1. **✅ Navegación funciona correctamente** - Sin acciones requeridas
+2. **✅ Tiempos de carga aceptables** - Performance dentro de límites
+3. **💡 Considerar loading states** - Para mejorar UX durante navegación
+
+---
+
+**✨ Verificación completada exitosamente**
 ```
 
 ## **INSTRUCCIONES FINALES**
 
 ### 📋 **AL COMPLETAR LA EJECUCIÓN**
 
-1. **Retornar únicamente** el objeto JSON del informe (formato especificado)
-2. **Añadir 3 recomendaciones** prioritarias en texto plano después del JSON
-3. **Usar nombres exactos** de las claves del template
-4. **Incluir timestamps** reales en formato ISO 8601
-5. **Documentar cualquier desviación** del flujo esperado
+1. **Generar informe en Markdown** siguiendo la estructura especificada
+2. **Usar emojis consistentes** para mejor legibilidad visual
+3. **Incluir timestamps reales** en formato legible (YYYY-MM-DD HH:MM:SS)
+4. **Documentar todos los screenshots** capturados con nombres descriptivos
+5. **Proporcionar 3 recomendaciones** concretas y accionables
+6. **Resaltar cualquier problema** encontrado con sección específica
 
 ### 🎯 **CRITERIO DE FINALIZACIÓN**
 
 El test se considera **COMPLETADO** cuando:
 
-- ✅ Informe JSON generado con estructura completa
-- ✅ Al menos 2 screenshots capturados
-- ✅ Mínimo 1 validación DOM ejecutada
-- ✅ Todos los pasos tienen resultado OK/FAIL
-- ✅ Recomendaciones incluidas
+- ✅ **Informe Markdown** generado con estructura completa y emojis
+- ✅ **Mínimo 2 screenshots** capturados y documentados
+- ✅ **Al menos 1 validación DOM** ejecutada y reportada
+- ✅ **Todos los pasos** tienen resultado OK/FAIL claramente marcado
+- ✅ **Sección de recomendaciones** incluida con puntos accionables
+- ✅ **Métricas de performance** básicas reportadas
+
+### 🚀 **MEJORAS DEL FORMATO MARKDOWN**
+
+**Ventajas del nuevo formato**:
+
+- 📖 **Más legible** - Estructura visual clara con emojis y secciones
+- 🔍 **Fácil navegación** - Headers jerárquicos y tabla de contenidos implícita
+- 📊 **Mejor organización** - Información agrupada lógicamente por categorías
+- 🎯 **Accionable** - Recomendaciones concretas y próximos pasos claros
+- 📱 **Compatible** - Se renderiza perfectamente en GitHub, VS Code y otros viewers
+- 🔗 **Enlazable** - Secciones pueden referenciarse directamente
+- 📋 **Copiable** - Fácil de copiar/pegar secciones específicas
+
+### 💡 **CONSEJOS PARA EL AGENTE**
+
+**Al generar el informe**:
+
+1. 🎨 **Usa emojis consistentemente** - Cada tipo de acción/resultado tiene su emoji
+2. ⏰ **Incluye tiempos reales** - No uses placeholders como {timestamp}
+3. 📝 **Se específico en descripciones** - Evita términos genéricos
+4. 🎯 **Marca claramente OK/FAIL** - Usa ✅❌ para resultados inmediatos
+5. 📸 **Documenta todos los screenshots** - Con nombres descriptivos reales
+6. 💭 **Añade contexto** - Explica qué significa cada validación DOM
 
 ---
 
-**Fin de instrucciones PLAYWRIGHT MCP - Versión 2.0 WEBCODE**
+**Fin de instrucciones PLAYWRIGHT MCP - Versión 3.0 WEBCODE**
