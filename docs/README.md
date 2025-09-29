@@ -203,10 +203,11 @@ WEBCODE es una plataforma integral de desarrollo web que ofrece soluciones digit
 ### 👨‍💻 **Desarrollador Frontend**
 
 1. **Setup**: [`02-PLANIFICACION-stack-tecnologico.md`](./02-PLANIFICACION-stack-tecnologico.md) para configuración inicial
-2. **Implementación**: [`08-DESARROLLO-resumen-implementacion.md`](./08-DESARROLLO-resumen-implementacion.md) para desarrollo
-3. **Calidad**: [`09-DESARROLLO-plan-consistencia.md`](./09-DESARROLLO-plan-consistencia.md) para estándares
-4. **Referencia**: [`10-DESARROLLO-auditoria-tecnica.md`](./10-DESARROLLO-auditoria-tecnica.md) para decisiones técnicas
-5. **Tareas**: [`11-DESARROLLO-checklist-tareas.md`](./11-DESARROLLO-checklist-tareas.md) para planning
+2. **Estilos**: [`components/UI-Styles-Quick-Guide.md`](./components/UI-Styles-Quick-Guide.md) para guía rápida de estilos UI
+3. **Implementación**: [`08-DESARROLLO-resumen-implementacion.md`](./08-DESARROLLO-resumen-implementacion.md) para desarrollo
+4. **Calidad**: [`09-DESARROLLO-plan-consistencia.md`](./09-DESARROLLO-plan-consistencia.md) para estándares
+5. **Referencia**: [`10-DESARROLLO-auditoria-tecnica.md`](./10-DESARROLLO-auditoria-tecnica.md) para decisiones técnicas
+6. **Tareas**: [`11-DESARROLLO-checklist-tareas.md`](./11-DESARROLLO-checklist-tareas.md) para planning
 
 ### 🚀 **Tech Lead / Arquitecto**
 
