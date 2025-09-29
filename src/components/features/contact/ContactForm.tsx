@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { BorderBeam } from "@/components/magicui/border-beam";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -126,39 +125,35 @@ export function ContactForm() {
   // Estado de éxito
   if (formStatus === "success") {
     return (
-      <div className="text-center py-8 space-y-4">
-        <CheckCircle className="w-16 h-16 text-primary mx-auto" />
-        <h3 className="text-2xl font-semibold text-foreground">
-          ¡Mensaje enviado!
-        </h3>
-        <p className="text-muted-foreground max-w-md mx-auto">
-          Gracias por contactarnos. Hemos recibido tu mensaje y te responderemos
-          lo antes posible a la dirección de email proporcionada.
-        </p>
-        <Button
-          onClick={() => {
-            setFormStatus("idle");
-            form.reset();
-          }}
-          variant="outline"
-        >
-          Enviar otro mensaje
-        </Button>
-      </div>
+      <Card className="bg-gradient-to-br from-gradient-primary via-background to-gradient-secondary border-border/40 shadow-xl">
+        <CardContent className="text-center py-8 space-y-4">
+          <CheckCircle className="w-16 h-16 text-primary mx-auto" />
+          <h3 className="text-2xl font-semibold text-foreground">
+            ¡Mensaje enviado!
+          </h3>
+          <p className="text-muted-foreground max-w-md mx-auto">
+            Gracias por contactarnos. Hemos recibido tu mensaje y te
+            responderemos lo antes posible a la dirección de email
+            proporcionada.
+          </p>
+          <Button
+            onClick={() => {
+              setFormStatus("idle");
+              form.reset();
+            }}
+            variant="outline"
+          >
+            Enviar otro mensaje
+          </Button>
+        </CardContent>
+      </Card>
     );
   }
 
   return (
-    <Card className="relative border-gray-200 dark:border-gray-800 rounded-2xl p-0 overflow-hidden">
-      <BorderBeam
-        size={150}
-        duration={12}
-        colorFrom="#3b82f6"
-        colorTo="#8b5cf6"
-        borderWidth={2}
-      />
+    <Card className="relative rounded-2xl p-0 overflow-hidden bg-gradient-to-br from-gradient-primary/40 via-background/80 to-gradient-secondary/40 border-border/30 shadow-xl backdrop-blur-sm dark:from-slate-800/40 dark:via-slate-900/60 dark:to-slate-800/40 light:shadow-primary/20 light:border-primary/20">
       <CardHeader className="pt-6">
-        <CardTitle className="text-2xl font-semibold mb-2 text-foreground">
+        <CardTitle className="text-2xl font-semibold mb-2 text-card-foreground">
           Solicitar información
         </CardTitle>
       </CardHeader>
@@ -297,7 +292,7 @@ export function ContactForm() {
             />
             {/* Mensaje de error */}
             {formStatus === "error" && (
-              <div className="flex items-center gap-2 p-3 text-sm text-red-600 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800 rounded-md">
+              <div className="flex items-center gap-2 p-3 text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded-md">
                 <AlertCircle className="w-4 h-4 flex-shrink-0" />
                 <span>{errorMessage}</span>
               </div>
@@ -323,12 +318,12 @@ export function ContactForm() {
           </form>
         </Form>
       </CardContent>
-      <CardFooter className="p-4 md:p-6 bg-muted/30 rounded-b-2xl">
+      <CardFooter className="p-4 md:p-6 bg-gradient-to-r from-gradient-muted via-background/70 to-gradient-muted rounded-b-2xl border-t border-border/30">
         <div className="w-full">
           <h4 className="text-sm font-medium text-foreground mb-2">
             Compromiso de privacidad
           </h4>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-muted-foreground/80">
             WEBCODE se compromete a proteger tu privacidad. Solo recopilamos tu
             dirección de email para responder a tu consulta. No utilizamos
             cookies de seguimiento ni compartimos tus datos con terceros. Puedes
