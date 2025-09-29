@@ -1,5 +1,7 @@
 # Guía de Estilos Base WebSnack
 
+> Nota rápida: si eres autor/a de componentes UI, consulta la "Guía rápida de estilos" en `docs/components/UI-Styles-Quick-Guide.md` para reglas prácticas y ejemplos. Esta guía es un resumen accionable de esta documentación.
+
 ## 1. Principios de Diseño
 
 ### Filosofía
@@ -213,6 +215,84 @@ Basado en el stack tecnológico de Next.js 15 + React 19 + Tailwind CSS v4, nues
   .container {
     padding: 0 2.5rem;
   } /* 40px */
+## Arquitectura de estilos del proyecto (estado actual · 2025-09-29)
+
+Esta sección documenta cómo está organizado el CSS en el repositorio actualmente, qué roles cumplen los estilos globales vs. los estilos “locales” por componente y las mejores prácticas para mantener el sistema.
+
+### Stack y punto único de estilo
+
+- Tailwind CSS v4 vía PostCSS (`postcss.config.mjs` usa `@tailwindcss/postcss`).
+- Import único de estilos globales en `src/app/layout.tsx`:
+  - `import "./globals.css";`
+- Hoja global principal: `src/app/globals.css`.
+- No hay `tailwind.config.*` (Tailwind v4 no lo requiere por defecto).
+- No hay `.module.css` ni SCSS en uso; el estilado se hace con utilidades Tailwind + utilidades globales.
+
+### Qué contiene `src/app/globals.css`
+
+- Mapeo de design tokens a Tailwind v4 con `@theme inline`.
+- Variables de tema en `:root` y `.dark` (colores OKLCH, radios, paleta de charts, sidebar, ring, etc.).
+- `@layer base` para estilos base: color de fondo, color de texto, overflow y outline/border.
+- Utilidades de marca reutilizables (clases globales):
+  - Tipografía y gradientes: `.text-gradient-webcode`, `.neon-cyan-title`, `.neon-cyan-card-title`.
+  - Sombras 3D: `.shadow-3d-sm|md|lg|xl`.
+  - Fondos: `.bg-gradient-webcode`.
+  - Animaciones: `@keyframes wave-*` + `.animate-wave-slow|medium|fast`, `.waves-background`, `.animation-suspended`, `.reduce-motion`.
+  - Efectos “neón” de marca: `.neon-theme`, `.neon-theme-soft`.
+- Accesibilidad y rendimiento:
+  - Reglas para `prefers-reduced-motion` y `prefers-contrast: more`.
+  - Fallbacks para `background-clip: text`.
+
+### Cómo aplican estilos los componentes
+
+- Por defecto, los componentes usan utilidades Tailwind directamente en el JSX.
+- Componentes UI (por ejemplo, `button`, `badge`, `card`) usan `class-variance-authority (cva)` y el helper `cn()` (`src/lib/utils.ts`) para variantes y composición de clases.
+- Las utilidades globales de marca de `globals.css` se consumen en varios componentes cuando aportan consistencia visual:
+  - `.text-gradient-webcode`: `src/components/landing/hero/Hero.Content.tsx`, `Hero.HeaderNavigation.tsx`.
+  - `.neon-cyan-title`: `src/components/landing/services/Services.Header.tsx`.
+  - `.neon-cyan-card-title`: `src/components/landing/services/Services.Card.tsx`.
+  - `.shadow-3d-*`: tarjetas en `Hero.ValuePropsGrid*`, `PerformanceTestLab`, etc.
+  - `.waves-background` + `.animate-wave-*`: `src/components/landing/hero/Hero.WavesBackground.tsx`.
+
+### Decisión: estilos locales vs. utilidades globales
+
+- Usa utilidades Tailwind “locales” (inline en el componente) por defecto: favorece la cercanía, reduce acoplamiento y es fácil de refactorizar.
+- Eleva a “utilidad global” en `globals.css` solo cuando se cumpla al menos uno:
+  - Es un patrón de marca transversal (gradientes, sombras 3D, efectos neon, animaciones de héroe).
+  - Se usa en 3 o más lugares.
+  - Apoya accesibilidad o rendimiento a nivel de aplicación.
+- Considera CSS Modules únicamente si necesitas:
+  - Selectores complejos no expresables de forma limpia con Tailwind.
+  - Aislamiento fuerte para overrides de librerías externas.
+  - Animaciones/estilos muy específicos y difíciles de mantener como utilities.
+
+### Modo oscuro, accesibilidad y rendimiento
+
+- Modo oscuro controlado por `ThemeProvider` (atributo `class`) y variables en `.dark`.
+- No dupliques colores en componentes: usa los tokens (`var(--primary)`, etc.) ya mapeados a utilidades Tailwind.
+- Mantén `prefers-reduced-motion` y suspensiones de animación (`.animation-suspended`) en secciones con coste.
+- En móviles, evita sombras/blur pesados; condiciona por breakpoint (`md:`) o atributos `data-*`.
+
+### Roadmap opcional (si crece `globals.css`)
+
+Para mantener claridad sin cambiar el runtime, puedes dividir en archivos temáticos e importarlos desde `globals.css`:
+
+- `tokens.css` — Design tokens y `:root`/`.dark`.
+- `utilities.css` — Sombras, gradientes, neon, helpers de marca.
+- `animations.css` — Keyframes y clases relacionadas con animación.
+
+Esto preserva un único `import "./globals.css";` en el layout.
+
+### Checklist rápida para PRs
+
+- [ ] ¿Estoy usando utilidades Tailwind locales por defecto?
+- [ ] ¿He reutilizado una utilidad global existente (gradiente/sombra/animación) antes de crear otra?
+- [ ] ¿Los colores provienen de tokens/tema y no están hardcodeados?
+- [ ] ¿Afecta a accesibilidad (contraste, reduced motion) y está contemplado?
+- [ ] ¿El cambio aplica bien en light/dark sin hacks locales de color?
+
+> Referencias relacionadas: `docs/04-DISENO-guia-estilos-extendida.md` (tokens y patrones), `docs/05-DISENO-sistema-animaciones-websnack.md` (WAS/animaciones), `docs/09-DESARROLLO-plan-consistencia.md` (consistencia y checklist de implementación).
+
 }
 ```
 
