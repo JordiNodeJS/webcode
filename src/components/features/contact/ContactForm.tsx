@@ -126,7 +126,7 @@ export function ContactForm() {
   // Estado de éxito
   if (formStatus === "success") {
     return (
-      <Card className="bg-gradient-to-br from-primary/5 via-background to-secondary/5 border-border/30 shadow-lg">
+      <Card className="bg-gradient-to-br from-gradient-primary via-background to-gradient-secondary border-border/40 shadow-xl">
         <CardContent className="text-center py-8 space-y-4">
           <CheckCircle className="w-16 h-16 text-primary mx-auto" />
           <h3 className="text-2xl font-semibold text-foreground">
@@ -152,7 +152,7 @@ export function ContactForm() {
   }
 
   return (
-    <Card className="relative rounded-2xl p-0 overflow-hidden bg-gradient-to-br from-background via-card/50 to-muted/30 border-border/30 shadow-lg backdrop-blur-sm">
+    <Card className="relative rounded-2xl p-0 overflow-hidden bg-gradient-to-br from-gradient-primary via-background to-gradient-secondary border-border/40 shadow-xl backdrop-blur-sm">
       <BorderBeam
         size={150}
         duration={12}
@@ -326,7 +326,7 @@ export function ContactForm() {
           </form>
         </Form>
       </CardContent>
-      <CardFooter className="p-4 md:p-6 bg-gradient-to-r from-muted/20 via-background/50 to-muted/20 rounded-b-2xl border-t border-border/20">
+      <CardFooter className="p-4 md:p-6 bg-gradient-to-r from-gradient-muted via-background/70 to-gradient-muted rounded-b-2xl border-t border-border/30">
         <div className="w-full">
           <h4 className="text-sm font-medium text-foreground mb-2">
             Compromiso de privacidad
