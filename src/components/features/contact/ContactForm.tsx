@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { BorderBeam } from "@/components/magicui/border-beam";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -152,14 +151,7 @@ export function ContactForm() {
   }
 
   return (
-    <Card className="relative rounded-2xl p-0 overflow-hidden bg-gradient-to-br from-gradient-primary via-background to-gradient-secondary border-border/40 shadow-xl backdrop-blur-sm">
-      <BorderBeam
-        size={150}
-        duration={12}
-        colorFrom="rgba(var(--primary-rgb), 0.8)"
-        colorTo="rgba(var(--secondary-rgb), 0.8)"
-        borderWidth={2}
-      />
+    <Card className="relative rounded-2xl p-0 overflow-hidden bg-gradient-to-br from-gradient-primary/40 via-background/80 to-gradient-secondary/40 border-border/30 shadow-xl backdrop-blur-sm dark:from-slate-800/40 dark:via-slate-900/60 dark:to-slate-800/40 light:shadow-primary/20 light:border-primary/20">
       <CardHeader className="pt-6">
         <CardTitle className="text-2xl font-semibold mb-2 text-card-foreground">
           Solicitar información
