@@ -50,8 +50,20 @@ export default function PhaseDetails({ fases }: PhaseDetailsProps) {
                 
                 {/* Card principal con glassmorphism */}
                 <div className="relative bg-card/90 backdrop-blur-xl border-2 border-primary/20 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 hover:border-primary/40">
+                  {/* Label de duración alineado con el número */}
+                  <div className="absolute top-8 right-4 flex items-center">
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30 shadow-lg">
+                      <svg className="w-4 h-4 text-primary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span className="text-sm font-semibold text-primary whitespace-nowrap">
+                        {fase.duracion}
+                      </span>
+                    </div>
+                  </div>
+
                   {/* Header con número y título mejorado */}
-                  <div className="flex items-center gap-4 mb-6">
+                  <div className="flex items-center gap-4 mb-6 pr-32">
                     {/* Badge numérico con efecto neon */}
                     <div className="relative flex-shrink-0">
                       <div className="bg-gradient-to-br from-primary to-primary/80 text-primary-foreground rounded-2xl w-16 h-16 flex items-center justify-center font-bold text-2xl shadow-lg group-hover:shadow-primary/50 group-hover:scale-110 transition-all duration-300">
@@ -60,19 +72,11 @@ export default function PhaseDetails({ fases }: PhaseDetailsProps) {
                       <div className="absolute inset-0 rounded-2xl bg-primary/30 blur-md group-hover:blur-lg transition-all duration-300" />
                     </div>
 
-                    {/* Título y duración con mejor espaciado */}
+                    {/* Título con mejor espaciado */}
                     <div className="flex-1">
                       <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300 leading-tight">
                         {fase.titulo}
                       </h3>
-                      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30">
-                        <svg className="w-4 h-4 text-primary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span className="text-sm font-semibold text-primary whitespace-nowrap">
-                          {fase.duracion}
-                        </span>
-                      </div>
                     </div>
                   </div>
 

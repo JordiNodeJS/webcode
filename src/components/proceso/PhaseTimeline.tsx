@@ -190,7 +190,7 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
                 />
               </div>
 
-              <div className="grid grid-cols-4 gap-8 relative z-10">
+              <div className="grid grid-cols-4 gap-8 relative z-20">
                 {fases.map((fase, index) => (
                   <div key={fase.numero} className="relative group">
                     {/* Card de fase con glassmorphism */}
