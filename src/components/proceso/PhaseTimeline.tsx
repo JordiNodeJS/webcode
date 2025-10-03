@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
 
 // Componente para iconos SVG de las fases
@@ -86,8 +87,76 @@ interface PhaseTimelineProps {
 }
 
 export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
+  const [isVisible, setIsVisible] = useState(false);
+  const [pulseBadges, setPulseBadges] = useState<Set<number>>(new Set());
+  const [pulseCount, setPulseCount] = useState(0);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const pulseTimeouts = useRef<NodeJS.Timeout[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !isVisible) {
+            setIsVisible(true);
+            // Iniciar pulsos aleatorios cuando la sección entra en vista
+            startRandomPulses();
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+      // Limpiar timeouts al desmontar
+      pulseTimeouts.current.forEach(timeout => clearTimeout(timeout));
+    };
+  }, [isVisible]);
+
+  const startRandomPulses = () => {
+    const maxPulses = 5;
+    let currentPulse = 0;
+
+    const schedulePulse = () => {
+      if (currentPulse >= maxPulses) return;
+
+      const randomBadge = Math.floor(Math.random() * fases.length) + 1;
+      const randomDelay = Math.random() * 2000 + 500; // 500-2500ms
+
+      const timeout = setTimeout(() => {
+        setPulseBadges(prev => new Set(prev).add(randomBadge));
+        setPulseCount(prev => prev + 1);
+
+        // Remover el pulse después de la animación (1s)
+        const removeTimeout = setTimeout(() => {
+          setPulseBadges(prev => {
+            const newSet = new Set(prev);
+            newSet.delete(randomBadge);
+            return newSet;
+          });
+        }, 1000);
+
+        pulseTimeouts.current.push(removeTimeout);
+        currentPulse++;
+        schedulePulse();
+      }, randomDelay);
+
+      pulseTimeouts.current.push(timeout);
+    };
+
+    schedulePulse();
+  };
+
   return (
-    <section className="relative py-20 bg-gradient-to-br from-background via-muted/30 to-background overflow-hidden">
+    <section 
+      ref={sectionRef}
+      className="relative py-20 bg-gradient-to-br from-background via-muted/30 to-background overflow-hidden"
+    >
       {/* Pattern de fondo estático (optimizado para rendimiento) */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(var(--primary-rgb),0.1),transparent_50%)]" />
@@ -112,12 +181,16 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
         <div className="hidden lg:block">
           <WSFadeIn delay={0.3}>
             <div className="relative">
-              {/* Línea conectora con gradiente estático (optimizado) */}
-              <div className="absolute top-24 left-0 right-0 h-2 mx-20 overflow-hidden rounded-full">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary to-primary/20" />
+              {/* Línea conectora DEBAJO de las tarjetas con animación */}
+              <div className="absolute top-32 left-0 right-0 h-2 mx-20 overflow-hidden rounded-full z-0">
+                <div 
+                  className={`absolute inset-0 bg-gradient-to-r from-primary/20 via-primary to-primary/20 transition-transform duration-1000 ease-out ${
+                    isVisible ? 'translate-x-0' : '-translate-x-full'
+                  }`}
+                />
               </div>
 
-              <div className="grid grid-cols-4 gap-8">
+              <div className="grid grid-cols-4 gap-8 relative z-10">
                 {fases.map((fase, index) => (
                   <div key={fase.numero} className="relative group">
                     {/* Card de fase con glassmorphism */}
@@ -127,10 +200,14 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
                       
                       {/* Contenido */}
                       <div className="relative z-10">
-                        {/* Badge numérico optimizado */}
+                        {/* Badge numérico con pulse controlado */}
                         <div className="flex justify-center mb-4">
-                          <div className="relative bg-primary text-primary-foreground rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl shadow-lg group-hover:shadow-primary/50 transition-all duration-300 group-hover:scale-110">
+                          <div className={`relative bg-primary text-primary-foreground rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl shadow-lg group-hover:shadow-primary/50 transition-all duration-300 group-hover:scale-110 ${
+                            pulseBadges.has(fase.numero) ? 'animate-pulse' : ''
+                          }`}>
                             <span className="relative z-10">{fase.numero}</span>
+                            {/* Pulse ring en hover */}
+                            <div className="absolute inset-0 rounded-full bg-primary opacity-0 group-hover:opacity-20 group-hover:animate-ping" />
                           </div>
                         </div>
 
@@ -170,9 +247,11 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
                   <div className="absolute left-8 top-20 bottom-0 w-1 bg-gradient-to-b from-primary via-primary/50 to-transparent rounded-full" />
                 )}
 
-                {/* Badge numérico con efecto */}
+                {/* Badge numérico con efecto y pulse controlado */}
                 <div className="absolute left-0 top-0">
-                  <div className="relative bg-primary text-primary-foreground rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl shadow-lg">
+                  <div className={`relative bg-primary text-primary-foreground rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl shadow-lg ${
+                    pulseBadges.has(fase.numero) ? 'animate-pulse' : ''
+                  }`}>
                     <span className="relative z-10">{fase.numero}</span>
                     <div className="absolute inset-0 rounded-full bg-primary/30 blur-md" />
                   </div>
