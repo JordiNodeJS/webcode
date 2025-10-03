@@ -1053,22 +1053,27 @@ main > section:first-of-type {
   0% {
     height: 0;
     opacity: 0;
-    transform: scaleY(0.8);
+    transform: scaleY(0.6);
   }
-  40% {
-    height: calc(var(--radix-accordion-content-height) * 1.15);
-    opacity: 0.7;
-    transform: scaleY(1.05);
+  25% {
+    height: calc(var(--radix-accordion-content-height) * 1.3);
+    opacity: 0.6;
+    transform: scaleY(1.1);
   }
-  60% {
-    height: calc(var(--radix-accordion-content-height) * 0.85);
+  45% {
+    height: calc(var(--radix-accordion-content-height) * 0.8);
     opacity: 0.8;
-    transform: scaleY(0.95);
+    transform: scaleY(0.9);
   }
-  75% {
-    height: calc(var(--radix-accordion-content-height) * 1.05);
+  65% {
+    height: calc(var(--radix-accordion-content-height) * 1.1);
     opacity: 0.9;
-    transform: scaleY(1.02);
+    transform: scaleY(1.03);
+  }
+  85% {
+    height: calc(var(--radix-accordion-content-height) * 0.95);
+    opacity: 0.95;
+    transform: scaleY(0.98);
   }
   100% {
     height: var(--radix-accordion-content-height);
@@ -1083,20 +1088,20 @@ main > section:first-of-type {
     opacity: 1;
     transform: scaleY(1);
   }
-  15% {
-    height: calc(var(--radix-accordion-content-height) * 1.08);
-    opacity: 0.8;
+  30% {
+    height: calc(var(--radix-accordion-content-height) * 1.1);
+    opacity: 0.7;
     transform: scaleY(1.05);
   }
-  30% {
-    height: calc(var(--radix-accordion-content-height) * 0.92);
-    opacity: 0.6;
-    transform: scaleY(0.98);
+  60% {
+    height: calc(var(--radix-accordion-content-height) * 0.7);
+    opacity: 0.3;
+    transform: scaleY(0.85);
   }
   100% {
     height: 0;
     opacity: 0;
-    transform: scaleY(0.8);
+    transform: scaleY(0.6);
   }
 }
 
@@ -1479,11 +1484,20 @@ html.dark body main + footer.footer-verdoso.footer-verdoso-test {
   }
 }
 
-/* Animaciones de accordion con efecto rebote */
+/* Animaciones de accordion con efecto muelle */
 .animate-accordion-down {
-  animation: accordion-down 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation: accordion-down 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .animate-accordion-up {
-  animation: accordion-up 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation: accordion-up 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Aplicar animaciones directamente basándose en el estado del accordion */
+[data-slot="accordion-content"][data-state="open"] {
+  animation: accordion-down 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+[data-slot="accordion-content"][data-state="closed"] {
+  animation: accordion-up 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
