@@ -227,6 +227,38 @@ export function BriefingForm() {
 
   const progress = (currentStep / TOTAL_STEPS) * 100;
 
+  // Función para descargar PDF
+  const downloadPDF = async () => {
+    try {
+      const formData = form.getValues();
+      const response = await fetch("/api/briefing/download", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          ...formData,
+          timestamp: new Date().toISOString()
+        })
+      });
+
+      if (!response.ok) throw new Error("Error al generar el PDF");
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `briefing-${formData.nombre.replace(/\s+/g, "-").toLowerCase()}-${new Date().toISOString().split("T")[0]}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch (error) {
+      console.error("Error downloading PDF:", error);
+      alert("Error al descargar el PDF. Por favor, inténtalo de nuevo.");
+    }
+  };
+
   // Estado de éxito
   if (formStatus === "success") {
     return (
@@ -241,7 +273,16 @@ export function BriefingForm() {
             y te responderemos en las próximas 24 horas con una propuesta personalizada.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Button asChild variant="default" size="lg">
+            <Button 
+              onClick={downloadPDF}
+              variant="default" 
+              size="lg"
+              className="gap-2"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Descargar PDF
+            </Button>
+            <Button asChild variant="outline" size="lg">
               <Link href="/">Volver al inicio</Link>
             </Button>
             <Button asChild variant="outline" size="lg">
