@@ -9,49 +9,232 @@ import { generateSEOMetadata } from "@/lib/seo-metadata";
 const faqs = [
   {
     question: "¿Qué servicios de desarrollo web ofrecéis en Barcelona?",
-    answer:
-      "En WEBCODE ofrecemos servicios completos de desarrollo web profesional en Barcelona y toda España: diseño y desarrollo de páginas web personalizadas, tiendas online (e-commerce), aplicaciones web progresivas (PWA), optimización SEO, mantenimiento web, migración de sitios web, y consultoría técnica. Utilizamos las tecnologías más modernas de 2025 como Next.js 15, React 19 y TypeScript para garantizar sitios web rápidos, seguros y escalables."
+    answer: (
+      <>
+        <p>
+          Ofrecemos un servicio integral de desarrollo web adaptado a PYMEs,
+          startups y profesionales: desde landing pages hasta tiendas online y
+          aplicaciones web.
+        </p>
+
+        <ul className="mt-3 ml-5 list-disc space-y-2">
+          <li>Diseño y desarrollo de páginas web a medida</li>
+          <li>Tiendas online (e-commerce) y pasarelas de pago</li>
+          <li>Aplicaciones web progresivas (PWA)</li>
+          <li>Optimización técnica y SEO</li>
+          <li>Mantenimiento, actualizaciones y soporte</li>
+          <li>Migración de sitios y consultoría técnica</li>
+        </ul>
+      </>
+    )
   },
   {
     question:
       "¿Cuánto tiempo se tarda en desarrollar una página web profesional?",
-    answer:
-      "El tiempo de desarrollo depende de la complejidad del proyecto. Una landing page básica puede estar lista en 1-2 semanas. Un sitio web corporativo completo suele tardar 3-4 semanas. Para proyectos de e-commerce o aplicaciones web personalizadas, el plazo es de 6-12 semanas. Siempre proporcionamos un calendario detallado durante la consulta inicial gratuita y mantenemos comunicación constante durante todo el proceso de desarrollo."
+    answer: (
+      <>
+        <p>
+          El plazo depende del alcance y funcionalidades requeridas.
+          Orientación:
+        </p>
+
+        <ul className="mt-3 ml-5 list-disc space-y-2">
+          <li>Landing page básica: 1–2 semanas</li>
+          <li>Sitio corporativo: 3–4 semanas</li>
+          <li>E-commerce o aplicaciones personalizadas: 6–12 semanas</li>
+        </ul>
+
+        <p className="mt-3">
+          En la consulta inicial entregamos un calendario detallado y revisiones
+          regulares para que el proyecto avance con transparencia.
+        </p>
+      </>
+    )
   },
   {
     question: "¿Cuál es el precio de un sitio web profesional?",
-    answer:
-      "Nuestros precios se adaptan a cada proyecto y presupuesto. Una landing page profesional parte desde 800€. Sitios web corporativos desde 1.500€. Tiendas online (e-commerce) desde 2.500€. Aplicaciones web personalizadas se presupuestan según requisitos específicos. Todos nuestros proyectos incluyen diseño responsive, optimización SEO básica, hosting el primer año y formación para gestionar el contenido. Ofrecemos una consulta gratuita para evaluar tus necesidades y proporcionar un presupuesto detallado sin compromiso."
+    answer: (
+      <>
+        <p>
+          Los precios varían según funcionalidades, diseño y requisitos
+          técnicos. A modo orientativo:
+        </p>
+
+        <ul className="mt-3 ml-5 list-disc space-y-2">
+          <li>
+            Landing page profesional: desde <strong>800€</strong>
+          </li>
+          <li>
+            Sitio corporativo: desde <strong>1.500€</strong>
+          </li>
+          <li>
+            E-commerce: desde <strong>2.500€</strong>
+          </li>
+        </ul>
+
+        <p className="mt-3">
+          Todas las propuestas incluyen diseño responsive, optimización básica
+          SEO, hosting el primer año y formación. Ofrecemos una consulta
+          gratuita para evaluar tu caso y darte un presupuesto detallado sin
+          compromiso.
+        </p>
+      </>
+    )
   },
   {
     question: "¿Qué tecnologías utilizáis para desarrollar páginas web?",
-    answer:
-      "Utilizamos el stack tecnológico más avanzado de 2025: Next.js 15 como framework principal (React 19 incluido), TypeScript para mayor seguridad y mantenibilidad, Tailwind CSS v4 para diseño responsive y moderno, y nuestro sistema propio WAS (WEBCODE Animation System) para animaciones fluidas. Este stack garantiza sitios web ultra-rápidos (Core Web Vitals óptimos), excelente SEO, máxima accesibilidad (WCAG 2.1 AA) y escalabilidad para crecer con tu negocio."
+    answer: (
+      <>
+        <p>Trabajamos con un stack moderno y probado para 2025:</p>
+
+        <ul className="mt-3 ml-5 list-disc space-y-2">
+          <li>
+            <strong>Next.js 15</strong> (App Router) y <strong>React 19</strong>
+          </li>
+          <li>
+            <strong>TypeScript</strong> para seguridad y mantenibilidad
+          </li>
+          <li>
+            <strong>Tailwind CSS v4</strong> para estilos utility-first
+          </li>
+          <li>
+            <strong>WAS</strong> (nuestro sistema de animaciones) para
+            microinteracciones optimizadas
+          </li>
+        </ul>
+
+        <p className="mt-3">
+          Este stack nos permite entregar sitios rápidos, accesibles y fáciles
+          de mantener, con foco en Core Web Vitals y SEO técnico.
+        </p>
+      </>
+    )
   },
   {
     question: "¿Hacéis diseño responsive y mobile-first?",
-    answer:
-      "Sí, absolutamente. Todos nuestros sitios web se desarrollan con enfoque mobile-first, lo que significa que diseñamos primero para móviles y luego adaptamos a tablets y ordenadores. Más del 60% del tráfico web en España proviene de dispositivos móviles, por lo que garantizamos que tu web se vea y funcione perfectamente en cualquier dispositivo: smartphones, tablets, ordenadores portátiles y de sobremesa. Todos nuestros proyectos se prueban en múltiples dispositivos y navegadores antes de la entrega."
+    answer: (
+      <>
+        <p>
+          Sí. Aplicamos un enfoque <strong>mobile-first</strong>: diseñamos
+          pensando primero en móviles y escalamos a tablet y escritorio.
+        </p>
+
+        <p className="mt-3">
+          Probamos en múltiples dispositivos y navegadores para asegurar una
+          experiencia consistente y accesible en todos los tamaños de pantalla.
+        </p>
+      </>
+    )
   },
   {
     question: "¿Ofrecéis servicios de SEO en Barcelona?",
-    answer:
-      "Sí, ofrecemos servicios completos de SEO (Search Engine Optimization) tanto para nuevos sitios web como para optimizar webs existentes. Nuestro servicio incluye: investigación de palabras clave, optimización técnica (velocidad, estructura, Core Web Vitals), SEO on-page (contenido, metadatos, enlaces internos), SEO local para negocios en Barcelona y Catalunya, auditorías SEO completas, y estrategias de contenido. Todos nuestros desarrollos incluyen SEO técnico desde el inicio para garantizar la mejor visibilidad en Google y otros buscadores."
+    answer: (
+      <>
+        <p>
+          Sí — ofrecemos SEO técnico y estratégico para nuevos y existentes
+          sitios.
+        </p>
+
+        <ul className="mt-3 ml-5 list-disc space-y-2">
+          <li>Investigación de palabras clave y estrategia de contenidos</li>
+          <li>Optimización técnica (velocidad, estructura, Core Web Vitals)</li>
+          <li>SEO on-page: metadatos, headings y enlaces internos</li>
+          <li>SEO local específico para Barcelona y Catalunya</li>
+          <li>Auditorías completas y planes de optimización</li>
+        </ul>
+      </>
+    )
   },
   {
     question: "¿Qué incluye el mantenimiento web?",
-    answer:
-      "Nuestro servicio de mantenimiento web incluye: actualizaciones de seguridad mensuales, copias de seguridad automáticas semanales, monitoreo 24/7 del tiempo de actividad, actualizaciones de contenido (textos, imágenes), soporte técnico prioritario por email y chat, optimización continua de rendimiento, informes mensuales de analíticas, y soporte para resolver cualquier incidencia técnica. Ofrecemos planes desde 49€/mes adaptados a las necesidades de cada cliente. El primer año de hosting está incluido en todos nuestros proyectos de desarrollo."
+    answer: (
+      <>
+        <p>
+          Nuestro mantenimiento cubre las tareas necesarias para mantener tu web
+          sana y segura:
+        </p>
+
+        <ul className="mt-3 ml-5 list-disc space-y-2">
+          <li>Actualizaciones de seguridad mensuales</li>
+          <li>Copias de seguridad automáticas semanales</li>
+          <li>Monitoreo 24/7 del tiempo de actividad</li>
+          <li>Actualizaciones de contenido (textos, imágenes)</li>
+          <li>Soporte prioritario por email y chat</li>
+          <li>Optimización de rendimiento e informes mensuales</li>
+        </ul>
+
+        <p className="mt-3">
+          Ofrecemos planes desde <strong>49€/mes</strong> adaptados a cada
+          necesidad. El primer año de hosting suele ir incluido en nuestros
+          proyectos.
+        </p>
+      </>
+    )
   },
   {
     question: "¿Trabajáis con clientes de toda España o solo en Barcelona?",
-    answer:
-      "Aunque estamos basados en Barcelona, trabajamos con clientes de toda España y también internacionalmente. Gracias a nuestras herramientas de comunicación online (videollamadas, gestión de proyectos digital, repositorios en la nube), podemos colaborar eficientemente sin importar la ubicación. Ofrecemos servicios completamente remotos manteniendo la misma calidad y comunicación que con clientes locales. Para proyectos en Barcelona y alrededores, también ofrecemos reuniones presenciales si lo prefieres."
+    answer: (
+      <>
+        <p>
+          Aunque estamos basados en Barcelona, trabajamos con clientes de toda
+          España y también internacionalmente.
+        </p>
+
+        <p className="mt-3">
+          Usamos herramientas de comunicación online (videollamadas, gestión de
+          proyectos y repositorios en la nube) para colaborar de forma
+          eficiente. Para clientes locales ofrecemos reuniones presenciales si
+          es necesario.
+        </p>
+      </>
+    )
   },
   {
     question: "¿Proporcionáis hosting y dominio?",
-    answer:
-      "Sí, nos encargamos de todo el proceso técnico. Te ayudamos a registrar el dominio (.es, .com, .cat, etc.) y lo incluimos en el presupuesto. El hosting del primer año está incluido en todos nuestros proyectos de desarrollo. Utilizamos servidores de alta calidad con garantía de uptime del 99.9%, certificados SSL incluidos, copias de seguridad automáticas, y soporte técnico 24/7. Tras el primer año, ofrecemos planes de hosting desde 8€/mes con todo incluido. También podemos trabajar con tu hosting actual si ya tienes uno."
+    answer: (
+      <>
+        <p>
+          Sí — nos encargamos de todo lo necesario para que tu web esté en
+          producción de forma segura y fiable.
+        </p>
+
+        <ul className="mt-3 ml-5 list-disc space-y-2">
+          <li>
+            <strong>Registro de dominio:</strong> te asesoramos y gestionamos el
+            registro (.es, .com, .cat, etc.) como parte del proyecto.
+          </li>
+          <li>
+            <strong>Hosting incluido el primer año:</strong> el primer año de
+            hosting va incluido en nuestros proyectos para que no tengas que
+            preocuparte por la infraestructura inicial.
+          </li>
+          <li>
+            <strong>Seguridad y backups:</strong> certificados SSL, copias de
+            seguridad automáticas y medidas básicas de protección.
+          </li>
+          <li>
+            <strong>Disponibilidad y soporte:</strong> servidores seleccionados
+            con uptime garantizado (99.9%) y soporte técnico para incidencias.
+          </li>
+          <li>
+            <strong>Planes tras el primer año:</strong> ofrecemos hosting y
+            mantenimiento desde <strong>8€/mes</strong> con todo incluido
+            (soporte, actualizaciones de seguridad y backups).
+          </li>
+          <li>
+            <strong>¿Ya tienes hosting?</strong> Podemos trabajar con tu
+            proveedor actual y ayudarte en la migración si procede.
+          </li>
+        </ul>
+
+        <p className="mt-3">
+          Si quieres un desglose de precios o comparar opciones (cloud
+          gestionado, VPS o compartido){" "}
+          <Link href="/contacto">contáctanos</Link>y te preparamos una
+          recomendación adaptada a tu proyecto.
+        </p>
+      </>
+    )
   },
   {
     question: "¿Cómo es el proceso de trabajo en un proyecto web?",
@@ -90,13 +273,102 @@ const faqs = [
   {
     question:
       "¿Puedo actualizar el contenido de mi web yo mismo después del lanzamiento?",
-    answer:
-      "Sí, todos nuestros sitios web incluyen un sistema de gestión de contenido (CMS) intuitivo que te permite actualizar textos, imágenes, productos (en e-commerce), noticias, y otros elementos sin conocimientos técnicos. Proporcionamos formación personalizada de 2-3 horas tras el lanzamiento, documentación en vídeo paso a paso, y manual de usuario detallado. Si prefieres no gestionarlo tú mismo, ofrecemos servicios de mantenimiento y actualización de contenido desde 49€/mes."
+    answer: (
+      <>
+        <p>
+          Sí — y depende de la solución que acordemos en el proyecto. Aquí
+          tienes las opciones habituales y cómo afectan al mantenimiento y al
+          precio:
+        </p>
+
+        <ol className="mt-3 ml-5 list-decimal space-y-2">
+          <li>
+            <strong>Sitio estático sin CMS:</strong> contenido incluido en el
+            código. Es la opción más económica y rápida, pero cualquier cambio
+            requiere que un desarrollador haga una nueva entrega (build +
+            deploy).
+          </li>
+          <li>
+            <strong>
+              Sitio estático con CMS headless (p. ej. Sanity, Contentful,
+              Netlify CMS):
+            </strong>
+            el contenido se edita desde un panel sin necesidad de tocar código.
+            Mantiene buena performance y permite que el equipo no técnico
+            gestione textos e imágenes. El coste aumenta respecto al sitio
+            estático simple por la integración y licencias (si aplican).
+          </li>
+          <li>
+            <strong>
+              Sitio dinámico con CMS integrado (p. ej. WordPress, Strapi):
+            </strong>
+            ideal si necesitas roles de usuario, flujos de trabajo, o un
+            ecosistema de plugins. Más flexible pero con mayor coste inicial y
+            requisitos de mantenimiento continuo.
+          </li>
+        </ol>
+
+        <p className="mt-3">
+          También ofrecemos formación práctica (normalmente 2–3 horas) y
+          documentación en vídeo para que puedas gestionar el contenido por tu
+          cuenta. Si prefieres delegarlo, tenemos planes de mantenimiento y
+          actualización desde <strong>49€/mes</strong>.
+        </p>
+
+        <p>
+          Si quieres que te recomendemos la mejor opción para tu proyecto y un
+          presupuesto claro (impacto en precio y timeline),{" "}
+          <Link href="/contacto">contáctanos</Link>y te preparamos una propuesta
+          adaptada.
+        </p>
+      </>
+    )
   },
   {
     question: "¿Qué diferencia a WEBCODE de otras agencias de desarrollo web?",
-    answer:
-      "Nos diferenciamos en varios aspectos clave: 1) Tecnología de vanguardia 2025 (Next.js 15, React 19) que garantiza rendimiento excepcional. 2) Sistema propio WAS de animaciones para experiencias únicas. 3) Enfoque en performance (score 100/100 en Core Web Vitals). 4) SEO técnico incluido desde el inicio. 5) Transparencia total en proceso y costes. 6) Soporte postventa excepcional y disponible. 7) Comprensión profunda del mercado español y barcelona. 8) Relación calidad-precio competitiva sin sacrificar calidad."
+    answer: (
+      <>
+        <p>
+          Nos diferenciamos por varios aspectos clave que aportan valor real:
+        </p>
+
+        <ul className="mt-3 ml-5 list-disc space-y-2">
+          <li>
+            <strong>Tecnología de vanguardia:</strong> trabajamos con Next.js 15
+            y React 19 para obtener rendimiento y escalabilidad.
+          </li>
+          <li>
+            <strong>Sistema de animación propio (WAS):</strong>{" "}
+            microinteracciones y animaciones optimizadas que mejoran la
+            experiencia de usuario.
+          </li>
+          <li>
+            <strong>Enfoque en performance:</strong> optimizamos para Core Web
+            Vitals y mejores prácticas de carga (prioridad en velocidad).
+          </li>
+          <li>
+            <strong>SEO técnico incluido:</strong> desde arquitectura hasta
+            metadatos y rendimiento, para ayudar a mejorar la visibilidad.
+          </li>
+          <li>
+            <strong>Transparencia y procesos claros:</strong> planificación,
+            entregas y costes siempre documentados y acordados.
+          </li>
+          <li>
+            <strong>Soporte postventa y formación:</strong> formación para tu
+            equipo y planes de mantenimiento adaptados.
+          </li>
+          <li>
+            <strong>Conocimiento del mercado local:</strong> experiencia en
+            Barcelona y España para decisiones de UX, SEO y negocio.
+          </li>
+          <li>
+            <strong>Relación calidad-precio:</strong> soluciones competitivas
+            sin sacrificar la calidad técnica ni la accesibilidad.
+          </li>
+        </ul>
+      </>
+    )
   },
   {
     question: "¿Ofrecéis garantía en vuestros desarrollos web?",
@@ -105,14 +377,30 @@ const faqs = [
   },
   {
     question: "¿Puedo ver ejemplos de vuestros trabajos anteriores?",
-    answer:
-      "Por supuesto. Puedes ver nuestro portfolio completo con casos de estudio, tecnologías utilizadas, y resultados obtenidos en nuestra página de portfolio. Incluimos ejemplos de diferentes tipos de proyectos: landing pages, sitios corporativos, e-commerce, aplicaciones web, y optimizaciones SEO. También compartimos métricas de rendimiento reales (velocidad de carga, puntuaciones Core Web Vitals, mejoras en ranking SEO) para demostrar la calidad de nuestro trabajo. Durante la consulta inicial, podemos mostrarte proyectos similares al tuyo."
-  },
-  {
-    question:
-      "¿Trabajáis con startups y pequeñas empresas o solo con grandes empresas?",
-    answer:
-      "Trabajamos principalmente con freelancers, PYMEs, startups y pequeñas empresas, que son nuestro público objetivo principal. Entendemos los desafíos específicos de los negocios en crecimiento: presupuestos ajustados, necesidad de resultados rápidos, y escalabilidad futura. Ofrecemos soluciones flexibles, planes de pago adaptados, y la posibilidad de empezar con un MVP (Producto Mínimo Viable) e ir creciendo según las necesidades. Nuestro objetivo es democratizar el acceso a soluciones web profesionales de calidad para todos los emprendedores en España."
+    answer: (
+      <>
+        <p>
+          Sí. Actualmente tenemos un ejemplo público que puedes visitar:
+          <a
+            href="https://mudanzasandy.es"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-1 text-primary underline"
+          >
+            mudanzasandy.es
+          </a>
+          — desarrollado con <strong>Astro</strong> y{" "}
+          <strong>TypeScript</strong> para máxima rapidez y optimizaciones de
+          rendimiento.
+        </p>
+
+        <p className="mt-3">
+          Si deseas ver más proyectos (casos de estudio privados) podemos
+          mostrarlos durante la consulta inicial o preparar un dossier con
+          ejemplos similares a tu sector bajo petición.
+        </p>
+      </>
+    )
   }
 ];
 
