@@ -320,7 +320,7 @@ const faqs = [
           Si quieres que te recomendemos la mejor opción para tu proyecto y un
           presupuesto claro (impacto en precio y timeline),{" "}
           <Link href="/contacto">contáctanos</Link>y te preparamos una propuesta
-          adaptada.
+          adaptada.pnpm self-update
         </p>
       </>
     )
@@ -483,7 +483,7 @@ export default function FAQsPage() {
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
-                href="/services/web-development"
+                href="/servicios"
                 className="inline-flex items-center justify-center px-8 py-3 rounded-lg border border-border bg-background/50 backdrop-blur-sm font-semibold hover:bg-accent transition-all duration-200"
               >
                 Ver Servicios
