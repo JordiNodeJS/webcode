@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FAQItem } from "@/components/faq/FAQItem";
+import { MudanzasCard } from "@/components/faq/MudanzasCard";
 import { FAQStructuredData } from "@/components/seo/FAQStructuredData";
 import { ArrowRight } from "@/lib/icons";
 import { generateSEOMetadata } from "@/lib/seo-metadata";
@@ -393,6 +394,8 @@ const faqs = [
           <strong>TypeScript</strong> para máxima rapidez y optimizaciones de
           rendimiento.
         </p>
+
+        <MudanzasCard />
 
         <p className="mt-3">
           Si deseas ver más proyectos (casos de estudio privados) podemos

@@ -51,6 +51,7 @@
     "lint-staged": "^14.0.0",
     "playwright": "^1.55.0",
     "prettier": "^3.6.2",
+    "sharp": "^0.34.4",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.3.8",
     "typescript": "^5"
