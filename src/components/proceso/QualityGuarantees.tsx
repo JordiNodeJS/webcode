@@ -15,11 +15,11 @@ interface QualityGuaranteesProps {
 export default function QualityGuarantees({ garantias }: QualityGuaranteesProps) {
   return (
     <section className="relative py-20 overflow-hidden">
-      {/* Fondo animado con gradientes */}
+      {/* Fondo estático (optimizado) */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-background" />
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-2xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-2xl" />
       </div>
 
       {/* Pattern decorativo */}
@@ -84,8 +84,8 @@ export default function QualityGuarantees({ garantias }: QualityGuaranteesProps)
         <WSFadeIn delay={0.8}>
           <div className="max-w-5xl mx-auto">
             <div className="group relative">
-              {/* Brillo exterior */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-primary via-secondary to-primary opacity-20 blur-2xl group-hover:opacity-40 transition-all duration-700 rounded-3xl animate-gradient-x" />
+              {/* Brillo exterior optimizado */}
+              <div className="absolute -inset-2 bg-gradient-to-r from-primary via-secondary to-primary opacity-20 blur-2xl group-hover:opacity-40 transition-all duration-700 rounded-3xl" />
               
               {/* Card principal con glassmorphism premium */}
               <div className="relative bg-gradient-to-br from-primary/10 via-card/90 to-secondary/10 backdrop-blur-2xl border-2 border-primary/30 rounded-3xl p-8 md:p-10 shadow-2xl overflow-hidden">
@@ -121,20 +121,20 @@ export default function QualityGuarantees({ garantias }: QualityGuaranteesProps)
                             Seguridad contractual
                           </h4>
                         </div>
-                        <ul className="space-y-3">
-                          <li className="flex items-start gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
-                            <span className="text-primary font-bold text-lg mt-0.5 flex-shrink-0">✓</span>
-                            <span>Contrato con entregables definidos</span>
-                          </li>
-                          <li className="flex items-start gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
-                            <span className="text-primary font-bold text-lg mt-0.5 flex-shrink-0">✓</span>
-                            <span>Pagos por milestones (40%, 35%, 25%)</span>
-                          </li>
-                          <li className="flex items-start gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
-                            <span className="text-primary font-bold text-lg mt-0.5 flex-shrink-0">✓</span>
-                            <span>Garantía de satisfacción 15 días</span>
-                          </li>
-                        </ul>
+                    <ul className="space-y-3">
+                      <li className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
+                        <span className="text-primary font-bold text-lg flex-shrink-0 flex items-center justify-center w-5 h-5">✓</span>
+                        <span>Contrato con entregables definidos</span>
+                      </li>
+                      <li className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
+                        <span className="text-primary font-bold text-lg flex-shrink-0 flex items-center justify-center w-5 h-5">✓</span>
+                        <span>Pagos por milestones (40%, 35%, 25%)</span>
+                      </li>
+                      <li className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
+                        <span className="text-primary font-bold text-lg flex-shrink-0 flex items-center justify-center w-5 h-5">✓</span>
+                        <span>Garantía de satisfacción 15 días</span>
+                      </li>
+                    </ul>
                       </div>
                     </div>
 
@@ -151,16 +151,16 @@ export default function QualityGuarantees({ garantias }: QualityGuaranteesProps)
                           </h4>
                         </div>
                         <ul className="space-y-3">
-                          <li className="flex items-start gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
-                            <span className="text-secondary font-bold text-lg mt-0.5 flex-shrink-0">✓</span>
+                          <li className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
+                            <span className="text-secondary font-bold text-lg flex-shrink-0 flex items-center justify-center w-5 h-5">✓</span>
                             <span>Escalación directa al equipo senior</span>
                           </li>
-                          <li className="flex items-start gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
-                            <span className="text-secondary font-bold text-lg mt-0.5 flex-shrink-0">✓</span>
+                          <li className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
+                            <span className="text-secondary font-bold text-lg flex-shrink-0 flex items-center justify-center w-5 h-5">✓</span>
                             <span>Backup completo y versionado Git</span>
                           </li>
-                          <li className="flex items-start gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
-                            <span className="text-secondary font-bold text-lg mt-0.5 flex-shrink-0">✓</span>
+                          <li className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
+                            <span className="text-secondary font-bold text-lg flex-shrink-0 flex items-center justify-center w-5 h-5">✓</span>
                             <span>30 días de soporte premium incluido</span>
                           </li>
                         </ul>

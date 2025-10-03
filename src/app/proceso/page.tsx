@@ -184,10 +184,10 @@ export default function ProcesoPage() {
         {/* Fondo con gradiente animado */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-secondary/10" />
         
-        {/* Patterns decorativos */}
+        {/* Patterns decorativos estáticos (optimizado) */}
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse animation-delay-2000" />
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-2xl" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-2xl" />
         </div>
 
         {/* Grid pattern */}
@@ -273,11 +273,11 @@ export default function ProcesoPage() {
 
       {/* CTA Final Mejorado */}
       <section className="relative py-20 md:py-32 overflow-hidden">
-        {/* Fondo animado */}
+        {/* Fondo estático (optimizado) */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-secondary/10 to-primary/15" />
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-blob" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-blob animation-delay-2000" />
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-2xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-2xl" />
         </div>
 
         {/* Pattern decorativo */}
@@ -286,8 +286,8 @@ export default function ProcesoPage() {
         <div className="container mx-auto px-4 relative z-10">
           <WSFadeIn delay={0.2}>
             <div className="text-center max-w-4xl mx-auto space-y-8">
-              {/* Icono decorativo */}
-              <div className="inline-block text-6xl md:text-7xl animate-bounce">
+              {/* Icono decorativo estático (optimizado) */}
+              <div className="inline-block text-6xl md:text-7xl">
                 🚀
               </div>
 

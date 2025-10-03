@@ -88,11 +88,11 @@ interface PhaseTimelineProps {
 export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
   return (
     <section className="relative py-20 bg-gradient-to-br from-background via-muted/30 to-background overflow-hidden">
-      {/* Pattern de fondo animado */}
+      {/* Pattern de fondo estático (optimizado para rendimiento) */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(var(--primary-rgb),0.1),transparent_50%)]" />
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-pulse delay-700" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-2xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-2xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -112,9 +112,9 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
         <div className="hidden lg:block">
           <WSFadeIn delay={0.3}>
             <div className="relative">
-              {/* Línea conectora con gradiente animado */}
+              {/* Línea conectora con gradiente estático (optimizado) */}
               <div className="absolute top-24 left-0 right-0 h-2 mx-20 overflow-hidden rounded-full">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary to-primary/20 animate-shimmer bg-[length:200%_100%]" />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary to-primary/20" />
               </div>
 
               <div className="grid grid-cols-4 gap-8">
@@ -127,11 +127,10 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
                       
                       {/* Contenido */}
                       <div className="relative z-10">
-                        {/* Badge numérico con efecto neon */}
+                        {/* Badge numérico optimizado */}
                         <div className="flex justify-center mb-4">
                           <div className="relative bg-primary text-primary-foreground rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl shadow-lg group-hover:shadow-primary/50 transition-all duration-300 group-hover:scale-110">
                             <span className="relative z-10">{fase.numero}</span>
-                            <div className="absolute inset-0 rounded-full bg-primary animate-ping opacity-0 group-hover:opacity-20" />
                           </div>
                         </div>
 

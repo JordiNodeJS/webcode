@@ -21,9 +21,9 @@ export default function CommunicationChannels({ canales }: CommunicationChannels
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(var(--primary-rgb),0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(var(--primary-rgb),0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
       </div>
 
-      {/* Blobs animados */}
-      <div className="absolute top-20 right-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-blob" />
-      <div className="absolute bottom-20 left-20 w-64 h-64 bg-secondary/10 rounded-full blur-3xl animate-blob animation-delay-2000" />
+      {/* Blobs estáticos (optimizado) */}
+      <div className="absolute top-20 right-20 w-64 h-64 bg-primary/10 rounded-full blur-2xl" />
+      <div className="absolute bottom-20 left-20 w-64 h-64 bg-secondary/10 rounded-full blur-2xl" />
 
       <div className="container mx-auto px-4 relative z-10">
         <WSFadeIn delay={0.2}>

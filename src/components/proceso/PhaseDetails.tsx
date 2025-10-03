@@ -18,12 +18,12 @@ interface PhaseDetailsProps {
 export default function PhaseDetails({ fases }: PhaseDetailsProps) {
   return (
     <section className="relative py-20 overflow-hidden">
-      {/* Fondo con gradiente animado y patterns */}
+      {/* Fondo con gradiente estático (optimizado) */}
       <div className="absolute inset-0 bg-gradient-to-br from-muted/30 via-background to-muted/50" />
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-10 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-blob" />
-        <div className="absolute top-10 right-10 w-72 h-72 bg-secondary/10 rounded-full blur-3xl animate-blob animation-delay-2000" />
-        <div className="absolute bottom-10 left-1/3 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-blob animation-delay-4000" />
+        <div className="absolute top-10 left-10 w-72 h-72 bg-primary/10 rounded-full blur-2xl" />
+        <div className="absolute top-10 right-10 w-72 h-72 bg-secondary/10 rounded-full blur-2xl" />
+        <div className="absolute bottom-10 left-1/3 w-72 h-72 bg-accent/10 rounded-full blur-2xl" />
       </div>
 
       {/* Grid pattern sutil */}
@@ -50,26 +50,26 @@ export default function PhaseDetails({ fases }: PhaseDetailsProps) {
                 
                 {/* Card principal con glassmorphism */}
                 <div className="relative bg-card/90 backdrop-blur-xl border-2 border-primary/20 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 hover:border-primary/40">
-                  {/* Header con número y título */}
-                  <div className="flex items-start gap-4 mb-6">
+                  {/* Header con número y título mejorado */}
+                  <div className="flex items-center gap-4 mb-6">
                     {/* Badge numérico con efecto neon */}
                     <div className="relative flex-shrink-0">
-                      <div className="bg-gradient-to-br from-primary to-primary/80 text-primary-foreground rounded-2xl w-14 h-14 flex items-center justify-center font-bold text-2xl shadow-lg group-hover:shadow-primary/50 group-hover:scale-110 transition-all duration-300">
+                      <div className="bg-gradient-to-br from-primary to-primary/80 text-primary-foreground rounded-2xl w-16 h-16 flex items-center justify-center font-bold text-2xl shadow-lg group-hover:shadow-primary/50 group-hover:scale-110 transition-all duration-300">
                         {fase.numero}
                       </div>
                       <div className="absolute inset-0 rounded-2xl bg-primary/30 blur-md group-hover:blur-lg transition-all duration-300" />
                     </div>
 
-                    {/* Título y duración */}
+                    {/* Título y duración con mejor espaciado */}
                     <div className="flex-1">
-                      <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                      <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300 leading-tight">
                         {fase.titulo}
                       </h3>
-                      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30">
-                        <svg className="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30">
+                        <svg className="w-4 h-4 text-primary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span className="text-sm font-semibold text-primary">
+                        <span className="text-sm font-semibold text-primary whitespace-nowrap">
                           {fase.duracion}
                         </span>
                       </div>
@@ -119,12 +119,12 @@ export default function PhaseDetails({ fases }: PhaseDetailsProps) {
                       {fase.entregables.map((entregable, idx) => (
                         <li
                           key={idx}
-                          className="flex items-start gap-3 text-sm text-muted-foreground bg-gradient-to-r from-secondary/5 to-transparent p-3 rounded-lg hover:from-secondary/10 transition-all duration-300"
+                          className="flex items-center gap-3 text-sm text-muted-foreground bg-gradient-to-r from-secondary/5 to-transparent p-3 rounded-lg hover:from-secondary/10 transition-all duration-300"
                         >
-                          <span className="text-secondary font-bold text-lg mt-0.5 flex-shrink-0">
+                          <span className="text-secondary font-bold text-lg flex-shrink-0 flex items-center justify-center w-5 h-5">
                             ✓
                           </span>
-                          <span className="hover:text-foreground transition-colors duration-300">
+                          <span className="hover:text-foreground transition-colors duration-300 leading-relaxed">
                             {entregable}
                           </span>
                         </li>
