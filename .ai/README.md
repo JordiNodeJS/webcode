@@ -168,8 +168,10 @@ pnpm dlx shadcn@latest add "https://magicui.design/r/sparkles-text.json"
 1. **Identificar categoría**: ¿Es config, color, tailwind, instrucción, regla o soporte?
 2. **Actualizar archivo correspondiente** o crear uno específico
 3. **Referenciar en este README** si es relevante
-4. **Mantener principio de simplicidad**
+4. \*\*Mantener principio de simplicidad
 
 ---
+
+<!-- DEPRECATION NOTICE: El estilo 'brutalista' fue retirado del proyecto. Las referencias a 'brutalismo' en este README están archivadas como referencia histórica y no deben seguirse en nuevas implementaciones. -->
 
 > **🚀 Sistema WebSnack optimizado para desarrollo escalable, coherente y eficiente con estilo brutalista único.**
