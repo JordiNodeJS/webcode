@@ -1,6 +1,12 @@
 "use client";
 
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 interface Fase {
   numero: number;
@@ -14,6 +20,61 @@ interface Fase {
 interface PhaseDetailsProps {
   fases: Fase[];
 }
+
+// Explicaciones claras y sin tecnicismos para cada actividad
+const activityExplanations: Record<string, string> = {
+  // Fase 1: Discovery & Strategy
+  "Análisis de necesidades del negocio": 
+    "Nos reunimos contigo para entender tu negocio, tus objetivos y lo que quieres conseguir con tu web. Es como una consulta donde nos cuentas tu visión y nosotros tomamos nota de todo lo importante.",
+  
+  "Research de competencia y mercado": 
+    "Investigamos qué están haciendo otros negocios similares al tuyo en Barcelona y online. Esto nos ayuda a identificar oportunidades para que tu web destaque y ofrezca algo único a tus clientes.",
+  
+  "Definición de objetivos y KPIs": 
+    "Establecemos metas claras y medibles para tu web. Por ejemplo: '20 consultas al mes' o 'aumentar ventas online un 30%'. Así sabremos si la web está funcionando bien.",
+  
+  "Arquitectura de información": 
+    "Organizamos todo el contenido de tu web de forma lógica. Decidimos qué secciones tendrá (Inicio, Servicios, Contacto, etc.) y cómo se conectarán entre sí para que tus clientes encuentren lo que buscan fácilmente.",
+
+  // Fase 2: Diseño & Experiencia
+  "Design system personalizado": 
+    "Creamos una guía visual única para tu marca: colores, tipografías, botones y estilos que reflejen tu identidad. Es como el 'manual de estilo' de tu web para que todo se vea consistente y profesional.",
+  
+  "Wireframes y flujos básicos": 
+    "Hacemos bocetos simples (como planos de arquitecto) que muestran dónde irá cada elemento en tu web. Sin colores ni diseño final, solo la estructura básica para que apruebes cómo funcionará.",
+  
+  "Mockups high-fidelity": 
+    "Diseñamos la versión final visual de tu web con todos los detalles: colores, imágenes, textos y efectos. Es como ver tu web terminada antes de empezar a programarla.",
+  
+  "Testing de usabilidad + Microsoft Clarity": 
+    "Probamos que tu web sea fácil de usar en diferentes dispositivos. Usamos herramientas que nos muestran cómo los visitantes navegan tu web para mejorar su experiencia.",
+
+  // Fase 3: Desarrollo & Integración
+  "Código limpio y escalable (Next.js 15 + React 19)": 
+    "Programamos tu web usando las tecnologías más modernas y profesionales del mercado. El código es ordenado y está preparado para crecer cuando tu negocio lo necesite, sin empezar desde cero.",
+  
+  "Integración de herramientas (Analytics, pagos, APIs)": 
+    "Conectamos tu web con otras plataformas que necesites: sistema de pagos online, herramientas de estadísticas para saber cuántos visitantes recibes, formularios de contacto, redes sociales, etc.",
+  
+  "Testing automatizado": 
+    "Realizamos pruebas exhaustivas de forma automática para asegurarnos de que todo funcione correctamente: formularios, botones, enlaces, pagos... Todo antes de que tus clientes lo vean.",
+  
+  "Optimización de performance": 
+    "Hacemos que tu web cargue súper rápido (menos de 3 segundos). Esto es crucial porque los clientes abandonan webs lentas y Google penaliza las webs que tardan mucho en cargar.",
+
+  // Fase 4: Launch & Optimización
+  "Deploy en producción (blue-green deployment)": 
+    "Publicamos tu web en internet de forma segura y sin interrupciones. Usamos una técnica profesional que permite tener la web antigua y nueva funcionando simultáneamente, haciendo el cambio sin que tus clientes noten nada.",
+  
+  "Configuración de analytics completa": 
+    "Instalamos y configuramos herramientas para que puedas ver estadísticas de tu web: cuántos visitantes recibes, de dónde vienen, qué páginas miran más, cuánto tiempo se quedan, etc.",
+  
+  "Interpretación de analytics y herramientas": 
+    "Te enseñamos a entender los números y gráficos de las estadísticas. No solo instalarlas, sino saber interpretarlas para tomar decisiones inteligentes sobre tu negocio.",
+  
+  "Training del cliente (presencial BCN o remoto)": 
+    "Te damos formación personalizada para que sepas gestionar tu web tú mismo: actualizar contenidos, subir fotos, cambiar precios, publicar noticias... Todo de forma visual y fácil, sin necesidad de saber programar."
+};
 
 export default function PhaseDetails({ fases }: PhaseDetailsProps) {
   return (
@@ -80,7 +141,7 @@ export default function PhaseDetails({ fases }: PhaseDetailsProps) {
                     </div>
                   </div>
 
-                  {/* Actividades */}
+                  {/* Actividades con Accordion */}
                   <div className="mb-6">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -92,19 +153,28 @@ export default function PhaseDetails({ fases }: PhaseDetailsProps) {
                         Actividades
                       </h4>
                     </div>
-                    <ul className="space-y-3">
+                    
+                    <Accordion type="single" collapsible className="w-full space-y-2">
                       {fase.actividades.map((actividad, idx) => (
-                        <li
-                          key={idx}
-                          className="group/item flex items-start gap-3 text-sm text-muted-foreground border-l-3 border-primary/50 pl-4 py-2 rounded-r-lg hover:bg-primary/5 hover:border-primary transition-all duration-300"
+                        <AccordionItem 
+                          key={idx} 
+                          value={`item-${fase.numero}-${idx}`}
+                          className="border-2 !border-b-2 border-primary/20 rounded-lg px-4 hover:border-primary/40 transition-all duration-300 bg-card/50 backdrop-blur-sm"
                         >
-                          <span className="text-primary mt-0.5">▸</span>
-                          <span className="group-hover/item:text-foreground transition-colors duration-300">
-                            {actividad}
-                          </span>
-                        </li>
+                          <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary hover:no-underline py-3">
+                            <div className="flex items-center gap-3 text-left">
+                              <span className="text-primary font-bold flex-shrink-0">▸</span>
+                              <span>{actividad}</span>
+                            </div>
+                          </AccordionTrigger>
+                          <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-4 pt-2">
+                            <div className="pl-7 pr-4 py-3 bg-primary/5 rounded-lg border-l-4 border-primary/50">
+                              {activityExplanations[actividad] || "Explicación detallada de esta actividad."}
+                            </div>
+                          </AccordionContent>
+                        </AccordionItem>
                       ))}
-                    </ul>
+                    </Accordion>
                   </div>
 
                   {/* Entregables */}
