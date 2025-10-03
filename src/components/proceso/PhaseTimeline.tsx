@@ -90,8 +90,11 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [pulseBadges, setPulseBadges] = useState<Set<number>>(new Set());
   const [pulseCount, setPulseCount] = useState(0);
+  const [timelineProgress, setTimelineProgress] = useState(0);
+  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
   const sectionRef = useRef<HTMLDivElement>(null);
   const pulseTimeouts = useRef<NodeJS.Timeout[]>([]);
+  const animationTimeouts = useRef<NodeJS.Timeout[]>([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -99,12 +102,10 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !isVisible) {
             setIsVisible(true);
-            // Iniciar pulsos aleatorios cuando la sección entra en vista
-            startRandomPulses();
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
 
     if (sectionRef.current) {
@@ -115,8 +116,49 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
       observer.disconnect();
       // Limpiar timeouts al desmontar
       pulseTimeouts.current.forEach(timeout => clearTimeout(timeout));
+      animationTimeouts.current.forEach(timeout => clearTimeout(timeout));
     };
   }, [isVisible]);
+
+  // Efecto separado para iniciar animaciones cuando isVisible cambia
+  useEffect(() => {
+    if (isVisible) {
+      startTimelineAnimation();
+      startRandomPulses();
+    }
+  }, [isVisible]);
+
+  const startTimelineAnimation = () => {
+    // Resetear estados
+    setTimelineProgress(0);
+    setVisibleCards(new Set());
+    
+    // Animar la barra de tiempo
+    const timelineDuration = 2000; // 2 segundos para la barra
+    const cardDelay = 300; // 300ms entre cada tarjeta
+    
+    // Animar progreso de la barra
+    const timelineInterval = setInterval(() => {
+      setTimelineProgress(prev => {
+        const newProgress = prev + (100 / (timelineDuration / 16)); // 60fps
+        if (newProgress >= 100) {
+          clearInterval(timelineInterval);
+          return 100;
+        }
+        return newProgress;
+      });
+    }, 16);
+
+    // Mostrar tarjetas progresivamente - empiezan cuando la barra llega a su posición
+    fases.forEach((fase, index) => {
+      const cardAppearTime = (timelineDuration * (index + 1) / fases.length) - 200; // 200ms antes de que la barra llegue
+      const timeout = setTimeout(() => {
+        setVisibleCards(prev => new Set(prev).add(fase.numero));
+      }, Math.max(0, cardAppearTime));
+      
+      animationTimeouts.current.push(timeout);
+    });
+  };
 
   const startRandomPulses = () => {
     const maxPulses = 5;
@@ -181,18 +223,27 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
         <div className="hidden lg:block">
           <WSFadeIn delay={0.3}>
             <div className="relative">
-              {/* Línea conectora DEBAJO de las tarjetas con animación */}
+              {/* Línea conectora DEBAJO de las tarjetas con animación progresiva */}
               <div className="absolute top-32 left-0 right-0 h-2 mx-20 overflow-hidden rounded-full z-0">
                 <div 
-                  className={`absolute inset-0 bg-gradient-to-r from-primary/20 via-primary to-primary/20 transition-transform duration-1000 ease-out ${
-                    isVisible ? 'translate-x-0' : '-translate-x-full'
-                  }`}
+                  className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary to-primary/20 transition-all duration-300 ease-out"
+                  style={{
+                    transform: `scaleX(${timelineProgress / 100})`,
+                    transformOrigin: 'left'
+                  }}
                 />
               </div>
 
               <div className="grid grid-cols-4 gap-8 relative z-20">
                 {fases.map((fase, index) => (
-                  <div key={fase.numero} className="relative group">
+                  <div 
+                    key={fase.numero} 
+                    className={`relative group transition-all duration-500 ease-out ${
+                      visibleCards.has(fase.numero) 
+                        ? 'opacity-100 translate-y-0 scale-100' 
+                        : 'opacity-0 translate-y-8 scale-95'
+                    }`}
+                  >
                     {/* Card de fase con glassmorphism */}
                     <div className="relative bg-card/80 backdrop-blur-md border-2 border-primary/20 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-primary/50 hover:scale-105">
                       {/* Efecto de brillo en hover */}
