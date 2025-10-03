@@ -450,10 +450,10 @@ export default function BriefingPage() {
               {/* Botones CTA con diseño mejorado */}
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
                 <Link
-                  href="/contacto"
+                  href="/briefing/formulario"
                   className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-primary to-primary/80 text-primary-foreground font-black text-lg shadow-brutal hover:shadow-brutal-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 border-4 border-primary/30"
                 >
-                  <span className="relative z-10">INICIAR BRIEFING</span>
+                  <span className="relative z-10">COMPLETAR FORMULARIO</span>
                   <svg className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
