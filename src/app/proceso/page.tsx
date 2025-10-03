@@ -235,7 +235,7 @@ export default function ProcesoPage() {
               </div>
 
               {/* CTA rápido */}
-              <div className="pt-6">
+              <div className="pt-6 flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link
                   href="/contacto"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-primary to-primary/80 text-primary-foreground font-semibold shadow-lg hover:shadow-xl hover:shadow-primary/50 transition-all duration-300 hover:scale-105"
@@ -244,6 +244,13 @@ export default function ProcesoPage() {
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
+                </Link>
+                <Link
+                  href="/briefing"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-card/80 backdrop-blur-sm border-2 border-primary/30 text-foreground font-semibold shadow-lg hover:shadow-xl hover:border-primary/60 transition-all duration-300 hover:scale-105"
+                >
+                  <span>📋</span>
+                  <span>¿Qué es el Briefing?</span>
                 </Link>
               </div>
             </div>

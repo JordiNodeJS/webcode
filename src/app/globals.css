@@ -469,6 +469,43 @@
   }
 }
 
+/* Sombras brutalistas para el estilo visual */
+.shadow-brutal-sm {
+  box-shadow: 3px 3px 0 0 rgb(0 0 0 / 0.1);
+}
+
+.shadow-brutal {
+  box-shadow: 6px 6px 0 0 rgb(0 0 0 / 0.15);
+}
+
+.shadow-brutal-lg {
+  box-shadow: 10px 10px 0 0 rgb(0 0 0 / 0.2);
+}
+
+/* Variante con bordes para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .shadow-brutal-sm {
+    box-shadow: 3px 3px 0 0 rgb(255 255 255 / 0.1);
+  }
+
+  .shadow-brutal {
+    box-shadow: 6px 6px 0 0 rgb(255 255 255 / 0.15);
+  }
+
+  .shadow-brutal-lg {
+    box-shadow: 10px 10px 0 0 rgb(255 255 255 / 0.2);
+  }
+}
+
+/* Clases de borde para el estilo brutalista */
+.border-3 {
+  border-width: 3px;
+}
+
+.border-4 {
+  border-width: 4px;
+}
+
 /* Animaciones de olas para la sección Hero */
 @keyframes wave-slow {
   0% {
