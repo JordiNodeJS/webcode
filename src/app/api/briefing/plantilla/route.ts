@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { generateBlankBriefingPDF } from "@/lib/pdf-generator";
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     // Generar la plantilla en blanco
     const pdf = generateBlankBriefingPDF();

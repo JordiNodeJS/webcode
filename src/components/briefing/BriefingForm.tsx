@@ -4,8 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { AlertCircle, ArrowLeft, ArrowRight, CheckCircle, Loader2, Send } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { type UseFormReturn, useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -34,67 +33,8 @@ import {
   SelectValue
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { type BriefingFormData, briefingFormSchema } from "@/types/briefing";
 
-// Esquema de validación completo
-const briefingFormSchema = z.object({
-  // Información de contacto
-  email: z.string().email("Email inválido"),
-  nombre: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
-  empresa: z.string().optional(),
-  telefono: z.string().optional(),
-
-  // Paso 1: Objetivos del Proyecto
-  objetivoPrincipal: z.string().min(10, "Describe brevemente el objetivo principal"),
-  problemasResolver: z.string().min(10, "Describe los problemas a resolver"),
-  presupuestoEstimado: z.enum(["<3000", "3000-8000", "8000-15000", "15000-30000", ">30000", "no-definido"]),
-  plazoPreferido: z.enum(["urgente", "1-2-meses", "3-6-meses", "flexible", "no-definido"]),
-  kpisExito: z.string().optional(),
-
-  // Paso 2: Público Objetivo
-  publicoObjetivo: z.string().min(10, "Describe tu público objetivo"),
-  edadRango: z.string().optional(),
-  ubicacionGeografica: z.string().optional(),
-  dispositivosPrincipales: z.array(z.string()).min(1, "Selecciona al menos un dispositivo"),
-  idiomasNecesarios: z.array(z.string()).min(1, "Selecciona al menos un idioma"),
-
-  // Paso 3: Funcionalidades
-  tipoProyecto: z.enum(["landing", "corporativa", "ecommerce", "webapp", "blog", "portal", "otro"]),
-  funcionalidadesEsenciales: z.array(z.string()).min(1, "Selecciona al menos una funcionalidad"),
-  funcionalidadesDeseadas: z.string().optional(),
-  integracionesNecesarias: z.string().optional(),
-  requisitosSeguridadEspeciales: z.string().optional(),
-
-  // Paso 4: Estilo Visual y Marca
-  tieneIdentidadCorporativa: z.boolean(),
-  coloresPreferidos: z.string().optional(),
-  referenciasVisuales: z.string().optional(),
-  tonoComunicacion: z.enum(["profesional", "cercano", "juvenil", "elegante", "tecnico", "otro"]),
-  tieneLogotipos: z.boolean(),
-
-  // Paso 5: Contenidos
-  contenidosDisponibles: z.boolean(),
-  numerosPaginasEstimadas: z.enum(["1-5", "6-10", "11-20", "21-50", ">50", "no-definido"]),
-  necesitaRedaccion: z.boolean(),
-  necesitaFotografia: z.boolean(),
-  necesitaVideos: z.boolean(),
-
-  // Paso 6: Restricciones Técnicas
-  tieneHostingActual: z.boolean(),
-  necesitaDominio: z.boolean(),
-  necesitaMigracion: z.boolean(),
-  requisitosCMS: z.enum(["no", "si-simple", "si-avanzado", "no-se"]),
-  requisitosSEO: z.boolean(),
-  accesibilidadWCAG: z.boolean(),
-
-  // Información adicional
-  informacionAdicional: z.string().optional(),
-  comoConociste: z.enum(["google", "redes-sociales", "recomendacion", "evento", "otro"]).optional(),
-
-  // RGPD
-  gdprConsent: z.boolean().refine((val) => val === true, "Debes aceptar la política de privacidad")
-});
-
-type BriefingFormData = z.infer<typeof briefingFormSchema>;
 
 const TOTAL_STEPS = 7;
 const STORAGE_KEY = "webcode-briefing-draft";
@@ -211,7 +151,7 @@ export function BriefingForm() {
 
   const nextStep = async () => {
     const fields = getFieldsForStep(currentStep);
-    const isValid = await form.trigger(fields as any);
+    const isValid = await form.trigger(fields as (keyof BriefingFormData)[]);
     if (isValid && currentStep < TOTAL_STEPS) {
       setCurrentStep(currentStep + 1);
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -279,7 +219,10 @@ export function BriefingForm() {
               size="lg"
               className="gap-2"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <title>Download</title>
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
               Descargar PDF
             </Button>
             <Button asChild variant="outline" size="lg">
@@ -429,7 +372,7 @@ function getFieldsForStep(step: number): string[] {
   return fieldsByStep[step] || [];
 }
 
-function renderStepContent(step: number, form: any) {
+function renderStepContent(step: number, form: UseFormReturn<BriefingFormData>) {
   switch (step) {
     case 1:
       return <Step1ContactInfo form={form} />;
@@ -451,7 +394,7 @@ function renderStepContent(step: number, form: any) {
 }
 
 // Step Components
-function Step1ContactInfo({ form }: any) {
+function Step1ContactInfo({ form }: { form: UseFormReturn<BriefingFormData> }) {
   return (
     <div className="space-y-4">
       <FormField
@@ -519,7 +462,7 @@ function Step1ContactInfo({ form }: any) {
   );
 }
 
-function Step2ProjectGoals({ form }: any) {
+function Step2ProjectGoals({ form }: { form: UseFormReturn<BriefingFormData> }) {
   return (
     <div className="space-y-4">
       <FormField
@@ -635,7 +578,7 @@ function Step2ProjectGoals({ form }: any) {
   );
 }
 
-function Step3TargetAudience({ form }: any) {
+function Step3TargetAudience({ form }: { form: UseFormReturn<BriefingFormData> }) {
   return (
     <div className="space-y-4">
       <FormField
@@ -782,7 +725,7 @@ function Step3TargetAudience({ form }: any) {
   );
 }
 
-function Step4Functionality({ form }: any) {
+function Step4Functionality({ form }: { form: UseFormReturn<BriefingFormData> }) {
   return (
     <div className="space-y-4">
       <FormField
@@ -906,7 +849,7 @@ function Step4Functionality({ form }: any) {
   );
 }
 
-function Step5VisualStyle({ form }: any) {
+function Step5VisualStyle({ form }: { form: UseFormReturn<BriefingFormData> }) {
   return (
     <div className="space-y-4">
       <FormField
@@ -1028,7 +971,7 @@ function Step5VisualStyle({ form }: any) {
   );
 }
 
-function Step6Content({ form }: any) {
+function Step6Content({ form }: { form: UseFormReturn<BriefingFormData> }) {
   return (
     <div className="space-y-4">
       <FormField
@@ -1141,7 +1084,7 @@ function Step6Content({ form }: any) {
   );
 }
 
-function Step7TechAndConsent({ form }: any) {
+function Step7TechAndConsent({ form }: { form: UseFormReturn<BriefingFormData> }) {
   return (
     <div className="space-y-4">
       <div className="space-y-3 rounded-lg border-2 border-border p-4">

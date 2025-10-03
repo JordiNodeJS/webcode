@@ -21,23 +21,23 @@ export default function BriefingFormularioPage() {
     <div className="min-h-screen py-12 md:py-20">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
+        <div className="text-center max-w-5xl mx-auto mb-12 space-y-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border-3 border-primary/30 backdrop-blur-sm shadow-brutal-sm">
             <span className="text-2xl">📋</span>
             <span className="text-sm font-bold text-primary">Formulario Guiado</span>
           </div>
 
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-gradient-webcode">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gradient-webcode leading-tight px-8 break-words whitespace-normal">
             Formulario de Briefing
           </h1>
           
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto px-4">
             Completa este formulario paso a paso para ayudarnos a entender tu proyecto. 
             La información que proporciones nos permitirá crear una propuesta precisa y ajustada a tus necesidades.
           </p>
 
           {/* Info badges */}
-          <div className="flex flex-wrap justify-center gap-3 pt-4">
+          <div className="flex flex-wrap justify-center gap-3 pt-6">
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-card/80 backdrop-blur-sm border-2 border-border">
               <span className="text-primary">⏱️</span>
               <span className="text-xs font-bold text-muted-foreground">10-15 min</span>

@@ -1,5 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { generateBriefingPDF, type BriefingPDFData } from "@/lib/pdf-generator";
+import { type BriefingPDFData, generateBriefingPDF } from "@/lib/pdf-generator";
 
 export async function POST(request: NextRequest) {
   try {

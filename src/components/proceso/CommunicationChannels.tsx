@@ -39,7 +39,7 @@ export default function CommunicationChannels({ canales }: CommunicationChannels
 
         <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {canales.map((canal, index) => (
-            <WSFadeIn key={index} delay={0.1 * (index + 1)}>
+            <WSFadeIn key={canal.titulo} delay={0.1 * (index + 1)}>
               <div className="group relative h-full">
                 {/* Efecto de brillo en hover */}
                 <div className="absolute -inset-1 bg-gradient-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-25 blur-xl transition-all duration-700 rounded-2xl" />
@@ -96,6 +96,7 @@ export default function CommunicationChannels({ canales }: CommunicationChannels
                 <div className="flex items-center gap-4">
                   <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center">
                     <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <title>Information</title>
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>

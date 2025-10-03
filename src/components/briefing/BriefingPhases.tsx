@@ -107,8 +107,8 @@ export default function BriefingPhases({ fases }: BriefingPhasesProps) {
                   <div>
                     <h4 className="text-sm font-black text-foreground mb-2">✅ Actividades</h4>
                     <ul className="space-y-1">
-                      {fase.actividades.map((actividad, idx) => (
-                        <li key={idx} className="text-xs text-muted-foreground flex items-start gap-2">
+                      {fase.actividades.map((actividad) => (
+                        <li key={actividad} className="text-xs text-muted-foreground flex items-start gap-2">
                           <span className="text-primary mt-0.5">•</span>
                           <span>{actividad}</span>
                         </li>
@@ -120,8 +120,8 @@ export default function BriefingPhases({ fases }: BriefingPhasesProps) {
                   <div>
                     <h4 className="text-sm font-black text-foreground mb-2">📦 Entregables</h4>
                     <ul className="space-y-1">
-                      {fase.entregables.map((entregable, idx) => (
-                        <li key={idx} className="text-xs text-muted-foreground flex items-start gap-2">
+                      {fase.entregables.map((entregable) => (
+                        <li key={entregable} className="text-xs text-muted-foreground flex items-start gap-2">
                           <span className="text-accent mt-0.5">▸</span>
                           <span>{entregable}</span>
                         </li>
@@ -139,6 +139,7 @@ export default function BriefingPhases({ fases }: BriefingPhasesProps) {
                   className="text-primary"
                 >
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <title>Chevron down</title>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
                   </svg>
                 </motion.div>

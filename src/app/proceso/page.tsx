@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { Suspense } from "react";
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
 import { generateSEOMetadata } from "@/lib/seo-metadata";
@@ -219,9 +219,9 @@ export default function ProcesoPage() {
                   { icon: "✓", text: "Transparencia total" },
                   { icon: "✓", text: "Updates semanales" },
                   { icon: "✓", text: "Garantías de calidad" }
-                ].map((item, index) => (
+                ].map((item) => (
                   <div
-                    key={index}
+                    key={item.text}
                     className="group flex items-center gap-2 px-4 py-2 rounded-full bg-card/80 backdrop-blur-sm border border-primary/20 hover:border-primary/50 transition-all duration-300 hover:scale-105"
                   >
                     <span className="text-primary font-bold text-xl group-hover:scale-125 transition-transform duration-300">
@@ -242,6 +242,7 @@ export default function ProcesoPage() {
                 >
                   <span>Descubre cómo trabajamos</span>
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <title>Arrow right</title>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </Link>
@@ -318,6 +319,7 @@ export default function ProcesoPage() {
                   <span className="absolute inset-0 bg-gradient-to-r from-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <span className="relative z-10">CONSULTA GRATUITA</span>
                   <svg className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <title>Arrow right</title>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </Link>
@@ -328,6 +330,7 @@ export default function ProcesoPage() {
                 >
                   <span>Ver FAQ</span>
                   <svg className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <title>Question mark</title>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </Link>
@@ -340,9 +343,9 @@ export default function ProcesoPage() {
                     { icon: "⚡", text: "Respuesta en menos de 24h" },
                     { icon: "🤝", text: "Sin compromiso" },
                     { icon: "📍", text: "Barcelona local" }
-                  ].map((item, index) => (
+                  ].map((item) => (
                     <div
-                      key={index}
+                      key={item.text}
                       className="group flex items-center gap-2 px-4 py-2 rounded-full bg-card/80 backdrop-blur-sm border border-primary/20 hover:border-primary/50 transition-all duration-300 hover:scale-105"
                     >
                       <span className="text-xl group-hover:scale-125 transition-transform duration-300">

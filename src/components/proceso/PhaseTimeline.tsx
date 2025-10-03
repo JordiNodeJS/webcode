@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
+
 
 // Componente para iconos SVG de las fases
 const PhaseIcon = ({ phase }: { phase: number }) => {
@@ -15,6 +16,7 @@ const PhaseIcon = ({ phase }: { phase: number }) => {
         stroke="currentColor"
         className="w-12 h-12"
       >
+        <title>Search</title>
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -31,6 +33,7 @@ const PhaseIcon = ({ phase }: { phase: number }) => {
         stroke="currentColor"
         className="w-12 h-12"
       >
+        <title>Design</title>
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -47,6 +50,7 @@ const PhaseIcon = ({ phase }: { phase: number }) => {
         stroke="currentColor"
         className="w-12 h-12"
       >
+        <title>Code</title>
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -63,6 +67,7 @@ const PhaseIcon = ({ phase }: { phase: number }) => {
         stroke="currentColor"
         className="w-12 h-12"
       >
+        <title>Rocket</title>
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -89,7 +94,7 @@ interface PhaseTimelineProps {
 export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [pulseBadges, setPulseBadges] = useState<Set<number>>(new Set());
-  const [pulseCount, setPulseCount] = useState(0);
+  const [_pulseCount, setPulseCount] = useState(0);
   const [timelineProgress, setTimelineProgress] = useState(0);
   const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -115,27 +120,19 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
     return () => {
       observer.disconnect();
       // Limpiar timeouts al desmontar
-      pulseTimeouts.current.forEach(timeout => clearTimeout(timeout));
-      animationTimeouts.current.forEach(timeout => clearTimeout(timeout));
+      pulseTimeouts.current.forEach(timeout => { clearTimeout(timeout); });
+      animationTimeouts.current.forEach(timeout => { clearTimeout(timeout); });
     };
   }, [isVisible]);
 
-  // Efecto separado para iniciar animaciones cuando isVisible cambia
-  useEffect(() => {
-    if (isVisible) {
-      startTimelineAnimation();
-      startRandomPulses();
-    }
-  }, [isVisible]);
-
-  const startTimelineAnimation = () => {
+  const startTimelineAnimation = useCallback(() => {
     // Resetear estados
     setTimelineProgress(0);
     setVisibleCards(new Set());
     
     // Animar la barra de tiempo
-    const timelineDuration = 2000; // 2 segundos para la barra
-    const cardDelay = 300; // 300ms entre cada tarjeta
+    const timelineDuration = 3000; // 3 segundos para la barra
+    const _cardDelay = 300; // 300ms entre cada tarjeta
     
     // Animar progreso de la barra
     const timelineInterval = setInterval(() => {
@@ -158,9 +155,9 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
       
       animationTimeouts.current.push(timeout);
     });
-  };
+  }, [fases]);
 
-  const startRandomPulses = () => {
+  const startRandomPulses = useCallback(() => {
     const maxPulses = 5;
     let currentPulse = 0;
 
@@ -192,7 +189,15 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
     };
 
     schedulePulse();
-  };
+  }, [fases]);
+
+  // Efecto separado para iniciar animaciones cuando isVisible cambia
+  useEffect(() => {
+    if (isVisible) {
+      startTimelineAnimation();
+      startRandomPulses();
+    }
+  }, [isVisible, startTimelineAnimation, startRandomPulses]);
 
   return (
     <section 
@@ -234,8 +239,10 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
                 />
               </div>
 
+
+
               <div className="grid grid-cols-4 gap-8 relative z-20">
-                {fases.map((fase, index) => (
+                {fases.map((fase, _index) => (
                   <div 
                     key={fase.numero} 
                     className={`relative group transition-all duration-500 ease-out ${

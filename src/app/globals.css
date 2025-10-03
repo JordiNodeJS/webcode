@@ -417,6 +417,10 @@
   display: inline-block; /* ensure background positioning and clipping */
   /* Subtle shadow helps gradient read on busy or similar-toned backgrounds */
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+  /* Ensure proper text wrapping and overflow handling */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 /* Fallback for browsers that don't support background-clip:text */
@@ -1046,20 +1050,53 @@ main > section:first-of-type {
 }
 
 @keyframes accordion-down {
-  from {
+  0% {
     height: 0;
+    opacity: 0;
+    transform: scaleY(0.8);
   }
-  to {
+  40% {
+    height: calc(var(--radix-accordion-content-height) * 1.15);
+    opacity: 0.7;
+    transform: scaleY(1.05);
+  }
+  60% {
+    height: calc(var(--radix-accordion-content-height) * 0.85);
+    opacity: 0.8;
+    transform: scaleY(0.95);
+  }
+  75% {
+    height: calc(var(--radix-accordion-content-height) * 1.05);
+    opacity: 0.9;
+    transform: scaleY(1.02);
+  }
+  100% {
     height: var(--radix-accordion-content-height);
+    opacity: 1;
+    transform: scaleY(1);
   }
 }
 
 @keyframes accordion-up {
-  from {
+  0% {
     height: var(--radix-accordion-content-height);
+    opacity: 1;
+    transform: scaleY(1);
   }
-  to {
+  15% {
+    height: calc(var(--radix-accordion-content-height) * 1.08);
+    opacity: 0.8;
+    transform: scaleY(1.05);
+  }
+  30% {
+    height: calc(var(--radix-accordion-content-height) * 0.92);
+    opacity: 0.6;
+    transform: scaleY(0.98);
+  }
+  100% {
     height: 0;
+    opacity: 0;
+    transform: scaleY(0.8);
   }
 }
 
@@ -1440,4 +1477,13 @@ html.dark body main + footer.footer-verdoso.footer-verdoso-test {
   html.dark body main + footer.footer-verdoso.footer-verdoso-test {
     --footer-glass-blur: 20px;
   }
+}
+
+/* Animaciones de accordion con efecto rebote */
+.animate-accordion-down {
+  animation: accordion-down 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.animate-accordion-up {
+  animation: accordion-up 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }

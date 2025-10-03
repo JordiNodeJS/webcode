@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import type { BriefingFormData } from "@/types/briefing";
 import type { EmailResponse } from "@/types/resend";
 
 // Importación dinámica de Resend
@@ -168,7 +169,7 @@ async function sendBriefingEmail(
   }
 }
 
-function generateBriefingEmailTemplate(data: any): string {
+function generateBriefingEmailTemplate(data: BriefingFormData): string {
   const presupuestoLabels: Record<string, string> = {
     "<3000": "Menos de 3.000€",
     "3000-8000": "3.000€ - 8.000€",
@@ -440,7 +441,7 @@ function generateBriefingEmailTemplate(data: any): string {
   `;
 }
 
-function generateBriefingPlainTextEmail(data: any): string {
+function generateBriefingPlainTextEmail(data: BriefingFormData): string {
   return `
 📋 NUEVO BRIEFING DE PROYECTO - WEBCODE
 

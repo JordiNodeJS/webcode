@@ -115,6 +115,7 @@ export default function PhaseDetails({ fases }: PhaseDetailsProps) {
                   <div className="absolute top-8 right-4 flex items-center">
                     <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30 shadow-lg">
                       <svg className="w-4 h-4 text-primary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <title>Clock</title>
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                       <span className="text-sm font-semibold text-primary whitespace-nowrap">
@@ -146,6 +147,7 @@ export default function PhaseDetails({ fases }: PhaseDetailsProps) {
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
                         <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <title>Clipboard</title>
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                         </svg>
                       </div>
@@ -157,13 +159,13 @@ export default function PhaseDetails({ fases }: PhaseDetailsProps) {
                     <Accordion type="single" collapsible className="w-full space-y-2">
                       {fase.actividades.map((actividad, idx) => (
                         <AccordionItem 
-                          key={idx} 
+                          key={`${fase.numero}-actividad-${actividad.substring(0, 20)}`} 
                           value={`item-${fase.numero}-${idx}`}
                           className="border-2 !border-b-2 border-primary/20 rounded-lg px-4 hover:border-primary/40 transition-all duration-300 bg-card/50 backdrop-blur-sm"
                         >
-                          <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary hover:no-underline py-3">
-                            <div className="flex items-center gap-3 text-left">
-                              <span className="text-primary font-bold flex-shrink-0">▸</span>
+                          <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary hover:no-underline py-3 px-2">
+                            <div className="flex items-center gap-4 text-left">
+                              <span className="text-primary font-bold flex-shrink-0 ml-1">▸</span>
                               <span>{actividad}</span>
                             </div>
                           </AccordionTrigger>
@@ -182,6 +184,7 @@ export default function PhaseDetails({ fases }: PhaseDetailsProps) {
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-8 h-8 rounded-lg bg-secondary/10 flex items-center justify-center">
                         <svg className="w-5 h-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <title>Check circle</title>
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       </div>
@@ -190,9 +193,9 @@ export default function PhaseDetails({ fases }: PhaseDetailsProps) {
                       </h4>
                     </div>
                     <ul className="grid grid-cols-1 gap-2">
-                      {fase.entregables.map((entregable, idx) => (
+                      {fase.entregables.map((entregable) => (
                         <li
-                          key={idx}
+                          key={`${fase.numero}-entregable-${entregable.substring(0, 20)}`}
                           className="flex items-center gap-3 text-sm text-muted-foreground bg-gradient-to-r from-secondary/5 to-transparent p-3 rounded-lg hover:from-secondary/10 transition-all duration-300"
                         >
                           <span className="text-secondary font-bold text-lg flex-shrink-0 flex items-center justify-center w-5 h-5">
@@ -211,6 +214,7 @@ export default function PhaseDetails({ fases }: PhaseDetailsProps) {
                     <div className="flex items-center gap-3 p-4 rounded-xl bg-gradient-to-r from-primary/10 via-primary/5 to-transparent border border-primary/20">
                       <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
                         <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <title>User</title>
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
                       </div>

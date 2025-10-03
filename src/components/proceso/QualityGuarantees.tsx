@@ -40,7 +40,7 @@ export default function QualityGuarantees({ garantias }: QualityGuaranteesProps)
         {/* Grid de garantías con efectos modernos */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-12">
           {garantias.map((garantia, index) => (
-            <WSFadeIn key={index} delay={0.1 * (index + 1)}>
+            <WSFadeIn key={garantia.titulo} delay={0.1 * (index + 1)}>
               <div className="group relative h-full">
                 {/* Brillo de fondo en hover */}
                 <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-30 blur-2xl transition-all duration-700 rounded-2xl" />

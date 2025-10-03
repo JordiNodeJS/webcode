@@ -44,7 +44,7 @@ export default function BriefingCategories({ categorias }: BriefingCategoriesPro
             <ul className="space-y-2">
               {categoria.items.map((item, idx) => (
                 <motion.li
-                  key={idx}
+                  key={item}
                   className="flex items-start gap-2 text-sm text-muted-foreground"
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
