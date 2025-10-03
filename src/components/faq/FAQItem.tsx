@@ -1,19 +1,20 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import type { ReactNode } from "react";
 import { useState } from "react";
 import { ChevronDown } from "@/lib/icons";
 import { cn } from "@/lib/utils";
 
 interface FAQItemProps {
   question: string;
-  answer: string;
+  answer: ReactNode;
   index: number;
 }
 
 /**
  * Componente individual de pregunta frecuente
- * 
+ *
  * Incluye animaciones WAS (WEBCODE Animation System) para expandir/contraer
  * con efectos suaves y accesibles.
  */
@@ -48,16 +49,16 @@ export function FAQItem({ question, answer, index }: FAQItemProps) {
           transition={{ duration: 0.3, ease: "easeInOut" }}
           className="flex-shrink-0 mt-1"
         >
-          <ChevronDown 
+          <ChevronDown
             className={cn(
               "w-5 h-5 transition-colors",
               isOpen ? "text-primary" : "text-muted-foreground",
               "group-hover:text-primary"
-            )} 
+            )}
           />
         </motion.div>
       </button>
-      
+
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
@@ -76,4 +77,3 @@ export function FAQItem({ question, answer, index }: FAQItemProps) {
     </motion.div>
   );
 }
-
