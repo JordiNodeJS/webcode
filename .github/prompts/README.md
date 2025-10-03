@@ -1,128 +1,145 @@
-# Índice de Prompts - WebSnack
+# WEBCODE Prompts & Guidelines
 
-## **Sistema de Prompts Estandarizado**
+Este directorio contiene prompts y guías de desarrollo para mantener la consistencia y calidad del proyecto WEBCODE.
 
-Este directorio contiene todos los prompts especializados del proyecto WebSnack, organizados y estandarizados para maximizar la efectividad del desarrollo.
+## 📚 Índice de Prompts
 
----
+### 🎨 Diseño y Desarrollo de Páginas
 
-## **📂 ESTRUCTURA DE PROMPTS**
+#### [`create-proceso-page.prompt.md`](./create-proceso-page.prompt.md)
+**Propósito**: Crear una página completa de "Proceso" de desarrollo web
 
-### **🎯 Prompts Principales**
+**Contenido**:
+- Estructura de 4 fases del proceso de desarrollo
+- Timeline horizontal (desktop) y vertical (mobile)
+- Garantías de calidad y protección del cliente
+- Canales de comunicación
+- SEO metadata y responsive design
 
-| Archivo                             | Propósito                    | Estado           |
-| ----------------------------------- | ---------------------------- | ---------------- |
-| `herramientas-desarrollo.prompt.md` | MCPs, Testing, Playwright    | ✅ Estandarizado |
-| `shadcn.prompt.md`                  | Componentes shadcn/ui v4     | ✅ Estandarizado |
-| `ui-ux.prompt.md`                   | Diseño UI/UX con Tailwind v4 | ✅ Estandarizado |
-| `llm.prompt.md`                     | Generación llms.txt          | ✅ Estandarizado |
+**Características**:
+- Diseño con gradientes y glassmorphism
+- Componentes WSFadeIn para animaciones
+- Trust indicators y CTAs optimizados
+- ~650 líneas de código
 
-### **🔧 Prompts Técnicos**
-
-| Archivo                       | Propósito                | Estado                       |
-| ----------------------------- | ------------------------ | ---------------------------- |
-| `arquitectura.prompt.md`      | Arquitectura y patrones  | 📝 Pendiente estandarización |
-| `layout.prompt.md`            | Layouts y estructura     | 📝 Pendiente estandarización |
-| `mcp-tools-nextjs.prompt.md`  | MCPs específicos Next.js | 📝 Pendiente estandarización |
-| `tailwind4-theming.prompt.md` | Theming Tailwind v4      | 📝 Pendiente estandarización |
-| `theme.prompt.md`             | Sistema de temas         | 📝 Pendiente estandarización |
-
-### **📋 Prompts Especializados**
-
-| Archivo                                 | Propósito                  | Estado                       |
-| --------------------------------------- | -------------------------- | ---------------------------- |
-| `politica-privacidad.prompt.md`         | Documentos legales         | 📝 Pendiente estandarización |
-| `hero-naming-convention.prompt.md`      | Convención nombres Hero    | ✅ Estandarizado             |
-| `component-naming-convention.prompt.md` | Convención nombres general | ✅ Estandarizado             |
+**Cuándo usar**: Al crear páginas similares de servicios o procesos
 
 ---
 
-## **📖 TEMPLATE Y ESTÁNDARES**
+### ⚡ Optimización y Rendimiento
 
-### **Archivo de Referencia**
+#### [`performance-animations-guidelines.prompt.md`](./performance-animations-guidelines.prompt.md)
+**Propósito**: Guía completa de optimización de animaciones y rendimiento
 
-- **`_template-estandar.md`** - Template base para todos los prompts
+**Contenido**:
+- **Reglas de oro** para animaciones eficientes
+- **Problemas comunes** de rendimiento (CPU/GPU >100)
+- **Límites recomendados** de elementos animados
+- **Patrones de optimización** con código real
+- **Herramientas de diagnóstico** (Chrome DevTools)
+- **Script de análisis automático** de rendimiento
 
-### **Estructura Estándar**
+**Caso de estudio real**:
+- Optimización página `/proceso`
+- Reducción: 24 → 4 elementos animados (-83%)
+- CPU/GPU: >100 → ~20-30 en idle (-75%)
 
+**Métricas objetivo**:
+- Elementos animados: ≤5
+- CPU idle: <30%
+- Lighthouse Performance: >90
+- Sin blur-3xl (usar blur-2xl)
+
+**Cuándo usar**: 
+- Antes de añadir animaciones nuevas
+- Al detectar problemas de rendimiento
+- Durante code reviews de componentes con animaciones
+- Al optimizar páginas existentes
+
+---
+
+## 🎯 Guía de Uso
+
+### Para Desarrolladores
+
+1. **Antes de empezar una tarea**, revisar si existe un prompt relevante
+2. **Durante el desarrollo**, seguir las guidelines del prompt
+3. **Antes de commit**, verificar checklist de optimización
+
+### Para Code Reviews
+
+1. Verificar adherencia a los prompts relevantes
+2. Usar checklists de los prompts para validación
+3. Comprobar métricas de rendimiento cuando aplique
+
+## 📊 Métricas de Calidad
+
+Todos los prompts están basados en:
+- ✅ Experiencia real del proyecto
+- ✅ Problemas resueltos documentados
+- ✅ Mejores prácticas de la industria
+- ✅ Métricas medibles
+
+## 🔄 Mantenimiento
+
+### Actualización de Prompts
+
+Cuando se descubra un nuevo patrón o optimización:
+1. Documentarlo en el prompt relevante
+2. Añadir ejemplo de código
+3. Incluir métricas before/after si aplica
+4. Actualizar este README
+
+### Creación de Nuevos Prompts
+
+Template sugerido:
 ```markdown
-# Prompt: [Nombre] - WebSnack
+# Prompt: [Título Descriptivo]
 
-## **Contexto y Objetivo**
+## Contexto
+[Explicación del propósito]
 
-## **Alcance**
+## Stack Tecnológico
+[Tecnologías relevantes]
 
----
+## Guía/Contenido Principal
+[Contenido detallado]
 
-## **[SECCIONES PRINCIPALES]**
+## Ejemplos
+[Código de ejemplo]
 
----
-
-## **Flujo de Trabajo**
-
-### **Criterios de Aceptación**
-
----
-
-**Nota**: [Contexto WebSnack]
+## Checklist
+[Items verificables]
 ```
 
-### **Convenciones Aplicadas**
+## 📝 Historial de Prompts
 
-- ✅ **Idioma**: Español como idioma principal
-- ✅ **Formato**: Estructura consistente con separadores visuales
-- ✅ **Contexto**: Referencia explícita al proyecto WebSnack
-- ✅ **Ejemplos**: Código específico cuando aplique
-- ✅ **Validación**: Criterios de aceptación claros
+| Fecha | Prompt | Descripción |
+|-------|--------|-------------|
+| 2025-10-03 | `performance-animations-guidelines.prompt.md` | Guía de optimización basada en caso real |
+| 2025-10-03 | `create-proceso-page.prompt.md` | Template para página de Proceso |
 
----
+## 🚀 Próximos Prompts Planeados
 
-## **🔄 PROMPTS CONSOLIDADOS**
+Ideas para futuros prompts:
+- [ ] Component architecture guidelines
+- [ ] SEO optimization checklist
+- [ ] Accessibility (a11y) standards
+- [ ] Testing best practices
+- [ ] API integration patterns
+- [ ] Form validation standards
+- [ ] Error handling guidelines
 
-### **Archivos Eliminados (Consolidados)**
+## 💡 Contribuir
 
-- ~~`playwright.prompt.md`~~ → Integrado en `herramientas-desarrollo.prompt.md`
-- ~~`mcp-tools.prompt.md`~~ → Integrado en `herramientas-desarrollo.prompt.md`
-
-### **Beneficios de la Consolidación**
-
-- **Menos fragmentación** - Información relacionada agrupada
-- **Mejor mantenibilidad** - Menos archivos que actualizar
-- **Mayor coherencia** - Flujos de trabajo integrados
-
----
-
-## **📊 MÉTRICAS POST-ESTANDARIZACIÓN**
-
-### **Estado Actual**
-
-- **Prompts estandarizados**: 6/11 (55%)
-- **Prompts consolidados**: 2 archivos eliminados
-- **Template creado**: ✅ `_template-estandar.md`
-
-### **Próximos Pasos**
-
-1. **Estandarizar** prompts técnicos restantes
-2. **Revisar** redundancias en archivos grandes
-3. **Validar** coherencia entre prompts
-4. **Optimizar** referencias cruzadas
+Para añadir un nuevo prompt:
+1. Crear archivo `.prompt.md` en este directorio
+2. Seguir el template sugerido
+3. Añadir entrada en este README
+4. Commit con mensaje descriptivo
 
 ---
 
-## **🎯 USO RECOMENDADO**
-
-### **Para Desarrolladores**
-
-1. **Consultar** este índice para encontrar el prompt apropiado
-2. **Seguir** la estructura estándar al crear nuevos prompts
-3. **Referenciar** `_template-estandar.md` para mantener consistencia
-
-### **Para Mantenimiento**
-
-1. **Aplicar** formato estándar a prompts pendientes
-2. **Revisar** periódicamente coherencia del sistema
-3. **Actualizar** este índice con cambios
-
----
-
-**Nota**: Este sistema de prompts está diseñado para maximizar la efectividad del desarrollo en WebSnack, manteniendo consistencia y calidad en todas las interacciones con IA.
+**Proyecto**: WEBCODE  
+**Última actualización**: 3 de Octubre de 2025  
+**Mantenido por**: Equipo WEBCODE
