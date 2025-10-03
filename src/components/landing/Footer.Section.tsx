@@ -17,7 +17,7 @@ export function FooterSection() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative footer-verdoso footer-verdoso-test border-t border-border/50 overflow-hidden mt-16">
+    <footer className="relative footer-verdoso footer-verdoso-test border-t border-border/50 overflow-hidden">
       {/* Fondo con gradiente sutil verdoso */}
       <div className="absolute inset-0 footer-verdoso-overlay"></div>
 
