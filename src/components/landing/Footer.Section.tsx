@@ -139,6 +139,21 @@ export function FooterSection() {
               >
                 Portfolio
               </a>
+              
+              <Link
+                href="/preguntas-frecuentes"
+                className="block transition-colors duration-200"
+                style={{ color: "oklch(var(--muted-foreground))" }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "oklch(var(--secondary))";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color =
+                    "oklch(var(--muted-foreground))";
+                }}
+              >
+                FAQ
+              </Link>
             </div>
 
             {/* Enlaces sociales - Colores corregidos del tema */}
