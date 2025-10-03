@@ -141,7 +141,7 @@ export function FooterSection() {
               </a>
               
               <Link
-                href="/preguntas-frecuentes"
+                href="/faqs"
                 className="block transition-colors duration-200"
                 style={{ color: "oklch(var(--muted-foreground))" }}
                 onMouseEnter={(e) => {

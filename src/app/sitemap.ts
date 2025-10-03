@@ -48,7 +48,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7
     },
     {
-      url: `${baseUrl}/preguntas-frecuentes`,
+      url: `${baseUrl}/faqs`,
       lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.8

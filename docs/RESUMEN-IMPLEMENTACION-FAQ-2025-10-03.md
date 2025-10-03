@@ -40,7 +40,7 @@ Se ha implementado exitosamente una **página de Preguntas Frecuentes (FAQ)** co
 
 ### 2. Página Principal
 
-#### `src/app/preguntas-frecuentes/page.tsx`
+#### `src/app/faqs/page.tsx`
 - 15 preguntas y respuestas detalladas
 - Metadata SEO completamente optimizada
 - 15+ palabras clave objetivo
@@ -203,7 +203,7 @@ Se ha implementado exitosamente una **página de Preguntas Frecuentes (FAQ)** co
 src/components/faq/FAQItem.tsx
 src/components/faq/index.ts
 src/components/seo/FAQStructuredData.tsx
-src/app/preguntas-frecuentes/page.tsx
+src/app/faqs/page.tsx
 ```
 
 ### Actualizados (5 archivos)

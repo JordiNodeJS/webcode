@@ -35,7 +35,7 @@ export function FAQItem({ question, answer, index }: FAQItemProps) {
           "w-full py-6 px-4 flex items-start justify-between gap-4",
           "text-left transition-colors duration-200",
           "hover:bg-accent/30 rounded-lg",
-          "focus:outline-none focus:ring-2 focus:ring-primary/50",
+          "focus:outline-none",
           "group"
         )}
         aria-expanded={isOpen}

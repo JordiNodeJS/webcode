@@ -2,7 +2,7 @@
 
 > **Fecha de creación**: 3 de Octubre 2025  
 > **Estado**: ✅ COMPLETADA Y DESPLEGADA  
-> **URL**: `/preguntas-frecuentes`  
+> **URL**: `/faqs`  
 > **Prioridad SEO**: Alta (0.8 en sitemap)
 
 ---
@@ -149,7 +149,7 @@ navigationItems = [
 **Sitemap.xml:**
 ```xml
 <url>
-  <loc>https://webcode.es/preguntas-frecuentes</loc>
+  <loc>https://webcode.es/faqs</loc>
   <lastmod>2025-10-03</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
@@ -265,7 +265,7 @@ src/
 │   └── seo/
 │       └── FAQStructuredData.tsx # Schema.org FAQPage
 ├── app/
-│   └── preguntas-frecuentes/
+│   └── faqs/
 │       └── page.tsx              # Página principal FAQ
 └── lib/
     └── seo-metadata.ts           # Actualizado (ya existente)
