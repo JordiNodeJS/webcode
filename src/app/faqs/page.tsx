@@ -484,9 +484,11 @@ export default function FAQsPage() {
               </Link>
               <Link
                 href="/servicios"
+                aria-label="Ver todos los servicios - listado completo"
+                title="Ver todos los servicios"
                 className="inline-flex items-center justify-center px-8 py-3 rounded-lg border border-border bg-background/50 backdrop-blur-sm font-semibold hover:bg-accent transition-all duration-200"
               >
-                Ver Servicios
+                Ver todos los servicios
               </Link>
             </div>
           </div>
