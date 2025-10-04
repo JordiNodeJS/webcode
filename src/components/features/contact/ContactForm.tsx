@@ -33,6 +33,7 @@ import {
   SelectValue
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { useBotProtection, useRateLimit } from "@/hooks/useBotProtection";
 
 // Esquema de validación Zod
 const contactFormSchema = z.object({
@@ -53,7 +54,11 @@ const contactFormSchema = z.object({
     .max(1000, "El mensaje no puede exceder los 1000 caracteres"),
   gdprConsent: z
     .boolean()
-    .refine((val) => val === true, "Debes aceptar la política de privacidad")
+    .refine((val) => val === true, "Debes aceptar la política de privacidad"),
+  // Campo honeypot para detectar bots
+  website: z.string().optional().refine((val) => !val || val.trim() === "", {
+    message: "Este campo debe estar vacío"
+  })
 });
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
@@ -72,6 +77,16 @@ export function ContactForm() {
   const [formStatus, setFormStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState<string>("");
 
+  // Protección anti-bot
+  const botProtection = useBotProtection({
+    honeypotFieldName: "website",
+    timeThreshold: 3000,
+    maxSubmissions: 3,
+    cooldownPeriod: 60000
+  });
+
+  const rateLimit = useRateLimit(5, 300000); // 5 envíos por 5 minutos
+
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
@@ -79,7 +94,8 @@ export function ContactForm() {
       subject: "",
       serviceType: undefined,
       message: "",
-      gdprConsent: false
+      gdprConsent: false,
+      website: "" // Campo honeypot
     }
   });
 
@@ -88,6 +104,29 @@ export function ContactForm() {
     setErrorMessage("");
 
     try {
+      // Verificar rate limiting
+      if (!rateLimit.isAllowed()) {
+        setFormStatus("error");
+        setErrorMessage("Has enviado demasiados mensajes. Por favor, espera antes de intentar de nuevo.");
+        return;
+      }
+
+      // Verificar protección anti-bot
+      const botDetection = botProtection.detectBot();
+      if (botDetection.isBot) {
+        setFormStatus("error");
+        setErrorMessage("Actividad sospechosa detectada. Por favor, verifica que eres humano.");
+        console.warn("Bot detected:", botDetection.reasons);
+        return;
+      }
+
+      // Verificar si está bloqueado
+      if (botProtection.isBlocked) {
+        setFormStatus("error");
+        setErrorMessage(`Demasiados envíos. Inténtalo de nuevo en ${Math.ceil(botProtection.remainingCooldown / 1000)} segundos.`);
+        return;
+      }
+
       // Preparar datos para envío (incluir timestamp del consentimiento)
       const formData = {
         ...data,
@@ -111,6 +150,8 @@ export function ContactForm() {
 
       setFormStatus("success");
       form.reset();
+      // Registrar envío exitoso para protección anti-bot
+      botProtection.recordSubmission();
     } catch (error) {
       console.error("Error al enviar formulario:", error);
       setFormStatus("error");
@@ -290,6 +331,29 @@ export function ContactForm() {
                 </FormItem>
               )}
             />
+            
+            {/* Campo honeypot - Oculto para usuarios humanos */}
+            <FormField
+              control={form.control}
+              name="website"
+              render={({ field }) => (
+                <FormItem className="hidden">
+                  <FormLabel>Website (no rellenar)</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="text"
+                      placeholder=""
+                      {...field}
+                      tabIndex={-1}
+                      autoComplete="off"
+                      style={{ display: 'none' }}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            
             {/* Mensaje de error */}
             {formStatus === "error" && (
               <div className="flex items-center gap-2 p-3 text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded-md">
