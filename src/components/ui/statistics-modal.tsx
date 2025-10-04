@@ -1,135 +1,139 @@
 "use client"
 
-import { ExternalLink, XIcon } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
-import { Badge } from '@/components/ui/badge'
+import { ExternalLink, X } from 'lucide-react'
+import { Button } from './button'
 
-interface StatisticData {
+interface StatisticsModalProps {
+  isOpen: boolean
+  onClose: () => void
   title: string
   percentage: string
   description: string
   source: string
   sourceUrl?: string
   detailedExplanation: string
-  context: string
-  impact: string
-  methodology?: string
+  context?: string
+  impact?: string
 }
 
-interface StatisticsModalProps {
-  isOpen: boolean
-  onClose: () => void
-  statistic: StatisticData | null
-}
+export function StatisticsModal({
+  isOpen,
+  onClose,
+  title,
+  percentage,
+  description,
+  source,
+  sourceUrl,
+  detailedExplanation,
+  context,
+  impact
+}: StatisticsModalProps) {
+  if (!isOpen) return null
 
-export function StatisticsModal({ isOpen, onClose, statistic }: StatisticsModalProps) {
-  if (!statistic) return null
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      onClose()
+    }
+  }
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto border-4 border-primary/30 bg-gradient-to-br from-background to-primary/5 shadow-brutal">
-        <DialogHeader className="space-y-4">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+      onClick={handleBackdropClick}
+    >
+      <div 
+        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-background border-4 border-primary/30 rounded-2xl shadow-brutal"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="sticky top-0 bg-background border-b-2 border-primary/20 p-6 rounded-t-2xl">
           <div className="flex items-center justify-between">
-            <DialogTitle className="text-2xl md:text-3xl font-black text-primary">
-              {statistic.title}
-            </DialogTitle>
+            <div className="flex items-center gap-4">
+              <div className="text-4xl font-black text-primary">
+                {percentage}
+              </div>
+              <div>
+                <h2 className="text-xl font-bold">{title}</h2>
+                <p className="text-sm text-muted-foreground">{description}</p>
+              </div>
+            </div>
             <Button
-              variant="ghost"
+              variant="outline"
               size="icon"
               onClick={onClose}
-              className="h-8 w-8 rounded-full hover:bg-primary/10"
+              className="border-2 border-primary/30 hover:bg-primary/10"
             >
-              <XIcon className="h-4 w-4" />
+              <X className="w-4 h-4" />
             </Button>
           </div>
-          
-          <div className="text-center">
-            <div className="text-6xl md:text-7xl font-black text-primary mb-2">
-              {statistic.percentage}
-            </div>
-            <p className="text-lg md:text-xl font-semibold text-muted-foreground">
-              {statistic.description}
-            </p>
-          </div>
-        </DialogHeader>
+        </div>
 
-        <div className="space-y-6">
-          {/* Source Information */}
-          <div className="bg-muted/50 p-6 rounded-2xl border-2 border-primary/20">
-            <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
-              <ExternalLink className="w-5 h-5 text-primary" />
-              Official Source
+        {/* Content */}
+        <div className="p-6 space-y-6">
+          {/* Source */}
+          <div className="bg-primary/10 p-4 rounded-xl border-2 border-primary/20">
+            <h3 className="font-bold text-lg mb-2 flex items-center gap-2">
+              📊 Fuente Oficial
             </h3>
-            <p className="font-semibold mb-2">{statistic.source}</p>
-            {statistic.sourceUrl && (
+            <p className="font-semibold mb-2">{source}</p>
+            {sourceUrl && (
               <a
-                href={statistic.sourceUrl}
+                href={sourceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors"
+                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors text-sm"
               >
-                View complete study
+                Ver estudio completo
                 <ExternalLink className="w-4 h-4" />
               </a>
             )}
           </div>
 
           {/* Detailed Explanation */}
-          <div className="space-y-4">
-            <h3 className="font-bold text-lg">Detailed Explanation</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              {statistic.detailedExplanation}
+          <div className="bg-muted/50 p-4 rounded-xl">
+            <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
+              📋 Explicación Detallada
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              {detailedExplanation}
             </p>
           </div>
 
           {/* Context */}
-          <div className="space-y-4">
-            <h3 className="font-bold text-lg">Context</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              {statistic.context}
-            </p>
-          </div>
-
-          {/* Impact */}
-          <div className="space-y-4">
-            <h3 className="font-bold text-lg">Impact</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              {statistic.impact}
-            </p>
-          </div>
-
-          {/* Methodology */}
-          {statistic.methodology && (
-            <div className="space-y-4">
-              <h3 className="font-bold text-lg">Methodology</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {statistic.methodology}
+          {context && (
+            <div className="bg-accent/10 p-4 rounded-xl border-2 border-accent/20">
+              <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
+                🌍 Contexto
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {context}
               </p>
             </div>
           )}
 
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t-2 border-primary/20">
-            <Button
-              onClick={onClose}
-              className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
-            >
-              Close
-            </Button>
-            {statistic.sourceUrl && (
-              <Button
-                variant="outline"
-                onClick={() => window.open(statistic.sourceUrl, '_blank')}
-                className="flex-1 border-2 border-primary/30 hover:bg-primary/10"
-              >
-                <ExternalLink className="w-4 h-4 mr-2" />
-                View Source
-              </Button>
-            )}
-          </div>
+          {/* Impact */}
+          {impact && (
+            <div className="bg-secondary/10 p-4 rounded-xl border-2 border-secondary/20">
+              <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
+                💡 Impacto
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {impact}
+              </p>
+            </div>
+          )}
         </div>
-      </DialogContent>
-    </Dialog>
+
+        {/* Footer */}
+        <div className="sticky bottom-0 bg-background border-t-2 border-primary/20 p-6 rounded-b-2xl">
+          <Button
+            onClick={onClose}
+            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+          >
+            Cerrar
+          </Button>
+        </div>
+      </div>
+    </div>
   )
 }

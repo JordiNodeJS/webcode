@@ -1240,16 +1240,6 @@ main > section:first-of-type {
   }
 }
 
-/* === COLORES ESPECÍFICOS DEL TEMA === */
-/* Clase para garantizar el color aguamarina del tema */
-.text-theme-secondary {
-  color: oklch(0.43 0.18 184.1) !important; /* Aguamarina del tema en modo claro */
-}
-
-.dark .text-theme-secondary {
-  color: oklch(0.45 0.18 184.1) !important; /* Aguamarina del tema en modo oscuro */
-}
-
 /* === FOOTER ANIMATED LOGO STYLES === */
 /* Estilos específicos para el footer con logo animado inspirado en el CodePen */
 

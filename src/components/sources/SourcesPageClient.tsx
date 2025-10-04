@@ -119,7 +119,7 @@ export default function SourcesPageClient() {
                     className="bg-background/80 p-6 rounded-2xl border-2 border-secondary/20 hover:border-secondary/40 hover:bg-secondary/5 transition-all duration-200 cursor-pointer group"
                   >
                     <div className="text-center mb-4">
-                      <div className="text-4xl font-black text-theme-secondary mb-2 group-hover:scale-105 transition-transform">
+                      <div className="text-4xl font-black text-accent mb-2 group-hover:scale-105 transition-transform">
                         74%
                       </div>
                       <p className="font-semibold">
