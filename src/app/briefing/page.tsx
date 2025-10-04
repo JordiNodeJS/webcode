@@ -337,14 +337,20 @@ export default function BriefingPage() {
               <div className="pt-6">
                 <div className="inline-block p-6 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 border-4 border-primary/30 backdrop-blur-sm shadow-brutal">
                   <p className="text-3xl md:text-4xl font-black text-primary mb-2">
-                    70% de los proyectos fallidos
+                    47% de los proyectos fallidos
                   </p>
                   <p className="text-base md:text-lg text-muted-foreground">
-                    Se deben a requisitos mal definidos o incompletos
+                    Se deben a gestión deficiente de requisitos
                   </p>
                   <p className="text-sm text-muted-foreground/70 mt-2">
-                    Fuente: Project Management Institute (PMI)
+                    Fuente: PMI Pulse of the Profession 2014
                   </p>
+                  <a 
+                    href="/sources"
+                    className="text-xs text-primary hover:text-primary/80 underline mt-1 inline-block transition-colors"
+                  >
+                    Ver fuentes y metodología →
+                  </a>
                 </div>
               </div>
             </div>

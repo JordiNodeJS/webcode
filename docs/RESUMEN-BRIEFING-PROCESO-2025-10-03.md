@@ -30,7 +30,7 @@ Se ha creado una nueva página moderna y completa sobre el **Briefing y Levantam
 ### 1. Página Principal
 **Ubicación:** `src/app/briefing/page.tsx`
 
-- Hero section con estadísticas impactantes (70% de proyectos fallidos por requisitos mal definidos)
+- Hero section con estadísticas impactantes (47% de proyectos fallidos por gestión deficiente de requisitos)
 - Sección de beneficios del briefing
 - Timeline visual de las 6 fases del ciclo de vida
 - Categorías de información a recopilar
@@ -194,7 +194,8 @@ Considerar agregar un enlace desde la página `/proceso` hacia `/briefing` para 
 - Título principal con gradiente WebCode
 - Subtítulo explicativo
 - Trust indicators (Sin sorpresas, Expectativas claras, Planning realista)
-- Estadística impactante: "70% de los proyectos fallidos se deben a requisitos mal definidos"
+- Estadística impactante: "47% de los proyectos fallidos se deben a gestión deficiente de requisitos"
+  - Fuente: [Página de fuentes oficiales](/sources) - PMI Pulse of the Profession 2014
 
 ### Sección: ¿Por qué es importante?
 - 6 beneficios del briefing en cards interactivas
