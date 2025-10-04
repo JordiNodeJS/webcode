@@ -80,8 +80,8 @@
   --muted-foreground: oklch(
     0.54 0 0
   ); /* lighter placeholder text for better distinction */
-  --accent: oklch(0.98 0.03 60); /* slightly richer accent color */
-  --accent-foreground: oklch(0.12 0 0); /* darker accent text */
+  --accent: oklch(0.57 0.2 328.5); /* púrpura accent - mismo que primary para consistencia */
+  --accent-foreground: oklch(0.98 0 0); /* near-white for strong contrast on accent */
   --destructive: oklch(0.759 0.112 12.2); /* #fcb4b5 */
   --border: oklch(0.45 0.1 328.5); /* darker border matching adjusted primary */
   --input: oklch(
@@ -127,8 +127,8 @@
   --muted-foreground: oklch(
     0.52 0 0
   ); /* darker placeholder text in dark mode for better distinction */
-  --accent: oklch(0.24 0.03 60);
-  --accent-foreground: oklch(0.985 0 0);
+  --accent: oklch(0.84 0.16 328.5); /* púrpura accent brillante para modo oscuro */
+  --accent-foreground: oklch(0.08 0 0); /* near-black for strong contrast on accent */
   --destructive: oklch(0.628 0.258 29.233); /* #dc2626 */
   --border: oklch(0.32 0.05 0); /* slightly lighter border than before */
   --input: oklch(0.22 0 0);
@@ -1238,6 +1238,16 @@ main > section:first-of-type {
     background: oklch(var(--primary));
     color: oklch(var(--primary-foreground));
   }
+}
+
+/* === COLORES ESPECÍFICOS DEL TEMA === */
+/* Clase para garantizar el color aguamarina del tema */
+.text-theme-secondary {
+  color: oklch(0.43 0.18 184.1) !important; /* Aguamarina del tema en modo claro */
+}
+
+.dark .text-theme-secondary {
+  color: oklch(0.45 0.18 184.1) !important; /* Aguamarina del tema en modo oscuro */
 }
 
 /* === FOOTER ANIMATED LOGO STYLES === */
