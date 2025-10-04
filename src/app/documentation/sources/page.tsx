@@ -1,22 +1,65 @@
+"use client"
+
 import { ArrowLeft, CheckCircle, ExternalLink, FileText, TrendingUp } from 'lucide-react'
-import type { Metadata } from 'next'
 import Link from 'next/link'
+import { useState } from 'react'
 import { WSFadeIn } from '@/components/animations/ws-fade-in'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { StatisticsModal } from '@/components/ui/statistics-modal'
 
-export const metadata: Metadata = {
-  title: 'Sources and Statistics | WebCode - Verifiable Data',
-  description: 'Official sources and verifiable statistics about project management and requirements. Data from Project Management Institute (PMI) and complementary studies.',
-  keywords: ['sources', 'statistics', 'PMI', 'project management', 'requirements', 'verifiable'],
-  openGraph: {
-    title: 'Sources and Statistics | WebCode',
-    description: 'Official sources and verifiable statistics about project management and requirements.',
-  },
+
+interface StatisticData {
+  title: string
+  percentage: string
+  description: string
+  source: string
+  sourceUrl?: string
+  detailedExplanation: string
+  context: string
+  impact: string
+  methodology?: string
 }
 
 export default function DocumentationSourcesPage() {
+  const [selectedStatistic, setSelectedStatistic] = useState<StatisticData | null>(null)
+
+  const _statisticsData = {
+    pmirequirements: {
+      title: "Inadequate requirements collection",
+      percentage: "37%",
+      description: "Primary cause of project failure according to PMI 2014",
+      source: "Project Management Institute (PMI) - Pulse of the Profession 2014",
+      sourceUrl: "https://www.pmi.org/learning/thought-leadership/pulse/the-high-cost-of-low-performance-2014",
+      detailedExplanation: "The PMI 2014 study identified that 37% of failed projects are specifically due to 'inadequate requirements collection'. This means organizations are not properly capturing the client's real needs, leading to misunderstandings, constant scope changes, and ultimately project failure.",
+      context: "This percentage increased from 32% in 2013, indicating a growing trend in the importance of proper requirements management. High-performing organizations reported only 11% of failures due to this cause, demonstrating the direct correlation between requirements management maturity and project success.",
+      impact: "Low-performing organizations experience that more than half of their projects fail primarily due to poor requirements management, costing them nearly 10 cents for every dollar invested.",
+      methodology: "PMI surveyed more than 2,000 project management professionals from organizations of various sizes and sectors, using robust statistical methodologies to ensure data representativeness."
+    },
+    iagconsulting: {
+      title: "Companies with low maturity level",
+      percentage: "74%",
+      description: "In requirements management according to IAG Consulting 2009",
+      source: "IAG Consulting - Business Analysis Benchmark 2009",
+      detailedExplanation: "IAG Consulting's study evaluated organizations' maturity level in requirements management using a 5-level scale. 74% of companies were positioned at levels 1-2 (low maturity level), meaning they lack systematic and documented processes for effectively managing requirements.",
+      context: "Companies with low maturity levels (levels 1-2) operate in an ad-hoc manner or with minimally repeatable processes. They don't have standard methodologies, consistent documentation, or established validation processes for requirements management.",
+      impact: "Only 54% of these companies achieve their business objectives, taking 35% more time to deliver results and experiencing significant resource waste.",
+      methodology: "IAG Consulting analyzed more than 400 projects from 100 organizations, evaluating 15 different dimensions of requirements management maturity, including processes, tools, roles, and metrics."
+    },
+    economicimpact: {
+      title: "Economic waste due to poor management",
+      percentage: "5.1%",
+      description: "Equivalent to $51 million wasted for every $1,000 million invested",
+      source: "Project Management Institute (PMI) - Pulse of the Profession 2014",
+      sourceUrl: "https://www.pmi.org/learning/thought-leadership/pulse/the-high-cost-of-low-performance-2014",
+      detailedExplanation: "PMI calculated that for every dollar invested in projects and programs, 5.1% is wasted specifically due to poor requirements management. This waste includes rework, uncontrolled scope changes, time lost in misunderstandings, and resources used for unnecessary functionalities.",
+      context: "In high-performing organizations, this waste is significantly reduced to 1%, demonstrating that investment in mature requirements management processes has a direct and quantifiable return.",
+      impact: "For an organization investing $1,000 million annually in projects, this represents $51 million in direct waste that could be avoided with better requirements management processes.",
+      methodology: "PMI used detailed financial analysis of failed projects, calculating the direct and indirect cost of poor requirements management based on data from more than 2,000 organizations."
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
       <div className="container mx-auto px-4 py-16 md:py-24">
@@ -107,7 +150,10 @@ export default function DocumentationSourcesPage() {
               <CardContent>
                 <div className="grid md:grid-cols-2 gap-6">
                   {/* PMI - Inadequate collection */}
-                  <div className="bg-background/80 p-6 rounded-2xl border-2 border-accent/20">
+                  <div 
+                    className="bg-background/80 p-6 rounded-2xl border-2 border-accent/20 cursor-pointer hover:bg-background hover:border-accent/40 transition-all duration-200 hover:shadow-lg"
+                    onClick={() => setSelectedStatistic(_statisticsData.pmirequirements)}
+                  >
                     <div className="text-center mb-4">
                       <div className="text-4xl font-black text-accent mb-2">
                         37%
@@ -118,11 +164,17 @@ export default function DocumentationSourcesPage() {
                       <p className="text-sm text-muted-foreground">
                         Primary cause of project failure (PMI 2014)
                       </p>
+                      <p className="text-xs text-accent/70 mt-2 font-medium">
+                        Click for more details →
+                      </p>
                     </div>
                   </div>
 
                   {/* IAG Consulting */}
-                  <div className="bg-background/80 p-6 rounded-2xl border-2 border-secondary/20">
+                  <div 
+                    className="bg-background/80 p-6 rounded-2xl border-2 border-secondary/20 cursor-pointer hover:bg-background hover:border-secondary/40 transition-all duration-200 hover:shadow-lg"
+                    onClick={() => setSelectedStatistic(_statisticsData.iagconsulting)}
+                  >
                     <div className="text-center mb-4">
                       <div className="text-4xl font-black text-secondary mb-2">
                         74%
@@ -133,11 +185,17 @@ export default function DocumentationSourcesPage() {
                       <p className="text-sm text-muted-foreground">
                         In requirements management (IAG Consulting 2009)
                       </p>
+                      <p className="text-xs text-secondary/70 mt-2 font-medium">
+                        Click for more details →
+                      </p>
                     </div>
                   </div>
 
                   {/* Economic Impact */}
-                  <div className="bg-background/80 p-6 rounded-2xl border-2 border-primary/20 md:col-span-2">
+                  <div 
+                    className="bg-background/80 p-6 rounded-2xl border-2 border-primary/20 md:col-span-2 cursor-pointer hover:bg-background hover:border-primary/40 transition-all duration-200 hover:shadow-lg"
+                    onClick={() => setSelectedStatistic(_statisticsData.economicimpact)}
+                  >
                     <div className="text-center mb-4">
                       <div className="text-4xl font-black text-primary mb-2">
                         5.1%
@@ -147,6 +205,9 @@ export default function DocumentationSourcesPage() {
                       </p>
                       <p className="text-sm text-muted-foreground">
                         Equivalent to $51 million wasted for every $1,000 million invested
+                      </p>
+                      <p className="text-xs text-primary/70 mt-2 font-medium">
+                        Click for more details →
                       </p>
                     </div>
                   </div>
@@ -230,6 +291,13 @@ export default function DocumentationSourcesPage() {
           </WSFadeIn>
         </div>
       </div>
+
+      {/* Modal */}
+      <StatisticsModal 
+        isOpen={selectedStatistic !== null}
+        onClose={() => setSelectedStatistic(null)}
+        statistic={selectedStatistic}
+      />
     </div>
   )
 }
