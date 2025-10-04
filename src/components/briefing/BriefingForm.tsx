@@ -67,8 +67,6 @@ export function BriefingForm() {
       // Presupuesto y plazos
       presupuestoEstimado: "no-definido",
       plazoPreferido: "no-definido",
-      presupuesto: "<3000",
-      plazoEntrega: "flexible",
       fechaLanzamiento: "",
       
       // Público objetivo
@@ -115,7 +113,7 @@ export function BriefingForm() {
       // Información adicional
       comentariosAdicionales: "",
       informacionAdicional: "",
-      comoConociste: "",
+      comoConociste: "google",
       
       // RGPD
       gdprConsent: false
@@ -173,7 +171,8 @@ export function BriefingForm() {
         localStorage.removeItem(STORAGE_KEY);
       }
     } catch (error) {
-      console.error("Error:", error);
+      // Pequeño delay para asegurar que el usuario vea el estado de loading
+      await new Promise(resolve => setTimeout(resolve, 500));
       setFormStatus("error");
       setErrorMessage(
         error instanceof Error ? error.message : "Error inesperado"
@@ -294,7 +293,7 @@ export function BriefingForm() {
 
         <CardContent>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <form method="post" className="space-y-6">
               {renderStepContent(currentStep, form)}
 
               {/* Error message */}
@@ -333,11 +332,24 @@ export function BriefingForm() {
                     type="submit"
                     className="flex-1"
                     disabled={formStatus === "submitting"}
+                    aria-disabled={formStatus === "submitting"}
+                    onClick={async (e) => {
+                      e.preventDefault();
+                      
+                      // Validar todos los campos manualmente
+                      const isValid = await form.trigger();
+                      
+                      if (isValid) {
+                        // Enviar el formulario manualmente
+                        const formData = form.getValues();
+                        await onSubmit(formData);
+                      }
+                    }}
                   >
                     {formStatus === "submitting" ? (
                       <>
                         <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                        Enviando...
+                        <span className="animate-pulse">Enviando...</span>
                       </>
                     ) : (
                       <>
@@ -671,30 +683,36 @@ function Step3TargetAudience({ form }: { form: UseFormReturn<BriefingFormData> }
           <FormItem>
             <FormLabel>Dispositivos principales * (selecciona todos los relevantes)</FormLabel>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 pt-2">
-              {["Móvil", "Tablet", "Desktop", "Todos por igual"].map((dispositivo) => (
+              {[
+                { value: "movil", label: "Móvil" },
+                { value: "tablet", label: "Tablet" },
+                { value: "desktop", label: "Desktop" },
+                { value: "todos", label: "Todos por igual" }
+              ].map((dispositivo) => (
                 <FormField
-                  key={dispositivo}
+                  key={dispositivo.value}
                   control={form.control}
                   name="dispositivosPrincipales"
                   render={({ field }) => (
                     <FormItem
-                      key={dispositivo}
+                      key={dispositivo.value}
                       className="flex items-center space-x-2"
                     >
                       <FormControl>
                         <Checkbox
-                          checked={field.value?.includes(dispositivo)}
+                          checked={field.value?.includes(dispositivo.value)}
                           onCheckedChange={(checked) => {
+                            const currentValue = field.value || [];
                             return checked
-                              ? field.onChange([...field.value, dispositivo])
+                              ? field.onChange([...currentValue, dispositivo.value])
                               : field.onChange(
-                                  field.value?.filter((value: string) => value !== dispositivo)
+                                  currentValue.filter((value: string) => value !== dispositivo.value)
                                 );
                           }}
                         />
                       </FormControl>
                       <FormLabel className="font-normal cursor-pointer">
-                        {dispositivo}
+                        {dispositivo.label}
                       </FormLabel>
                     </FormItem>
                   )}
@@ -733,10 +751,11 @@ function Step3TargetAudience({ form }: { form: UseFormReturn<BriefingFormData> }
                         <Checkbox
                           checked={field.value?.includes(idioma.value)}
                           onCheckedChange={(checked) => {
+                            const currentValue = field.value || [];
                             return checked
-                              ? field.onChange([...field.value, idioma.value])
+                              ? field.onChange([...currentValue, idioma.value])
                               : field.onChange(
-                                  field.value?.filter((value: string) => value !== idioma.value)
+                                  currentValue.filter((value: string) => value !== idioma.value)
                                 );
                           }}
                         />
@@ -818,10 +837,11 @@ function Step4Functionality({ form }: { form: UseFormReturn<BriefingFormData> })
                         <Checkbox
                           checked={field.value?.includes(funcionalidad)}
                           onCheckedChange={(checked) => {
+                            const currentValue = field.value || [];
                             return checked
-                              ? field.onChange([...field.value, funcionalidad])
+                              ? field.onChange([...currentValue, funcionalidad])
                               : field.onChange(
-                                  field.value?.filter((value: string) => value !== funcionalidad)
+                                  currentValue.filter((value: string) => value !== funcionalidad)
                                 );
                           }}
                         />
