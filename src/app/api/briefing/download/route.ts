@@ -1,8 +1,7 @@
+import jsPDF from "jspdf";
 import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { briefingFormSchema } from "@/types/briefing";
-import jsPDF from "jspdf";
-import autoTable from "jspdf-autotable";
 
 // Esquema de validación para el servidor
 const briefingFormServerSchema = briefingFormSchema.extend({
@@ -20,7 +19,8 @@ export async function POST(request: NextRequest) {
     const pdfBuffer = await generateBriefingPDF(validatedData);
 
     // Retornar PDF como respuesta
-    return new NextResponse(pdfBuffer, {
+    const arrayBuffer = pdfBuffer.buffer.slice(pdfBuffer.byteOffset, pdfBuffer.byteOffset + pdfBuffer.byteLength) as ArrayBuffer;
+    return new Response(arrayBuffer, {
       status: 200,
       headers: {
         "Content-Type": "application/pdf",
@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
 }
 
 // Función para generar el PDF del briefing
-async function generateBriefingPDF(data: z.infer<typeof briefingFormServerSchema>): Promise<Buffer> {
+async function generateBriefingPDF(data: z.infer<typeof briefingFormServerSchema>): Promise<Uint8Array> {
   const doc = new jsPDF();
   const pageWidth = doc.internal.pageSize.getWidth();
   const margin = 20;
@@ -86,7 +86,7 @@ async function generateBriefingPDF(data: z.infer<typeof briefingFormServerSchema
   };
 
   // Función para agregar campo
-  const addField = (label: string, value: string | string[] | boolean, required: boolean = false) => {
+  const addField = (label: string, value: string | string[] | boolean | undefined, required: boolean = false) => {
     if (yPosition > 270) {
       doc.addPage();
       yPosition = margin;
@@ -225,9 +225,9 @@ async function generateBriefingPDF(data: z.infer<typeof briefingFormServerSchema
     doc.text("webcode.es | info@webcode.es", margin + 60, 290);
   }
 
-  // Convertir a Buffer
+  // Convertir a Uint8Array
   const pdfOutput = doc.output("arraybuffer");
-  return Buffer.from(pdfOutput);
+  return new Uint8Array(pdfOutput);
 }
 
 // Funciones auxiliares para formatear datos

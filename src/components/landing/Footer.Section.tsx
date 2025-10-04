@@ -1,8 +1,8 @@
 "use client";
 
 import { Link } from "next-view-transitions";
-import { AnimatedLogo } from "./Footer.AnimatedLogo";
 import { EmailProtection } from "@/components/ui/EmailProtection";
+import { AnimatedLogo } from "./Footer.AnimatedLogo";
 
 /**
  * Footer.Section - Componente principal del footer de WEBCODE
@@ -93,17 +93,7 @@ export function FooterSection() {
             <div className="space-y-3">
               <EmailProtection
                 email="info@webcode.es"
-                className="block transition-colors duration-200"
-                style={{
-                  color: "oklch(var(--muted-foreground))"
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "oklch(var(--secondary))";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color =
-                    "oklch(var(--muted-foreground))";
-                }}
+                className="block transition-colors duration-200 text-muted-foreground hover:text-secondary"
               />
               <Link
                 href="/contacto"

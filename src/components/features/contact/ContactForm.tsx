@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useBotProtection, useRateLimit } from "@/hooks/useBotProtection";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -34,6 +33,7 @@ import {
   SelectValue
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { useBotProtection, useRateLimit } from "@/hooks/useBotProtection";
 
 // Esquema de validación Zod
 const contactFormSchema = z.object({

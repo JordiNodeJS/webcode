@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import type { EmailResponse } from "@/types/resend";
 import { briefingFormSchema } from "@/types/briefing";
+import type { EmailResponse } from "@/types/resend";
 
 // Importación dinámica de Resend para evitar problemas de Edge Runtime
 async function getResend() {
@@ -233,13 +233,13 @@ function generateBriefingEmailTemplate(data: z.infer<typeof briefingFormServerSc
             <div class="field">
               <div class="label">Dispositivos Principales:</div>
               <div class="checkbox-list">
-                ${data.dispositivosPrincipales.map(device => `<span class="checkbox-item">${device}</span>`).join('')}
+                ${data.dispositivosPrincipales?.map(device => `<span class="checkbox-item">${device}</span>`).join('') || 'No especificado'}
               </div>
             </div>
             <div class="field">
               <div class="label">Idiomas Necesarios:</div>
               <div class="checkbox-list">
-                ${data.idiomasNecesarios.map(lang => `<span class="checkbox-item">${lang}</span>`).join('')}
+                ${data.idiomasNecesarios?.map(lang => `<span class="checkbox-item">${lang}</span>`).join('') || 'No especificado'}
               </div>
             </div>
           </div>
@@ -256,7 +256,7 @@ function generateBriefingEmailTemplate(data: z.infer<typeof briefingFormServerSc
             <div class="field">
               <div class="label">Funcionalidades Esenciales:</div>
               <div class="checkbox-list">
-                ${data.funcionalidadesEsenciales.map(func => `<span class="checkbox-item">${func}</span>`).join('')}
+                ${data.funcionalidadesEsenciales?.map(func => `<span class="checkbox-item">${func}</span>`).join('') || 'No especificado'}
               </div>
             </div>
             ${data.funcionalidadesDeseadas ? `
@@ -422,12 +422,12 @@ Plazo Preferido: ${formatPlazo(data.plazoPreferido)}
 Descripción: ${data.publicoObjetivo}
 ${data.edadRango ? `Rango de Edad: ${data.edadRango}` : ''}
 ${data.ubicacionGeografica ? `Ubicación: ${data.ubicacionGeografica}` : ''}
-Dispositivos: ${data.dispositivosPrincipales.join(', ')}
-Idiomas: ${data.idiomasNecesarios.join(', ')}
+Dispositivos: ${data.dispositivosPrincipales?.join(', ') || 'No especificado'}
+Idiomas: ${data.idiomasNecesarios?.join(', ') || 'No especificado'}
 
 === FUNCIONALIDADES REQUERIDAS ===
 Tipo de Proyecto: ${data.tipoProyecto.join(', ')}
-Funcionalidades Esenciales: ${data.funcionalidadesEsenciales.join(', ')}
+Funcionalidades Esenciales: ${data.funcionalidadesEsenciales?.join(', ') || 'No especificado'}
 ${data.funcionalidadesDeseadas ? `Otras Funcionalidades: ${data.funcionalidadesDeseadas}` : ''}
 ${data.integracionesNecesarias ? `Integraciones: ${data.integracionesNecesarias}` : ''}
 

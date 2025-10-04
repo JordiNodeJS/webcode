@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 interface EmailProtectionProps {
   email: string;
@@ -24,7 +24,7 @@ export function EmailProtection({
   const [mouseMoved, setMouseMoved] = useState<boolean>(false);
 
   // Técnica 1: ROT13 + Base64 encoding
-  const encodeEmail = (email: string): string => {
+  const encodeEmail = useCallback((email: string): string => {
     const rot13 = (str: string) => {
       return str.replace(/[a-zA-Z]/g, (char) => {
         const start = char <= 'Z' ? 65 : 97;
@@ -34,10 +34,10 @@ export function EmailProtection({
     
     const rot13Encoded = rot13(email);
     return btoa(rot13Encoded);
-  };
+  }, []);
 
   // Técnica 2: Decodificación con verificación de humanidad
-  const decodeEmail = (encodedEmail: string): string => {
+  const decodeEmail = useCallback((encodedEmail: string): string => {
     try {
       const base64Decoded = atob(encodedEmail);
       const rot13Decoded = base64Decoded.replace(/[a-zA-Z]/g, (char) => {
@@ -48,17 +48,17 @@ export function EmailProtection({
     } catch {
       return email; // Fallback al email original
     }
-  };
+  }, [email]);
 
   // Técnica 3: Verificación de interacción humana
-  const checkHumanInteraction = () => {
+  const checkHumanInteraction = useCallback(() => {
     // Verificar si hay movimiento del mouse, clicks, o teclas presionadas
     const hasInteraction = mouseMoved || 
       (typeof window !== 'undefined' && 
        (window.performance?.now() || 0) > 1000); // Tiempo mínimo de carga
     
     setIsHuman(hasInteraction);
-  };
+  }, [mouseMoved]);
 
   useEffect(() => {
     // Codificar el email inicialmente
@@ -76,7 +76,7 @@ export function EmailProtection({
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [email, isHuman, mouseMoved]);
+  }, [email, isHuman, checkHumanInteraction, encodeEmail, decodeEmail]);
 
   // Event listeners para detectar interacción humana
   useEffect(() => {
@@ -187,9 +187,8 @@ export function ProtectedEmailText({
   const protectedEmail = useEmailProtection(email);
   
   return (
-    <span 
-      className={className}
-      dangerouslySetInnerHTML={{ __html: protectedEmail }}
-    />
+    <span className={className}>
+      {protectedEmail}
+    </span>
   );
 }

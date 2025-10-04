@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 interface BotProtectionConfig {
   honeypotFieldName?: string;
@@ -173,22 +173,24 @@ export function useRateLimit(maxRequests: number = 10, windowMs: number = 60000)
  * Hook para validación de formulario anti-bot
  */
 export function useFormBotValidation() {
-  const [formData, setFormData] = useState<Record<string, any>>({});
+  const [formData, setFormData] = useState<Record<string, string | boolean | string[]>>({});
   const [validationErrors, setValidationErrors] = useState<string[]>([]);
 
-  const validateForm = useCallback((data: Record<string, any>) => {
+  const validateForm = useCallback((data: Record<string, string | boolean | string[]>) => {
     const errors: string[] = [];
 
     // Verificar campos vacíos sospechosos
     const requiredFields = ['email', 'message', 'subject'];
     requiredFields.forEach(field => {
-      if (!data[field] || data[field].trim() === '') {
+      const value = data[field];
+      if (!value || (typeof value === 'string' && value.trim() === '')) {
         errors.push(`Field ${field} is required`);
       }
     });
 
     // Verificar longitud mínima de mensaje
-    if (data.message && data.message.length < 10) {
+    const message = data.message;
+    if (message && typeof message === 'string' && message.length < 10) {
       errors.push('Message too short');
     }
 
@@ -204,8 +206,9 @@ export function useFormBotValidation() {
       /urgent/i
     ];
 
-    if (data.message) {
-      const hasSpamPattern = spamPatterns.some(pattern => pattern.test(data.message));
+    const messageValue = data.message;
+    if (messageValue && typeof messageValue === 'string') {
+      const hasSpamPattern = spamPatterns.some(pattern => pattern.test(messageValue));
       if (hasSpamPattern) {
         errors.push('Message contains suspicious content');
       }
@@ -213,7 +216,8 @@ export function useFormBotValidation() {
 
     // Verificar email válido
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (data.email && !emailRegex.test(data.email)) {
+    const emailValue = data.email;
+    if (emailValue && typeof emailValue === 'string' && !emailRegex.test(emailValue)) {
       errors.push('Invalid email format');
     }
 

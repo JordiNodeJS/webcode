@@ -1,6 +1,7 @@
 "use client"
 
 import { ExternalLink, X } from 'lucide-react'
+import { useId } from 'react'
 import { Button } from './button'
 
 interface StatisticsModalProps {
@@ -28,6 +29,8 @@ export function StatisticsModal({
   context,
   impact
 }: StatisticsModalProps) {
+  const modalTitleId = useId()
+  
   if (!isOpen) return null
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -36,14 +39,27 @@ export function StatisticsModal({
     }
   }
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Escape') {
+      onClose()
+    }
+  }
+
   return (
     <div 
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
       onClick={handleBackdropClick}
+      onKeyDown={handleKeyDown}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby={modalTitleId}
+      tabIndex={-1}
     >
       <div 
         className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-background border-4 border-primary/30 rounded-2xl shadow-brutal"
         onClick={(e) => e.stopPropagation()}
+        onKeyDown={(e) => e.stopPropagation()}
+        role="document"
       >
         {/* Header */}
         <div className="sticky top-0 bg-background border-b-2 border-primary/20 p-6 rounded-t-2xl">
@@ -53,7 +69,7 @@ export function StatisticsModal({
                 {percentage}
               </div>
               <div>
-                <h2 className="text-xl font-bold">{title}</h2>
+                <h2 id={modalTitleId} className="text-xl font-bold">{title}</h2>
                 <p className="text-sm text-muted-foreground">{description}</p>
               </div>
             </div>
@@ -62,6 +78,7 @@ export function StatisticsModal({
               size="icon"
               onClick={onClose}
               className="border-2 border-primary/30 hover:bg-primary/10"
+              aria-label="Cerrar modal"
             >
               <X className="w-4 h-4" />
             </Button>
