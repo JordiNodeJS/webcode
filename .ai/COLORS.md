@@ -1,3 +1,5 @@
+<!-- DEPRECATION NOTICE: El sistema de colores etiquetado como 'brutalista' fue retirado y no debe usarse. Este documento se mantiene para referencia histórica. -->
+
 # 🎨 WebSnack - Sistema de Colores Maestro
 
 > **Fuente de Verdad Única** para todos los colores del proyecto  

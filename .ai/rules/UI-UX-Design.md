@@ -124,3 +124,5 @@ glob: ["**/*.css", "**/*.scss", "src/**/*.tsx", "src/**/*.ts"]
 - Dark mode implementado correctamente
 - Código reutilizable y mantenible
 - Compatibilidad cross-browser verificada
+
+<!-- DEPRECATION NOTICE: Las pautas relacionadas con 'brutalismo' han sido retiradas del conjunto activo de diseño. Mantener este archivo solo como referencia histórica. -->

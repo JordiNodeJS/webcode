@@ -1,3 +1,5 @@
+/_ DEPRECATION NOTICE: Las variables y componentes referenciados como 'brutalistas' están obsoletos y fueron retirados del diseño activo. Este archivo conserva las entradas como histórico. Evitar su uso en nuevas implementaciones. _/
+
 # 🎯 WebSnack - Configuración Maestra
 
 > **Fuente de Verdad Única** para todo el proyecto WebSnack  
