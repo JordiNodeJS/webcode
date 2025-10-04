@@ -1,3 +1,5 @@
+import { EmailProtection } from "@/components/ui/EmailProtection";
+
 export default function PoliticaPrivacidadPage() {
   return (
     <div className="container mx-auto max-w-4xl px-4 py-12">
@@ -13,12 +15,10 @@ export default function PoliticaPrivacidadPage() {
             </h2>
             <p className="text-muted-foreground leading-relaxed">
               WEBCODE, con correo electrónico de contacto{" "}
-              <a
-                href="mailto:info@webcode.es"
+              <EmailProtection
+                email="info@webcode.es"
                 className="text-primary hover:text-primary/80 underline"
-              >
-                info@webcode.es
-              </a>
+              />
               , es el responsable del tratamiento de los datos personales
               recopilados a través de este sitio web.
             </p>

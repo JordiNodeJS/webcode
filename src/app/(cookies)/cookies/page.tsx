@@ -1,3 +1,5 @@
+import { EmailProtection } from "@/components/ui/EmailProtection";
+
 export default function CookiesPage() {
   return (
     <div className="container mx-auto max-w-4xl px-4 py-12">
@@ -106,12 +108,10 @@ export default function CookiesPage() {
             <p className="text-muted-foreground leading-relaxed">
               Si tienes alguna duda sobre esta política de cookies, puedes
               contactarnos a través de{" "}
-              <a
-                href="mailto:info@webcode.es"
+              <EmailProtection
+                email="info@webcode.es"
                 className="text-primary hover:text-primary/80 underline"
-              >
-                info@webcode.es
-              </a>
+              />
               .
             </p>
             <p className="text-muted-foreground leading-relaxed mt-4">
