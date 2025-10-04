@@ -93,6 +93,9 @@ const faqs = [
             <strong>Next.js 15</strong> (App Router) y <strong>React 19</strong>
           </li>
           <li>
+            <strong>Astro</strong> para sitios estáticos ultra-rápidos
+          </li>
+          <li>
             <strong>TypeScript</strong> para seguridad y mantenibilidad
           </li>
           <li>
@@ -103,6 +106,10 @@ const faqs = [
             microinteracciones optimizadas
           </li>
         </ul>
+
+        <p className="mt-3">
+          También trabajamos con plataformas no-code como <strong>Wix Studio</strong>, <strong>Webflow</strong> o <strong>Framer</strong> para desarrollo rápido cuando el proyecto no requiere tanta lógica de programación o integraciones complejas.
+        </p>
 
         <p className="mt-3">
           Este stack nos permite entregar sitios rápidos, accesibles y fáciles
