@@ -67,8 +67,6 @@ export function BriefingForm() {
       // Presupuesto y plazos
       presupuestoEstimado: "no-definido",
       plazoPreferido: "no-definido",
-      presupuesto: "<3000",
-      plazoEntrega: "flexible",
       fechaLanzamiento: "",
       
       // Público objetivo
@@ -115,7 +113,7 @@ export function BriefingForm() {
       // Información adicional
       comentariosAdicionales: "",
       informacionAdicional: "",
-      comoConociste: "",
+      comoConociste: "google",
       
       // RGPD
       gdprConsent: false
@@ -173,7 +171,8 @@ export function BriefingForm() {
         localStorage.removeItem(STORAGE_KEY);
       }
     } catch (error) {
-      console.error("Error:", error);
+      // Pequeño delay para asegurar que el usuario vea el estado de loading
+      await new Promise(resolve => setTimeout(resolve, 500));
       setFormStatus("error");
       setErrorMessage(
         error instanceof Error ? error.message : "Error inesperado"
@@ -269,17 +268,109 @@ export function BriefingForm() {
     );
   }
 
+  // Función para verificar si un paso está completado
+  const isStepCompleted = (step: number): boolean => {
+    const fields = getFieldsForStep(step);
+    return fields.every(field => {
+      const value = form.getValues(field as keyof BriefingFormData);
+      if (Array.isArray(value)) {
+        return value.length > 0;
+      }
+      return value !== "" && value !== null && value !== undefined;
+    });
+  };
+
+  // Función para navegar a un paso específico
+  const goToStep = (step: number) => {
+    if (step >= 1 && step <= TOTAL_STEPS) {
+      setCurrentStep(step);
+    }
+  };
+
   return (
     <div className="max-w-4xl mx-auto">
-      {/* Progreso */}
+      {/* Progreso con hitos numerados */}
       <div className="mb-8">
-        <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center justify-between mb-4">
           <span className="text-sm font-bold text-foreground">
             Paso {currentStep} de {TOTAL_STEPS}
           </span>
           <span className="text-sm font-bold text-primary">{Math.round(progress)}%</span>
         </div>
-        <Progress value={progress} className="h-3 bg-muted border-2 border-border" />
+        
+        {/* Barra de progreso principal */}
+        <div className="relative mb-4">
+          <Progress value={progress} className="h-3 bg-muted border-2 border-border" />
+          
+          {/* Hitos numerados */}
+          <div className="flex justify-between mt-3">
+            {Array.from({ length: TOTAL_STEPS }, (_, index) => {
+              const stepNumber = index + 1;
+              const isCompleted = isStepCompleted(stepNumber);
+              const isCurrent = stepNumber === currentStep;
+              const isAccessible = stepNumber === 1 || isStepCompleted(stepNumber - 1);
+              
+              return (
+                <button
+                  key={stepNumber}
+                  type="button"
+                  onClick={() => goToStep(stepNumber)}
+                  disabled={!isAccessible}
+                  className={`
+                    relative flex flex-col items-center group transition-all duration-200
+                    ${isAccessible ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'}
+                    ${isCurrent ? 'scale-110' : 'hover:scale-105'}
+                  `}
+                >
+                  {/* Círculo del hito */}
+                  <div className={`
+                    w-10 h-10 rounded-full border-3 flex items-center justify-center text-sm font-black transition-all duration-200
+                    ${isCompleted 
+                      ? 'bg-primary border-primary text-primary-foreground shadow-brutal-sm' 
+                      : isCurrent 
+                        ? 'bg-accent border-accent text-accent-foreground shadow-brutal-sm' 
+                        : 'bg-muted border-border text-muted-foreground'
+                    }
+                    ${isAccessible ? 'hover:shadow-brutal' : ''}
+                  `}>
+                    {isCompleted ? (
+                      <CheckCircle className="w-5 h-5" />
+                    ) : (
+                      stepNumber
+                    )}
+                  </div>
+                  
+                  {/* Título del paso */}
+                  <div className="mt-2 text-center max-w-20">
+                    <div className={`
+                      text-xs font-bold leading-tight transition-colors duration-200
+                      ${isCompleted 
+                        ? 'text-primary' 
+                        : isCurrent 
+                          ? 'text-accent' 
+                          : 'text-muted-foreground'
+                      }
+                    `}>
+                      {getStepTitle(stepNumber).split(' ')[0]}
+                    </div>
+                  </div>
+                  
+                  {/* Tooltip con información completa */}
+                  <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+                    <div className="bg-card border-3 border-border shadow-brutal rounded-lg p-3 max-w-64">
+                      <div className="text-sm font-bold text-foreground mb-1">
+                        Paso {stepNumber}: {getStepTitle(stepNumber)}
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        {getStepDescription(stepNumber)}
+                      </div>
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
       </div>
 
       <Card className="bg-card/80 backdrop-blur-sm border-3 border-border shadow-brutal">
@@ -294,7 +385,7 @@ export function BriefingForm() {
 
         <CardContent>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <form method="post" className="space-y-6">
               {renderStepContent(currentStep, form)}
 
               {/* Error message */}
@@ -333,11 +424,24 @@ export function BriefingForm() {
                     type="submit"
                     className="flex-1"
                     disabled={formStatus === "submitting"}
+                    aria-disabled={formStatus === "submitting"}
+                    onClick={async (e) => {
+                      e.preventDefault();
+                      
+                      // Validar todos los campos manualmente
+                      const isValid = await form.trigger();
+                      
+                      if (isValid) {
+                        // Enviar el formulario manualmente
+                        const formData = form.getValues();
+                        await onSubmit(formData);
+                      }
+                    }}
                   >
                     {formStatus === "submitting" ? (
                       <>
                         <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                        Enviando...
+                        <span className="animate-pulse">Enviando...</span>
                       </>
                     ) : (
                       <>
@@ -671,30 +775,36 @@ function Step3TargetAudience({ form }: { form: UseFormReturn<BriefingFormData> }
           <FormItem>
             <FormLabel>Dispositivos principales * (selecciona todos los relevantes)</FormLabel>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 pt-2">
-              {["Móvil", "Tablet", "Desktop", "Todos por igual"].map((dispositivo) => (
+              {[
+                { value: "movil", label: "Móvil" },
+                { value: "tablet", label: "Tablet" },
+                { value: "desktop", label: "Desktop" },
+                { value: "todos", label: "Todos por igual" }
+              ].map((dispositivo) => (
                 <FormField
-                  key={dispositivo}
+                  key={dispositivo.value}
                   control={form.control}
                   name="dispositivosPrincipales"
                   render={({ field }) => (
                     <FormItem
-                      key={dispositivo}
+                      key={dispositivo.value}
                       className="flex items-center space-x-2"
                     >
                       <FormControl>
                         <Checkbox
-                          checked={field.value?.includes(dispositivo)}
+                          checked={field.value?.includes(dispositivo.value)}
                           onCheckedChange={(checked) => {
+                            const currentValue = field.value || [];
                             return checked
-                              ? field.onChange([...field.value, dispositivo])
+                              ? field.onChange([...currentValue, dispositivo.value])
                               : field.onChange(
-                                  field.value?.filter((value: string) => value !== dispositivo)
+                                  currentValue.filter((value: string) => value !== dispositivo.value)
                                 );
                           }}
                         />
                       </FormControl>
                       <FormLabel className="font-normal cursor-pointer">
-                        {dispositivo}
+                        {dispositivo.label}
                       </FormLabel>
                     </FormItem>
                   )}
@@ -733,10 +843,11 @@ function Step3TargetAudience({ form }: { form: UseFormReturn<BriefingFormData> }
                         <Checkbox
                           checked={field.value?.includes(idioma.value)}
                           onCheckedChange={(checked) => {
+                            const currentValue = field.value || [];
                             return checked
-                              ? field.onChange([...field.value, idioma.value])
+                              ? field.onChange([...currentValue, idioma.value])
                               : field.onChange(
-                                  field.value?.filter((value: string) => value !== idioma.value)
+                                  currentValue.filter((value: string) => value !== idioma.value)
                                 );
                           }}
                         />
@@ -818,10 +929,11 @@ function Step4Functionality({ form }: { form: UseFormReturn<BriefingFormData> })
                         <Checkbox
                           checked={field.value?.includes(funcionalidad)}
                           onCheckedChange={(checked) => {
+                            const currentValue = field.value || [];
                             return checked
-                              ? field.onChange([...field.value, funcionalidad])
+                              ? field.onChange([...currentValue, funcionalidad])
                               : field.onChange(
-                                  field.value?.filter((value: string) => value !== funcionalidad)
+                                  currentValue.filter((value: string) => value !== funcionalidad)
                                 );
                           }}
                         />
