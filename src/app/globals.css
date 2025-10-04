@@ -80,8 +80,8 @@
   --muted-foreground: oklch(
     0.54 0 0
   ); /* lighter placeholder text for better distinction */
-  --accent: oklch(0.98 0.03 60); /* slightly richer accent color */
-  --accent-foreground: oklch(0.12 0 0); /* darker accent text */
+  --accent: oklch(0.57 0.2 328.5); /* púrpura accent - mismo que primary para consistencia */
+  --accent-foreground: oklch(0.98 0 0); /* near-white for strong contrast on accent */
   --destructive: oklch(0.759 0.112 12.2); /* #fcb4b5 */
   --border: oklch(0.45 0.1 328.5); /* darker border matching adjusted primary */
   --input: oklch(
@@ -127,8 +127,8 @@
   --muted-foreground: oklch(
     0.52 0 0
   ); /* darker placeholder text in dark mode for better distinction */
-  --accent: oklch(0.24 0.03 60);
-  --accent-foreground: oklch(0.985 0 0);
+  --accent: oklch(0.84 0.16 328.5); /* púrpura accent brillante para modo oscuro */
+  --accent-foreground: oklch(0.08 0 0); /* near-black for strong contrast on accent */
   --destructive: oklch(0.628 0.258 29.233); /* #dc2626 */
   --border: oklch(0.32 0.05 0); /* slightly lighter border than before */
   --input: oklch(0.22 0 0);
@@ -283,6 +283,62 @@
     0 0 8px #0bf4f3;
 }
 
+/* Animaciones personalizadas para la página de Proceso */
+@keyframes blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+.animate-shimmer {
+  animation: shimmer 3s linear infinite;
+}
+
+.animate-gradient-x {
+  animation: gradient-x 15s ease infinite;
+  background-size: 200% 200%;
+}
+
+.border-l-3 {
+  border-left-width: 3px;
+}
+
 @layer base {
   * {
     border-color: hsl(var(--border));
@@ -361,6 +417,10 @@
   display: inline-block; /* ensure background positioning and clipping */
   /* Subtle shadow helps gradient read on busy or similar-toned backgrounds */
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+  /* Ensure proper text wrapping and overflow handling */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 /* Fallback for browsers that don't support background-clip:text */
@@ -411,6 +471,43 @@
     -webkit-text-fill-color: initial;
     color: var(--foreground);
   }
+}
+
+/* Sombras brutalistas para el estilo visual */
+.shadow-brutal-sm {
+  box-shadow: 3px 3px 0 0 rgb(0 0 0 / 0.1);
+}
+
+.shadow-brutal {
+  box-shadow: 6px 6px 0 0 rgb(0 0 0 / 0.15);
+}
+
+.shadow-brutal-lg {
+  box-shadow: 10px 10px 0 0 rgb(0 0 0 / 0.2);
+}
+
+/* Variante con bordes para modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .shadow-brutal-sm {
+    box-shadow: 3px 3px 0 0 rgb(255 255 255 / 0.1);
+  }
+
+  .shadow-brutal {
+    box-shadow: 6px 6px 0 0 rgb(255 255 255 / 0.15);
+  }
+
+  .shadow-brutal-lg {
+    box-shadow: 10px 10px 0 0 rgb(255 255 255 / 0.2);
+  }
+}
+
+/* Clases de borde para el estilo brutalista */
+.border-3 {
+  border-width: 3px;
+}
+
+.border-4 {
+  border-width: 4px;
 }
 
 /* Animaciones de olas para la sección Hero */
@@ -952,6 +1049,62 @@ main > section:first-of-type {
   }
 }
 
+@keyframes accordion-down {
+  0% {
+    height: 0;
+    opacity: 0;
+    transform: scaleY(0.6);
+  }
+  25% {
+    height: calc(var(--radix-accordion-content-height) * 1.3);
+    opacity: 0.6;
+    transform: scaleY(1.1);
+  }
+  45% {
+    height: calc(var(--radix-accordion-content-height) * 0.8);
+    opacity: 0.8;
+    transform: scaleY(0.9);
+  }
+  65% {
+    height: calc(var(--radix-accordion-content-height) * 1.1);
+    opacity: 0.9;
+    transform: scaleY(1.03);
+  }
+  85% {
+    height: calc(var(--radix-accordion-content-height) * 0.95);
+    opacity: 0.95;
+    transform: scaleY(0.98);
+  }
+  100% {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes accordion-up {
+  0% {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  30% {
+    height: calc(var(--radix-accordion-content-height) * 1.1);
+    opacity: 0.7;
+    transform: scaleY(1.05);
+  }
+  60% {
+    height: calc(var(--radix-accordion-content-height) * 0.7);
+    opacity: 0.3;
+    transform: scaleY(0.85);
+  }
+  100% {
+    height: 0;
+    opacity: 0;
+    transform: scaleY(0.6);
+  }
+}
+
 @keyframes subtlePulse {
   0%,
   100% {
@@ -1329,4 +1482,22 @@ html.dark body main + footer.footer-verdoso.footer-verdoso-test {
   html.dark body main + footer.footer-verdoso.footer-verdoso-test {
     --footer-glass-blur: 20px;
   }
+}
+
+/* Animaciones de accordion con efecto muelle */
+.animate-accordion-down {
+  animation: accordion-down 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.animate-accordion-up {
+  animation: accordion-up 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Aplicar animaciones directamente basándose en el estado del accordion */
+[data-slot="accordion-content"][data-state="open"] {
+  animation: accordion-down 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+[data-slot="accordion-content"][data-state="closed"] {
+  animation: accordion-up 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }

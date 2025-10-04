@@ -1,3 +1,5 @@
+/_ DEPRECATION NOTICE: El patrón de diseño 'brutalista' fue retirado del proyecto y ya no debe utilizarse. Este documento se conserva únicamente como referencia histórica. No implementar ni promover las utilidades o componentes con prefijo 'brutal-' en código nuevo. _/
+
 # ⚙️ TailwindCSS v4 - Configuración Maestra WebSnack
 
 > **Fuente de Verdad Única** para configuración TailwindCSS v4  
