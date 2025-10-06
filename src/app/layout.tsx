@@ -54,6 +54,62 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="es" suppressHydrationWarning>
         <head>
+          {/* Optional: Defer non-critical CSS via preload+swap (enable with env flag) */}
+          {process.env.NEXT_PUBLIC_ENABLE_CSS_SWAP === "1" && (
+            <>
+              {/* Main CSS chunk (update value via env if hashes change) */}
+              <link
+                rel="preload"
+                as="style"
+                href={
+                  process.env.NEXT_PUBLIC_CSS_CHUNK_MAIN ||
+                  "/_next/static/chunks/a3da1f76b773611a.css"
+                }
+              />
+              <link
+                rel="stylesheet"
+                href={
+                  process.env.NEXT_PUBLIC_CSS_CHUNK_MAIN ||
+                  "/_next/static/chunks/a3da1f76b773611a.css"
+                }
+                media="all"
+              />
+              {/* Tiny aux CSS chunk */}
+              <link
+                rel="preload"
+                as="style"
+                href={
+                  process.env.NEXT_PUBLIC_CSS_CHUNK_TINY ||
+                  "/_next/static/chunks/2473c16c0c2f6b5f.css"
+                }
+              />
+              <link
+                rel="stylesheet"
+                href={
+                  process.env.NEXT_PUBLIC_CSS_CHUNK_TINY ||
+                  "/_next/static/chunks/2473c16c0c2f6b5f.css"
+                }
+                media="all"
+              />
+              <noscript>
+                {/* Fallback in case JS is disabled */}
+                <link
+                  rel="stylesheet"
+                  href={
+                    process.env.NEXT_PUBLIC_CSS_CHUNK_MAIN ||
+                    "/_next/static/chunks/a3da1f76b773611a.css"
+                  }
+                />
+                <link
+                  rel="stylesheet"
+                  href={
+                    process.env.NEXT_PUBLIC_CSS_CHUNK_TINY ||
+                    "/_next/static/chunks/2473c16c0c2f6b5f.css"
+                  }
+                />
+              </noscript>
+            </>
+          )}
           {/* DNS Prefetch and Preconnect for better performance */}
           <link rel="dns-prefetch" href="//fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
@@ -145,6 +201,33 @@ export default function RootLayout({
                 "(function(){try{var s=localStorage.getItem('theme');var t=(s==='dark'||s==='light')?s:((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');var d=document.documentElement;d.classList.add(t);d.style.colorScheme=t;}catch(e){}})();"
             }}
           />
+
+          {/* CSS preload+swap injector driven by build manifest (css-chunks.json) */}
+          {process.env.NEXT_PUBLIC_ENABLE_CSS_SWAP === "1" && (
+            <>
+              <script
+                dangerouslySetInnerHTML={{
+                  __html: `(() => { try { 
+  const inject = (href) => {
+    if (!href) return;
+    const pre = document.createElement('link');
+    pre.rel = 'preload'; pre.as = 'style'; pre.href = href; document.head.appendChild(pre);
+    const l = document.createElement('link');
+    l.rel = 'stylesheet'; l.href = href; l.media = 'print'; l.onload = function(){ this.media = 'all'; };
+    document.head.appendChild(l);
+  };
+  fetch('/css-chunks.json', { cache: 'no-store' }).then(r => r.json()).then(({ css }) => {
+    (css || []).forEach(inject);
+  }).catch(()=>{});
+} catch(_) {} })();`
+                }}
+              />
+              <noscript>
+                <link rel="stylesheet" href="/_next/static/chunks/a3da1f76b773611a.css" />
+                <link rel="stylesheet" href="/_next/static/chunks/2473c16c0c2f6b5f.css" />
+              </noscript>
+            </>
+          )}
         </head>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}

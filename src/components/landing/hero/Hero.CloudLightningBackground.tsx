@@ -15,6 +15,7 @@
 
 import { useTheme } from "next-themes";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import styles from "./Hero.CloudLightningBackground.module.css";
 import useScrollPosition from "@/hooks/use-scroll-position";
 import { getThemeColors, parseRgbColor } from "@/lib/theme-colors";
 
@@ -439,12 +440,12 @@ export function CloudLightningBackground() {
   return (
     <div
       ref={containerRef}
-      className="cloud-lightning-background absolute inset-0 overflow-hidden pointer-events-none bg-gradient-webcode transition-opacity duration-300 ease-out will-change-[opacity]"
+      className={`${styles.container} cloud-lightning-background absolute inset-0 overflow-hidden pointer-events-none bg-gradient-webcode transition-opacity duration-300 ease-out will-change-[opacity]`}
       style={{ opacity }}
     >
       <canvas
         ref={canvasRef}
-        className="w-full h-full pointer-events-auto"
+        className={`${styles.canvas} w-full h-full pointer-events-auto`}
         style={{
           display: "block"
         }}
