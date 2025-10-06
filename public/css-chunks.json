@@ -1,5 +1,12 @@
 {
   "css": [
+    "/_next/static/chunks/a3da1f76b773611a.css",
+    "/_next/static/chunks/b4d3ff9c45f5d49c.css",
+    "/_next/static/chunks/2473c16c0c2f6b5f.css"
+  ]
+}
+{
+  "css": [
     "/_next/static/chunks/2473c16c0c2f6b5f.css",
     "/_next/static/chunks/b4d3ff9c45f5d49c.css",
     "/_next/static/chunks/d2e4262af6d9a25f.css"

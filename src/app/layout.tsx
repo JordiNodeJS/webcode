@@ -10,15 +10,18 @@ import { DefaultBackground } from "@/components/ui/DefaultBackground";
 import { AnimationProvider } from "@/contexts/AnimationContext";
 import { generateSEOMetadata } from "@/lib/seo-metadata";
 import { initWebVitals } from "@/lib/web-vitals";
+import { criticalCss } from "./critical-css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"]
+  subsets: ["latin"],
+  display: "swap"
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"]
+  subsets: ["latin"],
+  display: "swap"
 });
 
 export const metadata: Metadata = generateSEOMetadata({
@@ -54,6 +57,13 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="es" suppressHydrationWarning>
         <head>
+          {/* Inline Critical CSS (small) for above-the-fold, guarded by flag */}
+          {process.env.NEXT_PUBLIC_ENABLE_CRITICAL_CSS === "1" && (
+            <style
+              // biome-ignore lint/security/noDangerouslySetInnerHtml: controlled inline CSS for critical-path
+              dangerouslySetInnerHTML={{ __html: criticalCss }}
+            />
+          )}
           {/* Optional: Defer non-critical CSS via preload+swap (enable with env flag) */}
           {process.env.NEXT_PUBLIC_ENABLE_CSS_SWAP === "1" && (
             <>
@@ -72,7 +82,30 @@ export default function RootLayout({
                   process.env.NEXT_PUBLIC_CSS_CHUNK_MAIN ||
                   "/_next/static/chunks/a3da1f76b773611a.css"
                 }
-                media="all"
+                media="print"
+                onLoad={(e) => {
+                  (e.currentTarget as HTMLLinkElement).media = "all";
+                }}
+              />
+              {/* Secondary CSS chunk */}
+              <link
+                rel="preload"
+                as="style"
+                href={
+                  process.env.NEXT_PUBLIC_CSS_CHUNK_SECONDARY ||
+                  "/_next/static/chunks/b4d3ff9c45f5d49c.css"
+                }
+              />
+              <link
+                rel="stylesheet"
+                href={
+                  process.env.NEXT_PUBLIC_CSS_CHUNK_SECONDARY ||
+                  "/_next/static/chunks/b4d3ff9c45f5d49c.css"
+                }
+                media="print"
+                onLoad={(e) => {
+                  (e.currentTarget as HTMLLinkElement).media = "all";
+                }}
               />
               {/* Tiny aux CSS chunk */}
               <link
@@ -89,7 +122,10 @@ export default function RootLayout({
                   process.env.NEXT_PUBLIC_CSS_CHUNK_TINY ||
                   "/_next/static/chunks/2473c16c0c2f6b5f.css"
                 }
-                media="all"
+                media="print"
+                onLoad={(e) => {
+                  (e.currentTarget as HTMLLinkElement).media = "all";
+                }}
               />
               <noscript>
                 {/* Fallback in case JS is disabled */}
@@ -98,6 +134,13 @@ export default function RootLayout({
                   href={
                     process.env.NEXT_PUBLIC_CSS_CHUNK_MAIN ||
                     "/_next/static/chunks/a3da1f76b773611a.css"
+                  }
+                />
+                <link
+                  rel="stylesheet"
+                  href={
+                    process.env.NEXT_PUBLIC_CSS_CHUNK_SECONDARY ||
+                    "/_next/static/chunks/b4d3ff9c45f5d49c.css"
                   }
                 />
                 <link
@@ -224,6 +267,7 @@ export default function RootLayout({
               />
               <noscript>
                 <link rel="stylesheet" href="/_next/static/chunks/a3da1f76b773611a.css" />
+                <link rel="stylesheet" href="/_next/static/chunks/b4d3ff9c45f5d49c.css" />
                 <link rel="stylesheet" href="/_next/static/chunks/2473c16c0c2f6b5f.css" />
               </noscript>
             </>
