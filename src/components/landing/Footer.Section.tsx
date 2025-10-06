@@ -1,6 +1,7 @@
 "use client";
 
 import { Link } from "next-view-transitions";
+import styles from "./Footer.Section.module.css";
 import { EmailProtection } from "@/components/ui/EmailProtection";
 import { AnimatedLogo } from "./Footer.AnimatedLogo";
 
@@ -18,7 +19,7 @@ export function FooterSection() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative footer-verdoso footer-verdoso-test border-t border-border/50 overflow-hidden">
+    <footer className={`relative border-t border-border/50 overflow-hidden ${styles.footerVerdoso}`}>
       {/* Fondo con gradiente sutil verdoso */}
       <div className="absolute inset-0 footer-verdoso-overlay"></div>
 
@@ -83,7 +84,7 @@ export function FooterSection() {
           </div>
 
           {/* Columna Central - Logo Animado */}
-          <div className="flex justify-center">
+          <div className={`flex justify-center ${styles.footerAnimatedLogo}`}>
             <AnimatedLogo />
           </div>
 
