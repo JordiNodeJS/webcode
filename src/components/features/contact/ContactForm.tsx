@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AlertCircle, CheckCircle, Loader2, Send } from "lucide-react";
+import { AlertCircle, CheckCircle, Loader2, Send } from "@/lib/icons";
 import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";

@@ -1,4 +1,3 @@
-import jsPDF from "jspdf";
 import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { briefingFormSchema } from "@/types/briefing";
@@ -53,6 +52,8 @@ export async function POST(request: NextRequest) {
 
 // Función para generar el PDF del briefing
 async function generateBriefingPDF(data: z.infer<typeof briefingFormServerSchema>): Promise<Uint8Array> {
+  // Dynamic import to reduce bundle size - only load jsPDF when needed
+  const { default: jsPDF } = await import("jspdf");
   const doc = new jsPDF();
   const pageWidth = doc.internal.pageSize.getWidth();
   const margin = 20;
