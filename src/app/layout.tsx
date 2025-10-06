@@ -54,6 +54,70 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="es" suppressHydrationWarning>
         <head>
+          {/* Optional: Defer non-critical CSS via preload+swap (enable with env flag) */}
+          {process.env.NEXT_PUBLIC_ENABLE_CSS_SWAP === "1" && (
+            <>
+              {/* Main CSS chunk (update value via env if hashes change) */}
+              <link
+                rel="preload"
+                as="style"
+                href={
+                  process.env.NEXT_PUBLIC_CSS_CHUNK_MAIN ||
+                  "/_next/static/chunks/a3da1f76b773611a.css"
+                }
+              />
+              <link
+                rel="stylesheet"
+                href={
+                  process.env.NEXT_PUBLIC_CSS_CHUNK_MAIN ||
+                  "/_next/static/chunks/a3da1f76b773611a.css"
+                }
+                media="print"
+                onLoad={(e) => {
+                  const el = e.currentTarget as HTMLLinkElement;
+                  el.media = "all";
+                }}
+              />
+              {/* Tiny aux CSS chunk */}
+              <link
+                rel="preload"
+                as="style"
+                href={
+                  process.env.NEXT_PUBLIC_CSS_CHUNK_TINY ||
+                  "/_next/static/chunks/2473c16c0c2f6b5f.css"
+                }
+              />
+              <link
+                rel="stylesheet"
+                href={
+                  process.env.NEXT_PUBLIC_CSS_CHUNK_TINY ||
+                  "/_next/static/chunks/2473c16c0c2f6b5f.css"
+                }
+                media="print"
+                onLoad={(e) => {
+                  const el = e.currentTarget as HTMLLinkElement;
+                  el.media = "all";
+                }}
+              />
+              <noscript>
+                {/* Fallback in case JS is disabled */}
+                <link
+                  rel="stylesheet"
+                  href={
+                    process.env.NEXT_PUBLIC_CSS_CHUNK_MAIN ||
+                    "/_next/static/chunks/a3da1f76b773611a.css"
+                  }
+                />
+                <link
+                  rel="stylesheet"
+                  href={
+                    process.env.NEXT_PUBLIC_CSS_CHUNK_TINY ||
+                    "/_next/static/chunks/2473c16c0c2f6b5f.css"
+                  }
+                />
+              </noscript>
+            </>
+          )}
           {/* DNS Prefetch and Preconnect for better performance */}
           <link rel="dns-prefetch" href="//fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
