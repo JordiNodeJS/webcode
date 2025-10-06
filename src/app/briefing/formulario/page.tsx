@@ -1,6 +1,23 @@
 import type { Metadata } from "next";
-import { BriefingForm } from "@/components/briefing/BriefingForm";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
 import { generateSEOMetadata } from "@/lib/seo-metadata";
+
+// Lazy load the briefing form to reduce initial bundle size
+const BriefingForm = dynamic(() => import("@/components/briefing/BriefingForm").then(m => ({ default: m.BriefingForm })), {
+  loading: () => (
+    <div className="max-w-4xl mx-auto">
+      <div className="animate-pulse space-y-8">
+        <div className="h-8 bg-muted/50 rounded-lg w-3/4 mx-auto"></div>
+        <div className="space-y-4">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="h-32 bg-muted/30 rounded-lg"></div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+});
 
 export const metadata: Metadata = generateSEOMetadata({
   title: "Formulario de Briefing | WEBCODE Barcelona",
@@ -54,7 +71,20 @@ export default function BriefingFormularioPage() {
         </div>
 
         {/* Formulario */}
-        <BriefingForm />
+        <Suspense fallback={
+          <div className="max-w-4xl mx-auto">
+            <div className="animate-pulse space-y-8">
+              <div className="h-8 bg-muted/50 rounded-lg w-3/4 mx-auto"></div>
+              <div className="space-y-4">
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <div key={i} className="h-32 bg-muted/30 rounded-lg"></div>
+                ))}
+              </div>
+            </div>
+          </div>
+        }>
+          <BriefingForm />
+        </Suspense>
       </div>
     </div>
   );

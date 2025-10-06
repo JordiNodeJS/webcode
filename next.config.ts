@@ -48,6 +48,8 @@ const nextConfig: NextConfig = {
         ...config.optimization,
         splitChunks: {
           chunks: "all",
+          minSize: 20000, // Only split chunks larger than 20KB
+          maxSize: 50000, // Maximum chunk size of 50KB
           cacheGroups: {
             // Separar vendor chunks por tamaño
             framework: {
@@ -69,6 +71,20 @@ const nextConfig: NextConfig = {
               test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
               chunks: "all",
               priority: 25,
+              enforce: true
+            },
+            pdf: {
+              name: "pdf",
+              test: /[\\/]node_modules[\\/](jspdf|jspdf-autotable)[\\/]/,
+              chunks: "async", // Only load when needed
+              priority: 35,
+              enforce: true
+            },
+            email: {
+              name: "email",
+              test: /[\\/]node_modules[\\/](resend|@react-email)[\\/]/,
+              chunks: "async", // Only load when needed
+              priority: 35,
               enforce: true
             },
             commons: {
