@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, Eye } from "@/lib/icons";
+import styles from "./Hero.CallToAction.module.css";
 
 /**
  * Botones de Call to Action principales con efectos neon
@@ -43,7 +44,7 @@ export function CallToAction() {
       <Link
         href="/contacto"
         onClick={onClickCTA}
-        className="neon-btn-3 group relative inline-flex items-center justify-center"
+        className={`${styles.neonBtn3} group relative inline-flex items-center justify-center`}
       >
         <span className="relative z-10 flex items-center">
           Consulta Gratuita
@@ -56,7 +57,7 @@ export function CallToAction() {
         href="https://jordinodejs.github.io/"
         target="_blank"
         rel="noopener noreferrer"
-        className="neon-btn-7 group relative"
+        className={`${styles.neonBtn7} group relative`}
       >
         <span className="relative z-10 flex items-center">
           <Eye className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
