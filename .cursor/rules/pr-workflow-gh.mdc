@@ -9,7 +9,7 @@ Follow this rule to open a Pull Request consistently using GitHub CLI.
 - **Commits language**: Always write commit messages in English.
 - **Package manager**: Use `pnpm` / `pnpm dlx`. Do not use `npm`.
 - **Title/Body**: Use clear, concise English. Summarize changes and list highlights as bullets.
-- **Labels**: Add `performance` and `enhancement` by default. If a label is missing, create it first.
+- **Labels**: Add one or more labels according to the context of the pull request. If a label is missing, create it first.
 - **Assignment**: Assign the PR to `@me` (or the repository owner if needed).
 - **Shell compatibility**: Avoid chaining with `&&` in shells that donâ€™t support it; run commands separately if needed.
 
