@@ -4,6 +4,8 @@ import {
 } from "@/components/landing/hero";
 import { ServicesSection } from "@/components/landing/services";
 
+export const runtime = "edge";
+
 export default function Home() {
   return (
     <main className="relative min-h-screen">

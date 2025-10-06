@@ -148,6 +148,25 @@ const nextConfig: NextConfig = {
           }
         ]
       },
+      // Long-term caching for Next static assets (immutable)
+      {
+        source: "/_next/static/:path*.js",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        source: "/_next/static/:path*.css",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable"
+          }
+        ]
+      },
       // Specific headers for static assets
       {
         source: "/favicon.ico",
