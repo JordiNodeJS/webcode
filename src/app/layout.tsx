@@ -64,95 +64,7 @@ export default function RootLayout({
               dangerouslySetInnerHTML={{ __html: criticalCss }}
             />
           )}
-          {/* Optional: Defer non-critical CSS via preload+swap (enable with env flag) */}
-          {process.env.NEXT_PUBLIC_ENABLE_CSS_SWAP === "1" && (
-            <>
-              {/* Main CSS chunk (update value via env if hashes change) */}
-              <link
-                rel="preload"
-                as="style"
-                href={
-                  process.env.NEXT_PUBLIC_CSS_CHUNK_MAIN ||
-                  "/_next/static/chunks/a3da1f76b773611a.css"
-                }
-              />
-              <link
-                rel="stylesheet"
-                href={
-                  process.env.NEXT_PUBLIC_CSS_CHUNK_MAIN ||
-                  "/_next/static/chunks/a3da1f76b773611a.css"
-                }
-                media="print"
-                onLoad={(e) => {
-                  (e.currentTarget as HTMLLinkElement).media = "all";
-                }}
-              />
-              {/* Secondary CSS chunk */}
-              <link
-                rel="preload"
-                as="style"
-                href={
-                  process.env.NEXT_PUBLIC_CSS_CHUNK_SECONDARY ||
-                  "/_next/static/chunks/b4d3ff9c45f5d49c.css"
-                }
-              />
-              <link
-                rel="stylesheet"
-                href={
-                  process.env.NEXT_PUBLIC_CSS_CHUNK_SECONDARY ||
-                  "/_next/static/chunks/b4d3ff9c45f5d49c.css"
-                }
-                media="print"
-                onLoad={(e) => {
-                  (e.currentTarget as HTMLLinkElement).media = "all";
-                }}
-              />
-              {/* Tiny aux CSS chunk */}
-              <link
-                rel="preload"
-                as="style"
-                href={
-                  process.env.NEXT_PUBLIC_CSS_CHUNK_TINY ||
-                  "/_next/static/chunks/2473c16c0c2f6b5f.css"
-                }
-              />
-              <link
-                rel="stylesheet"
-                href={
-                  process.env.NEXT_PUBLIC_CSS_CHUNK_TINY ||
-                  "/_next/static/chunks/2473c16c0c2f6b5f.css"
-                }
-                media="print"
-                onLoad={(e) => {
-                  (e.currentTarget as HTMLLinkElement).media = "all";
-                }}
-              />
-              <noscript>
-                {/* Fallback in case JS is disabled */}
-                <link
-                  rel="stylesheet"
-                  href={
-                    process.env.NEXT_PUBLIC_CSS_CHUNK_MAIN ||
-                    "/_next/static/chunks/a3da1f76b773611a.css"
-                  }
-                />
-                <link
-                  rel="stylesheet"
-                  href={
-                    process.env.NEXT_PUBLIC_CSS_CHUNK_SECONDARY ||
-                    "/_next/static/chunks/b4d3ff9c45f5d49c.css"
-                  }
-                />
-                <link
-                  rel="stylesheet"
-                  href={
-                    process.env.NEXT_PUBLIC_CSS_CHUNK_TINY ||
-                    "/_next/static/chunks/2473c16c0c2f6b5f.css"
-                  }
-                />
-              </noscript>
-            </>
-          )}
+          {/* CSS managed by Next.js by default (no manual preload/swap) */}
           {/* DNS Prefetch and Preconnect for better performance */}
           <link rel="dns-prefetch" href="//fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
@@ -245,33 +157,7 @@ export default function RootLayout({
             }}
           />
 
-          {/* CSS preload+swap injector driven by build manifest (css-chunks.json) */}
-          {process.env.NEXT_PUBLIC_ENABLE_CSS_SWAP === "1" && (
-            <>
-              <script
-                dangerouslySetInnerHTML={{
-                  __html: `(() => { try { 
-  const inject = (href) => {
-    if (!href) return;
-    const pre = document.createElement('link');
-    pre.rel = 'preload'; pre.as = 'style'; pre.href = href; document.head.appendChild(pre);
-    const l = document.createElement('link');
-    l.rel = 'stylesheet'; l.href = href; l.media = 'print'; l.onload = function(){ this.media = 'all'; };
-    document.head.appendChild(l);
-  };
-  fetch('/css-chunks.json', { cache: 'no-store' }).then(r => r.json()).then(({ css }) => {
-    (css || []).forEach(inject);
-  }).catch(()=>{});
-} catch(_) {} })();`
-                }}
-              />
-              <noscript>
-                <link rel="stylesheet" href="/_next/static/chunks/a3da1f76b773611a.css" />
-                <link rel="stylesheet" href="/_next/static/chunks/b4d3ff9c45f5d49c.css" />
-                <link rel="stylesheet" href="/_next/static/chunks/2473c16c0c2f6b5f.css" />
-              </noscript>
-            </>
-          )}
+          {/* No manifest-based CSS injection */}
         </head>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}

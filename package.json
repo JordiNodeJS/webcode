@@ -7,6 +7,7 @@
     "build:internal": "next build --turbopack && node scripts/extract-css-chunks.mjs",
     "build": "next build --turbopack && node scripts/extract-css-chunks.mjs",
     "start": "next start",
+    "kill-ports": "pnpm dlx kill-port 3000 3001 3002",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "format": "pnpm dlx prettier --write .",

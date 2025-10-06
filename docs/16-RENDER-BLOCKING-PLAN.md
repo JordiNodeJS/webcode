@@ -20,8 +20,8 @@ Contexto: Lighthouse/PSI reporta recursos bloqueantes (HTML inicial y 3 CSS chun
 
 2) Minimizar CSS bloqueante
 - Mantener `globals` mínimos (resets/variables); mover estilos a módulos por ruta
-- Extraer e inyectar Critical CSS (solo fold) en `app/layout.tsx`
-- Diferir CSS no crítico con `preload` + `media="print" onload` y `noscript`
+- Opcional: Critical CSS muy pequeño inline (solo fold) en `app/layout.tsx` (flagged)
+- Dejar que Next gestione la carga de CSS por defecto (sin `preload/swap` manual)
 
 3) Optimizar recurso LCP y fuentes
 - Imagen LCP: `next/image` con `priority`, `sizes` y `preload`
@@ -72,19 +72,15 @@ Sprint RBR-03
 | /    | TTFB    |       |         |       |       |
 
 ### Estado final
-- CSS crítico inline protegido por flag, CSS no crítico diferido con preload+swap y manifiesto `public/css-chunks.json`.
+- CSS gestionado por Next sin `preload/swap` manual ni `css-chunks.json`.
+- Opcional: CSS crítico inline protegido por flag si se necesita micro‑optimización.
 - Fuentes con `display: swap`; runtime Edge en home para mejorar TTFB.
 - Caché inmutable para `/_next/static/*.js` y `/_next/static/*.css`.
 - Preconnect/DNS prefetch para fuentes. Scripts de terceros: no aplica.
 
-### Notas de implementación (Next.js App Router)
-- Inlining: `<style dangerouslySetInnerHTML={{ __html: criticalCss }} />` en `app/layout.tsx`
-- Diferir CSS:
-  ```html
-  <link rel="preload" href="/path/non-critical.css" as="style">
-  <link rel="stylesheet" href="/path/non-critical.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="/path/non-critical.css"></noscript>
-  ```
+- ### Notas de implementación (Next.js App Router)
+- Inlining opcional: `<style dangerouslySetInnerHTML={{ __html: criticalCss }} />` en `app/layout.tsx`.
+- Sin `preload/swap` ni inyección por manifiesto. Confiar en la carga de CSS de Next.
 - Imagen LCP:
   ```tsx
   <Image src={src} alt="…" priority fill sizes="100vw" />
