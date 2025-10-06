@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build:internal": "next build --turbopack",
-    "build": "next build --turbopack",
+    "build:internal": "next build --turbopack && node scripts/extract-css-chunks.mjs",
+    "build": "next build --turbopack && node scripts/extract-css-chunks.mjs",
     "start": "next start",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",

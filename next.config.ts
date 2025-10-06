@@ -86,8 +86,9 @@ const nextConfig: NextConfig = {
     // Optimización de tree shaking
     config.resolve.alias = {
       ...config.resolve.alias,
-      // Force tree shaking for heavy packages
-      "framer-motion": "framer-motion/dist/framer-motion"
+      // Force ESM builds for better tree-shaking
+      "framer-motion": "framer-motion/dist/es/index.js",
+      motion: "motion/dist/es/index.js"
     };
 
     return config;

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Suspense } from "react";
-import { WSFadeIn } from "@/components/animations/ws-fade-in";
+const WSFadeIn = dynamic(() => import("@/components/animations/ws-fade-in").then(m => m.WSFadeIn));
 import { generateSEOMetadata } from "@/lib/seo-metadata";
 
 // Lazy load componentes pesados

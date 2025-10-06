@@ -852,9 +852,7 @@ main > section:first-of-type {
   }
 }
 
-/* 🌟 BOTONES NEON - Reproducción exacta de CodePen botones 3 y 7 */
-
-/* BOTÓN 3 - Efecto de relleno deslizante de izquierda a derecha */
+/* 🌟 BOTONES NEON - moved to Hero.CallToAction.module.css to reduce global CSS */
 .neon-btn-3 {
   position: relative;
   display: inline-block;
