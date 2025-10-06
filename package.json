@@ -59,6 +59,22 @@
     "tw-animate-css": "^1.3.8",
     "typescript": "^5"
   },
+  "browserslist": {
+    "production": [
+      "last 2 chrome versions",
+      "last 2 edge versions",
+      "last 2 firefox versions",
+      "last 2 safari versions",
+      "not dead",
+      "not op_mini all",
+      "supports es6-module"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,css,scss,md,html,mdx,css,scss,svg,tsx,ts,jsx,js}": [
       "pnpm dlx prettier --write"
