@@ -2,14 +2,14 @@
 
 **Pregunta del usuario:** _"¿Por qué sigue siendo tan alto el consumo de CPU estando en reposo? Las tarjetas están quietas y no se hace ningún hover"_
 
-## 🔍 **ANÁLISIS DEL PROBLEMA**
+## **[Búsqueda]** **ANÁLISIS DEL PROBLEMA**
 
-### **🎯 FUENTES IDENTIFICADAS DEL CONSUMO DE CPU EN IDLE**
+### ****[Objetivos]** FUENTES IDENTIFICADAS DEL CONSUMO DE CPU EN IDLE**
 
 #### **1. GPU Composite Layers Permanentemente Activas** 🚨 **CRÍTICO**
 
 ```tsx
-// ❌ PROBLEMA en Hero.ValuePropsGrid.tsx línea 227
+// **[Error]** PROBLEMA en Hero.ValuePropsGrid.tsx línea 227
 className = "... will-change-transform [transform-style:preserve-3d]";
 ```
 
@@ -20,12 +20,12 @@ className = "... will-change-transform [transform-style:preserve-3d]";
 - **Incluso sin hover**, el motor gráfico está preparado para transforms 3D
 - **4 capas GPU × contextos 3D** = recursos gráficos consumidos permanentemente
 
-**💡 Analogía:** Es como tener 4 motores de coche encendidos en punto muerto, consumiendo gasolina sin moverse.
+****[Idea]** Analogía:** Es como tener 4 motores de coche encendidos en punto muerto, consumiendo gasolina sin moverse.
 
-#### **2. Contexto 3D Costoso Siempre Activo** ⚠️ **ALTO IMPACTO**
+#### **2. Contexto 3D Costoso Siempre Activo** **[Advertencia]** **ALTO IMPACTO**
 
 ```tsx
-// ❌ PROBLEMA: preserve-3d permanente
+// **[Error]** PROBLEMA: preserve-3d permanente
 [transform-style:preserve-3d]
 ```
 
@@ -36,10 +36,10 @@ className = "... will-change-transform [transform-style:preserve-3d]";
 - **Jerarquía 3D** creada para elementos hijos (título, lista, features)
 - **Stacking contexts** complejos manteniéndose activos
 
-#### **3. Múltiples Transiciones CSS Monitoreadas** ⚠️ **MEDIO IMPACTO**
+#### **3. Múltiples Transiciones CSS Monitoreadas** **[Advertencia]** **MEDIO IMPACTO**
 
 ```tsx
-// ❌ PROBLEMA: 12+ transiciones por tarjeta (48 total)
+// **[Error]** PROBLEMA: 12+ transiciones por tarjeta (48 total)
 transition-transform duration-200 ease-out    // Tarjeta principal
 transition-all duration-700                   // Card interno
 transition-opacity duration-700               // Brillo background
@@ -52,10 +52,10 @@ transition-all duration-300                   // Gradiente dinámico
 - El navegador **monitorea estas propiedades** para cambios en cada frame
 - **Paint/Layout calculations** preparados constantemente
 
-#### **4. Elementos Hijos con Transform 3D Preparado** ⚠️ **MEDIO IMPACTO**
+#### **4. Elementos Hijos con Transform 3D Preparado** **[Advertencia]** **MEDIO IMPACTO**
 
 ```tsx
-// ❌ PROBLEMA: Cada elemento hijo crea potencial GPU layer
+// **[Error]** PROBLEMA: Cada elemento hijo crea potencial GPU layer
 group-hover:[transform:translateZ(50px)]      // Título
 group-hover:[transform:translateZ(20px)]      // Lista
 group-hover:[transform:translateZ(15px)]      // Cada feature (×4)
@@ -67,10 +67,10 @@ group-hover:[transform:translateZ(15px)]      // Cada feature (×4)
 - Aunque usen `group-hover`, el contexto 3D ya está preparado
 - **Stacking order 3D** calculándose constantemente
 
-#### **5. Framer Motion (WSHover) Activo** ⚠️ **MEDIO IMPACTO**
+#### **5. Framer Motion (WSHover) Activo** **[Advertencia]** **MEDIO IMPACTO**
 
 ```tsx
-// ❌ PROBLEMA: Event listeners siempre activos
+// **[Error]** PROBLEMA: Event listeners siempre activos
 <WSHover effect="lift">
 ```
 
@@ -80,10 +80,10 @@ group-hover:[transform:translateZ(15px)]      // Cada feature (×4)
 - **Animation engine** de Framer preparado para ejecutar efectos
 - **JavaScript** monitoreando hover states constantemente
 
-#### **6. Style Inline Dinámico** ⚠️ **BAJO IMPACTO**
+#### **6. Style Inline Dinámico** **[Advertencia]** **BAJO IMPACTO**
 
 ```tsx
-// ❌ PROBLEMA: Recálculo potencial del gradiente
+// **[Error]** PROBLEMA: Recálculo potencial del gradiente
 style={{ background: dynamicGradient }}
 ```
 
@@ -97,12 +97,12 @@ style={{ background: dynamicGradient }}
 
 ## 🛠️ **SOLUCIONES IMPLEMENTADAS**
 
-### **✅ Versión Idle-Optimized: Activación Condicional de GPU**
+### ****[Completado]** Versión Idle-Optimized: Activación Condicional de GPU**
 
 #### **1. GPU Layers Solo Cuando Necesario**
 
 ```tsx
-// ✅ SOLUCIÓN: Activación condicional
+// **[Completado]** SOLUCIÓN: Activación condicional
 className={`
   ${cardState.isHovered ?
     // Solo durante hover: activar GPU layers
@@ -113,7 +113,7 @@ className={`
 `}
 ```
 
-**📊 Impacto:**
+****[Análisis]** Impacto:**
 
 - **En idle**: 0 capas GPU activas
 - **Durante hover**: 4 capas GPU (solo las necesarias)
@@ -122,13 +122,13 @@ className={`
 #### **2. Transforms Solo Durante Interacción**
 
 ```tsx
-// ✅ SOLUCIÓN: Transform condicional
+// **[Completado]** SOLUCIÓN: Transform condicional
 const cardTransform = cardState.isHovered
   ? `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)...`
   : "none"; // NO transforms en idle = NO GPU
 ```
 
-**📊 Impacto:**
+****[Análisis]** Impacto:**
 
 - **En idle**: Sin transforms = sin capas de composición
 - **Durante hover**: Transform 3D completo activado
@@ -137,7 +137,7 @@ const cardTransform = cardState.isHovered
 #### **3. Gradientes Estáticos para Idle**
 
 ```tsx
-// ✅ SOLUCIÓN: Assets estáticos vs dinámicos
+// **[Completado]** SOLUCIÓN: Assets estáticos vs dinámicos
 const STATIC_GRADIENTS = {
   idle: "radial-gradient(circle at 50% 50%, rgba(111, 137, 193, 0.1), transparent)",
   card1:
@@ -148,7 +148,7 @@ const STATIC_GRADIENTS = {
 const currentGradient = cardState.isHovered ? dynamicGradient : staticGradient;
 ```
 
-**📊 Impacto:**
+****[Análisis]** Impacto:**
 
 - **En idle**: Gradientes pre-calculados (sin JavaScript)
 - **Durante hover**: Gradientes dinámicos calculados
@@ -157,7 +157,7 @@ const currentGradient = cardState.isHovered ? dynamicGradient : staticGradient;
 #### **4. Event Throttling Inteligente**
 
 ```tsx
-// ✅ SOLUCIÓN: Throttling a 60fps máximo
+// **[Completado]** SOLUCIÓN: Throttling a 60fps máximo
 const lastMoveTime = React.useRef(0);
 const handleMouseMove = (e) => {
   const now = performance.now();
@@ -166,7 +166,7 @@ const handleMouseMove = (e) => {
 };
 ```
 
-**📊 Impacto:**
+****[Análisis]** Impacto:**
 
 - **Eventos limitados**: Máximo 60 updates/segundo
 - **Reducción de re-renders**: ~75% menos actualizaciones de estado
@@ -175,14 +175,14 @@ const handleMouseMove = (e) => {
 #### **5. Eliminación de Framer Motion Innecesario**
 
 ```tsx
-// ❌ ANTES: Framer Motion siempre activo
+// **[Error]** ANTES: Framer Motion siempre activo
 <WSHover effect="lift">
 
-// ✅ DESPUÉS: CSS puro con activación condicional
+// **[Completado]** DESPUÉS: CSS puro con activación condicional
 <article onMouseEnter={activateEffects} onMouseLeave={deactivateEffects}>
 ```
 
-**📊 Impacto:**
+****[Análisis]** Impacto:**
 
 - **Sin JavaScript framework**: Solo CSS y event handlers nativos
 - **Menor overhead**: Sin animation engine de Framer Motion
@@ -190,9 +190,9 @@ const handleMouseMove = (e) => {
 
 ---
 
-## 📊 **MÉTRICAS COMPARATIVAS**
+## **[Análisis]** **MÉTRICAS COMPARATIVAS**
 
-### **🔻 Consumo en Idle (Reposo)**
+### ****[Triángulo Rojo Invertido]** Consumo en Idle (Reposo)**
 
 | Aspecto                           | Original                  | Idle-Optimized | Reducción |
 | --------------------------------- | ------------------------- | -------------- | --------- |
@@ -202,7 +202,7 @@ const handleMouseMove = (e) => {
 | **JavaScript Event Listeners**    | 8 (Framer Motion)         | 4 (nativos)    | **-50%**  |
 | **Style Recalculations**          | Continuas                 | Solo en hover  | **-90%**  |
 
-### **🔼 Rendimiento Durante Hover (Interacción)**
+### ****[Triángulo Pequeño]** Rendimiento Durante Hover (Interacción)**
 
 | Aspecto                   | Original    | Idle-Optimized | Cambio         |
 | ------------------------- | ----------- | -------------- | -------------- |
@@ -224,9 +224,9 @@ http://localhost:3001/debug/performance
 
 **Escenarios disponibles:**
 
-- ✅ **"Tarjetas Originales"** - Version actual con alto consumo
-- 🎯 **"Idle Performance Optimized"** - Nueva versión optimizada
-- 📊 **Comparar métricas en tiempo real**
+- **[Completado]** **"Tarjetas Originales"** - Version actual con alto consumo
+- **[Objetivos]** **"Idle Performance Optimized"** - Nueva versión optimizada
+- **[Análisis]** **Comparar métricas en tiempo real**
 
 ### **2. DevTools Analysis**
 
@@ -255,7 +255,7 @@ Safari → Develop → Show Web Inspector → Timeline
 
 ---
 
-## 🎯 **IMPLEMENTACIÓN RECOMENDADA**
+## **[Objetivos]** **IMPLEMENTACIÓN RECOMENDADA**
 
 ### **Paso 1: Reemplazar Componente**
 
@@ -275,12 +275,12 @@ import { IdleOptimizedValuePropsGrid } from "@/components/landing/hero/Hero.Valu
 // Revisar botones "Consulta gratuita" y "Ver portfolio"
 // Probablemente tienen animaciones CSS costosas también:
 
-// ❌ Posible problema:
+// **[Error]** Posible problema:
 .button-shine {
   animation: shine 2s infinite; /* Animación constante */
 }
 
-// ✅ Solución:
+// **[Completado]** Solución:
 .button-shine:hover {
   animation: shine 2s infinite; /* Solo en hover */
 }
@@ -299,23 +299,23 @@ const performanceThresholds = {
 
 ---
 
-## 💡 **CONCLUSIÓN**
+## **[Idea]** **CONCLUSIÓN**
 
 **El problema NO era que las tarjetas estuvieran "haciendo algo" en idle, sino que estaban "preparadas para hacer demasiado":**
 
-1. 🎯 **GPU Layers siempre activas** = motor encendido sin usar
-2. 🔄 **Contexto 3D permanente** = cálculos matemáticos constantes
+1. **[Objetivos]** **GPU Layers siempre activas** = motor encendido sin usar
+2. **[Recargar]** **Contexto 3D permanente** = cálculos matemáticos constantes
 3. 👂 **Event listeners esperando** = JavaScript monitoreando todo
-4. 🎨 **Transiciones CSS preparadas** = browser esperando cambios
+4. **[Diseño]** **Transiciones CSS preparadas** = browser esperando cambios
 
 **La solución: "Lazy Activation" - solo activar recursos cuando realmente se necesitan.**
 
 **Resultado esperado:**
 
-- ✅ **CPU idle**: ~90% menos consumo en reposo
-- ✅ **UX preservada**: Misma calidad visual durante hover
-- ✅ **Performance mejorada**: Mejor FPS general de la página
-- ✅ **Escalabilidad**: Patrón aplicable a otros componentes
+- **[Completado]** **CPU idle**: ~90% menos consumo en reposo
+- **[Completado]** **UX preservada**: Misma calidad visual durante hover
+- **[Completado]** **Performance mejorada**: Mejor FPS general de la página
+- **[Completado]** **Escalabilidad**: Patrón aplicable a otros componentes
 
 ---
 

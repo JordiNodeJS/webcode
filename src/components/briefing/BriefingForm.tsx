@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AlertCircle, ArrowLeft, ArrowRight, CheckCircle, Loader2, Send } from "@/lib/icons";
+import { SingleEmojiToSvg } from "@/components/ui/emoji-to-svg";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { type UseFormReturn, useForm } from "react-hook-form";
@@ -460,7 +461,8 @@ export function BriefingForm() {
       {/* Tips */}
       <div className="mt-6 p-4 rounded-lg bg-muted/50 border-2 border-border">
         <p className="text-sm text-muted-foreground text-center">
-          💡 <strong>Tip:</strong> Tu progreso se guarda automáticamente. Puedes cerrar esta página 
+          <SingleEmojiToSvg emoji="💡" size="sm" variant="primary" className="inline mr-2" />
+          <strong>Tip:</strong> Tu progreso se guarda automáticamente. Puedes cerrar esta página 
           y continuar más tarde desde donde lo dejaste.
         </p>
       </div>

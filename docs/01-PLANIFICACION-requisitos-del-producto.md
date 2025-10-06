@@ -14,17 +14,17 @@ WEBCODE: Plataforma Integral de Desarrollo Web y Soluciones Digitales para Freel
 
 | Versión | Fecha      | Autor    | Cambios                                     |
 | ------- | ---------- | -------- | ------------------------------------------- |
-| 1.0     | 31/08/2025 | WebSnack | Versión inicial basada en PRD-GML           |
-| 1.1     | 31/08/2025 | WebSnack | Actualización con stack moderno 2025        |
-| 1.2     | 31/08/2025 | WebSnack | Adaptación para mercado español - Barcelona |
+| 1.0     | 31/08/2025 | WebCode | Versión inicial basada en PRD-GML           |
+| 1.1     | 31/08/2025 | WebCode | Actualización con stack moderno 2025        |
+| 1.2     | 31/08/2025 | WebCode | Adaptación para mercado español - Barcelona |
 
 ---
 
 ### 3. Resumen (Overview)
 
-> **Nota Importante**: WebSnack se encuentra actualmente en fase de planificación y desarrollo. Este PRD representa la visión, objetivos y estrategia para el lanzamiento del negocio. Los escenarios de usuario, métricas y casos de éxito descritos son proyecciones basadas en investigación de mercado y análisis competitivo, no resultados históricos.
+> **Nota Importante**: WebCode se encuentra actualmente en fase de planificación y desarrollo. Este PRD representa la visión, objetivos y estrategia para el lanzamiento del negocio. Los escenarios de usuario, métricas y casos de éxito descritos son proyecciones basadas en investigación de mercado y análisis competitivo, no resultados históricos.
 
-WebSnack es una plataforma integral que ofrecerá servicios de desarrollo web modernos y soluciones digitales personalizadas para freelancers, pequeñas empresas y startups en Barcelona y España. Utilizando las tecnologías más avanzadas de 2025 (Next.js 15, React 19, Tailwind CSS v4), la plataforma proporcionará desde sitios web estáticos hasta aplicaciones web complejas, incluyendo herramientas de productividad, sistemas de gestión y soluciones de e-commerce.
+WebCode es una plataforma integral que ofrecerá servicios de desarrollo web modernos y soluciones digitales personalizadas para freelancers, pequeñas empresas y startups en Barcelona y España. Utilizando las tecnologías más avanzadas de 2025 (Next.js 15, React 19, Tailwind CSS v4), la plataforma proporcionará desde sitios web estáticos hasta aplicaciones web complejas, incluyendo herramientas de productividad, sistemas de gestión y soluciones de e-commerce.
 
 **Misión**: Democratizar el acceso a soluciones web profesionales y de alta calidad para emprendedores y pequeñas empresas en España.
 
@@ -91,7 +91,7 @@ _"Vende más con tiendas online optimizadas para conversión y experiencia de us
 #### Fase 1: Fundación (Mes 1-2)
 
 - [x] Configuración del stack tecnológico (Next.js 15, React 19, Tailwind v4)
-- [ ] Desarrollo del sitio web corporativo de WebSnack
+- [ ] Desarrollo del sitio web corporativo de WebCode
 - [ ] Creación del sistema de componentes base (shadcn/ui + Magic UI)
 - [ ] Configuración de pipeline CI/CD con Vercel
 
@@ -236,7 +236,7 @@ _"Vende más con tiendas online optimizadas para conversión y experiencia de us
 
 **Journey**:
 
-1. Encuentra WebSnack a través de un caso de estudio compartido en el grupo de LinkedIn "UX Barcelona"
+1. Encuentra WebCode a través de un caso de estudio compartido en el grupo de LinkedIn "UX Barcelona"
 2. Agenda una consulta gratuita en catalán para revisar su situación actual
 3. Recibe una propuesta personalizada con ejemplos de portafolios de diseñadores barceloneses exitosos
 4. Decide invertir en un portafolio personalizado multiidioma (catalán, castellano, inglés) con blog integrado
@@ -254,7 +254,7 @@ _"Vende más con tiendas online optimizadas para conversión y experiencia de us
 
 **Journey**:
 
-1. Su hija, que estudia en ESADE, le recomienda WebSnack después de ver un caso de éxito de otro restaurante catalán
+1. Su hija, que estudia en ESADE, le recomienda WebCode después de ver un caso de éxito de otro restaurante catalán
 2. Participa en una consulta donde entiende el valor de la presencia digital para el sector hostelero en Barcelona
 3. Recibe una demo de un restaurante similar con reservas integradas y menú en múltiples idiomas
 4. Aprueba el desarrollo de sitio web bilingüe (catalán/castellano) con menú digital, sistema de reservas y información para turistas
@@ -272,7 +272,7 @@ _"Vende más con tiendas online optimizadas para conversión y experiencia de us
 
 **Journey**:
 
-1. Contacta WebSnack después de una recomendación en Barcelona Startup Map o evento en Pier01
+1. Contacta WebCode después de una recomendación en Barcelona Startup Map o evento en Pier01
 2. Presenta su idea y recibe feedback técnico sobre viabilidad en el mercado europeo
 3. Colabora en el diseño de wireframes y user flows del MVP, considerando regulaciones RGPD
 4. Aprueba el desarrollo de una versión simplificada pero funcional, optimizada para usuarios españoles
@@ -280,7 +280,7 @@ _"Vende más con tiendas online optimizadas para conversión y experiencia de us
 6. Recibe el MVP con analytics integrados RGPD-compliant para medir engagement
 7. Usa los datos para iterar y preparar su pitch para Startup BCN o Barcelona Tech City
 
-**Resultado**: El objetivo es que Laura pueda validar su idea con 150+ usuarios beta (retailers de Barcelona y Madrid), conseguir pre-seed funding de €250k de inversores catalanes, y contratar a WebSnack para escalar la plataforma hacia el mercado europeo.
+**Resultado**: El objetivo es que Laura pueda validar su idea con 150+ usuarios beta (retailers de Barcelona y Madrid), conseguir pre-seed funding de €250k de inversores catalanes, y contratar a WebCode para escalar la plataforma hacia el mercado europeo.
 
 ---
 
@@ -354,7 +354,7 @@ _"Vende más con tiendas online optimizadas para conversión y experiencia de us
 
 #### Epic 4: Experiencia de Desarrollo y Mantenimiento
 
-**Como cliente de WebSnack, quiero un proceso de desarrollo transparente y opciones de mantenimiento que se adapten a mi presupuesto.**
+**Como cliente de WebCode, quiero un proceso de desarrollo transparente y opciones de mantenimiento que se adapten a mi presupuesto.**
 
 **Historias de Usuario**:
 
@@ -606,7 +606,7 @@ _"Vende más con tiendas online optimizadas para conversión y experiencia de us
 
 **Intellectual Property**:
 
-- ¿Ownership del código: cliente, WebSnack, o compartido?
+- ¿Ownership del código: cliente, WebCode, o compartido?
 - ¿Cómo proteger el component library propietario?
 - ¿Licensing terms para reutilización de componentes?
 
@@ -666,7 +666,7 @@ R: Ofreceremos 2 rounds de revisions mayores incluidas en cada fase. Si persiste
 **Client Assets**:
 
 - Cliente mantiene ownership de: branding, content, images, business logic
-- WebSnack retiene: component library, development methodologies, base templates
+- WebCode retiene: component library, development methodologies, base templates
 - Shared ownership: custom components desarrollados específicamente para el cliente
 
 **Code Licensing**:
@@ -795,7 +795,7 @@ R: Ofreceremos 2 rounds de revisions mayores incluidas en cada fase. Si persiste
 
 **In Progress**:
 
-- [ ] WebSnack corporate website development
+- [ ] WebCode corporate website development
 - [ ] Client onboarding process definition
 - [ ] First template designs (portfolio, restaurant, startup)
 - [ ] Pricing strategy finalization
@@ -807,7 +807,7 @@ R: Ofreceremos 2 rounds de revisions mayores incluidas en cada fase. Si persiste
 - [ ] Create first case study mockups
 - [ ] Set up project management tools
 
-**Estado del Negocio**: WebSnack aún no ha comenzado operaciones comerciales. Los escenarios de usuario y métricas representan objetivos y casos de uso proyectados basados en investigación de mercado.
+**Estado del Negocio**: WebCode aún no ha comenzado operaciones comerciales. Los escenarios de usuario y métricas representan objetivos y casos de uso proyectados basados en investigación de mercado.
 
 #### Roadmap 2025-2026
 
@@ -915,7 +915,7 @@ Post-pandemia ha aumentado significativamente la demanda por presencia digital s
 Early adoption de Next.js 15/React 19 da ventaja competitiva significativa. Performance gains y developer experience improvements permiten delivery más rápido con better results.
 
 **Service Gap**:
-Existe gap entre DIY platforms y full-service agencies. WebSnack se posiciona como "premium DIY" - calidad profesional con involvement personal y pricing accesible.
+Existe gap entre DIY platforms y full-service agencies. WebCode se posiciona como "premium DIY" - calidad profesional con involvement personal y pricing accesible.
 
 **Scalability Strategy**:
 Component library approach permite scale efficiency mientras mantenemos customization. Cada proyecto contribuye al library, making future projects faster y better.
@@ -1063,4 +1063,4 @@ Component library approach permite scale efficiency mientras mantenemos customiz
 
 ---
 
-Este PRD proporciona una foundation realista para WebSnack como proyecto personal en Barcelona, balanceando ambición técnica con pragmatismo comercial adaptado a las capacidades de una sola persona. La estructura permite evolución orgánica mientras mantiene focus en delivering exceptional value para clientes locales, construyendo reputación gradualmente en el ecosistema tecnológico barcelonés.
+Este PRD proporciona una foundation realista para WebCode como proyecto personal en Barcelona, balanceando ambición técnica con pragmatismo comercial adaptado a las capacidades de una sola persona. La estructura permite evolución orgánica mientras mantiene focus en delivering exceptional value para clientes locales, construyendo reputación gradualmente en el ecosistema tecnológico barcelonés.

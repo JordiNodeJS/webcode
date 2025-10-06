@@ -59,7 +59,7 @@ const createThemeConfig = (theme: "light" | "dark") => {
   const colors = getThemeColors(theme);
 
   if (theme === "dark") {
-    // Modo oscuro: paleta WebSnack con tonos más sutiles pero vibrantes
+    // Modo oscuro: paleta WebCode con tonos más sutiles pero vibrantes
     const cloudColor = parseRgbColor(colors.accent.secondary); // Aguamarina sutil para nubes
     const lightningColor = parseRgbColor(colors.accent.primary); // Rosa brillante para iluminación
 
@@ -71,9 +71,9 @@ const createThemeConfig = (theme: "light" | "dark") => {
       CLOUD_BASE_OPACITY: 0.06
     };
   } else {
-    // Modo claro: paleta completa WebSnack rosa-aguamarina
+    // Modo claro: paleta completa WebCode rosa-aguamarina
     const cloudColor = parseRgbColor(colors.accent.secondary); // Aguamarina para nubes sutiles
-    const lightningColor = parseRgbColor(colors.accent.primary); // Rosa WebSnack para iluminación
+    const lightningColor = parseRgbColor(colors.accent.primary); // Rosa WebCode para iluminación
 
     return {
       CLOUD_COLOR: cloudColor,
@@ -235,7 +235,7 @@ export function CloudLightningBackground() {
         effectiveRadius
       );
 
-      // Colores del tema WebSnack para el efecto de iluminación
+      // Colores del tema WebCode para el efecto de iluminación
       const centerColor =
         theme === "dark"
           ? `rgba(255, 170, 215, ${currentConfig.LIGHT_OPACITY * 0.15})` // Rosa brillante modo oscuro
@@ -305,7 +305,7 @@ export function CloudLightningBackground() {
 
       // Efecto de resplandor mejorado con sombras 3D del sistema WAS
       if (lighting > 0.1) {
-        // Usar colores del tema WebSnack para el resplandor
+        // Usar colores del tema WebCode para el resplandor
         const glowColor =
           theme === "dark"
             ? `rgba(255, 170, 215, ${lighting * 0.8})` // Rosa brillante modo oscuro

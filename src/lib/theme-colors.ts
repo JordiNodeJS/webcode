@@ -51,9 +51,9 @@ export const THEME_COLORS = {
       muted: "rgb(100, 116, 139)" // slate-500
     },
     accent: {
-      // Colores del tema WebSnack: rosa principal y aguamarina
-      primary: "rgb(220, 124, 179)", // #dc7cb3 - Rosa WebSnack
-      secondary: "rgb(188, 227, 229)", // #bce3e5 - Aguamarina WebSnack
+      // Colores del tema WebCode: rosa principal y aguamarina
+      primary: "rgb(220, 124, 179)", // #dc7cb3 - Rosa WebCode
+      secondary: "rgb(188, 227, 229)", // #bce3e5 - Aguamarina WebCode
       border: "rgb(203, 213, 225)" // slate-300
     },
     gradients: {
@@ -77,7 +77,7 @@ export const THEME_COLORS = {
       muted: "rgb(148, 163, 184)" // slate-400
     },
     accent: {
-      // Colores WebSnack para modo oscuro - tonos más sutiles pero manteniendo la paleta
+      // Colores WebCode para modo oscuro - tonos más sutiles pero manteniendo la paleta
       primary: "rgb(240, 171, 252)", // Rosa más claro para modo oscuro
       secondary: "rgb(165, 243, 252)", // Aguamarina más claro para modo oscuro
       border: "rgb(75, 85, 99)" // gray-600

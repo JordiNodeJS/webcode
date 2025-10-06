@@ -2,9 +2,9 @@
 applyTo: "**/*.{css,scss,ts,tsx}"
 ---
 
-# Instrucciones para Estilos y Diseño WebSnack
+# Instrucciones para Estilos y Diseño WebCode
 
-## Sistema de Diseño WebSnack
+## Sistema de Diseño WebCode
 
 ### Tailwind CSS v4
 
@@ -15,7 +15,7 @@ applyTo: "**/*.{css,scss,ts,tsx}"
 ### Paleta de Colores
 
 ```css
-/* Colores principales WebSnack */
+/* Colores principales WebCode */
 --primary: #3b82f6; /* Blue-500 */
 --secondary: #64748b; /* Slate-500 */
 --accent: #f59e0b; /* Amber-500 */
@@ -103,7 +103,7 @@ applyTo: "**/*.{css,scss,ts,tsx}"
 ### Layouts Comunes
 
 ```tsx
-// Container estándar WebSnack
+// Container estándar WebCode
 <div className="container mx-auto px-4 py-8 max-w-7xl">
 
 // Grid responsive estándar

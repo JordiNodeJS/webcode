@@ -838,6 +838,26 @@ main > section:first-of-type {
 
 /* footer styles moved to Footer.Section.module.css */
 
+/* Clases faltantes identificadas */
+.cloud-lightning-background {
+  background: linear-gradient(
+    135deg,
+    oklch(var(--primary) / 0.1) 0%,
+    oklch(var(--secondary) / 0.08) 25%,
+    oklch(var(--background) / 0.95) 50%,
+    oklch(var(--accent) / 0.06) 75%,
+    oklch(var(--primary) / 0.1) 100%
+  );
+}
+
+.neon-theme-soft {
+  text-shadow: 
+    0 0 5px oklch(var(--primary) / 0.3),
+    0 0 10px oklch(var(--primary) / 0.2),
+    0 0 15px oklch(var(--primary) / 0.1);
+  filter: brightness(1.1) contrast(1.05);
+}
+
 /* Animaciones de accordion con efecto muelle */
 .animate-accordion-down {
   animation: accordion-down 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);

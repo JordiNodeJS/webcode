@@ -1,8 +1,8 @@
-# Prompt: Generador llms.txt - WebSnack
+# Prompt: Generador llms.txt - WebCode
 
 ## **Contexto y Objetivo**
 
-Prompt especializado para analizar el proyecto WebSnack y generar un archivo `llms.txt` optimizado que permita a los LLMs comprender correctamente el propósito, estructura y prioridades del proyecto.
+Prompt especializado para analizar el proyecto WebCode y generar un archivo `llms.txt` optimizado que permita a los LLMs comprender correctamente el propósito, estructura y prioridades del proyecto.
 
 ## **Alcance**
 
@@ -24,7 +24,7 @@ Prompt especializado para analizar el proyecto WebSnack y generar un archivo `ll
 
 ### **Criterios de Evaluación**
 
-- Relevancia para el negocio WebSnack
+- Relevancia para el negocio WebCode
 - Accesibilidad pública de la información
 - Valor para comprensión del contexto
 - Sensibilidad de los datos
@@ -55,7 +55,7 @@ Prompt especializado para analizar el proyecto WebSnack y generar un archivo `ll
 
 - **Frases simples y directas** para facilitar comprensión
 - **Sin datos sensibles o privados** (claves API, información personal)
-- **Reflejar el tono y temática** del proyecto WebSnack
+- **Reflejar el tono y temática** del proyecto WebCode
 - **Contexto específico** del mercado español/barcelonés
 
 ---
@@ -68,16 +68,16 @@ Prompt especializado para analizar el proyecto WebSnack y generar un archivo `ll
 2. **Identificar** secciones de alta prioridad para LLMs
 3. **Detectar** contenido sensible a excluir
 4. **Generar** archivo llms.txt con estructura estándar
-5. **Validar** que refleje correctamente el proyecto WebSnack
+5. **Validar** que refleje correctamente el proyecto WebCode
 
 ### **Criterios de Aceptación**
 
-- ✅ Archivo llms.txt generado en formato Markdown
-- ✅ Secciones de alta prioridad identificadas correctamente
-- ✅ Contenido sensible excluido apropiadamente
-- ✅ Descripción clara del proyecto WebSnack incluida
-- ✅ Tono y contexto del mercado español reflejado
+- **[Completado]** Archivo llms.txt generado en formato Markdown
+- **[Completado]** Secciones de alta prioridad identificadas correctamente
+- **[Completado]** Contenido sensible excluido apropiadamente
+- **[Completado]** Descripción clara del proyecto WebCode incluida
+- **[Completado]** Tono y contexto del mercado español reflejado
 
 ---
 
-**Nota**: Este prompt asegura que los LLMs comprendan correctamente el proyecto WebSnack y sus objetivos en el mercado español de desarrollo web freelance.
+**Nota**: Este prompt asegura que los LLMs comprendan correctamente el proyecto WebCode y sus objetivos en el mercado español de desarrollo web freelance.

@@ -2,9 +2,9 @@
 
 Este directorio contiene prompts y guías de desarrollo para mantener la consistencia y calidad del proyecto WEBCODE.
 
-## 📚 Índice de Prompts
+## **[Recursos]** Índice de Prompts
 
-### 🎨 Diseño y Desarrollo de Páginas
+### **[Diseño]** Diseño y Desarrollo de Páginas
 
 #### [`create-proceso-page.prompt.md`](./create-proceso-page.prompt.md)
 **Propósito**: Crear una página completa de "Proceso" de desarrollo web
@@ -26,7 +26,7 @@ Este directorio contiene prompts y guías de desarrollo para mantener la consist
 
 ---
 
-### ⚡ Optimización y Rendimiento
+### **[Rendimiento]** Optimización y Rendimiento
 
 #### [`performance-animations-guidelines.prompt.md`](./performance-animations-guidelines.prompt.md)
 **Propósito**: Guía completa de optimización de animaciones y rendimiento
@@ -58,7 +58,7 @@ Este directorio contiene prompts y guías de desarrollo para mantener la consist
 
 ---
 
-## 🎯 Guía de Uso
+## **[Objetivos]** Guía de Uso
 
 ### Para Desarrolladores
 
@@ -72,15 +72,15 @@ Este directorio contiene prompts y guías de desarrollo para mantener la consist
 2. Usar checklists de los prompts para validación
 3. Comprobar métricas de rendimiento cuando aplique
 
-## 📊 Métricas de Calidad
+## **[Análisis]** Métricas de Calidad
 
 Todos los prompts están basados en:
-- ✅ Experiencia real del proyecto
-- ✅ Problemas resueltos documentados
-- ✅ Mejores prácticas de la industria
-- ✅ Métricas medibles
+- **[Completado]** Experiencia real del proyecto
+- **[Completado]** Problemas resueltos documentados
+- **[Completado]** Mejores prácticas de la industria
+- **[Completado]** Métricas medibles
 
-## 🔄 Mantenimiento
+## **[Recargar]** Mantenimiento
 
 ### Actualización de Prompts
 
@@ -112,14 +112,14 @@ Template sugerido:
 [Items verificables]
 ```
 
-## 📝 Historial de Prompts
+## **[Documentación]** Historial de Prompts
 
 | Fecha | Prompt | Descripción |
 |-------|--------|-------------|
 | 2025-10-03 | `performance-animations-guidelines.prompt.md` | Guía de optimización basada en caso real |
 | 2025-10-03 | `create-proceso-page.prompt.md` | Template para página de Proceso |
 
-## 🚀 Próximos Prompts Planeados
+## **[Lanzamiento]** Próximos Prompts Planeados
 
 Ideas para futuros prompts:
 - [ ] Component architecture guidelines
@@ -130,7 +130,7 @@ Ideas para futuros prompts:
 - [ ] Form validation standards
 - [ ] Error handling guidelines
 
-## 💡 Contribuir
+## **[Idea]** Contribuir
 
 Para añadir un nuevo prompt:
 1. Crear archivo `.prompt.md` en este directorio

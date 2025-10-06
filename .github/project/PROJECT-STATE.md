@@ -57,7 +57,7 @@
 - ✅ **Performance GPU**: Eliminadas animaciones infinitas problemáticas
 - ✅ **UX mejorada**: Background dinámico con opacidad por scroll
 - ✅ **Efectos avanzados**: Gradientes neon y backdrop blur optimizados
-- ✅ **Branding actualizado**: WebSnack → WebCode en todo el proyecto
+- ✅ **Branding actualizado**: WebCode → WebCode en todo el proyecto
 - ✅ **Testing validado**: Todos los componentes Hero testeados y funcionando
 - ✅ **SEO Enhancement**: Página FAQ con Schema.org FAQPage (Octubre 2025)
 

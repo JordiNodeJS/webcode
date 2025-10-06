@@ -1,14 +1,14 @@
-# Prompt: shadcn/ui v4 MCP - WebSnack
+# Prompt: shadcn/ui v4 MCP - WebCode
 
 ## **Contexto y Objetivo**
 
-Prompt especializado para el uso del MCP de shadcn/ui v4 en el proyecto WebSnack, optimizado para integración con **Next.js 15 + Tailwind CSS v4 + TypeScript estricto** y producción de componentes listos para usar.
+Prompt especializado para el uso del MCP de shadcn/ui v4 en el proyecto WebCode, optimizado para integración con **Next.js 15 + Tailwind CSS v4 + TypeScript estricto** y producción de componentes listos para usar.
 
 ## **Alcance**
 
 - Recuperación y adaptación de componentes shadcn/ui v4
 - Integración con arquitectura Next.js 15 App Router
-- Adaptación a sistema de diseño WebSnack
+- Adaptación a sistema de diseño WebCode
 - Generación de artefactos reutilizables
 
 ---
@@ -121,7 +121,7 @@ export { Button, buttonVariants };
 ### **Mejoras Obligatorias**
 
 - **Accesibilidad**: Roles ARIA y estados focus visibles
-- **Variables CSS**: Para colores y gradientes del tema WebSnack
+- **Variables CSS**: Para colores y gradientes del tema WebCode
 - **Utilidades Tailwind v4**: Aprovechar nuevas funcionalidades
 
 ---
@@ -161,23 +161,23 @@ describe("Button Component", () => {
 
 ### **Proceso de Implementación**
 
-1. **Identificar** componente necesario para WebSnack
+1. **Identificar** componente necesario para WebCode
 2. **Recuperar** con MCPs de shadcn/ui v4
 3. **Adaptar** a arquitectura Next.js 15 + TypeScript estricto
-4. **Integrar** variables CSS del tema WebSnack
+4. **Integrar** variables CSS del tema WebCode
 5. **Validar** con tests y ejemplos de uso
 
 ### **Criterios de Aceptación**
 
-- ✅ **Type-check** - `pnpm check` debe pasar
-- ✅ **Build** - `pnpm build` debe completar sin errores
-- ✅ **Tests** - `pnpm test` debe ejecutar el test creado
-- ✅ **Accesibilidad** - Cumplir estándares WCAG 2.1 AA
-- ✅ **Integración** - Compatible con sistema de diseño WebSnack
+- **[Completado]** **Type-check** - `pnpm check` debe pasar
+- **[Completado]** **Build** - `pnpm build` debe completar sin errores
+- **[Completado]** **Tests** - `pnpm test` debe ejecutar el test creado
+- **[Completado]** **Accesibilidad** - Cumplir estándares WCAG 2.1 AA
+- **[Completado]** **Integración** - Compatible con sistema de diseño WebCode
 
 ---
 
-**Nota**: Este prompt optimiza el uso de shadcn/ui v4 para crear componentes de alta calidad que se integren perfectamente con la arquitectura y estándares del proyecto WebSnack.
+**Nota**: Este prompt optimiza el uso de shadcn/ui v4 para crear componentes de alta calidad que se integren perfectamente con la arquitectura y estándares del proyecto WebCode.
 
 - Si las variantes/properties son ambiguas: genera 2-3 opciones y marca la recomendada.
 

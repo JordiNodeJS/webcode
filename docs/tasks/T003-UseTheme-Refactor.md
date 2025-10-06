@@ -1,6 +1,6 @@
-# 📝 TAREA T003: Refactorizar use-theme.ts
+# **[Documentación]** TAREA T003: Refactorizar use-theme.ts
 
-## 🏷️ METADATOS DE LA TAREA
+## **[Etiqueta]** METADATOS DE LA TAREA
 
 **ID:** T003  
 **Título:** Refactorizar use-theme.ts - Implementar next-themes  
@@ -12,13 +12,13 @@
 **Estimación:** 3-5 horas  
 **Asignado a:** Desarrollador
 
-## 🔗 DEPENDENCIAS
+## **[Enlace]** DEPENDENCIAS
 
 **Dependencias de entrada:** ninguna  
 **Dependencias de salida:** ninguna  
 **Bloqueos identificados:** ninguno
 
-## 📋 DESCRIPCIÓN DETALLADA
+## **[Lista]** DESCRIPCIÓN DETALLADA
 
 El hook `use-theme.ts` actualmente implementa manualmente la gestión de temas con:
 
@@ -29,7 +29,7 @@ El hook `use-theme.ts` actualmente implementa manualmente la gestión de temas c
 
 **Objetivo:** Reemplazar la implementación manual con la librería `next-themes` que proporciona una solución más robusta, optimizada y mantenida por la comunidad.
 
-## 🎯 CRITERIOS DE ACEPTACIÓN
+## **[Objetivos]** CRITERIOS DE ACEPTACIÓN
 
 - [ ] Instalación y configuración de `next-themes`
 - [ ] Eliminación de manipulación directa del DOM
@@ -39,7 +39,7 @@ El hook `use-theme.ts` actualmente implementa manualmente la gestión de temas c
 - [ ] Mejora del rendimiento y compatibilidad
 - [ ] Persistencia de tema funcionando correctamente
 
-## 📊 SUBTAREAS
+## **[Análisis]** SUBTAREAS
 
 ### T003.1: Instalar y configurar next-themes
 
@@ -100,20 +100,20 @@ El hook `use-theme.ts` actualmente implementa manualmente la gestión de temas c
 - [ ] Código más simple y mantenible
 - [ ] Tests pasando
 
-## 📝 NOTAS Y OBSERVACIONES
+## **[Documentación]** NOTAS Y OBSERVACIONES
 
 - next-themes maneja automáticamente el FOUC (Flash of Unstyled Content)
 - Proporciona mejor soporte para SSR
 - Maneja automáticamente las preferencias del sistema
 - Es la solución estándar para temas en Next.js
 
-## 🔄 LOG DE CAMBIOS
+## **[Recargar]** LOG DE CAMBIOS
 
 **[2025-01-03 10:30]** Tarea creada - Análisis inicial completado
 
 ---
 
-## 📈 MÉTRICAS DE PROGRESO
+## **[Crecimiento]** MÉTRICAS DE PROGRESO
 
 **Tiempo invertido:** 0 horas  
 **Archivos modificados:** 0 archivos  
@@ -121,7 +121,7 @@ El hook `use-theme.ts` actualmente implementa manualmente la gestión de temas c
 **Bugs encontrados:** 0 bugs  
 **Bugs resueltos:** 0 bugs
 
-## ✅ CHECKLIST DE FINALIZACIÓN
+## **[Completado]** CHECKLIST DE FINALIZACIÓN
 
 - [ ] Todas las subtareas completadas
 - [ ] Criterios de aceptación cumplidos

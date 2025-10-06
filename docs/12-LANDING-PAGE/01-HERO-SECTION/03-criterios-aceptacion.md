@@ -57,7 +57,7 @@
 
 ### Colores y Branding
 
-- [ ] **Sistema de colores WebSnack implementado** con comando automático
+- [ ] **Sistema de colores WebCode implementado** con comando automático
 - [ ] **Colores principales**: Rosa `#dc7cb3` (primary), Aguamarina `#bce3e5` (secondary)
 - [ ] **Variables CSS disponibles**: `--primary`, `--secondary`, `--accent`, `--background`, `--foreground`
 - [ ] Paleta de colores brand consistente
@@ -161,7 +161,7 @@
 
 ### Pre-Code Review
 
-- [ ] Código sigue estándares WebSnack
+- [ ] Código sigue estándares WebCode
 - [ ] Todos los criterios técnicos cumplidos
 - [ ] Tests pasando
 - [ ] Sin errores de linting

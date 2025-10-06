@@ -1,6 +1,6 @@
 # 13-COMERCIALIZACION-dossier-comercial
 
-## 💼 Dossier Comercial "Comercio Local Digital"
+## **[Maletín]** Dossier Comercial "Comercio Local Digital"
 
 > **Propósito**: Material comercial profesional pero cercano, ideal para conectar con comerciantes de Barcelona que buscan digitalizar su negocio sin complicaciones.
 
@@ -12,7 +12,7 @@
 
 Solución web profesional para negocios locales en Barcelona
 
-**WebSnack** – Plataforma de Desarrollo Web
+**WebCode** – Plataforma de Desarrollo Web
 
 ---
 
@@ -86,9 +86,9 @@ Todo está pensado para que no tengas que preocuparte por aspectos técnicos. T�
 | **Total primer año**             | **1.070 €**            |
 | _Mantenimiento mensual opcional_ | +50€/mes               |
 
-💡 _Precio cerrado, sin sorpresas. Incluye todo lo necesario para empezar a vender desde la primera semana._
+**[Idea]** _Precio cerrado, sin sorpresas. Incluye todo lo necesario para empezar a vender desde la primera semana._
 
-**💳 Opciones de pago:**
+****[Tarjeta]** Opciones de pago:**
 
 - Pago único: 5% descuento (1.017€)
 - 50% inicio + 50% entrega
@@ -122,16 +122,16 @@ Todo está pensado para que no tengas que preocuparte por aspectos técnicos. T�
 
 ---
 
-### 6. ¿Por qué elegir WebSnack?
+### 6. ¿Por qué elegir WebCode?
 
-- ✅ **Doble especialización**: E-commerce (Wix Studio) + Corporativo (Next.js + WAS)
-- ✅ **Performance garantizada**: <2.5s tiempo carga, optimización móvil ambas plataformas
-- ✅ **SEO Barcelona**: Especialización en búsquedas locales y mercado español
-- ✅ **Compliance RGPD**: Cumplimiento automático normativas españolas
-- ✅ **Soporte local**: Trato directo, sin intermediarios, en tu idioma
-- ✅ **Solución apropiada**: Elegimos la tecnología perfecta para cada proyecto
+- **[Completado]** **Doble especialización**: E-commerce (Wix Studio) + Corporativo (Next.js + WAS)
+- **[Completado]** **Performance garantizada**: <2.5s tiempo carga, optimización móvil ambas plataformas
+- **[Completado]** **SEO Barcelona**: Especialización en búsquedas locales y mercado español
+- **[Completado]** **Compliance RGPD**: Cumplimiento automático normativas españolas
+- **[Completado]** **Soporte local**: Trato directo, sin intermediarios, en tu idioma
+- **[Completado]** **Solución apropiada**: Elegimos la tecnología perfecta para cada proyecto
 
-**Diferencia WebSnack:**
+**Diferencia WebCode:**
 
 - **E-commerce**: Setup rápido Wix Studio para venta inmediata
 - **Corporativo**: Stack más avanzado del mercado + Sistema WAS exclusivo
@@ -174,24 +174,24 @@ Todo está pensado para que no tengas que preocuparte por aspectos técnicos. T�
 
 ### 8. Garantías
 
-- ✅ **Entrega en plazo**: 7-14 días garantizados
-- ✅ **Performance**: <2.5s tiempo carga certificado
-- ✅ **Disponibilidad**: 99.9% uptime con monitoreo 24/7
-- ✅ **Soporte**: 30 días incluidos post-lanzamiento
-- ✅ **Revisiones**: Hasta 3 rondas ajustes incluidas
-- ✅ **Satisfacción**: Garantía devolver dinero 15 días
+- **[Completado]** **Entrega en plazo**: 7-14 días garantizados
+- **[Completado]** **Performance**: <2.5s tiempo carga certificado
+- **[Completado]** **Disponibilidad**: 99.9% uptime con monitoreo 24/7
+- **[Completado]** **Soporte**: 30 días incluidos post-lanzamiento
+- **[Completado]** **Revisiones**: Hasta 3 rondas ajustes incluidas
+- **[Completado]** **Satisfacción**: Garantía devolver dinero 15 días
 
 ---
 
 ### 9. Contacto
 
-**WebSnack - Plataforma de Desarrollo Web**
+**WebCode - Plataforma de Desarrollo Web**
 
 🏢 **Ubicación**: Barcelona (22@, Poblenou)  
-📞 **Teléfono**: [tu teléfono]  
-📧 **Email**: hola@websnack.es  
-🌐 **Web**: www.websnack.es  
-💼 **LinkedIn**: /company/websnack-barcelona
+**[Teléfono]** **Teléfono**: [tu teléfono]  
+**[Email]** **Email**: hola@webcode.es  
+**[Web]** **Web**: www.webcode.es  
+**[Maletín]** **LinkedIn**: /company/webcode-barcelona
 
 **Horarios consulta:**
 
@@ -210,7 +210,7 @@ Todo está pensado para que no tengas que preocuparte por aspectos técnicos. T�
 3. **Demo en vivo**: Te enseñamos ejemplos similares a tu sector
 4. **Inicio inmediato**: Empezamos en 48h tras confirmación
 
-**📞 Llama ahora o escribe por WhatsApp para agendar tu consulta gratuita**
+****[Teléfono]** Llama ahora o escribe por WhatsApp para agendar tu consulta gratuita**
 
 ---
 

@@ -340,7 +340,7 @@ src/components/features/search/SearchBar.tsx
 10. **Optimización de rendimiento** - Core Web Vitals en verde
 11. **Sugerencias de mensajes de commit** - Siguiendo convenciones del proyecto
 
-### **Patrones Específicos de WebSnack**
+### **Patrones Específicos de WebCode**
 
 - **Enfoque en mercado español** - Considerar localización y UX local
 - **SEO optimizado** - Meta tags, structured data, sitemap automático
@@ -368,7 +368,7 @@ src/components/features/search/SearchBar.tsx
 
 ```bash
 # Crear proyecto Next.js 15
-pnpm create next-app@latest websnack --typescript --tailwind --eslint --app --src-dir --import-alias "@/*"
+pnpm create next-app@latest webcode --typescript --tailwind --eslint --app --src-dir --import-alias "@/*"
 
 # Instalar dependencias principales
 pnpm add next@latest react@latest react-dom@latest
@@ -403,7 +403,7 @@ export default async function ServicesPage() {
 
   return (
     <main className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Servicios WebSnack</h1>
+      <h1 className="text-3xl font-bold mb-8">Servicios WebCode</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service) => (
           <ServiceCard key={service.id} service={service} />

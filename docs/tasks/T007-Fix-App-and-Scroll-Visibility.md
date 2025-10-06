@@ -1,16 +1,16 @@
 # T007 - Corrección de la Aplicación y Visibilidad de ValuePropsGrid con Scroll
 
-## 🎯 Objetivo
+## **[Objetivos]** Objetivo
 
-Corregir los problemas en la aplicación WebSnack y modificar el componente [Hero.ValuePropsGrid.tsx](file://g:\DEV\WEBSNACK-PROJECT\websnack\src\components\landing\hero\Hero.ValuePropsGrid.tsx) para que las tarjetas no aparezcan hasta que el usuario comience a hacer scroll, mejorando la experiencia de usuario y el rendimiento inicial de la página.
+Corregir los problemas en la aplicación WebCode y modificar el componente [Hero.ValuePropsGrid.tsx](file://g:\DEV\WEBCODE-PROJECT\webcode\src\components\landing\hero\Hero.ValuePropsGrid.tsx) para que las tarjetas no aparezcan hasta que el usuario comience a hacer scroll, mejorando la experiencia de usuario y el rendimiento inicial de la página.
 
-## 📋 Problemas Identificados
+## **[Lista]** Problemas Identificados
 
 1. **Componente Hero.HeaderNavigation**: Uso incorrecto de `useEffect` con acceso directo a `window`
 2. **Componente Hero.ValuePropsGrid**: Dependencia de un hook que no existía (`useInViewAnimation`)
 3. **Hooks faltantes**: No existían los hooks necesarios para manejar el scroll y la visibilidad
 
-## 🔧 Soluciones Implementadas
+## **[Herramientas]** Soluciones Implementadas
 
 ### 1. Creación de Hooks Personalizados
 
@@ -44,7 +44,7 @@ Corregir los problemas en la aplicación WebSnack y modificar el componente [Her
 
 ### 2. Corrección de Hero.HeaderNavigation.tsx
 
-Se modificó el archivo [src/components/landing/hero/Hero.HeaderNavigation.tsx](file://g:\DEV\WEBSNACK-PROJECT\websnack\src\components\landing\hero\Hero.HeaderNavigation.tsx) para:
+Se modificó el archivo [src/components/landing/hero/Hero.HeaderNavigation.tsx](file://g:\DEV\WEBCODE-PROJECT\webcode\src\components\landing\hero\Hero.HeaderNavigation.tsx) para:
 
 1. **Eliminar el `useEffect` problemático**:
 
@@ -63,7 +63,7 @@ Se modificó el archivo [src/components/landing/hero/Hero.HeaderNavigation.tsx](
 
 ### 3. Actualización de Hero.ValuePropsGrid.tsx
 
-Se modificó el archivo [src/components/landing/hero/Hero.ValuePropsGrid.tsx](file://g:\DEV\WEBSNACK-PROJECT\websnack\src\components\landing\hero\Hero.ValuePropsGrid.tsx) para:
+Se modificó el archivo [src/components/landing/hero/Hero.ValuePropsGrid.tsx](file://g:\DEV\WEBCODE-PROJECT\webcode\src\components\landing\hero\Hero.ValuePropsGrid.tsx) para:
 
 1. **Eliminar la dependencia del hook que no existía**
 2. **Implementar el nuevo comportamiento de visibilidad**:
@@ -85,7 +85,7 @@ Se modificó el archivo [src/components/landing/hero/Hero.ValuePropsGrid.tsx](fi
    }
    ```
 
-## ✅ Validación
+## **[Completado]** Validación
 
 1. **Corrección de errores**:
    - Verificado que no hay errores de hidratación
@@ -102,7 +102,7 @@ Se modificó el archivo [src/components/landing/hero/Hero.ValuePropsGrid.tsx](fi
    - El menú móvil funciona correctamente
    - El cambio de tema funciona correctamente
 
-## 📈 Beneficios Obtenidos
+## **[Crecimiento]** Beneficios Obtenidos
 
 - **Eliminación de errores**: La aplicación funciona sin errores de hidratación
 - **Mejora de la experiencia de usuario**: El usuario se enfoca primero en el contenido principal
@@ -136,9 +136,9 @@ Se modificó el archivo [src/components/landing/hero/Hero.ValuePropsGrid.tsx](fi
    - Verificado que la carga inicial es más rápida
    - Confirmado que no hay problemas de memoria o rendimiento
 
-## 📋 Conclusión
+## **[Lista]** Conclusión
 
-Se han corregido correctamente los problemas en la aplicación WebSnack y se ha implementado el comportamiento solicitado para que las tarjetas de propuestas de valor no aparezcan hasta que el usuario comience a hacer scroll. Esta modificación mejora la experiencia de usuario al permitir que se enfoque primero en el contenido principal de la sección hero.
+Se han corregido correctamente los problemas en la aplicación WebCode y se ha implementado el comportamiento solicitado para que las tarjetas de propuestas de valor no aparezcan hasta que el usuario comience a hacer scroll. Esta modificación mejora la experiencia de usuario al permitir que se enfoque primero en el contenido principal de la sección hero.
 
 Las implementaciones:
 

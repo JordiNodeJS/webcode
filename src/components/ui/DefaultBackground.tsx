@@ -2,7 +2,7 @@
  * DefaultBackground Component
  *
  * Componente que proporciona un fondo base elegante para toda la aplicación
- * usando la paleta de colores WebSnack (rosa-aguamarina) con gradientes suaves.
+ * usando la paleta de colores WebCode (rosa-aguamarina) con gradientes suaves.
  * Se usa como respaldo cuando otros fondos no están activos.
  */
 "use client";
@@ -40,7 +40,7 @@ export function DefaultBackground() {
     );
   }
 
-  // Modo claro: gradiente WebSnack rosa-aguamarina
+  // Modo claro: gradiente WebCode rosa-aguamarina
 
   return (
     <div className="fixed inset-0 -z-10 bg-gradient-to-br from-rose-50 via-white to-cyan-50">

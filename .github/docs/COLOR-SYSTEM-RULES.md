@@ -1,4 +1,4 @@
-# 🎨 Sistema de Colores WebSnack
+# 🎨 Sistema de Colores WebCode
 
 ## Reglas del Sistema de Colores
 

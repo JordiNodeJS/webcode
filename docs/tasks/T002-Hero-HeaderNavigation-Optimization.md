@@ -1,6 +1,6 @@
-# 📝 TAREA T002: Optimizar Hero.HeaderNavigation.tsx
+# **[Documentación]** TAREA T002: Optimizar Hero.HeaderNavigation.tsx
 
-## 🏷️ METADATOS DE LA TAREA
+## **[Etiqueta]** METADATOS DE LA TAREA
 
 **ID:** T002  
 **Título:** Optimizar Hero.HeaderNavigation.tsx - Reemplazar useEffect de scroll  
@@ -12,13 +12,13 @@
 **Estimación:** 4-6 horas  
 **Asignado a:** Desarrollador
 
-## 🔗 DEPENDENCIAS
+## **[Enlace]** DEPENDENCIAS
 
 **Dependencias de entrada:** ninguna  
 **Dependencias de salida:** ninguna  
 **Bloqueos identificados:** ninguno
 
-## 📋 DESCRIPCIÓN DETALLADA
+## **[Lista]** DESCRIPCIÓN DETALLADA
 
 El componente `Hero.HeaderNavigation.tsx` actualmente utiliza un `useEffect` para detectar el scroll y cambiar el estilo del header. Esto incluye:
 
@@ -29,7 +29,7 @@ El componente `Hero.HeaderNavigation.tsx` actualmente utiliza un `useEffect` par
 
 **Objetivo:** Reemplazar la implementación JavaScript de scroll con una solución más eficiente usando CSS sticky o Intersection Observer, eliminando el `useEffect` innecesario.
 
-## 🎯 CRITERIOS DE ACEPTACIÓN
+## **[Objetivos]** CRITERIOS DE ACEPTACIÓN
 
 - [x] Eliminación del `useEffect` de scroll
 - [x] Implementación con CSS sticky o Intersection Observer
@@ -38,7 +38,7 @@ El componente `Hero.HeaderNavigation.tsx` actualmente utiliza un `useEffect` par
 - [x] Código más simple y mantenible
 - [x] Soporte responsive mantenido
 
-## 📊 SUBTAREAS
+## **[Análisis]** SUBTAREAS
 
 ### T002.1: Analizar implementación actual de scroll
 
@@ -91,21 +91,21 @@ El componente `Hero.HeaderNavigation.tsx` actualmente utiliza un `useEffect` par
 - [x] Sin useEffect de scroll
 - [x] Tests pasando
 
-## 📝 NOTAS Y OBSERVACIONES
+## **[Documentación]** NOTAS Y OBSERVACIONES
 
 - El header actual tiene 182 líneas, se espera reducirlo
-- El efecto de blur es importante para la estética de WebSnack
+- El efecto de blur es importante para la estética de WebCode
 - Debe mantenerse la funcionalidad del menú móvil
 - Considerar usar `position: sticky` con `backdrop-filter`
 
-## 🔄 LOG DE CAMBIOS
+## **[Recargar]** LOG DE CAMBIOS
 
 **[2025-01-03 10:30]** Tarea creada - Análisis inicial completado
 **[2025-01-03 11:45]** Refactorización completada - Eliminado useEffect, implementado CSS sticky con script optimizado
 
 ---
 
-## 📈 MÉTRICAS DE PROGRESO
+## **[Crecimiento]** MÉTRICAS DE PROGRESO
 
 **Tiempo invertido:** 1.5 horas  
 **Archivos modificados:** 1 archivo  
@@ -113,7 +113,7 @@ El componente `Hero.HeaderNavigation.tsx` actualmente utiliza un `useEffect` par
 **Bugs encontrados:** 0 bugs  
 **Bugs resueltos:** 0 bugs
 
-## ✅ CHECKLIST DE FINALIZACIÓN
+## **[Completado]** CHECKLIST DE FINALIZACIÓN
 
 - [x] Todas las subtareas completadas
 - [x] Criterios de aceptación cumplidos

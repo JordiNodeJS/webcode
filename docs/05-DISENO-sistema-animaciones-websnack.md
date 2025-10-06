@@ -1,10 +1,10 @@
-# 🎨 Microanimaciones WebSnack - Sistema WAS + Next.js 15
+# **[Diseño]** Microanimaciones WebCode - Sistema WAS + Next.js 15
 
-## 📋 Resumen de Implementación
+## **[Lista]** Resumen de Implementación
 
-El **Sistema de Animaciones WebSnack (WAS)** es la evolución propia y optimizada para la plataforma WebSnack, integrado perfectamente con **Next.js 15 + React 19 + Tailwind CSS v4 + Framer Motion**.
+El **Sistema de Animaciones WebCode (WAS)** es la evolución propia y optimizada para la plataforma WebCode, integrado perfectamente con **Next.js 15 + React 19 + Tailwind CSS v4 + Framer Motion**.
 
-### 🔍 **Análisis Técnico WebSnack vs. Estándares de Industria:**
+### **[Búsqueda]** **Análisis Técnico WebCode vs. Estándares de Industria:**
 
 - **Framework Base**: Next.js 15 + App Router (optimizado para Server Components)
 - **Animaciones**: Framer Motion + Magic UI (performance-first)
@@ -15,7 +15,7 @@ El **Sistema de Animaciones WebSnack (WAS)** es la evolución propia y optimizad
 
 ---
 
-## 🚀 **Componentes Implementados para WebSnack**
+## **[Lanzamiento]** **Componentes Implementados para WebCode**
 
 ### 1. **Micro-Animations Core** (`components/animations/ws-animations.tsx`)
 
@@ -26,7 +26,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import Image from "next/image";
 
-// Configuración WebSnack Animation System
+// Configuración WebCode Animation System
 const wsCurves = {
   primary: [0.25, 0.46, 0.45, 0.94],
   smooth: [0.4, 0, 0.2, 1],
@@ -82,7 +82,7 @@ export function WSFadeIn({
   );
 }
 
-// Animación letra por letra WebSnack
+// Animación letra por letra WebCode
 export function WSLetterReveal({
   text,
   delay = 0,
@@ -116,7 +116,7 @@ export function WSLetterReveal({
   );
 }
 
-// Hover effects WebSnack
+// Hover effects WebCode
 export function WSHover({
   children,
   scale = 1.02,
@@ -134,7 +134,7 @@ export function WSHover({
       whileHover={{
         scale,
         y: lift,
-        opacity: 0.8 // WebSnack standard
+        opacity: 0.8 // WebCode standard
       }}
       transition={{
         duration: timings.quick,
@@ -253,9 +253,9 @@ export function WSImageReveal({
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
-import { wsCurves, timings } from "@/lib/websnack-motion-config";
+import { wsCurves, timings } from "@/lib/webcode-motion-config";
 
-// Texto con imágenes integradas (estilo WebSnack)
+// Texto con imágenes integradas (estilo WebCode)
 export function WSTextWithImages({
   segments,
   className = "",
@@ -334,7 +334,7 @@ export function WSGradientText({
 }
 ```
 
-### 3. **Implementación en Landing Page WebSnack**
+### 3. **Implementación en Landing Page WebCode**
 
 #### **HeroSection con Next.js 15 Server Components**
 
@@ -355,7 +355,7 @@ export function HeroSection() {
       </WSParallax>
 
       <div className="container mx-auto text-center">
-        {/* Título principal con animación WebSnack */}
+        {/* Título principal con animación WebCode */}
         <h1 className="font-display text-6xl lg:text-7xl font-bold tracking-wider text-primary mb-6">
           <WSTextWithImages
             segments={[
@@ -388,7 +388,7 @@ export function HeroSection() {
           </p>
         </WSFadeIn>
 
-        {/* CTAs con hover effects WebSnack */}
+        {/* CTAs con hover effects WebCode */}
         <WSFadeIn delay={0.6} direction="up">
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <WSHover className="inline-flex">
@@ -418,7 +418,7 @@ export function HeroSection() {
         >
           <WSImageReveal
             src="/images/hero-dashboard.jpg"
-            alt="Dashboard WebSnack"
+            alt="Dashboard WebCode"
             width={800}
             height={500}
             className="rounded-lg shadow-3d-lg border border-primary/20"
@@ -439,17 +439,17 @@ import { WSFadeIn, WSHover } from "@/components/animations";
 
 const features = [
   {
-    icon: "⚡",
+    icon: "**[Rendimiento]**",
     title: "Velocidad Extrema",
     description: "Páginas que cargan en menos de 2 segundos"
   },
   {
-    icon: "🎨",
+    icon: "**[Diseño]**",
     title: "Diseño Premium",
     description: "Layouts profesionales que impresionan"
   },
   {
-    icon: "📱",
+    icon: "**[Móvil]**",
     title: "100% Responsive",
     description: "Perfecto en móvil, tablet y desktop"
   }
@@ -461,7 +461,7 @@ export function FeaturesSection() {
       <div className="container mx-auto">
         <WSFadeIn className="text-center mb-16">
           <h2 className="font-display text-4xl font-bold text-primary mb-4">
-            <WSLetterReveal text="¿Por qué WebSnack?" />
+            <WSLetterReveal text="¿Por qué WebCode?" />
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             La combinación perfecta de velocidad, diseño y conversión
@@ -491,12 +491,12 @@ export function FeaturesSection() {
 
 ---
 
-## 🎭 **Características Específicas WebSnack Implementadas**
+## **[Arte]** **Características Específicas WebCode Implementadas**
 
 ### **1. Curvas de Easing Profesionales**
 
 ```css
-/* Configuración exacta WebSnack */
+/* Configuración exacta WebCode */
 .ws-transition {
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -537,23 +537,23 @@ const wsTiming = {
   animate={{ opacity: 1, y: 0 }}
   transition={wsTiming.normal}
 >
-  Contenido con timing WebSnack
+  Contenido con timing WebCode
 </motion.div>;
 ```
 
 ### **3. Hover States Profesionales (Opacidad 0.8)**
 
 ```tsx
-// Hover específico WebSnack - Profesional y sutil
+// Hover específico WebCode - Profesional y sutil
 <motion.div
   whileHover={{
-    opacity: 0.8,        // WebSnack standard
+    opacity: 0.8,        // WebCode standard
     scale: 1.02,         // Scale muy sutil
     y: -4,               // Lift mínimo
   }}
   transition={wsTiming.quick}
 >
-  Elemento con hover WebSnack
+  Elemento con hover WebCode
 </motion.div>
 
 // CSS alternativo para elementos sin motion
@@ -588,7 +588,7 @@ export function WSLetterReveal({
           initial={{
             opacity: 0,
             y: 20,
-            rotateX: 90 // Efecto 3D WebSnack
+            rotateX: 90 // Efecto 3D WebCode
           }}
           animate={
             isInView
@@ -617,7 +617,7 @@ export function WSLetterReveal({
 }
 ```
 
-### **5. Imágenes Integradas en Texto (Estilo WebSnack)**
+### **5. Imágenes Integradas en Texto (Estilo WebCode)**
 
 ```tsx
 // Sistema para integrar iconos/imágenes en texto
@@ -671,7 +671,7 @@ export function WSTextWithMedia({
 
 ---
 
-## 📦 **Nuevas Utilidades CSS para Tailwind v4**
+## **[Paquete]** **Nuevas Utilidades CSS para Tailwind v4**
 
 ```css
 @layer utilities {
@@ -779,14 +779,14 @@ export function WSTextWithMedia({
 
 ---
 
-## 🎯 **Integración Específica con Stack WebSnack**
+## **[Objetivos]** **Integración Específica con Stack WebCode**
 
 ### **Next.js 15 + Server Components**
 
 ```tsx
 // app/layout.tsx - Configuración global
 import { motion } from "framer-motion";
-import { wsConfig } from "@/lib/websnack-motion-config";
+import { wsConfig } from "@/lib/webcode-motion-config";
 
 export default function RootLayout({
   children
@@ -830,7 +830,7 @@ export function MagicWSHero() {
         pathOpacity={0.2}
       />
 
-      {/* WebSnack text reveal with Magic UI */}
+      {/* WebCode text reveal with Magic UI */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -839,7 +839,7 @@ export function MagicWSHero() {
           ease: wsCurves.primary
         }}
       >
-        <TextReveal text="WebSnack: Acelera tu Negocio" />
+        <TextReveal text="WebCode: Acelera tu Negocio" />
       </motion.div>
     </div>
   );
@@ -877,12 +877,12 @@ export function AnimatedCard({
 
 ---
 
-## 🔧 **Configuración Técnica Avanzada**
+## **[Herramientas]** **Configuración Técnica Avanzada**
 
 ### **Framer Motion Settings Optimizados**
 
 ```tsx
-// lib/websnack-motion-config.ts
+// lib/webcode-motion-config.ts
 export const wsConfig = {
   easings: {
     primary: [0.25, 0.46, 0.45, 0.94] as const,
@@ -909,11 +909,11 @@ export const wsConfig = {
   offsets: {
     lift: -4,
     scale: 1.02,
-    opacity: 0.8 // WebSnack standard
+    opacity: 0.8 // WebCode standard
   }
 } as const;
 
-// Hook personalizado para transiciones WebSnack
+// Hook personalizado para transiciones WebCode
 export function useWSTransition(
   type: keyof typeof wsConfig.timings = "normal"
 ) {
@@ -1020,14 +1020,14 @@ export function PerformantWSAnimation({
 
 ---
 
-## 📱 **Responsive Design Optimizado**
+## **[Móvil]** **Responsive Design Optimizado**
 
 ### **Animaciones Adaptativas por Dispositivo**
 
 ```tsx
 // hooks/use-ws-responsive.ts
 import { useMediaQuery } from "@/hooks/use-media-query";
-import { wsConfig } from "@/lib/websnack-motion-config";
+import { wsConfig } from "@/lib/webcode-motion-config";
 
 export function useWSResponsive() {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -1077,7 +1077,7 @@ export function ResponsiveWSCard({ children }: { children: React.ReactNode }) {
 ### **Media Queries para Animaciones**
 
 ```css
-/* Responsive animations WebSnack */
+/* Responsive animations WebCode */
 @media (max-width: 768px) {
   .animate-ws-fade-in {
     animation-duration: 0.3s; /* Más rápido en móvil */
@@ -1111,25 +1111,25 @@ export function ResponsiveWSCard({ children }: { children: React.ReactNode }) {
 
 ---
 
-## 🚀 **Próximos Pasos y Mejoras**
+## **[Lanzamiento]** **Próximos Pasos y Mejoras**
 
-### **Roadmap WebSnack Animation System v1.1**
+### **Roadmap WebCode Animation System v1.1**
 
 #### **Nuevas Funcionalidades**
 
-1. **🎮 Gestos Táctiles**: Swipe animations para móvil
-2. **🔄 Loading States**: Skeleton loaders con animaciones WebSnack
-3. **🎨 Theme Transitions**: Cambio suave entre tema claro/oscuro
-4. **📊 Data Visualizations**: Animaciones para gráficos y métricas
+1. ****[Videojuegos]** Gestos Táctiles**: Swipe animations para móvil
+2. ****[Recargar]** Loading States**: Skeleton loaders con animaciones WebCode
+3. ****[Diseño]** Theme Transitions**: Cambio suave entre tema claro/oscuro
+4. ****[Análisis]** Data Visualizations**: Animaciones para gráficos y métricas
 
 #### **Optimizaciones Performance**
 
-1. **⚡ Bundle Splitting**: Carga lazy de animaciones complejas
-2. **🎯 Intersection Observer Pool**: Reutilización de observadores
-3. **💾 Animation Caching**: Cache de estados para mejor performance
-4. **🔋 Battery API**: Reducir animaciones en dispositivos con batería baja
+1. ****[Rendimiento]** Bundle Splitting**: Carga lazy de animaciones complejas
+2. ****[Objetivos]** Intersection Observer Pool**: Reutilización de observadores
+3. ****[Guardar]** Animation Caching**: Cache de estados para mejor performance
+4. ****[Batería]** Battery API**: Reducir animaciones en dispositivos con batería baja
 
-### **Integración con Ecosystem WebSnack**
+### **Integración con Ecosystem WebCode**
 
 ```tsx
 // Próximas integraciones planificadas
@@ -1145,7 +1145,7 @@ export function DashboardWithAnimations() {
         <WSAnalytics
           data={analyticsData}
           features: ["Análisis Web", "Optimización", "Analytics", "Growth Hacking"],
-          chartAnimations="websnack"
+          chartAnimations="webcode"
         />
       </WSFadeIn>
 
@@ -1167,7 +1167,7 @@ export function DashboardWithAnimations() {
 import { render, screen } from "@testing-library/react";
 import { WSFadeIn, WSLetterReveal } from "@/components/animations";
 
-describe("WebSnack Animation System", () => {
+describe("WebCode Animation System", () => {
   it("respects reduced motion preferences", () => {
     // Mock prefers-reduced-motion
     Object.defineProperty(window, "matchMedia", {
@@ -1203,15 +1203,15 @@ describe("WebSnack Animation System", () => {
 
 ---
 
-## 🎯 **Conclusión**
+## **[Objetivos]** **Conclusión**
 
-El **Sistema de Animaciones WebSnack (WAS)** proporciona:
+El **Sistema de Animaciones WebCode (WAS)** proporciona:
 
-✅ **Fundamentos Sólidos**: Basado en principios UX modernos, no referencias externas  
-✅ **Performance Optimizada**: < 16ms por animación, compatible con React 19  
-✅ **Accesibilidad Completa**: WCAG 2.1 AA compliant  
-✅ **Stack Integration**: Perfecta integración con Next.js 15 + Tailwind v4  
-✅ **Brand Consistency**: Coherente con identidad visual WebSnack  
-✅ **Developer Experience**: APIs simples y componentes reutilizables
+**[Completado]** **Fundamentos Sólidos**: Basado en principios UX modernos, no referencias externas  
+**[Completado]** **Performance Optimizada**: < 16ms por animación, compatible con React 19  
+**[Completado]** **Accesibilidad Completa**: WCAG 2.1 AA compliant  
+**[Completado]** **Stack Integration**: Perfecta integración con Next.js 15 + Tailwind v4  
+**[Completado]** **Brand Consistency**: Coherente con identidad visual WebCode  
+**[Completado]** **Developer Experience**: APIs simples y componentes reutilizables
 
-**El sistema está listo para implementación completa en la plataforma WebSnack.**
+**El sistema está listo para implementación completa en la plataforma WebCode.**

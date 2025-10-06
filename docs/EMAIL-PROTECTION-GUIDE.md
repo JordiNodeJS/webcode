@@ -1,17 +1,17 @@
-# 🛡️ Guía de Protección de Email - WEBCODE
+# **[Protección]** Guía de Protección de Email - WEBCODE
 
 ## Resumen
 
 Este documento describe el sistema completo de protección de emails implementado en WEBCODE para prevenir el spam y la recolección automática por parte de bots.
 
-## 🎯 Objetivos
+## **[Objetivos]** Objetivos
 
 - **Proteger emails** de la recolección automática por bots
 - **Detectar y bloquear** intentos de spam
 - **Mantener usabilidad** para usuarios humanos reales
 - **Cumplir con RGPD** y normativas de privacidad
 
-## 🔧 Técnicas Implementadas
+## **[Herramientas]** Técnicas Implementadas
 
 ### 1. Componente EmailProtection
 
@@ -125,7 +125,7 @@ const rateLimit = useRateLimit(5, 300000); // 5 envíos por 5 minutos
 - Reset manual disponible
 - Contador de requests restantes
 
-## 📍 Ubicaciones Protegidas
+## **[Ubicación]** Ubicaciones Protegidas
 
 ### 1. Footer Principal
 **Archivo**: `src/components/landing/Footer.Section.tsx`
@@ -151,7 +151,7 @@ const rateLimit = useRateLimit(5, 300000); // 5 envíos por 5 minutos
 - Verificación de patrones de bot
 - Logging de intentos sospechosos
 
-## 🚀 Implementación
+## **[Lanzamiento]** Implementación
 
 ### Paso 1: Importar Componentes
 ```tsx
@@ -189,7 +189,7 @@ const botProtection = useBotProtection({
 />
 ```
 
-## 🔍 Monitoreo y Logs
+## **[Búsqueda]** Monitoreo y Logs
 
 ### Logs de Detección de Bots
 ```typescript
@@ -245,21 +245,21 @@ const EMAIL_PROTECTION_CONFIG = {
 2. Monitorear logs de detección
 3. Ajustar umbrales según resultados
 
-## 📊 Efectividad Esperada
+## **[Análisis]** Efectividad Esperada
 
 - **95%+ de bots básicos** bloqueados
 - **90%+ de spammers** detectados
 - **0% impacto** en usuarios humanos
 - **100% compatibilidad** con lectores de pantalla
 
-## 🔒 Consideraciones de Seguridad
+## **[Candado]** Consideraciones de Seguridad
 
 - Los emails siguen siendo accesibles para usuarios humanos
 - No se almacenan datos sensibles en el cliente
 - Las técnicas son reversibles solo con JavaScript habilitado
 - Cumple con estándares de accesibilidad web
 
-## 📝 Notas de Desarrollo
+## **[Documentación]** Notas de Desarrollo
 
 - Todas las técnicas son client-side
 - No requiere configuración del servidor

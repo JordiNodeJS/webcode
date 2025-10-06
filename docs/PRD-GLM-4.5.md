@@ -1,4 +1,4 @@
-# Documento de Requisitos del Producto (PRD) WebSnack v2.0
+# Documento de Requisitos del Producto (PRD) WebCode v2.0
 
 ## Plataforma Integral de Desarrollo Web con Sistema WAS
 
@@ -6,7 +6,7 @@
 
 ### 1. Título
 
-**WebSnack**: Plataforma Integral de Desarrollo Web y Soluciones Digitales para Freelancers, PYMEs y Startups en Barcelona
+**WebCode**: Plataforma Integral de Desarrollo Web y Soluciones Digitales para Freelancers, PYMEs y Startups en Barcelona
 
 ---
 
@@ -14,9 +14,9 @@
 
 | Versión | Fecha      | Autor    | Cambios                                                      |
 | ------- | ---------- | -------- | ------------------------------------------------------------ |
-| 1.0     | 15/07/2024 | WebSnack | Versión inicial del PRD como servicio freelance              |
-| 2.0     | 03/09/2025 | WebSnack | **Evolución completa a plataforma WebSnack con Sistema WAS** |
-| 2.1     | 03/09/2025 | WebSnack | Integración completa con documentación @docs y stack 2025    |
+| 1.0     | 15/07/2024 | WebCode | Versión inicial del PRD como servicio freelance              |
+| 2.0     | 03/09/2025 | WebCode | **Evolución completa a plataforma WebCode con Sistema WAS** |
+| 2.1     | 03/09/2025 | WebCode | Integración completa con documentación @docs y stack 2025    |
 
 ---
 
@@ -24,15 +24,15 @@
 
 > **EVOLUCIÓN TRANSFORMADORA**: De servicio freelance básico a plataforma tecnológica integral
 
-**WebSnack** es una plataforma integral de desarrollo web de nueva generación que combina las tecnologías más avanzadas de 2025 con nuestro **Sistema de Animaciones WebSnack (WAS)** propio. Especializada en el mercado español con Barcelona como hub principal, la plataforma ofrece soluciones digitales completas para freelancers creativos, pequeñas empresas y startups tecnológicas.
+**WebCode** es una plataforma integral de desarrollo web de nueva generación que combina las tecnologías más avanzadas de 2025 con nuestro **Sistema de Animaciones WebCode (WAS)** propio. Especializada en el mercado español con Barcelona como hub principal, la plataforma ofrece soluciones digitales completas para freelancers creativos, pequeñas empresas y startups tecnológicas.
 
 #### **Diferenciadores Clave:**
 
-- **🎨 Sistema WAS Propio**: WebSnack Animation System exclusivo con Framer Motion + Magic UI
-- **🚀 Stack Tecnológico 2025**: Next.js 15.4.0 + React 19 + Tailwind CSS v4 + TypeScript estricto
-- **🎯 Enfoque Geográfico**: Optimización específica para mercado barcelonés y español
-- **⚡ Performance Crítico**: Core Web Vitals <2.5s LCP, WCAG 2.1 AA compliance
-- **📱 Mobile-First**: Diseño responsive nativo con optimización móvil prioritaria
+- ****[Diseño]** Sistema WAS Propio**: WebCode Animation System exclusivo con Framer Motion + Magic UI
+- ****[Lanzamiento]** Stack Tecnológico 2025**: Next.js 15.4.0 + React 19 + Tailwind CSS v4 + TypeScript estricto
+- ****[Objetivos]** Enfoque Geográfico**: Optimización específica para mercado barcelonés y español
+- ****[Rendimiento]** Performance Crítico**: Core Web Vitals <2.5s LCP, WCAG 2.1 AA compliance
+- ****[Móvil]** Mobile-First**: Diseño responsive nativo con optimización móvil prioritaria
 
 #### **Propuesta de Valor Central:**
 
@@ -42,7 +42,7 @@ _"Transformamos ideas en experiencias digitales excepcionales con tecnología de
 
 ### 4. Métricas de Éxito (Success Metrics)
 
-#### **📊 Métricas Técnicas (Estándares WebSnack)**
+#### ****[Análisis]** Métricas Técnicas (Estándares WebCode)**
 
 - **Performance**: Core Web Vitals <2.5s LCP, FID <100ms, CLS <0.1
 - **Disponibilidad**: Uptime 99.9% con monitoreo UptimeRobot
@@ -50,7 +50,7 @@ _"Transformamos ideas en experiencias digitales excepcionales con tecnología de
 - **Accesibilidad**: 100% compliance WCAG 2.1 AA en todos los proyectos
 - **Optimización**: Puntuación >90 en Google PageSpeed Insights
 
-#### **🎯 Métricas de Negocio (Realistas)**
+#### ****[Objetivos]** Métricas de Negocio (Realistas)**
 
 - **Proyectos Completados**: 1-2 proyectos premium por mes
 - **Satisfacción Cliente**: Feedback positivo documentado
@@ -58,7 +58,7 @@ _"Transformamos ideas en experiencias digitales excepcionales con tecnología de
 - **Presencia Barcelona**: Networking en ecosistema tech 22@/Poblenou
 - **Ingresos Sostenibles**: €3.000-€6.000/mes objetivos año 2
 
-#### **🔧 Sistema de Seguimiento**
+#### ****[Herramientas]** Sistema de Seguimiento**
 
 - Spreadsheet de proyectos y métricas
 - Portfolio documentado con casos reales
@@ -69,7 +69,7 @@ _"Transformamos ideas en experiencias digitales excepcionales con tecnología de
 
 ### 5. Mensajería (Messaging)
 
-#### **🎯 Propuesta de Valor por Segmento**
+#### ****[Objetivos]** Propuesta de Valor por Segmento**
 
 **Para Freelancers Creativos Barcelona:**
 _"Lleva tu talento al siguiente nivel con un portafolio digital que convierte visitantes en clientes, optimizado para el ecosistema creativo barcelonés"_
@@ -87,23 +87,23 @@ _"Vende más con tiendas online optimizadas para conversión, cumplimiento RGPD 
 
 ### 6. Cronograma/Planificación de Lanzamiento
 
-#### **🚀 Fase 1: Fundación Tecnológica (Mes 1-2)**
+#### ****[Lanzamiento]** Fase 1: Fundación Tecnológica (Mes 1-2)**
 
 - [x] **Stack Configurado**: Next.js 15.4.0 + React 19 + Tailwind CSS v4
-- [x] **Sistema WAS**: WebSnack Animation System desarrollado
+- [x] **Sistema WAS**: WebCode Animation System desarrollado
 - [x] **Documentación Completa**: 13 documentos especializados en @docs
-- [ ] **Sitio Corporativo**: Desarrollo plataforma websnack.es
+- [ ] **Sitio Corporativo**: Desarrollo plataforma webcode.es
 - [ ] **CI/CD Pipeline**: Automatización Vercel + testing
 
-#### **🎨 Fase 2: Sistema de Diseño (Mes 2-3)**
+#### ****[Diseño]** Fase 2: Sistema de Diseño (Mes 2-3)**
 
 - [ ] **Design System**: Componentes shadcn/ui + Magic UI integrados
-- [ ] **Paleta WebSnack**: Colores rosa/aguamarina + efectos 3D
+- [ ] **Paleta WebCode**: Colores rosa/aguamarina + efectos 3D
 - [ ] **Tipografía**: Poppins, Space Grotesk, Lora, Fira Code
 - [ ] **WAS Components**: Biblioteca animaciones completa
 - [ ] **Templates Base**: Estructuras reutilizables por sector
 
-#### **🎯 Fase 3: Lanzamiento Barcelona (Mes 3-4)**
+#### ****[Objetivos]** Fase 3: Lanzamiento Barcelona (Mes 3-4)**
 
 - [ ] **Portfolio Showcase**: 3-5 casos de estudio WAS
 - [ ] **Networking Local**: Eventos 22@, Barcelona Tech City
@@ -111,7 +111,7 @@ _"Vende más con tiendas online optimizadas para conversión, cumplimiento RGPD 
 - [ ] **Primeros Clientes**: 2-3 proyectos piloto documentados
 - [ ] **Feedback Loop**: Iteración basada en mercado real
 
-#### **📈 Fase 4: Escalamiento (Mes 4-6)**
+#### ****[Crecimiento]** Fase 4: Escalamiento (Mes 4-6)**
 
 - [ ] **Automatización**: Procesos desarrollo y deployment
 - [ ] **Servicios Premium**: Paquetes enterprise y e-commerce
@@ -122,7 +122,7 @@ _"Vende más con tiendas online optimizadas para conversión, cumplimiento RGPD 
 
 ### 7. Personas (Target)
 
-#### **👩‍🎨 Persona 1: Creative Freelancer - "Marta la Diseñadora"**
+#### **👩‍**[Diseño]** Persona 1: Creative Freelancer - "Marta la Diseñadora"**
 
 **Demografía Barcelona:**
 
@@ -148,7 +148,7 @@ _"Vende más con tiendas online optimizadas para conversión, cumplimiento RGPD 
 - Regulaciones fiscales españolas complejas
 - Estacionalidad turística afecta clientes locales
 
-**Objetivos WebSnack:**
+**Objetivos WebCode:**
 
 - Aumentar leads calificados 200% con WAS diferencial
 - Posicionarse top 10 "diseñadora UX Barcelona"
@@ -184,7 +184,7 @@ _"Vende más con tiendas online optimizadas para conversión, cumplimiento RGPD 
 - Estacionalidad turística extrema
 - Necesidad diferenciación oferta gastronómica
 
-**Objetivos WebSnack:**
+**Objetivos WebCode:**
 
 - Reducir dependencia ElTenedor/plataformas (-25% comisiones)
 - Aumentar reservas directas +40%
@@ -194,7 +194,7 @@ _"Vende más con tiendas online optimizadas para conversión, cumplimiento RGPD 
 
 ---
 
-#### **🚀 Persona 3: Tech Startup Founder - "Laura la Emprendedora"**
+#### ****[Lanzamiento]** Persona 3: Tech Startup Founder - "Laura la Emprendedora"**
 
 **Demografía Ecosistema Barcelona:**
 
@@ -220,7 +220,7 @@ _"Vende más con tiendas online optimizadas para conversión, cumplimiento RGPD 
 - Regulaciones RGPD complejas para B2B
 - Competencia internacional desde día 1
 
-**Objetivos WebSnack:**
+**Objetivos WebCode:**
 
 - Validar producto con landing +25% conversión
 - Escalar arquitectura sin rebuild completo
@@ -232,15 +232,15 @@ _"Vende más con tiendas online optimizadas para conversión, cumplimiento RGPD 
 
 ### 8. Stack Tecnológico (2025)
 
-#### **⚡ Frontend Stack Avanzado**
+#### ****[Rendimiento]** Frontend Stack Avanzado**
 
 - **Next.js 15.4.0**: App Router exclusivo, Server Components por defecto
 - **React 19**: Concurrent features, Suspense optimizado
 - **TypeScript 5.7+**: Modo estricto, zero 'any' policy
 - **Tailwind CSS v4**: Nueva sintaxis, performance optimizada
-- **Sistema WAS**: WebSnack Animation System propio
+- **Sistema WAS**: WebCode Animation System propio
 
-#### **🎨 UI/UX Framework**
+#### ****[Diseño]** UI/UX Framework**
 
 - **shadcn/ui**: Componentes base accesibles
 - **Magic UI**: Animaciones y efectos premium
@@ -248,7 +248,7 @@ _"Vende más con tiendas online optimizadas para conversión, cumplimiento RGPD 
 - **Variables CSS**: Sistema theming centralizado
 - **Dark Mode**: Soporte nativo automático
 
-#### **🔧 Herramientas Desarrollo**
+#### ****[Herramientas]** Herramientas Desarrollo**
 
 - **pnpm**: Package manager optimizado (nunca npm/yarn)
 - **ESLint + Prettier**: Calidad código automatizada
@@ -256,7 +256,7 @@ _"Vende más con tiendas online optimizadas para conversión, cumplimiento RGPD 
 - **Playwright**: Testing E2E automatizado
 - **Jest + RTL**: Unit testing componentes
 
-#### **🚀 Deployment & Performance**
+#### ****[Lanzamiento]** Deployment & Performance**
 
 - **Vercel**: Platform deployment Next.js optimizado
 - **Cloudflare**: CDN global + security
@@ -264,7 +264,7 @@ _"Vende más con tiendas online optimizadas para conversión, cumplimiento RGPD 
 - **Google Analytics 4**: Métricas performance
 - **Core Web Vitals**: <2.5s LCP garantizado
 
-#### **📊 Backend & Integración**
+#### ****[Análisis]** Backend & Integración**
 
 - **API Routes**: Endpoints Next.js nativos
 - **Zod + React Hook Form**: Validación type-safe
@@ -274,9 +274,9 @@ _"Vende más con tiendas online optimizadas para conversión, cumplimiento RGPD 
 
 ---
 
-### 9. Sistema WAS (WebSnack Animation System)
+### 9. Sistema WAS (WebCode Animation System)
 
-#### **🎨 Componentes Animación Exclusivos**
+#### ****[Diseño]** Componentes Animación Exclusivos**
 
 **Microinteracciones Base:**
 
@@ -289,7 +289,7 @@ export function HeroSection() {
     <WASTransition type="fadeInUp" duration={0.8}>
       <WASCard variant="glass" hover="lift">
         <WASButton variant="gradient" size="lg">
-          Descubrir WebSnack
+          Descubrir WebCode
         </WASButton>
       </WASCard>
     </WASTransition>
@@ -305,7 +305,7 @@ export function HeroSection() {
 - **Scroll Animations**: Parallax + reveal progresivo
 - **Loading States**: Skeletons + spinners branded
 
-#### **⚡ Performance WAS**
+#### ****[Rendimiento]** Performance WAS**
 
 - **Bundle Size**: <15KB adicionales gzipped
 - **FPS**: 60fps garantizado animaciones
@@ -317,11 +317,11 @@ export function HeroSection() {
 
 ### 10. Requisitos Funcionales
 
-#### **🎯 Funcionalidades Core**
+#### ****[Objetivos]** Funcionalidades Core**
 
 **1. Plataforma Web Empresarial**
 
-- Sitio corporativo websnack.es con WAS integrado
+- Sitio corporativo webcode.es con WAS integrado
 - Portfolio casos estudio interactivos
 - Sistema blog técnico/business
 - Formularios contacto avanzados (RGPD compliant)
@@ -343,7 +343,7 @@ export function HeroSection() {
 - Performance monitoring
 - Backup systems automatizados
 
-#### **🔧 Funcionalidades Técnicas**
+#### ****[Herramientas]** Funcionalidades Técnicas**
 
 **1. Performance & SEO**
 
@@ -373,7 +373,7 @@ export function HeroSection() {
 
 ### 11. Requisitos No Funcionales
 
-#### **⚡ Performance Crítico**
+#### ****[Rendimiento]** Performance Crítico**
 
 - **LCP**: <2.5 segundos (Core Web Vitals)
 - **FID**: <100ms interactividad
@@ -389,7 +389,7 @@ export function HeroSection() {
 - **Color Contrast**: Ratios verificados automáticamente
 - **Focus Management**: Estados visibles todas interacciones
 
-#### **🔒 Seguridad Empresarial**
+#### ****[Candado]** Seguridad Empresarial**
 
 - **SSL/TLS**: Certificados automáticos Cloudflare
 - **OWASP**: Top 10 protection implementado
@@ -397,7 +397,7 @@ export function HeroSection() {
 - **Data Protection**: Encriptación datos sensibles
 - **Backup**: 3-2-1 strategy implementada
 
-#### **📱 Mobile-First Design**
+#### ****[Móvil]** Mobile-First Design**
 
 - **Responsive**: Breakpoints optimizados España
 - **Touch**: Gestures nativos iOS/Android
@@ -409,7 +409,7 @@ export function HeroSection() {
 
 ### 12. Características Excluidas (Features Out)
 
-#### **❌ Fuera de Alcance Inicial**
+#### ****[Error]** Fuera de Alcance Inicial**
 
 - Desarrollo aplicaciones móviles nativas (iOS/Android)
 - Servicios marketing digital completo (solo SEO técnico)
@@ -417,7 +417,7 @@ export function HeroSection() {
 - Integración ERP complejos (solo CRM básico)
 - Identidad corporativa completa (solo aplicación web)
 
-#### **🔄 Evaluación Futura**
+#### ****[Recargar]** Evaluación Futura**
 
 - E-commerce avanzado (Shopify Plus integración)
 - Aplicaciones mobile hybrid (React Native)
@@ -427,17 +427,17 @@ export function HeroSection() {
 
 ---
 
-### 13. Roadmap Evolutivo WebSnack
+### 13. Roadmap Evolutivo WebCode
 
-#### **🚀 Q1 2025: Foundation**
+#### ****[Lanzamiento]** Q1 2025: Foundation**
 
-- [ ] **Sitio Corporativo**: websnack.es live con WAS
+- [ ] **Sitio Corporativo**: webcode.es live con WAS
 - [ ] **Portfolio**: 3 casos estudio documentados
 - [ ] **SEO Local**: Top 10 "desarrollo web Barcelona"
 - [ ] **Networking**: 5 eventos tech Barcelona asistidos
 - [ ] **Revenue**: €3.000/mes recurrente
 
-#### **📈 Q2 2025: Growth**
+#### ****[Crecimiento]** Q2 2025: Growth**
 
 - [ ] **Clientes Premium**: 2 proyectos >€5.000
 - [ ] **Testimonials**: 10 reseñas 5★ documentadas
@@ -445,7 +445,7 @@ export function HeroSection() {
 - [ ] **Partnerships**: 2 agencias Barcelona colaboración
 - [ ] **Revenue**: €6.000/mes objetivo
 
-#### **🎯 Q3 2025: Scale**
+#### ****[Objetivos]** Q3 2025: Scale**
 
 - [ ] **Team Expansion**: UX/UI designer incorporación
 - [ ] **Service Packages**: 3 tiers pricing definidos
@@ -453,7 +453,7 @@ export function HeroSection() {
 - [ ] **International**: 2 proyectos Europa
 - [ ] **Revenue**: €10.000/mes target
 
-#### **🌟 Q4 2025: Leadership**
+#### ****[Estrella]** Q4 2025: Leadership**
 
 - [ ] **Market Position**: Top 5 dev shops Barcelona
 - [ ] **Speaking**: 2 conferencias tech presentations
@@ -473,7 +473,7 @@ export function HeroSection() {
 - **Multiplica**: Digital transformation
 - **Softonic**: Tech expertise reconocido
 
-#### **🎯 Diferenciación WebSnack**
+#### ****[Objetivos]** Diferenciación WebCode**
 
 - **Sistema WAS**: Animaciones proprietary unique
 - **Stack 2025**: Tecnología más avanzada mercado
@@ -493,27 +493,27 @@ export function HeroSection() {
 
 ### 15. Conclusiones Ejecutivas
 
-#### **🎯 Visión Transformadora**
+#### ****[Objetivos]** Visión Transformadora**
 
-WebSnack ha evolucionado de un servicio freelance básico a una **plataforma tecnológica integral** que combina:
+WebCode ha evolucionado de un servicio freelance básico a una **plataforma tecnológica integral** que combina:
 
 - **Sistema WAS propio** para diferenciación competitiva
 - **Stack tecnológico 2025** más avanzado del mercado
 - **Enfoque geográfico Barcelona** con comprensión local
 - **Performance garantizado** con SLAs técnicos comprometidos
 
-#### **🚀 Oportunidad de Mercado**
+#### ****[Lanzamiento]** Oportunidad de Mercado**
 
 - **Barcelona Tech Hub**: Ecosistema 22@/Poblenou en crecimiento
 - **Digital Transformation**: PYME española aceleración post-COVID
 - **Technology Gap**: Falta providers stack moderno local
 - **International Gateway**: Barcelona puerta entrada Europa
 
-#### **💡 Propuesta Valor Única**
+#### ****[Idea]** Propuesta Valor Única**
 
 _"La única plataforma en Barcelona que combina tecnología 2025, sistema animaciones propio y comprensión profunda del mercado español para crear experiencias digitales excepcionales"_
 
-#### **📊 Proyección Éxito**
+#### ****[Análisis]** Proyección Éxito**
 
 - **Año 1**: €50.000 revenue, 10 clientes satisfechos
 - **Año 2**: €120.000 revenue, posición mercado establecida
@@ -524,7 +524,7 @@ _"La única plataforma en Barcelona que combina tecnología 2025, sistema animac
 
 ### 16. Apéndices
 
-#### **📚 Documentación Relacionada**
+#### ****[Recursos]** Documentación Relacionada**
 
 - **@docs**: 13 documentos técnicos especializados
 - **WAS Documentation**: Sistema animaciones técnico
@@ -532,7 +532,7 @@ _"La única plataforma en Barcelona que combina tecnología 2025, sistema animac
 - **Performance Guide**: Core Web Vitals optimization
 - **SEO Playbook**: Estrategia posicionamiento local
 
-#### **🔗 Enlaces Estratégicos**
+#### ****[Enlace]** Enlaces Estratégicos**
 
 - **Barcelona Tech City**: Networking ecosystem
 - **22@ Barcelona**: Innovation district
@@ -542,10 +542,10 @@ _"La única plataforma en Barcelona que combina tecnología 2025, sistema animac
 
 ---
 
-**🎯 Estado del Proyecto: EN DESARROLLO ACTIVO**  
-**📅 Última Actualización: 03/09/2025**  
-**🚀 Próximo Hito: Lanzamiento websnack.es Q4 2025**
+****[Objetivos]** Estado del Proyecto: EN DESARROLLO ACTIVO**  
+****[Calendario]** Última Actualización: 03/09/2025**  
+****[Lanzamiento]** Próximo Hito: Lanzamiento webcode.es Q4 2025**
 
 ---
 
-_Este PRD v2.0 representa la evolución madura del proyecto WebSnack, integrando toda la documentación técnica de @docs y estableciendo las bases para una plataforma tecnológica líder en el mercado barcelonés y español._
+_Este PRD v2.0 representa la evolución madura del proyecto WebCode, integrando toda la documentación técnica de @docs y estableciendo las bases para una plataforma tecnológica líder en el mercado barcelonés y español._

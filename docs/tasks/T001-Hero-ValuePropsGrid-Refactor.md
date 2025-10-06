@@ -1,6 +1,6 @@
-# 📝 TAREA T001: Refactorizar Hero.ValuePropsGrid.tsx
+# **[Documentación]** TAREA T001: Refactorizar Hero.ValuePropsGrid.tsx
 
-## 🏷️ METADATOS DE LA TAREA
+## **[Etiqueta]** METADATOS DE LA TAREA
 
 **ID:** T001  
 **Título:** Refactorizar Hero.ValuePropsGrid.tsx - Eliminar manipulación directa del DOM  
@@ -8,17 +8,17 @@
 **Fecha de última actualización:** 2025-01-03  
 **Estado:** completado  
 **Progreso:** 100%  
-**Prioridad:** 🔴 Crítica  
+**Prioridad:** **[Círculo Rojo]** Crítica  
 **Estimación:** 8-12 horas  
 **Asignado a:** Desarrollador
 
-## 🔗 DEPENDENCIAS
+## **[Enlace]** DEPENDENCIAS
 
 **Dependencias de entrada:** ninguna  
 **Dependencias de salida:** T002, T003 (pueden beneficiarse de las optimizaciones)  
 **Bloqueos identificados:** ninguno
 
-## 📋 DESCRIPCIÓN DETALLADA
+## **[Lista]** DESCRIPCIÓN DETALLADA
 
 El componente `Hero.ValuePropsGrid.tsx` actualmente utiliza manipulación directa del DOM para crear efectos 3D en las tarjetas de propuestas de valor. Esto incluye:
 
@@ -29,7 +29,7 @@ El componente `Hero.ValuePropsGrid.tsx` actualmente utiliza manipulación direct
 
 **Objetivo:** Refactorizar completamente el componente para usar CSS transforms, custom properties y eliminar la manipulación directa del DOM, manteniendo la funcionalidad visual existente.
 
-## 🎯 CRITERIOS DE ACEPTACIÓN
+## **[Objetivos]** CRITERIOS DE ACEPTACIÓN
 
 - [x] Eliminación completa de manipulación directa del DOM (`card.style.transform`, `querySelector`)
 - [x] Reducción de `useEffect` a casos estrictamente necesarios
@@ -39,7 +39,7 @@ El componente `Hero.ValuePropsGrid.tsx` actualmente utiliza manipulación direct
 - [x] Código más mantenible y legible
 - [x] Soporte completo para dispositivos móviles y desktop
 
-## 📊 SUBTAREAS
+## **[Análisis]** SUBTAREAS
 
 ### T001.1: Analizar código problemático actual
 
@@ -111,14 +111,14 @@ El componente `Hero.ValuePropsGrid.tsx` actualmente utiliza manipulación direct
 - [ ] Sin manipulación directa del DOM
 - [ ] Tests unitarios pasando
 
-## 📝 NOTAS Y OBSERVACIONES
+## **[Documentación]** NOTAS Y OBSERVACIONES
 
 - El componente actual tiene 302 líneas, se espera reducirlo significativamente
-- Los efectos 3D son críticos para la experiencia visual de WebSnack
+- Los efectos 3D son críticos para la experiencia visual de WebCode
 - Debe mantenerse la compatibilidad con todos los navegadores modernos
 - Considerar usar `will-change` CSS property para optimización GPU
 
-## 🔄 LOG DE CAMBIOS
+## **[Recargar]** LOG DE CAMBIOS
 
 **[2025-01-03 10:30]** Tarea creada - Análisis inicial completado, identificados problemas críticos
 **[2025-01-03 15:45]** Refactorización completada - Eliminada manipulación directa del DOM, implementados CSS custom properties, optimizados handlers
@@ -126,7 +126,7 @@ El componente `Hero.ValuePropsGrid.tsx` actualmente utiliza manipulación direct
 
 ---
 
-## 📈 MÉTRICAS DE PROGRESO
+## **[Crecimiento]** MÉTRICAS DE PROGRESO
 
 **Tiempo invertido:** 4-5 horas  
 **Archivos modificados:** 2 archivos  
@@ -134,7 +134,7 @@ El componente `Hero.ValuePropsGrid.tsx` actualmente utiliza manipulación direct
 **Bugs encontrados:** 0 bugs  
 **Bugs resueltos:** 0 bugs
 
-## ✅ CHECKLIST DE FINALIZACIÓN
+## **[Completado]** CHECKLIST DE FINALIZACIÓN
 
 - [x] Todas las subtareas completadas
 - [x] Criterios de aceptación cumplidos

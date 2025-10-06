@@ -91,7 +91,7 @@ When suggesting package.json scripts, use pnpm-compatible commands:
 - Never suggest `package-lock.json` or `yarn.lock`
 - Use `pnpm install --frozen-lockfile` in CI/CD
 
-## Common Dependencies for WebSnack Project
+## Common Dependencies for WebCode Project
 
 ### Core Dependencies
 

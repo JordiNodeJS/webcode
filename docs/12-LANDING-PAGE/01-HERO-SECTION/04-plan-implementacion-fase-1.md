@@ -2,7 +2,7 @@
 
 ## Resumen Ejecutivo
 
-Esta fase se enfoca en crear la estructura base y componentes fundamentales de la Hero Section siguiendo los estándares de WebSnack. La implementación utilizará Next.js 15 con App Router, React 19 Server Components, TypeScript strict mode y Tailwind CSS v4.
+Esta fase se enfoca en crear la estructura base y componentes fundamentales de la Hero Section siguiendo los estándares de WebCode. La implementación utilizará Next.js 15 con App Router, React 19 Server Components, TypeScript strict mode y Tailwind CSS v4.
 
 ## Tecnologías y Herramientas
 
@@ -10,7 +10,7 @@ Esta fase se enfoca en crear la estructura base y componentes fundamentales de l
 - **React**: React 19 con Server Components
 - **Lenguaje**: TypeScript strict mode
 - **Estilos**: Tailwind CSS v4
-- **Componentes**: shadcn/ui con **tema personalizado WebSnack (Rosa/Aguamarina)**
+- **Componentes**: shadcn/ui con **tema personalizado WebCode (Rosa/Aguamarina)**
 - **Package Manager**: pnpm
 - **Testing**: Jest, React Testing Library, Playwright
 - **Tema**: Sistema de colores Rosa `#dc7cb3` + Aguamarina `#bce3e5` con efectos 3D
@@ -34,7 +34,7 @@ src/
 
 ## Tareas Detalladas
 
-### Tarea 0: Configuración del Sistema de Colores WebSnack (CRÍTICA - 1 hora)
+### Tarea 0: Configuración del Sistema de Colores WebCode (CRÍTICA - 1 hora)
 
 #### Subtareas:
 
@@ -50,12 +50,12 @@ src/
 
 #### Entregables:
 
-- Sistema de colores WebSnack implementado
+- Sistema de colores WebCode implementado
 - Variables CSS disponibles en `globals.css`
 - Componentes shadcn/ui con tema personalizado
 - Verificación de colores: `#dc7cb3` (Rosa), `#bce3e5` (Aguamarina)
 
-#### ⚠️ **CRÍTICO**: Esta tarea debe completarse ANTES de cualquier otra implementación
+#### **[Advertencia]** **CRÍTICO**: Esta tarea debe completarse ANTES de cualquier otra implementación
 
 ### Tarea 1: Configuración Inicial (2 horas)
 
@@ -201,7 +201,7 @@ src/
 
 ### Semana 1
 
-- **Día 1**: Tarea 0 (CRÍTICA) - Configuración del Sistema de Colores WebSnack
+- **Día 1**: Tarea 0 (CRÍTICA) - Configuración del Sistema de Colores WebCode
 - Día 1-2: Configuración inicial y HeaderNavigation
 - Día 3-4: HeroContent y ValuePropsGrid
 - Día 5: CallToAction y TrustIndicators
@@ -249,7 +249,7 @@ src/
 
 ## Criterios de Aceptación
 
-- [ ] **Sistema de colores WebSnack implementado** (Rosa `#dc7cb3` + Aguamarina `#bce3e5`)
+- [ ] **Sistema de colores WebCode implementado** (Rosa `#dc7cb3` + Aguamarina `#bce3e5`)
 - [ ] Variables CSS del tema disponibles en `globals.css`
 - [ ] Todos los componentes creados y funcionales
 - [ ] Tests unitarios e integración >80% cobertura
