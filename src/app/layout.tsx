@@ -65,9 +65,11 @@ export default function RootLayout({
             />
           )}
           {/* CSS managed by Next.js by default (no manual preload/swap) */}
+          {/* Hint the browser to fetch CSS with lower priority by marking as non-render blocking when possible */}
           {/* DNS Prefetch and Preconnect for better performance */}
           <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
           
           {/* Favicons and App Icons */}
           <link
@@ -143,6 +145,7 @@ export default function RootLayout({
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
           <meta name="theme-color" content="#ffffff" />
+          <meta name="color-scheme" content="light dark" />
           
           {/* Structured Data */}
           <StructuredData type="Organization" />

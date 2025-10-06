@@ -1,7 +1,5 @@
-import {
-  CloudLightningBackground,
-  HeroSection
-} from "@/components/landing/hero";
+import { HeroSection } from "@/components/landing/hero";
+import { CloudBgClient } from "@/components/landing/hero/CloudBgClient";
 import { ServicesSection } from "@/components/landing/services";
 
 export const runtime = "edge";
@@ -9,10 +7,8 @@ export const runtime = "edge";
 export default function Home() {
   return (
     <main className="relative min-h-screen">
-      {/* Fondo de nubes consistente para toda la página */}
-      <div className="fixed inset-0 z-0">
-        <CloudLightningBackground />
-      </div>
+      {/* Fondo de nubes consistente para toda la página (no bloqueante) */}
+      <CloudBgClient />
 
       <div className="relative z-10">
         <HeroSection />
