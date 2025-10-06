@@ -138,8 +138,13 @@ export default function RootLayout({
           <StructuredData type="WebSite" />
           <StructuredData type="LocalBusiness" />
           
-          {/* Script necesario para prevenir el parpadeo del tema - cargado desde public/theme-init.js */}
-          <script src="/theme-init.js" />
+          {/* Inline, non-blocking theme init to avoid FOUC without network fetch */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html:
+                "(function(){try{var s=localStorage.getItem('theme');var t=(s==='dark'||s==='light')?s:((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');var d=document.documentElement;d.classList.add(t);d.style.colorScheme=t;}catch(e){}})();"
+            }}
+          />
         </head>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
