@@ -21,7 +21,15 @@ export function FooterSection() {
   return (
     <footer className={`relative border-t border-border/50 overflow-hidden ${styles.footerVerdoso}`}>
       {/* Fondo con gradiente sutil verdoso */}
-      <div className="absolute inset-0 footer-verdoso-overlay"></div>
+      <div 
+        className="absolute inset-0 footer-verdoso-overlay"
+        style={{
+          background: 'linear-gradient(135deg, rgba(130, 200, 210, 0.15) 0%, rgba(255, 102, 128, 0.1) 50%, rgba(147, 51, 234, 0.1) 100%)',
+          backdropFilter: 'blur(1px)',
+          WebkitBackdropFilter: 'blur(1px)',
+          zIndex: 1
+        }}
+      ></div>
 
       <div className="relative container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
