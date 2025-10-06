@@ -70,6 +70,20 @@
 - [x] **SEO optimization** meta tags y structured data
 - [x] **Mobile-first responsive** design
 
+### **Fase 5: Optimización de Rendimiento Avanzada**
+
+- [x] **Análisis CPU/GPU** con Chrome DevTools
+- [ ] **T013**: Eliminar render-blocking JavaScript
+- [ ] **T014**: Optimizar CSS crítico (inline/defer)
+- [ ] **T015**: Optimizar forced reflows
+- [ ] **T016**: Implementar lazy loading de componentes
+- [ ] **T017**: Optimizar animaciones CSS para GPU
+- [ ] **T018**: Reducir complejidad del DOM
+- [ ] **T019**: Implementar code splitting por rutas
+- [ ] **T020**: Configurar Service Worker para cache
+- [ ] **T021**: Optimizar SSR con streaming
+- [ ] **T022**: Validar mejoras de rendimiento
+
 ---
 
 ## 🔄 **TAREAS EN PROGRESO**
@@ -117,6 +131,15 @@
 - **FPS Mínimo**: 137 (Objetivo: 55+)
 - **Memoria**: 21MB (Objetivo: <50MB)
 - **Score General**: 100/100
+
+### **Core Web Vitals** 🎯
+
+- **LCP**: 925ms (Objetivo: <400ms)
+- **CLS**: 0.00 (Excelente)
+- **TTFB**: 43ms (Excelente)
+- **Render Delay**: 882ms (95.3% del LCP)
+- **DOM Elements**: 573 (Objetivo: <400)
+- **Render-blocking Resources**: 3 (Objetivo: 0)
 
 ### **Accessibility** ✅
 

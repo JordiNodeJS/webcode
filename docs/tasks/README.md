@@ -8,7 +8,8 @@ Esta carpeta contiene la documentación detallada de todas las tareas realizadas
 
 ### 📄 Archivos Principales
 
-- **[TASK-INDEX-2025-01-03.md](./TASK-INDEX-2025-01-03.md)** - Índice maestro de todas las tareas del proyecto
+- **[TASK-INDEX-2025-01-03.md](./TASK-INDEX-2025-01-03.md)** - Índice maestro de tareas Hero Components Refactoring
+- **[TASK-INDEX-PERFORMANCE-2025-01-04.md](./TASK-INDEX-PERFORMANCE-2025-01-04.md)** - Índice maestro de optimización de rendimiento
 - **[CHANGE-LOG.md](./CHANGE-LOG.md)** - Registro histórico de cambios y actualizaciones
 - **[TASK-TEMPLATE.md](./TASK-TEMPLATE.md)** - Plantilla para crear nuevas tareas
 
@@ -23,6 +24,17 @@ Esta carpeta contiene la documentación detallada de todas las tareas realizadas
 - **[T010-Add-tests-for-scroll-and-effect-hooks.md](./T010-Add-tests-for-scroll-and-effect-hooks.md)** - Añadir tests para hooks de scroll y efectos
 - **[T011-Refactor-Hero-HeaderNavigation-safe-effects.md](./T011-Refactor-Hero-HeaderNavigation-safe-effects.md)** - Refactorizar HeaderNavigation para efectos seguros SSR/CSR
 - **[T012-Verificacion-Alineacion-Wireframe.md](./T012-Verificacion-Alineacion-Wireframe.md)** - Verificación de alineación con wireframe
+
+### 🚀 Tareas de Optimización de Rendimiento
+
+- **[T013-Eliminar-Render-Blocking-JS.md](./T013-Eliminar-Render-Blocking-JS.md)** - Eliminar render-blocking JavaScript
+- **[T014-Optimizar-CSS-Critico.md](./T014-Optimizar-CSS-Critico.md)** - Optimizar CSS crítico (inline/defer)
+- **[T015-Optimizar-Forced-Reflows.md](./T015-Optimizar-Forced-Reflows.md)** - Optimizar forced reflows
+- **[T016-Implementar-Lazy-Loading.md](./T016-Implementar-Lazy-Loading.md)** - Implementar lazy loading de componentes
+- **[T022-Validar-Mejoras-Rendimiento.md](./T022-Validar-Mejoras-Rendimiento.md)** - Validar mejoras de rendimiento
+
+### 📊 Documentos de Análisis
+
 - **[mismatch-results.md](./mismatch-results.md)** - Análisis de componentes con potencial de mismatch SSR/CSR
 
 ### 📊 Documentos de Estado
