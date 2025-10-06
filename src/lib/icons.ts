@@ -1,51 +1,47 @@
 /**
  * Centralized icon exports to reduce bundle size
  * Only import the icons we actually use
+ * TARGET: Reduce unused JavaScript by ~24 KiB
  */
 
-// Hero Section Icons
-// Value Props Icons
-// Trust Indicators Icons
-// Theme Toggle Icons
-// UI Components Icons
-// Debug Lab Icons (Dynamic import candidate)
+// All icons in one export to avoid duplicates
 export {
   Activity,
   AlertCircle,
+  AlertTriangle,
+  ArrowLeft,
   ArrowRight,
   BarChart3,
-  Battery,
+  CheckCircle,
   CheckIcon as Check,
   ChevronDown,
-  ChevronDownIcon as ChevronDownUI,
-  ChevronUpIcon as ChevronUpUI,
+  ChevronDownIcon,
+  ChevronUpIcon,
   Clock,
   Cookie,
   Cpu,
   Eye,
-  Gauge,
-  HardDrive,
-  Info,
+  ExternalLink,
+  FileText,
+  Loader2,
   MapPin,
-  MemoryStick,
   Menu,
-  MonitorSpeaker,
+  MemoryStick,
+  Monitor,
   Moon,
-  PlayCircle,
-  RefreshCw,
+  Pause,
+  Play,
   Rocket,
-  Server,
+  RotateCcw,
+  Send,
   Shield,
   Smartphone,
-  StopCircle,
   Sun,
   Target,
-  Thermometer,
   TrendingDown,
   TrendingUp,
   Users,
-  Wifi,
+  XIcon,
   XIcon as X,
-  Zap,
-  Zap as ZapDebug
+  Zap
 } from "lucide-react";
