@@ -127,3 +127,4 @@ El análisis de rendimiento con CPU throttling reveló forced reflows de 101ms c
 - [ ] Documentación actualizada
 - [ ] Código revisado y aprobado
 - [ ] Dependencias de salida desbloqueadas
+

@@ -137,3 +137,4 @@ El análisis de rendimiento identificó dos archivos CSS render-blocking que cau
 - [ ] Documentación actualizada
 - [ ] Código revisado y aprobado
 - [ ] Dependencias de salida desbloqueadas
+

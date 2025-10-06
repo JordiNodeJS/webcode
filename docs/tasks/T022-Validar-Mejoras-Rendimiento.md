@@ -133,3 +133,4 @@ Ejecutar un análisis completo de rendimiento usando Chrome DevTools para valida
 - [ ] Documentación actualizada
 - [ ] Código revisado y aprobado
 - [ ] Dependencias de salida desbloqueadas
+
