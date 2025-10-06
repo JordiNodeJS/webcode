@@ -1,0 +1,58 @@
+﻿---
+description: "Standard PR creation workflow using gh (GitHub CLI), English titles/bodies, labels, and assignment."
+---
+### PR Creation Workflow (gh)
+
+Follow this rule to open a Pull Request consistently using GitHub CLI.
+
+- **Branch**: Use the current working branch as PR head. Base is `main`.
+- **Commits language**: Always write commit messages in English.
+- **Package manager**: Use `pnpm` / `pnpm dlx`. Do not use `npm`.
+- **Title/Body**: Use clear, concise English. Summarize changes and list highlights as bullets.
+- **Labels**: Add one or more labels according to the context of the pull request. If a label is missing, create it first.
+- **Assignment**: Assign the PR to `@me` (or the repository owner if needed).
+- **Shell compatibility**: Avoid chaining with `&&` in shells that donâ€™t support it; run commands separately if needed.
+
+#### Commands
+
+1) Ensure branch pushed
+
+```bash
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+git push -u origin "$BRANCH"
+```
+
+2) Create PR
+
+```bash
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+gh pr create \
+  --base main \
+  --head "$BRANCH" \
+  --title "Performance: improvements and analysis" \
+  --body "This PR enhances performance based on recent audits and optimizations.\n- Updated configs and build tweaks for faster loads\n- Reports under docs/ for traceability\n\nPlease review the reports and validate improvements on preview."
+```
+
+3) Ensure labels exist (idempotent; create missing ones)
+
+```bash
+# Create if missing (use brand color FF8F66)
+(gh label create performance --color FF8F66 --description "Performance-related changes and optimizations") || true
+(gh label create enhancement --color 36B37E --description "Feature or improvement") || true
+```
+
+4) Apply labels and assign
+
+```bash
+PR_NUMBER=$(gh pr view --json number -q .number)
+gh pr edit "$PR_NUMBER" \
+  --add-label performance \
+  --add-label enhancement \
+  --add-assignee "@me"
+```
+
+#### Notes
+
+- Prefer separate commands over chained `&&` when running in environments that may invoke PowerShell.
+- Keep titles imperative and under ~72 chars; expand details in the body.
+- If the repository uses additional required labels or templates, append them similarly.
