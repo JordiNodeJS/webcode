@@ -130,3 +130,4 @@ Implementar lazy loading para componentes que no son visibles inicialmente (belo
 - [ ] Documentación actualizada
 - [ ] Código revisado y aprobado
 - [ ] Dependencias de salida desbloqueadas
+
