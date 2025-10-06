@@ -6,8 +6,8 @@
 **Título:** Eliminar Render-Blocking JavaScript - theme-init.js  
 **Fecha de creación:** 2025-01-04  
 **Fecha de última actualización:** 2025-01-04  
-**Estado:** pendiente  
-**Progreso:** 0%  
+**Estado:** en progreso  
+**Progreso:** 75%  
 **Prioridad:** 🔴 Crítica  
 **Estimación:** 30 minutos  
 **Asignado a:** Desarrollador
@@ -28,44 +28,44 @@ El análisis de rendimiento reveló que `theme-init.js` está bloqueando el rend
 
 ## 🎯 CRITERIOS DE ACEPTACIÓN
 
-- [ ] theme-init.js ya no aparece como render-blocking resource
-- [ ] Funcionalidad del tema se mantiene intacta
+- [x] theme-init.js ya no aparece como render-blocking resource
+- [x] Funcionalidad del tema se mantiene intacta
 - [ ] LCP mejora en al menos 50ms
-- [ ] No se produce FOUC (Flash of Unstyled Content)
+- [x] No se produce FOUC (Flash of Unstyled Content)
 - [ ] Script se carga correctamente en todos los navegadores
 
 ## 📊 SUBTAREAS
 
 ### T013.1: Analizar ubicación actual de theme-init.js
 
-**Estado:** pendiente  
-**Progreso:** 0%  
+**Estado:** completado  
+**Progreso:** 100%  
 **Descripción:** Identificar dónde y cómo se está cargando theme-init.js actualmente
 
 ### T013.2: Implementar carga diferida del script
 
-**Estado:** pendiente  
-**Progreso:** 0%  
+**Estado:** completado  
+**Progreso:** 100%  
 **Descripción:** Mover el script al final del body o implementar carga asíncrona
 
 ### T013.3: Verificar funcionalidad del tema
 
-**Estado:** pendiente  
-**Progreso:** 0%  
+**Estado:** completado  
+**Progreso:** 100%  
 **Descripción:** Asegurar que el tema funciona correctamente después del cambio
 
 ### T013.4: Testing de rendimiento
 
-**Estado:** pendiente  
-**Progreso:** 0%  
+**Estado:** en progreso  
+**Progreso:** 50%  
 **Descripción:** Ejecutar análisis de rendimiento para confirmar mejora
 
 ## 🛠️ RECURSOS Y HERRAMIENTAS
 
 **Archivos afectados:**
 
-- `src/app/layout.tsx` (probablemente)
-- `public/theme-init.js`
+- `src/app/layout.tsx`
+- `public/theme-init.js` (ya no utilizado; candidato a eliminación)
 - Cualquier archivo que importe o use theme-init.js
 
 **Librerías/paquetes necesarios:**
@@ -103,14 +103,15 @@ El análisis de rendimiento reveló que `theme-init.js` está bloqueando el rend
 
 **[2025-01-04 14:30]** Tarea creada basada en análisis de rendimiento
 **[2025-01-04 14:30]** Definidos criterios de aceptación y subtareas
+**[2025-10-06 11:00]** Reemplazado `<script src="/theme-init.js">` por snippet inline pre‑paint en `src/app/layout.tsx` para eliminar render‑blocking y evitar FOUC. Commit: perf: eliminate render-blocking theme init by inlining pre-paint snippet in head
 
 ---
 
 ## 📈 MÉTRICAS DE PROGRESO
 
-**Tiempo invertido:** 0 horas  
-**Archivos modificados:** 0 archivos  
-**Líneas de código:** 0 líneas añadidas/eliminadas  
+**Tiempo invertido:** 0.5 horas  
+**Archivos modificados:** 1 archivo (`src/app/layout.tsx`)  
+**Líneas de código:** +7 / -2  
 **Bugs encontrados:** 0 bugs  
 **Bugs resueltos:** 0 bugs
 
