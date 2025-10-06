@@ -10,7 +10,7 @@ const PhaseIcon = ({ phase }: { phase: number }) => {
     1: 'search',    // Fase 1: Investigación y Análisis
     2: 'palette',   // Fase 2: Diseño y Prototipado  
     3: 'code',      // Fase 3: Desarrollo
-    4: 'rocket'     // Fase 4: Lanzamiento
+    4: 'trending-up' // Fase 4: Launch & Optimización
   };
 
   const iconName = icons[phase as keyof typeof icons];
