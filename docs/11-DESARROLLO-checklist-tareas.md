@@ -2,21 +2,21 @@
 
 ## Para Cada Nuevo Componente
 
-### ✅ Diseño y Estructura
+### **[Completado]** Diseño y Estructura
 
 - [ ] Revisar `docs/STYLE_GUIDE.md` antes de empezar
 - [ ] Definir la jerarquía de elementos
 - [ ] Planificar estados (default, hover, focus, disabled)
 - [ ] Considerar variantes responsive
 
-### ✅ Implementación Base
+### **[Completado]** Implementación Base
 
 - [ ] Usar TypeScript con tipos apropiados
 - [ ] Implementar con Tailwind CSS + design tokens
 - [ ] Incluir `data-slot` para identificación
 - [ ] Usar `cn()` para className merging
 
-### ✅ Estilos y Design Tokens
+### **[Completado]** Estilos y Design Tokens
 
 - [ ] **Espaciado**: Solo clases semánticas (`px-element`, `gap-component`, etc.)
 - [ ] **Tipografía**: `font-display` para títulos, `letter-spacing-wide` siempre
@@ -25,14 +25,14 @@
 - [ ] **Border Radius**: Semántico (`rounded-button`, `rounded-card`, etc.)
 - [ ] **Colores**: Variables CSS del design system
 
-### ✅ Interactividad
+### **[Completado]** Interactividad
 
 - [ ] Hover effects con `elva-transition`
 - [ ] Focus states accesibles
 - [ ] Estados disabled apropiados
 - [ ] Animaciones sutiles usando keyframes Elva
 
-### ✅ Accesibilidad
+### **[Completado]** Accesibilidad
 
 - [ ] Elementos semánticos correctos
 - [ ] ARIA labels donde sea necesario
@@ -40,14 +40,14 @@
 - [ ] Navegación por teclado funcional
 - [ ] Soporte para lectores de pantalla
 
-### ✅ Responsive Design
+### **[Completado]** Responsive Design
 
 - [ ] Mobile-first approach
 - [ ] Breakpoints del design system (`sm:`, `md:`, `lg:`, etc.)
 - [ ] Textos escalables
 - [ ] Espaciado adaptativo
 
-### ✅ Testing y Verificación
+### **[Completado]** Testing y Verificación
 
 - [ ] Probar en light y dark mode
 - [ ] Verificar en diferentes tamaños de pantalla
@@ -56,20 +56,20 @@
 
 ## Para Modificaciones de Componentes Existentes
 
-### ✅ Antes de Modificar
+### **[Completado]** Antes de Modificar
 
 - [ ] Entender el uso actual del componente
 - [ ] Revisar breaking changes potenciales
 - [ ] Identificar todos los lugares donde se usa
 
-### ✅ Durante la Modificación
+### **[Completado]** Durante la Modificación
 
 - [ ] Mantener la API existente cuando sea posible
 - [ ] Usar design tokens en lugar de valores hardcodeados
 - [ ] Preservar la funcionalidad existente
 - [ ] Mejorar la consistencia visual
 
-### ✅ Después de Modificar
+### **[Completado]** Después de Modificar
 
 - [ ] Verificar que no se rompió ningún uso existente
 - [ ] Probar en todas las páginas que lo usan
@@ -77,21 +77,21 @@
 
 ## Para Nuevas Páginas
 
-### ✅ Estructura de Layout
+### **[Completado]** Estructura de Layout
 
 - [ ] Usar componentes de layout existentes
 - [ ] Implementar `<Navigation />` consistente
 - [ ] Incluir `<Footer />` apropiado
 - [ ] Gestionar espaciado de sección
 
-### ✅ Contenido y Componentes
+### **[Completado]** Contenido y Componentes
 
 - [ ] Reutilizar componentes existentes
 - [ ] Crear nuevos componentes siguiendo el checklist
 - [ ] Mantener jerarquía tipográfica
 - [ ] Usar grid y flexbox semánticos
 
-### ✅ SEO y Performance
+### **[Completado]** SEO y Performance
 
 - [ ] Meta tags apropiados
 - [ ] Estructura de headings correcta
@@ -100,28 +100,28 @@
 
 ## Para Revisiones de Código
 
-### ✅ Design System Compliance
+### **[Completado]** Design System Compliance
 
 - [ ] Se usan design tokens en lugar de valores hardcodeados
 - [ ] Clases CSS siguen las convenciones establecidas
 - [ ] No hay CSS inline no justificado
 - [ ] Transiciones y animaciones son consistentes
 
-### ✅ Código TypeScript
+### **[Completado]** Código TypeScript
 
 - [ ] Tipos apropiados definidos
 - [ ] Props bien tipadas
 - [ ] Manejo de errores apropiado
 - [ ] Imports organizados
 
-### ✅ Performance
+### **[Completado]** Performance
 
 - [ ] Componentes optimizados para re-renders
 - [ ] Animaciones performantes
 - [ ] Bundle size considerado
 - [ ] Lazy loading implementado donde sea apropiado
 
-### ✅ Accesibilidad
+### **[Completado]** Accesibilidad
 
 - [ ] Elementos semánticos usados
 - [ ] Estados focus visibles
@@ -130,7 +130,7 @@
 
 ## Herramientas de Desarrollo
 
-### ✅ VS Code Extensions Recomendadas
+### **[Completado]** VS Code Extensions Recomendadas
 
 - [ ] Tailwind CSS IntelliSense
 - [ ] TypeScript Importer
@@ -138,7 +138,7 @@
 - [ ] Prettier
 - [ ] Auto Rename Tag
 
-### ✅ Scripts de Desarrollo
+### **[Completado]** Scripts de Desarrollo
 
 ```bash
 # Desarrollo local
@@ -157,7 +157,7 @@ npm run format
 npm run build
 ```
 
-### ✅ Debugging
+### **[Completado]** Debugging
 
 - [ ] React DevTools instalado
 - [ ] Usar `console.log` con moderación
@@ -166,14 +166,14 @@ npm run build
 
 ## Patrones a Seguir
 
-### ✅ Nomenclatura
+### **[Completado]** Nomenclatura
 
 - [ ] Componentes en PascalCase
 - [ ] Archivos de componentes en kebab-case
 - [ ] Variables en camelCase
 - [ ] CSS variables en kebab-case
 
-### ✅ Estructura de Archivos
+### **[Completado]** Estructura de Archivos
 
 ```
 src/
@@ -187,7 +187,7 @@ src/
     index.ts
 ```
 
-### ✅ Importación
+### **[Completado]** Importación
 
 ```tsx
 // Imports externos primero
@@ -199,7 +199,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 ```
 
-### ✅ Exportación
+### **[Completado]** Exportación
 
 ```tsx
 // Exportación nombrada por defecto
@@ -211,14 +211,14 @@ export default function PageName() {}
 
 ## Mantenimiento Continuo
 
-### ✅ Auditorías Regulares
+### **[Completado]** Auditorías Regulares
 
 - [ ] Revisar design tokens mensualmente
 - [ ] Verificar consistencia visual
 - [ ] Optimizar CSS no utilizado
 - [ ] Actualizar documentación
 
-### ✅ Performance Monitoring
+### **[Completado]** Performance Monitoring
 
 - [ ] Lighthouse scores regulares
 - [ ] Bundle analyzer ejecutado

@@ -1,14 +1,14 @@
 # 🧪 GUÍA DE TESTING - Performance WEBCODE
 
-## ✅ **ESTADO ACTUAL**
+## **[Completado]** **ESTADO ACTUAL**
 
-### **🎯 SOLUCIÓN IMPLEMENTADA:**
+### ****[Objetivos]** SOLUCIÓN IMPLEMENTADA:**
 
-- ✅ **Página principal** ahora usa `IdleOptimizedValuePropsGrid`
-- ✅ **Performance Test Lab** funcionando sin errores
-- ✅ **Servidor** corriendo en http://localhost:3001
+- **[Completado]** **Página principal** ahora usa `IdleOptimizedValuePropsGrid`
+- **[Completado]** **Performance Test Lab** funcionando sin errores
+- **[Completado]** **Servidor** corriendo en http://localhost:3001
 
-### **🔧 RUTAS DISPONIBLES:**
+### ****[Herramientas]** RUTAS DISPONIBLES:**
 
 #### **1. Página Principal (con solución optimizada)**
 
@@ -43,7 +43,7 @@ http://localhost:3001/dev-performance-test
 
 ### **Paso 2: Escenarios Disponibles**
 
-#### **🔴 "Tarjetas Originales"**
+#### ****[Círculo Rojo]** "Tarjetas Originales"**
 
 - Componente con problemas de performance
 - GPU layers siempre activas
@@ -59,7 +59,7 @@ http://localhost:3001/dev-performance-test
 - Sin animaciones, solo CSS básico
 - Performance perfecto, pero sin efectos
 
-#### **🎯 "Idle Performance Optimized"** ⭐ **RECOMENDADO**
+#### ****[Objetivos]** "Idle Performance Optimized"** **[Destacado]** **RECOMENDADO**
 
 - Nueva solución implementada
 - GPU layers condicionales
@@ -67,19 +67,19 @@ http://localhost:3001/dev-performance-test
 
 ### **Paso 3: Interpretar Métricas**
 
-#### **📊 FPS (Frames Por Segundo)**
+#### ****[Análisis]** FPS (Frames Por Segundo)**
 
 - **Verde (58-60 FPS)**: Excelente
 - **Amarillo (45-57 FPS)**: Aceptable
 - **Rojo (<45 FPS)**: Problemático
 
-#### **💾 Memoria**
+#### ****[Guardar]** Memoria**
 
 - **Verde (<5MB)**: Excelente
 - **Amarillo (5-15MB)**: Aceptable
 - **Rojo (>15MB)**: Problemático
 
-#### **🔄 Renders**
+#### ****[Recargar]** Renders**
 
 - **Muestra**: Número de re-renders por componente
 - **Ideal**: Mínimos renders en idle
@@ -108,34 +108,34 @@ http://localhost:3001/dev-performance-test
 
 ---
 
-## 📊 **RESULTADOS ESPERADOS**
+## **[Análisis]** **RESULTADOS ESPERADOS**
 
 ### **En la Página Principal (localhost:3001/)**
 
 #### **Antes (Originales):**
 
-- ❌ FPS idle: ~40-50 FPS
-- ❌ CPU usage: Alto constante
-- ❌ 16 GPU layers activas permanentemente
+- **[Error]** FPS idle: ~40-50 FPS
+- **[Error]** CPU usage: Alto constante
+- **[Error]** 16 GPU layers activas permanentemente
 
 #### **Después (Idle Optimized):**
 
-- ✅ FPS idle: ~55-60 FPS
-- ✅ CPU usage: Bajo en idle
-- ✅ 0 GPU layers en idle, 4 solo durante hover
+- **[Completado]** FPS idle: ~55-60 FPS
+- **[Completado]** CPU usage: Bajo en idle
+- **[Completado]** 0 GPU layers en idle, 4 solo durante hover
 
 ### **En el Performance Test Lab:**
 
 #### **Métricas Objetivo para "Idle Performance Optimized":**
 
-- 🎯 **FPS**: 58-60 FPS en idle
-- 🎯 **Memoria**: <5MB adicional
-- 🎯 **Renders**: ~90% menos que original
-- 🎯 **Efectos visuales**: Preservados durante hover
+- **[Objetivos]** **FPS**: 58-60 FPS en idle
+- **[Objetivos]** **Memoria**: <5MB adicional
+- **[Objetivos]** **Renders**: ~90% menos que original
+- **[Objetivos]** **Efectos visuales**: Preservados durante hover
 
 ---
 
-## 🔧 **TROUBLESHOOTING**
+## **[Herramientas]** **TROUBLESHOOTING**
 
 ### **"No veo diferencias en performance":**
 
@@ -162,7 +162,7 @@ http://localhost:3001/dev-performance-test
 
 ---
 
-## 💡 **CÓMO VERIFICAR QUE LA SOLUCIÓN FUNCIONA**
+## **[Idea]** **CÓMO VERIFICAR QUE LA SOLUCIÓN FUNCIONA**
 
 ### **Método 1: Visual DevTools**
 
@@ -195,26 +195,26 @@ console.log(
 
 ```
 Chrome → More tools → Task Manager
-- Buscar tab de WebSnack
+- Buscar tab de WebCode
 - Revisar CPU % - debe ser <5% en idle
 ```
 
 ---
 
-## 🎯 **PRÓXIMOS PASOS**
+## **[Objetivos]** **PRÓXIMOS PASOS**
 
 ### **Si la solución funciona bien:**
 
-1. ✅ La implementación está completa
-2. ✅ Performance optimizado
-3. ✅ UX preservada
-4. 📊 Documentar métricas finales
+1. **[Completado]** La implementación está completa
+2. **[Completado]** Performance optimizado
+3. **[Completado]** UX preservada
+4. **[Análisis]** Documentar métricas finales
 
 ### **Si necesitas más optimizaciones:**
 
-1. 🔍 Revisar otros componentes (botones con brillo)
-2. 🎯 Aplicar mismo patrón a otros elementos
-3. 📈 Implementar monitoring continuo
+1. **[Búsqueda]** Revisar otros componentes (botones con brillo)
+2. **[Objetivos]** Aplicar mismo patrón a otros elementos
+3. **[Crecimiento]** Implementar monitoring continuo
 
 ---
 

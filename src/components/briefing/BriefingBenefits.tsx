@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
+import { SingleEmojiToSvg } from "@/components/ui/emoji-to-svg";
 
 interface Beneficio {
   icono: string;
@@ -29,8 +30,13 @@ export default function BriefingBenefits({ beneficios }: BriefingBenefitsProps) 
             </div>
 
             {/* Icono */}
-            <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-              {beneficio.icono}
+            <div className="mb-4 group-hover:scale-110 transition-transform duration-300">
+              <SingleEmojiToSvg 
+                emoji={beneficio.icono} 
+                size="xl" 
+                variant="primary"
+                className="text-5xl"
+              />
             </div>
 
             {/* Título */}

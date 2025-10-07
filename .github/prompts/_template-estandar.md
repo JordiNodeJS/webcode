@@ -1,13 +1,13 @@
-# Template Estándar - Prompts WebSnack
+# Template Estándar - Prompts WebCode
 
 ## **Estructura Estándar para Prompts**
 
 ```markdown
-# Prompt: [Nombre del Prompt] - WebSnack
+# Prompt: [Nombre del Prompt] - WebCode
 
 ## **Contexto y Objetivo**
 
-[Descripción clara del propósito del prompt y su rol en el proyecto WebSnack]
+[Descripción clara del propósito del prompt y su rol en el proyecto WebCode]
 
 ## **Alcance**
 
@@ -47,13 +47,13 @@
 
 ### **Criterios de Aceptación**
 
-- ✅ [Criterio 1]
-- ✅ [Criterio 2]
-- ✅ [Criterio 3]
+- **[Completado]** [Criterio 1]
+- **[Completado]** [Criterio 2]
+- **[Completado]** [Criterio 3]
 
 ---
 
-**Nota**: [Información adicional relevante para el proyecto WebSnack]
+**Nota**: [Información adicional relevante para el proyecto WebCode]
 ```
 
 ## **Directrices de Formato**
@@ -66,32 +66,32 @@
 
 ### **2. Estructura**
 
-- **Título descriptivo** con "- WebSnack" al final
+- **Título descriptivo** con "- WebCode" al final
 - **Secciones claras** con separadores visuales (`---`)
 - **Subsecciones** para organizar contenido
 - **Ejemplos de código** cuando sea relevante
 
 ### **3. Elementos Requeridos**
 
-- ✅ **Contexto y Objetivo**: Propósito claro
-- ✅ **Alcance**: Qué cubre y qué no
-- ✅ **Flujo de Trabajo**: Pasos concretos
-- ✅ **Criterios de Aceptación**: Validación de resultados
-- ✅ **Nota final**: Contexto del proyecto WebSnack
+- **[Completado]** **Contexto y Objetivo**: Propósito claro
+- **[Completado]** **Alcance**: Qué cubre y qué no
+- **[Completado]** **Flujo de Trabajo**: Pasos concretos
+- **[Completado]** **Criterios de Aceptación**: Validación de resultados
+- **[Completado]** **Nota final**: Contexto del proyecto WebCode
 
 ### **4. Convenciones**
 
 - **Negrita** para términos importantes: `**Next.js 15**`
 - **Listas** con viñetas para enumeraciones
 - **Bloques de código** con sintaxis highlight apropiada
-- **Emojis** para indicadores visuales: ✅ ❌ ⚠️ 🎯
+- **Emojis** para indicadores visuales: **[Completado]** **[Error]** **[Advertencia]** **[Objetivos]**
 
 ### **5. Referencias**
 
 - **Referencias cruzadas** claras: `./archivo.prompt.md`
 - **Enlaces a documentación** oficial cuando aplique
-- **Contexto del proyecto** WebSnack siempre presente
+- **Contexto del proyecto** WebCode siempre presente
 
 ---
 
-**Uso**: Utilizar este template para estandarizar todos los prompts del proyecto WebSnack y mantener consistencia en formato y estructura.
+**Uso**: Utilizar este template para estandarizar todos los prompts del proyecto WebCode y mantener consistencia en formato y estructura.

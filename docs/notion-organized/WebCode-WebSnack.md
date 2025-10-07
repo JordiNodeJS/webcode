@@ -1,4 +1,4 @@
-# WebCode - WebSnack
+# WebCode - WebCode
 
 ## Resumen ejecutivo
 
@@ -97,7 +97,7 @@ EJEMPLO de IPs (revisar en Vercel antes de aplicar)
 
 ---
 
-- WebCode - WebSnack — https://www.notion.so/25cf4dc3b4628005be89c6fd4eaca38d
+- WebCode - WebCode — https://www.notion.so/25cf4dc3b4628005be89c6fd4eaca38d
 - Prompt — https://www.notion.so/25cf4dc3b46280e2990ad454e860397c
 - Piensa Solutions — https://www.notion.so/26cf4dc3b4628069a911c5c4ffe3b6f2
 - DOSSIER COMERCIAL — https://www.notion.so/262f4dc3b46280d0ac0aca6a2748c073
@@ -118,7 +118,7 @@ EJEMPLO de IPs (revisar en Vercel antes de aplicar)
 
 ---
 
-Puedes copiar el contenido de este archivo y pegarlo en la página Notion "WebCode - WebSnack". Recomiendo usar bloques separados: H1 (título), texto introductorio, toggles para "Paquete", "Hosting", "Recursos" y una tabla de precios.
+Puedes copiar el contenido de este archivo y pegarlo en la página Notion "WebCode - WebCode". Recomiendo usar bloques separados: H1 (título), texto introductorio, toggles para "Paquete", "Hosting", "Recursos" y una tabla de precios.
 
 ---
 

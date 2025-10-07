@@ -1,6 +1,6 @@
 # Resumen de Implementación - Hero Section
 
-## 🎨 Sistema de Colores WebSnack - IMPLEMENTACIÓN AUTOMÁTICA
+## **[Diseño]** Sistema de Colores WebCode - IMPLEMENTACIÓN AUTOMÁTICA
 
 ### **Comando Crítico para Implementar Tema Rosa/Aguamarina**
 
@@ -8,22 +8,22 @@
 # 1. Inicializar shadcn/ui
 pnpm dlx shadcn@latest init
 
-# 2. Instalar tema personalizado WebSnack (Rosa/Aguamarina con efectos 3D)
+# 2. Instalar tema personalizado WebCode (Rosa/Aguamarina con efectos 3D)
 pnpm dlx shadcn@latest add https://tweakcn.com/r/themes/cmex1abh7000c04l4h2avft17
 
 # 3. Instalar componentes base con el tema
 pnpm dlx shadcn@latest add button card input form label textarea select
 ```
 
-### **Colores del Tema WebSnack Implementados Automáticamente**
+### **Colores del Tema WebCode Implementados Automáticamente**
 
-- **Primary**: `#dc7cb3` (Rosa principal WebSnack)
-- **Secondary**: `#bce3e5` (Aguamarina WebSnack)
+- **Primary**: `#dc7cb3` (Rosa principal WebCode)
+- **Secondary**: `#bce3e5` (Aguamarina WebCode)
 - **Accent**: `#fffcf7` (Crema suave)
 - **Sombras 3D**: Sistema de profundidad característico
 - **Dark Mode**: Adaptación automática completa
 
-### **⚠️ IMPORTANTE: Ejecutar ANTES de implementar componentes**
+### ****[Advertencia]** IMPORTANTE: Ejecutar ANTES de implementar componentes**
 
 Este comando debe ejecutarse **INMEDIATAMENTE** al iniciar el proyecto para asegurar que todos los componentes de la Hero Section usen el sistema de colores correcto.
 
@@ -33,7 +33,7 @@ Basado en el impacto en conversión y la importancia técnica, se recomienda imp
 
 ### 1. HeaderNavigation (Alta prioridad)
 
-- Logo WebSnack
+- Logo WebCode
 - Menú de navegación (Servicios, Proceso, Portfolio, Contacto)
 - Selector de idioma (ES/CA/EN)
 

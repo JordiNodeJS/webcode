@@ -1,6 +1,7 @@
 "use client";
 
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
+import { SingleEmojiToSvg } from "@/components/ui/emoji-to-svg";
 
 interface Canal {
   icono: string;
@@ -53,9 +54,12 @@ export default function CommunicationChannels({ canales }: CommunicationChannels
                     {/* Icono con efecto */}
                     <div className="relative flex-shrink-0">
                       <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center border border-primary/30 group-hover:border-primary/50 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
-                        <span className="text-4xl md:text-5xl transform group-hover:scale-110 transition-transform duration-300">
-                          {canal.icono}
-                        </span>
+                        <SingleEmojiToSvg 
+                          emoji={canal.icono} 
+                          size="xl" 
+                          variant="primary"
+                          className="transform group-hover:scale-110 transition-transform duration-300"
+                        />
                       </div>
                       <div className="absolute inset-0 rounded-2xl bg-primary/30 blur-lg opacity-0 group-hover:opacity-50 transition-all duration-500" />
                     </div>

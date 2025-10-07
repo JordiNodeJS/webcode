@@ -2,7 +2,7 @@
 applyTo: "**/*.{ts,tsx,js,jsx}"
 ---
 
-# Instrucciones para TypeScript y Mejores Prácticas WebSnack
+# Instrucciones para TypeScript y Mejores Prácticas WebCode
 
 ## Configuración TypeScript Estricta
 

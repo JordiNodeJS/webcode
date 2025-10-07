@@ -1,8 +1,8 @@
-# 🧠 Tutorial: Sistema de Memoria WebSnack
+# 🧠 Tutorial: Sistema de Memoria WebCode
 
 > **¡Nunca más expliques desde cero el estado de tu proyecto a un LLM!**
 
-## 🎯 **¿Qué es el Sistema de Memoria WebSnack?**
+## 🎯 **¿Qué es el Sistema de Memoria WebCode?**
 
 Un sistema automático que mantiene **contexto actualizado** de tu proyecto para que Claude, GPT y otros LLMs siempre sepan:
 
@@ -35,7 +35,7 @@ bash .github/automation/scripts/update-context.sh
 **Salida esperada:**
 
 ```
-🔄 Actualizando contexto del proyecto WebSnack...
+🔄 Actualizando contexto del proyecto WebCode...
 📊 Información del repositorio:
   - Rama actual: main
   - Último commit: abc1234 - feat: add new feature
@@ -85,7 +85,7 @@ Consulta el documento unificado para el setup, uso diario, comandos y ejemplos. 
 ### **`llms.txt`**
 
 ```markdown
-# WebSnack - Contexto Actualizado para LLMs
+# WebCode - Contexto Actualizado para LLMs
 
 ## Estado Actual del Desarrollo
 
@@ -270,14 +270,14 @@ chmod +x .git/hooks/pre-commit
 
 ## 🎉 **¡Ya Estás Listo!**
 
-Ahora tienes un **sistema de memoria persistente** para tu proyecto WebSnack. Cada nueva sesión con Claude será como continuar una conversación, no empezar desde cero.
+Ahora tienes un **sistema de memoria persistente** para tu proyecto WebCode. Cada nueva sesión con Claude será como continuar una conversación, no empezar desde cero.
 
 ### **🎯 Próximos Pasos**
 
 1. ✅ Sistema configurado y funcionando
 2. 🔄 Usar regularmente en tu workflow diario
 3. 🚀 Inicializar proyecto Next.js 15 con contexto automático
-4. 🎯 Desarrollar WebSnack con LLMs super-informados
+4. 🎯 Desarrollar WebCode con LLMs super-informados
 
 ---
 

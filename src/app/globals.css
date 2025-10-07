@@ -147,7 +147,7 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-/* Sombras 3D del Sistema WAS - WebSnack Animation System */
+/* Sombras 3D del Sistema WAS - WebCode Animation System */
 :root {
   --shadow-3d-xs: 2px 2px 0px 0px oklch(0.57 0.2 328.5 / 0.4);
   --shadow-3d-sm: 3px 3px 0px 0px oklch(0.57 0.2 328.5 / 0.6);
@@ -837,6 +837,167 @@ main > section:first-of-type {
 }
 
 /* footer styles moved to Footer.Section.module.css */
+
+/* Clases faltantes identificadas */
+.cloud-lightning-background {
+  background: linear-gradient(
+    135deg,
+    oklch(var(--primary) / 0.1) 0%,
+    oklch(var(--secondary) / 0.08) 25%,
+    oklch(var(--background) / 0.95) 50%,
+    oklch(var(--accent) / 0.06) 75%,
+    oklch(var(--primary) / 0.1) 100%
+  );
+}
+
+.neon-theme-soft {
+  text-shadow: 
+    0 0 5px oklch(var(--primary) / 0.3),
+    0 0 10px oklch(var(--primary) / 0.2),
+    0 0 15px oklch(var(--primary) / 0.1);
+  filter: brightness(1.1) contrast(1.05);
+}
+
+
+/* ===========================================
+   FOOTER GLASS MORPHISM - WEBCODE
+   ===========================================
+
+   Efecto glassmorphism avanzado con tinte turquesa sutil
+   - Misma apariencia turquesa sutil en ambos modos (claro y oscuro)
+   - Alta especificidad para máxima prioridad
+   - Soporte completo para modo claro y oscuro
+   - Optimizado para rendimiento y accesibilidad
+   =========================================== */
+
+/* Variables CSS para el footer glass */
+:root {
+  /* Colores turquesa consistentes para ambos modos */
+  --footer-background-light: rgba(
+    64,
+    224,
+    208,
+    0.02
+  ); /* Turquesa sutil para modo claro */
+  --footer-background-dark: rgba(
+    64,
+    224,
+    208,
+    0.03
+  ); /* Turquesa sutil para modo oscuro */
+
+  /* Bordes sutiles */
+  --footer-border-light: oklch(var(--secondary) / 0.03);
+  --footer-border-dark: rgba(64, 224, 208, 0.06);
+
+  /* Sombras inset con tinte verde */
+  --footer-inset-top-light: oklch(var(--secondary) / 0.02);
+  --footer-inset-bottom-light: oklch(var(--secondary) / 0.01);
+  --footer-inset-top-dark: rgba(64, 224, 208, 0.05);
+  --footer-inset-bottom-dark: rgba(64, 224, 208, 0.02);
+
+  /* Efectos glass */
+  --footer-glass-blur: 25px;
+  --footer-glass-saturate: 200%;
+  --footer-glass-brightness: 1.3;
+  --footer-glass-hue: 3deg;
+
+  /* Sombras externas */
+  --footer-shadow-primary: 0 40px 100px rgba(0, 0, 0, 0.6);
+  --footer-shadow-secondary: 0 20px 50px rgba(0, 0, 0, 0.4);
+  --footer-shadow-dark-primary: 0 40px 100px rgba(0, 0, 0, 0.8);
+  --footer-shadow-dark-secondary: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* ===========================================
+   FOOTER - MODO CLARO
+   =========================================== */
+html body main + footer.footer-verdoso.footer-verdoso-test {
+  /* === LAYOUT & POSITIONING === */
+  position: relative;
+  z-index: 20;
+
+  /* === BACKGROUND & TRANSPARENCY === */
+  background: var(
+    --footer-background-dark
+  ); /* Turquesa sutil como modo oscuro */
+
+  /* === GLASS MORPHISM EFFECTS === */
+  backdrop-filter: blur(var(--footer-glass-blur))
+    saturate(var(--footer-glass-saturate))
+    brightness(var(--footer-glass-brightness))
+    hue-rotate(var(--footer-glass-hue));
+  -webkit-backdrop-filter: blur(var(--footer-glass-blur))
+    saturate(var(--footer-glass-saturate))
+    brightness(var(--footer-glass-brightness))
+    hue-rotate(var(--footer-glass-hue));
+
+  /* === BORDERS === */
+  /* Avoid double border: remove global full border and keep only visual separators inside the component */
+  border-top: none;
+
+  /* === SHADOWS & DEPTH === */
+  box-shadow:
+    var(--footer-shadow-primary),
+    var(--footer-shadow-secondary),
+    inset 0 1px 0 var(--footer-inset-top-dark),
+    inset 0 -1px 0 var(--footer-inset-bottom-dark);
+}
+
+/* ===========================================
+   FOOTER - MODO OSCURO
+   =========================================== */
+html.dark body main + footer.footer-verdoso.footer-verdoso-test {
+  /* === LAYOUT & POSITIONING === */
+  position: relative;
+  z-index: 20;
+
+  /* === BACKGROUND & TRANSPARENCY === */
+  background: var(--footer-background-dark); /* Turquesa sutil */
+
+  /* === GLASS MORPHISM EFFECTS === */
+  backdrop-filter: blur(var(--footer-glass-blur))
+    saturate(var(--footer-glass-saturate))
+    brightness(var(--footer-glass-brightness))
+    hue-rotate(var(--footer-glass-hue));
+  -webkit-backdrop-filter: blur(var(--footer-glass-blur))
+    saturate(var(--footer-glass-saturate))
+    brightness(var(--footer-glass-brightness))
+    hue-rotate(var(--footer-glass-hue));
+
+  /* === BORDERS === */
+  /* Avoid double border: remove global full border and keep only visual separators inside the component */
+  border-top: none;
+
+  /* === SHADOWS & DEPTH === */
+  box-shadow:
+    var(--footer-shadow-dark-primary),
+    var(--footer-shadow-dark-secondary),
+    inset 0 1px 0 var(--footer-inset-top-dark),
+    inset 0 -1px 0 var(--footer-inset-bottom-dark);
+}
+
+/* Mejora del efecto en pantallas grandes */
+@media (min-width: 1024px) {
+  html body main + footer.footer-verdoso.footer-verdoso-test {
+    --footer-glass-blur: 30px;
+  }
+
+  html.dark body main + footer.footer-verdoso.footer-verdoso-test {
+    --footer-glass-blur: 30px;
+  }
+}
+
+/* Optimización para pantallas pequeñas */
+@media (max-width: 640px) {
+  html body main + footer.footer-verdoso.footer-verdoso-test {
+    --footer-glass-blur: 20px;
+  }
+
+  html.dark body main + footer.footer-verdoso.footer-verdoso-test {
+    --footer-glass-blur: 20px;
+  }
+}
 
 /* Animaciones de accordion con efecto muelle */
 .animate-accordion-down {

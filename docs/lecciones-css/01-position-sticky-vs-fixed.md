@@ -1,13 +1,13 @@
 # Lección de Arquitectura CSS: position sticky vs fixed
 
-## 🎯 **Principio Fundamental**
+## **[Objetivos]** **Principio Fundamental**
 
 Para headers de navegación que deben permanecer visibles al hacer scroll:
 
 - **`position: sticky`** → Opción semánticamente correcta y preferida
 - **`position: fixed`** → Fallback cuando sticky no funciona
 
-## 🔍 **¿Por qué sticky puede fallar?**
+## **[Búsqueda]** **¿Por qué sticky puede fallar?**
 
 ### **Causas comunes:**
 
@@ -16,9 +16,9 @@ Para headers de navegación que deben permanecer visibles al hacer scroll:
 3. **Contenedor padre** sin suficiente altura
 4. **Transformaciones CSS** en elementos padre
 
-## ✅ **Solución Elegante: Principio de Responsabilidad Única**
+## **[Completado]** **Solución Elegante: Principio de Responsabilidad Única**
 
-### **❌ ANTES: overflow-hidden "global" que bloquea todo**
+### ****[Error]** ANTES: overflow-hidden "global" que bloquea todo**
 
 ```tsx
 <section className="... overflow-hidden">
@@ -27,7 +27,7 @@ Para headers de navegación que deben permanecer visibles al hacer scroll:
 </section>
 ```
 
-### **✅ DESPUÉS: overflow-hidden específico donde se necesita**
+### ****[Completado]** DESPUÉS: overflow-hidden específico donde se necesita**
 
 ```tsx
 <section className="..."> {/* sin overflow-hidden */}
@@ -37,7 +37,7 @@ Para headers de navegación que deben permanecer visibles al hacer scroll:
 </section>
 ```
 
-## 📚 **Ventajas de position: sticky**
+## **[Recursos]** **Ventajas de position: sticky**
 
 1. **Mejor rendimiento** - El navegador optimiza mejor sticky que fixed
 2. **Comportamiento natural** - Se comporta como `relative` hasta que necesita "pegarse"
@@ -58,7 +58,7 @@ Para headers de navegación que deben permanecer visibles al hacer scroll:
 - Necesitas posicionamiento absoluto relativo al viewport
 - El elemento debe permanecer fijo independientemente del scroll
 
-## 🎯 **Caso de Estudio: WebSnack Header**
+## **[Objetivos]** **Caso de Estudio: WebCode Header**
 
 ### **Problema inicial:**
 
@@ -80,14 +80,14 @@ Para headers de navegación que deben permanecer visibles al hacer scroll:
 </section>
 ```
 
-## 🏗️ **Arquitectura CSS Recomendada**
+## **[Arquitectura]** **Arquitectura CSS Recomendada**
 
 1. **Contención específica** - Cada componente maneja su propio overflow
 2. **Principio de responsabilidad única** - Un componente, una responsabilidad
 3. **Evitar overflow global** - Solo aplicar donde realmente se necesita
 4. **Preferir sticky sobre fixed** - Usar la propiedad CSS correcta para el propósito
 
-## 📝 **Checklist para Headers Sticky**
+## **[Documentación]** **Checklist para Headers Sticky**
 
 - [ ] Verificar que no hay `overflow: hidden` en contenedores padre
 - [ ] Comprobar que no hay `z-index` conflictivos
@@ -99,5 +99,5 @@ Para headers de navegación que deben permanecer visibles al hacer scroll:
 ---
 
 **Fecha:** 2025-01-03  
-**Proyecto:** WebSnack  
+**Proyecto:** WebCode  
 **Contexto:** Refactorización de Hero.HeaderNavigation.tsx

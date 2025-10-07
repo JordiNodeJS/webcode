@@ -27,14 +27,14 @@ Este prompt proporciona directrices basadas en experiencia real de optimización
 4. **Transform animations** en muchos elementos simultáneamente
 5. **Animaciones que nunca se detienen** (sin hover, sin scroll triggers)
 
-## ✅ Reglas de Oro para Animaciones
+## **[Completado]** Reglas de Oro para Animaciones
 
 ### 1. **Principio de Necesidad**
 ```tsx
-// ❌ MAL: Animación continua innecesaria
+// **[Error]** MAL: Animación continua innecesaria
 <div className="bg-primary/20 rounded-full blur-3xl animate-pulse" />
 
-// ✅ BIEN: Fondo estático (mismo efecto visual, 0% CPU)
+// **[Completado]** BIEN: Fondo estático (mismo efecto visual, 0% CPU)
 <div className="bg-primary/20 rounded-full blur-2xl" />
 ```
 
@@ -45,15 +45,15 @@ Este prompt proporciona directrices basadas en experiencia real de optimización
 ### 2. **Animaciones Solo con Triggers**
 
 ```tsx
-// ❌ MAL: Animación constante
+// **[Error]** MAL: Animación constante
 <div className="animate-ping opacity-20" />
 
-// ✅ BIEN: Animación solo en hover
+// **[Completado]** BIEN: Animación solo en hover
 <div className="group">
   <div className="opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
 </div>
 
-// ✅ MEJOR: Animación solo en estado activo
+// **[Completado]** MEJOR: Animación solo en estado activo
 <button className={cn(
   "transition-all duration-300",
   isLoading && "animate-pulse"
@@ -72,12 +72,12 @@ Este prompt proporciona directrices basadas en experiencia real de optimización
 ### 3. **Límite de Elementos Animados**
 
 ```tsx
-// ❌ MAL: 20+ elementos animándose simultáneamente
+// **[Error]** MAL: 20+ elementos animándose simultáneamente
 {backgrounds.map(bg => (
   <div key={bg.id} className="animate-blob blur-3xl" />
 ))}
 
-// ✅ BIEN: Máximo 3-5 elementos animados
+// **[Completado]** BIEN: Máximo 3-5 elementos animados
 <div className="absolute top-0 left-0 w-96 h-96 bg-primary/10 blur-2xl" />
 <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/10 blur-2xl" />
 // Solo 2 elementos estáticos, 0 animados
@@ -91,13 +91,13 @@ Este prompt proporciona directrices basadas en experiencia real de optimización
 ### 4. **Optimización de Blur**
 
 ```tsx
-// ❌ MAL: Blur muy pesado (alto costo GPU)
+// **[Error]** MAL: Blur muy pesado (alto costo GPU)
 <div className="backdrop-blur-3xl blur-3xl" />
 
-// ✅ BIEN: Blur moderado
+// **[Completado]** BIEN: Blur moderado
 <div className="backdrop-blur-md blur-2xl" />
 
-// ✅ MEJOR: Blur solo cuando es necesario
+// **[Completado]** MEJOR: Blur solo cuando es necesario
 <div className="bg-card/90 backdrop-blur-sm" />
 ```
 
@@ -111,7 +111,7 @@ Este prompt proporciona directrices basadas en experiencia real de optimización
 ### 5. **Clases de Animación Prohibidas (sin trigger)**
 
 ```tsx
-// ❌ PROHIBIDO: Animaciones continuas sin trigger
+// **[Error]** PROHIBIDO: Animaciones continuas sin trigger
 "animate-spin"       // Solo para loaders activos
 "animate-ping"       // Solo con hover o estados
 "animate-pulse"      // Solo para skeleton loaders
@@ -119,7 +119,7 @@ Este prompt proporciona directrices basadas en experiencia real de optimización
 "animate-blob"       // Evitar completamente (custom)
 "animate-shimmer"    // Solo con hover
 
-// ✅ PERMITIDO: Animaciones con trigger
+// **[Completado]** PERMITIDO: Animaciones con trigger
 "hover:animate-pulse"
 "data-loading:animate-spin"
 "group-hover:animate-bounce"
@@ -128,24 +128,24 @@ Este prompt proporciona directrices basadas en experiencia real de optimización
 ### 6. **Animaciones CSS vs JavaScript**
 
 ```tsx
-// ✅ PREFERIDO: CSS transitions (GPU accelerated)
+// **[Completado]** PREFERIDO: CSS transitions (GPU accelerated)
 className="transition-all duration-300 hover:scale-110"
 
-// ❌ EVITAR: JavaScript animations constantes
+// **[Error]** EVITAR: JavaScript animations constantes
 useEffect(() => {
   const interval = setInterval(() => {
     setRotation(r => r + 1); // Re-render cada frame!
   }, 16);
 }, []);
 
-// ✅ ALTERNATIVA: CSS + clases condicionales
+// **[Completado]** ALTERNATIVA: CSS + clases condicionales
 className={cn(
   "transition-transform duration-300",
   isActive && "rotate-180"
 )}
 ```
 
-## 📋 Checklist de Optimización
+## **[Lista]** Checklist de Optimización
 
 ### Antes de Añadir Animaciones
 
@@ -183,11 +183,11 @@ console.log('DOM Interactive:', perfData.domInteractive);
 console.log('DOM Complete:', perfData.domComplete);
 ```
 
-## 🎯 Patrones de Optimización
+## **[Objetivos]** Patrones de Optimización
 
 ### Pattern 1: Background Decorativo
 ```tsx
-// ❌ ANTES: Múltiples blobs animados
+// **[Error]** ANTES: Múltiples blobs animados
 <section className="relative">
   <div className="absolute top-0 left-0 w-96 h-96 bg-primary/10 blur-3xl animate-pulse" />
   <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/10 blur-3xl animate-pulse animation-delay-2000" />
@@ -195,7 +195,7 @@ console.log('DOM Complete:', perfData.domComplete);
   <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/10 blur-3xl animate-blob animation-delay-4000" />
 </section>
 
-// ✅ DESPUÉS: Máximo 2 elementos estáticos
+// **[Completado]** DESPUÉS: Máximo 2 elementos estáticos
 <section className="relative">
   {/* Gradiente de fondo */}
   <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-secondary/10" />
@@ -210,17 +210,17 @@ console.log('DOM Complete:', perfData.domComplete);
 
 ### Pattern 2: Loading States
 ```tsx
-// ❌ MAL: Spinner siempre visible y animado
-<div className="animate-spin">🔄</div>
+// **[Error]** MAL: Spinner siempre visible y animado
+<div className="animate-spin">**[Recargar]**</div>
 
-// ✅ BIEN: Spinner solo cuando está cargando
+// **[Completado]** BIEN: Spinner solo cuando está cargando
 {isLoading && (
   <div className="animate-spin">
     <LoaderIcon />
   </div>
 )}
 
-// ✅ MEJOR: Skeleton loader específico
+// **[Completado]** MEJOR: Skeleton loader específico
 <div className={cn(
   "h-20 rounded-lg",
   isLoading ? "animate-pulse bg-muted" : "bg-card"
@@ -231,19 +231,19 @@ console.log('DOM Complete:', perfData.domComplete);
 
 ### Pattern 3: Hover Effects (sin animaciones continuas)
 ```tsx
-// ❌ MAL: Badge con ping continuo
+// **[Error]** MAL: Badge con ping continuo
 <div className="relative">
   <span>Nuevo</span>
   <div className="absolute inset-0 animate-ping opacity-20" />
 </div>
 
-// ✅ BIEN: Efecto solo en hover
+// **[Completado]** BIEN: Efecto solo en hover
 <div className="group relative">
   <span>Nuevo</span>
   <div className="absolute inset-0 scale-0 group-hover:scale-100 transition-transform duration-300 opacity-20" />
 </div>
 
-// ✅ MEJOR: Glow effect solo con CSS
+// **[Completado]** MEJOR: Glow effect solo con CSS
 <div className="relative transition-all duration-300 hover:shadow-lg hover:shadow-primary/50">
   <span>Nuevo</span>
 </div>
@@ -251,7 +251,7 @@ console.log('DOM Complete:', perfData.domComplete);
 
 ### Pattern 4: Card Interactions
 ```tsx
-// ❌ MAL: Múltiples layers con animaciones y blurs
+// **[Error]** MAL: Múltiples layers con animaciones y blurs
 <div className="relative group">
   <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary opacity-20 blur-xl animate-gradient-x" />
   <div className="relative bg-card/80 backdrop-blur-3xl">
@@ -260,7 +260,7 @@ console.log('DOM Complete:', perfData.domComplete);
   </div>
 </div>
 
-// ✅ BIEN: Efectos simples y eficientes
+// **[Completado]** BIEN: Efectos simples y eficientes
 <div className="group relative bg-card/90 backdrop-blur-sm border-2 border-primary/20 rounded-2xl transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/20">
   {children}
 </div>
@@ -268,16 +268,16 @@ console.log('DOM Complete:', perfData.domComplete);
 
 ### Pattern 5: Timeline Connectors
 ```tsx
-// ❌ MAL: Línea con gradiente animado
+// **[Error]** MAL: Línea con gradiente animado
 <div className="absolute top-0 h-full w-1 overflow-hidden">
   <div className="absolute inset-0 bg-gradient-to-b from-primary via-secondary to-primary animate-shimmer bg-[length:100%_200%]" />
 </div>
 
-// ✅ BIEN: Línea estática con buen diseño
+// **[Completado]** BIEN: Línea estática con buen diseño
 <div className="absolute top-0 h-full w-1 bg-gradient-to-b from-primary/20 via-primary to-primary/20 rounded-full" />
 ```
 
-## 🔍 Herramientas de Diagnóstico
+## **[Búsqueda]** Herramientas de Diagnóstico
 
 ### Chrome DevTools Performance Panel
 
@@ -312,18 +312,18 @@ const performanceAnalysis = () => {
   // Scoring
   if (animated.length > 5) {
     analysis.score -= (animated.length - 5) * 5;
-    analysis.issues.push(`⚠️ Demasiados elementos animados: ${animated.length} (máximo recomendado: 5)`);
+    analysis.issues.push(`**[Advertencia]** Demasiados elementos animados: ${animated.length} (máximo recomendado: 5)`);
   }
   
   if (blur.length > 10) {
     analysis.score -= (blur.length - 10) * 2;
-    analysis.issues.push(`⚠️ Demasiados blur effects: ${blur.length} (máximo recomendado: 10)`);
+    analysis.issues.push(`**[Advertencia]** Demasiados blur effects: ${blur.length} (máximo recomendado: 10)`);
   }
   
   const blur3xl = document.querySelectorAll('[class*="blur-3xl"]');
   if (blur3xl.length > 0) {
     analysis.score -= blur3xl.length * 10;
-    analysis.issues.push(`❌ Blur-3xl detectado: ${blur3xl.length} elementos (muy costoso GPU)`);
+    analysis.issues.push(`**[Error]** Blur-3xl detectado: ${blur3xl.length} elementos (muy costoso GPU)`);
   }
   
   // Report
@@ -335,10 +335,10 @@ const performanceAnalysis = () => {
   console.log(`Gradientes: ${analysis.gradientElements}`);
   
   if (analysis.issues.length > 0) {
-    console.log('\n⚠️ ISSUES ENCONTRADOS:');
+    console.log('\n**[Advertencia]** ISSUES ENCONTRADOS:');
     analysis.issues.forEach(issue => console.log(issue));
   } else {
-    console.log('\n✅ No se encontraron problemas de rendimiento');
+    console.log('\n**[Completado]** No se encontraron problemas de rendimiento');
   }
   
   return analysis;
@@ -347,7 +347,7 @@ const performanceAnalysis = () => {
 performanceAnalysis();
 ```
 
-## 📊 Métricas de Referencia
+## **[Análisis]** Métricas de Referencia
 
 ### Performance Targets
 
@@ -376,46 +376,46 @@ performanceAnalysis();
 
 **Reducción**: **83% menos elementos animados**, **~75% menos CPU/GPU usage**
 
-## 🎨 Alternativas sin Animaciones
+## **[Diseño]** Alternativas sin Animaciones
 
 ### En lugar de `animate-pulse`
 ```tsx
-// ❌ animate-pulse continuo
+// **[Error]** animate-pulse continuo
 <div className="bg-primary/20 animate-pulse" />
 
-// ✅ Gradiente estático bien diseñado
+// **[Completado]** Gradiente estático bien diseñado
 <div className="bg-gradient-to-br from-primary/20 via-primary/10 to-transparent" />
 ```
 
 ### En lugar de `animate-blob`
 ```tsx
-// ❌ Blob animado
+// **[Error]** Blob animado
 <div className="absolute bg-primary/10 blur-3xl animate-blob" />
 
-// ✅ Múltiples blobs estáticos con posiciones estratégicas
+// **[Completado]** Múltiples blobs estáticos con posiciones estratégicas
 <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 blur-2xl rounded-full" />
 <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 blur-2xl rounded-full" />
 ```
 
 ### En lugar de `animate-shimmer`
 ```tsx
-// ❌ Shimmer animado
+// **[Error]** Shimmer animado
 <div className="bg-gradient-to-r from-transparent via-primary to-transparent animate-shimmer" />
 
-// ✅ Gradiente estático con buen diseño
+// **[Completado]** Gradiente estático con buen diseño
 <div className="bg-gradient-to-r from-primary/20 via-primary to-primary/20" />
 ```
 
 ### En lugar de `animate-bounce`
 ```tsx
-// ❌ Bounce continuo
-<div className="animate-bounce">🚀</div>
+// **[Error]** Bounce continuo
+<div className="animate-bounce">**[Lanzamiento]**</div>
 
-// ✅ Estático o scale en hover
-<div className="transition-transform hover:scale-110">🚀</div>
+// **[Completado]** Estático o scale en hover
+<div className="transition-transform hover:scale-110">**[Lanzamiento]**</div>
 ```
 
-## 📝 Template de Revisión de Código
+## **[Documentación]** Template de Revisión de Código
 
 Al revisar animaciones en PRs, usar este checklist:
 
@@ -450,7 +450,7 @@ Al revisar animaciones en PRs, usar este checklist:
 - [ ] ¿Se puede reducir el número de layers?
 ```
 
-## 🚀 Guía de Implementación
+## **[Lanzamiento]** Guía de Implementación
 
 ### Paso 1: Auditar Página Existente
 
@@ -502,7 +502,7 @@ document.querySelectorAll('[class*="animate-"]').forEach((el, i) => {
 4. Run Lighthouse
 5. Verificar Performance Score > 90
 
-## 📚 Referencias y Recursos
+## **[Recursos]** Referencias y Recursos
 
 ### Documentación
 - [CSS Triggers](https://csstriggers.com/) - Qué properties causan repaints
@@ -521,23 +521,23 @@ document.querySelectorAll('[class*="animate-"]').forEach((el, i) => {
 - Lighthouse CI
 - [Web Vitals Extension](https://chrome.google.com/webstore/detail/web-vitals)
 
-## ⚡ Resumen Ejecutivo
+## **[Rendimiento]** Resumen Ejecutivo
 
-### ❌ NO HACER
+### **[Error]** NO HACER
 1. Animaciones continuas decorativas (pulse, blob, shimmer)
 2. Más de 5 elementos animados simultáneamente
 3. blur-3xl en múltiples elementos
 4. Animaciones sin triggers de usuario
 5. JavaScript para animaciones que CSS puede hacer
 
-### ✅ HACER
+### **[Completado]** HACER
 1. Animaciones con propósito (loading, feedback)
 2. Triggers claros (hover, focus, estado)
 3. blur-2xl o menor, máximo 10 elementos
 4. CSS transitions simples (<300ms)
 5. Probar con Performance Panel antes de merge
 
-### 🎯 Objetivo
+### **[Objetivos]** Objetivo
 **CPU/GPU en idle < 30%** | **Lighthouse Performance > 90** | **0 frame drops en scroll**
 
 ---

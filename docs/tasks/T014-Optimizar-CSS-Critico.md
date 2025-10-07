@@ -1,6 +1,6 @@
-# 📝 TAREA INDIVIDUAL - OPTIMIZAR CSS CRÍTICO
+# **[Documentación]** TAREA INDIVIDUAL - OPTIMIZAR CSS CRÍTICO
 
-## 🏷️ METADATOS DE LA TAREA
+## **[Etiqueta]** METADATOS DE LA TAREA
 
 **ID:** T014  
 **Título:** Optimizar CSS Crítico - Inline y Defer  
@@ -8,17 +8,17 @@
 **Fecha de última actualización:** 2025-01-04  
 **Estado:** pendiente  
 **Progreso:** 0%  
-**Prioridad:** 🔴 Crítica  
+**Prioridad:** **[Círculo Rojo]** Crítica  
 **Estimación:** 2-3 horas  
 **Asignado a:** Desarrollador
 
-## 🔗 DEPENDENCIAS
+## **[Enlace]** DEPENDENCIAS
 
 **Dependencias de entrada:** ninguna  
 **Dependencias de salida:** T016, T020  
 **Bloqueos identificados:** ninguno
 
-## 📋 DESCRIPCIÓN DETALLADA
+## **[Lista]** DESCRIPCIÓN DETALLADA
 
 El análisis de rendimiento identificó dos archivos CSS render-blocking que causan un delay de 116ms en el LCP:
 - `b293efcda1e9eeca.css` (58ms)
@@ -28,7 +28,7 @@ El análisis de rendimiento identificó dos archivos CSS render-blocking que cau
 
 **Objetivo:** Optimizar la carga de CSS para eliminar render-blocking y mejorar LCP en 116ms.
 
-## 🎯 CRITERIOS DE ACEPTACIÓN
+## **[Objetivos]** CRITERIOS DE ACEPTACIÓN
 
 - [ ] CSS crítico inline en el head
 - [ ] CSS no crítico cargado de forma diferida
@@ -37,7 +37,7 @@ El análisis de rendimiento identificó dos archivos CSS render-blocking que cau
 - [ ] No se produce FOUC (Flash of Unstyled Content)
 - [ ] Funcionalidad visual preservada
 
-## 📊 SUBTAREAS
+## **[Análisis]** SUBTAREAS
 
 ### T014.1: Identificar CSS crítico para inline
 
@@ -107,21 +107,21 @@ El análisis de rendimiento identificó dos archivos CSS render-blocking que cau
 - [ ] No FOUC
 - [ ] Tests visuales pasando
 
-## 📝 NOTAS Y OBSERVACIONES
+## **[Documentación]** NOTAS Y OBSERVACIONES
 
 - El CSS crítico debe incluir estilos para above-the-fold content
 - Considerar usar herramientas automatizadas para extraer CSS crítico
 - Debe asegurarse que Tailwind CSS se optimiza correctamente
 - Verificar que los estilos de tema (dark/light) funcionan correctamente
 
-## 🔄 LOG DE CAMBIOS
+## **[Recargar]** LOG DE CAMBIOS
 
 **[2025-01-04 14:30]** Tarea creada basada en análisis de rendimiento
 **[2025-01-04 14:30]** Definidos criterios de aceptación y subtareas
 
 ---
 
-## 📈 MÉTRICAS DE PROGRESO
+## **[Crecimiento]** MÉTRICAS DE PROGRESO
 
 **Tiempo invertido:** 0 horas  
 **Archivos modificados:** 0 archivos  
@@ -129,7 +129,7 @@ El análisis de rendimiento identificó dos archivos CSS render-blocking que cau
 **Bugs encontrados:** 0 bugs  
 **Bugs resueltos:** 0 bugs
 
-## ✅ CHECKLIST DE FINALIZACIÓN
+## **[Completado]** CHECKLIST DE FINALIZACIÓN
 
 - [ ] Todas las subtareas completadas
 - [ ] Criterios de aceptación cumplidos

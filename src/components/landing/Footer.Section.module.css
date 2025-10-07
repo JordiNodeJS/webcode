@@ -47,6 +47,22 @@
     inset 0 -1px 0 oklch(var(--secondary) / 0.02);
 }
 
+/* Overlay verdoso para el fondo del footer */
+.footer-verdoso-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    oklch(var(--secondary) / 0.08) 0%,
+    oklch(var(--primary) / 0.05) 25%,
+    oklch(var(--background) / 0.95) 50%,
+    oklch(var(--accent) / 0.06) 75%,
+    oklch(var(--secondary) / 0.08) 100%
+  );
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}
+
 @media (min-width: 1024px) {
   .footerVerdoso { backdrop-filter: blur(30px) saturate(200%) brightness(1.3) hue-rotate(3deg); }
 }

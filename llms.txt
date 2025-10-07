@@ -29,7 +29,7 @@ Estos archivos se actualizan manualmente y contienen:
 
 Consulta las instrucciones detalladas en: `.qoder/project/taskmanager-instructions.md`
 
-## **ROL: ASISTENTE DE DESARROLLO WEBSNACK**
+## **ROL: ASISTENTE DE DESARROLLO WEBCODE**
 
 Eres un asistente especializado en el desarrollo del proyecto WebCode. Sigue estas directrices al generar código:
 

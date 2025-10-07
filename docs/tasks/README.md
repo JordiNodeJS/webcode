@@ -1,19 +1,19 @@
-# 📋 Documentación de Tareas - WebSnack
+# **[Lista]** Documentación de Tareas - WebCode
 
-## 🎯 Propósito
+## **[Objetivos]** Propósito
 
-Esta carpeta contiene la documentación detallada de todas las tareas realizadas en el proyecto WebSnack, con un enfoque especial en la refactorización de componentes Hero y el desarrollo de la landing page.
+Esta carpeta contiene la documentación detallada de todas las tareas realizadas en el proyecto WebCode, con un enfoque especial en la refactorización de componentes Hero y el desarrollo de la landing page.
 
-## 📂 Estructura de Documentación
+## **[Carpeta Abierta]** Estructura de Documentación
 
-### 📄 Archivos Principales
+### **[Documento]** Archivos Principales
 
 - **[TASK-INDEX-2025-01-03.md](./TASK-INDEX-2025-01-03.md)** - Índice maestro de tareas Hero Components Refactoring
 - **[TASK-INDEX-PERFORMANCE-2025-01-04.md](./TASK-INDEX-PERFORMANCE-2025-01-04.md)** - Índice maestro de optimización de rendimiento
 - **[CHANGE-LOG.md](./CHANGE-LOG.md)** - Registro histórico de cambios y actualizaciones
 - **[TASK-TEMPLATE.md](./TASK-TEMPLATE.md)** - Plantilla para crear nuevas tareas
 
-### 📋 Tareas Específicas
+### **[Lista]** Tareas Específicas
 
 - **[T001-Hero-ValuePropsGrid-Refactor.md](./T001-Hero-ValuePropsGrid-Refactor.md)** - Refactorización del componente ValuePropsGrid
 - **[T002-Hero-HeaderNavigation-Optimization.md](./T002-Hero-HeaderNavigation-Optimization.md)** - Optimización del componente HeaderNavigation
@@ -25,7 +25,7 @@ Esta carpeta contiene la documentación detallada de todas las tareas realizadas
 - **[T011-Refactor-Hero-HeaderNavigation-safe-effects.md](./T011-Refactor-Hero-HeaderNavigation-safe-effects.md)** - Refactorizar HeaderNavigation para efectos seguros SSR/CSR
 - **[T012-Verificacion-Alineacion-Wireframe.md](./T012-Verificacion-Alineacion-Wireframe.md)** - Verificación de alineación con wireframe
 
-### 🚀 Tareas de Optimización de Rendimiento
+### **[Lanzamiento]** Tareas de Optimización de Rendimiento
 
 - **[T013-Eliminar-Render-Blocking-JS.md](./T013-Eliminar-Render-Blocking-JS.md)** - Eliminar render-blocking JavaScript
 - **[T014-Optimizar-CSS-Critico.md](./T014-Optimizar-CSS-Critico.md)** - Optimizar CSS crítico (inline/defer)
@@ -33,20 +33,20 @@ Esta carpeta contiene la documentación detallada de todas las tareas realizadas
 - **[T016-Implementar-Lazy-Loading.md](./T016-Implementar-Lazy-Loading.md)** - Implementar lazy loading de componentes
 - **[T022-Validar-Mejoras-Rendimiento.md](./T022-Validar-Mejoras-Rendimiento.md)** - Validar mejoras de rendimiento
 
-### 📊 Documentos de Análisis
+### **[Análisis]** Documentos de Análisis
 
 - **[mismatch-results.md](./mismatch-results.md)** - Análisis de componentes con potencial de mismatch SSR/CSR
 
-### 📊 Documentos de Estado
+### **[Análisis]** Documentos de Estado
 
 - **[STATUS-ACTUAL-2025-09-03.md](./STATUS-ACTUAL-2025-09-03.md)** - Estado actual del proyecto al 03/09/2025
 
-## 📈 Convenciones de Nomenclatura
+## **[Crecimiento]** Convenciones de Nomenclatura
 
 - **TXXX**: Tareas principales (T001, T002, etc.)
 - **TXXX.Y**: Subtareas (T001.1, T001.2, etc.)
 
-## 🎯 Estados de Tareas
+## **[Objetivos]** Estados de Tareas
 
 - **pendiente** - Tarea identificada pero no iniciada
 - **en progreso** - Tarea en desarrollo
@@ -54,7 +54,7 @@ Esta carpeta contiene la documentación detallada de todas las tareas realizadas
 - **bloqueada** - Tarea impedida por dependencias
 - **cancelada** - Tarea descartada
 
-## 📝 Criterios de Documentación
+## **[Documentación]** Criterios de Documentación
 
 Cada tarea debe incluir:
 
@@ -67,7 +67,7 @@ Cada tarea debe incluir:
 7. **Log de cambios** - Historial de modificaciones
 8. **Checklist** - Verificación final de completitud
 
-## 🔧 Mantenimiento
+## **[Herramientas]** Mantenimiento
 
 Esta documentación se actualiza con cada cambio significativo en el proyecto. Para añadir una nueva tarea, utilizar la plantilla [TASK-TEMPLATE.md](./TASK-TEMPLATE.md).
 

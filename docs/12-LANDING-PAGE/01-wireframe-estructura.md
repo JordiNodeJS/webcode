@@ -1,15 +1,15 @@
-# WebSnack - Landing Page Wireframe & Content Structure
+# WebCode - Landing Page Wireframe & Content Structure
 
-> Basado en PRD-WEBSNACK-V1.0.md - Esquema completo para la landing page
+> Basado en PRD-WEBCODE-V1.0.md - Esquema completo para la landing page
 
 ---
 
-## 🎯 Hero Section (Above the Fold)
+## **[Objetivos]** Hero Section (Above the Fold)
 
 ### Header Navigation
 
 ```
-[LOGO WebSnack]    [Servicios] [Proceso] [Portfolio] [Contacto] [ES/CA/EN]
+[LOGO WebCode]    [Servicios] [Proceso] [Portfolio] [Contacto] [ES/CA/EN]
 ```
 
 ### Hero Content
@@ -30,7 +30,7 @@ pequeñas empresas y startups en Barcelona y España
 
 **Value Props (Grid 3 columnas):**
 
-| 🚀 **Tecnología 2025**          | ⚡ **Performance Garantizado** | 📱 **Mobile-First**     |
+| **[Lanzamiento]** **Tecnología 2025**          | **[Rendimiento]** **Performance Garantizado** | **[Móvil]** **Mobile-First**     |
 | ------------------------------- | ------------------------------ | ----------------------- |
 | • Next.js 15 - App Router       | • <2.5s tiempo de carga        | • Responsive design     |
 | • React 19 - Server Components  | • 99.9% uptime garantizado     | • Accesible WCAG 2.1 AA |
@@ -51,7 +51,7 @@ pequeñas empresas y startups en Barcelona y España
 
 ---
 
-## 🎯 Soluciones Simples (Quick Start)
+## **[Objetivos]** Soluciones Simples (Quick Start)
 
 ### Título de Sección
 
@@ -63,7 +63,7 @@ Para negocios que necesitan presencia digital rápida y efectiva
 
 #### Solución 1: Web Express
 
-🚀 PRESENCIA DIGITAL EN 7 DÍAS
+**[Lanzamiento]** PRESENCIA DIGITAL EN 7 DÍAS
 
 • **Sitio profesional listo para usar** — Plantilla premium personalizada con tu contenido, colores de marca y logo. Responsive en todos los dispositivos y optimizado para Google desde el primer día.
 
@@ -91,7 +91,7 @@ Ideal para: Artesanos, pequeñas tiendas, productos locales, negocios familiares
 
 #### Solución 3: Reservas y Citas
 
-📅 AGENDA DIGITAL AUTOMÁTICA
+**[Calendario]** AGENDA DIGITAL AUTOMÁTICA
 
 • **Calendario online 24/7** — Tus clientes reservan cuando quieren, tu agenda se actualiza sola. Evita llamadas constantes y dobles reservas. Sincronización con Google Calendar.
 
@@ -105,7 +105,7 @@ Perfecto para: Peluquerías, consultas, terapeutas, instructores, cualquier nego
 
 #### Solución 4: Landing de Captación
 
-🎯 GENERA LEADS MIENTRAS DUERMES
+**[Objetivos]** GENERA LEADS MIENTRAS DUERMES
 
 • **Página enfocada en conversión** — Una sola página diseñada para un objetivo: conseguir clientes. Formulario optimizado, testimonios reales y llamada a la acción clara.
 
@@ -125,7 +125,7 @@ Desarrollo ágil en 3 pasos sencillos
 
 #### Paso 1: Briefing Rápido (Día 1)
 
-💬 CONVERSACIÓN DE 30 MINUTOS
+**[Chat]** CONVERSACIÓN DE 30 MINUTOS
 
 • **Qué necesitas exactamente** — Llamada rápida para entender tu negocio, qué quieres conseguir y cuál es tu presupuesto. Sin tecnicismos, solo una conversación normal.
 
@@ -137,7 +137,7 @@ Tiempo: 1 día para tenerlo todo claro y arrancar.
 
 #### Paso 2: Desarrollo Express (Días 2-5)
 
-⚡ CONSTRUCCIÓN RÁPIDA
+**[Rendimiento]** CONSTRUCCIÓN RÁPIDA
 
 • **Personalización de plantilla** — Aplicamos tu marca, colores y contenido a la plantilla elegida. Todo visual, sin programación desde cero.
 
@@ -161,7 +161,7 @@ Resultado: Web funcionando en 7 días, tú gestionándola con confianza.
 
 ---
 
-## 🎯 Servicios Avanzados (Custom Development)
+## **[Objetivos]** Servicios Avanzados (Custom Development)
 
 ### Título de Sección
 
@@ -173,7 +173,7 @@ Soluciones digitales personalizadas para empresas en crecimiento
 
 #### Servicio 1: Desarrollo Web Moderno
 
-🌐 SITIOS WEB PROFESIONALES
+**[Web]** SITIOS WEB PROFESIONALES
 
 • **Portafolios creativos que convierten** — Diseños únicos que destacan tu trabajo y generan confianza. Galerías optimizadas, casos de estudio detallados y CTAs estratégicos que transforman visitantes en clientes potenciales.
 
@@ -202,23 +202,23 @@ Integración: Google Calendar, CRM, Analytics — Conectividad fluida con las he
 #### Servicio 3: Optimización & Performance
 
 ```
-📈 Máximo Rendimiento
+**[Crecimiento]** Máximo Rendimiento
 
-🔍 SEO Técnico Avanzado
+**[Búsqueda]** SEO Técnico Avanzado
 Tu sitio será encontrado por tus clientes ideales
 • Structured data markup para rich snippets
 • Meta tags optimizados por idioma (ES/CA/EN)
 • Sitemap XML y robots.txt configurados
 • Local SEO para "cerca de mí" en Barcelona
 
-⚡ Core Web Vitals Optimizados
+**[Rendimiento]** Core Web Vitals Optimizados
 Google premia la velocidad con mejor ranking
 • LCP <2.5s: Contenido visible instantáneo
 • FID <100ms: Interacción fluida garantizada
 • CLS <0.1: Sin saltos molestos de contenido
 • Monitoreo 24/7 con alertas automáticas
 
-📊 Analytics & Tracking Completo
+**[Análisis]** Analytics & Tracking Completo
 Decisiones basadas en datos reales, no intuición
 • Google Analytics 4 configurado profesionalmente
 • Conversion tracking para formularios y ventas
@@ -251,7 +251,7 @@ _Para empresas que requieren SLA(Service Level Agreement) enterprise, consulta n
 
 ---
 
-## 🎯 Garantías Corporativas (Enterprise SLA)
+## **[Objetivos]** Garantías Corporativas (Enterprise SLA)
 
 ### Título de Sección
 
@@ -273,7 +273,7 @@ Compromisos de servicio para empresas y organizaciones
 
 #### Canales de Soporte Enterprise
 
-📞 **COMUNICACIÓN DIRECTA**
+**[Teléfono]** **COMUNICACIÓN DIRECTA**
 
 • **Email prioritario** — Cola de soporte dedicada con respuesta garantizada según SLA. Seguimiento automático y escalado si no se cumplen tiempos.
 
@@ -285,7 +285,7 @@ Compromisos de servicio para empresas y organizaciones
 
 #### Garantías de Disponibilidad
 
-⚡ **UPTIME ENTERPRISE**
+**[Rendimiento]** **UPTIME ENTERPRISE**
 
 • **99.9% SLA anual** — Máximo 8.77 horas de downtime por año. Créditos automáticos si no se cumple: 10% descuento mensual por cada 0.1% por debajo del SLA.
 
@@ -297,7 +297,7 @@ Compromisos de servicio para empresas y organizaciones
 
 ### Mantenimiento Proactivo Enterprise
 
-🔧 **SERVICIOS INCLUIDOS**
+**[Herramientas]** **SERVICIOS INCLUIDOS**
 
 • **Security patching 24h** — Parches críticos aplicados en menos de 24h. Vulnerabilities scanning automatizado y penetration testing trimestral.
 
@@ -309,7 +309,7 @@ Compromisos de servicio para empresas y organizaciones
 
 ---
 
-## 🎯 Proceso de Trabajo (How We Work)
+## **[Objetivos]** Proceso de Trabajo (How We Work)
 
 ### Título de Sección
 
@@ -357,7 +357,7 @@ Launch
 
 #### Fase 1: Discovery & Strategy (Semana 1)
 
-🔍 DESCUBRIMIENTO
+**[Búsqueda]** DESCUBRIMIENTO
 
 • **Análisis de necesidades del negocio** — Sesiones de descubrimiento profundo para entender tu modelo de negocio, audiencia objetivo y pain points actuales. Identificamos oportunidades de crecimiento digital y definimos el ROI esperado del proyecto.
 
@@ -371,7 +371,7 @@ Entregables: Estrategia digital completa, wireframes interactivos, cronograma de
 
 #### Fase 2: Diseño & Experiencia (Semana 2-3)
 
-🎨 **DISEÑO UX/UI**
+**[Diseño]** **DISEÑO UX/UI**
 
 - **Design system personalizado** — Creación de una identidad visual coherente con tipografías, colores, iconografía y componentes reutilizables. Incluye guías de uso, tokens de diseño y versiones para _dark mode_ que reflejan tu marca.
 
@@ -385,7 +385,7 @@ Entregables: Estrategia digital completa, wireframes interactivos, cronograma de
 
 #### Fase 3: Desarrollo & Integración (Semana 3-5)
 
-⚡ DESARROLLO
+**[Rendimiento]** DESARROLLO
 
 • **Código limpio y escalable** — Desarrollo con Next.js 15 y React 19 siguiendo mejores prácticas: TypeScript strict, componentes reutilizables, arquitectura modular y documentación inline. Código preparado para crecer con tu negocio.
 
@@ -399,7 +399,7 @@ Entregables: Sitio completamente funcional, panel de administración, suite de t
 
 #### Fase 4: Launch & Optimización (Semana 6)
 
-🚀 **LANZAMIENTO**
+**[Lanzamiento]** **LANZAMIENTO**
 
 - **Deploy en producción** — Lanzamiento controlado con _blue-green deployment_ para _zero downtime_. Configuración de SSL, CDN global, _monitoring_ automático y _rollback_ inmediato en caso de incidencias. Tu sitio va _live_ sin interrupciones.
 
@@ -425,7 +425,7 @@ Entregables: Sitio completamente funcional, panel de administración, suite de t
 #### Comunicación Clara
 
 ```
-📞 CANALES DE COMUNICACIÓN
+**[Teléfono]** CANALES DE COMUNICACIÓN
 • Email prioritario — Respuesta <4h en horario laboral
 • WhatsApp Business — Para consultas rápidas
 • Videollamadas — Reuniones semanales de seguimiento
@@ -446,7 +446,7 @@ Entregables: Sitio completamente funcional, panel de administración, suite de t
 #### Garantías del Proceso
 
 ```
-✅ COMPROMISOS DE CALIDAD
+**[Completado]** COMPROMISOS DE CALIDAD
 • Updates semanales con demos funcionales
 • 2 rounds de revisiones mayores incluidas por fase
 • Acceso completo al código fuente
@@ -457,7 +457,7 @@ Entregables: Sitio completamente funcional, panel de administración, suite de t
 #### Reducción de Riesgo
 
 ```
-🛡️ PROTECCIÓN DEL CLIENTE
+**[Protección]** PROTECCIÓN DEL CLIENTE
 • Contrato claro con entregables específicos
 • Pagos por milestones (40% inicio, 35% mitad, 25% final)
 • Garantía de satisfacción 15 días
@@ -470,9 +470,9 @@ Entregables: Sitio completamente funcional, panel de administración, suite de t
 #### Elementos Visuales Requeridos
 
 ```
-🎨 COMPONENTES VISUALES
+**[Diseño]** COMPONENTES VISUALES
 • Cards de fase con iconos representativos
-• Timeline conector con gradiente WebSnack
+• Timeline conector con gradiente WebCode
 • Hover effects con elevación 3D
 • Animaciones de entrada suaves
 • Responsive: horizontal desktop, vertical mobile
@@ -481,7 +481,7 @@ Entregables: Sitio completamente funcional, panel de administración, suite de t
 #### Contenido por Fase
 
 ```
-📋 INFORMACIÓN A MOSTRAR
+**[Lista]** INFORMACIÓN A MOSTRAR
 • Número de fase (1, 2, 3, 4)
 • Título descriptivo de la fase
 • Duración estimada
@@ -494,7 +494,7 @@ Entregables: Sitio completamente funcional, panel de administración, suite de t
 #### Interactividad Requerida
 
 ```
-⚡ MICROINTERACCIONES
+**[Rendimiento]** MICROINTERACCIONES
 • Hover: Elevación de card + sombra 3D
 • Scroll: Animación de entrada por fases
 • Mobile: Acordeón expandible por fases
@@ -507,7 +507,7 @@ Entregables: Sitio completamente funcional, panel de administración, suite de t
 #### KPIs a Trackear
 
 ```
-📊 MÉTRICAS DE ENGAGEMENT
+**[Análisis]** MÉTRICAS DE ENGAGEMENT
 • Tiempo en sección: >2 minutos (objetivo)
 • Scroll depth: 80% llegan hasta el final
 • CTA clicks: "Agendar consulta" después de leer proceso
@@ -526,7 +526,7 @@ Entregables: Sitio completamente funcional, panel de administración, suite de t
 
 ---
 
-## 🎯 Stack Tecnológico (Technology)
+## **[Objetivos]** Stack Tecnológico (Technology)
 
 ### Título de Sección
 
@@ -561,7 +561,7 @@ Resultado: Carga ultrarrápida, UX excepcional
 #### UI/UX Avanzado
 
 ```
-🎨 COMPONENTES & STYLING
+**[Diseño]** COMPONENTES & STYLING
 • Tailwind CSS v4 - Performance mejorado
 • shadcn/ui - Base accesible
 • Magic UI - Animaciones premium
@@ -580,7 +580,7 @@ Resultado: Interfaces profesionales, animadas
 #### Performance & SEO
 
 ```
-📊 OPTIMIZACIÓN
+**[Análisis]** OPTIMIZACIÓN
 • Core Web Vitals - Google metrics
 • Server Components - Performance
 • Edge Functions - Velocidad global
@@ -614,7 +614,7 @@ Resultado: Rankings top, conversiones altas
 
 ---
 
-## 🎯 Compromiso con la Calidad (Quality Standards)
+## **[Objetivos]** Compromiso con la Calidad (Quality Standards)
 
 ### Título de Sección
 
@@ -626,7 +626,7 @@ Estándares de calidad que garantizan el éxito
 
 #### Performance
 
-⚡ VELOCIDAD
+**[Rendimiento]** VELOCIDAD
 
 • **<2.5s tiempo de carga** — Optimización de imágenes con Next.js Image, lazy loading inteligente, code splitting automático y CDN global. Cada página carga en menos de 2.5 segundos en conexiones 3G, cumpliendo estándares de Google.
 
@@ -640,7 +640,7 @@ Monitoreo: 24/7 automated testing — Verificación continua de rendimiento con 
 
 #### Disponibilidad
 
-🛡️ UPTIME
+**[Protección]** UPTIME
 
 • **99.9% disponibilidad garantizada** — SLA que asegura menos de 8.77 horas de downtime al año. Infraestructura redundante con failover automático y servidores distribuidos geográficamente para máxima resistencia.
 
@@ -668,7 +668,7 @@ Testing: Automated + manual validation — Auditorías con herramientas (axe/pa1
 
 #### SEO
 
-📈 VISIBILIDAD
+**[Crecimiento]** VISIBILIDAD
 
 • **SEO técnico completo** — Optimización integral de metadatos, URLs amigables, sitemap XML, robots.txt y estructura HTML semántica. Configuración de Core Web Vitals y tiempo de carga optimizado para mejorar el ranking orgánico.
 
@@ -682,7 +682,7 @@ Objetivo: Top 3 en búsquedas relevantes — Posicionamiento orgánico en la pri
 
 ---
 
-## 🎯 Especialización Local (Barcelona Focus)
+## **[Objetivos]** Especialización Local (Barcelona Focus)
 
 ### Título de Sección
 
@@ -719,7 +719,7 @@ Resultado: Operación 100% local
 #### Idiomas y Cultura
 
 ```
-🗣️ MULTIIDIOMA
+**[Hablar]**️ MULTIIDIOMA
 • Catalán - Mercado local
 • Castellano - España
 • Inglés - Turismo internacional
@@ -730,7 +730,7 @@ Alcance: Barcelona, España, Europa
 
 ---
 
-## 🎯 Casos de Éxito (Success Stories)
+## **[Objetivos]** Casos de Éxito (Success Stories)
 
 ### Título de Sección
 
@@ -743,7 +743,7 @@ Transformaciones digitales reales
 #### Freelancer Creativo
 
 ```
-📸 MARTA - Diseñadora UX
+**[Fotografía]** MARTA - Diseñadora UX
 "Mi portfolio generó 3x más leads"
 
 • Portfolio interactivo multiidioma
@@ -771,7 +771,7 @@ Resultado: -50% dependencia ElTenedor
 #### Startup Tech
 
 ```
-🚀 LAURA - Founder Retail Tech
+**[Lanzamiento]** LAURA - Founder Retail Tech
 "Validamos el MVP con 150+ usuarios"
 
 • Landing de alta conversión
@@ -784,7 +784,7 @@ Resultado: €250k pre-seed funding
 
 ---
 
-## 🎯 Precios Transparentes (Pricing)
+## **[Objetivos]** Precios Transparentes (Pricing)
 
 ### Título de Sección
 
@@ -797,7 +797,7 @@ Inversión clara, resultados garantizados
 #### Esencial
 
 ```
-💼 SITIO PROFESIONAL
+**[Maletín]** SITIO PROFESIONAL
 €2.990
 
 • 5 páginas optimizadas
@@ -828,7 +828,7 @@ Ideal para: Pequeñas empresas
 #### Enterprise
 
 ```
-🚀 APLICACIÓN CUSTOM
+**[Lanzamiento]** APLICACIÓN CUSTOM
 €8.990+
 
 • Todo lo de Business +
@@ -846,7 +846,7 @@ Ideal para: Startups, empresas growth
 #### Web Express
 
 ```
-🚀 PRESENCIA DIGITAL
+**[Lanzamiento]** PRESENCIA DIGITAL
 €890
 
 • Plantilla premium personalizada
@@ -876,7 +876,7 @@ Entrega: 10 días | Ideal para: Pequeñas tiendas, artesanos
 #### Reservas Express
 
 ```
-📅 AGENDA AUTOMÁTICA
+**[Calendario]** AGENDA AUTOMÁTICA
 €1.190
 
 • Todo lo de Web Express +
@@ -934,7 +934,7 @@ Enterprise Critical (€4.800/mes):
 
 ---
 
-## 🎯 Proceso de Contacto (Contact Flow)
+## **[Objetivos]** Proceso de Contacto (Contact Flow)
 
 ### Título de Sección
 
@@ -947,7 +947,7 @@ Empezamos con una consulta gratuita
 #### Paso 1: Consulta Gratuita
 
 ```
-📞 CONSULTA (30 min gratuitos)
+**[Teléfono]** CONSULTA (30 min gratuitos)
 • Análisis de necesidades actuales
 • Review de competencia
 • Recomendaciones iniciales
@@ -959,7 +959,7 @@ Formatos: Presencial BCN, videollamada, teléfono
 #### Paso 2: Propuesta Personalizada
 
 ```
-📋 PROPUESTA (48h delivery)
+**[Lista]** PROPUESTA (48h delivery)
 • Estrategia digital detallada
 • Mockups conceptuales
 • Timeline y presupuesto exacto
@@ -971,7 +971,7 @@ Incluye: 2 rounds de refinamiento
 #### Paso 3: Kick-off del Proyecto
 
 ```
-🚀 INICIO (Contract signing)
+**[Lanzamiento]** INICIO (Contract signing)
 • Onboarding completo
 • Acceso a herramientas de proyecto
 • Primera reunión de strategy
@@ -982,17 +982,17 @@ Comenzamos: En 48h desde firma
 
 ---
 
-## 🎯 Footer & Contact Info
+## **[Objetivos]** Footer & Contact Info
 
 ### Información de Contacto
 
 ```
-📍 BARCELONA, ESPAÑA
-📧 hola@websnack.es
-📱 +34 XXX XXX XXX
-💼 LinkedIn: /company/websnack
+**[Ubicación]** BARCELONA, ESPAÑA
+**[Email]** hola@webcode.es
+**[Móvil]** +34 XXX XXX XXX
+**[Maletín]** LinkedIn: /company/webcode
 
-🕒 HORARIO
+**[Tres]** HORARIO
 Lun-Vie: 9:00-18:00 CET
 Sáb: 10:00-14:00 CET (emergencias)
 ```
@@ -1000,7 +1000,7 @@ Sáb: 10:00-14:00 CET (emergencias)
 ### Links Legales
 
 ```
-🔒 LEGAL & COMPLIANCE
+**[Candado]** LEGAL & COMPLIANCE
 • Política de Privacidad (RGPD)
 • Términos y Condiciones
 • Política de Cookies
@@ -1012,7 +1012,7 @@ Cumplimiento: 100% normativa española
 ### Social Proof
 
 ```
-⭐ SÍGUENOS
+**[Destacado]** SÍGUENOS
 • Portfolio actualizado
 • Casos de estudio nuevos
 • Tips de desarrollo web
@@ -1024,8 +1024,8 @@ Plataformas: LinkedIn, GitHub, Medium
 ### Transparencia y Calidad
 
 ```
-💡 OPERACIÓN HONEST
-WebSnack es un estudio boutique dirigido por un desarrollador senior especializado
+**[Idea]** OPERACIÓN HONEST
+WebCode es un estudio boutique dirigido por un desarrollador senior especializado
 en Next.js y React. Trabajo directamente contigo, sin intermediarios.
 
 • Atención personalizada garantizada
@@ -1039,7 +1039,7 @@ Compromiso: Calidad artesanal con tecnología enterprise
 
 ---
 
-## 📐 Especificaciones Técnicas del Diseño
+## **[Regla]** Especificaciones Técnicas del Diseño
 
 ### Layout Structure
 
@@ -1064,4 +1064,4 @@ Compromiso: Calidad artesanal con tecnología enterprise
 - **Urgency**: Disponibilidad limitada, booking calendar
 - **Trust signals**: Certificaciones, badges, reviews
 
-Esta estructura proporciona una landing page completa que convierte, educando al visitante sobre WebSnack mientras demuestra expertise técnico y understanding del mercado barcelonés/español.
+Esta estructura proporciona una landing page completa que convierte, educando al visitante sobre WebCode mientras demuestra expertise técnico y understanding del mercado barcelonés/español.

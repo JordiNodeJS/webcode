@@ -1,7 +1,6 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AlertCircle, CheckCircle, Loader2, Send } from "@/lib/icons";
 import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -34,6 +33,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useBotProtection, useRateLimit } from "@/hooks/useBotProtection";
+import { AlertCircle, CheckCircle, Loader2, Send } from "@/lib/icons";
 
 // Esquema de validación Zod
 const contactFormSchema = z.object({

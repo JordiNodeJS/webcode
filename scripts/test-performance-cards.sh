@@ -3,7 +3,7 @@
 # Script para ejecutar pruebas de rendimiento de las tarjetas WebCode
 # Requiere navegador con DevTools y herramientas de performance
 
-echo "🔬 INICIANDO ANÁLISIS DE RENDIMIENTO - TARJETAS WEBSNACK"
+echo "🔬 INICIANDO ANÁLISIS DE RENDIMIENTO - TARJETAS WEBCODE"
 echo "=================================================="
 
 # Función para mostrar instrucciones

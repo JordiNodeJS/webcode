@@ -1,8 +1,8 @@
-# Convención de Nombres para Componentes - WebSnack
+# Convención de Nombres para Componentes - WebCode
 
 ## Descripción
 
-Esta regla define la convención de nombres jerárquica para todos los componentes del proyecto WebSnack, con el objetivo de facilitar la identificación de componentes principales y la relación entre componentes secundarios en cualquier sección de la aplicación.
+Esta regla define la convención de nombres jerárquica para todos los componentes del proyecto WebCode, con el objetivo de facilitar la identificación de componentes principales y la relación entre componentes secundarios en cualquier sección de la aplicación.
 
 ## Convención General
 

@@ -1,4 +1,4 @@
-# 📁 Sistema de Contexto WebSnack
+# 📁 Sistema de Contexto WebCode
 
 Este directorio contiene archivos de contexto que se actualizan automáticamente para mantener la memoria del proyecto entre sesiones de LLM.
 

@@ -1,13 +1,13 @@
 # Exportación de Briefing a PDF
 
-## 📄 Descripción
+## **[Documento]** Descripción
 
 Sistema completo para generar documentos PDF del briefing de proyectos web. Incluye dos funcionalidades principales:
 
 1. **PDF del briefing completado** - Descarga del formulario con todos los datos del cliente
 2. **Plantilla en blanco** - Documento PDF vacío para rellenar manualmente
 
-## 🚀 Funcionalidades Implementadas
+## **[Lanzamiento]** Funcionalidades Implementadas
 
 ### 1. Generador de PDF (`src/lib/pdf-generator.ts`)
 
@@ -69,16 +69,16 @@ Descarga una plantilla PDF en blanco para completar manualmente.
 
 #### Botón de Descarga Post-Envío
 Tras completar el briefing, el usuario puede:
-- ✅ Descargar su briefing en PDF
-- ✅ Volver al inicio
-- ✅ Ver el proceso completo
+- **[Completado]** Descargar su briefing en PDF
+- **[Completado]** Volver al inicio
+- **[Completado]** Ver el proceso completo
 
 #### Plantilla Descargable en Página Principal
 En `/briefing`:
 - Botón destacado para descargar la plantilla PDF vacía
 - Permite a clientes completar el briefing offline
 
-## 🎨 Diseño del PDF
+## **[Diseño]** Diseño del PDF
 
 ### Colores
 - **Primary**: RGB(255, 102, 128) - #ff6680
@@ -96,7 +96,7 @@ En `/briefing`:
 - **Espaciado entre secciones**: 5-15pt
 - **Saltos de página automáticos**
 
-## 📦 Dependencias
+## **[Paquete]** Dependencias
 
 ```json
 {
@@ -105,7 +105,7 @@ En `/briefing`:
 }
 ```
 
-## 🔧 Uso Técnico
+## **[Herramientas]** Uso Técnico
 
 ### Generar PDF del Briefing Completado
 
@@ -157,13 +157,13 @@ const downloadPDF = async () => {
 };
 ```
 
-## 🌐 URLs Disponibles
+## **[Web]** URLs Disponibles
 
 - **Formulario online**: `https://webcode.es/briefing/formulario`
 - **Descargar plantilla**: `https://webcode.es/api/briefing/plantilla`
 - **Página informativa**: `https://webcode.es/briefing`
 
-## ✨ Características Especiales
+## **[Magia]** Características Especiales
 
 ### Mapeo de Valores
 Todos los valores codificados se traducen a texto legible:
@@ -188,7 +188,7 @@ Los campos de texto largo (como objetivos, problemas a resolver) se dividen auto
 ### Paginación Inteligente
 El sistema detecta cuando una sección no cabe en la página actual y añade un salto de página automático.
 
-## 🎯 Casos de Uso
+## **[Objetivos]** Casos de Uso
 
 1. **Cliente completa formulario online**
    - Rellena el briefing paso a paso
@@ -207,15 +207,15 @@ El sistema detecta cuando una sección no cabe en la página actual y añade un 
    - Se archiva con la propuesta
    - Se consulta durante el desarrollo
 
-## 🔒 Seguridad
+## **[Candado]** Seguridad
 
-- ✅ Validación de datos con Zod
-- ✅ Sanitización de nombres de archivo
-- ✅ Sin almacenamiento de PDFs en servidor
-- ✅ Generación on-demand
-- ✅ Headers de seguridad apropiados
+- **[Completado]** Validación de datos con Zod
+- **[Completado]** Sanitización de nombres de archivo
+- **[Completado]** Sin almacenamiento de PDFs en servidor
+- **[Completado]** Generación on-demand
+- **[Completado]** Headers de seguridad apropiados
 
-## 📊 Rendimiento
+## **[Análisis]** Rendimiento
 
 - **Tiempo de generación**: ~100-300ms
 - **Tamaño típico**: 50-150 KB
@@ -234,7 +234,7 @@ Todos los endpoints manejan errores gracefully:
 }
 ```
 
-## 🚀 Mejoras Futuras
+## **[Lanzamiento]** Mejoras Futuras
 
 - [ ] Añadir logo del cliente en el PDF
 - [ ] Permitir selección de idioma del PDF
@@ -245,7 +245,7 @@ Todos los endpoints manejan errores gracefully:
 - [ ] Versión multiidioma del PDF
 - [ ] Exportar a otros formatos (DOCX, HTML)
 
-## 📝 Notas de Implementación
+## **[Documentación]** Notas de Implementación
 
 1. **jsPDF** se ejecuta tanto en cliente como servidor
 2. Los PDFs se generan en memoria, no se guardan en disco
@@ -253,7 +253,7 @@ Todos los endpoints manejan errores gracefully:
 4. El sistema es completamente stateless
 5. Compatible con Next.js 15 y App Router
 
-## 📞 Contacto
+## **[Teléfono]** Contacto
 
 Para dudas sobre esta funcionalidad:
 - **Responsable**: Equipo WEBCODE

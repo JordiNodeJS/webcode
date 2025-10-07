@@ -2,7 +2,7 @@
 applyTo: "src/components/**/*.{ts,tsx}"
 ---
 
-# Instrucciones para Componentes WebSnack
+# Instrucciones para Componentes WebCode
 
 ## Patrones de Componentes
 

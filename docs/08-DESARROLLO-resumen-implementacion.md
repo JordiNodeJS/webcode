@@ -32,7 +32,7 @@ Se ha creado un sistema centralizado de design tokens en `src/styles/design-toke
 
 #### Animaciones
 
-- Curvas de animación WebSnack estandarizadas
+- Curvas de animación WebCode estandarizadas
 - Duraciones consistentes (fast, normal, slow, slower)
 - Transiciones predefinidas
 
@@ -42,7 +42,7 @@ Se ha creado un sistema centralizado de design tokens en `src/styles/design-toke
 
 - Uso de sombras 3D (`shadow-3d-sm`, `shadow-3d-md`)
 - Border radius semántico (`rounded-button`)
-- Transiciones WebSnack (`ws-transition`)
+- Transiciones WebCode (`ws-transition`)
 - Letter spacing consistente
 
 #### Card Component
@@ -121,7 +121,7 @@ Se ha creado un sistema centralizado de design tokens en `src/styles/design-toke
 .shadow-3d-xl; /* sombra extra grande */
 ```
 
-#### Transiciones WebSnack
+#### Transiciones WebCode
 
 ```css
 .ws-transition       /* transición normal */
@@ -137,44 +137,44 @@ Se ha creado un sistema centralizado de design tokens en `src/styles/design-toke
 1. **Espaciado**: Usar siempre clases semánticas
 
    ```tsx
-   // ✅ Correcto
+   // **[Completado]** Correcto
    <div className="px-element py-component gap-text">
 
-   // ❌ Incorrecto
+   // **[Error]** Incorrecto
    <div className="px-4 py-6 gap-2">
    ```
 
 2. **Transiciones**: Usar clases Elva
 
    ````tsx
-   // ✅ Correcto
-   2. **Transiciones**: Usar clases WebSnack
+   // **[Completado]** Correcto
+   2. **Transiciones**: Usar clases WebCode
 
    ```tsx
    // Aplicar transición suave
    <button className="ws-transition hover:opacity-80">
 
-   // ❌ Incorrecto
+   // **[Error]** Incorrecto
    <button className="transition-opacity duration-300 hover:opacity-70">
    ````
 
 3. **Sombras**: Usar sistema 3D
 
    ```tsx
-   // ✅ Correcto
+   // **[Completado]** Correcto
    <Card className="shadow-3d-md hover:shadow-3d-lg">
 
-   // ❌ Incorrecto
+   // **[Error]** Incorrecto
    <Card className="shadow-md hover:shadow-lg">
    ```
 
 4. **Tipografía**: Letter spacing consistente
 
    ```tsx
-   // ✅ Correcto
+   // **[Completado]** Correcto
    <h1 className="font-display letter-spacing-wide">
 
-   // ❌ Incorrecto
+   // **[Error]** Incorrecto
    <h1 className="font-display tracking-wide">
    ```
 

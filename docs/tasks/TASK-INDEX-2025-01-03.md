@@ -1,21 +1,21 @@
-# 📋 ÍNDICE MAESTRO DE TAREAS - WEBCODE Hero Components Refactoring
+# **[Lista]** ÍNDICE MAESTRO DE TAREAS - WEBCODE Hero Components Refactoring
 
 **Fecha de creación:** 03/01/2025  
 **Proyecto:** Optimización de componentes Hero/ - Eliminación de manipulación directa del DOM y useEffect excesivo
 
-## 🎯 OBJETIVO DEL PROYECTO
+## **[Objetivos]** OBJETIVO DEL PROYECTO
 
 Refactorizar los componentes del directorio `hero/` para eliminar la manipulación directa del DOM y el uso excesivo de `useEffect`, mejorando el rendimiento y siguiendo las mejores prácticas de React.
 
 ---
 
-## 📊 ÍNDICE DE TAREAS
+## **[Análisis]** ÍNDICE DE TAREAS
 
 ### T001: Refactorizar Hero.ValuePropsGrid.tsx - Eliminar manipulación directa del DOM
 
 **Estado:** completado  
 **Progreso:** 100%  
-**Prioridad:** 🔴 Crítica  
+**Prioridad:** **[Círculo Rojo]** Crítica  
 **Dependencias:** ninguna  
 **Descripción:** Eliminar la manipulación directa del DOM en los efectos 3D de las tarjetas y reemplazar con CSS transforms y custom properties.
 
@@ -76,7 +76,7 @@ Refactorizar los componentes del directorio `hero/` para eliminar la manipulaci�
 
 ---
 
-## 📈 ESTADO GENERAL
+## **[Crecimiento]** ESTADO GENERAL
 
 **Total tareas:** 3  
 **Completadas:** 3  
@@ -87,7 +87,7 @@ Refactorizar los componentes del directorio `hero/` para eliminar la manipulaci�
 
 ---
 
-## 🔄 LOG DE CAMBIOS RECIENTES
+## **[Recargar]** LOG DE CAMBIOS RECIENTES
 
 **[2025-01-03 10:30]** T004: Estado cambiado de 'pendiente' a 'en progreso' - Iniciando creación del sistema de documentación  
 **[2025-01-03 10:30]** T004.1: Estado cambiado de 'pendiente' a 'completada' - Índice maestro creado  
@@ -99,10 +99,10 @@ Refactorizar los componentes del directorio `hero/` para eliminar la manipulaci�
 
 ---
 
-## 🎯 CRITERIOS DE ACEPTACIÓN GLOBALES
+## **[Objetivos]** CRITERIOS DE ACEPTACIÓN GLOBALES
 
-- ✅ Eliminación completa de manipulación directa del DOM
-- ✅ Reducción de useEffect a casos estrictamente necesarios
-- ✅ Mantenimiento de funcionalidad visual existente
-- ✅ Mejora del rendimiento y accesibilidad
-- ✅ Código más mantenible y siguiendo mejores prácticas de React
+- **[Completado]** Eliminación completa de manipulación directa del DOM
+- **[Completado]** Reducción de useEffect a casos estrictamente necesarios
+- **[Completado]** Mantenimiento de funcionalidad visual existente
+- **[Completado]** Mejora del rendimiento y accesibilidad
+- **[Completado]** Código más mantenible y siguiendo mejores prácticas de React

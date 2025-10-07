@@ -1,12 +1,12 @@
-# WebSnack - Stack Tecnológico 2025
+# WebCode - Stack Tecnológico 2025
 
-> Documento técnico completo para la implementación del proyecto WebSnack basado en tecnologías de vanguardia.
+> Documento técnico completo para la implementación del proyecto WebCode basado en tecnologías de vanguardia.
 
 ---
 
-## 🎯 Resumen Ejecutivo
+## **[Objetivos]** Resumen Ejecutivo
 
-WebSnack se desarrollará utilizando el stack tecnológico más avanzado disponible en 2025, priorizando:
+WebCode se desarrollará utilizando el stack tecnológico más avanzado disponible en 2025, priorizando:
 
 - **Performance extremo** con Core Web Vitals en verde
 - **Developer Experience** de primera clase
@@ -16,7 +16,7 @@ WebSnack se desarrollará utilizando el stack tecnológico más avanzado disponi
 
 ---
 
-## 🏗️ Stack Principal (Core Technologies)
+## **[Arquitectura]** Stack Principal (Core Technologies)
 
 ### Frontend Framework
 
@@ -63,7 +63,7 @@ pnpm add next@latest react@latest react-dom@latest
 - **Performance mejorado** - Bundling optimizado y tiempo de build reducido 40%
 - **Turbopack estable** - Reemplazo de Webpack con velocidad de build 10x más rápida
 
-**Beneficios para WebSnack:**
+**Beneficios para WebCode:**
 
 - **SEO-first** - Server-side rendering nativo mejora crawling y indexación
 - **Core Web Vitals optimizados** - LCP <2.5s, FID <100ms, CLS <0.1 garantizados
@@ -85,7 +85,7 @@ pnpm add next@latest react@latest react-dom@latest
 - **New Hooks** - `use()` para promises, `useActionState()` para form states
 - **Better Hydration** - Selective hydration mejora First Input Delay
 
-**Implementación WebSnack:**
+**Implementación WebCode:**
 
 ```tsx
 // Server Component nativo - 0 JavaScript del cliente
@@ -130,13 +130,13 @@ pnpm add tailwindcss@next @tailwindcss/postcss@next
 - **Container Queries** - `@min-*`, `@max-*` variants para responsive containers
 - **3D Transforms** - `perspective-*`, `rotate-x-*`, `rotate-z-*` utilities
 
-**Configuración WebSnack:**
+**Configuración WebCode:**
 
 ```css
 /* app/globals.css */
 @import "tailwindcss";
 
-/* Tema personalizado WebSnack - Rosa/Aguamarina con efectos 3D */
+/* Tema personalizado WebCode - Rosa/Aguamarina con efectos 3D */
 :root {
   --background: #ffffff;
   --foreground: #5b5b5b;
@@ -307,7 +307,7 @@ pnpm add tailwindcss@next @tailwindcss/postcss@next
 }
 ```
 
-**Beneficios para WebSnack:**
+**Beneficios para WebCode:**
 
 - **Bundle size optimizado** - Solo CSS usado se incluye en build final
 - **Tema branded coherente** - Colores rosa/aguamarina con identidad visual única
@@ -325,7 +325,7 @@ pnpm add tailwindcss@next @tailwindcss/postcss@next
 
 ```bash
 pnpm dlx shadcn@latest init
-# Instalación del tema personalizado WebSnack (Rosa/Aguamarina con efectos 3D)
+# Instalación del tema personalizado WebCode (Rosa/Aguamarina con efectos 3D)
 pnpm dlx shadcn@latest add https://tweakcn.com/r/themes/cmex1abh7000c04l4h2avft17
 pnpm dlx shadcn@latest add button card input form
 ```
@@ -344,13 +344,13 @@ pnpm dlx shadcn@latest add button card input form
 
 ``tsx
 // components/ui/ - No modificar (shadcn/ui base)
-// components/custom/ - Extensiones para WebSnack
+// components/custom/ - Extensiones para WebCode
 // components/sections/ - Secciones de landing page
 // components/forms/ - Formularios específicos del negocio
 
 ```
 
-**Beneficios para WebSnack:**
+**Beneficios para WebCode:**
 
 - **Accessibilidad WCAG 2.1 AA** - Todos los componentes incluyen ARIA labels
 - **Customización completa** - Copy-paste approach permite modificaciones
@@ -405,7 +405,7 @@ export function HeroSection() {
 **Versión:** `5.7.2` (latest stable)
 **Instalación:** Fase 1 - Setup inicial
 
-**Configuración estricta para WebSnack:**
+**Configuración estricta para WebCode:**
 
 ```json
 {
@@ -435,7 +435,7 @@ export function HeroSection() {
 }
 ```
 
-**Beneficios para WebSnack:**
+**Beneficios para WebCode:**
 
 - **Type Safety** - Prevención de bugs en tiempo de desarrollo
 - **IntelliSense avanzado** - Autocompletado de props y APIs
@@ -457,7 +457,7 @@ npm install -g pnpm@latest
 pnpm --version
 ```
 
-**Beneficios para WebSnack:**
+**Beneficios para WebCode:**
 
 - **Velocidad superior** - 2x más rápido que npm/yarn
 - **Disk space efficiency** - Symlinks reducen almacenamiento
@@ -466,7 +466,7 @@ pnpm --version
 
 ---
 
-## 🎨 UI/UX Libraries (Fase 3-4)
+## **[Diseño]** UI/UX Libraries (Fase 3-4)
 
 ### Radix UI
 
@@ -499,7 +499,7 @@ pnpm add framer-motion
 
 ```
 
-**Implementación en WebSnack:**
+**Implementación en WebCode:**
 
 ``tsx
 // Scroll-triggered animations
@@ -533,7 +533,7 @@ export function PageTransition({ children }) {
 
 ---
 
-## 📊 Performance & Analytics (Fase 4-5)
+## **[Análisis]** Performance & Analytics (Fase 4-5)
 
 ### Analytics & Tracking
 
@@ -591,23 +591,23 @@ pnpm add next-seo
 ```tsx
 // lib/seo.ts
 export const defaultSEO = {
-  titleTemplate: "%s | WebSnack - Desarrollo Web Barcelona",
-  defaultTitle: "WebSnack - Desarrollo Web Moderno en Barcelona",
+  titleTemplate: "%s | WebCode - Desarrollo Web Barcelona",
+  defaultTitle: "WebCode - Desarrollo Web Moderno en Barcelona",
   description:
     "Desarrollo web profesional con Next.js 15 y React 19. Sitios web, e-commerce y aplicaciones para freelancers y empresas en Barcelona y España.",
-  canonical: "https://websnack.es",
+  canonical: "https://webcode.es",
   openGraph: {
     type: "website",
     locale: "es_ES",
     alternateLocales: ["ca_ES", "en_US"],
-    url: "https://websnack.es",
-    siteName: "WebSnack",
+    url: "https://webcode.es",
+    siteName: "WebCode",
     images: [
       {
-        url: "https://websnack.es/og-image.jpg",
+        url: "https://webcode.es/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "WebSnack - Desarrollo Web Barcelona"
+        alt: "WebCode - Desarrollo Web Barcelona"
       }
     ]
   },
@@ -739,7 +739,7 @@ export default defineConfig({
 pnpm create playwright@latest
 ```
 
-**Tests críticos para WebSnack:**
+**Tests críticos para WebCode:**
 
 ```ts
 // e2e/landing-page.spec.ts
@@ -776,7 +776,7 @@ test("contact form submission", async ({ page }) => {
 
 ---
 
-## 🌐 Deployment & Infrastructure (Fase 6)
+## **[Web]** Deployment & Infrastructure (Fase 6)
 
 ### Vercel (Primary Platform)
 
@@ -830,30 +830,30 @@ pnpm exec vercel --prod
 
 **Configuración:** Fase 6 - Dominio y SSL
 
-- **Dominio principal:** `websnack.es`
-- **Subdominio staging:** `staging.websnack.es`
+- **Dominio principal:** `webcode.es`
+- **Subdominio staging:** `staging.webcode.es`
 - **CDN:** Cloudflare (opcional para caching adicional)
 - **SSL:** Automático vía Vercel
-- **Email:** Google Workspace o similar para `hola@websnack.es`
+- **Email:** Google Workspace o similar para `hola@webcode.es`
 
 ---
 
-## 📋 Fases de Implementación
+## **[Lista]** Fases de Implementación
 
 ### Fase 1: Fundación (Semana 1)
 
-- ✅ Setup inicial Next.js 15 + React 19
-- ✅ Configuración TypeScript estricta
-- ✅ Tailwind CSS v4 setup
-- ✅ Estructura de carpetas
-- ✅ Git repository + Husky hooks
+- **[Completado]** Setup inicial Next.js 15 + React 19
+- **[Completado]** Configuración TypeScript estricta
+- **[Completado]** Tailwind CSS v4 setup
+- **[Completado]** Estructura de carpetas
+- **[Completado]** Git repository + Husky hooks
 
 ``bash
 
 # Scripts Fase 1
 
-pnpm create next-app@latest websnack --typescript --tailwind --eslint --app --src-dir
-cd websnack
+pnpm create next-app@latest webcode --typescript --tailwind --eslint --app --src-dir
+cd webcode
 pnpm add tailwindcss@next @tailwindcss/postcss@next
 pnpm add -D husky lint-staged prettier eslint-config-prettier
 
@@ -863,16 +863,16 @@ pnpm add -D husky lint-staged prettier eslint-config-prettier
 
 ### Fase 2: Componentes Base (Semana 2)
 
-- 🔧 shadcn/ui inicialización
-- 🔧 Componentes primitivos (Button, Card, Input, Form)
-- 🔧 Layout system (Header, Footer, Container)
-- 🔧 Typography scale y spacing system
-- 🔧 Dark mode implementation
+- **[Herramientas]** shadcn/ui inicialización
+- **[Herramientas]** Componentes primitivos (Button, Card, Input, Form)
+- **[Herramientas]** Layout system (Header, Footer, Container)
+- **[Herramientas]** Typography scale y spacing system
+- **[Herramientas]** Dark mode implementation
 
 ``bash
 # Scripts Fase 2
 pnpm dlx shadcn@latest init
-# Tema personalizado WebSnack con efectos 3D
+# Tema personalizado WebCode con efectos 3D
 pnpm dlx shadcn@latest add https://tweakcn.com/r/themes/cmex1abh7000c04l4h2avft17
 pnpm dlx shadcn@latest add button card input form label
 pnpm dlx shadcn@latest add alert badge separator
@@ -882,11 +882,11 @@ pnpm dlx shadcn@latest add alert badge separator
 
 ### Fase 3: Landing Page Structure (Semana 3)
 
-- 🔧 Hero section con animaciones
-- 🔧 Services grid responsivo
-- 🔧 Testimonials carousel
-- 🔧 Pricing tables interactivas
-- 🔧 Contact form con validación
+- **[Herramientas]** Hero section con animaciones
+- **[Herramientas]** Services grid responsivo
+- **[Herramientas]** Testimonials carousel
+- **[Herramientas]** Pricing tables interactivas
+- **[Herramientas]** Contact form con validación
 
 ``bash
 
@@ -901,11 +901,11 @@ pnpm dlx magicui-cli add animated-beam text-reveal
 
 ### Fase 4: Interactividad & Animaciones (Semana 4)
 
-- 🔧 Magic UI animations
-- 🔧 Scroll-triggered effects
-- 🔧 Form handling con React Hook Form + Zod
-- 🔧 SEO meta tags y structured data
-- 🔧 Analytics implementation (RGPD-compliant)
+- **[Herramientas]** Magic UI animations
+- **[Herramientas]** Scroll-triggered effects
+- **[Herramientas]** Form handling con React Hook Form + Zod
+- **[Herramientas]** SEO meta tags y structured data
+- **[Herramientas]** Analytics implementation (RGPD-compliant)
 
 ```bash
 # Scripts Fase 4
@@ -917,11 +917,11 @@ pnpm add react-hook-form zod @hookform/resolvers
 
 ### Fase 5: Testing & Quality (Semana 5)
 
-- 🔧 Unit tests con Vitest
-- 🔧 E2E tests con Playwright
-- 🔧 Performance auditing
-- 🔧 Accessibility testing
-- 🔧 SEO validation
+- **[Herramientas]** Unit tests con Vitest
+- **[Herramientas]** E2E tests con Playwright
+- **[Herramientas]** Performance auditing
+- **[Herramientas]** Accessibility testing
+- **[Herramientas]** SEO validation
 
 ``bash
 
@@ -936,11 +936,11 @@ pnpm create playwright@latest
 
 ### Fase 6: Deployment & Production (Semana 6)
 
-- 🔧 Vercel deployment
-- 🔧 Domain configuration
-- 🔧 SSL setup
-- 🔧 CDN optimization
-- 🔧 Monitoring & alerts
+- **[Herramientas]** Vercel deployment
+- **[Herramientas]** Domain configuration
+- **[Herramientas]** SSL setup
+- **[Herramientas]** CDN optimization
+- **[Herramientas]** Monitoring & alerts
 
 ``bash
 # Scripts Fase 6
@@ -950,7 +950,7 @@ pnpm exec vercel --prod
 
 ---
 
-## 🎯 Performance Targets
+## **[Objetivos]** Performance Targets
 
 ### Core Web Vitals Objetivos
 
@@ -975,7 +975,7 @@ pnpm exec vercel --prod
 
 ---
 
-## 🔒 Security & Compliance
+## **[Candado]** Security & Compliance
 
 ### RGPD Compliance
 
@@ -1018,7 +1018,7 @@ pnpm add next-intl
 
 ---
 
-## 📈 Monitoring & Analytics
+## **[Crecimiento]** Monitoring & Analytics
 
 ### Performance Monitoring
 
@@ -1042,15 +1042,15 @@ pnpm add @sentry/nextjs
 
 ---
 
-## 🚀 Conclusión
+## **[Lanzamiento]** Conclusión
 
-Este stack tecnológico posiciona a WebSnack como una solución de vanguardia en el mercado barcelonés de desarrollo web, combinando:
+Este stack tecnológico posiciona a WebCode como una solución de vanguardia en el mercado barcelonés de desarrollo web, combinando:
 
-✅ **Tecnologías 2025** - Next.js 15, React 19, Tailwind v4
-✅ **Performance Superior** - Core Web Vitals optimizados
-✅ **Developer Experience** - TypeScript, shadcn/ui, Magic UI
-✅ **Escalabilidad** - Arquitectura modular y componentizada
-✅ **Cumplimiento Legal** - RGPD, WCAG 2.1 AA, normativas españolas
+**[Completado]** **Tecnologías 2025** - Next.js 15, React 19, Tailwind v4
+**[Completado]** **Performance Superior** - Core Web Vitals optimizados
+**[Completado]** **Developer Experience** - TypeScript, shadcn/ui, Magic UI
+**[Completado]** **Escalabilidad** - Arquitectura modular y componentizada
+**[Completado]** **Cumplimiento Legal** - RGPD, WCAG 2.1 AA, normativas españolas
 
 La implementación por fases garantiza un desarrollo ordenado y la posibilidad de ajustar tecnologías según las necesidades específicas del proyecto.
 

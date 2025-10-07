@@ -64,7 +64,7 @@ El proyecto WEBCODE mantiene memoria automática a través de archivos de contex
 
 - **OS**: MINGW64_NT-10.0-26100
 - **Shell**: /usr/bin/bash
-- **PWD**: /g/DEV/WEBSNACK-PROJECT/websnack
+- **PWD**: /g/DEV/WEBCODE-PROJECT/webcode
 - **User**: jordi
 
 ### **Git Activity**
@@ -73,8 +73,8 @@ El proyecto WEBCODE mantiene memoria automática a través de archivos de contex
 b5c111f chore(qoder-rules): eliminar directorio .qoder-rules completo
 e7a2434 refactor(scripts): eliminar script git-simple-squash.sh y actualizar documentación
 6410c4c chore(vscode): deshabilitar tarea de inicialización automática de Next.js 15
-ed79b9e feat: Add comprehensive rules for WebSnack development standards, including App Router, Git squash tools, UI/UX design, theming, and testing practices
-2d546be feat: Complete WebSnack Git squash tools with improved merge compatibility
+ed79b9e feat: Add comprehensive rules for WebCode development standards, including App Router, Git squash tools, UI/UX design, theming, and testing practices
+2d546be feat: Complete WebCode Git squash tools with improved merge compatibility
 ````
 
 ### **Project Status**

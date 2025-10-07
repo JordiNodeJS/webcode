@@ -1,26 +1,26 @@
-# Guía de Estilos Extendida WebSnack - Sistema de Diseño Completo (WAS)
+# Guía de Estilos Extendida WebCode - Sistema de Diseño Completo (WAS)
 
-## 📋 Índice
+## **[Lista]** Índice
 
 1. [Introducción](#introducción)
-2. [Design Tokens WebSnack](#design-tokens-websnack)
+2. [Design Tokens WebCode](#design-tokens-webcode)
 3. [Tipografía Next.js 15](#tipografía-nextjs-15)
 4. [Sistema de Colores](#sistema-de-colores)
 5. [Espaciado Semántico](#espaciado-semántico)
 6. [Componentes shadcn/ui](#componentes-shadcnui)
-7. [Sistema de Animaciones WebSnack (WAS)](#sistema-de-animaciones-websnack-was)
+7. [Sistema de Animaciones WebCode (WAS)](#sistema-de-animaciones-webcode-was)
 8. [Patrones de Layout](#patrones-de-layout)
 9. [Guías de Implementación](#guías-de-implementación)
 
 ---
 
-## 🎯 Introducción
+## **[Objetivos]** Introducción
 
-Esta guía establece el sistema de diseño completo para WebSnack, implementado con \*\*Next.js 15 + React 19 + Tailwind CSS v4 + shadc## ✨ Sistema de Animaciones WebSnack (WAS)
+Esta guía establece el sistema de diseño completo para WebCode, implementado con \*\*Next.js 15 + React 19 + Tailwind CSS v4 + shadc## **[Magia]** Sistema de Animaciones WebCode (WAS)
 
 ### CSS Animations
 
-Las animaciones WebSnack proporcionan transiciones profesionales:
+Las animaciones WebCode proporcionan transiciones profesionales:
 
 ````css
 .ws-transition {
@@ -31,14 +31,14 @@ Las animaciones WebSnack proporcionan transiciones profesionales:
   animation: ws-bounce 1000ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.ws-slide-up {n **design tokens** centralizados y el **Sistema de Animaciones WebSnack (WAS)** para crear una experiencia premium y cohesiva.
+.ws-slide-up {n **design tokens** centralizados y el **Sistema de Animaciones WebCode (WAS)** para crear una experiencia premium y cohesiva.
 
-### Principios de Diseño WebSnack
+### Principios de Diseño WebCode
 
 - **Consistencia**: Todos los elementos siguen el tema rosa/aguamarina con efectos 3D
 - **Accesibilidad**: WCAG 2.1 AA compliance nativo con shadcn/ui
 - **Performance**: Core Web Vitals optimizados con Next.js 15
-- **Elegancia**: Sistema de Animaciones WebSnack para sofisticación visual
+- **Elegancia**: Sistema de Animaciones WebCode para sofisticación visual
 
 ### Stack Tecnológico Base
 
@@ -50,23 +50,23 @@ Las animaciones WebSnack proporcionan transiciones profesionales:
 
 ---
 
-## 🎨 Design Tokens WebSnack
+## **[Diseño]** Design Tokens WebCode
 
 ### Archivo Principal
 
 **Ubicación**: `app/globals.css`
 
-Los design tokens están basados en el tema personalizado WebSnack implementado desde el stack tecnológico:
+Los design tokens están basados en el tema personalizado WebCode implementado desde el stack tecnológico:
 
 ```css
-/* Tema WebSnack - Rosa/Aguamarina con efectos 3D */
+/* Tema WebCode - Rosa/Aguamarina con efectos 3D */
 :root {
   /* Colores principales del tema */
   --background: #ffffff;
   --foreground: #5b5b5b;
-  --primary: #dc7cb3; /* Rosa WebSnack */
+  --primary: #dc7cb3; /* Rosa WebCode */
   --primary-foreground: #ffffff;
-  --secondary: #bce3e5; /* Aguamarina WebSnack */
+  --secondary: #bce3e5; /* Aguamarina WebCode */
   --secondary-foreground: #333333;
   --accent: #fffcf7; /* Crema suave */
   --muted: #f4fbfc; /* Azul muy claro */
@@ -95,7 +95,7 @@ Los design tokens están basados en el tema personalizado WebSnack implementado 
   --radius: 0.4rem;
 }
 
-/* Dark mode WebSnack */
+/* Dark mode WebCode */
 .dark {
   --background: #162b37;
   --foreground: #ffffff;
@@ -219,7 +219,7 @@ export default function RootLayout({
 ```tsx
 // Título principal de landing
 <h1 className="font-display text-6xl lg:text-7xl font-bold tracking-wider text-primary">
-  WebSnack
+  WebCode
 </h1>
 
 // Subtítulo de sección
@@ -240,17 +240,17 @@ export default function RootLayout({
 
 ---
 
-## 🎨 Sistema de Colores
+## **[Diseño]** Sistema de Colores
 
-### Paleta WebSnack Completa
+### Paleta WebCode Completa
 
 #### Colores Principales
 
 ```css
 /* Light Mode - Tema Rosa/Aguamarina */
---primary: #dc7cb3; /* Rosa principal WebSnack */
+--primary: #dc7cb3; /* Rosa principal WebCode */
 --primary-foreground: #ffffff; /* Texto sobre rosa */
---secondary: #bce3e5; /* Aguamarina WebSnack */
+--secondary: #bce3e5; /* Aguamarina WebCode */
 --secondary-foreground: #333333; /* Texto sobre aguamarina */
 --accent: #fffcf7; /* Crema suave para acentos */
 --accent-foreground: #333333; /* Texto sobre crema */
@@ -315,7 +315,7 @@ export default function RootLayout({
   Acción Principal
 </Button>
 
-// Card con tema WebSnack
+// Card con tema WebCode
 <Card className="bg-card text-card-foreground border-primary/20">
   <CardHeader className="border-b border-border/50">
     <CardTitle className="text-primary">Título</CardTitle>
@@ -339,11 +339,11 @@ export default function RootLayout({
 
 ---
 
-## 📏 Espaciado Semántico
+## **[Medición]** Espaciado Semántico
 
 ### Sistema Basado en Contexto
 
-El espaciado en WebSnack está organizado por contexto de uso para mantener consistencia:
+El espaciado en WebCode está organizado por contexto de uso para mantener consistencia:
 
 | Token               | Valor CSS | Valor px | Clase Tailwind       | Contexto de Uso                         |
 | ------------------- | --------- | -------- | -------------------- | --------------------------------------- |
@@ -481,13 +481,13 @@ El espaciado en WebSnack está organizado por contexto de uso para mantener cons
 ### Instalación y Configuración
 
 ```bash
-# Inicialización con tema WebSnack
+# Inicialización con tema WebCode
 pnpm dlx shadcn@latest init
 
 # Instalación del tema personalizado (Rosa/Aguamarina con efectos 3D)
 pnpm dlx shadcn@latest add https://tweakcn.com/r/themes/cmex1abh7000c04l4h2avft17
 
-# Componentes base WebSnack
+# Componentes base WebCode
 pnpm dlx shadcn@latest add button card input form label textarea select
 pnpm dlx shadcn@latest add alert dialog sheet drawer popover tooltip
 pnpm dlx shadcn@latest add table badge avatar accordion separator
@@ -496,7 +496,7 @@ pnpm dlx shadcn@latest add table badge avatar accordion separator
 ### Button Component Extendido
 
 ```tsx
-// Variantes de botón para WebSnack
+// Variantes de botón para WebCode
 import { Button } from "@/components/ui/button"
 
 // Botón primario con sombra 3D
@@ -517,7 +517,7 @@ import { Button } from "@/components/ui/button"
   Ver Portfolio
 </Button>
 
-// Botón ghost con Sistema WebSnack
+// Botón ghost con Sistema WebCode
 <Button
   variant="ghost"
   size="sm"
@@ -601,7 +601,7 @@ import {
   SelectValue
 } from "@/components/ui/select";
 
-// Formulario de contacto WebSnack
+// Formulario de contacto WebCode
 <form className="space-y-6 p-6 bg-card rounded-lg shadow-3d-lg border border-primary/20">
   <div className="space-y-4">
     {/* Campo de nombre */}
@@ -734,7 +734,7 @@ import { CheckCircle, AlertCircle, Info, AlertTriangle } from "lucide-react"
 
 ---
 
-## ✨ Animaciones Elva
+## **[Magia]** Animaciones Elva
 
 ### Curvas de Animación
 
@@ -769,7 +769,7 @@ Las animaciones Elva proporcionan transiciones sofisticadas:
 
 ---
 
-## 📐 Patrones de Layout
+## **[Regla]** Patrones de Layout
 
 ### Estructura de Página
 
@@ -834,28 +834,28 @@ className = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3";
 
 ### Checklist de Consistencia
 
-#### ✅ Tipografía
+#### **[Completado]** Tipografía
 
 - [ ] Usar `font-display` para títulos
 - [ ] Aplicar `letter-spacing-wide` en texto de cuerpo
 - [ ] Usar `letter-spacing-wider` en títulos principales
 - [ ] Incluir `text-muted-foreground` para texto secundario
 
-#### ✅ Espaciado
+#### **[Completado]** Espaciado
 
 - [ ] Usar clases semánticas (`gap-text`, `px-element`, etc.)
 - [ ] Aplicar `pt-nav` después de navegación fija
 - [ ] Usar `space-y-text` para elementos de formulario
 - [ ] Aplicar `mb-section` entre secciones principales
 
-#### ✅ Componentes
+#### **[Completado]** Componentes
 
 - [ ] Incluir `elva-transition` en elementos interactivos
 - [ ] Usar sombras 3D (`shadow-3d-sm`, `shadow-3d-md`)
 - [ ] Aplicar `rounded-button`, `rounded-input`, `rounded-card`
 - [ ] Incluir estados hover con `hover:shadow-3d-md`
 
-#### ✅ Accesibilidad
+#### **[Completado]** Accesibilidad
 
 - [ ] Contrastar colores adecuados
 - [ ] Labels asociados a inputs
@@ -868,7 +868,7 @@ className = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3";
 
 ```css
 /* Prefijo del proyecto */
-.websnack-*
+.webcode-*
 
 /* Componentes específicos */
 /* Componentes específicos */
@@ -949,7 +949,7 @@ export default function ExamplePage() {
 
 ---
 
-## 📚 Recursos Adicionales
+## **[Recursos]** Recursos Adicionales
 
 ### Archivos de Referencia
 
