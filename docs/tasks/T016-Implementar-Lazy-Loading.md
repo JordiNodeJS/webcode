@@ -1,6 +1,6 @@
-# 📝 TAREA INDIVIDUAL - IMPLEMENTAR LAZY LOADING
+# **[Documentación]** TAREA INDIVIDUAL - IMPLEMENTAR LAZY LOADING
 
-## 🏷️ METADATOS DE LA TAREA
+## **[Etiqueta]** METADATOS DE LA TAREA
 
 **ID:** T016  
 **Título:** Implementar Lazy Loading de Componentes  
@@ -12,13 +12,13 @@
 **Estimación:** 1 día  
 **Asignado a:** Desarrollador
 
-## 🔗 DEPENDENCIAS
+## **[Enlace]** DEPENDENCIAS
 
 **Dependencias de entrada:** T013, T014  
 **Dependencias de salida:** T018, T019  
 **Bloqueos identificados:** ninguno
 
-## 📋 DESCRIPCIÓN DETALLADA
+## **[Lista]** DESCRIPCIÓN DETALLADA
 
 Implementar lazy loading para componentes que no son visibles inicialmente (below-the-fold) para reducir el bundle inicial y mejorar el tiempo de carga de la página.
 
@@ -26,7 +26,7 @@ Implementar lazy loading para componentes que no son visibles inicialmente (belo
 
 **Objetivo:** Reducir el tiempo de carga inicial en 30% mediante lazy loading de componentes no críticos.
 
-## 🎯 CRITERIOS DE ACEPTACIÓN
+## **[Objetivos]** CRITERIOS DE ACEPTACIÓN
 
 - [ ] Componentes below-the-fold cargados con React.lazy
 - [ ] Suspense boundaries implementados correctamente
@@ -35,7 +35,7 @@ Implementar lazy loading para componentes que no son visibles inicialmente (belo
 - [ ] Funcionalidad preservada en todos los componentes
 - [ ] Mejora en LCP y FCP
 
-## 📊 SUBTAREAS
+## **[Análisis]** SUBTAREAS
 
 ### T016.1: Identificar componentes candidatos para lazy loading
 
@@ -100,21 +100,21 @@ Implementar lazy loading para componentes que no son visibles inicialmente (belo
 - [ ] No errores de hidratación
 - [ ] Tests de componentes pasando
 
-## 📝 NOTAS Y OBSERVACIONES
+## **[Documentación]** NOTAS Y OBSERVACIONES
 
 - Debe asegurarse que los componentes lazy no causan problemas de hidratación en Next.js
 - Los loading states deben ser consistentes con el diseño de la aplicación
 - Considerar usar Intersection Observer para cargar componentes cuando están próximos a ser visibles
 - Verificar que las rutas y navegación funcionan correctamente con lazy loading
 
-## 🔄 LOG DE CAMBIOS
+## **[Recargar]** LOG DE CAMBIOS
 
 **[2025-01-04 14:30]** Tarea creada basada en análisis de rendimiento
 **[2025-01-04 14:30]** Definidos criterios de aceptación y subtareas
 
 ---
 
-## 📈 MÉTRICAS DE PROGRESO
+## **[Crecimiento]** MÉTRICAS DE PROGRESO
 
 **Tiempo invertido:** 0 horas  
 **Archivos modificados:** 0 archivos  
@@ -122,7 +122,7 @@ Implementar lazy loading para componentes que no son visibles inicialmente (belo
 **Bugs encontrados:** 0 bugs  
 **Bugs resueltos:** 0 bugs
 
-## ✅ CHECKLIST DE FINALIZACIÓN
+## **[Completado]** CHECKLIST DE FINALIZACIÓN
 
 - [ ] Todas las subtareas completadas
 - [ ] Criterios de aceptación cumplidos

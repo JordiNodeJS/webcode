@@ -79,7 +79,7 @@ src/
 ├── components/
 │   ├── ui/                # shadcn/ui (NO MODIFICAR)
 │   ├── magicui/           # Magic UI components
-│   └── custom/            # Componentes WebSnack
+│   └── custom/            # Componentes WebCode
 ├── lib/                   # Utilities & configs
 ├── hooks/                 # Custom React hooks
 └── types/                 # TypeScript definitions
@@ -88,7 +88,7 @@ src/
 ### **Convenciones de Naming**
 
 - **Componentes**: PascalCase (`ContactForm.tsx`)
-- **Hooks**: camelCase con `use` prefix (`useWebSnackData.ts`)
+- **Hooks**: camelCase con `use` prefix (`useWebCodeData.ts`)
 - **Utilities**: camelCase (`formatPrice.ts`)
 - **Types**: PascalCase con `Type` suffix (`UserType.ts`)
 - **Constants**: SCREAMING_SNAKE_CASE (`API_ENDPOINTS.ts`)
@@ -151,10 +151,10 @@ const form = useForm<z.infer<typeof ContactSchema>>({
 ```typescript
 // ✅ Metadata API (Next.js 15)
 export const metadata: Metadata = {
-  title: "WebSnack - Desarrollo Web Barcelona",
+  title: "WebCode - Desarrollo Web Barcelona",
   description: "Soluciones web profesionales para freelancers y PYMEs",
   openGraph: {
-    title: "WebSnack",
+    title: "WebCode",
     description: "Tu partner en desarrollo web",
     images: ["/og-image.jpg"]
   }
@@ -201,7 +201,7 @@ pnpm add -D @types/node typescript eslint
 
 ```bash
 # Crear proyecto
-pnpm create next-app@latest websnack --typescript --tailwind --eslint --app --src-dir
+pnpm create next-app@latest webcode --typescript --tailwind --eslint --app --src-dir
 
 # Instalar shadcn/ui
 pnpm dlx shadcn@latest init
@@ -234,7 +234,7 @@ docs: update README
 
 ```env
 # Base URLs
-NEXT_PUBLIC_SITE_URL=https://websnack.es
+NEXT_PUBLIC_SITE_URL=https://webcode.es
 NEXT_PUBLIC_API_URL=/api
 
 # Database (TBD)

@@ -13,26 +13,26 @@
 
 ### **NUNCA usar colores hardcodeados**
 
-- ❌ **Prohibido**: `#264e70`, `rgb(38, 78, 112)`, `rgba(38, 78, 112, 0.5)`
-- ❌ **Prohibido**: Estilos inline con colores
-- ❌ **Prohibido**: Props de color en componentes sin mapear
+- **[Error]** **Prohibido**: `#264e70`, `rgb(38, 78, 112)`, `rgba(38, 78, 112, 0.5)`
+- **[Error]** **Prohibido**: Estilos inline con colores
+- **[Error]** **Prohibido**: Props de color en componentes sin mapear
 
-### **✅ SIEMPRE usar sistema centralizado**
+### ****[Completado]** SIEMPRE usar sistema centralizado**
 
 - **Variables CSS**: `rgba(var(--color-primary), 0.8)` en `src/styles/theme.css`
 - **Clases del sistema**: `.contact-card-gradient-*`, `.text-primary`, `.bg-secondary`
 - **Mapeo automático**: `gradientClassMap` en componentes Astro
 
-### **📂 Arquitectura de colores:**
+### ****[Carpeta Abierta]** Arquitectura de colores:**
 
 ```
 src/styles/
-├── theme.css           # ✅ Variables CSS (fuente de verdad)
-├── components.css      # ✅ Gradientes con variables
-└── global.css         # ⚠️ Utilidades temporales Tailwind
+├── theme.css           # **[Completado]** Variables CSS (fuente de verdad)
+├── components.css      # **[Completado]** Gradientes con variables
+└── global.css         # **[Advertencia]** Utilidades temporales Tailwind
 ```
 
-### **🎨 Paleta oficial (RGB format):**
+### ****[Diseño]** Paleta oficial (RGB format):**
 
 ```css
 --color-primary: 38 78 112; /* #264e70 - Azul corporativo */
@@ -42,7 +42,7 @@ src/styles/
 --color-neutral: 187 212 206; /* #bbd4ce - Verde neutro */
 ```
 
-### **🔧 Implementación correcta:**
+### ****[Herramientas]** Implementación correcta:**
 
 ```css
 /* [CORRECTO] Color con opacidad */
@@ -56,7 +56,7 @@ background: linear-gradient(
 );
 ```
 
-### **📋 Verificación pre-commit:**
+### ****[Lista]** Verificación pre-commit:**
 
 - [ ] No hay colores hardcodeados
 - [ ] Variables definidas en `theme.css`

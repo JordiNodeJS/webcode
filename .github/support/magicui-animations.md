@@ -55,7 +55,7 @@ export function AnimatedHero() {
         <BlurFade delay={0.25} inView>
           <SparklesText
             className="text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl"
-            text="WebSnack"
+            text="WebCode"
           />
         </BlurFade>
 
@@ -154,7 +154,7 @@ export function AnimatedText() {
       <TextAnimate
         animation="typewriter"
         className="text-4xl font-bold"
-        text="Welcome to WebSnack"
+        text="Welcome to WebCode"
       />
 
       {/* Fade in from different directions */}

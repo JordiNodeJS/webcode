@@ -4,15 +4,15 @@
 
 `CloudLightningBackground` es una alternativa al componente `WavesBackground` inspirada en el efecto interactivo de [Onlook.com](https://onlook.com). Utiliza canvas HTML5 y JavaScript para crear un fondo dinámico con nubes vaporosas que se iluminan cuando el cursor pasa por encima, simulando un efecto de relámpagos.
 
-## ✨ Características
+## **[Magia]** Características
 
 - **🌙 Soporte completo para modo claro y oscuro**: Se adapta automáticamente al tema activo
 - **☁️ Nubes vaporosas**: Partículas que simulan nubes con movimiento suave
-- **⚡ Iluminación interactiva**: Efecto de resplandor que sigue al cursor del usuario
-- **🎨 Efectos adaptativos**: Colores y opacidades diferentes según el tema
-- **🚀 Optimizado para performance**: Pausado automáticamente cuando no está visible
-- **📱 Responsive**: Funciona en dispositivos móviles con optimizaciones específicas
-- **♿ Accesible**: Respeta `prefers-reduced-motion` y tiene etiquetas ARIA## 🎯 Casos de Uso
+- ****[Rendimiento]** Iluminación interactiva**: Efecto de resplandor que sigue al cursor del usuario
+- ****[Diseño]** Efectos adaptativos**: Colores y opacidades diferentes según el tema
+- ****[Lanzamiento]** Optimizado para performance**: Pausado automáticamente cuando no está visible
+- ****[Móvil]** Responsive**: Funciona en dispositivos móviles con optimizaciones específicas
+- **♿ Accesible**: Respeta `prefers-reduced-motion` y tiene etiquetas ARIA## **[Objetivos]** Casos de Uso
 
 ### Intercambio Directo con WavesBackground
 
@@ -66,7 +66,7 @@ const CONFIG = {
 };
 ```
 
-## 🎨 Personalización de Colores por Tema
+## **[Diseño]** Personalización de Colores por Tema
 
 ### Modo Oscuro (Dark)
 
@@ -88,13 +88,13 @@ LIGHT_OPACITY: 0.6,                          // Intensidad moderada
 CLOUD_BASE_OPACITY: 0.3,                     // Nubes más visibles
 ```
 
-## 📱 Optimizaciones Móviles
+## **[Móvil]** Optimizaciones Móviles
 
 - **Reducción de opacidad**: En dispositivos móviles se reduce al 80% para ahorrar batería
 - **Partículas optimizadas**: Menor número de partículas en pantallas pequeñas
 - **Touch-friendly**: No depende exclusivamente del mouse, funciona con touch
 
-## 🚀 Performance
+## **[Lanzamiento]** Performance
 
 ### **Versión Original (Estable)**
 
@@ -103,39 +103,39 @@ CLOUD_BASE_OPACITY: 0.3,                     // Nubes más visibles
 - **Canvas optimizado**: Configuraciones específicas para mejorar el renderizado
 - **Memory management**: Limpieza automática de recursos al desmontar
 
-### **⚡ Versión Optimizada v2.0 (Recomendada)**
+### ****[Rendimiento]** Versión Optimizada v2.0 (Recomendada)**
 
-- **🎯 Detección automática de dispositivo**: Configuración adaptativa por hardware
-- **🔄 Frame rate adaptativo**: 30-60 FPS según capacidades
-- **💾 Memory pool system**: -70% garbage collection
+- ****[Objetivos]** Detección automática de dispositivo**: Configuración adaptativa por hardware
+- ****[Recargar]** Frame rate adaptativo**: 30-60 FPS según capacidades
+- ****[Guardar]** Memory pool system**: -70% garbage collection
 - **👁️ Visibility culling**: Solo renderiza partículas visibles
-- **📱 Mobile-first**: Optimizaciones específicas para batería y performance
-- **🎨 Quality levels**: Alto/Medio/Bajo según dispositivo
+- ****[Móvil]** Mobile-first**: Optimizaciones específicas para batería y performance
+- ****[Diseño]** Quality levels**: Alto/Medio/Bajo según dispositivo
 
-**📊 Mejoras de Performance:**
+****[Análisis]** Mejoras de Performance:**
 
 - **Móviles**: +40-60% FPS, +45% duración de batería
 - **Desktop**: +25% eficiencia, soporte para 120 partículas
 - **Compatibilidad**: 100% dispositivos con fallback inteligente
 
-**🔧 Archivo optimizado:** `Hero.CloudLightningBackground.Optimized.tsx`
+****[Herramientas]** Archivo optimizado:** `Hero.CloudLightningBackground.Optimized.tsx`
 
 Ver documentación completa: [CloudLightningBackground-Performance-Optimization.md](./CloudLightningBackground-Performance-Optimization.md)
 
-## 🎪 Comparación con WavesBackground
+## **[Entretenimiento]** Comparación con WavesBackground
 
 | Característica            | WavesBackground      | CloudLightningBackground |
 | ------------------------- | -------------------- | ------------------------ |
 | **Tecnología**            | SVG + CSS Animations | Canvas + JavaScript      |
-| **Interactividad**        | ❌ Estático          | ✅ Sigue al cursor       |
+| **Interactividad**        | **[Error]** Estático          | **[Completado]** Sigue al cursor       |
 | **Efecto Visual**         | Olas abstractas      | Nubes con relámpagos     |
-| **Soporte de Tema**       | ✅ Automático CSS    | ✅ Dinámico con useTheme |
+| **Soporte de Tema**       | **[Completado]** Automático CSS    | **[Completado]** Dinámico con useTheme |
 | **Performance**           | Ligero               | Moderado (optimizado)    |
 | **Personalización**       | Limitada             | Alta                     |
 | **Atmósfera Modo Oscuro** | Suave y minimalista  | Dramática y misteriosa   |
 | **Atmósfera Modo Claro**  | Elegante y limpia    | Sofisticada y dinámica   |
 
-## 🔧 Instalación y Uso
+## **[Herramientas]** Instalación y Uso
 
 ### **Versión Original (Estable)**
 
@@ -151,7 +151,7 @@ Ver documentación completa: [CloudLightningBackground-Performance-Optimization.
    <CloudLightningBackground />;
    ```
 
-### **⚡ Versión Optimizada (Recomendada)**
+### ****[Rendimiento]** Versión Optimizada (Recomendada)**
 
 1. **El componente optimizado está en**:
 
@@ -171,7 +171,7 @@ Ver documentación completa: [CloudLightningBackground-Performance-Optimization.
    src/app/globals.css (sección "CLOUD LIGHTNING BACKGROUND STYLES")
    ```
 
-### **🚀 Migración Recomendada**
+### ****[Lanzamiento]** Migración Recomendada**
 
 Para obtener las mejoras de performance, simplemente cambia el import:
 
@@ -203,7 +203,7 @@ import { CloudLightningBackground } from "@/components/landing/hero/Hero.CloudLi
 - El efecto funciona con touch, pero es menos visible para ahorrar batería
 - Puedes ajustar la opacidad en la media query de `globals.css`
 
-## 🎨 Inspiración y Efectos Visuales
+## **[Diseño]** Inspiración y Efectos Visuales
 
 Este componente está inspirado en el efecto de fondo interactivo de [onlook.com](https://onlook.com), pero adaptado para trabajar tanto en modo claro como oscuro:
 
@@ -221,7 +221,7 @@ Este componente está inspirado en el efecto de fondo interactivo de [onlook.com
 - **Iluminación**: Azul más profundo que contrasta elegantemente
 - **Sensación**: Sofisticada, dinámica, como nubes iluminadas por el sol
 
-### 🖱️ Interactividad
+### **[Ratón]** Interactividad
 
 - **Estado reposo**: Nubes sutiles con movimiento suave
 - **Al pasar cursor**: Las nubes se iluminan en un radio de 200px
@@ -229,6 +229,6 @@ Este componente está inspirado en el efecto de fondo interactivo de [onlook.com
 
 ---
 
-**🎯 Resultado**: Un fondo que se adapta perfectamente al tema activo, manteniendo la experiencia interactiva y atmosférica en ambos modos.
+****[Objetivos]** Resultado**: Un fondo que se adapta perfectamente al tema activo, manteniendo la experiencia interactiva y atmosférica en ambos modos.
 
 **¿Necesitas más personalización?** El código está bien documentado y es fácil de modificar para ajustar colores, comportamientos o efectos adicionales.

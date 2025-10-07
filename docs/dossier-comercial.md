@@ -67,7 +67,7 @@ Todo está pensado para que no tengas que preocuparte por aspectos técnicos. T�
 | **Total primer año**             | **440 €**              |
 | _Mantenimiento mensual opcional_ | +30€/mes               |
 
-💡 _Precio cerrado, sin sorpresas. Puedes empezar a vender desde la primera semana._
+**[Idea]** _Precio cerrado, sin sorpresas. Puedes empezar a vender desde la primera semana._
 
 ---
 
@@ -86,10 +86,10 @@ Estos son algunos ejemplos reales de cómo este paquete puede transformar tu neg
 
 ### 6. ¿Por qué elegir esta solución?
 
-- ✅ **Rápida implementación**: tu web lista en 7 días
-- ✅ **Sin conocimientos técnicos**: tú gestionas lo básico, yo me encargo del resto
-- ✅ **Visibilidad inmediata**: en Google, redes sociales y mapas
-- ✅ **Acompañamiento personalizado**: trato directo, sin intermediarios
+- **[Completado]** **Rápida implementación**: tu web lista en 7 días
+- **[Completado]** **Sin conocimientos técnicos**: tú gestionas lo básico, yo me encargo del resto
+- **[Completado]** **Visibilidad inmediata**: en Google, redes sociales y mapas
+- **[Completado]** **Acompañamiento personalizado**: trato directo, sin intermediarios
 
 Este paquete está pensado para comerciantes que quieren resultados sin perder tiempo ni dinero en soluciones complejas.
 
@@ -101,13 +101,13 @@ Este paquete está pensado para comerciantes que quieren resultados sin perder t
 
 Desarrollador Web Freelance
 
-📍 Barcelona
+**[Ubicación]** Barcelona
 
-📞 [tu teléfono]
+**[Teléfono]** [tu teléfono]
 
-📧 [tu email]
+**[Email]** [tu email]
 
-🌐 [tu web o portfolio]
+**[Web]** [tu web o portfolio]
 
 ---
 

@@ -1,4 +1,4 @@
-# 🚀 WebSnack - Reglas Unificadas de Desarrollo
+# 🚀 WebCode - Reglas Unificadas de Desarrollo
 
 _Guía completa para desarrollo con Next.js 15, TailwindCSS v4, shadcn/ui, Magic UI y MCPs_
 
@@ -55,7 +55,7 @@ export async function submitForm(prevState: State, formData: FormData) {
 
 ### **2. Tipado TypeScript Exhaustivo**
 
-#### **Patrones de Exportación WebSnack**
+#### **Patrones de Exportación WebCode**
 
 ```ts
 // ✅ Named exports para componentes reutilizables
@@ -262,7 +262,7 @@ export function HeroSection() {
       <RetroGrid className="absolute inset-0" />
       <div className="relative z-10 container text-center">
         <SparklesText
-          text="WebSnack Studio"
+          text="WebCode Studio"
           className="text-6xl font-bold mb-8"
           data-testid="hero-title"
         />
@@ -293,7 +293,7 @@ export function HeroSection() {
 export default function FloristeriaSection() {
   return (
     <section itemScope itemType="https://schema.org/Service" className="py-20">
-      <meta itemProp="provider" content="WebSnack" />
+      <meta itemProp="provider" content="WebCode" />
       <meta itemProp="serviceType" content="Diseño web para floristerías" />
       {/* ... contenido visible */}
     </section>
@@ -312,19 +312,19 @@ export async function GET(
 ) {
   const metadata = {
     floristeria: {
-      title: "Diseño Web para Floristerías | WebSnack",
+      title: "Diseño Web para Floristerías | WebCode",
       description:
         "Aumenta ventas online con sitios web para floristerías optimizados...",
       keywords: ["diseño web floristería", "página web para flores"]
     },
     veterinaria: {
-      title: "Diseño Web para Veterinarias | WebSnack",
+      title: "Diseño Web para Veterinarias | WebCode",
       description:
         "Sitios web para clínicas veterinarias que mejoran la comunicación...",
       keywords: ["diseño web veterinaria", "página web clínica veterinaria"]
     },
     foodtruck: {
-      title: "Diseño Web para Food Trucks | WebSnack",
+      title: "Diseño Web para Food Trucks | WebCode",
       description: "Presencia online para food trucks que aumenta pedidos...",
       keywords: ["diseño web food truck", "página web comida móvil"]
     }
@@ -519,7 +519,7 @@ import { SparklesText } from "@/components/magicui/sparkles-text";
 import { RetroGrid } from "@/components/magicui/retro-grid";
 
 export const metadata: Metadata = {
-  title: "Diseño Web para Floristerías | WebSnack",
+  title: "Diseño Web para Floristerías | WebCode",
   description:
     "Sitios web para floristerías que aumentan ventas online y mejoran la presencia digital",
   keywords: [
@@ -556,7 +556,7 @@ export default function FloristeriaPage() {
             </p>
           </BlurFade>
 
-          <meta itemProp="provider" content="WebSnack" />
+          <meta itemProp="provider" content="WebCode" />
           <meta itemProp="serviceType" content="Diseño web para floristerías" />
         </div>
       </section>

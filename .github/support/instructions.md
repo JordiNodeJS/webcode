@@ -1,10 +1,10 @@
-# GitHub Copilot Instructions for WebSnack Project
+# GitHub Copilot Instructions for WebCode Project
 
 This document contains AI coding assistant instructions converted from Qoder rules for use with GitHub Copilot and other VS Code AI extensions.
 
 ## Project Overview
 
-WebSnack is a modern Next.js 15 application built with:
+WebCode is a modern Next.js 15 application built with:
 
 - **Framework**: Next.js 15 with App Router
 - **Styling**: Tailwind CSS with shadcn/ui components

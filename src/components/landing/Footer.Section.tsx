@@ -1,9 +1,9 @@
 "use client";
 
 import { Link } from "next-view-transitions";
-import styles from "./Footer.Section.module.css";
 import { EmailProtection } from "@/components/ui/EmailProtection";
 import { AnimatedLogo } from "./Footer.AnimatedLogo";
+import styles from "./Footer.Section.module.css";
 
 /**
  * Footer.Section - Componente principal del footer de WEBCODE
@@ -19,8 +19,8 @@ export function FooterSection() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className={`relative border-t border-border/50 overflow-hidden ${styles.footerVerdoso}`}>
-      {/* Fondo con gradiente sutil verdoso */}
+    <footer className="relative footer-verdoso footer-verdoso-test border-t border-border/50 overflow-hidden">
+      {/* Fondo con gradiente sutil verdoso - COLOR ORIGINAL */}
       <div className="absolute inset-0 footer-verdoso-overlay"></div>
 
       <div className="relative container mx-auto px-4 py-16">

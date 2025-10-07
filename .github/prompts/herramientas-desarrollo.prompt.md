@@ -1,8 +1,8 @@
-# Prompt: Herramientas de Desarrollo - WebSnack
+# Prompt: Herramientas de Desarrollo - WebCode
 
 ## **Contexto y Objetivo**
 
-Prompt especializado para el uso de herramientas de desarrollo y testing en el proyecto WebSnack utilizando MCPs (Model Context Protocols) para automatización y verificación de calidad.
+Prompt especializado para el uso de herramientas de desarrollo y testing en el proyecto WebCode utilizando MCPs (Model Context Protocols) para automatización y verificación de calidad.
 
 ## **Alcance**
 
@@ -50,7 +50,7 @@ Utilizar el MCP Context7 para:
 
 ### **Favicon Generator**
 
-**🔗 Herramienta**: [https://www.favicon-generator.org/](https://www.favicon-generator.org/)
+****[Enlace]** Herramienta**: [https://www.favicon-generator.org/](https://www.favicon-generator.org/)
 
 **Propósito**: Generación completa de favicons y app icons para todas las plataformas
 
@@ -109,11 +109,11 @@ Para uso detallado de shadcn/ui, consultar: `./shadcn.prompt.md`
 
 ### **Criterios de Aceptación**
 
-- ✅ Servidor de desarrollo funcionando
-- ✅ Screenshots reflejan cambios esperados
-- ✅ Componentes siguen patrones establecidos
-- ✅ Testing pasa sin errores
+- **[Completado]** Servidor de desarrollo funcionando
+- **[Completado]** Screenshots reflejan cambios esperados
+- **[Completado]** Componentes siguen patrones establecidos
+- **[Completado]** Testing pasa sin errores
 
 ---
 
-**Nota**: Este prompt consolida las herramientas de desarrollo para mantener un flujo de trabajo coherente y eficiente en el proyecto WebSnack.
+**Nota**: Este prompt consolida las herramientas de desarrollo para mantener un flujo de trabajo coherente y eficiente en el proyecto WebCode.

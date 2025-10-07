@@ -1,6 +1,6 @@
-# 📝 TEMPLATE DE TAREA INDIVIDUAL
+# **[Documentación]** TEMPLATE DE TAREA INDIVIDUAL
 
-## 🏷️ METADATOS DE LA TAREA
+## **[Etiqueta]** METADATOS DE LA TAREA
 
 **ID:** [TXXX]  
 **Título:** [Título descriptivo de la tarea]  
@@ -8,27 +8,27 @@
 **Fecha de última actualización:** [YYYY-MM-DD]  
 **Estado:** [pendiente/en progreso/completada/cancelada/bloqueada]  
 **Progreso:** [0-100%]  
-**Prioridad:** [🔴 Crítica/🟡 Media/🟢 Baja]  
+**Prioridad:** [**[Círculo Rojo]** Crítica/🟡 Media/🟢 Baja]  
 **Estimación:** [Tiempo estimado en horas]  
 **Asignado a:** [Responsable]
 
-## 🔗 DEPENDENCIAS
+## **[Enlace]** DEPENDENCIAS
 
 **Dependencias de entrada:** [Lista de tareas que deben completarse antes]  
 **Dependencias de salida:** [Lista de tareas que dependen de esta]  
 **Bloqueos identificados:** [Tareas que impiden el progreso]
 
-## 📋 DESCRIPCIÓN DETALLADA
+## **[Lista]** DESCRIPCIÓN DETALLADA
 
 [Descripción completa de lo que se debe hacer, incluyendo contexto y objetivos]
 
-## 🎯 CRITERIOS DE ACEPTACIÓN
+## **[Objetivos]** CRITERIOS DE ACEPTACIÓN
 
 - [ ] Criterio 1: [Descripción específica y medible]
 - [ ] Criterio 2: [Descripción específica y medible]
 - [ ] Criterio 3: [Descripción específica y medible]
 
-## 📊 SUBTAREAS
+## **[Análisis]** SUBTAREAS
 
 ### TXXX.1: [Título de subtarea]
 
@@ -71,17 +71,17 @@
 - [ ] Código más limpio
 - [ ] Tests pasando
 
-## 📝 NOTAS Y OBSERVACIONES
+## **[Documentación]** NOTAS Y OBSERVACIONES
 
 [Notas adicionales, consideraciones especiales, o información relevante]
 
-## 🔄 LOG DE CAMBIOS
+## **[Recargar]** LOG DE CAMBIOS
 
 **[YYYY-MM-DD HH:MM]** [Descripción del cambio realizado] - [Motivo/contexto]
 
 ---
 
-## 📈 MÉTRICAS DE PROGRESO
+## **[Crecimiento]** MÉTRICAS DE PROGRESO
 
 **Tiempo invertido:** [X horas]  
 **Archivos modificados:** [X archivos]  
@@ -89,7 +89,7 @@
 **Bugs encontrados:** [X bugs]  
 **Bugs resueltos:** [X bugs]
 
-## ✅ CHECKLIST DE FINALIZACIÓN
+## **[Completado]** CHECKLIST DE FINALIZACIÓN
 
 - [ ] Todas las subtareas completadas
 - [ ] Criterios de aceptación cumplidos

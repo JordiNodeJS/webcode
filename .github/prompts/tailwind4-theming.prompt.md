@@ -8,7 +8,7 @@ Durante la implementación del sistema de theming en Mudanzas Andy, se identific
 
 ### Errores Comunes y Soluciones
 
-#### ❌ **ANTIPATRÓN: @apply con clases personalizadas**
+#### **[Error]** **ANTIPATRÓN: @apply con clases personalizadas**
 
 ```css
 /* INCORRECTO - Tailwind CSS 4 no reconoce clases personalizadas con @apply */
@@ -25,7 +25,7 @@ Durante la implementación del sistema de theming en Mudanzas Andy, se identific
 }
 ```
 
-#### ✅ **PATRÓN CORRECTO: CSS directo con variables**
+#### **[Completado]** **PATRÓN CORRECTO: CSS directo con variables**
 
 ```css
 /* CORRECTO - CSS directo usando variables CSS */
@@ -163,21 +163,21 @@ export default defineConfig({
 
 ## Checklist de Implementación
 
-### ✅ Antes de Implementar Theming
+### **[Completado]** Antes de Implementar Theming
 
 - [ ] **Auditar clases personalizadas existentes** que usen `@apply`
 - [ ] **Verificar versión de Tailwind CSS** (las reglas aplican para v4+)
 - [ ] **Planificar estructura de variables** en formato RGB
 - [ ] **Definir helper withOpacity** en configuración de Tailwind
 
-### ✅ Durante la Implementación
+### **[Completado]** Durante la Implementación
 
 - [ ] **NO usar @apply con clases personalizadas** definidas en el mismo proyecto
 - [ ] **Preferir CSS directo + variables** para theming dinámico
 - [ ] **Testear compilación** en cada cambio mayor de CSS
 - [ ] **Usar utilidades de Tailwind** para propiedades estándar (spacing, typography)
 
-### ✅ Testing y Validación
+### **[Completado]** Testing y Validación
 
 - [ ] **Compilación sin errores** en desarrollo (`pnpm dev`)
 - [ ] **Build exitoso** para producción (`pnpm build`)
@@ -197,7 +197,7 @@ tailwind.config.js     # Configuración con withOpacity helper
 
 ## Ejemplo de Migración
 
-### ❌ Antes (Problemático)
+### **[Error]** Antes (Problemático)
 
 ```css
 .btn-primary {
@@ -206,7 +206,7 @@ tailwind.config.js     # Configuración con withOpacity helper
 }
 ```
 
-### ✅ Después (Correcto)
+### **[Completado]** Después (Correcto)
 
 ```css
 .btn-primary {
@@ -225,10 +225,10 @@ tailwind.config.js     # Configuración con withOpacity helper
 
 ## Notas de Compatibilidad
 
-- **Astro**: ✅ Compatible con 5.13.3+
-- **Tailwind CSS**: ✅ Aplicable a v4.x (breaking changes desde v3)
-- **SSG**: ✅ No requiere runtime de servidor
-- **TypeScript**: ✅ Compatible, recomendado para type safety
+- **Astro**: **[Completado]** Compatible con 5.13.3+
+- **Tailwind CSS**: **[Completado]** Aplicable a v4.x (breaking changes desde v3)
+- **SSG**: **[Completado]** No requiere runtime de servidor
+- **TypeScript**: **[Completado]** Compatible, recomendado para type safety
 
 ## Referencias
 

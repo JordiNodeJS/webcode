@@ -1,4 +1,4 @@
-# Guía de Estilos Base WebSnack
+# Guía de Estilos Base WebCode
 
 ## 1. Principios de Diseño
 
@@ -7,7 +7,7 @@
 Basado en el stack tecnológico de Next.js 15 + React 19 + Tailwind CSS v4, nuestro sistema de diseño se fundamenta en:
 
 - **Elegancia minimalista**: Cada elemento tiene un propósito específico
-- **Sistema de Animaciones WebSnack (WAS)**: Transiciones profesionales con `cubic-bezier(0.25, 0.46, 0.45, 0.94)`
+- **Sistema de Animaciones WebCode (WAS)**: Transiciones profesionales con `cubic-bezier(0.25, 0.46, 0.45, 0.94)`
 - **Paleta Rosa-Aguamarina**: Colores vibrantes con gradientes suaves
 - **Efectos 3D**: Sombras y profundidad para elementos interactivos
 - **Tipografía Display**: Poppins para títulos, Space Grotesk para UI
@@ -21,12 +21,12 @@ Basado en el stack tecnológico de Next.js 15 + React 19 + Tailwind CSS v4, nues
 - **Accesibilidad**: Diseño inclusivo WCAG 2.1 AA compatible con shadcn/ui
 - **Performance**: Optimización visual sin sacrificar funcionalidad (Core Web Vitals)
 
-## 2. Sistema de Color - Tema WebSnack
+## 2. Sistema de Color - Tema WebCode
 
 ### Paleta Principal (Rosa/Aguamarina con efectos 3D)
 
 ```css
-/* Light Mode - WebSnack Theme */
+/* Light Mode - WebCode Theme */
 :root {
   --background: #ffffff;
   --foreground: #5b5b5b;
@@ -34,9 +34,9 @@ Basado en el stack tecnológico de Next.js 15 + React 19 + Tailwind CSS v4, nues
   --card-foreground: #5b5b5b;
   --popover: #ffffff;
   --popover-foreground: #5b5b5b;
-  --primary: #dc7cb3; /* Rosa principal WebSnack */
+  --primary: #dc7cb3; /* Rosa principal WebCode */
   --primary-foreground: #ffffff;
-  --secondary: #bce3e5; /* Aguamarina WebSnack */
+  --secondary: #bce3e5; /* Aguamarina WebCode */
   --secondary-foreground: #333333;
   --muted: #f4fbfc;
   --muted-foreground: #7a7a7a;
@@ -60,7 +60,7 @@ Basado en el stack tecnológico de Next.js 15 + React 19 + Tailwind CSS v4, nues
     3px 8px 10px -1px hsl(325.5319 58.0247% 68.2353% / 1);
 }
 
-/* Dark Mode - WebSnack Theme */
+/* Dark Mode - WebCode Theme */
 .dark {
   --background: #162b37;
   --foreground: #ffffff;
@@ -93,7 +93,7 @@ Basado en el stack tecnológico de Next.js 15 + React 19 + Tailwind CSS v4, nues
 - **Muted**: Textos secundarios y elementos disabled
 - **Destructive**: Errores y alertas
 
-## 3. Tipografía - Stack WebSnack
+## 3. Tipografía - Stack WebCode
 
 ### Familias de Fuentes (Según Stack 2025)
 
@@ -118,13 +118,13 @@ Basado en el stack tecnológico de Next.js 15 + React 19 + Tailwind CSS v4, nues
 <article className="font-serif text-lg">Artículo en Lora</article>
 
 // Clase font-mono para código
-<code className="font-mono text-sm">const websnack = "awesome";</code>
+<code className="font-mono text-sm">const webcode = "awesome";</code>
 ```
 
 ### Escalas Tipográficas (Tailwind CSS v4)
 
 ```css
-/* Heading Scale optimizada para WebSnack */
+/* Heading Scale optimizada para WebCode */
 .text-8xl: 6rem (96px)    /* Hero titles principales */
 .text-7xl: 4.5rem (72px)  /* Main titles de sección */
 .text-6xl: 3.75rem (60px) /* Section titles */
@@ -142,7 +142,7 @@ Basado en el stack tecnológico de Next.js 15 + React 19 + Tailwind CSS v4, nues
 ### Letter Spacing (Optimizado para Poppins)
 
 ```css
-/* Valores específicos para las fuentes WebSnack */
+/* Valores específicos para las fuentes WebCode */
 .tracking-tighter: -0.05em  /* Para Space Grotesk en títulos grandes */
 .tracking-tight: -0.025em   /* Para subtítulos */
 .tracking-normal: 0em       /* Texto normal en Poppins */
@@ -159,7 +159,7 @@ Basado en el stack tecnológico de Next.js 15 + React 19 + Tailwind CSS v4, nues
 /* Base: 0.25rem (4px) - Sistema de Tailwind CSS v4 */
 --spacing: 0.25rem;
 
-/* Espaciado semántico WebSnack */
+/* Espaciado semántico WebCode */
 --spacing-text: 0.75rem; /* 12px - Entre líneas de texto */
 --spacing-element: 1.5rem; /* 24px - Entre elementos relacionados */
 --spacing-component: 2rem; /* 32px - Entre componentes */
@@ -216,12 +216,12 @@ Basado en el stack tecnológico de Next.js 15 + React 19 + Tailwind CSS v4, nues
 }
 ```
 
-## 5. Sombras 3D y Efectos - Tema WebSnack
+## 5. Sombras 3D y Efectos - Tema WebCode
 
 ### Sistema de Sombras 3D Personalizadas
 
 ```css
-/* Sombras 3D con colores del tema WebSnack */
+/* Sombras 3D con colores del tema WebCode */
 --shadow-3d-xs: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 0.5);
 --shadow-3d-sm: 3px 3px 0px 0px hsl(325.5319 58.0247% 68.2353% / 1);
 --shadow-3d-md:
@@ -239,7 +239,7 @@ Basado en el stack tecnológico de Next.js 15 + React 19 + Tailwind CSS v4, nues
 
 ```css
 /* Radius system basado en --radius variable */
---radius: 0.4rem; /* Base radius WebSnack */
+--radius: 0.4rem; /* Base radius WebCode */
 --radius-sm: calc(var(--radius) - 4px); /* 0.1rem */
 --radius-md: calc(var(--radius) - 2px); /* 0.3rem */
 --radius-lg: var(--radius); /* 0.4rem */
@@ -251,7 +251,7 @@ Basado en el stack tecnológico de Next.js 15 + React 19 + Tailwind CSS v4, nues
 ```tsx
 // Botón con sombra 3D
 <Button className="shadow-3d-sm hover:shadow-3d-md transition-all">
-  Botón WebSnack
+  Botón WebCode
 </Button>
 
 // Card con efectos
@@ -260,12 +260,12 @@ Basado en el stack tecnológico de Next.js 15 + React 19 + Tailwind CSS v4, nues
 </Card>
 ```
 
-## 6. Sistema de Animaciones WebSnack (WAS) - Integración con Framer Motion
+## 6. Sistema de Animaciones WebCode (WAS) - Integración con Framer Motion
 
-### Curvas de Animación WebSnack (Sistema Propio)
+### Curvas de Animación WebCode (Sistema Propio)
 
 ```css
-/* Easing curves del Sistema WebSnack */
+/* Easing curves del Sistema WebCode */
 .ws-transition: cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Principal */
 .ws-transition-quick: 0.2s cubic-bezier(0.4, 0, 0.2, 1); /* Interacciones rápidas */
 .ws-transition-normal: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Transiciones normales */
@@ -273,10 +273,10 @@ Basado en el stack tecnológico de Next.js 15 + React 19 + Tailwind CSS v4, nues
 .ws-transition-dramatic: 0.8s cubic-bezier(0.87, 0, 0.13, 1); /* Efectos dramáticos */
 ```
 
-### Keyframes WebSnack Implementados
+### Keyframes WebCode Implementados
 
 ```css
-/* Animaciones basadas en Sistema WebSnack */
+/* Animaciones basadas en Sistema WebCode */
 @keyframes wsFadeIn {
   0% {
     opacity: 0;
@@ -337,7 +337,7 @@ const wsCurves = {
   dramatic: [0.87, 0, 0.13, 1]
 };
 
-// Transición WebSnack en componentes
+// Transición WebCode en componentes
 <motion.div
   initial={{ opacity: 0, y: 20 }}
   animate={{ opacity: 1, y: 0 }}
@@ -346,16 +346,16 @@ const wsCurves = {
     ease: wsCurves.primary
   }}
 >
-  Contenido con animación WebSnack
+  Contenido con animación WebCode
 </motion.div>;
 ```
 
-## 7. Componentes Base - shadcn/ui + WebSnack Theme
+## 7. Componentes Base - shadcn/ui + WebCode Theme
 
 ### Botones (Button Component)
 
 ```tsx
-// Botón primario con tema WebSnack
+// Botón primario con tema WebCode
 <Button
   variant="default"
   size="lg"
@@ -428,7 +428,7 @@ const wsCurves = {
 ### Form Components
 
 ```tsx
-// Formulario completo con tema WebSnack
+// Formulario completo con tema WebCode
 <form className="space-y-6 p-6 bg-card rounded-lg shadow-3d-lg">
   <div className="space-y-4">
     <div>
@@ -482,7 +482,7 @@ export default async function LandingPage() {
       <section className="relative px-4 pt-20 pb-16 sm:px-6 lg:px-8 lg:pt-24 lg:pb-20">
         <div className="container mx-auto text-center">
           <h1 className="font-display tracking-wider mb-6 text-4xl font-bold text-primary md:text-5xl lg:text-6xl">
-            WebSnack
+            WebCode
           </h1>
           <p className="text-muted-foreground tracking-wide mx-auto max-w-2xl text-lg font-sans lg:text-xl">
             Transformamos ideas en experiencias digitales excepcionales
@@ -531,7 +531,7 @@ export function Navigation() {
               href="/"
               className="font-display text-xl font-bold text-primary tracking-wide"
             >
-              WebSnack
+              WebCode
             </Link>
             <div className="hidden md:flex space-x-6">
               <NavLink href="/servicios">Servicios</NavLink>
@@ -594,12 +594,12 @@ function NavLink({
 </div>
 ```
 
-## 9. Estados Interactivos - Microinteracciones WebSnack
+## 9. Estados Interactivos - Microinteracciones WebCode
 
-### Hover Effects (Basados en Sistema WebSnack)
+### Hover Effects (Basados en Sistema WebCode)
 
 ```css
-/* Hover effects Sistema WebSnack */
+/* Hover effects Sistema WebCode */
 .ws-hover:hover {
   opacity: 0.8; /* Profesional y sutil */
   transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -682,7 +682,7 @@ xl: 1280px  /* Desktop large */
 2xl: 1536px /* Desktop extra large */
 ```
 
-### Principios Responsive WebSnack
+### Principios Responsive WebCode
 
 ```tsx
 // Tipografía responsive
@@ -823,4 +823,4 @@ import Image from 'next/image';
 
 ---
 
-Esta guía de estilos base proporciona la fundación técnica completa para implementar el diseño WebSnack con Next.js 15, React 19, Tailwind CSS v4 y shadcn/ui, incluyendo las microanimaciones Elva auténticas para una experiencia de usuario premium.
+Esta guía de estilos base proporciona la fundación técnica completa para implementar el diseño WebCode con Next.js 15, React 19, Tailwind CSS v4 y shadcn/ui, incluyendo las microanimaciones Elva auténticas para una experiencia de usuario premium.

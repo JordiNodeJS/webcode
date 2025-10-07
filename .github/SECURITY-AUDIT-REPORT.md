@@ -1,4 +1,4 @@
-# 🔍 Auditoría de Coherencia y Seguridad - WebSnack
+# 🔍 Auditoría de Coherencia y Seguridad - WebCode
 
 > **Fecha**: 2025-09-01  
 > **Estado**: ✅ COMPLETADA  

@@ -1,15 +1,15 @@
 # Desglose de Tareas - Fase 1: Estructura Base
 
-## Tarea 0: Configuración del Sistema de Colores WebSnack (CRÍTICA)
+## Tarea 0: Configuración del Sistema de Colores WebCode (CRÍTICA)
 
 ### Descripción
 
-Implementar automáticamente el sistema de colores Rosa/Aguamarina de WebSnack usando el comando de shadcn/ui.
+Implementar automáticamente el sistema de colores Rosa/Aguamarina de WebCode usando el comando de shadcn/ui.
 
 ### Subtareas
 
 1. Ejecutar comando de inicialización de shadcn/ui
-2. Instalar tema personalizado WebSnack
+2. Instalar tema personalizado WebCode
 3. Instalar componentes base con el tema
 4. Verificar implementación del sistema de colores
 
@@ -26,7 +26,7 @@ Implementar automáticamente el sistema de colores Rosa/Aguamarina de WebSnack u
 # 1. Inicializar shadcn/ui
 pnpm dlx shadcn@latest init
 
-# 2. Instalar tema personalizado WebSnack (Rosa/Aguamarina con efectos 3D)
+# 2. Instalar tema personalizado WebCode (Rosa/Aguamarina con efectos 3D)
 pnpm dlx shadcn@latest add https://tweakcn.com/r/themes/cmex1abh7000c04l4h2avft17
 
 # 3. Instalar componentes base con el tema
@@ -35,7 +35,7 @@ pnpm dlx shadcn@latest add button card input form label textarea select
 
 ### Criterios de aceptación
 
-- Sistema de colores WebSnack implementado
+- Sistema de colores WebCode implementado
 - Variables CSS disponibles en `globals.css`
 - Componentes shadcn/ui con tema personalizado
 - Verificación de colores: `#dc7cb3` (Rosa), `#bce3e5` (Aguamarina)
@@ -92,7 +92,7 @@ Crear el componente de navegación superior con logo, menú y selector de idioma
 
 ### Subtareas
 
-1. Implementar logo WebSnack con Next.js Image
+1. Implementar logo WebCode con Next.js Image
 2. Crear menú de navegación con items:
    - Servicios
    - Proceso
@@ -192,9 +192,9 @@ Crear el grid de 3 columnas con los value propositions principales.
 
 1. Crear estructura de grid responsive (3 columnas desktop, 1 columna mobile)
 2. Implementar cada value prop con icono:
-   - 🚀 Tecnología 2025
-   - ⚡ Performance Garantizado
-   - 📱 Mobile-First
+   - **[Lanzamiento]** Tecnología 2025
+   - **[Rendimiento]** Performance Garantizado
+   - **[Móvil]** Mobile-First
 3. Añadir lista de características para cada value prop
 
 ### Detalles técnicos

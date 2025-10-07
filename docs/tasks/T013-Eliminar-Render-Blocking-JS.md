@@ -1,6 +1,6 @@
-# 📝 TAREA INDIVIDUAL - ELIMINAR RENDER-BLOCKING JAVASCRIPT
+# **[Documentación]** TAREA INDIVIDUAL - ELIMINAR RENDER-BLOCKING JAVASCRIPT
 
-## 🏷️ METADATOS DE LA TAREA
+## **[Etiqueta]** METADATOS DE LA TAREA
 
 **ID:** T013  
 **Título:** Eliminar Render-Blocking JavaScript - theme-init.js  
@@ -8,17 +8,17 @@
 **Fecha de última actualización:** 2025-01-04  
 **Estado:** en progreso  
 **Progreso:** 75%  
-**Prioridad:** 🔴 Crítica  
+**Prioridad:** **[Círculo Rojo]** Crítica  
 **Estimación:** 30 minutos  
 **Asignado a:** Desarrollador
 
-## 🔗 DEPENDENCIAS
+## **[Enlace]** DEPENDENCIAS
 
 **Dependencias de entrada:** ninguna  
 **Dependencias de salida:** T014, T016, T020  
 **Bloqueos identificados:** ninguno
 
-## 📋 DESCRIPCIÓN DETALLADA
+## **[Lista]** DESCRIPCIÓN DETALLADA
 
 El análisis de rendimiento reveló que `theme-init.js` está bloqueando el renderizado inicial de la página, causando un delay de 55ms en el LCP. Este script debe moverse al final del body o cargarse de forma asíncrona para eliminar el render-blocking.
 
@@ -26,7 +26,7 @@ El análisis de rendimiento reveló que `theme-init.js` está bloqueando el rend
 
 **Objetivo:** Eliminar el render-blocking causado por theme-init.js manteniendo la funcionalidad del tema.
 
-## 🎯 CRITERIOS DE ACEPTACIÓN
+## **[Objetivos]** CRITERIOS DE ACEPTACIÓN
 
 - [x] theme-init.js ya no aparece como render-blocking resource
 - [x] Funcionalidad del tema se mantiene intacta
@@ -34,7 +34,7 @@ El análisis de rendimiento reveló que `theme-init.js` está bloqueando el rend
 - [x] No se produce FOUC (Flash of Unstyled Content)
 - [ ] Script se carga correctamente en todos los navegadores
 
-## 📊 SUBTAREAS
+## **[Análisis]** SUBTAREAS
 
 ### T013.1: Analizar ubicación actual de theme-init.js
 
@@ -93,13 +93,13 @@ El análisis de rendimiento reveló que `theme-init.js` está bloqueando el rend
 - [ ] No render-blocking resources
 - [ ] Tests de tema pasando
 
-## 📝 NOTAS Y OBSERVACIONES
+## **[Documentación]** NOTAS Y OBSERVACIONES
 
 - El script theme-init.js es pequeño pero crítico para la experiencia del usuario
 - Debe asegurarse que la carga diferida no cause problemas de hidratación en Next.js
 - Considerar usar `defer` o `async` attributes si es apropiado
 
-## 🔄 LOG DE CAMBIOS
+## **[Recargar]** LOG DE CAMBIOS
 
 **[2025-01-04 14:30]** Tarea creada basada en análisis de rendimiento
 **[2025-01-04 14:30]** Definidos criterios de aceptación y subtareas
@@ -108,7 +108,7 @@ El análisis de rendimiento reveló que `theme-init.js` está bloqueando el rend
 
 ---
 
-## 📈 MÉTRICAS DE PROGRESO
+## **[Crecimiento]** MÉTRICAS DE PROGRESO
 
 **Tiempo invertido:** 0.5 horas  
 **Archivos modificados:** 1 archivo (`src/app/layout.tsx`)  
@@ -116,7 +116,7 @@ El análisis de rendimiento reveló que `theme-init.js` está bloqueando el rend
 **Bugs encontrados:** 0 bugs  
 **Bugs resueltos:** 0 bugs
 
-## ✅ CHECKLIST DE FINALIZACIÓN
+## **[Completado]** CHECKLIST DE FINALIZACIÓN
 
 - [ ] Todas las subtareas completadas
 - [ ] Criterios de aceptación cumplidos

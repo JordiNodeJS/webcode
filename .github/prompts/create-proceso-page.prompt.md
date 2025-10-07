@@ -2,11 +2,11 @@
 
 ## Contexto del Proyecto
 
-Estás trabajando en **WEBCODE** (anteriormente WebSnack), una plataforma de desarrollo web profesional en Barcelona. El proyecto usa:
+Estás trabajando en **WEBCODE** (anteriormente WebCode), una plataforma de desarrollo web profesional en Barcelona. El proyecto usa:
 
 - **Stack**: Next.js 15.4.0, React 19, TypeScript, TailwindCSS v4.1.12
 - **UI Components**: shadcn/ui, Magic UI
-- **Sistema de Animaciones**: WAS (WebSnack Animation System)
+- **Sistema de Animaciones**: WAS (WebCode Animation System)
 - **Estilo**: Diseño limpio y profesional con gradientes sutiles
 
 ### Sistema de Colores (Memoria del Proyecto)
@@ -132,12 +132,12 @@ Grid de 2 columnas (desktop) con cards expandidas que muestran:
 ### Sección 4: Garantías de Calidad
 Grid de 3 columnas con 6 garantías:
 
-1. ✅ Updates semanales - Demos funcionales cada semana
-2. 🔄 2 rounds revisiones - Por cada fase del proyecto
-3. 📂 Código fuente - Acceso completo al código
-4. 📚 Documentación - Técnica y de usuario detallada
-5. 🛡️ 30 días soporte - Post-lanzamiento incluido
-6. 🔒 Backup completo - Versionado del proyecto
+1. **[Completado]** Updates semanales - Demos funcionales cada semana
+2. **[Recargar]** 2 rounds revisiones - Por cada fase del proyecto
+3. **[Carpeta Abierta]** Código fuente - Acceso completo al código
+4. **[Recursos]** Documentación - Técnica y de usuario detallada
+5. **[Protección]** 30 días soporte - Post-lanzamiento incluido
+6. **[Candado]** Backup completo - Versionado del proyecto
 
 **Protección del Cliente** (card destacada):
 - Seguridad contractual: Contrato con entregables, Pagos por milestones (40%, 35%, 25%), Garantía 15 días
@@ -146,10 +146,10 @@ Grid de 3 columnas con 6 garantías:
 ### Sección 5: Canales de Comunicación
 Grid de 2 columnas con 4 canales:
 
-1. 📧 Email prioritario - Respuesta <4h en horario laboral
-2. 💬 WhatsApp Business - Para consultas rápidas
-3. 📹 Videollamadas - Reuniones semanales de seguimiento
-4. 💼 Slack/Teams - Para proyectos enterprise
+1. **[Email]** Email prioritario - Respuesta <4h en horario laboral
+2. **[Chat]** WhatsApp Business - Para consultas rápidas
+3. **[Video]** Videollamadas - Reuniones semanales de seguimiento
+4. **[Maletín]** Slack/Teams - Para proyectos enterprise
 
 ### Sección 6: CTA Final
 - Título: "¿Listo para empezar tu proyecto?"

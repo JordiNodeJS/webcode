@@ -1,4 +1,4 @@
-# Prompt: Optimización de Performance - WebSnack
+# Prompt: Optimización de Performance - WebCode
 
 ## **Contexto y Objetivo**
 
@@ -20,7 +20,7 @@ Desarrollar y mantener una landing page de servicios de desarrollo web con **UNA
 ### **Code Splitting y Lazy Loading**
 
 ```typescript
-// ✅ OBLIGATORIO: Dynamic imports para componentes no críticos
+// **[Completado]** OBLIGATORIO: Dynamic imports para componentes no críticos
 import dynamic from 'next/dynamic';
 
 const CaseStudiesSection = dynamic(() => import('./CaseStudiesSection'), {
@@ -28,7 +28,7 @@ const CaseStudiesSection = dynamic(() => import('./CaseStudiesSection'), {
   ssr: false // Solo si no es crítico para SEO
 });
 
-// ✅ OBLIGATORIO: Intersection Observer
+// **[Completado]** OBLIGATORIO: Intersection Observer
 import { useInView } from 'react-intersection-observer';
 
 function ExpensiveSection() {
@@ -70,7 +70,7 @@ const DeferredComponents = [
   'ContactSection'      // 25KB
 ];
 
-// ✅ OBLIGATORIO: Suspense boundaries
+// **[Completado]** OBLIGATORIO: Suspense boundaries
 <Suspense fallback={<SectionSkeleton />}>
   <CaseStudiesSection />
 </Suspense>
@@ -79,7 +79,7 @@ const DeferredComponents = [
 ### **Optimización de Imágenes**
 
 ```typescript
-// ✅ OBLIGATORIO: Next.js Image con lazy loading
+// **[Completado]** OBLIGATORIO: Next.js Image con lazy loading
 import Image from 'next/image';
 
 // Above the fold - Carga prioritaria
@@ -107,14 +107,14 @@ import Image from 'next/image';
 ### **CSS Crítico vs No Crítico**
 
 ```css
-/* ✅ OBLIGATORIO: CSS crítico inline en <head> */
+/* **[Completado]** OBLIGATORIO: CSS crítico inline en <head> */
 .hero,
 .navigation,
 .quick-start {
   /* Solo estilos esenciales para above the fold */
 }
 
-/* ✅ OBLIGATORIO: CSS no crítico con carga diferida */
+/* **[Completado]** OBLIGATORIO: CSS no crítico con carga diferida */
 @import url("./non-critical.css") media= "print" onload= "this.media='all'";
 ```
 
@@ -148,7 +148,7 @@ import Image from 'next/image';
 ### **Template para Componentes Nuevos**
 
 ```typescript
-// ✅ OBLIGATORIO: Estructura base para cada componente
+// **[Completado]** OBLIGATORIO: Estructura base para cada componente
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -188,7 +188,7 @@ export function ComponentName({ ...props }: ComponentProps) {
 ### **Detección de Conexión Lenta**
 
 ```typescript
-// ✅ OBLIGATORIO: Optimización para conexiones lentas
+// **[Completado]** OBLIGATORIO: Optimización para conexiones lentas
 const [isSlowConnection, setIsSlowConnection] = useState(false);
 
 useEffect(() => {
@@ -212,7 +212,7 @@ useEffect(() => {
 ### **Bundle Analysis**
 
 ```bash
-# ✅ OBLIGATORIO: Análisis después de cada cambio
+# **[Completado]** OBLIGATORIO: Análisis después de cada cambio
 pnpm dlx @next/bundle-analyzer
 
 # Verificar:
@@ -224,7 +224,7 @@ pnpm dlx @next/bundle-analyzer
 ### **Web Vitals Monitoring**
 
 ```typescript
-// ✅ OBLIGATORIO: Monitoreo de métricas
+// **[Completado]** OBLIGATORIO: Monitoreo de métricas
 import { getCLS, getFID, getFCP, getLCP, getTTFB } from "web-vitals";
 
 // En _app.tsx o layout.tsx
@@ -240,7 +240,7 @@ useEffect(() => {
 ### **Lighthouse Testing**
 
 ```bash
-# ✅ OBLIGATORIO: Score >90 en todas las métricas
+# **[Completado]** OBLIGATORIO: Score >90 en todas las métricas
 npx lighthouse http://localhost:3000 --view
 
 # Verificar:
@@ -263,15 +263,15 @@ npx lighthouse http://localhost:3000 --view
 
 ### **Criterios de Aceptación**
 
-- ✅ **Code splitting** implementado en componentes >30KB
-- ✅ **Lazy loading** con Intersection Observer
-- ✅ **Images optimizadas** con Next.js Image
-- ✅ **CSS crítico** inline, no crítico diferido
-- ✅ **Web Vitals** < targets establecidos
-- ✅ **Bundle size** < 150KB inicial
-- ✅ **Mobile performance** verificada
-- ✅ **Fallbacks** para todos los lazy components
-- ✅ **Conexión lenta** detection implementada
+- **[Completado]** **Code splitting** implementado en componentes >30KB
+- **[Completado]** **Lazy loading** con Intersection Observer
+- **[Completado]** **Images optimizadas** con Next.js Image
+- **[Completado]** **CSS crítico** inline, no crítico diferido
+- **[Completado]** **Web Vitals** < targets establecidos
+- **[Completado]** **Bundle size** < 150KB inicial
+- **[Completado]** **Mobile performance** verificada
+- **[Completado]** **Fallbacks** para todos los lazy components
+- **[Completado]** **Conexión lenta** detection implementada
 
 ---
 
@@ -299,4 +299,4 @@ src/
 
 ---
 
-**Nota**: Este prompt es **obligatorio** para todos los desarrollos de la landing page WebSnack. La performance es crítica para la conversión y experiencia de usuario. Siempre verificar métricas antes de hacer deploy a producción.
+**Nota**: Este prompt es **obligatorio** para todos los desarrollos de la landing page WebCode. La performance es crítica para la conversión y experiencia de usuario. Siempre verificar métricas antes de hacer deploy a producción.

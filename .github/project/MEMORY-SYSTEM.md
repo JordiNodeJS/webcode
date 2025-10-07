@@ -1,4 +1,4 @@
-# 🧠 Sistema de Memoria WebSnack — Documentación Unificada
+# 🧠 Sistema de Memoria WebCode — Documentación Unificada
 
 Este documento unifica la información y los flujos de los archivos
 `.github/project/MEMORY-SYSTEM-SETUP.md` y

@@ -2,7 +2,7 @@
 applyTo: "src/app/**/*.{ts,tsx}"
 ---
 
-# Instrucciones para App Router y APIs WebSnack
+# Instrucciones para App Router y APIs WebCode
 
 ## App Router Next.js 15
 
@@ -82,7 +82,7 @@ export async function POST(request: NextRequest) {
 ```tsx
 // Metadata estática
 export const metadata: Metadata = {
-  title: "WebSnack - Servicios",
+  title: "WebCode - Servicios",
   description: "Servicios de desarrollo web profesional"
 };
 
@@ -92,7 +92,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = await getService(id);
 
   return {
-    title: `${service.title} - WebSnack`,
+    title: `${service.title} - WebCode`,
     description: service.description
   };
 }

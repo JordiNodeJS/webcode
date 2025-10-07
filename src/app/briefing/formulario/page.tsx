@@ -3,6 +3,9 @@ import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { generateSEOMetadata } from "@/lib/seo-metadata";
 
+// Stable keys for skeleton placeholders (module scope to be available in loader)
+const SKELETON_KEYS = ["a","b","c","d","e","f"] as const;
+
 // Lazy load the briefing form to reduce initial bundle size
 const BriefingForm = dynamic(() => import("@/components/briefing/BriefingForm").then(m => ({ default: m.BriefingForm })), {
   loading: () => (
@@ -10,8 +13,8 @@ const BriefingForm = dynamic(() => import("@/components/briefing/BriefingForm").
       <div className="animate-pulse space-y-8">
         <div className="h-8 bg-muted/50 rounded-lg w-3/4 mx-auto"></div>
         <div className="space-y-4">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="h-32 bg-muted/30 rounded-lg"></div>
+          {SKELETON_KEYS.map((k) => (
+            <div key={k} className="h-32 bg-muted/30 rounded-lg"></div>
           ))}
         </div>
       </div>
@@ -76,8 +79,8 @@ export default function BriefingFormularioPage() {
             <div className="animate-pulse space-y-8">
               <div className="h-8 bg-muted/50 rounded-lg w-3/4 mx-auto"></div>
               <div className="space-y-4">
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <div key={i} className="h-32 bg-muted/30 rounded-lg"></div>
+                {SKELETON_KEYS.map((k) => (
+                  <div key={k} className="h-32 bg-muted/30 rounded-lg"></div>
                 ))}
               </div>
             </div>

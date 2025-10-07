@@ -1,6 +1,7 @@
 "use client";
 
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
+import { SingleEmojiToSvg } from "@/components/ui/emoji-to-svg";
 
 interface Garantia {
   icono: string;
@@ -53,11 +54,21 @@ export default function QualityGuarantees({ garantias }: QualityGuaranteesProps)
                   <div className="relative z-10">
                     {/* Icono con efecto */}
                     <div className="relative mb-4 inline-block">
-                      <div className="text-5xl md:text-6xl transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-500">
-                        {garantia.icono}
+                      <div className="transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-500">
+                        <SingleEmojiToSvg 
+                          emoji={garantia.icono} 
+                          size="xl" 
+                          variant="primary"
+                          className="text-5xl md:text-6xl"
+                        />
                       </div>
                       <div className="absolute inset-0 blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500">
-                        {garantia.icono}
+                        <SingleEmojiToSvg 
+                          emoji={garantia.icono} 
+                          size="xl" 
+                          variant="primary"
+                          className="text-5xl md:text-6xl"
+                        />
                       </div>
                     </div>
 

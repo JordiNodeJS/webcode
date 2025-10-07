@@ -2,11 +2,11 @@
 
 ## Resumen Ejecutivo
 
-Este informe documenta el proceso de migración del sistema de linting y formateo de código del proyecto WebSnack, pasando de ESLint (con Prettier) a Biome. La migración se realizó con éxito, mejorando significativamente el tiempo de ejecución del linting y formateo, y reduciendo la complejidad de la configuración del proyecto.
+Este informe documenta el proceso de migración del sistema de linting y formateo de código del proyecto WebCode, pasando de ESLint (con Prettier) a Biome. La migración se realizó con éxito, mejorando significativamente el tiempo de ejecución del linting y formateo, y reduciendo la complejidad de la configuración del proyecto.
 
 ## 1. Contexto del Proyecto
 
-El proyecto WebSnack es una aplicación web moderna basada en:
+El proyecto WebCode es una aplicación web moderna basada en:
 
 - Next.js 15.5.2 con App Router
 - React 19.1.0
@@ -264,4 +264,4 @@ La migración de ESLint a Biome se completó con éxito, resultando en:
 
 La mayoría de los problemas identificados por Biome fueron corregidos, mejorando la calidad del código y la accesibilidad del proyecto. Los pocos problemas restantes están relacionados con características específicas del stack tecnológico (Tailwind CSS v4) que pueden requerir una evaluación más detallada.
 
-Esta migración representa una mejora importante en el flujo de trabajo de desarrollo del proyecto WebSnack, alineándose con las mejores prácticas modernas de desarrollo frontend.
+Esta migración representa una mejora importante en el flujo de trabajo de desarrollo del proyecto WebCode, alineándose con las mejores prácticas modernas de desarrollo frontend.

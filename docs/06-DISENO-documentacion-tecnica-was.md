@@ -1,16 +1,16 @@
-# 🎨 Sistema de Animaciones WebSnack (WAS) - Versión 1.0
+# **[Diseño]** Sistema de Animaciones WebCode (WAS) - Versión 1.0
 
-## 📋 **Introducción y Fundamentos**
+## **[Lista]** **Introducción y Fundamentos**
 
-El **WebSnack Animation System (WAS)** es el sistema oficial de microanimaciones e interacciones para la plataforma WebSnack, diseñado específicamente para complementar la identidad visual rosa/aguamarina y optimizado para **Next.js 15 + React 19 + Tailwind CSS v4 + Framer Motion**.
+El **WebCode Animation System (WAS)** es el sistema oficial de microanimaciones e interacciones para la plataforma WebCode, diseñado específicamente para complementar la identidad visual rosa/aguamarina y optimizado para **Next.js 15 + React 19 + Tailwind CSS v4 + Framer Motion**.
 
-### 🎯 **Principios de Diseño WAS**
+### **[Objetivos]** **Principios de Diseño WAS**
 
 1. **🏢 Profesional pero Dinámico**: Animaciones sutiles que transmiten confianza sin distraer
-2. **🎨 Coherencia de Marca**: Integrado con la paleta rosa/aguamarina y efectos 3D
-3. **⚡ Performance**: Optimizado para Server Components y lazy loading
+2. ****[Diseño]** Coherencia de Marca**: Integrado con la paleta rosa/aguamarina y efectos 3D
+3. ****[Rendimiento]** Performance**: Optimizado para Server Components y lazy loading
 4. **♿ Accesibilidad**: Respeta `prefers-reduced-motion` y WCAG 2.1
-5. **📱 Responsive**: Adaptado para desktop, tablet y móvil
+5. ****[Móvil]** Responsive**: Adaptado para desktop, tablet y móvil
 
 ---
 
@@ -20,7 +20,7 @@ El **WebSnack Animation System (WAS)** es el sistema oficial de microanimaciones
 
 ```css
 :root {
-  /* === EASING CURVES WEBSNACK === */
+  /* === EASING CURVES WEBCODE === */
   --ease-ws-primary: cubic-bezier(
     0.25,
     0.46,
@@ -42,7 +42,7 @@ El **WebSnack Animation System (WAS)** es el sistema oficial de microanimaciones
   ); /* Transiciones imperceptibles */
   --ease-ws-dramatic: cubic-bezier(0.87, 0, 0.13, 1); /* Entradas/salidas */
 
-  /* === DURACIONES WEBSNACK === */
+  /* === DURACIONES WEBCODE === */
   --duration-ws-instant: 0.1s; /* Micro-feedback */
   --duration-ws-quick: 0.2s; /* Hover states */
   --duration-ws-normal: 0.3s; /* Transiciones estándar */
@@ -60,7 +60,7 @@ El **WebSnack Animation System (WAS)** es el sistema oficial de microanimaciones
 ### **Configuración Framer Motion**
 
 ```tsx
-// lib/websnack-motion-config.ts
+// lib/webcode-motion-config.ts
 export const wsConfig = {
   easings: {
     primary: [0.25, 0.46, 0.45, 0.94] as const,
@@ -85,7 +85,7 @@ export const wsConfig = {
     loose: 0.2 // Sections
   },
 
-  // Efectos específicos WebSnack
+  // Efectos específicos WebCode
   effects: {
     lift: { y: -4, scale: 1.02 },
     glow: { filter: "brightness(1.1) blur(0.5px)" },
@@ -94,7 +94,7 @@ export const wsConfig = {
   }
 } as const;
 
-// Hook para transiciones WebSnack
+// Hook para transiciones WebCode
 export function useWSTransition(
   type: keyof typeof wsConfig.durations = "normal"
 ) {
@@ -117,7 +117,7 @@ export function useWSTransition(
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { wsConfig } from "@/lib/websnack-motion-config";
+import { wsConfig } from "@/lib/webcode-motion-config";
 
 interface WSFadeInProps {
   children: React.ReactNode;
@@ -170,7 +170,7 @@ export function WSFadeIn({
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { wsConfig } from "@/lib/websnack-motion-config";
+import { wsConfig } from "@/lib/webcode-motion-config";
 
 interface WSLetterRevealProps {
   text: string;
@@ -215,7 +215,7 @@ export function WSLetterReveal({
 "use client";
 
 import { motion } from "framer-motion";
-import { wsConfig } from "@/lib/websnack-motion-config";
+import { wsConfig } from "@/lib/webcode-motion-config";
 
 interface WSHoverProps {
   children: React.ReactNode;
@@ -259,7 +259,7 @@ export function WSHover({
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
-import { wsConfig } from "@/lib/websnack-motion-config";
+import { wsConfig } from "@/lib/webcode-motion-config";
 
 interface WSImageRevealProps {
   src: string;
@@ -306,9 +306,9 @@ export function WSImageReveal({
 
 ---
 
-## 🎨 **Utilidades CSS Tailwind v4**
+## **[Diseño]** **Utilidades CSS Tailwind v4**
 
-### **Clases de Animación WebSnack**
+### **Clases de Animación WebCode**
 
 ```css
 @layer utilities {
@@ -329,7 +329,7 @@ export function WSImageReveal({
     transition: all 0.8s cubic-bezier(0.87, 0, 0.13, 1);
   }
 
-  /* === KEYFRAMES WEBSNACK === */
+  /* === KEYFRAMES WEBCODE === */
   .animate-ws-fade-in {
     animation: wsFadeIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   }
@@ -411,14 +411,14 @@ export function WSImageReveal({
 
 ---
 
-## 📱 **Responsive y Accesibilidad**
+## **[Móvil]** **Responsive y Accesibilidad**
 
 ### **Hook para Animaciones Responsivas**
 
 ```tsx
 // hooks/use-ws-responsive.ts
 import { useMediaQuery } from "@/hooks/use-media-query";
-import { wsConfig } from "@/lib/websnack-motion-config";
+import { wsConfig } from "@/lib/webcode-motion-config";
 
 export function useWSResponsive() {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -483,7 +483,7 @@ export function WSAccessibleMotion({
 
 ---
 
-## 🎯 **Implementación en Componentes WebSnack**
+## **[Objetivos]** **Implementación en Componentes WebCode**
 
 ### **Ejemplo: Hero Section con WAS**
 
@@ -501,11 +501,11 @@ export function HeroSection() {
   return (
     <section className="relative overflow-hidden px-4 pt-20 pb-16">
       <div className="container mx-auto text-center">
-        {/* Título con animación WebSnack */}
+        {/* Título con animación WebCode */}
         <WSFadeIn delay={0.2}>
           <h1 className="font-display text-6xl lg:text-7xl font-bold tracking-wider text-primary mb-6">
             <WSLetterReveal
-              text="WebSnack"
+              text="WebCode"
               className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
             />
           </h1>
@@ -522,7 +522,7 @@ export function HeroSection() {
         <WSFadeIn delay={0.6}>
           <WSImageReveal
             src="/images/hero-dashboard.jpg"
-            alt="Dashboard WebSnack"
+            alt="Dashboard WebCode"
             width={800}
             height={500}
             className="rounded-lg shadow-3d-lg border border-primary/20"
@@ -537,15 +537,15 @@ export function HeroSection() {
 
 ---
 
-## 📊 **Métricas y Performance**
+## **[Análisis]** **Métricas y Performance**
 
 ### **KPIs del Sistema WAS**
 
-- ⚡ **Tiempo de renderizado**: < 16ms por animación
-- 📱 **Compatibilidad móvil**: 100% responsive
+- **[Rendimiento]** **Tiempo de renderizado**: < 16ms por animación
+- **[Móvil]** **Compatibilidad móvil**: 100% responsive
 - ♿ **Accesibilidad**: WCAG 2.1 AA compliant
-- 🔋 **Batería**: Optimizado para dispositivos móviles
-- 💾 **Bundle size**: < 2KB adicionales con tree-shaking
+- **[Batería]** **Batería**: Optimizado para dispositivos móviles
+- **[Guardar]** **Bundle size**: < 2KB adicionales con tree-shaking
 
 ### **Testing y Validación**
 
@@ -562,20 +562,20 @@ pnpm test:a11y
 
 ---
 
-## 🚀 **Próximos Pasos**
+## **[Lanzamiento]** **Próximos Pasos**
 
 ### **Roadmap WAS v1.1**
 
-1. 🎮 **Gestos táctiles**: Swipe animations para móvil
-2. 🔄 **Loading states**: Skeleton loaders animados
-3. 🎨 **Theme transitions**: Cambio suave entre temas
-4. 📊 **Data visualizations**: Animaciones para gráficos
+1. **[Videojuegos]** **Gestos táctiles**: Swipe animations para móvil
+2. **[Recargar]** **Loading states**: Skeleton loaders animados
+3. **[Diseño]** **Theme transitions**: Cambio suave entre temas
+4. **[Análisis]** **Data visualizations**: Animaciones para gráficos
 
 ### **Integración Completa**
 
-- ✅ Documentación técnica completa
-- ✅ Componentes base implementados
-- ✅ Utilidades CSS listas
-- ✅ Testing y métricas definidas
+- **[Completado]** Documentación técnica completa
+- **[Completado]** Componentes base implementados
+- **[Completado]** Utilidades CSS listas
+- **[Completado]** Testing y métricas definidas
 
-**El Sistema de Animaciones WebSnack está listo para implementación completa en la plataforma.**
+**El Sistema de Animaciones WebCode está listo para implementación completa en la plataforma.**

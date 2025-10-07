@@ -1,6 +1,6 @@
-# Plan de Consistencia de Componentes - WebSnack Theme
+# Plan de Consistencia de Componentes - WebCode Theme
 
-## Tema WebSnack 2025
+## Tema WebCode 2025
 
 ### Paleta de Colores Oficial
 
@@ -20,50 +20,50 @@
 
 ### 1. Navigation (navigation.tsx)
 
-- ✅ Usar design tokens para espaciado (`px-element`, `py-text`)
-- ✅ Aplicar `text-primary` para enlaces activos
-- ✅ Sombra 3D en estado hover: `shadow-3d-sm`
-- ✅ Transiciones con `ws-transition`
-- ✅ Background rosa suave en mobile menu
+- **[Completado]** Usar design tokens para espaciado (`px-element`, `py-text`)
+- **[Completado]** Aplicar `text-primary` para enlaces activos
+- **[Completado]** Sombra 3D en estado hover: `shadow-3d-sm`
+- **[Completado]** Transiciones con `ws-transition`
+- **[Completado]** Background rosa suave en mobile menu
 
 ### 2. Hero Section (hero-section.tsx)
 
-- ✅ Tipografía Poppins con peso 700 para headlines
-- ✅ Gradiente sutil rosa-aguamarina en backgrounds
-- ✅ Botones principales con `shadow-3d-md`
-- ✅ Animaciones con Magic UI (TextReveal, AnimatedCounter)
-- ✅ Letter-spacing consistente: `tracking-wider`
+- **[Completado]** Tipografía Poppins con peso 700 para headlines
+- **[Completado]** Gradiente sutil rosa-aguamarina en backgrounds
+- **[Completado]** Botones principales con `shadow-3d-md`
+- **[Completado]** Animaciones con Magic UI (TextReveal, AnimatedCounter)
+- **[Completado]** Letter-spacing consistente: `tracking-wider`
 
 ### 3. Buttons (button.tsx)
 
-- ✅ Primary: `bg-primary` con `shadow-3d-sm`
-- ✅ Secondary: `bg-secondary` con efecto hover 3D
-- ✅ Radius: `rounded-button` (0.4rem)
-- ✅ Hover: Elevación de sombra a `shadow-3d-md`
-- ✅ Estados disabled con opacidad y sombra reducida
+- **[Completado]** Primary: `bg-primary` con `shadow-3d-sm`
+- **[Completado]** Secondary: `bg-secondary` con efecto hover 3D
+- **[Completado]** Radius: `rounded-button` (0.4rem)
+- **[Completado]** Hover: Elevación de sombra a `shadow-3d-md`
+- **[Completado]** Estados disabled con opacidad y sombra reducida
 
 ### 4. Cards (card.tsx)
 
-- ✅ Background blanco con `shadow-3d-md`
-- ✅ Hover: `shadow-3d-lg` con transform subtle
-- ✅ Border sutil con `border-primary/20`
-- ✅ Radius: `rounded-card` (0.4rem)
-- ✅ Padding interno: `p-element` (1.5rem)
+- **[Completado]** Background blanco con `shadow-3d-md`
+- **[Completado]** Hover: `shadow-3d-lg` con transform subtle
+- **[Completado]** Border sutil con `border-primary/20`
+- **[Completado]** Radius: `rounded-card` (0.4rem)
+- **[Completado]** Padding interno: `p-element` (1.5rem)
 
 ### 5. Footer (footer.tsx)
 
-- ✅ Background: `bg-accent` (crema suave)
-- ✅ Enlaces con `text-primary` y hover `text-primary/80`
-- ✅ Separadores con `border-primary/30`
-- ✅ Logo con efecto 3D sutil
-- ✅ Social icons con hover rosa
+- **[Completado]** Background: `bg-accent` (crema suave)
+- **[Completado]** Enlaces con `text-primary` y hover `text-primary/80`
+- **[Completado]** Separadores con `border-primary/30`
+- **[Completado]** Logo con efecto 3D sutil
+- **[Completado]** Social icons con hover rosa
 
 ### 6. Services Grid (services-grid.tsx)
 
-- ✅ Cards con gradiente rosa-aguamarina en hover
-- ✅ Icons con `text-primary` y efectos 3D
-- ✅ Grid responsive con `gap-component`
-- ✅ Animaciones escalonadas con Framer Motion
+- **[Completado]** Cards con gradiente rosa-aguamarina en hover
+- **[Completado]** Icons con `text-primary` y efectos 3D
+- **[Completado]** Grid responsive con `gap-component`
+- **[Completado]** Animaciones escalonadas con Framer Motion
 
 ## Patrones de Inconsistencia Detectados
 
@@ -73,9 +73,9 @@
 4. **Typography mixing**: Asegurar Poppins como primary, Lora para serif, Fira Code para mono
 5. **Efectos hover desiguales**: Estandarizar elevación 3D en todas las interacciones
 6. **Border radius variado**: Usar solo los tokens definidos (button, card, input, modal)
-7. **Transiciones mezcladas**: Consolidar en sistema WebSnack con duraciones consistentes
+7. **Transiciones mezcladas**: Consolidar en sistema WebCode con duraciones consistentes
 
-## Design System WebSnack - Tokens Específicos
+## Design System WebCode - Tokens Específicos
 
 ### Spacing Tokens
 
@@ -131,7 +131,7 @@
 
 ## Acciones de Corrección
 
-### A. Implementar Paleta de Colores WebSnack
+### A. Implementar Paleta de Colores WebCode
 
 - Reemplazar todos los colores genéricos por la paleta oficial
 - Primary (`#dc7cb3`) para CTAs, enlaces activos, iconos principales
@@ -163,7 +163,7 @@
 - `py-section` para separación entre secciones principales
 - Eliminar valores hardcodeados como `px-4`, `py-8`, etc.
 
-### E. Transiciones WebSnack Consistentes
+### E. Transiciones WebCode Consistentes
 
 - Usar exclusivamente `ws-transition` para la mayoría de casos
 - `ws-transition-quick` para hover effects sutiles

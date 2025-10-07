@@ -1,21 +1,21 @@
-# 📋 ÍNDICE MAESTRO DE TAREAS - OPTIMIZACIÓN DE RENDIMIENTO WEBCODE
+# **[Lista]** ÍNDICE MAESTRO DE TAREAS - OPTIMIZACIÓN DE RENDIMIENTO WEBCODE
 
 **Fecha de creación:** 04/01/2025  
 **Proyecto:** Optimización de rendimiento CPU/GPU - Mejora de Core Web Vitals y experiencia de usuario
 
-## 🎯 OBJETIVO DEL PROYECTO
+## **[Objetivos]** OBJETIVO DEL PROYECTO
 
-Optimizar el rendimiento de WebSnack basándose en el análisis de CPU/GPU realizado con Chrome DevTools, enfocándose en reducir LCP, eliminar render-blocking resources y mejorar la experiencia en dispositivos de bajo rendimiento.
+Optimizar el rendimiento de WebCode basándose en el análisis de CPU/GPU realizado con Chrome DevTools, enfocándose en reducir LCP, eliminar render-blocking resources y mejorar la experiencia en dispositivos de bajo rendimiento.
 
 ---
 
-## 📊 ÍNDICE DE TAREAS
+## **[Análisis]** ÍNDICE DE TAREAS
 
 ### T013: Eliminar Render-Blocking JavaScript - theme-init.js
 
 **Estado:** pendiente  
 **Progreso:** 0%  
-**Prioridad:** 🔴 Crítica  
+**Prioridad:** **[Círculo Rojo]** Crítica  
 **Dependencias:** ninguna  
 **Descripción:** Mover theme-init.js al final del body para eliminar el bloqueo de renderizado crítico.
 
@@ -30,7 +30,7 @@ Optimizar el rendimiento de WebSnack basándose en el análisis de CPU/GPU reali
 
 **Estado:** pendiente  
 **Progreso:** 0%  
-**Prioridad:** 🔴 Crítica  
+**Prioridad:** **[Círculo Rojo]** Crítica  
 **Dependencias:** ninguna  
 **Descripción:** Inline CSS crítico en head y defer CSS no crítico para reducir render-blocking.
 
@@ -151,7 +151,7 @@ Optimizar el rendimiento de WebSnack basándose en el análisis de CPU/GPU reali
 
 **Estado:** pendiente  
 **Progreso:** 0%  
-**Prioridad:** 🔴 Crítica  
+**Prioridad:** **[Círculo Rojo]** Crítica  
 **Dependencias:** T013, T014, T015, T016, T017, T018  
 **Descripción:** Ejecutar análisis completo de rendimiento para validar mejoras implementadas.
 
@@ -165,7 +165,7 @@ Optimizar el rendimiento de WebSnack basándose en el análisis de CPU/GPU reali
 
 ---
 
-## 📈 ESTADO GENERAL
+## **[Crecimiento]** ESTADO GENERAL
 
 **Total tareas:** 10  
 **Completadas:** 0  
@@ -176,7 +176,7 @@ Optimizar el rendimiento de WebSnack basándose en el análisis de CPU/GPU reali
 
 ---
 
-## 🎯 CRITERIOS DE ACEPTACIÓN GLOBALES
+## **[Objetivos]** CRITERIOS DE ACEPTACIÓN GLOBALES
 
 - [ ] LCP < 600ms (objetivo final < 400ms)
 - [ ] CLS mantenido en 0.00
@@ -189,7 +189,7 @@ Optimizar el rendimiento de WebSnack basándose en el análisis de CPU/GPU reali
 
 ---
 
-## 📊 MÉTRICAS OBJETIVO
+## **[Análisis]** MÉTRICAS OBJETIVO
 
 ### Fase 1 (Quick Wins)
 - **LCP**: < 800ms
@@ -208,7 +208,7 @@ Optimizar el rendimiento de WebSnack basándose en el análisis de CPU/GPU reali
 
 ---
 
-## 🔄 LOG DE CAMBIOS RECIENTES
+## **[Recargar]** LOG DE CAMBIOS RECIENTES
 
 **[2025-01-04 14:30]** Creación del índice maestro de optimización de rendimiento
 **[2025-01-04 14:30]** Definición de 10 tareas basadas en análisis de Chrome DevTools

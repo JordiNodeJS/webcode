@@ -1,8 +1,8 @@
-# 🎨 Sistema de Temas WebSnack
+# 🎨 Sistema de Temas WebCode
 
 ## Variables CSS Personalizadas
 
-El sistema de temas de WebSnack utiliza variables CSS personalizadas para mantener consistencia y facilitar cambios globales.
+El sistema de temas de WebCode utiliza variables CSS personalizadas para mantener consistencia y facilitar cambios globales.
 
 ### Tokens de Color Base
 

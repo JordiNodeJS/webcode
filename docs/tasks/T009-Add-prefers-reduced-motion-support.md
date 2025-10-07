@@ -3,7 +3,7 @@
 Prioridad: Media
 Estimación: 0.5-1 día
 
-**ESTADO: COMPLETADO** ✅
+**ESTADO: COMPLETADO** **[Completado]**
 
 ## Resumen
 
@@ -11,14 +11,14 @@ Agregar soporte para la preferencia de usuario `prefers-reduced-motion` en las a
 
 ## Criterios de aceptación
 
-- Las animaciones de aparición se desactivan o se sustituyen por una transición sutil cuando el usuario tiene `prefers-reduced-motion: reduce`. ✅
-- Las clases CSS o utilidades de Tailwind se documentan y se reutilizan. ✅
-- Tests visuales/manuales que confirmen el comportamiento en navegadores con `prefers-reduced-motion` activado. ✅
+- Las animaciones de aparición se desactivan o se sustituyen por una transición sutil cuando el usuario tiene `prefers-reduced-motion: reduce`. **[Completado]**
+- Las clases CSS o utilidades de Tailwind se documentan y se reutilizan. **[Completado]**
+- Tests visuales/manuales que confirmen el comportamiento en navegadores con `prefers-reduced-motion` activado. **[Completado]**
 
 ## Notas de implementación
 
-- Añadir utilidades CSS en `globals.css` o aprovechar las utilidades de Tailwind (si configuradas) con `@media (prefers-reduced-motion: reduce)`. ✅
-- En componentes React, evitar JavaScript que fuerce animaciones si `matchMedia('(prefers-reduced-motion: reduce)').matches`. ✅
+- Añadir utilidades CSS en `globals.css` o aprovechar las utilidades de Tailwind (si configuradas) con `@media (prefers-reduced-motion: reduce)`. **[Completado]**
+- En componentes React, evitar JavaScript que fuerce animaciones si `matchMedia('(prefers-reduced-motion: reduce)').matches`. **[Completado]**
 
 ## Archivos modificados
 
@@ -27,4 +27,4 @@ Agregar soporte para la preferencia de usuario `prefers-reduced-motion` en las a
 
 ## Validación / QA
 
-- Manual: activar `prefers-reduced-motion` en el sistema operativo o mediante DevTools y verificar que las tarjetas aparecen sin animación o con transición reducida. ✅
+- Manual: activar `prefers-reduced-motion` en el sistema operativo o mediante DevTools y verificar que las tarjetas aparecen sin animación o con transición reducida. **[Completado]**

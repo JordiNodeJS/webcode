@@ -1,10 +1,10 @@
 # Fases de Desarrollo - Hero Section
 
-## Fase 0: Configuración del Sistema de Colores WebSnack (CRÍTICA)
+## Fase 0: Configuración del Sistema de Colores WebCode (CRÍTICA)
 
 ### Objetivo
 
-Implementar automáticamente el sistema de colores Rosa/Aguamarina de WebSnack usando shadcn/ui.
+Implementar automáticamente el sistema de colores Rosa/Aguamarina de WebCode usando shadcn/ui.
 
 ### Tareas
 
@@ -24,7 +24,7 @@ Implementar automáticamente el sistema de colores Rosa/Aguamarina de WebSnack u
 
 ### Criterios de Aceptación
 
-- Sistema de colores WebSnack completamente funcional
+- Sistema de colores WebCode completamente funcional
 - Variables CSS accesibles en todo el proyecto
 - Componentes base funcionando con el nuevo tema
 - Verificación visual de colores correctos
@@ -39,11 +39,11 @@ Crear la estructura fundamental de la Hero Section con todos los componentes pri
 
 1. **Crear estructura de directorios**
    - Crear componentes específicos para Hero Section
-   - Organizar archivos según estándares de WebSnack
+   - Organizar archivos según estándares de WebCode
 
 2. **Implementar Header de Navegación**
    - Componente de navegación responsive
-   - Logo WebSnack
+   - Logo WebCode
    - Menú de navegación (Servicios, Proceso, Portfolio, Contacto)
    - Selector de idioma (ES/CA/EN)
 
