@@ -35,9 +35,12 @@ const contactFormServerSchema = z.object({
   userAgent: z.string().optional(),
   timestamp: z.string(),
   // Campo honeypot - debe estar vacío
-  website: z.string().optional().refine((val) => !val || val.trim() === "", {
-    message: "Bot detected"
-  })
+  website: z
+    .string()
+    .optional()
+    .refine((val) => !val || val.trim() === "", {
+      message: "Bot detected"
+    })
 });
 
 export async function POST(request: NextRequest) {

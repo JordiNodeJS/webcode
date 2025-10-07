@@ -33,9 +33,15 @@ import {
   SelectValue
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { AlertCircle, ArrowLeft, ArrowRight, CheckCircle, Loader2, Send } from "@/lib/icons";
+import {
+  AlertCircle,
+  ArrowLeft,
+  ArrowRight,
+  CheckCircle,
+  Loader2,
+  Send
+} from "@/lib/icons";
 import { type BriefingFormData, briefingFormSchema } from "@/types/briefing";
-
 
 const TOTAL_STEPS = 7;
 const STORAGE_KEY = "webcode-briefing-draft";
@@ -56,7 +62,7 @@ export function BriefingForm() {
       telefono: "",
       empresa: "",
       sitioWeb: "",
-      
+
       // Objetivos del proyecto
       objetivoPrincipal: "",
       problemasResolver: "",
@@ -64,18 +70,18 @@ export function BriefingForm() {
       publicoObjetivo: "",
       competencia: "",
       kpisExito: "",
-      
+
       // Presupuesto y plazos
       presupuestoEstimado: "no-definido",
       plazoPreferido: "no-definido",
       fechaLanzamiento: "",
-      
+
       // Público objetivo
       edadRango: "",
       ubicacionGeografica: "",
       dispositivosPrincipales: [],
       idiomasNecesarios: ["es"],
-      
+
       // Tipo de proyecto y funcionalidades
       tipoProyecto: ["corporativa"],
       funcionalidades: ["informacion-basica"],
@@ -85,7 +91,7 @@ export function BriefingForm() {
       integracionesNecesarias: "",
       contenido: [],
       requisitosSeguridadEspeciales: "",
-      
+
       // Estilo visual
       tieneIdentidadCorporativa: "no",
       tieneLogotipos: false,
@@ -95,14 +101,14 @@ export function BriefingForm() {
       referenciasVisuales: "",
       estiloPreferido: [],
       tonoComunicacion: "profesional",
-      
+
       // Contenidos
       contenidosDisponibles: false,
       numerosPaginasEstimadas: "no-definido",
       necesitaRedaccion: false,
       necesitaFotografia: false,
       necesitaVideos: false,
-      
+
       // Técnico
       tieneHostingActual: false,
       necesitaDominio: false,
@@ -110,12 +116,12 @@ export function BriefingForm() {
       requisitosCMS: "no-se",
       requisitosSEO: true,
       accesibilidadWCAG: false,
-      
+
       // Información adicional
       comentariosAdicionales: "",
       informacionAdicional: "",
       comoConociste: "google",
-      
+
       // RGPD
       gdprConsent: false
     }
@@ -173,7 +179,7 @@ export function BriefingForm() {
       }
     } catch (error) {
       // Pequeño delay para asegurar que el usuario vea el estado de loading
-      await new Promise(resolve => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 500));
       setFormStatus("error");
       setErrorMessage(
         error instanceof Error ? error.message : "Error inesperado"
@@ -241,19 +247,32 @@ export function BriefingForm() {
             ¡Briefing Recibido!
           </h2>
           <p className="text-lg text-muted-foreground max-w-md mx-auto">
-            Gracias por completar el formulario de briefing. Hemos recibido toda la información 
-            y te responderemos en las próximas 24 horas con una propuesta personalizada.
+            Gracias por completar el formulario de briefing. Hemos recibido toda
+            la información y te responderemos en las próximas 24 horas con una
+            propuesta personalizada.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Button 
+            <Button
               onClick={downloadPDF}
-              variant="default" 
+              variant="default"
               size="lg"
               className="gap-2"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <title>Download</title>
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
               </svg>
               Descargar PDF
             </Button>
@@ -272,7 +291,7 @@ export function BriefingForm() {
   // Función para verificar si un paso está completado
   const isStepCompleted = (step: number): boolean => {
     const fields = getFieldsForStep(step);
-    return fields.every(field => {
+    return fields.every((field) => {
       const value = form.getValues(field as keyof BriefingFormData);
       if (Array.isArray(value)) {
         return value.length > 0;
@@ -296,21 +315,27 @@ export function BriefingForm() {
           <span className="text-sm font-bold text-foreground">
             Paso {currentStep} de {TOTAL_STEPS}
           </span>
-          <span className="text-sm font-bold text-primary">{Math.round(progress)}%</span>
+          <span className="text-sm font-bold text-primary">
+            {Math.round(progress)}%
+          </span>
         </div>
-        
+
         {/* Barra de progreso principal */}
         <div className="relative mb-4">
-          <Progress value={progress} className="h-3 bg-muted border-2 border-border" />
-          
+          <Progress
+            value={progress}
+            className="h-3 bg-muted border-2 border-border"
+          />
+
           {/* Hitos numerados */}
           <div className="flex justify-between mt-3">
             {Array.from({ length: TOTAL_STEPS }, (_, index) => {
               const stepNumber = index + 1;
               const isCompleted = isStepCompleted(stepNumber);
               const isCurrent = stepNumber === currentStep;
-              const isAccessible = stepNumber === 1 || isStepCompleted(stepNumber - 1);
-              
+              const isAccessible =
+                stepNumber === 1 || isStepCompleted(stepNumber - 1);
+
               return (
                 <button
                   key={stepNumber}
@@ -319,43 +344,49 @@ export function BriefingForm() {
                   disabled={!isAccessible}
                   className={`
                     relative flex flex-col items-center group transition-all duration-200
-                    ${isAccessible ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'}
-                    ${isCurrent ? 'scale-110' : 'hover:scale-105'}
+                    ${isAccessible ? "cursor-pointer" : "cursor-not-allowed opacity-50"}
+                    ${isCurrent ? "scale-110" : "hover:scale-105"}
                   `}
                 >
                   {/* Círculo del hito */}
-                  <div className={`
+                  <div
+                    className={`
                     w-10 h-10 rounded-full border-3 flex items-center justify-center text-sm font-black transition-all duration-200
-                    ${isCompleted 
-                      ? 'bg-primary border-primary text-primary-foreground shadow-brutal-sm' 
-                      : isCurrent 
-                        ? 'bg-accent border-accent text-accent-foreground shadow-brutal-sm' 
-                        : 'bg-muted border-border text-muted-foreground'
+                    ${
+                      isCompleted
+                        ? "bg-primary border-primary text-primary-foreground shadow-brutal-sm"
+                        : isCurrent
+                          ? "bg-accent border-accent text-accent-foreground shadow-brutal-sm"
+                          : "bg-muted border-border text-muted-foreground"
                     }
-                    ${isAccessible ? 'hover:shadow-brutal' : ''}
-                  `}>
+                    ${isAccessible ? "hover:shadow-brutal" : ""}
+                  `}
+                  >
                     {isCompleted ? (
                       <CheckCircle className="w-5 h-5" />
                     ) : (
                       stepNumber
                     )}
                   </div>
-                  
+
                   {/* Título del paso */}
                   <div className="mt-2 text-center max-w-20">
-                    <div className={`
+                    <div
+                      className={`
                       text-xs font-bold leading-tight transition-colors duration-200
-                      ${isCompleted 
-                        ? 'text-primary' 
-                        : isCurrent 
-                          ? 'text-accent' 
-                          : 'text-muted-foreground'
+                      ${
+                        isCompleted
+                          ? "text-primary"
+                          : isCurrent
+                            ? "text-accent"
+                            : "text-muted-foreground"
                       }
-                    `}>
-                      {getStepTitle(stepNumber).split(' ')[0]}
+                    `}
+                    >
+                      {getStepTitle(stepNumber).split(" ")[0]}
                     </div>
                   </div>
-                  
+
                   {/* Tooltip con información completa */}
                   <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
                     <div className="bg-card border-3 border-border shadow-brutal rounded-lg p-3 max-w-64">
@@ -421,11 +452,7 @@ export function BriefingForm() {
                 )}
 
                 {currentStep < TOTAL_STEPS ? (
-                  <Button
-                    type="button"
-                    onClick={nextStep}
-                    className="flex-1"
-                  >
+                  <Button type="button" onClick={nextStep} className="flex-1">
                     Siguiente
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
@@ -458,9 +485,14 @@ export function BriefingForm() {
       {/* Tips */}
       <div className="mt-6 p-4 rounded-lg bg-muted/50 border-2 border-border">
         <p className="text-sm text-muted-foreground text-center">
-          <SingleEmojiToSvg emoji="💡" size="sm" variant="primary" className="inline mr-2" />
-          <strong>Tip:</strong> Tu progreso se guarda automáticamente. Puedes cerrar esta página 
-          y continuar más tarde desde donde lo dejaste.
+          <SingleEmojiToSvg
+            emoji="💡"
+            size="sm"
+            variant="primary"
+            className="inline mr-2"
+          />
+          <strong>Tip:</strong> Tu progreso se guarda automáticamente. Puedes
+          cerrar esta página y continuar más tarde desde donde lo dejaste.
         </p>
       </div>
     </div>
@@ -497,7 +529,12 @@ function getStepDescription(step: number): string {
 function getFieldsForStep(step: number): string[] {
   const fieldsByStep: Record<number, string[]> = {
     1: ["email", "nombre"],
-    2: ["objetivoPrincipal", "problemasResolver", "presupuestoEstimado", "plazoPreferido"],
+    2: [
+      "objetivoPrincipal",
+      "problemasResolver",
+      "presupuestoEstimado",
+      "plazoPreferido"
+    ],
     3: ["publicoObjetivo", "dispositivosPrincipales", "idiomasNecesarios"],
     4: ["tipoProyecto", "funcionalidadesEsenciales"],
     5: ["tieneIdentidadCorporativa", "tonoComunicacion"],
@@ -507,7 +544,10 @@ function getFieldsForStep(step: number): string[] {
   return fieldsByStep[step] || [];
 }
 
-function renderStepContent(step: number, form: UseFormReturn<BriefingFormData>) {
+function renderStepContent(
+  step: number,
+  form: UseFormReturn<BriefingFormData>
+) {
   switch (step) {
     case 1:
       return <Step1ContactInfo form={form} />;
@@ -586,9 +626,7 @@ function Step1ContactInfo({ form }: { form: UseFormReturn<BriefingFormData> }) {
             <FormControl>
               <Input type="tel" placeholder="+34 600 000 000" {...field} />
             </FormControl>
-            <FormDescription>
-              Opcional - para contacto rápido
-            </FormDescription>
+            <FormDescription>Opcional - para contacto rápido</FormDescription>
             <FormMessage />
           </FormItem>
         )}
@@ -597,7 +635,11 @@ function Step1ContactInfo({ form }: { form: UseFormReturn<BriefingFormData> }) {
   );
 }
 
-function Step2ProjectGoals({ form }: { form: UseFormReturn<BriefingFormData> }) {
+function Step2ProjectGoals({
+  form
+}: {
+  form: UseFormReturn<BriefingFormData>;
+}) {
   return (
     <div className="space-y-4">
       <FormField
@@ -605,9 +647,11 @@ function Step2ProjectGoals({ form }: { form: UseFormReturn<BriefingFormData> }) 
         name="objetivoPrincipal"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>¿Cuál es el objetivo principal de tu proyecto web? *</FormLabel>
+            <FormLabel>
+              ¿Cuál es el objetivo principal de tu proyecto web? *
+            </FormLabel>
             <FormControl>
-              <Textarea 
+              <Textarea
                 placeholder="Ej: Necesito una web corporativa para dar a conocer mis servicios y captar nuevos clientes..."
                 className="min-h-24"
                 {...field}
@@ -625,7 +669,7 @@ function Step2ProjectGoals({ form }: { form: UseFormReturn<BriefingFormData> }) 
           <FormItem>
             <FormLabel>¿Qué problemas quieres resolver? *</FormLabel>
             <FormControl>
-              <Textarea 
+              <Textarea
                 placeholder="Ej: Mi web actual está anticuada, no recibo consultas online, la competencia me supera..."
                 className="min-h-24"
                 {...field}
@@ -676,7 +720,9 @@ function Step2ProjectGoals({ form }: { form: UseFormReturn<BriefingFormData> }) 
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="urgente">Urgente (menos de 1 mes)</SelectItem>
+                  <SelectItem value="urgente">
+                    Urgente (menos de 1 mes)
+                  </SelectItem>
                   <SelectItem value="1-2-meses">1-2 meses</SelectItem>
                   <SelectItem value="3-6-meses">3-6 meses</SelectItem>
                   <SelectItem value="flexible">Flexible</SelectItem>
@@ -696,7 +742,7 @@ function Step2ProjectGoals({ form }: { form: UseFormReturn<BriefingFormData> }) 
           <FormItem>
             <FormLabel>¿Cómo medirás el éxito del proyecto?</FormLabel>
             <FormControl>
-              <Textarea 
+              <Textarea
                 placeholder="Ej: Incremento de consultas en un 30%, mejora del posicionamiento, más ventas online..."
                 className="min-h-20"
                 {...field}
@@ -713,7 +759,11 @@ function Step2ProjectGoals({ form }: { form: UseFormReturn<BriefingFormData> }) 
   );
 }
 
-function Step3TargetAudience({ form }: { form: UseFormReturn<BriefingFormData> }) {
+function Step3TargetAudience({
+  form
+}: {
+  form: UseFormReturn<BriefingFormData>;
+}) {
   return (
     <div className="space-y-4">
       <FormField
@@ -723,15 +773,13 @@ function Step3TargetAudience({ form }: { form: UseFormReturn<BriefingFormData> }
           <FormItem>
             <FormLabel>Describe tu público objetivo *</FormLabel>
             <FormControl>
-              <Textarea 
+              <Textarea
                 placeholder="Ej: Empresas pequeñas y medianas de Barcelona que buscan servicios de consultoría..."
                 className="min-h-24"
                 {...field}
               />
             </FormControl>
-            <FormDescription>
-              ¿A quién va dirigido tu proyecto?
-            </FormDescription>
+            <FormDescription>¿A quién va dirigido tu proyecto?</FormDescription>
             <FormMessage />
           </FormItem>
         )}
@@ -772,7 +820,9 @@ function Step3TargetAudience({ form }: { form: UseFormReturn<BriefingFormData> }
         name="dispositivosPrincipales"
         render={() => (
           <FormItem>
-            <FormLabel>Dispositivos principales * (selecciona todos los relevantes)</FormLabel>
+            <FormLabel>
+              Dispositivos principales * (selecciona todos los relevantes)
+            </FormLabel>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 pt-2">
               {[
                 { value: "movil", label: "Móvil" },
@@ -795,9 +845,15 @@ function Step3TargetAudience({ form }: { form: UseFormReturn<BriefingFormData> }
                           onCheckedChange={(checked) => {
                             const currentValue = field.value || [];
                             return checked
-                              ? field.onChange([...currentValue, dispositivo.value])
+                              ? field.onChange([
+                                  ...currentValue,
+                                  dispositivo.value
+                                ])
                               : field.onChange(
-                                  currentValue.filter((value: string) => value !== dispositivo.value)
+                                  currentValue.filter(
+                                    (value: string) =>
+                                      value !== dispositivo.value
+                                  )
                                 );
                           }}
                         />
@@ -835,9 +891,7 @@ function Step3TargetAudience({ form }: { form: UseFormReturn<BriefingFormData> }
                   control={form.control}
                   name="idiomasNecesarios"
                   render={({ field }) => (
-                    <FormItem
-                      className="flex items-center space-x-2"
-                    >
+                    <FormItem className="flex items-center space-x-2">
                       <FormControl>
                         <Checkbox
                           checked={field.value?.includes(idioma.value)}
@@ -846,7 +900,9 @@ function Step3TargetAudience({ form }: { form: UseFormReturn<BriefingFormData> }
                             return checked
                               ? field.onChange([...currentValue, idioma.value])
                               : field.onChange(
-                                  currentValue.filter((value: string) => value !== idioma.value)
+                                  currentValue.filter(
+                                    (value: string) => value !== idioma.value
+                                  )
                                 );
                           }}
                         />
@@ -867,7 +923,11 @@ function Step3TargetAudience({ form }: { form: UseFormReturn<BriefingFormData> }
   );
 }
 
-function Step4Functionality({ form }: { form: UseFormReturn<BriefingFormData> }) {
+function Step4Functionality({
+  form
+}: {
+  form: UseFormReturn<BriefingFormData>;
+}) {
   return (
     <div className="space-y-4">
       <FormField
@@ -876,7 +936,10 @@ function Step4Functionality({ form }: { form: UseFormReturn<BriefingFormData> })
         render={({ field }) => (
           <FormItem>
             <FormLabel>Tipo de proyecto *</FormLabel>
-            <Select onValueChange={(value) => field.onChange([value])} defaultValue={field.value?.[0]}>
+            <Select
+              onValueChange={(value) => field.onChange([value])}
+              defaultValue={field.value?.[0]}
+            >
               <FormControl>
                 <SelectTrigger>
                   <SelectValue placeholder="Selecciona tipo" />
@@ -885,7 +948,9 @@ function Step4Functionality({ form }: { form: UseFormReturn<BriefingFormData> })
               <SelectContent>
                 <SelectItem value="landing">Landing Page</SelectItem>
                 <SelectItem value="corporativa">Web Corporativa</SelectItem>
-                <SelectItem value="ecommerce">Tienda Online (E-commerce)</SelectItem>
+                <SelectItem value="ecommerce">
+                  Tienda Online (E-commerce)
+                </SelectItem>
                 <SelectItem value="webapp">Aplicación Web</SelectItem>
                 <SelectItem value="blog">Blog / Revista Digital</SelectItem>
                 <SelectItem value="portal">Portal / Plataforma</SelectItem>
@@ -902,7 +967,9 @@ function Step4Functionality({ form }: { form: UseFormReturn<BriefingFormData> })
         name="funcionalidadesEsenciales"
         render={() => (
           <FormItem>
-            <FormLabel>Funcionalidades esenciales * (selecciona todas las necesarias)</FormLabel>
+            <FormLabel>
+              Funcionalidades esenciales * (selecciona todas las necesarias)
+            </FormLabel>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
               {[
                 "Formulario de contacto",
@@ -932,7 +999,9 @@ function Step4Functionality({ form }: { form: UseFormReturn<BriefingFormData> })
                             return checked
                               ? field.onChange([...currentValue, funcionalidad])
                               : field.onChange(
-                                  currentValue.filter((value: string) => value !== funcionalidad)
+                                  currentValue.filter(
+                                    (value: string) => value !== funcionalidad
+                                  )
                                 );
                           }}
                         />
@@ -957,7 +1026,7 @@ function Step4Functionality({ form }: { form: UseFormReturn<BriefingFormData> })
           <FormItem>
             <FormLabel>Otras funcionalidades deseadas</FormLabel>
             <FormControl>
-              <Textarea 
+              <Textarea
                 placeholder="Describe otras funcionalidades que te gustaría tener..."
                 className="min-h-20"
                 {...field}
@@ -975,15 +1044,13 @@ function Step4Functionality({ form }: { form: UseFormReturn<BriefingFormData> })
           <FormItem>
             <FormLabel>Integraciones necesarias</FormLabel>
             <FormControl>
-              <Textarea 
+              <Textarea
                 placeholder="Ej: CRM, ERP, herramientas de email marketing, pasarelas de pago específicas..."
                 className="min-h-20"
                 {...field}
               />
             </FormControl>
-            <FormDescription>
-              APIs, servicios externos, etc.
-            </FormDescription>
+            <FormDescription>APIs, servicios externos, etc.</FormDescription>
             <FormMessage />
           </FormItem>
         )}
@@ -1027,9 +1094,7 @@ function Step5VisualStyle({ form }: { form: UseFormReturn<BriefingFormData> }) {
         render={({ field }) => (
           <FormItem className="flex items-center justify-between rounded-lg border-2 border-border p-4">
             <div className="space-y-0.5">
-              <FormLabel className="text-base">
-                ¿Tienes logotipo?
-              </FormLabel>
+              <FormLabel className="text-base">¿Tienes logotipo?</FormLabel>
               <FormDescription>
                 Logo en formato vectorial o alta calidad
               </FormDescription>
@@ -1051,7 +1116,7 @@ function Step5VisualStyle({ form }: { form: UseFormReturn<BriefingFormData> }) {
           <FormItem>
             <FormLabel>Colores preferidos</FormLabel>
             <FormControl>
-              <Input 
+              <Input
                 placeholder="Ej: Azul corporativo, verde menta, tonos cálidos..."
                 {...field}
               />
@@ -1071,7 +1136,7 @@ function Step5VisualStyle({ form }: { form: UseFormReturn<BriefingFormData> }) {
           <FormItem>
             <FormLabel>Referencias visuales</FormLabel>
             <FormControl>
-              <Textarea 
+              <Textarea
                 placeholder="Pega URLs de webs que te inspiren o describe el estilo que buscas..."
                 className="min-h-24"
                 {...field}
@@ -1098,7 +1163,9 @@ function Step5VisualStyle({ form }: { form: UseFormReturn<BriefingFormData> }) {
                 </SelectTrigger>
               </FormControl>
               <SelectContent>
-                <SelectItem value="profesional">Profesional y formal</SelectItem>
+                <SelectItem value="profesional">
+                  Profesional y formal
+                </SelectItem>
                 <SelectItem value="cercano">Cercano y amigable</SelectItem>
                 <SelectItem value="juvenil">Juvenil y moderno</SelectItem>
                 <SelectItem value="elegante">Elegante y sofisticado</SelectItem>
@@ -1171,7 +1238,7 @@ function Step6Content({ form }: { form: UseFormReturn<BriefingFormData> }) {
 
       <div className="space-y-3 rounded-lg border-2 border-border p-4">
         <p className="text-sm font-medium">¿Necesitas ayuda con...?</p>
-        
+
         <FormField
           control={form.control}
           name="necesitaRedaccion"
@@ -1230,12 +1297,16 @@ function Step6Content({ form }: { form: UseFormReturn<BriefingFormData> }) {
   );
 }
 
-function Step7TechAndConsent({ form }: { form: UseFormReturn<BriefingFormData> }) {
+function Step7TechAndConsent({
+  form
+}: {
+  form: UseFormReturn<BriefingFormData>;
+}) {
   return (
     <div className="space-y-4">
       <div className="space-y-3 rounded-lg border-2 border-border p-4">
         <p className="text-sm font-medium">Infraestructura técnica</p>
-        
+
         <FormField
           control={form.control}
           name="tieneHostingActual"
@@ -1296,7 +1367,9 @@ function Step7TechAndConsent({ form }: { form: UseFormReturn<BriefingFormData> }
         name="requisitosCMS"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>¿Necesitas gestionar el contenido tú mismo? (CMS) *</FormLabel>
+            <FormLabel>
+              ¿Necesitas gestionar el contenido tú mismo? (CMS) *
+            </FormLabel>
             <Select onValueChange={field.onChange} defaultValue={field.value}>
               <FormControl>
                 <SelectTrigger>
@@ -1304,9 +1377,15 @@ function Step7TechAndConsent({ form }: { form: UseFormReturn<BriefingFormData> }
                 </SelectTrigger>
               </FormControl>
               <SelectContent>
-                <SelectItem value="no">No, prefiero delegar la gestión</SelectItem>
-                <SelectItem value="si-simple">Sí, panel simple para textos e imágenes</SelectItem>
-                <SelectItem value="si-avanzado">Sí, CMS completo (WordPress, etc.)</SelectItem>
+                <SelectItem value="no">
+                  No, prefiero delegar la gestión
+                </SelectItem>
+                <SelectItem value="si-simple">
+                  Sí, panel simple para textos e imágenes
+                </SelectItem>
+                <SelectItem value="si-avanzado">
+                  Sí, CMS completo (WordPress, etc.)
+                </SelectItem>
                 <SelectItem value="no-se">No lo sé aún</SelectItem>
               </SelectContent>
             </Select>
@@ -1317,7 +1396,7 @@ function Step7TechAndConsent({ form }: { form: UseFormReturn<BriefingFormData> }
 
       <div className="space-y-3 rounded-lg border-2 border-border p-4">
         <p className="text-sm font-medium">Requisitos adicionales</p>
-        
+
         <FormField
           control={form.control}
           name="requisitosSEO"
@@ -1387,7 +1466,7 @@ function Step7TechAndConsent({ form }: { form: UseFormReturn<BriefingFormData> }
           <FormItem>
             <FormLabel>Información adicional</FormLabel>
             <FormControl>
-              <Textarea 
+              <Textarea
                 placeholder="¿Algo más que quieras contarnos sobre tu proyecto?"
                 className="min-h-24"
                 {...field}
@@ -1413,11 +1492,12 @@ function Step7TechAndConsent({ form }: { form: UseFormReturn<BriefingFormData> }
               </FormControl>
               <div className="grid gap-1.5 leading-none">
                 <FormLabel className="text-sm font-medium cursor-pointer">
-                  Acepto la política de privacidad y el tratamiento de mis datos *
+                  Acepto la política de privacidad y el tratamiento de mis datos
+                  *
                 </FormLabel>
                 <FormDescription className="text-xs">
-                  Al enviar este formulario, consientes el tratamiento de tus datos 
-                  para elaborar una propuesta según nuestra{" "}
+                  Al enviar este formulario, consientes el tratamiento de tus
+                  datos para elaborar una propuesta según nuestra{" "}
                   <Link
                     href="/politica-privacidad"
                     className="underline text-primary font-medium"
@@ -1436,4 +1516,3 @@ function Step7TechAndConsent({ form }: { form: UseFormReturn<BriefingFormData> }
     </div>
   );
 }
-

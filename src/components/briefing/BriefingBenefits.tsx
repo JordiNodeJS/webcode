@@ -14,7 +14,9 @@ interface BriefingBenefitsProps {
   beneficios: Beneficio[];
 }
 
-export default function BriefingBenefits({ beneficios }: BriefingBenefitsProps) {
+export default function BriefingBenefits({
+  beneficios
+}: BriefingBenefitsProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {beneficios.map((beneficio, index) => (
@@ -31,9 +33,9 @@ export default function BriefingBenefits({ beneficios }: BriefingBenefitsProps) 
 
             {/* Icono */}
             <div className="mb-4 group-hover:scale-110 transition-transform duration-300">
-              <SingleEmojiToSvg 
-                emoji={beneficio.icono} 
-                size="xl" 
+              <SingleEmojiToSvg
+                emoji={beneficio.icono}
+                size="xl"
                 variant="primary"
                 className="text-5xl"
               />
@@ -60,4 +62,3 @@ export default function BriefingBenefits({ beneficios }: BriefingBenefitsProps) 
     </div>
   );
 }
-

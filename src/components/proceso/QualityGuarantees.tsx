@@ -13,7 +13,9 @@ interface QualityGuaranteesProps {
   garantias: Garantia[];
 }
 
-export default function QualityGuarantees({ garantias }: QualityGuaranteesProps) {
+export default function QualityGuarantees({
+  garantias
+}: QualityGuaranteesProps) {
   return (
     <section className="relative py-20 overflow-hidden">
       {/* Fondo estático (optimizado) */}
@@ -45,27 +47,27 @@ export default function QualityGuarantees({ garantias }: QualityGuaranteesProps)
               <div className="group relative h-full">
                 {/* Brillo de fondo en hover */}
                 <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-30 blur-2xl transition-all duration-700 rounded-2xl" />
-                
+
                 {/* Card con glassmorphism */}
                 <div className="relative h-full bg-card/80 backdrop-blur-xl border-2 border-primary/20 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-primary/40 hover:scale-105">
                   {/* Gradient overlay on hover */}
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  
+
                   <div className="relative z-10">
                     {/* Icono con efecto */}
                     <div className="relative mb-4 inline-block">
                       <div className="transform group-hover:scale-110 group-hover:rotate-12 transition-transform duration-500">
-                        <SingleEmojiToSvg 
-                          emoji={garantia.icono} 
-                          size="xl" 
+                        <SingleEmojiToSvg
+                          emoji={garantia.icono}
+                          size="xl"
                           variant="primary"
                           className="text-5xl md:text-6xl"
                         />
                       </div>
                       <div className="absolute inset-0 blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500">
-                        <SingleEmojiToSvg 
-                          emoji={garantia.icono} 
-                          size="xl" 
+                        <SingleEmojiToSvg
+                          emoji={garantia.icono}
+                          size="xl"
                           variant="primary"
                           className="text-5xl md:text-6xl"
                         />
@@ -97,12 +99,12 @@ export default function QualityGuarantees({ garantias }: QualityGuaranteesProps)
             <div className="group relative">
               {/* Brillo exterior optimizado */}
               <div className="absolute -inset-2 bg-gradient-to-r from-primary via-secondary to-primary opacity-20 blur-2xl group-hover:opacity-40 transition-all duration-700 rounded-3xl" />
-              
+
               {/* Card principal con glassmorphism premium */}
               <div className="relative bg-gradient-to-br from-primary/10 via-card/90 to-secondary/10 backdrop-blur-2xl border-2 border-primary/30 rounded-3xl p-8 md:p-10 shadow-2xl overflow-hidden">
                 {/* Pattern decorativo interno */}
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(var(--primary-rgb),0.1),transparent_70%)]" />
-                
+
                 {/* Contenido */}
                 <div className="relative z-10">
                   {/* Título principal con icono */}
@@ -132,20 +134,26 @@ export default function QualityGuarantees({ garantias }: QualityGuaranteesProps)
                             Seguridad contractual
                           </h4>
                         </div>
-                    <ul className="space-y-3">
-                      <li className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
-                        <span className="text-primary font-bold text-lg flex-shrink-0 flex items-center justify-center w-5 h-5">✓</span>
-                        <span>Contrato con entregables definidos</span>
-                      </li>
-                      <li className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
-                        <span className="text-primary font-bold text-lg flex-shrink-0 flex items-center justify-center w-5 h-5">✓</span>
-                        <span>Pagos por milestones (40%, 35%, 25%)</span>
-                      </li>
-                      <li className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
-                        <span className="text-primary font-bold text-lg flex-shrink-0 flex items-center justify-center w-5 h-5">✓</span>
-                        <span>Garantía de satisfacción 15 días</span>
-                      </li>
-                    </ul>
+                        <ul className="space-y-3">
+                          <li className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
+                            <span className="text-primary font-bold text-lg flex-shrink-0 flex items-center justify-center w-5 h-5">
+                              ✓
+                            </span>
+                            <span>Contrato con entregables definidos</span>
+                          </li>
+                          <li className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
+                            <span className="text-primary font-bold text-lg flex-shrink-0 flex items-center justify-center w-5 h-5">
+                              ✓
+                            </span>
+                            <span>Pagos por milestones (40%, 35%, 25%)</span>
+                          </li>
+                          <li className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
+                            <span className="text-primary font-bold text-lg flex-shrink-0 flex items-center justify-center w-5 h-5">
+                              ✓
+                            </span>
+                            <span>Garantía de satisfacción 15 días</span>
+                          </li>
+                        </ul>
                       </div>
                     </div>
 
@@ -163,15 +171,21 @@ export default function QualityGuarantees({ garantias }: QualityGuaranteesProps)
                         </div>
                         <ul className="space-y-3">
                           <li className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
-                            <span className="text-secondary font-bold text-lg flex-shrink-0 flex items-center justify-center w-5 h-5">✓</span>
+                            <span className="text-secondary font-bold text-lg flex-shrink-0 flex items-center justify-center w-5 h-5">
+                              ✓
+                            </span>
                             <span>Escalación directa al equipo senior</span>
                           </li>
                           <li className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
-                            <span className="text-secondary font-bold text-lg flex-shrink-0 flex items-center justify-center w-5 h-5">✓</span>
+                            <span className="text-secondary font-bold text-lg flex-shrink-0 flex items-center justify-center w-5 h-5">
+                              ✓
+                            </span>
                             <span>Backup completo y versionado Git</span>
                           </li>
                           <li className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
-                            <span className="text-secondary font-bold text-lg flex-shrink-0 flex items-center justify-center w-5 h-5">✓</span>
+                            <span className="text-secondary font-bold text-lg flex-shrink-0 flex items-center justify-center w-5 h-5">
+                              ✓
+                            </span>
                             <span>30 días de soporte premium incluido</span>
                           </li>
                         </ul>
@@ -198,4 +212,3 @@ export default function QualityGuarantees({ garantias }: QualityGuaranteesProps)
     </section>
   );
 }
-

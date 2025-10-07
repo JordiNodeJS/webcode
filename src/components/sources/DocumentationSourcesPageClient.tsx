@@ -1,19 +1,25 @@
-'use client'
+"use client";
 
-import { ArrowLeft, CheckCircle, ExternalLink, FileText, TrendingUp } from 'lucide-react'
-import Link from 'next/link'
-import { useState } from 'react'
-import { WSFadeIn } from '@/components/animations/ws-fade-in'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { StatisticsModal } from '@/components/ui/statistics-modal'
+import {
+  ArrowLeft,
+  CheckCircle,
+  ExternalLink,
+  FileText,
+  TrendingUp
+} from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
+import { WSFadeIn } from "@/components/animations/ws-fade-in";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { StatisticsModal } from "@/components/ui/statistics-modal";
 
 export default function DocumentationSourcesPageClient() {
-  const [modalOpen, setModalOpen] = useState<string | null>(null)
+  const [modalOpen, setModalOpen] = useState<string | null>(null);
 
-  const openModal = (statistic: string) => setModalOpen(statistic)
-  const closeModal = () => setModalOpen(null)
+  const openModal = (statistic: string) => setModalOpen(statistic);
+  const closeModal = () => setModalOpen(null);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
@@ -22,7 +28,10 @@ export default function DocumentationSourcesPageClient() {
         <WSFadeIn delay={0.1}>
           <div className="mb-8">
             <Link href="/sources">
-              <Button variant="outline" className="mb-6 border-2 border-primary/30 hover:bg-primary/10">
+              <Button
+                variant="outline"
+                className="mb-6 border-2 border-primary/30 hover:bg-primary/10"
+              >
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Public Sources
               </Button>
@@ -37,11 +46,14 @@ export default function DocumentationSourcesPageClient() {
               Documentation
             </Badge>
             <h1 className="text-4xl md:text-5xl font-black mb-6">
-              Sources and <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Statistics</span>
+              Sources and{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                Statistics
+              </span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              Comprehensive documentation of all statistics used in WebCode projects. 
-              Complete transparency and verifiable data sources.
+              Comprehensive documentation of all statistics used in WebCode
+              projects. Complete transparency and verifiable data sources.
             </p>
           </div>
         </WSFadeIn>
@@ -66,18 +78,21 @@ export default function DocumentationSourcesPageClient() {
                       of failed projects are due to poor requirements management
                     </p>
                   </div>
-                  
+
                   <div className="border-t-2 border-primary/20 pt-4">
                     <h4 className="font-bold text-lg mb-3 flex items-center gap-2">
                       <FileText className="w-5 h-5 text-primary" />
                       Official Source
                     </h4>
                     <div className="bg-muted/50 p-4 rounded-xl">
-                      <p className="font-semibold mb-2">Project Management Institute (PMI)</p>
-                      <p className="text-sm text-muted-foreground mb-3">
-                        Pulse of the Profession 2014 - "The High Cost of Low Performance"
+                      <p className="font-semibold mb-2">
+                        Project Management Institute (PMI)
                       </p>
-                      <a 
+                      <p className="text-sm text-muted-foreground mb-3">
+                        Pulse of the Profession 2014 - "The High Cost of Low
+                        Performance"
+                      </p>
+                      <a
                         href="https://www.pmi.org/learning/thought-leadership/pulse/the-high-cost-of-low-performance-2014"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -105,9 +120,9 @@ export default function DocumentationSourcesPageClient() {
               <CardContent>
                 <div className="grid md:grid-cols-2 gap-6">
                   {/* PMI - Inadequate collection */}
-                  <button 
+                  <button
                     type="button"
-                    onClick={() => openModal('pmi-inadequate')}
+                    onClick={() => openModal("pmi-inadequate")}
                     className="bg-background/80 p-6 rounded-2xl border-2 border-accent/20 hover:border-accent/40 hover:bg-accent/5 transition-all duration-200 cursor-pointer group"
                   >
                     <div className="text-center mb-4">
@@ -127,9 +142,9 @@ export default function DocumentationSourcesPageClient() {
                   </button>
 
                   {/* IAG Consulting */}
-                  <button 
+                  <button
                     type="button"
-                    onClick={() => openModal('iag-maturity')}
+                    onClick={() => openModal("iag-maturity")}
                     className="bg-background/80 p-6 rounded-2xl border-2 border-secondary/20 hover:border-secondary/40 hover:bg-secondary/5 transition-all duration-200 cursor-pointer group"
                   >
                     <div className="text-center mb-4">
@@ -149,9 +164,9 @@ export default function DocumentationSourcesPageClient() {
                   </button>
 
                   {/* Economic Impact */}
-                  <button 
+                  <button
                     type="button"
-                    onClick={() => openModal('economic-impact')}
+                    onClick={() => openModal("economic-impact")}
                     className="bg-background/80 p-6 rounded-2xl border-2 border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all duration-200 cursor-pointer group md:col-span-2"
                   >
                     <div className="text-center mb-4">
@@ -162,7 +177,8 @@ export default function DocumentationSourcesPageClient() {
                         Economic waste due to poor management
                       </p>
                       <p className="text-sm text-muted-foreground">
-                        Equivalent to $51 million wasted for every $1,000 million invested
+                        Equivalent to $51 million wasted for every $1,000
+                        million invested
                       </p>
                       <p className="text-xs text-primary mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
                         Click for details →
@@ -210,38 +226,53 @@ export default function DocumentationSourcesPageClient() {
                     <h4 className="font-bold text-lg">Sources Used</h4>
                     <div className="space-y-3">
                       <div className="bg-muted/50 p-3 rounded-lg">
-                        <p className="font-semibold text-sm">Project Management Institute (PMI)</p>
-                        <p className="text-xs text-muted-foreground">World's leading project management organization</p>
+                        <p className="font-semibold text-sm">
+                          Project Management Institute (PMI)
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          World's leading project management organization
+                        </p>
                       </div>
                       <div className="bg-muted/50 p-3 rounded-lg">
                         <p className="font-semibold text-sm">IAG Consulting</p>
-                        <p className="text-xs text-muted-foreground">Consultancy specialized in requirements analysis</p>
+                        <p className="text-xs text-muted-foreground">
+                          Consultancy specialized in requirements analysis
+                        </p>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <div className="bg-primary/10 p-6 rounded-2xl border-2 border-primary/20">
-                  <h4 className="font-bold text-lg mb-3">Why is source verification important?</h4>
+                  <h4 className="font-bold text-lg mb-3">
+                    Why is source verification important?
+                  </h4>
                   <p className="text-sm text-muted-foreground">
-                    At WebCode we believe in total transparency. All our statistics are verifiable 
-                    and come from recognized organizations. This allows us to build trust with our 
-                    clients and provide accurate information for decision making.
+                    At WebCode we believe in total transparency. All our
+                    statistics are verifiable and come from recognized
+                    organizations. This allows us to build trust with our
+                    clients and provide accurate information for decision
+                    making.
                   </p>
                 </div>
 
                 <div className="bg-accent/10 p-6 rounded-2xl border-2 border-accent/20">
-                  <h4 className="font-bold text-lg mb-3">📅 Relevance of PMI 2014 Study</h4>
+                  <h4 className="font-bold text-lg mb-3">
+                    📅 Relevance of PMI 2014 Study
+                  </h4>
                   <p className="text-sm text-muted-foreground mb-3">
-                    Although this study is from 2014, it remains the most recent and reliable reference on 
-                    requirements management. Subsequent studies from PMI and other organizations have 
-                    focused on digital transformation, agile methodologies, and other aspects, but have not 
-                    specifically updated statistics on failures due to poorly defined requirements.
+                    Although this study is from 2014, it remains the most recent
+                    and reliable reference on requirements management.
+                    Subsequent studies from PMI and other organizations have
+                    focused on digital transformation, agile methodologies, and
+                    other aspects, but have not specifically updated statistics
+                    on failures due to poorly defined requirements.
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    <strong>Current context:</strong> The industry has moved towards agile methodologies, 
-                    but the fundamental principles of requirements management remain critical for the 
-                    success of any project, regardless of the methodology used.
+                    <strong>Current context:</strong> The industry has moved
+                    towards agile methodologies, but the fundamental principles
+                    of requirements management remain critical for the success
+                    of any project, regardless of the methodology used.
                   </p>
                 </div>
               </CardContent>
@@ -252,7 +283,7 @@ export default function DocumentationSourcesPageClient() {
 
       {/* Modals */}
       <StatisticsModal
-        isOpen={modalOpen === 'pmi-inadequate'}
+        isOpen={modalOpen === "pmi-inadequate"}
         onClose={closeModal}
         title="Inadequate Requirements Collection"
         percentage="37%"
@@ -265,7 +296,7 @@ export default function DocumentationSourcesPageClient() {
       />
 
       <StatisticsModal
-        isOpen={modalOpen === 'iag-maturity'}
+        isOpen={modalOpen === "iag-maturity"}
         onClose={closeModal}
         title="Companies with Low Maturity Level"
         percentage="74%"
@@ -277,7 +308,7 @@ export default function DocumentationSourcesPageClient() {
       />
 
       <StatisticsModal
-        isOpen={modalOpen === 'economic-impact'}
+        isOpen={modalOpen === "economic-impact"}
         onClose={closeModal}
         title="Economic Waste Due to Poor Management"
         percentage="5.1%"
@@ -289,5 +320,5 @@ export default function DocumentationSourcesPageClient() {
         impact="The economic impact goes beyond direct waste, including lost opportunities, reputation damage, loss of client trust, and opportunity costs that could have been invested in new successful projects."
       />
     </div>
-  )
+  );
 }

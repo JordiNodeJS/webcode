@@ -3,26 +3,40 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Suspense } from "react";
 
-const WSFadeIn = dynamic(() => import("@/components/animations/ws-fade-in").then(m => m.WSFadeIn));
+const WSFadeIn = dynamic(() =>
+  import("@/components/animations/ws-fade-in").then((m) => m.WSFadeIn)
+);
 
 import { generateSEOMetadata } from "@/lib/seo-metadata";
 
 // Lazy load componentes pesados
-const PhaseTimeline = dynamic(() => import("@/components/proceso/PhaseTimeline"), {
-  loading: () => <div className="h-96 animate-pulse bg-muted/50 rounded-lg" />
-});
+const PhaseTimeline = dynamic(
+  () => import("@/components/proceso/PhaseTimeline"),
+  {
+    loading: () => <div className="h-96 animate-pulse bg-muted/50 rounded-lg" />
+  }
+);
 
-const PhaseDetails = dynamic(() => import("@/components/proceso/PhaseDetails"), {
-  loading: () => <div className="h-96 animate-pulse bg-muted/50 rounded-lg" />
-});
+const PhaseDetails = dynamic(
+  () => import("@/components/proceso/PhaseDetails"),
+  {
+    loading: () => <div className="h-96 animate-pulse bg-muted/50 rounded-lg" />
+  }
+);
 
-const QualityGuarantees = dynamic(() => import("@/components/proceso/QualityGuarantees"), {
-  loading: () => <div className="h-96 animate-pulse bg-muted/50 rounded-lg" />
-});
+const QualityGuarantees = dynamic(
+  () => import("@/components/proceso/QualityGuarantees"),
+  {
+    loading: () => <div className="h-96 animate-pulse bg-muted/50 rounded-lg" />
+  }
+);
 
-const CommunicationChannels = dynamic(() => import("@/components/proceso/CommunicationChannels"), {
-  loading: () => <div className="h-64 animate-pulse bg-muted/50 rounded-lg" />
-});
+const CommunicationChannels = dynamic(
+  () => import("@/components/proceso/CommunicationChannels"),
+  {
+    loading: () => <div className="h-64 animate-pulse bg-muted/50 rounded-lg" />
+  }
+);
 
 export const metadata: Metadata = generateSEOMetadata({
   title: "Proceso de Desarrollo Web | WEBCODE Barcelona",
@@ -178,14 +192,13 @@ const canales = [
 ];
 
 export default function ProcesoPage() {
-
   return (
     <div className="min-h-screen">
       {/* Hero Section Mejorado */}
       <section className="relative py-20 md:py-32 overflow-hidden">
         {/* Fondo con gradiente animado */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-secondary/10" />
-        
+
         {/* Patterns decorativos estáticos (optimizado) */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-2xl" />
@@ -201,14 +214,16 @@ export default function ProcesoPage() {
               {/* Badge superior */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30 backdrop-blur-sm">
                 <span className="text-2xl">🚀</span>
-                <span className="text-sm font-semibold text-primary">Metodología Profesional</span>
+                <span className="text-sm font-semibold text-primary">
+                  Metodología Profesional
+                </span>
               </div>
 
               {/* Título principal */}
               <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-gradient-webcode leading-tight">
                 Nuestro Proceso de Desarrollo
               </h1>
-              
+
               {/* Subtítulo */}
               <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 Metodología probada en 4 fases para garantizar el éxito de tu
@@ -243,9 +258,19 @@ export default function ProcesoPage() {
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-primary to-primary/80 text-primary-foreground font-semibold shadow-lg hover:shadow-xl hover:shadow-primary/50 transition-all duration-300 hover:scale-105"
                 >
                   <span>Descubre cómo trabajamos</span>
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
                     <title>Arrow right</title>
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
                   </svg>
                 </Link>
                 <Link
@@ -262,22 +287,30 @@ export default function ProcesoPage() {
       </section>
 
       {/* Timeline de Fases - Componente optimizado con lazy loading */}
-      <Suspense fallback={<div className="h-96 animate-pulse bg-muted/50 rounded-lg" />}>
+      <Suspense
+        fallback={<div className="h-96 animate-pulse bg-muted/50 rounded-lg" />}
+      >
         <PhaseTimeline fases={fases} />
       </Suspense>
 
       {/* Detalles de Cada Fase - Componente optimizado */}
-      <Suspense fallback={<div className="h-96 animate-pulse bg-muted/50 rounded-lg" />}>
+      <Suspense
+        fallback={<div className="h-96 animate-pulse bg-muted/50 rounded-lg" />}
+      >
         <PhaseDetails fases={fases} />
       </Suspense>
 
       {/* Garantías de Calidad - Componente optimizado */}
-      <Suspense fallback={<div className="h-96 animate-pulse bg-muted/50 rounded-lg" />}>
+      <Suspense
+        fallback={<div className="h-96 animate-pulse bg-muted/50 rounded-lg" />}
+      >
         <QualityGuarantees garantias={garantias} />
       </Suspense>
 
       {/* Canales de Comunicación - Componente optimizado */}
-      <Suspense fallback={<div className="h-64 animate-pulse bg-muted/50 rounded-lg" />}>
+      <Suspense
+        fallback={<div className="h-64 animate-pulse bg-muted/50 rounded-lg" />}
+      >
         <CommunicationChannels canales={canales} />
       </Suspense>
 
@@ -297,15 +330,13 @@ export default function ProcesoPage() {
           <WSFadeIn delay={0.2}>
             <div className="text-center max-w-4xl mx-auto space-y-8">
               {/* Icono decorativo estático (optimizado) */}
-              <div className="inline-block text-6xl md:text-7xl">
-                🚀
-              </div>
+              <div className="inline-block text-6xl md:text-7xl">🚀</div>
 
               {/* Título */}
               <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-gradient-webcode leading-tight">
                 ¿Listo para empezar tu proyecto?
               </h2>
-              
+
               {/* Subtítulo */}
               <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Agenda una consulta gratuita de 30 minutos y descubre cómo
@@ -320,20 +351,40 @@ export default function ProcesoPage() {
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <span className="relative z-10">CONSULTA GRATUITA</span>
-                  <svg className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg
+                    className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
                     <title>Arrow right</title>
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
                   </svg>
                 </Link>
-                
+
                 <Link
                   href="/faqs"
                   className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-card/80 backdrop-blur-sm border-2 border-primary/30 text-foreground font-semibold text-lg shadow-lg hover:shadow-xl hover:border-primary/60 transition-all duration-300 hover:scale-105"
                 >
                   <span>Ver FAQ</span>
-                  <svg className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg
+                    className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
                     <title>Question mark</title>
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
                   </svg>
                 </Link>
               </div>
@@ -378,4 +429,3 @@ export default function ProcesoPage() {
     </div>
   );
 }
-

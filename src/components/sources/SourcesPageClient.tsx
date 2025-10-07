@@ -1,17 +1,22 @@
-'use client'
+"use client";
 
-import { AlertTriangle, ExternalLink, FileText, TrendingUp } from 'lucide-react'
-import { useState } from 'react'
-import { WSFadeIn } from '@/components/animations/ws-fade-in'
-import { Badge } from '@/components/ui/badge'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { StatisticsModal } from '@/components/ui/statistics-modal'
+import {
+  AlertTriangle,
+  ExternalLink,
+  FileText,
+  TrendingUp
+} from "lucide-react";
+import { useState } from "react";
+import { WSFadeIn } from "@/components/animations/ws-fade-in";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { StatisticsModal } from "@/components/ui/statistics-modal";
 
 export default function SourcesPageClient() {
-  const [modalOpen, setModalOpen] = useState<string | null>(null)
+  const [modalOpen, setModalOpen] = useState<string | null>(null);
 
-  const openModal = (statistic: string) => setModalOpen(statistic)
-  const closeModal = () => setModalOpen(null)
+  const openModal = (statistic: string) => setModalOpen(statistic);
+  const closeModal = () => setModalOpen(null);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
@@ -23,11 +28,14 @@ export default function SourcesPageClient() {
               Fuentes Oficiales
             </Badge>
             <h1 className="text-4xl md:text-5xl font-black mb-6">
-              Estadísticas <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Verificables</span>
+              Estadísticas{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                Verificables
+              </span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              Todas nuestras estadísticas provienen de fuentes oficiales y estudios verificables. 
-              Transparencia total en nuestros datos.
+              Todas nuestras estadísticas provienen de fuentes oficiales y
+              estudios verificables. Transparencia total en nuestros datos.
             </p>
           </div>
         </WSFadeIn>
@@ -49,21 +57,25 @@ export default function SourcesPageClient() {
                       47%
                     </div>
                     <p className="text-lg md:text-xl font-semibold">
-                      de los proyectos fallidos se deben a gestión deficiente de requisitos
+                      de los proyectos fallidos se deben a gestión deficiente de
+                      requisitos
                     </p>
                   </div>
-                  
+
                   <div className="border-t-2 border-primary/20 pt-4">
                     <h4 className="font-bold text-lg mb-3 flex items-center gap-2">
                       <FileText className="w-5 h-5 text-primary" />
                       Fuente Oficial
                     </h4>
                     <div className="bg-muted/50 p-4 rounded-xl">
-                      <p className="font-semibold mb-2">Project Management Institute (PMI)</p>
-                      <p className="text-sm text-muted-foreground mb-3">
-                        Pulse of the Profession 2014 - "The High Cost of Low Performance"
+                      <p className="font-semibold mb-2">
+                        Project Management Institute (PMI)
                       </p>
-                      <a 
+                      <p className="text-sm text-muted-foreground mb-3">
+                        Pulse of the Profession 2014 - "The High Cost of Low
+                        Performance"
+                      </p>
+                      <a
                         href="https://www.pmi.org/learning/thought-leadership/pulse/the-high-cost-of-low-performance-2014"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -91,9 +103,9 @@ export default function SourcesPageClient() {
               <CardContent>
                 <div className="grid md:grid-cols-2 gap-6">
                   {/* PMI - Recolección inadecuada */}
-                  <button 
+                  <button
                     type="button"
-                    onClick={() => openModal('pmi-inadequate')}
+                    onClick={() => openModal("pmi-inadequate")}
                     className="bg-background/80 p-6 rounded-2xl border-2 border-accent/20 hover:border-accent/40 hover:bg-accent/5 transition-all duration-200 cursor-pointer group"
                   >
                     <div className="text-center mb-4">
@@ -113,9 +125,9 @@ export default function SourcesPageClient() {
                   </button>
 
                   {/* IAG Consulting */}
-                  <button 
+                  <button
                     type="button"
-                    onClick={() => openModal('iag-maturity')}
+                    onClick={() => openModal("iag-maturity")}
                     className="bg-background/80 p-6 rounded-2xl border-2 border-secondary/20 hover:border-secondary/40 hover:bg-secondary/5 transition-all duration-200 cursor-pointer group"
                   >
                     <div className="text-center mb-4">
@@ -135,9 +147,9 @@ export default function SourcesPageClient() {
                   </button>
 
                   {/* Impacto Económico */}
-                  <button 
+                  <button
                     type="button"
-                    onClick={() => openModal('economic-impact')}
+                    onClick={() => openModal("economic-impact")}
                     className="bg-background/80 p-6 rounded-2xl border-2 border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all duration-200 cursor-pointer group md:col-span-2"
                   >
                     <div className="text-center mb-4">
@@ -148,7 +160,8 @@ export default function SourcesPageClient() {
                         Desperdicio económico por gestión deficiente
                       </p>
                       <p className="text-sm text-muted-foreground">
-                        Equivale a $51 millones desperdiciados por cada $1,000 millones invertidos
+                        Equivale a $51 millones desperdiciados por cada $1,000
+                        millones invertidos
                       </p>
                       <p className="text-xs text-primary mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
                         Haz clic para más detalles →
@@ -175,11 +188,15 @@ export default function SourcesPageClient() {
                     <ul className="space-y-3 text-sm">
                       <li className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                        <span>Solo utilizamos fuentes oficiales y verificables</span>
+                        <span>
+                          Solo utilizamos fuentes oficiales y verificables
+                        </span>
                       </li>
                       <li className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                        <span>Transparencia total en nuestras estadísticas</span>
+                        <span>
+                          Transparencia total en nuestras estadísticas
+                        </span>
                       </li>
                       <li className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
@@ -196,38 +213,54 @@ export default function SourcesPageClient() {
                     <h4 className="font-bold text-lg">Fuentes Utilizadas</h4>
                     <div className="space-y-3">
                       <div className="bg-muted/50 p-3 rounded-lg">
-                        <p className="font-semibold text-sm">Project Management Institute (PMI)</p>
-                        <p className="text-xs text-muted-foreground">Organización líder mundial en gestión de proyectos</p>
+                        <p className="font-semibold text-sm">
+                          Project Management Institute (PMI)
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          Organización líder mundial en gestión de proyectos
+                        </p>
                       </div>
                       <div className="bg-muted/50 p-3 rounded-lg">
                         <p className="font-semibold text-sm">IAG Consulting</p>
-                        <p className="text-xs text-muted-foreground">Consultora especializada en análisis de requisitos</p>
+                        <p className="text-xs text-muted-foreground">
+                          Consultora especializada en análisis de requisitos
+                        </p>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <div className="bg-primary/10 p-6 rounded-2xl border-2 border-primary/20">
-                  <h4 className="font-bold text-lg mb-3">¿Por qué es importante la verificación de fuentes?</h4>
+                  <h4 className="font-bold text-lg mb-3">
+                    ¿Por qué es importante la verificación de fuentes?
+                  </h4>
                   <p className="text-sm text-muted-foreground">
-                    En WebCode creemos en la transparencia total. Todas nuestras estadísticas son verificables 
-                    y provienen de organizaciones reconocidas. Esto nos permite construir confianza con nuestros 
-                    clientes y proporcionar información precisa para la toma de decisiones.
+                    En WebCode creemos en la transparencia total. Todas nuestras
+                    estadísticas son verificables y provienen de organizaciones
+                    reconocidas. Esto nos permite construir confianza con
+                    nuestros clientes y proporcionar información precisa para la
+                    toma de decisiones.
                   </p>
                 </div>
 
                 <div className="bg-accent/10 p-6 rounded-2xl border-2 border-accent/20">
-                  <h4 className="font-bold text-lg mb-3">📅 Relevancia del Estudio PMI 2014</h4>
+                  <h4 className="font-bold text-lg mb-3">
+                    📅 Relevancia del Estudio PMI 2014
+                  </h4>
                   <p className="text-sm text-muted-foreground mb-3">
-                    Aunque este estudio es de 2014, sigue siendo la referencia más reciente y confiable sobre 
-                    gestión de requisitos. Los estudios posteriores del PMI y otras organizaciones se han 
-                    enfocado en transformación digital, metodologías ágiles y otros aspectos, pero no han 
-                    actualizado específicamente las estadísticas sobre fallos por requisitos mal definidos.
+                    Aunque este estudio es de 2014, sigue siendo la referencia
+                    más reciente y confiable sobre gestión de requisitos. Los
+                    estudios posteriores del PMI y otras organizaciones se han
+                    enfocado en transformación digital, metodologías ágiles y
+                    otros aspectos, pero no han actualizado específicamente las
+                    estadísticas sobre fallos por requisitos mal definidos.
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    <strong>Contexto actual:</strong> La industria se ha movido hacia metodologías ágiles, 
-                    pero los principios fundamentales de gestión de requisitos siguen siendo críticos para 
-                    el éxito de cualquier proyecto, independientemente de la metodología utilizada.
+                    <strong>Contexto actual:</strong> La industria se ha movido
+                    hacia metodologías ágiles, pero los principios fundamentales
+                    de gestión de requisitos siguen siendo críticos para el
+                    éxito de cualquier proyecto, independientemente de la
+                    metodología utilizada.
                   </p>
                 </div>
               </CardContent>
@@ -238,7 +271,7 @@ export default function SourcesPageClient() {
 
       {/* Modals */}
       <StatisticsModal
-        isOpen={modalOpen === 'pmi-inadequate'}
+        isOpen={modalOpen === "pmi-inadequate"}
         onClose={closeModal}
         title="Recolección Inadecuada de Requisitos"
         percentage="37%"
@@ -251,7 +284,7 @@ export default function SourcesPageClient() {
       />
 
       <StatisticsModal
-        isOpen={modalOpen === 'iag-maturity'}
+        isOpen={modalOpen === "iag-maturity"}
         onClose={closeModal}
         title="Empresas con Bajo Nivel de Madurez"
         percentage="74%"
@@ -263,7 +296,7 @@ export default function SourcesPageClient() {
       />
 
       <StatisticsModal
-        isOpen={modalOpen === 'economic-impact'}
+        isOpen={modalOpen === "economic-impact"}
         onClose={closeModal}
         title="Desperdicio Económico por Gestión Deficiente"
         percentage="5.1%"
@@ -275,5 +308,5 @@ export default function SourcesPageClient() {
         impact="El impacto económico va más allá del desperdicio directo, incluyendo oportunidades perdidas, daño a la reputación, pérdida de confianza del cliente, y costos de oportunidad que podrían haberse invertido en nuevos proyectos exitosos."
       />
     </div>
-  )
+  );
 }

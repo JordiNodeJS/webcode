@@ -10,16 +10,33 @@ export const briefingFormSchema = z.object({
   sitioWeb: z.string().url("URL no válida").optional().or(z.literal("")),
 
   // Objetivos del proyecto
-  objetivoPrincipal: z.string().min(10, "Describe al menos el objetivo principal"),
-  problemasResolver: z.string().min(10, "Describe qué problemas quieres resolver"),
+  objetivoPrincipal: z
+    .string()
+    .min(10, "Describe al menos el objetivo principal"),
+  problemasResolver: z
+    .string()
+    .min(10, "Describe qué problemas quieres resolver"),
   objetivosEspecificos: z.string().optional(),
   publicoObjetivo: z.string().min(10, "Describe tu público objetivo"),
   competencia: z.string().optional(),
   kpisExito: z.string().optional(),
 
   // Presupuesto y plazos
-  presupuestoEstimado: z.enum(["no-definido", "<3000", "3000-8000", "8000-15000", "15000-30000", "30000+"]),
-  plazoPreferido: z.enum(["no-definido", "urgente", "1-2-meses", "3-6-meses", "flexible"]),
+  presupuestoEstimado: z.enum([
+    "no-definido",
+    "<3000",
+    "3000-8000",
+    "8000-15000",
+    "15000-30000",
+    "30000+"
+  ]),
+  plazoPreferido: z.enum([
+    "no-definido",
+    "urgente",
+    "1-2-meses",
+    "3-6-meses",
+    "flexible"
+  ]),
   fechaLanzamiento: z.string().optional(),
 
   // Público objetivo
@@ -29,7 +46,9 @@ export const briefingFormSchema = z.object({
   idiomasNecesarios: z.array(z.string()).optional(),
 
   // Tipo de proyecto y funcionalidades
-  tipoProyecto: z.array(z.string()).min(1, "Selecciona al menos un tipo de proyecto"),
+  tipoProyecto: z
+    .array(z.string())
+    .min(1, "Selecciona al menos un tipo de proyecto"),
   funcionalidades: z.array(z.string()).optional(),
   funcionalidadesEsenciales: z.array(z.string()).optional(),
   funcionalidadesDeseadas: z.string().optional(),
@@ -46,11 +65,25 @@ export const briefingFormSchema = z.object({
   referencias: z.string().optional(),
   referenciasVisuales: z.string().optional(),
   estiloPreferido: z.array(z.string()).optional(),
-  tonoComunicacion: z.enum(["profesional", "cercano", "juvenil", "elegante", "tecnico", "otro"]),
+  tonoComunicacion: z.enum([
+    "profesional",
+    "cercano",
+    "juvenil",
+    "elegante",
+    "tecnico",
+    "otro"
+  ]),
 
   // Contenidos
   contenidosDisponibles: z.boolean(),
-  numerosPaginasEstimadas: z.enum(["1-5", "6-10", "11-20", "21-50", ">50", "no-definido"]),
+  numerosPaginasEstimadas: z.enum([
+    "1-5",
+    "6-10",
+    "11-20",
+    "21-50",
+    ">50",
+    "no-definido"
+  ]),
   necesitaRedaccion: z.boolean(),
   necesitaFotografia: z.boolean(),
   necesitaVideos: z.boolean(),
@@ -66,10 +99,14 @@ export const briefingFormSchema = z.object({
   // Información adicional
   comentariosAdicionales: z.string().optional(),
   informacionAdicional: z.string().optional(),
-  comoConociste: z.enum(["google", "redes-sociales", "recomendacion", "evento", "otro"]).optional(),
+  comoConociste: z
+    .enum(["google", "redes-sociales", "recomendacion", "evento", "otro"])
+    .optional(),
 
   // RGPD
-  gdprConsent: z.boolean().refine((val) => val === true, "Debes aceptar la política de privacidad")
+  gdprConsent: z
+    .boolean()
+    .refine((val) => val === true, "Debes aceptar la política de privacidad")
 });
 
 export type BriefingFormData = z.infer<typeof briefingFormSchema>;

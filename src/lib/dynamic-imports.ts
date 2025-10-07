@@ -46,16 +46,16 @@ export const BriefingForm = lazy(() =>
   }))
 );
 
-export const BriefingCategories = lazy(() =>
-  import("@/components/briefing/BriefingCategories")
+export const BriefingCategories = lazy(
+  () => import("@/components/briefing/BriefingCategories")
 );
 
-export const BriefingBenefits = lazy(() =>
-  import("@/components/briefing/BriefingBenefits")
+export const BriefingBenefits = lazy(
+  () => import("@/components/briefing/BriefingBenefits")
 );
 
-export const BriefingPhases = lazy(() =>
-  import("@/components/briefing/BriefingPhases")
+export const BriefingPhases = lazy(
+  () => import("@/components/briefing/BriefingPhases")
 );
 
 // FAQ components - Load progressively - SAVINGS: ~3 KiB

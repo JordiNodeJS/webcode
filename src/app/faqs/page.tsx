@@ -108,7 +108,10 @@ const faqs = [
         </ul>
 
         <p className="mt-3">
-          También trabajamos con plataformas no-code como <strong>Wix Studio</strong>, <strong>Webflow</strong> o <strong>Framer</strong> para desarrollo rápido cuando el proyecto no requiere tanta lógica de programación o integraciones complejas.
+          También trabajamos con plataformas no-code como{" "}
+          <strong>Wix Studio</strong>, <strong>Webflow</strong> o{" "}
+          <strong>Framer</strong> para desarrollo rápido cuando el proyecto no
+          requiere tanta lógica de programación o integraciones complejas.
         </p>
 
         <p className="mt-3">

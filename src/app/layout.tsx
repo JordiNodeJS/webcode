@@ -25,8 +25,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = generateSEOMetadata({
-  title: "WEBCODE - Desarrollo Web Profesional en Barcelona | Soluciones Digitales",
-  description: "Desarrollo web profesional, e-commerce y aplicaciones web para freelancers, PYMEs y startups en Barcelona y España. Soluciones digitales de calidad con tecnologías de vanguardia 2025.",
+  title:
+    "WEBCODE - Desarrollo Web Profesional en Barcelona | Soluciones Digitales",
+  description:
+    "Desarrollo web profesional, e-commerce y aplicaciones web para freelancers, PYMEs y startups en Barcelona y España. Soluciones digitales de calidad con tecnologías de vanguardia 2025.",
   keywords: [
     "desarrollo web Barcelona",
     "freelancer desarrollo web",
@@ -68,9 +70,17 @@ export default function RootLayout({
           {/* Hint the browser to fetch CSS with lower priority by marking as non-render blocking when possible */}
           {/* DNS Prefetch and Preconnect for better performance */}
           <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-          
+          <link
+            rel="preconnect"
+            href="https://fonts.googleapis.com"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="anonymous"
+          />
+
           {/* Favicons and App Icons */}
           <link
             rel="apple-touch-icon"
@@ -146,12 +156,12 @@ export default function RootLayout({
           <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
           <meta name="theme-color" content="#ffffff" />
           <meta name="color-scheme" content="light dark" />
-          
+
           {/* Structured Data */}
           <StructuredData type="Organization" />
           <StructuredData type="WebSite" />
           <StructuredData type="LocalBusiness" />
-          
+
           {/* Inline, non-blocking theme init to avoid FOUC without network fetch */}
           <script>{`(function(){try{var s=localStorage.getItem('theme');var t=(s==='dark'||s==='light')?s:((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');var d=document.documentElement;d.classList.add(t);d.style.colorScheme=t;}catch(e){}})();`}</script>
 

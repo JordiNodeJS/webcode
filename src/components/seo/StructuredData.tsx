@@ -5,7 +5,10 @@ interface StructuredDataProps {
   data?: Record<string, unknown>;
 }
 
-export function StructuredData({ type = "Organization", data = {} }: StructuredDataProps) {
+export function StructuredData({
+  type = "Organization",
+  data = {}
+}: StructuredDataProps) {
   const baseData = {
     "@context": "https://schema.org",
     "@type": type
@@ -17,7 +20,8 @@ export function StructuredData({ type = "Organization", data = {} }: StructuredD
     name: "WEBCODE",
     url: "https://webcode.es",
     logo: "https://webcode.es/favicon-96x96.png",
-    description: "Plataforma integral de desarrollo web y soluciones digitales para freelancers, pequeñas empresas y startups en Barcelona y España.",
+    description:
+      "Plataforma integral de desarrollo web y soluciones digitales para freelancers, pequeñas empresas y startups en Barcelona y España.",
     address: {
       "@type": "PostalAddress",
       addressCountry: "ES",

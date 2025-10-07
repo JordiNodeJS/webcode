@@ -18,5 +18,3 @@ export const criticalCss = `
   }
   header { backdrop-filter: saturate(140%) blur(6px); -webkit-backdrop-filter: saturate(140%) blur(6px); }
 `;
-
-

@@ -7,18 +7,18 @@ import { SvgIcon } from "@/components/ui/svg-icon";
 // Componente para iconos SVG de las fases usando el sistema centralizado
 const PhaseIcon = ({ phase }: { phase: number }) => {
   const icons = {
-    1: 'search',    // Fase 1: Investigación y Análisis
-    2: 'palette',   // Fase 2: Diseño y Prototipado  
-    3: 'code',      // Fase 3: Desarrollo
-    4: 'trending-up' // Fase 4: Launch & Optimización
+    1: "search", // Fase 1: Investigación y Análisis
+    2: "palette", // Fase 2: Diseño y Prototipado
+    3: "code", // Fase 3: Desarrollo
+    4: "trending-up" // Fase 4: Launch & Optimización
   };
 
   const iconName = icons[phase as keyof typeof icons];
-  
+
   if (!iconName) return null;
 
   return (
-    <SvgIcon 
+    <SvgIcon
       name={iconName}
       size="xl"
       variant="primary"
@@ -57,7 +57,7 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     );
 
     if (sectionRef.current) {
@@ -67,8 +67,12 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
     return () => {
       observer.disconnect();
       // Limpiar timeouts al desmontar
-      pulseTimeouts.current.forEach(timeout => { clearTimeout(timeout); });
-      animationTimeouts.current.forEach(timeout => { clearTimeout(timeout); });
+      pulseTimeouts.current.forEach((timeout) => {
+        clearTimeout(timeout);
+      });
+      animationTimeouts.current.forEach((timeout) => {
+        clearTimeout(timeout);
+      });
     };
   }, [isVisible]);
 
@@ -76,15 +80,15 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
     // Resetear estados
     setTimelineProgress(0);
     setVisibleCards(new Set());
-    
+
     // Animar la barra de tiempo
     const timelineDuration = 3000; // 3 segundos para la barra
     const _cardDelay = 300; // 300ms entre cada tarjeta
-    
+
     // Animar progreso de la barra
     const timelineInterval = setInterval(() => {
-      setTimelineProgress(prev => {
-        const newProgress = prev + (100 / (timelineDuration / 16)); // 60fps
+      setTimelineProgress((prev) => {
+        const newProgress = prev + 100 / (timelineDuration / 16); // 60fps
         if (newProgress >= 100) {
           clearInterval(timelineInterval);
           return 100;
@@ -95,11 +99,15 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
 
     // Mostrar tarjetas progresivamente - empiezan cuando la barra llega a su posición
     fases.forEach((fase, index) => {
-      const cardAppearTime = (timelineDuration * (index + 1) / fases.length) - 200; // 200ms antes de que la barra llegue
-      const timeout = setTimeout(() => {
-        setVisibleCards(prev => new Set(prev).add(fase.numero));
-      }, Math.max(0, cardAppearTime));
-      
+      const cardAppearTime =
+        (timelineDuration * (index + 1)) / fases.length - 200; // 200ms antes de que la barra llegue
+      const timeout = setTimeout(
+        () => {
+          setVisibleCards((prev) => new Set(prev).add(fase.numero));
+        },
+        Math.max(0, cardAppearTime)
+      );
+
       animationTimeouts.current.push(timeout);
     });
   }, [fases]);
@@ -115,12 +123,12 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
       const randomDelay = Math.random() * 2000 + 500; // 500-2500ms
 
       const timeout = setTimeout(() => {
-        setPulseBadges(prev => new Set(prev).add(randomBadge));
-        setPulseCount(prev => prev + 1);
+        setPulseBadges((prev) => new Set(prev).add(randomBadge));
+        setPulseCount((prev) => prev + 1);
 
         // Remover el pulse después de la animación (1s)
         const removeTimeout = setTimeout(() => {
-          setPulseBadges(prev => {
+          setPulseBadges((prev) => {
             const newSet = new Set(prev);
             newSet.delete(randomBadge);
             return newSet;
@@ -147,7 +155,7 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
   }, [isVisible, startTimelineAnimation, startRandomPulses]);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="relative py-20 bg-gradient-to-br from-background via-muted/30 to-background overflow-hidden"
     >
@@ -177,39 +185,41 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
             <div className="relative">
               {/* Línea conectora DEBAJO de las tarjetas con animación progresiva */}
               <div className="absolute top-32 left-0 right-0 h-2 mx-20 overflow-hidden rounded-full z-0">
-                <div 
+                <div
                   className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary to-primary/20 transition-all duration-300 ease-out"
                   style={{
                     transform: `scaleX(${timelineProgress / 100})`,
-                    transformOrigin: 'left'
+                    transformOrigin: "left"
                   }}
                 />
               </div>
 
-
-
               <div className="grid grid-cols-4 gap-8 relative z-20">
                 {fases.map((fase, _index) => (
-                  <div 
-                    key={fase.numero} 
+                  <div
+                    key={fase.numero}
                     className={`relative group transition-all duration-500 ease-out ${
-                      visibleCards.has(fase.numero) 
-                        ? 'opacity-100 translate-y-0 scale-100' 
-                        : 'opacity-0 translate-y-8 scale-95'
+                      visibleCards.has(fase.numero)
+                        ? "opacity-100 translate-y-0 scale-100"
+                        : "opacity-0 translate-y-8 scale-95"
                     }`}
                   >
                     {/* Card de fase con glassmorphism */}
                     <div className="relative bg-card/80 backdrop-blur-md border-2 border-primary/20 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-primary/50 hover:scale-105">
                       {/* Efecto de brillo en hover */}
                       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      
+
                       {/* Contenido */}
                       <div className="relative z-10">
                         {/* Badge numérico con pulse controlado */}
                         <div className="flex justify-center mb-4">
-                          <div className={`relative bg-primary text-primary-foreground rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl shadow-lg group-hover:shadow-primary/50 transition-all duration-300 group-hover:scale-110 ${
-                            pulseBadges.has(fase.numero) ? 'animate-pulse' : ''
-                          }`}>
+                          <div
+                            className={`relative bg-primary text-primary-foreground rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl shadow-lg group-hover:shadow-primary/50 transition-all duration-300 group-hover:scale-110 ${
+                              pulseBadges.has(fase.numero)
+                                ? "animate-pulse"
+                                : ""
+                            }`}
+                          >
                             <span className="relative z-10">{fase.numero}</span>
                             {/* Pulse ring en hover */}
                             <div className="absolute inset-0 rounded-full bg-primary opacity-0 group-hover:opacity-20 group-hover:animate-ping" />
@@ -254,9 +264,11 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
 
                 {/* Badge numérico con efecto y pulse controlado */}
                 <div className="absolute left-0 top-0">
-                  <div className={`relative bg-primary text-primary-foreground rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl shadow-lg ${
-                    pulseBadges.has(fase.numero) ? 'animate-pulse' : ''
-                  }`}>
+                  <div
+                    className={`relative bg-primary text-primary-foreground rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl shadow-lg ${
+                      pulseBadges.has(fase.numero) ? "animate-pulse" : ""
+                    }`}
+                  >
                     <span className="relative z-10">{fase.numero}</span>
                     <div className="absolute inset-0 rounded-full bg-primary/30 blur-md" />
                   </div>
@@ -293,8 +305,11 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
               <div className="absolute inset-0 bg-primary/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300" />
               <div className="relative bg-gradient-to-r from-primary/10 via-primary/5 to-secondary/10 border-2 border-primary/30 rounded-2xl px-8 py-6 backdrop-blur-sm">
                 <p className="text-lg md:text-xl font-semibold text-foreground">
-                  <span className="text-primary font-bold text-2xl">⏱️ Tiempo Total:</span>{" "}
-                  <span className="text-gradient-webcode">6 semanas</span> | Participación cliente:{" "}
+                  <span className="text-primary font-bold text-2xl">
+                    ⏱️ Tiempo Total:
+                  </span>{" "}
+                  <span className="text-gradient-webcode">6 semanas</span> |
+                  Participación cliente:{" "}
                   <span className="text-primary">~25-30 horas</span>
                 </p>
               </div>
@@ -305,4 +320,3 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
     </section>
   );
 }
-

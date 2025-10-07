@@ -1,40 +1,40 @@
 "use client";
 
-import React from 'react';
-import { useEmojiReplacement } from '@/hooks/use-emoji-replacement';
-import { SvgIcon } from './svg-icon';
+import React from "react";
+import { useEmojiReplacement } from "@/hooks/use-emoji-replacement";
+import { SvgIcon } from "./svg-icon";
 
 /**
  * Componente EmojiToSvg
- * 
+ *
  * Reemplaza automáticamente emoticones en texto por SVGs
  * Mantiene la coherencia visual del sistema de diseño WebCode
  */
 
 interface EmojiToSvgProps {
   children: React.ReactNode;
-  size?: 'sm' | 'md' | 'lg' | 'xl';
-  variant?: 'default' | 'primary' | 'secondary' | 'accent';
+  size?: "sm" | "md" | "lg" | "xl";
+  variant?: "default" | "primary" | "secondary" | "accent";
   className?: string;
   inline?: boolean;
 }
 
-export function EmojiToSvg({ 
-  children, 
-  size = 'md', 
-  variant = 'default',
-  className = '',
+export function EmojiToSvg({
+  children,
+  size = "md",
+  variant = "default",
+  className = "",
   inline = false
 }: EmojiToSvgProps) {
   const { replaceEmojisInText } = useEmojiReplacement();
 
   // Procesar el contenido de los children
   const processChildren = (node: React.ReactNode): React.ReactNode => {
-    if (typeof node === 'string') {
+    if (typeof node === "string") {
       // Reemplazar emoticones en strings devolviendo ReactNodes
       const sequence = replaceEmojisInText(node, { size, variant, className });
       return sequence.map((item, idx) => {
-        if (typeof item === 'string') return item;
+        if (typeof item === "string") return item;
         // item es un descriptor SvgReplacement
         return (
           <SvgIcon
@@ -48,23 +48,31 @@ export function EmojiToSvg({
         );
       });
     }
-    
+
     if (React.isValidElement(node)) {
       // Si es un elemento React, procesar recursivamente
-      const element = node as React.ReactElement<{ children?: React.ReactNode }>;
+      const element = node as React.ReactElement<{
+        children?: React.ReactNode;
+      }>;
       if (element.props && element.props.children) {
-        const processedChildren = React.Children.map(element.props.children, processChildren);
-        return React.cloneElement(element, { ...element.props, children: processedChildren });
+        const processedChildren = React.Children.map(
+          element.props.children,
+          processChildren
+        );
+        return React.cloneElement(element, {
+          ...element.props,
+          children: processedChildren
+        });
       }
       return element;
     }
-    
+
     if (Array.isArray(node)) {
       // Si es un array, procesar cada elemento
       const processed = node.map(processChildren);
       return React.Children.toArray(processed);
     }
-    
+
     return node;
   };
 
@@ -82,17 +90,17 @@ export function EmojiToSvg({
  */
 interface SingleEmojiToSvgProps {
   emoji: string;
-  size?: 'sm' | 'md' | 'lg' | 'xl';
-  variant?: 'default' | 'primary' | 'secondary' | 'accent';
+  size?: "sm" | "md" | "lg" | "xl";
+  variant?: "default" | "primary" | "secondary" | "accent";
   className?: string;
   fallback?: boolean;
 }
 
-export function SingleEmojiToSvg({ 
-  emoji, 
-  size = 'md', 
-  variant = 'default',
-  className = '',
+export function SingleEmojiToSvg({
+  emoji,
+  size = "md",
+  variant = "default",
+  className = "",
   fallback = true
 }: SingleEmojiToSvgProps) {
   const { replaceEmoji, hasSvgEquivalent } = useEmojiReplacement();

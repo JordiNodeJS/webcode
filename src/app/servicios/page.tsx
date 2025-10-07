@@ -54,8 +54,8 @@ export default function ServiciosPage() {
           <article className="p-6 border rounded-lg">
             <h3 className="text-xl font-semibold mb-2">Consultoría</h3>
             <p className="text-muted-foreground mb-4">
-              Auditorías técnicas, migraciones y consultoría estratégica para
-              tu presencia online.
+              Auditorías técnicas, migraciones y consultoría estratégica para tu
+              presencia online.
             </p>
             <Link
               href="/services/consulting"
@@ -68,10 +68,13 @@ export default function ServiciosPage() {
           <article className="p-6 border rounded-lg">
             <h3 className="text-xl font-semibold mb-2">Mantenimiento</h3>
             <p className="text-muted-foreground mb-4">
-              Planes de soporte, actualizaciones y backups para mantener tu
-              web segura y rápida.
+              Planes de soporte, actualizaciones y backups para mantener tu web
+              segura y rápida.
             </p>
-            <Link href="/contacto" className="text-primary underline font-medium">
+            <Link
+              href="/contacto"
+              className="text-primary underline font-medium"
+            >
               Consultar planes
             </Link>
           </article>

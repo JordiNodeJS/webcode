@@ -1,4 +1,4 @@
-import { IconTest } from '@/components/test/IconTest';
+import { IconTest } from "@/components/test/IconTest";
 
 export default function TestIconsPage() {
   return (

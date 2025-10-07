@@ -19,16 +19,22 @@
 }
 
 @media (max-width: 480px) {
-  .container { opacity: 0.7; }
-  .canvas { image-rendering: pixelated; }
+  .container {
+    opacity: 0.7;
+  }
+  .canvas {
+    image-rendering: pixelated;
+  }
 }
 
 @media (max-width: 768px) {
-  .container { opacity: 0.8; }
+  .container {
+    opacity: 0.8;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .container { opacity: 0.6; }
+  .container {
+    opacity: 0.6;
+  }
 }
-
-

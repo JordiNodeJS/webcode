@@ -43,7 +43,7 @@ export function generateSEOMetadata({
   tags = []
 }: SEOMetadataProps): Metadata {
   const _baseUrl = "https://webcode.es";
-  
+
   return {
     title,
     description,
@@ -52,7 +52,7 @@ export function generateSEOMetadata({
     creator: "WEBCODE",
     publisher: "WEBCODE",
     category: "Technology",
-    
+
     // Basic meta tags
     robots: {
       index: true,
@@ -65,7 +65,7 @@ export function generateSEOMetadata({
         "max-snippet": -1
       }
     },
-    
+
     // Canonical URL
     alternates: {
       canonical,
@@ -75,7 +75,7 @@ export function generateSEOMetadata({
         "en-ES": `${canonical}?lang=en`
       }
     },
-    
+
     // Open Graph
     openGraph: {
       type: ogType,
@@ -106,7 +106,7 @@ export function generateSEOMetadata({
       ...(section && { section }),
       ...(tags.length > 0 && { tags })
     },
-    
+
     // Twitter Card
     twitter: {
       card: "summary_large_image",
@@ -116,45 +116,45 @@ export function generateSEOMetadata({
       description,
       images: [ogImage]
     },
-    
+
     // Additional meta tags
     other: {
       // Geographic targeting
       "geo.region": "ES-CT",
       "geo.placename": "Barcelona",
       "geo.position": "41.3851;2.1734",
-      "ICBM": "41.3851, 2.1734",
-      
+      ICBM: "41.3851, 2.1734",
+
       // Business info
       "business:contact_data:street_address": "Barcelona, España",
       "business:contact_data:locality": "Barcelona",
       "business:contact_data:region": "Catalunya",
       "business:contact_data:postal_code": "08000",
       "business:contact_data:country_name": "Spain",
-      
+
       // Language and content
       "content-language": locale.replace("_", "-"),
-      "language": "Spanish",
-      
+      language: "Spanish",
+
       // Mobile optimization
       "mobile-web-app-capable": "yes",
       "apple-mobile-web-app-capable": "yes",
       "apple-mobile-web-app-status-bar-style": "default",
       "apple-mobile-web-app-title": "WEBCODE",
-      
+
       // Theme
       "theme-color": "#000000",
       "msapplication-navbutton-color": "#000000",
-      
+
       // Additional SEO
       "revisit-after": "7 days",
-      "distribution": "global",
-      "audience": "all",
-      "rating": "general",
-      "coverage": "worldwide",
-      "target": "all"
+      distribution: "global",
+      audience: "all",
+      rating: "general",
+      coverage: "worldwide",
+      target: "all"
     },
-    
+
     // App-specific
     applicationName: "WEBCODE",
     appleWebApp: {
@@ -162,14 +162,14 @@ export function generateSEOMetadata({
       title: "WEBCODE",
       statusBarStyle: "default"
     },
-    
+
     // Format detection
     formatDetection: {
       telephone: false,
       address: false,
       email: false
-    },
-    
+    }
+
     // Verification (these would be added when available)
     // verification: {
     //   google: "google-site-verification-code",
