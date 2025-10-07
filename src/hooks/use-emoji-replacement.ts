@@ -51,14 +51,9 @@ export function useEmojiReplacement() {
       const parts = text.split(emojiRegex);
       const emojis = text.match(emojiRegex) || [];
       
-      type SvgReplacement = {
-        type: 'svg';
-        name: string;
-        size: 'sm' | 'md' | 'lg' | 'xl';
-        variant: 'default' | 'primary' | 'secondary' | 'accent';
-        className?: string;
-        title: string;
-      };
+      type SvgReplacement = ReturnType<typeof replaceEmoji> extends infer R
+        ? NonNullable<R>
+        : never;
 
       const result: Array<string | SvgReplacement> = [];
       

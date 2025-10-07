@@ -3,6 +3,9 @@ import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { generateSEOMetadata } from "@/lib/seo-metadata";
 
+// Stable keys for skeleton placeholders (module scope to be available in loader)
+const SKELETON_KEYS = ["a","b","c","d","e","f"] as const;
+
 // Lazy load the briefing form to reduce initial bundle size
 const BriefingForm = dynamic(() => import("@/components/briefing/BriefingForm").then(m => ({ default: m.BriefingForm })), {
   loading: () => (
@@ -34,7 +37,6 @@ export const metadata: Metadata = generateSEOMetadata({
 });
 
 export default function BriefingFormularioPage() {
-  const SKELETON_KEYS = ["a","b","c","d","e","f"] as const;
   return (
     <div className="min-h-screen py-12 md:py-20">
       <div className="container mx-auto px-4">

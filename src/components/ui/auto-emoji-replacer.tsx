@@ -36,12 +36,15 @@ export function AutoEmojiReplacer({
       }
       
       if (React.isValidElement(node)) {
-        // Si tiene children, procesar recursivamente
-        if (node.props.children) {
-          const processedChildren = React.Children.map(node.props.children, processContent);
-          return React.cloneElement(node, { ...node.props, children: processedChildren });
+        const element = node as React.ReactElement<{ children?: React.ReactNode }>;
+        if (element.props && element.props.children) {
+          const processedChildren = React.Children.map(
+            element.props.children,
+            processContent
+          );
+          return React.cloneElement(element, { ...element.props, children: processedChildren });
         }
-        return node;
+        return element;
       }
       
       if (Array.isArray(node)) {
