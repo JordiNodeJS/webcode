@@ -386,7 +386,16 @@ export function BriefingForm() {
 
         <CardContent>
           <Form {...form}>
-            <form method="post" className="space-y-6">
+            <form
+              className="space-y-6"
+              onSubmit={async (e) => {
+                e.preventDefault();
+                const isValid = await form.trigger();
+                if (isValid) {
+                  await onSubmit(form.getValues());
+                }
+              }}
+            >
               {renderStepContent(currentStep, form)}
 
               {/* Error message */}
@@ -426,18 +435,6 @@ export function BriefingForm() {
                     className="flex-1"
                     disabled={formStatus === "submitting"}
                     aria-disabled={formStatus === "submitting"}
-                    onClick={async (e) => {
-                      e.preventDefault();
-                      
-                      // Validar todos los campos manualmente
-                      const isValid = await form.trigger();
-                      
-                      if (isValid) {
-                        // Enviar el formulario manualmente
-                        const formData = form.getValues();
-                        await onSubmit(formData);
-                      }
-                    }}
                   >
                     {formStatus === "submitting" ? (
                       <>

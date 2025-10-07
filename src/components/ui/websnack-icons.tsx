@@ -63,7 +63,7 @@ export function WebCodeDev({ size = 'md', variant = 'primary', className }: WebC
 }
 
 // Icono de Barcelona/España
-export function BarcelonaIcon({ size = 'md', variant = 'primary', className }: WebSnackIconProps) {
+export function BarcelonaIcon({ size = 'md', variant = 'primary', className }: WebCodeIconProps) {
   return (
     <svg
       className={`${getSizeClasses(size)} ${getVariantClasses(variant)} ${className}`}

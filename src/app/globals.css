@@ -147,7 +147,7 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-/* Sombras 3D del Sistema WAS - WebSnack Animation System */
+/* Sombras 3D del Sistema WAS - WebCode Animation System */
 :root {
   --shadow-3d-xs: 2px 2px 0px 0px oklch(0.57 0.2 328.5 / 0.4);
   --shadow-3d-sm: 3px 3px 0px 0px oklch(0.57 0.2 328.5 / 0.6);
