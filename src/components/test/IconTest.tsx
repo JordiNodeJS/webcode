@@ -1,7 +1,7 @@
 "use client";
 
 import { SingleEmojiToSvg } from '@/components/ui/emoji-to-svg';
-import { WebCodeLogo, WebCodeDev, QualityIcon } from '@/components/ui/webcode-icons';
+import { QualityIcon, WebCodeDev, WebCodeLogo } from '@/components/ui/webcode-icons';
 
 /**
  * Componente de prueba para verificar que los iconos SVG funcionan correctamente

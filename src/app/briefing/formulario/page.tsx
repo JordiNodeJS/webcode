@@ -10,8 +10,8 @@ const BriefingForm = dynamic(() => import("@/components/briefing/BriefingForm").
       <div className="animate-pulse space-y-8">
         <div className="h-8 bg-muted/50 rounded-lg w-3/4 mx-auto"></div>
         <div className="space-y-4">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="h-32 bg-muted/30 rounded-lg"></div>
+          {SKELETON_KEYS.map((k) => (
+            <div key={k} className="h-32 bg-muted/30 rounded-lg"></div>
           ))}
         </div>
       </div>
@@ -34,6 +34,7 @@ export const metadata: Metadata = generateSEOMetadata({
 });
 
 export default function BriefingFormularioPage() {
+  const SKELETON_KEYS = ["a","b","c","d","e","f"] as const;
   return (
     <div className="min-h-screen py-12 md:py-20">
       <div className="container mx-auto px-4">
@@ -76,8 +77,8 @@ export default function BriefingFormularioPage() {
             <div className="animate-pulse space-y-8">
               <div className="h-8 bg-muted/50 rounded-lg w-3/4 mx-auto"></div>
               <div className="space-y-4">
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <div key={i} className="h-32 bg-muted/30 rounded-lg"></div>
+                {SKELETON_KEYS.map((k) => (
+                  <div key={k} className="h-32 bg-muted/30 rounded-lg"></div>
                 ))}
               </div>
             </div>

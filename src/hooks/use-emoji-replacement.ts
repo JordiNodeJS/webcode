@@ -1,8 +1,7 @@
 "use client";
 
 import { useMemo } from 'react';
-import { getSvgIconName, EmojiKey, EMOJI_TO_SVG_MAP } from '@/lib/svg-icons';
-import { SvgIcon } from '@/components/ui/svg-icon';
+import { EMOJI_TO_SVG_MAP, type EmojiKey, getSvgIconName } from '@/lib/svg-icons';
 
 /**
  * Hook para reemplazar emoticones por SVGs
@@ -52,7 +51,16 @@ export function useEmojiReplacement() {
       const parts = text.split(emojiRegex);
       const emojis = text.match(emojiRegex) || [];
       
-      const result: (string | any)[] = [];
+      type SvgReplacement = {
+        type: 'svg';
+        name: string;
+        size: 'sm' | 'md' | 'lg' | 'xl';
+        variant: 'default' | 'primary' | 'secondary' | 'accent';
+        className?: string;
+        title: string;
+      };
+
+      const result: Array<string | SvgReplacement> = [];
       
       for (let i = 0; i < parts.length; i++) {
         if (parts[i]) {

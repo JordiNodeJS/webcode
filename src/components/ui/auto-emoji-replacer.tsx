@@ -45,11 +45,8 @@ export function AutoEmojiReplacer({
       }
       
       if (Array.isArray(node)) {
-        return node.map((item, index) => (
-          <React.Fragment key={index}>
-            {processContent(item)}
-          </React.Fragment>
-        ));
+        const processed = node.map(processContent);
+        return React.Children.toArray(processed);
       }
       
       return node;

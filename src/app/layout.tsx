@@ -153,12 +153,7 @@ export default function RootLayout({
           <StructuredData type="LocalBusiness" />
           
           {/* Inline, non-blocking theme init to avoid FOUC without network fetch */}
-          <script
-            dangerouslySetInnerHTML={{
-              __html:
-                "(function(){try{var s=localStorage.getItem('theme');var t=(s==='dark'||s==='light')?s:((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');var d=document.documentElement;d.classList.add(t);d.style.colorScheme=t;}catch(e){}})();"
-            }}
-          />
+          <script>{`(function(){try{var s=localStorage.getItem('theme');var t=(s==='dark'||s==='light')?s:((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');var d=document.documentElement;d.classList.add(t);d.style.colorScheme=t;}catch(e){}})();`}</script>
 
           {/* No manifest-based CSS injection */}
         </head>

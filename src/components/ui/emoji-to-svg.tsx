@@ -46,11 +46,8 @@ export function EmojiToSvg({
     
     if (Array.isArray(node)) {
       // Si es un array, procesar cada elemento
-      return node.map((item, index) => (
-        <React.Fragment key={index}>
-          {processChildren(item)}
-        </React.Fragment>
-      ));
+      const processed = node.map(processChildren);
+      return React.Children.toArray(processed);
     }
     
     return node;

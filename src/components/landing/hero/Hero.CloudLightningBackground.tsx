@@ -15,9 +15,9 @@
 
 import { useTheme } from "next-themes";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import styles from "./Hero.CloudLightningBackground.module.css";
 import useScrollPosition from "@/hooks/use-scroll-position";
 import { getThemeColors, parseRgbColor } from "@/lib/theme-colors";
+import styles from "./Hero.CloudLightningBackground.module.css";
 
 interface CloudParticle {
   x: number;

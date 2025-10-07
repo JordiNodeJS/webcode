@@ -1,8 +1,6 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AlertCircle, ArrowLeft, ArrowRight, CheckCircle, Loader2, Send } from "@/lib/icons";
-import { SingleEmojiToSvg } from "@/components/ui/emoji-to-svg";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { type UseFormReturn, useForm } from "react-hook-form";
@@ -15,6 +13,7 @@ import {
   CardTitle
 } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
+import { SingleEmojiToSvg } from "@/components/ui/emoji-to-svg";
 import {
   Form,
   FormControl,
@@ -34,6 +33,7 @@ import {
   SelectValue
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { AlertCircle, ArrowLeft, ArrowRight, CheckCircle, Loader2, Send } from "@/lib/icons";
 import { type BriefingFormData, briefingFormSchema } from "@/types/briefing";
 
 

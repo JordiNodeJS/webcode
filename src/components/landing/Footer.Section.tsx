@@ -1,9 +1,9 @@
 "use client";
 
 import { Link } from "next-view-transitions";
-import styles from "./Footer.Section.module.css";
 import { EmailProtection } from "@/components/ui/EmailProtection";
 import { AnimatedLogo } from "./Footer.AnimatedLogo";
+import styles from "./Footer.Section.module.css";
 
 /**
  * Footer.Section - Componente principal del footer de WEBCODE

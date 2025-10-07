@@ -1,7 +1,7 @@
 "use client";
 
-import React from 'react';
-import { SvgIconProps, getIconClasses } from '@/lib/svg-icons';
+import type React from 'react';
+import { getIconClasses, type SvgIconProps } from '@/lib/svg-icons';
 
 /**
  * Componente SVG Icon para WebCode
@@ -152,7 +152,6 @@ function getSvgPath(iconName: string): React.ReactNode {
     'image': 'M3 16l7-7 4 4 7-7M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v7',
     'trash': 'M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M10 11v6M14 11v6',
     'sword': 'M6.5 6.5l11 11M12 2l4 4-8 8-4-4 8-8zM8 8l4 4M16 4l4 4',
-    'message-circle': 'M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z',
     
     // Objetivos y metas
     'target': 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z',

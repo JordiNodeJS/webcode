@@ -1,7 +1,6 @@
 "use client";
 
-import React from 'react';
-import { SvgIcon } from './svg-icon';
+ 
 
 /**
  * Iconos Personalizados de WebCode
