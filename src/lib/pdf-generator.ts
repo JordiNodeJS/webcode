@@ -69,30 +69,30 @@ const presupuestoMap: Record<string, string> = {
 };
 
 const plazoMap: Record<string, string> = {
-  "urgente": "Urgente (menos de 1 mes)",
+  urgente: "Urgente (menos de 1 mes)",
   "1-2-meses": "1-2 meses",
   "3-6-meses": "3-6 meses",
-  "flexible": "Flexible",
+  flexible: "Flexible",
   "no-definido": "Aún no definido"
 };
 
 const tipoProyectoMap: Record<string, string> = {
-  "landing": "Landing Page",
-  "corporativa": "Web Corporativa",
-  "ecommerce": "Tienda Online (E-commerce)",
-  "webapp": "Aplicación Web",
-  "blog": "Blog / Revista Digital",
-  "portal": "Portal / Plataforma",
-  "otro": "Otro"
+  landing: "Landing Page",
+  corporativa: "Web Corporativa",
+  ecommerce: "Tienda Online (E-commerce)",
+  webapp: "Aplicación Web",
+  blog: "Blog / Revista Digital",
+  portal: "Portal / Plataforma",
+  otro: "Otro"
 };
 
 const tonoComunicacionMap: Record<string, string> = {
-  "profesional": "Profesional",
-  "cercano": "Cercano y amigable",
-  "juvenil": "Juvenil y dinámico",
-  "elegante": "Elegante y sofisticado",
-  "tecnico": "Técnico y especializado",
-  "otro": "Otro"
+  profesional: "Profesional",
+  cercano: "Cercano y amigable",
+  juvenil: "Juvenil y dinámico",
+  elegante: "Elegante y sofisticado",
+  tecnico: "Técnico y especializado",
+  otro: "Otro"
 };
 
 const paginasMap: Record<string, string> = {
@@ -105,29 +105,32 @@ const paginasMap: Record<string, string> = {
 };
 
 const cmsMap: Record<string, string> = {
-  "no": "No necesito CMS",
+  no: "No necesito CMS",
   "si-simple": "Sí, CMS simple",
   "si-avanzado": "Sí, CMS avanzado",
   "no-se": "No estoy seguro"
 };
 
 const idiomasMap: Record<string, string> = {
-  "es": "Español",
-  "ca": "Catalán",
-  "en": "Inglés",
-  "fr": "Francés",
-  "de": "Alemán",
-  "otro": "Otro"
+  es: "Español",
+  ca: "Catalán",
+  en: "Inglés",
+  fr: "Francés",
+  de: "Alemán",
+  otro: "Otro"
 };
 
-export function generateBriefingPDF(data: BriefingPDFData, isBlank = false): jsPDF {
+export function generateBriefingPDF(
+  data: BriefingPDFData,
+  isBlank = false
+): jsPDF {
   const doc = new jsPDF();
-  
+
   // Colores del sistema
   const primaryColor: [number, number, number] = [255, 102, 128]; // #ff6680
   const darkBg: [number, number, number] = [24, 24, 27]; // #18181b
   const textColor: [number, number, number] = [161, 161, 170]; // #a1a1aa
-  
+
   let yPos = 20;
   const pageWidth = doc.internal.pageSize.width;
   const margin = 20;
@@ -148,15 +151,19 @@ export function generateBriefingPDF(data: BriefingPDFData, isBlank = false): jsP
   doc.setFontSize(14);
   doc.setFont("helvetica", "bold");
   doc.text("WEBCODE", margin + 3, yPos + 5.5);
-  
+
   yPos += 15;
 
   // Título principal
   doc.setTextColor(...darkBg);
   doc.setFontSize(24);
   doc.setFont("helvetica", "bold");
-  doc.text(isBlank ? "BRIEFING DE PROYECTO WEB" : "Briefing de Proyecto Web", margin, yPos);
-  
+  doc.text(
+    isBlank ? "BRIEFING DE PROYECTO WEB" : "Briefing de Proyecto Web",
+    margin,
+    yPos
+  );
+
   yPos += 8;
   doc.setFontSize(10);
   doc.setFont("helvetica", "normal");
@@ -164,17 +171,31 @@ export function generateBriefingPDF(data: BriefingPDFData, isBlank = false): jsP
   if (isBlank) {
     doc.text("Plantilla para completar manualmente", margin, yPos);
   } else {
-    doc.text(`Generado el ${new Date(data.timestamp || Date.now()).toLocaleDateString("es-ES", { 
-      year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit" 
-    })}`, margin, yPos);
+    doc.text(
+      `Generado el ${new Date(data.timestamp || Date.now()).toLocaleDateString(
+        "es-ES",
+        {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit"
+        }
+      )}`,
+      margin,
+      yPos
+    );
   }
-  
+
   yPos += 15;
 
   // Función para añadir sección
-  const addSection = (title: string, content: Array<{ label: string; value: string | boolean | string[] }>) => {
+  const addSection = (
+    title: string,
+    content: Array<{ label: string; value: string | boolean | string[] }>
+  ) => {
     checkPageBreak(50);
-    
+
     // Título de sección
     doc.setFillColor(...primaryColor);
     doc.rect(margin, yPos, contentWidth, 8, "F");
@@ -182,43 +203,47 @@ export function generateBriefingPDF(data: BriefingPDFData, isBlank = false): jsP
     doc.setFontSize(12);
     doc.setFont("helvetica", "bold");
     doc.text(title, margin + 3, yPos + 5.5);
-    
+
     yPos += 12;
 
     // Contenido de la sección
     content.forEach(({ label, value }) => {
       checkPageBreak(20);
-      
+
       doc.setTextColor(...darkBg);
       doc.setFontSize(10);
       doc.setFont("helvetica", "bold");
       doc.text(`${label}:`, margin, yPos);
-      
+
       yPos += 5;
-      
+
       doc.setFont("helvetica", "normal");
       doc.setTextColor(...textColor);
-      
+
       let displayValue: string;
-      
+
       if (Array.isArray(value)) {
-        displayValue = isBlank ? "______________________________________" : value.join(", ");
+        displayValue = isBlank
+          ? "______________________________________"
+          : value.join(", ");
       } else if (typeof value === "boolean") {
-        displayValue = isBlank ? "☐ Sí  ☐ No" : (value ? "Sí" : "No");
+        displayValue = isBlank ? "☐ Sí  ☐ No" : value ? "Sí" : "No";
       } else {
-        displayValue = isBlank ? "______________________________________" : (value || "No especificado");
+        displayValue = isBlank
+          ? "______________________________________"
+          : value || "No especificado";
       }
-      
+
       const lines = doc.splitTextToSize(displayValue, contentWidth - 5);
       lines.forEach((line: string) => {
         checkPageBreak(6);
         doc.text(line, margin + 3, yPos);
         yPos += 5;
       });
-      
+
       yPos += 2;
     });
-    
+
     yPos += 5;
   };
 
@@ -234,8 +259,15 @@ export function generateBriefingPDF(data: BriefingPDFData, isBlank = false): jsP
   addSection("2. Objetivos del Proyecto", [
     { label: "Objetivo principal", value: data.objetivoPrincipal },
     { label: "Problemas a resolver", value: data.problemasResolver },
-    { label: "Presupuesto estimado", value: presupuestoMap[data.presupuestoEstimado] || data.presupuestoEstimado },
-    { label: "Plazo preferido", value: plazoMap[data.plazoPreferido] || data.plazoPreferido },
+    {
+      label: "Presupuesto estimado",
+      value:
+        presupuestoMap[data.presupuestoEstimado] || data.presupuestoEstimado
+    },
+    {
+      label: "Plazo preferido",
+      value: plazoMap[data.plazoPreferido] || data.plazoPreferido
+    },
     { label: "KPIs / Métricas de éxito", value: data.kpisExito || "" }
   ]);
 
@@ -245,33 +277,67 @@ export function generateBriefingPDF(data: BriefingPDFData, isBlank = false): jsP
     { label: "Rango de edad", value: data.edadRango || "" },
     { label: "Ubicación geográfica", value: data.ubicacionGeografica || "" },
     { label: "Dispositivos principales", value: data.dispositivosPrincipales },
-    { label: "Idiomas necesarios", value: data.idiomasNecesarios.map(code => idiomasMap[code] || code) }
+    {
+      label: "Idiomas necesarios",
+      value: data.idiomasNecesarios.map((code) => idiomasMap[code] || code)
+    }
   ]);
 
   // 4. FUNCIONALIDADES REQUERIDAS
   addSection("4. Funcionalidades Requeridas", [
-    { label: "Tipo de proyecto", value: tipoProyectoMap[data.tipoProyecto] || data.tipoProyecto },
-    { label: "Funcionalidades esenciales", value: data.funcionalidadesEsenciales },
-    { label: "Funcionalidades deseadas", value: data.funcionalidadesDeseadas || "" },
-    { label: "Integraciones necesarias", value: data.integracionesNecesarias || "" },
-    { label: "Requisitos de seguridad", value: data.requisitosSeguridadEspeciales || "" }
+    {
+      label: "Tipo de proyecto",
+      value: tipoProyectoMap[data.tipoProyecto] || data.tipoProyecto
+    },
+    {
+      label: "Funcionalidades esenciales",
+      value: data.funcionalidadesEsenciales
+    },
+    {
+      label: "Funcionalidades deseadas",
+      value: data.funcionalidadesDeseadas || ""
+    },
+    {
+      label: "Integraciones necesarias",
+      value: data.integracionesNecesarias || ""
+    },
+    {
+      label: "Requisitos de seguridad",
+      value: data.requisitosSeguridadEspeciales || ""
+    }
   ]);
 
   // 5. ESTILO VISUAL Y MARCA
   addSection("5. Estilo Visual y Marca", [
-    { label: "¿Tiene identidad corporativa?", value: data.tieneIdentidadCorporativa },
+    {
+      label: "¿Tiene identidad corporativa?",
+      value: data.tieneIdentidadCorporativa
+    },
     { label: "Colores preferidos", value: data.coloresPreferidos || "" },
     { label: "Referencias visuales", value: data.referenciasVisuales || "" },
-    { label: "Tono de comunicación", value: tonoComunicacionMap[data.tonoComunicacion] || data.tonoComunicacion },
+    {
+      label: "Tono de comunicación",
+      value: tonoComunicacionMap[data.tonoComunicacion] || data.tonoComunicacion
+    },
     { label: "¿Tiene logotipos?", value: data.tieneLogotipos }
   ]);
 
   // 6. CONTENIDOS
   addSection("6. Contenidos", [
     { label: "¿Contenidos ya disponibles?", value: data.contenidosDisponibles },
-    { label: "Número de páginas estimadas", value: paginasMap[data.numerosPaginasEstimadas] || data.numerosPaginasEstimadas },
-    { label: "¿Necesita redacción de contenidos?", value: data.necesitaRedaccion },
-    { label: "¿Necesita fotografía profesional?", value: data.necesitaFotografia },
+    {
+      label: "Número de páginas estimadas",
+      value:
+        paginasMap[data.numerosPaginasEstimadas] || data.numerosPaginasEstimadas
+    },
+    {
+      label: "¿Necesita redacción de contenidos?",
+      value: data.necesitaRedaccion
+    },
+    {
+      label: "¿Necesita fotografía profesional?",
+      value: data.necesitaFotografia
+    },
     { label: "¿Necesita producción de videos?", value: data.necesitaVideos }
   ]);
 
@@ -280,7 +346,10 @@ export function generateBriefingPDF(data: BriefingPDFData, isBlank = false): jsP
     { label: "¿Tiene hosting actual?", value: data.tieneHostingActual },
     { label: "¿Necesita dominio?", value: data.necesitaDominio },
     { label: "¿Necesita migración?", value: data.necesitaMigracion },
-    { label: "Requisitos de CMS", value: cmsMap[data.requisitosCMS] || data.requisitosCMS },
+    {
+      label: "Requisitos de CMS",
+      value: cmsMap[data.requisitosCMS] || data.requisitosCMS
+    },
     { label: "¿Optimización SEO?", value: data.requisitosSEO },
     { label: "¿Accesibilidad WCAG?", value: data.accesibilidadWCAG }
   ]);
@@ -288,7 +357,10 @@ export function generateBriefingPDF(data: BriefingPDFData, isBlank = false): jsP
   // 8. INFORMACIÓN ADICIONAL
   if (!isBlank || data.informacionAdicional || data.comoConociste) {
     addSection("8. Información Adicional", [
-      { label: "Comentarios adicionales", value: data.informacionAdicional || "" },
+      {
+        label: "Comentarios adicionales",
+        value: data.informacionAdicional || ""
+      },
       { label: "¿Cómo nos conociste?", value: data.comoConociste || "" }
     ]);
   }
@@ -299,7 +371,12 @@ export function generateBriefingPDF(data: BriefingPDFData, isBlank = false): jsP
     doc.setPage(i);
     doc.setFontSize(8);
     doc.setTextColor(...textColor);
-    doc.text(`WEBCODE Barcelona | info@webcode.es | Página ${i} de ${totalPages}`, pageWidth / 2, doc.internal.pageSize.height - 10, { align: "center" });
+    doc.text(
+      `WEBCODE Barcelona | info@webcode.es | Página ${i} de ${totalPages}`,
+      pageWidth / 2,
+      doc.internal.pageSize.height - 10,
+      { align: "center" }
+    );
   }
 
   return doc;
@@ -349,4 +426,3 @@ export function generateBlankBriefingPDF(): jsPDF {
 
   return generateBriefingPDF(blankData, true);
 }
-

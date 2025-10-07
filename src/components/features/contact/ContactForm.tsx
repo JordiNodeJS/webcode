@@ -56,9 +56,12 @@ const contactFormSchema = z.object({
     .boolean()
     .refine((val) => val === true, "Debes aceptar la política de privacidad"),
   // Campo honeypot para detectar bots
-  website: z.string().optional().refine((val) => !val || val.trim() === "", {
-    message: "Este campo debe estar vacío"
-  })
+  website: z
+    .string()
+    .optional()
+    .refine((val) => !val || val.trim() === "", {
+      message: "Este campo debe estar vacío"
+    })
 });
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
@@ -107,7 +110,9 @@ export function ContactForm() {
       // Verificar rate limiting
       if (!rateLimit.isAllowed()) {
         setFormStatus("error");
-        setErrorMessage("Has enviado demasiados mensajes. Por favor, espera antes de intentar de nuevo.");
+        setErrorMessage(
+          "Has enviado demasiados mensajes. Por favor, espera antes de intentar de nuevo."
+        );
         return;
       }
 
@@ -115,7 +120,9 @@ export function ContactForm() {
       const botDetection = botProtection.detectBot();
       if (botDetection.isBot) {
         setFormStatus("error");
-        setErrorMessage("Actividad sospechosa detectada. Por favor, verifica que eres humano.");
+        setErrorMessage(
+          "Actividad sospechosa detectada. Por favor, verifica que eres humano."
+        );
         console.warn("Bot detected:", botDetection.reasons);
         return;
       }
@@ -123,7 +130,9 @@ export function ContactForm() {
       // Verificar si está bloqueado
       if (botProtection.isBlocked) {
         setFormStatus("error");
-        setErrorMessage(`Demasiados envíos. Inténtalo de nuevo en ${Math.ceil(botProtection.remainingCooldown / 1000)} segundos.`);
+        setErrorMessage(
+          `Demasiados envíos. Inténtalo de nuevo en ${Math.ceil(botProtection.remainingCooldown / 1000)} segundos.`
+        );
         return;
       }
 
@@ -331,7 +340,7 @@ export function ContactForm() {
                 </FormItem>
               )}
             />
-            
+
             {/* Campo honeypot - Oculto para usuarios humanos */}
             <FormField
               control={form.control}
@@ -346,14 +355,14 @@ export function ContactForm() {
                       {...field}
                       tabIndex={-1}
                       autoComplete="off"
-                      style={{ display: 'none' }}
+                      style={{ display: "none" }}
                     />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            
+
             {/* Mensaje de error */}
             {formStatus === "error" && (
               <div className="flex items-center gap-2 p-3 text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded-md">

@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
-import { ExternalLink, X } from 'lucide-react'
-import { useId } from 'react'
-import { Button } from './button'
+import { ExternalLink, X } from "lucide-react";
+import { useId } from "react";
+import { Button } from "./button";
 
 interface StatisticsModalProps {
-  isOpen: boolean
-  onClose: () => void
-  title: string
-  percentage: string
-  description: string
-  source: string
-  sourceUrl?: string
-  detailedExplanation: string
-  context?: string
-  impact?: string
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+  percentage: string;
+  description: string;
+  source: string;
+  sourceUrl?: string;
+  detailedExplanation: string;
+  context?: string;
+  impact?: string;
 }
 
 export function StatisticsModal({
@@ -29,24 +29,24 @@ export function StatisticsModal({
   context,
   impact
 }: StatisticsModalProps) {
-  const modalTitleId = useId()
-  
-  if (!isOpen) return null
+  const modalTitleId = useId();
+
+  if (!isOpen) return null;
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
-      onClose()
+      onClose();
     }
-  }
+  };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'Escape') {
-      onClose()
+    if (e.key === "Escape") {
+      onClose();
     }
-  }
+  };
 
   return (
-    <div 
+    <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
       onClick={handleBackdropClick}
       onKeyDown={handleKeyDown}
@@ -55,7 +55,7 @@ export function StatisticsModal({
       aria-labelledby={modalTitleId}
       tabIndex={-1}
     >
-      <div 
+      <div
         className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-background border-4 border-primary/30 rounded-2xl shadow-brutal"
         onClick={(e) => e.stopPropagation()}
         onKeyDown={(e) => e.stopPropagation()}
@@ -69,7 +69,9 @@ export function StatisticsModal({
                 {percentage}
               </div>
               <div>
-                <h2 id={modalTitleId} className="text-xl font-bold">{title}</h2>
+                <h2 id={modalTitleId} className="text-xl font-bold">
+                  {title}
+                </h2>
                 <p className="text-sm text-muted-foreground">{description}</p>
               </div>
             </div>
@@ -152,5 +154,5 @@ export function StatisticsModal({
         </div>
       </div>
     </div>
-  )
+  );
 }

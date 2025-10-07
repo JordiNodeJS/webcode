@@ -3,22 +3,33 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Suspense } from "react";
 
-const WSFadeIn = dynamic(() => import("@/components/animations/ws-fade-in").then(m => m.WSFadeIn));
+const WSFadeIn = dynamic(() =>
+  import("@/components/animations/ws-fade-in").then((m) => m.WSFadeIn)
+);
 
 import { generateSEOMetadata } from "@/lib/seo-metadata";
 
 // Lazy load componentes pesados
-const BriefingPhases = dynamic(() => import("@/components/briefing/BriefingPhases"), {
-  loading: () => <div className="h-96 animate-pulse bg-muted/50 rounded-lg" />
-});
+const BriefingPhases = dynamic(
+  () => import("@/components/briefing/BriefingPhases"),
+  {
+    loading: () => <div className="h-96 animate-pulse bg-muted/50 rounded-lg" />
+  }
+);
 
-const BriefingCategories = dynamic(() => import("@/components/briefing/BriefingCategories"), {
-  loading: () => <div className="h-96 animate-pulse bg-muted/50 rounded-lg" />
-});
+const BriefingCategories = dynamic(
+  () => import("@/components/briefing/BriefingCategories"),
+  {
+    loading: () => <div className="h-96 animate-pulse bg-muted/50 rounded-lg" />
+  }
+);
 
-const BriefingBenefits = dynamic(() => import("@/components/briefing/BriefingBenefits"), {
-  loading: () => <div className="h-64 animate-pulse bg-muted/50 rounded-lg" />
-});
+const BriefingBenefits = dynamic(
+  () => import("@/components/briefing/BriefingBenefits"),
+  {
+    loading: () => <div className="h-64 animate-pulse bg-muted/50 rounded-lg" />
+  }
+);
 
 export const metadata: Metadata = generateSEOMetadata({
   title: "Briefing & Levantamiento de Requerimientos | WEBCODE Barcelona",
@@ -45,7 +56,8 @@ const cicloFases = [
     subtitulo: "Briefing Inicial",
     emoji: "📋",
     duracion: "1-2 días",
-    descripcion: "Recopilación completa de información del cliente: objetivos, público, funcionalidades, estilo visual y restricciones técnicas.",
+    descripcion:
+      "Recopilación completa de información del cliente: objetivos, público, funcionalidades, estilo visual y restricciones técnicas.",
     actividades: [
       "Entrevistas y cuestionarios con stakeholders",
       "Análisis de competencia y mercado",
@@ -66,7 +78,8 @@ const cicloFases = [
     subtitulo: "Especificaciones",
     emoji: "🔍",
     duracion: "2-3 días",
-    descripcion: "Traducción de requisitos en especificaciones técnicas y funcionales concretas. Definición de arquitectura y stack tecnológico.",
+    descripcion:
+      "Traducción de requisitos en especificaciones técnicas y funcionales concretas. Definición de arquitectura y stack tecnológico.",
     actividades: [
       "Arquitectura de información",
       "Especificación de funcionalidades",
@@ -87,7 +100,8 @@ const cicloFases = [
     subtitulo: "Prototipado Visual",
     emoji: "🎨",
     duracion: "1-2 semanas",
-    descripcion: "Creación de wireframes, mockups y prototipos interactivos. Definición del sistema de diseño y experiencia de usuario.",
+    descripcion:
+      "Creación de wireframes, mockups y prototipos interactivos. Definición del sistema de diseño y experiencia de usuario.",
     actividades: [
       "Wireframes de baja fidelidad",
       "Mockups de alta fidelidad",
@@ -108,7 +122,8 @@ const cicloFases = [
     subtitulo: "Implementación",
     emoji: "⚡",
     duracion: "2-6 semanas",
-    descripcion: "Implementación del diseño con código limpio y tecnologías modernas. Desarrollo de funcionalidades e integraciones.",
+    descripcion:
+      "Implementación del diseño con código limpio y tecnologías modernas. Desarrollo de funcionalidades e integraciones.",
     actividades: [
       "Desarrollo front-end y back-end",
       "Integración de APIs y servicios",
@@ -129,7 +144,8 @@ const cicloFases = [
     subtitulo: "Control de Calidad",
     emoji: "✅",
     duracion: "3-5 días",
-    descripcion: "Pruebas exhaustivas de funcionalidad, rendimiento, compatibilidad y accesibilidad. Validación con el cliente.",
+    descripcion:
+      "Pruebas exhaustivas de funcionalidad, rendimiento, compatibilidad y accesibilidad. Validación con el cliente.",
     actividades: [
       "Testing funcional completo",
       "Pruebas de rendimiento (Core Web Vitals)",
@@ -150,7 +166,8 @@ const cicloFases = [
     subtitulo: "Launch & Soporte",
     emoji: "🚀",
     duracion: "Continuo",
-    descripcion: "Lanzamiento a producción, formación del equipo y soporte post-lanzamiento. Mantenimiento y mejoras continuas.",
+    descripcion:
+      "Lanzamiento a producción, formación del equipo y soporte post-lanzamiento. Mantenimiento y mejoras continuas.",
     actividades: [
       "Deploy a producción",
       "Configuración de analytics",
@@ -284,7 +301,7 @@ export default function BriefingPage() {
       <section className="relative py-20 md:py-32 overflow-hidden">
         {/* Fondo con gradiente animado */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-accent/10" />
-        
+
         {/* Patterns decorativos estáticos (optimizado) */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
@@ -300,18 +317,20 @@ export default function BriefingPage() {
               {/* Badge superior */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border-4 border-primary/30 backdrop-blur-sm shadow-brutal">
                 <span className="text-2xl">📋</span>
-                <span className="text-sm font-bold text-primary">Fase Fundamental</span>
+                <span className="text-sm font-bold text-primary">
+                  Fase Fundamental
+                </span>
               </div>
 
               {/* Título principal */}
               <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-gradient-webcode leading-tight">
                 Briefing & Levantamiento de Requerimientos
               </h1>
-              
+
               {/* Subtítulo */}
               <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                La base de todo proyecto exitoso: entender qué construir, para quién y por qué, 
-                antes de escribir la primera línea de código
+                La base de todo proyecto exitoso: entender qué construir, para
+                quién y por qué, antes de escribir la primera línea de código
               </p>
 
               {/* Trust Indicators Mejorados */}
@@ -347,7 +366,7 @@ export default function BriefingPage() {
                   <p className="text-sm text-muted-foreground/70 mt-2">
                     Fuente: PMI Pulse of the Profession 2014
                   </p>
-                  <a 
+                  <a
                     href="/sources"
                     className="text-xs text-primary hover:text-primary/80 underline mt-1 inline-block transition-colors"
                   >
@@ -369,12 +388,17 @@ export default function BriefingPage() {
                 ¿Por qué es tan importante el Briefing?
               </h2>
               <p className="text-lg md:text-xl text-muted-foreground">
-                Un briefing sólido marca la diferencia entre un proyecto exitoso y uno problemático
+                Un briefing sólido marca la diferencia entre un proyecto exitoso
+                y uno problemático
               </p>
             </div>
           </WSFadeIn>
 
-          <Suspense fallback={<div className="h-64 animate-pulse bg-muted/50 rounded-lg" />}>
+          <Suspense
+            fallback={
+              <div className="h-64 animate-pulse bg-muted/50 rounded-lg" />
+            }
+          >
             <BriefingBenefits beneficios={beneficios} />
           </Suspense>
         </div>
@@ -387,18 +411,25 @@ export default function BriefingPage() {
             <div className="text-center max-w-4xl mx-auto mb-16 space-y-4">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border-3 border-primary/30 backdrop-blur-sm shadow-brutal-sm mb-6">
                 <span className="text-xl">🔄</span>
-                <span className="text-sm font-bold text-primary">Proceso Completo</span>
+                <span className="text-sm font-bold text-primary">
+                  Proceso Completo
+                </span>
               </div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-foreground">
                 Ciclo de Vida del Proyecto Web
               </h2>
               <p className="text-lg md:text-xl text-muted-foreground">
-                El briefing es la primera fase de un proceso estructurado de 6 etapas
+                El briefing es la primera fase de un proceso estructurado de 6
+                etapas
               </p>
             </div>
           </WSFadeIn>
 
-          <Suspense fallback={<div className="h-96 animate-pulse bg-muted/50 rounded-lg" />}>
+          <Suspense
+            fallback={
+              <div className="h-96 animate-pulse bg-muted/50 rounded-lg" />
+            }
+          >
             <BriefingPhases fases={cicloFases} />
           </Suspense>
         </div>
@@ -413,12 +444,17 @@ export default function BriefingPage() {
                 ¿Qué información recopilamos?
               </h2>
               <p className="text-lg md:text-xl text-muted-foreground">
-                Un briefing completo cubre 6 categorías fundamentales de información
+                Un briefing completo cubre 6 categorías fundamentales de
+                información
               </p>
             </div>
           </WSFadeIn>
 
-          <Suspense fallback={<div className="h-96 animate-pulse bg-muted/50 rounded-lg" />}>
+          <Suspense
+            fallback={
+              <div className="h-96 animate-pulse bg-muted/50 rounded-lg" />
+            }
+          >
             <BriefingCategories categorias={categoriasInfo} />
           </Suspense>
         </div>
@@ -440,19 +476,17 @@ export default function BriefingPage() {
           <WSFadeIn delay={0.2}>
             <div className="text-center max-w-4xl mx-auto space-y-8">
               {/* Icono decorativo estático (optimizado) */}
-              <div className="inline-block text-6xl md:text-7xl">
-                🚀
-              </div>
+              <div className="inline-block text-6xl md:text-7xl">🚀</div>
 
               {/* Título */}
               <h2 className="text-3xl md:text-4xl lg:text-6xl font-black text-gradient-webcode leading-tight">
                 ¿Listo para empezar tu proyecto con buen pie?
               </h2>
-              
+
               {/* Subtítulo */}
               <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Agenda una consulta gratuita de 30 minutos y comenzaremos a definir juntos 
-                los requisitos de tu proyecto digital
+                Agenda una consulta gratuita de 30 minutos y comenzaremos a
+                definir juntos los requisitos de tu proyecto digital
               </p>
 
               {/* Botones CTA con diseño mejorado */}
@@ -462,32 +496,62 @@ export default function BriefingPage() {
                   className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-primary to-primary/80 text-primary-foreground font-black text-lg shadow-brutal hover:shadow-brutal-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 border-4 border-primary/30"
                 >
                   <span className="relative z-10">COMPLETAR FORMULARIO</span>
-                  <svg className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg
+                    className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
                     <title>Arrow right</title>
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={3}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
                   </svg>
                 </Link>
-                
+
                 <Link
                   href="/api/briefing/plantilla"
                   className="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-card/80 backdrop-blur-sm border-4 border-secondary/30 text-foreground font-bold text-lg shadow-brutal-sm hover:shadow-brutal transition-all duration-300 hover:scale-105"
                   download="briefing-webcode-plantilla.pdf"
                 >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
                     <title>Download</title>
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
                   </svg>
                   <span>Descargar Plantilla PDF</span>
                 </Link>
-                
+
                 <Link
                   href="/proceso"
                   className="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-card/80 backdrop-blur-sm border-4 border-primary/30 text-foreground font-bold text-lg shadow-brutal-sm hover:shadow-brutal transition-all duration-300 hover:scale-105"
                 >
                   <span>Ver Proceso Completo</span>
-                  <svg className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg
+                    className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
                     <title>Arrow right</title>
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
                   </svg>
                 </Link>
               </div>
@@ -532,4 +596,3 @@ export default function BriefingPage() {
     </div>
   );
 }
-

@@ -13,7 +13,9 @@ interface CommunicationChannelsProps {
   canales: Canal[];
 }
 
-export default function CommunicationChannels({ canales }: CommunicationChannelsProps) {
+export default function CommunicationChannels({
+  canales
+}: CommunicationChannelsProps) {
   return (
     <section className="relative py-20 overflow-hidden">
       {/* Fondo con gradiente y patterns */}
@@ -44,19 +46,19 @@ export default function CommunicationChannels({ canales }: CommunicationChannels
               <div className="group relative h-full">
                 {/* Efecto de brillo en hover */}
                 <div className="absolute -inset-1 bg-gradient-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-25 blur-xl transition-all duration-700 rounded-2xl" />
-                
+
                 {/* Card con glassmorphism */}
                 <div className="relative h-full bg-card/80 backdrop-blur-xl border-2 border-primary/20 rounded-2xl p-6 md:p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 hover:border-primary/40">
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  
+
                   <div className="relative z-10 flex items-start gap-4">
                     {/* Icono con efecto */}
                     <div className="relative flex-shrink-0">
                       <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center border border-primary/30 group-hover:border-primary/50 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
-                        <SingleEmojiToSvg 
-                          emoji={canal.icono} 
-                          size="xl" 
+                        <SingleEmojiToSvg
+                          emoji={canal.icono}
+                          size="xl"
                           variant="primary"
                           className="transform group-hover:scale-110 transition-transform duration-300"
                         />
@@ -99,14 +101,26 @@ export default function CommunicationChannels({ canales }: CommunicationChannels
               <div className="relative bg-gradient-to-r from-primary/10 via-card/90 to-secondary/10 backdrop-blur-xl border border-primary/30 rounded-2xl p-6 md:p-8">
                 <div className="flex items-center gap-4">
                   <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center">
-                    <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg
+                      className="w-6 h-6 text-primary"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
                       <title>Information</title>
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
                     </svg>
                   </div>
                   <div className="flex-1">
                     <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                      <span className="font-semibold text-foreground">Tiempo de respuesta garantizado:</span>{" "}
+                      <span className="font-semibold text-foreground">
+                        Tiempo de respuesta garantizado:
+                      </span>{" "}
                       Menos de 4 horas en horario laboral (9:00 - 18:00 CET).{" "}
                       Para urgencias críticas, disponemos de línea directa 24/7.
                     </p>
@@ -120,4 +134,3 @@ export default function CommunicationChannels({ canales }: CommunicationChannels
     </section>
   );
 }
-

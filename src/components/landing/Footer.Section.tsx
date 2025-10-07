@@ -129,7 +129,7 @@ export function FooterSection() {
               >
                 Portfolio
               </a>
-              
+
               <Link
                 href="/faqs"
                 className="block transition-colors duration-200"

@@ -4,7 +4,7 @@ import { briefingFormSchema } from "@/types/briefing";
 
 // Esquema de validación para el servidor
 const briefingFormServerSchema = briefingFormSchema.extend({
-  timestamp: z.string(),
+  timestamp: z.string()
 });
 
 export async function POST(request: NextRequest) {
@@ -18,14 +18,17 @@ export async function POST(request: NextRequest) {
     const pdfBuffer = await generateBriefingPDF(validatedData);
 
     // Retornar PDF como respuesta
-    const arrayBuffer = pdfBuffer.buffer.slice(pdfBuffer.byteOffset, pdfBuffer.byteOffset + pdfBuffer.byteLength) as ArrayBuffer;
+    const arrayBuffer = pdfBuffer.buffer.slice(
+      pdfBuffer.byteOffset,
+      pdfBuffer.byteOffset + pdfBuffer.byteLength
+    ) as ArrayBuffer;
     return new Response(arrayBuffer, {
       status: 200,
       headers: {
         "Content-Type": "application/pdf",
         "Content-Disposition": `attachment; filename="briefing-${validatedData.nombre.replace(/\s+/g, "-").toLowerCase()}-${new Date().toISOString().split("T")[0]}.pdf"`,
-        "Cache-Control": "no-cache",
-      },
+        "Cache-Control": "no-cache"
+      }
     });
   } catch (error) {
     console.error("❌ Error generando PDF de briefing:", error);
@@ -51,13 +54,15 @@ export async function POST(request: NextRequest) {
 }
 
 // Función para generar el PDF del briefing
-async function generateBriefingPDF(data: z.infer<typeof briefingFormServerSchema>): Promise<Uint8Array> {
+async function generateBriefingPDF(
+  data: z.infer<typeof briefingFormServerSchema>
+): Promise<Uint8Array> {
   // Dynamic import to reduce bundle size - only load jsPDF when needed
   const { default: jsPDF } = await import("jspdf");
   const doc = new jsPDF();
   const pageWidth = doc.internal.pageSize.getWidth();
   const margin = 20;
-  const contentWidth = pageWidth - (margin * 2);
+  const contentWidth = pageWidth - margin * 2;
   let yPosition = margin;
 
   // Configuración de fuentes y colores
@@ -71,41 +76,45 @@ async function generateBriefingPDF(data: z.infer<typeof briefingFormServerSchema
       doc.addPage();
       yPosition = margin;
     }
-    
+
     doc.setFillColor(primaryColor[0], primaryColor[1], primaryColor[2]);
     doc.setFontSize(14);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(255, 255, 255);
-    
+
     const titleText = `${icon} ${title}`;
     const titleWidth = doc.getTextWidth(titleText);
-    
+
     doc.rect(margin, yPosition - 5, titleWidth + 10, 10, "F");
     doc.text(titleText, margin + 5, yPosition + 2);
-    
+
     yPosition += 20;
   };
 
   // Función para agregar campo
-  const addField = (label: string, value: string | string[] | boolean | undefined, required: boolean = false) => {
+  const addField = (
+    label: string,
+    value: string | string[] | boolean | undefined,
+    required: boolean = false
+  ) => {
     if (yPosition > 270) {
       doc.addPage();
       yPosition = margin;
     }
 
     const labelText = required ? `${label} *` : label;
-    
+
     doc.setFontSize(10);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(textColor[0], textColor[1], textColor[2]);
     doc.text(labelText, margin, yPosition);
-    
+
     yPosition += 6;
-    
+
     doc.setFont("helvetica", "normal");
     doc.setFontSize(9);
     doc.setTextColor(75, 85, 99); // #4b5563
-    
+
     let displayValue = "";
     if (Array.isArray(value)) {
       displayValue = value.join(", ");
@@ -114,27 +123,31 @@ async function generateBriefingPDF(data: z.infer<typeof briefingFormServerSchema
     } else {
       displayValue = value || "No especificado";
     }
-    
+
     // Dividir texto largo en múltiples líneas
     const lines = doc.splitTextToSize(displayValue, contentWidth);
     doc.text(lines, margin, yPosition);
-    
-    yPosition += (lines.length * 4) + 8;
+
+    yPosition += lines.length * 4 + 8;
   };
 
   // Header
   doc.setFillColor(secondaryColor[0], secondaryColor[1], secondaryColor[2]);
   doc.rect(0, 0, pageWidth, 30, "F");
-  
+
   doc.setFontSize(20);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(255, 255, 255);
   doc.text("📋 BRIEFING DE PROYECTO", margin, 20);
-  
+
   doc.setFontSize(10);
   doc.setFont("helvetica", "normal");
-  doc.text(`Generado el ${new Date(data.timestamp).toLocaleString("es-ES")}`, margin, 25);
-  
+  doc.text(
+    `Generado el ${new Date(data.timestamp).toLocaleString("es-ES")}`,
+    margin,
+    25
+  );
+
   yPosition = 45;
 
   // 1. Información de Contacto
@@ -153,7 +166,11 @@ async function generateBriefingPDF(data: z.infer<typeof briefingFormServerSchema
   addField("Público Objetivo", data.publicoObjetivo, true);
   addField("Competencia", data.competencia);
   addField("KPIs de Éxito", data.kpisExito);
-  addField("Presupuesto Estimado", formatPresupuesto(data.presupuestoEstimado), true);
+  addField(
+    "Presupuesto Estimado",
+    formatPresupuesto(data.presupuestoEstimado),
+    true
+  );
   addField("Plazo Preferido", formatPlazo(data.plazoPreferido), true);
 
   // 3. Público Objetivo Detallado
@@ -172,7 +189,11 @@ async function generateBriefingPDF(data: z.infer<typeof briefingFormServerSchema
 
   // 5. Estilo Visual
   addSectionTitle("Estilo Visual y Marca", "🎨");
-  addField("Identidad Corporativa", formatIdentidad(data.tieneIdentidadCorporativa), true);
+  addField(
+    "Identidad Corporativa",
+    formatIdentidad(data.tieneIdentidadCorporativa),
+    true
+  );
   addField("Tiene Logotipos", data.tieneLogotipos);
   addField("Colores Preferidos", data.coloresPreferidos);
   addField("Colores a Evitar", data.coloresEvitar);
@@ -182,7 +203,11 @@ async function generateBriefingPDF(data: z.infer<typeof briefingFormServerSchema
   // 6. Contenidos
   addSectionTitle("Contenidos", "📝");
   addField("Contenidos Disponibles", data.contenidosDisponibles);
-  addField("Número de Páginas Estimadas", formatPaginas(data.numerosPaginasEstimadas), true);
+  addField(
+    "Número de Páginas Estimadas",
+    formatPaginas(data.numerosPaginasEstimadas),
+    true
+  );
   addField("Necesita Redacción", data.necesitaRedaccion);
   addField("Necesita Fotografía", data.necesitaFotografia);
   addField("Necesita Videos", data.necesitaVideos);
@@ -211,12 +236,12 @@ async function generateBriefingPDF(data: z.infer<typeof briefingFormServerSchema
   const pageCount = doc.getNumberOfPages();
   for (let i = 1; i <= pageCount; i++) {
     doc.setPage(i);
-    
+
     // Línea de separación
     doc.setDrawColor(primaryColor[0], primaryColor[1], primaryColor[2]);
     doc.setLineWidth(0.5);
     doc.line(margin, 280, pageWidth - margin, 280);
-    
+
     // Footer text
     doc.setFontSize(8);
     doc.setFont("helvetica", "normal");
@@ -247,19 +272,19 @@ function formatPresupuesto(presupuesto: string): string {
 function formatPlazo(plazo: string): string {
   const plazoLabels: Record<string, string> = {
     "no-definido": "No definido",
-    "urgente": "Urgente (menos de 1 mes)",
+    urgente: "Urgente (menos de 1 mes)",
     "1-2-meses": "1-2 meses",
     "3-6-meses": "3-6 meses",
-    "flexible": "Flexible"
+    flexible: "Flexible"
   };
   return plazoLabels[plazo] || plazo;
 }
 
 function formatIdentidad(identidad: string): string {
   const identidadLabels: Record<string, string> = {
-    "si": "Sí, completamente definida",
-    "no": "No, necesitamos crearla",
-    "parcialmente": "Parcialmente, necesita mejoras"
+    si: "Sí, completamente definida",
+    no: "No, necesitamos crearla",
+    parcialmente: "Parcialmente, necesita mejoras"
   };
   return identidadLabels[identidad] || identidad;
 }
@@ -278,7 +303,7 @@ function formatPaginas(paginas: string): string {
 
 function formatCMS(cms: string): string {
   const cmsLabels: Record<string, string> = {
-    "no": "No, prefiero delegar la gestión",
+    no: "No, prefiero delegar la gestión",
     "si-simple": "Sí, panel simple para textos e imágenes",
     "si-avanzado": "Sí, CMS completo (WordPress, etc.)",
     "no-se": "No lo sé aún"

@@ -27,12 +27,14 @@ export default function BriefingPhases({ fases }: BriefingPhasesProps) {
       {/* Timeline visual */}
       <div className="hidden md:block relative">
         <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent -translate-y-1/2" />
-        
+
         <div className="relative flex justify-between items-center">
           {fases.map((fase) => (
             <motion.button
               key={fase.numero}
-              onClick={() => setFaseActiva(faseActiva === fase.numero ? null : fase.numero)}
+              onClick={() =>
+                setFaseActiva(faseActiva === fase.numero ? null : fase.numero)
+              }
               className={`relative z-10 flex flex-col items-center gap-2 transition-all duration-300 ${
                 faseActiva === fase.numero ? "scale-110" : "hover:scale-105"
               }`}
@@ -49,7 +51,9 @@ export default function BriefingPhases({ fases }: BriefingPhasesProps) {
                 {fase.emoji}
               </div>
               <div className="text-center">
-                <p className={`text-sm font-bold ${faseActiva === fase.numero ? "text-primary" : "text-muted-foreground"}`}>
+                <p
+                  className={`text-sm font-bold ${faseActiva === fase.numero ? "text-primary" : "text-muted-foreground"}`}
+                >
                   Fase {fase.numero}
                 </p>
               </div>
@@ -68,7 +72,9 @@ export default function BriefingPhases({ fases }: BriefingPhasesProps) {
                   ? "bg-gradient-to-br from-primary/20 to-accent/10 border-primary/50 shadow-brutal-lg"
                   : "bg-card/80 backdrop-blur-sm border-border hover:border-primary/30 shadow-brutal-sm hover:shadow-brutal"
               }`}
-              onClick={() => setFaseActiva(faseActiva === fase.numero ? null : fase.numero)}
+              onClick={() =>
+                setFaseActiva(faseActiva === fase.numero ? null : fase.numero)
+              }
               whileHover={{ y: -5 }}
               transition={{ duration: 0.2 }}
             >
@@ -80,10 +86,16 @@ export default function BriefingPhases({ fases }: BriefingPhasesProps) {
               {/* Header */}
               <div className="space-y-2 mb-4">
                 <div className="text-4xl">{fase.emoji}</div>
-                <h3 className="text-xl font-black text-foreground">{fase.titulo}</h3>
-                <p className="text-sm font-bold text-primary">{fase.subtitulo}</p>
+                <h3 className="text-xl font-black text-foreground">
+                  {fase.titulo}
+                </h3>
+                <p className="text-sm font-bold text-primary">
+                  {fase.subtitulo}
+                </p>
                 <div className="inline-block px-3 py-1 rounded-full bg-primary/10 border-2 border-primary/30">
-                  <p className="text-xs font-bold text-primary">⏱️ {fase.duracion}</p>
+                  <p className="text-xs font-bold text-primary">
+                    ⏱️ {fase.duracion}
+                  </p>
                 </div>
               </div>
 
@@ -105,10 +117,15 @@ export default function BriefingPhases({ fases }: BriefingPhasesProps) {
                 <div className="space-y-4 pt-4 border-t-2 border-border/50">
                   {/* Actividades */}
                   <div>
-                    <h4 className="text-sm font-black text-foreground mb-2">✅ Actividades</h4>
+                    <h4 className="text-sm font-black text-foreground mb-2">
+                      ✅ Actividades
+                    </h4>
                     <ul className="space-y-1">
                       {fase.actividades.map((actividad) => (
-                        <li key={actividad} className="text-xs text-muted-foreground flex items-start gap-2">
+                        <li
+                          key={actividad}
+                          className="text-xs text-muted-foreground flex items-start gap-2"
+                        >
                           <span className="text-primary mt-0.5">•</span>
                           <span>{actividad}</span>
                         </li>
@@ -118,10 +135,15 @@ export default function BriefingPhases({ fases }: BriefingPhasesProps) {
 
                   {/* Entregables */}
                   <div>
-                    <h4 className="text-sm font-black text-foreground mb-2">📦 Entregables</h4>
+                    <h4 className="text-sm font-black text-foreground mb-2">
+                      📦 Entregables
+                    </h4>
                     <ul className="space-y-1">
                       {fase.entregables.map((entregable) => (
-                        <li key={entregable} className="text-xs text-muted-foreground flex items-start gap-2">
+                        <li
+                          key={entregable}
+                          className="text-xs text-muted-foreground flex items-start gap-2"
+                        >
                           <span className="text-accent mt-0.5">▸</span>
                           <span>{entregable}</span>
                         </li>
@@ -138,9 +160,19 @@ export default function BriefingPhases({ fases }: BriefingPhasesProps) {
                   transition={{ duration: 0.3 }}
                   className="text-primary"
                 >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
                     <title>Chevron down</title>
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={3}
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </motion.div>
               </div>
@@ -159,10 +191,11 @@ export default function BriefingPhases({ fases }: BriefingPhasesProps) {
                 El briefing marca la diferencia
               </h4>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                La <strong>Fase 1 (Briefing)</strong> es la base de todo el proceso. 
-                Una recopilación exhaustiva de requisitos en esta etapa previene malentendidos, 
-                ahorra tiempo y dinero, y garantiza que el resultado final cumpla tus expectativas. 
-                Dedicar tiempo al briefing es invertir en el éxito del proyecto.
+                La <strong>Fase 1 (Briefing)</strong> es la base de todo el
+                proceso. Una recopilación exhaustiva de requisitos en esta etapa
+                previene malentendidos, ahorra tiempo y dinero, y garantiza que
+                el resultado final cumpla tus expectativas. Dedicar tiempo al
+                briefing es invertir en el éxito del proyecto.
               </p>
             </div>
           </div>
@@ -171,4 +204,3 @@ export default function BriefingPhases({ fases }: BriefingPhasesProps) {
     </div>
   );
 }
-

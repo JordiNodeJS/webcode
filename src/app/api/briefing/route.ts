@@ -22,9 +22,12 @@ const briefingFormServerSchema = briefingFormSchema.extend({
   timestamp: z.string(),
   userAgent: z.string().optional(),
   // Campo honeypot - debe estar vacío
-  website: z.string().optional().refine((val) => !val || val.trim() === "", {
-    message: "Bot detected"
-  })
+  website: z
+    .string()
+    .optional()
+    .refine((val) => !val || val.trim() === "", {
+      message: "Bot detected"
+    })
 });
 
 export async function POST(request: NextRequest) {
@@ -124,7 +127,9 @@ async function sendBriefingEmailWithResend(
 }
 
 // Template de email HTML para briefing
-function generateBriefingEmailTemplate(data: z.infer<typeof briefingFormServerSchema> & { metadata: RequestMetadata }): string {
+function generateBriefingEmailTemplate(
+  data: z.infer<typeof briefingFormServerSchema> & { metadata: RequestMetadata }
+): string {
   return `
     <!DOCTYPE html>
     <html>
@@ -170,18 +175,26 @@ function generateBriefingEmailTemplate(data: z.infer<typeof briefingFormServerSc
               <div class="label">Teléfono:</div>
               <div class="value">${data.telefono}</div>
             </div>
-            ${data.empresa ? `
+            ${
+              data.empresa
+                ? `
             <div class="field">
               <div class="label">Empresa:</div>
               <div class="value">${data.empresa}</div>
             </div>
-            ` : ''}
-            ${data.sitioWeb ? `
+            `
+                : ""
+            }
+            ${
+              data.sitioWeb
+                ? `
             <div class="field">
               <div class="label">Sitio Web Actual:</div>
               <div class="value">${data.sitioWeb}</div>
             </div>
-            ` : ''}
+            `
+                : ""
+            }
           </div>
 
           <!-- Objetivos del Proyecto -->
@@ -195,12 +208,16 @@ function generateBriefingEmailTemplate(data: z.infer<typeof briefingFormServerSc
               <div class="label">Problemas a Resolver:</div>
               <div class="value">${data.problemasResolver}</div>
             </div>
-            ${data.kpisExito ? `
+            ${
+              data.kpisExito
+                ? `
             <div class="field">
               <div class="label">KPIs de Éxito:</div>
               <div class="value">${data.kpisExito}</div>
             </div>
-            ` : ''}
+            `
+                : ""
+            }
             <div class="field">
               <div class="label">Presupuesto Estimado:</div>
               <div class="value">${formatPresupuesto(data.presupuestoEstimado)}</div>
@@ -218,28 +235,36 @@ function generateBriefingEmailTemplate(data: z.infer<typeof briefingFormServerSc
               <div class="label">Descripción del Público:</div>
               <div class="value">${data.publicoObjetivo}</div>
             </div>
-            ${data.edadRango ? `
+            ${
+              data.edadRango
+                ? `
             <div class="field">
               <div class="label">Rango de Edad:</div>
               <div class="value">${data.edadRango}</div>
             </div>
-            ` : ''}
-            ${data.ubicacionGeografica ? `
+            `
+                : ""
+            }
+            ${
+              data.ubicacionGeografica
+                ? `
             <div class="field">
               <div class="label">Ubicación Geográfica:</div>
               <div class="value">${data.ubicacionGeografica}</div>
             </div>
-            ` : ''}
+            `
+                : ""
+            }
             <div class="field">
               <div class="label">Dispositivos Principales:</div>
               <div class="checkbox-list">
-                ${data.dispositivosPrincipales?.map(device => `<span class="checkbox-item">${device}</span>`).join('') || 'No especificado'}
+                ${data.dispositivosPrincipales?.map((device) => `<span class="checkbox-item">${device}</span>`).join("") || "No especificado"}
               </div>
             </div>
             <div class="field">
               <div class="label">Idiomas Necesarios:</div>
               <div class="checkbox-list">
-                ${data.idiomasNecesarios?.map(lang => `<span class="checkbox-item">${lang}</span>`).join('') || 'No especificado'}
+                ${data.idiomasNecesarios?.map((lang) => `<span class="checkbox-item">${lang}</span>`).join("") || "No especificado"}
               </div>
             </div>
           </div>
@@ -250,27 +275,35 @@ function generateBriefingEmailTemplate(data: z.infer<typeof briefingFormServerSc
             <div class="field">
               <div class="label">Tipo de Proyecto:</div>
               <div class="checkbox-list">
-                ${data.tipoProyecto.map(type => `<span class="checkbox-item">${type}</span>`).join('')}
+                ${data.tipoProyecto.map((type) => `<span class="checkbox-item">${type}</span>`).join("")}
               </div>
             </div>
             <div class="field">
               <div class="label">Funcionalidades Esenciales:</div>
               <div class="checkbox-list">
-                ${data.funcionalidadesEsenciales?.map(func => `<span class="checkbox-item">${func}</span>`).join('') || 'No especificado'}
+                ${data.funcionalidadesEsenciales?.map((func) => `<span class="checkbox-item">${func}</span>`).join("") || "No especificado"}
               </div>
             </div>
-            ${data.funcionalidadesDeseadas ? `
+            ${
+              data.funcionalidadesDeseadas
+                ? `
             <div class="field">
               <div class="label">Otras Funcionalidades:</div>
               <div class="value">${data.funcionalidadesDeseadas}</div>
             </div>
-            ` : ''}
-            ${data.integracionesNecesarias ? `
+            `
+                : ""
+            }
+            ${
+              data.integracionesNecesarias
+                ? `
             <div class="field">
               <div class="label">Integraciones Necesarias:</div>
               <div class="value">${data.integracionesNecesarias}</div>
             </div>
-            ` : ''}
+            `
+                : ""
+            }
           </div>
 
           <!-- Estilo Visual -->
@@ -282,20 +315,28 @@ function generateBriefingEmailTemplate(data: z.infer<typeof briefingFormServerSc
             </div>
             <div class="field">
               <div class="label">Tiene Logotipos:</div>
-              <div class="value">${data.tieneLogotipos ? 'Sí' : 'No'}</div>
+              <div class="value">${data.tieneLogotipos ? "Sí" : "No"}</div>
             </div>
-            ${data.coloresPreferidos ? `
+            ${
+              data.coloresPreferidos
+                ? `
             <div class="field">
               <div class="label">Colores Preferidos:</div>
               <div class="value">${data.coloresPreferidos}</div>
             </div>
-            ` : ''}
-            ${data.referenciasVisuales ? `
+            `
+                : ""
+            }
+            ${
+              data.referenciasVisuales
+                ? `
             <div class="field">
               <div class="label">Referencias Visuales:</div>
               <div class="value">${data.referenciasVisuales}</div>
             </div>
-            ` : ''}
+            `
+                : ""
+            }
             <div class="field">
               <div class="label">Tono de Comunicación:</div>
               <div class="value">${data.tonoComunicacion}</div>
@@ -307,7 +348,7 @@ function generateBriefingEmailTemplate(data: z.infer<typeof briefingFormServerSc
             <div class="section-title">📝 Contenidos</div>
             <div class="field">
               <div class="label">Contenidos Disponibles:</div>
-              <div class="value">${data.contenidosDisponibles ? 'Sí' : 'No'}</div>
+              <div class="value">${data.contenidosDisponibles ? "Sí" : "No"}</div>
             </div>
             <div class="field">
               <div class="label">Número de Páginas Estimadas:</div>
@@ -316,9 +357,9 @@ function generateBriefingEmailTemplate(data: z.infer<typeof briefingFormServerSc
             <div class="field">
               <div class="label">Necesita Ayuda con:</div>
               <div class="checkbox-list">
-                ${data.necesitaRedaccion ? '<span class="checkbox-item">Redacción</span>' : ''}
-                ${data.necesitaFotografia ? '<span class="checkbox-item">Fotografía</span>' : ''}
-                ${data.necesitaVideos ? '<span class="checkbox-item">Videos</span>' : ''}
+                ${data.necesitaRedaccion ? '<span class="checkbox-item">Redacción</span>' : ""}
+                ${data.necesitaFotografia ? '<span class="checkbox-item">Fotografía</span>' : ""}
+                ${data.necesitaVideos ? '<span class="checkbox-item">Videos</span>' : ""}
               </div>
             </div>
           </div>
@@ -328,15 +369,15 @@ function generateBriefingEmailTemplate(data: z.infer<typeof briefingFormServerSc
             <div class="section-title">🔧 Requisitos Técnicos</div>
             <div class="field">
               <div class="label">Tiene Hosting Actual:</div>
-              <div class="value">${data.tieneHostingActual ? 'Sí' : 'No'}</div>
+              <div class="value">${data.tieneHostingActual ? "Sí" : "No"}</div>
             </div>
             <div class="field">
               <div class="label">Necesita Registrar Dominio:</div>
-              <div class="value">${data.necesitaDominio ? 'Sí' : 'No'}</div>
+              <div class="value">${data.necesitaDominio ? "Sí" : "No"}</div>
             </div>
             <div class="field">
               <div class="label">Necesita Migración:</div>
-              <div class="value">${data.necesitaMigracion ? 'Sí' : 'No'}</div>
+              <div class="value">${data.necesitaMigracion ? "Sí" : "No"}</div>
             </div>
             <div class="field">
               <div class="label">Requisitos CMS:</div>
@@ -344,33 +385,41 @@ function generateBriefingEmailTemplate(data: z.infer<typeof briefingFormServerSc
             </div>
             <div class="field">
               <div class="label">Optimización SEO:</div>
-              <div class="value">${data.requisitosSEO ? 'Sí' : 'No'}</div>
+              <div class="value">${data.requisitosSEO ? "Sí" : "No"}</div>
             </div>
             <div class="field">
               <div class="label">Accesibilidad WCAG:</div>
-              <div class="value">${data.accesibilidadWCAG ? 'Sí' : 'No'}</div>
+              <div class="value">${data.accesibilidadWCAG ? "Sí" : "No"}</div>
             </div>
           </div>
 
           <!-- Información Adicional -->
-          ${data.informacionAdicional ? `
+          ${
+            data.informacionAdicional
+              ? `
           <div class="section">
             <div class="section-title">ℹ️ Información Adicional</div>
             <div class="field">
               <div class="value">${data.informacionAdicional}</div>
             </div>
           </div>
-          ` : ''}
+          `
+              : ""
+          }
 
           <!-- Cómo nos conoció -->
-          ${data.comoConociste ? `
+          ${
+            data.comoConociste
+              ? `
           <div class="section">
             <div class="section-title">🔍 Cómo nos conoció</div>
             <div class="field">
               <div class="value">${data.comoConociste}</div>
             </div>
           </div>
-          ` : ''}
+          `
+              : ""
+          }
 
           <!-- Consentimiento RGPD -->
           <div class="consent">
@@ -398,7 +447,9 @@ function generateBriefingEmailTemplate(data: z.infer<typeof briefingFormServerSc
 }
 
 // Template de email en texto plano para briefing
-function generateBriefingPlainTextEmail(data: z.infer<typeof briefingFormServerSchema> & { metadata: RequestMetadata }): string {
+function generateBriefingPlainTextEmail(
+  data: z.infer<typeof briefingFormServerSchema> & { metadata: RequestMetadata }
+): string {
   return `
 📋 NUEVO BRIEFING DE PROYECTO - WEBCODE
 
@@ -408,56 +459,58 @@ Recibido el ${new Date(data.timestamp).toLocaleString("es-ES")}
 Nombre: ${data.nombre}
 Email: ${data.email}
 Teléfono: ${data.telefono}
-${data.empresa ? `Empresa: ${data.empresa}` : ''}
-${data.sitioWeb ? `Sitio Web Actual: ${data.sitioWeb}` : ''}
+${data.empresa ? `Empresa: ${data.empresa}` : ""}
+${data.sitioWeb ? `Sitio Web Actual: ${data.sitioWeb}` : ""}
 
 === OBJETIVOS DEL PROYECTO ===
 Objetivo Principal: ${data.objetivoPrincipal}
 Problemas a Resolver: ${data.problemasResolver}
-${data.kpisExito ? `KPIs de Éxito: ${data.kpisExito}` : ''}
+${data.kpisExito ? `KPIs de Éxito: ${data.kpisExito}` : ""}
 Presupuesto Estimado: ${formatPresupuesto(data.presupuestoEstimado)}
 Plazo Preferido: ${formatPlazo(data.plazoPreferido)}
 
 === PÚBLICO OBJETIVO ===
 Descripción: ${data.publicoObjetivo}
-${data.edadRango ? `Rango de Edad: ${data.edadRango}` : ''}
-${data.ubicacionGeografica ? `Ubicación: ${data.ubicacionGeografica}` : ''}
-Dispositivos: ${data.dispositivosPrincipales?.join(', ') || 'No especificado'}
-Idiomas: ${data.idiomasNecesarios?.join(', ') || 'No especificado'}
+${data.edadRango ? `Rango de Edad: ${data.edadRango}` : ""}
+${data.ubicacionGeografica ? `Ubicación: ${data.ubicacionGeografica}` : ""}
+Dispositivos: ${data.dispositivosPrincipales?.join(", ") || "No especificado"}
+Idiomas: ${data.idiomasNecesarios?.join(", ") || "No especificado"}
 
 === FUNCIONALIDADES REQUERIDAS ===
-Tipo de Proyecto: ${data.tipoProyecto.join(', ')}
-Funcionalidades Esenciales: ${data.funcionalidadesEsenciales?.join(', ') || 'No especificado'}
-${data.funcionalidadesDeseadas ? `Otras Funcionalidades: ${data.funcionalidadesDeseadas}` : ''}
-${data.integracionesNecesarias ? `Integraciones: ${data.integracionesNecesarias}` : ''}
+Tipo de Proyecto: ${data.tipoProyecto.join(", ")}
+Funcionalidades Esenciales: ${data.funcionalidadesEsenciales?.join(", ") || "No especificado"}
+${data.funcionalidadesDeseadas ? `Otras Funcionalidades: ${data.funcionalidadesDeseadas}` : ""}
+${data.integracionesNecesarias ? `Integraciones: ${data.integracionesNecesarias}` : ""}
 
 === ESTILO VISUAL Y MARCA ===
 Identidad Corporativa: ${formatIdentidad(data.tieneIdentidadCorporativa)}
-Tiene Logotipos: ${data.tieneLogotipos ? 'Sí' : 'No'}
-${data.coloresPreferidos ? `Colores Preferidos: ${data.coloresPreferidos}` : ''}
-${data.referenciasVisuales ? `Referencias Visuales: ${data.referenciasVisuales}` : ''}
+Tiene Logotipos: ${data.tieneLogotipos ? "Sí" : "No"}
+${data.coloresPreferidos ? `Colores Preferidos: ${data.coloresPreferidos}` : ""}
+${data.referenciasVisuales ? `Referencias Visuales: ${data.referenciasVisuales}` : ""}
 Tono de Comunicación: ${data.tonoComunicacion}
 
 === CONTENIDOS ===
-Contenidos Disponibles: ${data.contenidosDisponibles ? 'Sí' : 'No'}
+Contenidos Disponibles: ${data.contenidosDisponibles ? "Sí" : "No"}
 Páginas Estimadas: ${data.numerosPaginasEstimadas}
 Necesita Ayuda: ${[
-  data.necesitaRedaccion ? 'Redacción' : '',
-  data.necesitaFotografia ? 'Fotografía' : '',
-  data.necesitaVideos ? 'Videos' : ''
-].filter(Boolean).join(', ')}
+    data.necesitaRedaccion ? "Redacción" : "",
+    data.necesitaFotografia ? "Fotografía" : "",
+    data.necesitaVideos ? "Videos" : ""
+  ]
+    .filter(Boolean)
+    .join(", ")}
 
 === REQUISITOS TÉCNICOS ===
-Tiene Hosting: ${data.tieneHostingActual ? 'Sí' : 'No'}
-Necesita Dominio: ${data.necesitaDominio ? 'Sí' : 'No'}
-Necesita Migración: ${data.necesitaMigracion ? 'Sí' : 'No'}
+Tiene Hosting: ${data.tieneHostingActual ? "Sí" : "No"}
+Necesita Dominio: ${data.necesitaDominio ? "Sí" : "No"}
+Necesita Migración: ${data.necesitaMigracion ? "Sí" : "No"}
 CMS: ${data.requisitosCMS}
-SEO: ${data.requisitosSEO ? 'Sí' : 'No'}
-Accesibilidad WCAG: ${data.accesibilidadWCAG ? 'Sí' : 'No'}
+SEO: ${data.requisitosSEO ? "Sí" : "No"}
+Accesibilidad WCAG: ${data.accesibilidadWCAG ? "Sí" : "No"}
 
-${data.informacionAdicional ? `=== INFORMACIÓN ADICIONAL ===\n${data.informacionAdicional}\n` : ''}
+${data.informacionAdicional ? `=== INFORMACIÓN ADICIONAL ===\n${data.informacionAdicional}\n` : ""}
 
-${data.comoConociste ? `=== CÓMO NOS CONOCIÓ ===\n${data.comoConociste}\n` : ''}
+${data.comoConociste ? `=== CÓMO NOS CONOCIÓ ===\n${data.comoConociste}\n` : ""}
 
 ✅ CONSENTIMIENTO RGPD:
 El usuario ha aceptado la política de privacidad el ${new Date(data.timestamp).toLocaleString("es-ES")}
@@ -489,21 +542,21 @@ function formatPresupuesto(presupuesto: string): string {
 function formatPlazo(plazo: string): string {
   const plazoLabels: Record<string, string> = {
     "no-definido": "No definido",
-    "urgente": "Urgente (menos de 1 mes)",
+    urgente: "Urgente (menos de 1 mes)",
     "1-mes": "1 mes",
     "2-3-meses": "2-3 meses",
     "3-6-meses": "3-6 meses",
     "6+ meses": "Más de 6 meses",
-    "flexible": "Flexible"
+    flexible: "Flexible"
   };
   return plazoLabels[plazo] || plazo;
 }
 
 function formatIdentidad(identidad: string): string {
   const identidadLabels: Record<string, string> = {
-    "si": "Sí, completamente definida",
-    "no": "No, necesitamos crearla",
-    "parcialmente": "Parcialmente, necesita mejoras"
+    si: "Sí, completamente definida",
+    no: "No, necesitamos crearla",
+    parcialmente: "Parcialmente, necesita mejoras"
   };
   return identidadLabels[identidad] || identidad;
 }

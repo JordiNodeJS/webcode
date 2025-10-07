@@ -48,7 +48,9 @@
   transform: translateY(-2px);
 }
 
-.neonBtn3:hover::before { left: 0; }
+.neonBtn3:hover::before {
+  left: 0;
+}
 
 .neonBtn3::after {
   content: "";
@@ -57,7 +59,12 @@
   left: -100%;
   width: 30%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
   transition: left 0.8s ease;
   z-index: 1;
   opacity: 0;
@@ -95,7 +102,12 @@
   left: 0;
   width: 100%;
   height: 0;
-  background: linear-gradient(45deg, oklch(var(--primary)), oklch(var(--primary)/0.9), oklch(var(--primary)/0.8));
+  background: linear-gradient(
+    45deg,
+    oklch(var(--primary)),
+    oklch(var(--primary) / 0.9),
+    oklch(var(--primary) / 0.8)
+  );
   transition: height 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   z-index: -1;
 }
@@ -107,7 +119,11 @@
   left: 50%;
   width: 0;
   height: 0;
-  background: radial-gradient(circle, rgba(var(--primary-rgb), 0.2) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(var(--primary-rgb), 0.2) 0%,
+    transparent 70%
+  );
   transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transform: translate(-50%, -50%);
   z-index: -2;
@@ -127,12 +143,21 @@
   transform: translateY(-1px);
 }
 
-.neonBtn7:hover::after { height: 100%; }
-.neonBtn7:hover::before { width: 120%; height: 120%; }
+.neonBtn7:hover::after {
+  height: 100%;
+}
+.neonBtn7:hover::before {
+  width: 120%;
+  height: 120%;
+}
 
 @keyframes shine {
-  0% { left: -100%; }
-  100% { left: 100%; }
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
 /* Accessibility and motion preferences */
@@ -155,7 +180,9 @@
 }
 
 .neonBtn3:active,
-.neonBtn7:active { transform: translateY(0px) scale(0.98); }
+.neonBtn7:active {
+  transform: translateY(0px) scale(0.98);
+}
 
 @media (prefers-reduced-motion: reduce) {
   .neonBtn3,
@@ -187,7 +214,8 @@
 
 @media (max-width: 480px) {
   .neonBtn3,
-  .neonBtn7 { padding: 12px 24px; font-size: 0.95rem; }
+  .neonBtn7 {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
 }
-
-

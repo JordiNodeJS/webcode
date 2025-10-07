@@ -14,7 +14,9 @@ interface BriefingCategoriesProps {
   categorias: Categoria[];
 }
 
-export default function BriefingCategories({ categorias }: BriefingCategoriesProps) {
+export default function BriefingCategories({
+  categorias
+}: BriefingCategoriesProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {categorias.map((categoria, index) => (
@@ -51,7 +53,9 @@ export default function BriefingCategories({ categorias }: BriefingCategoriesPro
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.05 }}
                 >
-                  <span className="text-primary font-black mt-0.5 flex-shrink-0">•</span>
+                  <span className="text-primary font-black mt-0.5 flex-shrink-0">
+                    •
+                  </span>
                   <span className="leading-relaxed">{item}</span>
                 </motion.li>
               ))}
@@ -65,4 +69,3 @@ export default function BriefingCategories({ categorias }: BriefingCategoriesPro
     </div>
   );
 }
-

@@ -79,8 +79,12 @@
   --muted-foreground: oklch(
     0.54 0 0
   ); /* lighter placeholder text for better distinction */
-  --accent: oklch(0.57 0.2 328.5); /* púrpura accent - mismo que primary para consistencia */
-  --accent-foreground: oklch(0.98 0 0); /* near-white for strong contrast on accent */
+  --accent: oklch(
+    0.57 0.2 328.5
+  ); /* púrpura accent - mismo que primary para consistencia */
+  --accent-foreground: oklch(
+    0.98 0 0
+  ); /* near-white for strong contrast on accent */
   --destructive: oklch(0.759 0.112 12.2); /* #fcb4b5 */
   --border: oklch(0.45 0.1 328.5); /* darker border matching adjusted primary */
   --input: oklch(
@@ -126,8 +130,12 @@
   --muted-foreground: oklch(
     0.52 0 0
   ); /* darker placeholder text in dark mode for better distinction */
-  --accent: oklch(0.84 0.16 328.5); /* púrpura accent brillante para modo oscuro */
-  --accent-foreground: oklch(0.08 0 0); /* near-black for strong contrast on accent */
+  --accent: oklch(
+    0.84 0.16 328.5
+  ); /* púrpura accent brillante para modo oscuro */
+  --accent-foreground: oklch(
+    0.08 0 0
+  ); /* near-black for strong contrast on accent */
   --destructive: oklch(0.628 0.258 29.233); /* #dc2626 */
   --border: oklch(0.32 0.05 0); /* slightly lighter border than before */
   --input: oklch(0.22 0 0);
@@ -152,28 +160,28 @@
   --shadow-3d-xs: 2px 2px 0px 0px oklch(0.57 0.2 328.5 / 0.4);
   --shadow-3d-sm: 3px 3px 0px 0px oklch(0.57 0.2 328.5 / 0.6);
   --shadow-3d-md:
-    3px 3px 0px 0px oklch(0.57 0.2 328.5 / 0.8),
-    1px 1px 2px -1px oklch(0.57 0.2 328.5 / 0.4);
+    3px 3px 0px 0px oklch(0.57 0.2 328.5 / 0.8), 1px 1px 2px -1px
+    oklch(0.57 0.2 328.5 / 0.4);
   --shadow-3d-lg:
-    4px 4px 0px 0px oklch(0.57 0.2 328.5 / 0.8),
-    2px 2px 4px -1px oklch(0.57 0.2 328.5 / 0.4);
+    4px 4px 0px 0px oklch(0.57 0.2 328.5 / 0.8), 2px 2px 4px -1px
+    oklch(0.57 0.2 328.5 / 0.4);
   --shadow-3d-xl:
-    6px 6px 0px 0px oklch(0.57 0.2 328.5 / 0.9),
-    3px 3px 6px -1px oklch(0.57 0.2 328.5 / 0.5);
+    6px 6px 0px 0px oklch(0.57 0.2 328.5 / 0.9), 3px 3px 6px -1px
+    oklch(0.57 0.2 328.5 / 0.5);
 }
 
 .dark {
   --shadow-3d-xs: 2px 2px 0px 0px oklch(0.84 0.16 328.5 / 0.4);
   --shadow-3d-sm: 3px 3px 0px 0px oklch(0.84 0.16 328.5 / 0.6);
   --shadow-3d-md:
-    3px 3px 0px 0px oklch(0.84 0.16 328.5 / 0.8),
-    1px 1px 2px -1px oklch(0.84 0.16 328.5 / 0.4);
+    3px 3px 0px 0px oklch(0.84 0.16 328.5 / 0.8), 1px 1px 2px -1px
+    oklch(0.84 0.16 328.5 / 0.4);
   --shadow-3d-lg:
-    4px 4px 0px 0px oklch(0.84 0.16 328.5 / 0.8),
-    2px 2px 4px -1px oklch(0.84 0.16 328.5 / 0.4);
+    4px 4px 0px 0px oklch(0.84 0.16 328.5 / 0.8), 2px 2px 4px -1px
+    oklch(0.84 0.16 328.5 / 0.4);
   --shadow-3d-xl:
-    6px 6px 0px 0px oklch(0.84 0.16 328.5 / 0.9),
-    3px 3px 6px -1px oklch(0.84 0.16 328.5 / 0.5);
+    6px 6px 0px 0px oklch(0.84 0.16 328.5 / 0.9), 3px 3px 6px -1px
+    oklch(0.84 0.16 328.5 / 0.5);
 }
 
 /* Estilos personalizados para títulos con efecto neón cyan suavizado */
@@ -201,7 +209,7 @@
     135deg,
     oklch(0.84 0.16 328.5) 0%,
     /* Rosa brillante modo oscuro */ oklch(0.75 0.18 184.1) 100%
-      /* Aguamarina modo oscuro */
+    /* Aguamarina modo oscuro */
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -238,7 +246,7 @@
     135deg,
     oklch(0.84 0.16 328.5) 0%,
     /* Rosa brillante modo oscuro */ oklch(0.75 0.18 184.1) 100%
-      /* Aguamarina modo oscuro */
+    /* Aguamarina modo oscuro */
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -256,7 +264,7 @@
     135deg,
     oklch(0.65 0.16 328.5) 0%,
     /* Rosa más intenso */ oklch(0.82 0.08 184.1) 100%
-      /* Aguamarina más intenso */
+    /* Aguamarina más intenso */
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -270,7 +278,7 @@
     135deg,
     oklch(0.89 0.18 328.5) 0%,
     /* Rosa más brillante */ oklch(0.8 0.2 184.1) 100%
-      /* Aguamarina más brillante */
+    /* Aguamarina más brillante */
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -284,7 +292,8 @@
 
 /* Animaciones personalizadas para la página de Proceso */
 @keyframes blob {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(0, 0) scale(1);
   }
   33% {
@@ -305,7 +314,8 @@
 }
 
 @keyframes gradient-x {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -386,7 +396,7 @@
     oklch(0.98 0.008 328.5) 0%,
     /* Rosa muy claro */ oklch(0.99 0.005 184.1) 50%,
     /* Blanco aguamarina */ oklch(0.97 0.01 184.1) 100%
-      /* Aguamarina muy claro */
+    /* Aguamarina muy claro */
   );
 }
 
@@ -851,13 +861,12 @@ main > section:first-of-type {
 }
 
 .neon-theme-soft {
-  text-shadow: 
+  text-shadow:
     0 0 5px oklch(var(--primary) / 0.3),
     0 0 10px oklch(var(--primary) / 0.2),
     0 0 15px oklch(var(--primary) / 0.1);
   filter: brightness(1.1) contrast(1.05);
 }
-
 
 /* ===========================================
    FOOTER GLASS MORPHISM - WEBCODE
