@@ -314,7 +314,13 @@ export const ICON_COMPATIBILITY_MAP = {
   cpu: HiOutlineCpuChip,
   paint: HiOutlinePaintBrush,
   "paint-brush": HiOutlinePaintBrush,
+  palette: HiOutlinePaintBrush,
   code: HiOutlineCodeBracket,
+  
+  // Métricas y tendencias (Lucide)
+  "trending-up": TrendingUp,
+  "trending-down": TrendingDown,
+  "bar-chart": BarChart3,
 
   // Estados y feedback (Feather)
   check: FiCheck,
