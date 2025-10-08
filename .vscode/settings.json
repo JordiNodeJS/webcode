@@ -2,5 +2,6 @@
     "editor.defaultFormatter": "biomejs.biome",
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
-    "files.autoSave": "onFocusChange"
+    "files.autoSave": "off",
+    "editor.formatOnType": true
 }

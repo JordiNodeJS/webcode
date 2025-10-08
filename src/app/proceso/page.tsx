@@ -185,7 +185,7 @@ const canales = [
     descripcion: "Reuniones semanales de seguimiento"
   },
   {
-    icono: "💼",
+    icono: "💻",
     titulo: "Slack/Teams",
     descripcion: "Para proyectos enterprise"
   }
