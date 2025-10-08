@@ -1,0 +1,10 @@
+[
+    {
+        "key": "ctrl+alt+f",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "pnpm biome format --write \"${file}\"\n"
+        },
+        "when": "editorTextFocus && resourceExtname =~ /\\.(ts|tsx|js|jsx)$/"
+    }
+]
