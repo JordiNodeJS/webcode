@@ -1,12 +1,5 @@
 "use client";
 
-import {
-  ArrowLeft,
-  CheckCircle,
-  ExternalLink,
-  FileText,
-  TrendingUp
-} from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
@@ -14,6 +7,13 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { StatisticsModal } from "@/components/ui/statistics-modal";
+import {
+  ArrowLeft,
+  CheckCircle,
+  ExternalLink,
+  FileText,
+  TrendingUp
+} from "@/lib/icons";
 
 export default function DocumentationSourcesPageClient() {
   const [modalOpen, setModalOpen] = useState<string | null>(null);

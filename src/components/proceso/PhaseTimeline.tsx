@@ -2,27 +2,33 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
-import { SvgIcon } from "@/components/ui/svg-icon";
+import { Icon } from "@/components/ui/Icon";
+import { 
+  HiOutlineCodeBracket as Code, 
+  HiOutlinePaintBrush as Palette, 
+  Search, 
+  TrendingUp 
+} from "@/lib/icons";
 
 // Componente para iconos SVG de las fases usando el sistema centralizado
 const PhaseIcon = ({ phase }: { phase: number }) => {
   const icons = {
-    1: "search", // Fase 1: Investigación y Análisis
-    2: "palette", // Fase 2: Diseño y Prototipado
-    3: "code", // Fase 3: Desarrollo
-    4: "trending-up" // Fase 4: Launch & Optimización
+    1: Search, // Fase 1: Investigación y Análisis
+    2: Palette, // Fase 2: Diseño y Prototipado
+    3: Code, // Fase 3: Desarrollo
+    4: TrendingUp // Fase 4: Launch & Optimización
   };
 
-  const iconName = icons[phase as keyof typeof icons];
+  const IconComponent = icons[phase as keyof typeof icons];
 
-  if (!iconName) return null;
+  if (!IconComponent) return null;
 
   return (
-    <SvgIcon
-      name={iconName}
+    <Icon
+      icon={IconComponent}
       size="xl"
       variant="primary"
-      title={`Fase ${phase}`}
+      aria-label={`Fase ${phase}`}
     />
   );
 };
