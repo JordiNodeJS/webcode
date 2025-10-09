@@ -8,9 +8,11 @@
     "build": "next build --turbopack && node scripts/extract-css-chunks.mjs",
     "start": "next start",
     "kill-ports": "pnpm dlx kill-port 3000 3001 3002",
-    "lint": "biome check .",
-    "lint:fix": "biome check --write .",
+    "lint": "pnpm dlx @biomejs/biome check .",
+    "lint:fix": "pnpm dlx @biomejs/biome check --write .",
     "format": "pnpm dlx prettier --write .",
+    "format:biome": "pnpm dlx @biomejs/biome format src/ --write",
+    "format:current": "pnpm dlx @biomejs/biome format --write",
     "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
@@ -78,7 +80,10 @@
     ]
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,css,scss,md,html,mdx,css,scss,svg,tsx,ts,jsx,js}": [
+    "*.{js,jsx,ts,tsx,json}": [
+      "pnpm dlx @biomejs/biome check --write"
+    ],
+    "*.{css,scss,md,html,mdx,svg}": [
       "pnpm dlx prettier --write"
     ]
   }
