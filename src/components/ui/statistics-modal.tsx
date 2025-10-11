@@ -1,7 +1,7 @@
 "use client";
 
-import { ExternalLink, X } from "lucide-react";
 import { useId } from "react";
+import { ExternalLink, X } from "@/lib/icons";
 import { Button } from "./button";
 
 interface StatisticsModalProps {

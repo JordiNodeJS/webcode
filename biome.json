@@ -1,8 +1,7 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.5/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.2.3/schema.json",
   "formatter": {
     "enabled": true,
-    "formatWithErrors": false,
     "indentStyle": "space",
     "indentWidth": 2,
     "lineWidth": 80
@@ -24,11 +23,6 @@
     }
   },
   "javascript": {
-    "formatter": {
-      "quoteStyle": "double",
-      "semicolons": "always",
-      "trailingCommas": "none"
-    },
     "globals": ["React", "JSX"]
   },
   "overrides": [
@@ -45,7 +39,8 @@
     }
   ],
   "files": {
-    "includes": ["src/**/*"],
+    "includes": ["src/**/*.{ts,tsx}"],
+    "maxSize": 1048576,
     "ignoreUnknown": true
   }
 }
