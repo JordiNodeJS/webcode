@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.3/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.2.5/schema.json",
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
@@ -33,6 +33,16 @@
           "suspicious": {
             "noExplicitAny": "error",
             "noUnknownAtRules": "error"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["src/components/blog/MarkdownRenderer.tsx"],
+      "linter": {
+        "rules": {
+          "performance": {
+            "noImgElement": "off"
           }
         }
       }

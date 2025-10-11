@@ -10,7 +10,7 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle
+  CardTitle,
 } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { SingleEmojiToSvg } from "@/components/ui/emoji-to-svg";
@@ -21,7 +21,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
@@ -30,7 +30,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue
+  SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -39,7 +39,7 @@ import {
   ArrowRight,
   CheckCircle,
   Loader2,
-  Send
+  Send,
 } from "@/lib/icons";
 import { type BriefingFormData, briefingFormSchema } from "@/types/briefing";
 
@@ -123,8 +123,8 @@ export function BriefingForm() {
       comoConociste: "google",
 
       // RGPD
-      gdprConsent: false
-    }
+      gdprConsent: false,
+    },
   });
 
   // Guardar borrador en localStorage
@@ -163,8 +163,8 @@ export function BriefingForm() {
         body: JSON.stringify({
           ...data,
           timestamp: new Date().toISOString(),
-          userAgent: navigator.userAgent
-        })
+          userAgent: navigator.userAgent,
+        }),
       });
 
       if (!response.ok) {
@@ -182,7 +182,7 @@ export function BriefingForm() {
       await new Promise((resolve) => setTimeout(resolve, 500));
       setFormStatus("error");
       setErrorMessage(
-        error instanceof Error ? error.message : "Error inesperado"
+        error instanceof Error ? error.message : "Error inesperado",
       );
     }
   };
@@ -212,12 +212,12 @@ export function BriefingForm() {
       const response = await fetch("/api/briefing/download", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           ...formData,
-          timestamp: new Date().toISOString()
-        })
+          timestamp: new Date().toISOString(),
+        }),
       });
 
       if (!response.ok) throw new Error("Error al generar el PDF");
@@ -508,7 +508,7 @@ function getStepTitle(step: number): string {
     "Funcionalidades Requeridas",
     "Estilo Visual y Marca",
     "Contenidos",
-    "Restricciones Técnicas y Resumen"
+    "Restricciones Técnicas y Resumen",
   ];
   return titles[step - 1] || "";
 }
@@ -521,7 +521,7 @@ function getStepDescription(step: number): string {
     "Especifica qué debe hacer tu sitio web",
     "Describe cómo quieres que se vea tu web",
     "Información sobre el contenido de tu web",
-    "Detalles técnicos y confirmación final"
+    "Detalles técnicos y confirmación final",
   ];
   return descriptions[step - 1] || "";
 }
@@ -533,20 +533,20 @@ function getFieldsForStep(step: number): string[] {
       "objetivoPrincipal",
       "problemasResolver",
       "presupuestoEstimado",
-      "plazoPreferido"
+      "plazoPreferido",
     ],
     3: ["publicoObjetivo", "dispositivosPrincipales", "idiomasNecesarios"],
     4: ["tipoProyecto", "funcionalidadesEsenciales"],
     5: ["tieneIdentidadCorporativa", "tonoComunicacion"],
     6: ["contenidosDisponibles", "numerosPaginasEstimadas"],
-    7: ["gdprConsent"]
+    7: ["gdprConsent"],
   };
   return fieldsByStep[step] || [];
 }
 
 function renderStepContent(
   step: number,
-  form: UseFormReturn<BriefingFormData>
+  form: UseFormReturn<BriefingFormData>,
 ) {
   switch (step) {
     case 1:
@@ -636,7 +636,7 @@ function Step1ContactInfo({ form }: { form: UseFormReturn<BriefingFormData> }) {
 }
 
 function Step2ProjectGoals({
-  form
+  form,
 }: {
   form: UseFormReturn<BriefingFormData>;
 }) {
@@ -760,7 +760,7 @@ function Step2ProjectGoals({
 }
 
 function Step3TargetAudience({
-  form
+  form,
 }: {
   form: UseFormReturn<BriefingFormData>;
 }) {
@@ -828,7 +828,7 @@ function Step3TargetAudience({
                 { value: "movil", label: "Móvil" },
                 { value: "tablet", label: "Tablet" },
                 { value: "desktop", label: "Desktop" },
-                { value: "todos", label: "Todos por igual" }
+                { value: "todos", label: "Todos por igual" },
               ].map((dispositivo) => (
                 <FormField
                   key={dispositivo.value}
@@ -847,13 +847,13 @@ function Step3TargetAudience({
                             return checked
                               ? field.onChange([
                                   ...currentValue,
-                                  dispositivo.value
+                                  dispositivo.value,
                                 ])
                               : field.onChange(
                                   currentValue.filter(
                                     (value: string) =>
-                                      value !== dispositivo.value
-                                  )
+                                      value !== dispositivo.value,
+                                  ),
                                 );
                           }}
                         />
@@ -884,7 +884,7 @@ function Step3TargetAudience({
                 { value: "en", label: "Inglés" },
                 { value: "fr", label: "Francés" },
                 { value: "de", label: "Alemán" },
-                { value: "otro", label: "Otro" }
+                { value: "otro", label: "Otro" },
               ].map((idioma) => (
                 <FormField
                   key={idioma.value}
@@ -901,8 +901,8 @@ function Step3TargetAudience({
                               ? field.onChange([...currentValue, idioma.value])
                               : field.onChange(
                                   currentValue.filter(
-                                    (value: string) => value !== idioma.value
-                                  )
+                                    (value: string) => value !== idioma.value,
+                                  ),
                                 );
                           }}
                         />
@@ -924,7 +924,7 @@ function Step3TargetAudience({
 }
 
 function Step4Functionality({
-  form
+  form,
 }: {
   form: UseFormReturn<BriefingFormData>;
 }) {
@@ -983,7 +983,7 @@ function Step4Functionality({
                 "Descargas (PDFs, docs)",
                 "Área de clientes",
                 "Integración redes sociales",
-                "Newsletter"
+                "Newsletter",
               ].map((funcionalidad) => (
                 <FormField
                   key={funcionalidad}
@@ -1000,8 +1000,8 @@ function Step4Functionality({
                               ? field.onChange([...currentValue, funcionalidad])
                               : field.onChange(
                                   currentValue.filter(
-                                    (value: string) => value !== funcionalidad
-                                  )
+                                    (value: string) => value !== funcionalidad,
+                                  ),
                                 );
                           }}
                         />
@@ -1298,7 +1298,7 @@ function Step6Content({ form }: { form: UseFormReturn<BriefingFormData> }) {
 }
 
 function Step7TechAndConsent({
-  form
+  form,
 }: {
   form: UseFormReturn<BriefingFormData>;
 }) {

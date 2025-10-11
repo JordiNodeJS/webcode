@@ -5,7 +5,7 @@ import {
   Accordion,
   AccordionContent,
   AccordionItem,
-  AccordionTrigger
+  AccordionTrigger,
 } from "@/components/ui/accordion";
 
 interface Fase {
@@ -73,7 +73,7 @@ const activityExplanations: Record<string, string> = {
     "Te enseñamos a entender los números y gráficos de las estadísticas. No solo instalarlas, sino saber interpretarlas para tomar decisiones inteligentes sobre tu negocio.",
 
   "Training del cliente (presencial BCN o remoto)":
-    "Te damos formación personalizada para que sepas gestionar tu web tú mismo: actualizar contenidos, subir fotos, cambiar precios, publicar noticias... Todo de forma visual y fácil, sin necesidad de saber programar."
+    "Te damos formación personalizada para que sepas gestionar tu web tú mismo: actualizar contenidos, subir fotos, cambiar precios, publicar noticias... Todo de forma visual y fácil, sin necesidad de saber programar.",
 };
 
 export default function PhaseDetails({ fases }: PhaseDetailsProps) {

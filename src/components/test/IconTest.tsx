@@ -4,7 +4,7 @@ import { SingleEmojiToSvg } from "@/components/ui/emoji-to-svg";
 import {
   QualityIcon,
   WebCodeDev,
-  WebCodeLogo
+  WebCodeLogo,
 } from "@/components/ui/webcode-icons";
 
 /**

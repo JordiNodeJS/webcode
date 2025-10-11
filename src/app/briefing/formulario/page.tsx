@@ -10,7 +10,7 @@ const SKELETON_KEYS = ["a", "b", "c", "d", "e", "f"] as const;
 const BriefingForm = dynamic(
   () =>
     import("@/components/briefing/BriefingForm").then((m) => ({
-      default: m.BriefingForm
+      default: m.BriefingForm,
     })),
   {
     loading: () => (
@@ -24,8 +24,8 @@ const BriefingForm = dynamic(
           </div>
         </div>
       </div>
-    )
-  }
+    ),
+  },
 );
 
 export const metadata: Metadata = generateSEOMetadata({
@@ -37,9 +37,9 @@ export const metadata: Metadata = generateSEOMetadata({
     "requisitos proyecto web",
     "consulta proyecto digital",
     "formulario desarrollo web",
-    "briefing online Barcelona"
+    "briefing online Barcelona",
   ],
-  canonical: "https://webcode.es/briefing/formulario"
+  canonical: "https://webcode.es/briefing/formulario",
 });
 
 export default function BriefingFormularioPage() {

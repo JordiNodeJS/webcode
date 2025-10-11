@@ -26,8 +26,8 @@ const briefingFormServerSchema = briefingFormSchema.extend({
     .string()
     .optional()
     .refine((val) => !val || val.trim() === "", {
-      message: "Bot detected"
-    })
+      message: "Bot detected",
+    }),
 });
 
 export async function POST(request: NextRequest) {
@@ -51,8 +51,8 @@ export async function POST(request: NextRequest) {
         ip: clientIP,
         referer,
         timestamp: new Date().toISOString(),
-        userAgent: validatedData.userAgent || "unknown"
-      }
+        userAgent: validatedData.userAgent || "unknown",
+      },
     };
 
     // Enviar email con Resend
@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       message: "Briefing enviado correctamente",
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
   } catch (error) {
     console.error("❌ Error en formulario de briefing:", error);
@@ -76,9 +76,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error: "Datos del formulario inválidos",
-          details: error.issues
+          details: error.issues,
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -86,9 +86,9 @@ export async function POST(request: NextRequest) {
       {
         error: "Error interno del servidor",
         message:
-          "No se pudo procesar tu briefing. Por favor, inténtalo de nuevo."
+          "No se pudo procesar tu briefing. Por favor, inténtalo de nuevo.",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -97,7 +97,7 @@ export async function POST(request: NextRequest) {
 async function sendBriefingEmailWithResend(
   briefingData: z.infer<typeof briefingFormServerSchema> & {
     metadata: RequestMetadata;
-  }
+  },
 ): Promise<EmailResponse> {
   try {
     const emailContent = {
@@ -106,7 +106,7 @@ async function sendBriefingEmailWithResend(
       subject: `Nuevo Briefing de Proyecto: ${briefingData.empresa || briefingData.nombre}`,
       html: generateBriefingEmailTemplate(briefingData),
       text: generateBriefingPlainTextEmail(briefingData),
-      replyTo: briefingData.email
+      replyTo: briefingData.email,
     };
 
     const resend = await getResend();
@@ -121,14 +121,16 @@ async function sendBriefingEmailWithResend(
     console.error("❌ Error en sendBriefingEmailWithResend:", error);
     return {
       success: false,
-      error: error instanceof Error ? error.message : "Error desconocido"
+      error: error instanceof Error ? error.message : "Error desconocido",
     };
   }
 }
 
 // Template de email HTML para briefing
 function generateBriefingEmailTemplate(
-  data: z.infer<typeof briefingFormServerSchema> & { metadata: RequestMetadata }
+  data: z.infer<typeof briefingFormServerSchema> & {
+    metadata: RequestMetadata;
+  },
 ): string {
   return `
     <!DOCTYPE html>
@@ -448,7 +450,9 @@ function generateBriefingEmailTemplate(
 
 // Template de email en texto plano para briefing
 function generateBriefingPlainTextEmail(
-  data: z.infer<typeof briefingFormServerSchema> & { metadata: RequestMetadata }
+  data: z.infer<typeof briefingFormServerSchema> & {
+    metadata: RequestMetadata;
+  },
 ): string {
   return `
 📋 NUEVO BRIEFING DE PROYECTO - WEBCODE
@@ -495,7 +499,7 @@ Páginas Estimadas: ${data.numerosPaginasEstimadas}
 Necesita Ayuda: ${[
     data.necesitaRedaccion ? "Redacción" : "",
     data.necesitaFotografia ? "Fotografía" : "",
-    data.necesitaVideos ? "Videos" : ""
+    data.necesitaVideos ? "Videos" : "",
   ]
     .filter(Boolean)
     .join(", ")}
@@ -534,7 +538,7 @@ function formatPresupuesto(presupuesto: string): string {
     "3000-8000": "3.000€ - 8.000€",
     "8000-15000": "8.000€ - 15.000€",
     "15000-30000": "15.000€ - 30.000€",
-    "30000+": "Más de 30.000€"
+    "30000+": "Más de 30.000€",
   };
   return presupuestoLabels[presupuesto] || presupuesto;
 }
@@ -547,7 +551,7 @@ function formatPlazo(plazo: string): string {
     "2-3-meses": "2-3 meses",
     "3-6-meses": "3-6 meses",
     "6+ meses": "Más de 6 meses",
-    flexible: "Flexible"
+    flexible: "Flexible",
   };
   return plazoLabels[plazo] || plazo;
 }
@@ -556,7 +560,7 @@ function formatIdentidad(identidad: string): string {
   const identidadLabels: Record<string, string> = {
     si: "Sí, completamente definida",
     no: "No, necesitamos crearla",
-    parcialmente: "Parcialmente, necesita mejoras"
+    parcialmente: "Parcialmente, necesita mejoras",
   };
   return identidadLabels[identidad] || identidad;
 }

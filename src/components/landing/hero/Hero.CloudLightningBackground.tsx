@@ -44,13 +44,13 @@ const BASE_CONFIG = {
   PARTICLE_MAX_SPEED: 0.25,
   LIGHT_RADIUS: 180, // Reducido para mejor rendimiento
   LIGHT_INTENSITY: 0.7,
-  ANIMATION_SPEED: 50 // Reducido FPS para ahorro de CPU
+  ANIMATION_SPEED: 50, // Reducido FPS para ahorro de CPU
 } as const;
 
 // Límites dinámicos para ahorro de CPU cuando el fondo se desvanece
 const MIN_LIGHT_RADIUS = Math.max(
   40,
-  Math.floor(BASE_CONFIG.LIGHT_RADIUS * 0.3)
+  Math.floor(BASE_CONFIG.LIGHT_RADIUS * 0.3),
 );
 const MIN_PARTICLE_COUNT = 8; // mínimo para mantener algo de presencia si no está totalmente oculto
 
@@ -68,7 +68,7 @@ const createThemeConfig = (theme: "light" | "dark") => {
       LIGHTNING_COLOR: lightningColor,
       BACKGROUND_COLOR: `rgba(15, 23, 42, 0.9)`, // Color de fondo oscuro del tema (#0f172a)
       LIGHT_OPACITY: 0.75,
-      CLOUD_BASE_OPACITY: 0.06
+      CLOUD_BASE_OPACITY: 0.06,
     };
   } else {
     // Modo claro: paleta completa WebCode rosa-aguamarina
@@ -80,7 +80,7 @@ const createThemeConfig = (theme: "light" | "dark") => {
       LIGHTNING_COLOR: lightningColor,
       BACKGROUND_COLOR: `rgba(244, 251, 252, 0.85)`, // Fondo claro del tema (#f4fbfc)
       LIGHT_OPACITY: 0.6,
-      CLOUD_BASE_OPACITY: 0.12
+      CLOUD_BASE_OPACITY: 0.12,
     };
   }
 };
@@ -103,7 +103,7 @@ export function CloudLightningBackground() {
   const fadeEnd = 800; // px hasta desaparecer
   const progress = Math.min(
     1,
-    Math.max(0, (scroll.y - fadeStart) / Math.max(1, fadeEnd - fadeStart))
+    Math.max(0, (scroll.y - fadeStart) / Math.max(1, fadeEnd - fadeStart)),
   );
   const opacity = 1 - progress; // 1 -> 0
 
@@ -118,7 +118,7 @@ export function CloudLightningBackground() {
       // Durante SSR/hidratación, usar configuración neutral
       return {
         ...BASE_CONFIG,
-        ...createThemeConfig("light") // Default neutral
+        ...createThemeConfig("light"), // Default neutral
       };
     }
 
@@ -127,7 +127,7 @@ export function CloudLightningBackground() {
 
     return {
       ...BASE_CONFIG,
-      ...themeConfig
+      ...themeConfig,
     };
   }, [theme, resolvedTheme, mounted]);
 
@@ -155,13 +155,13 @@ export function CloudLightningBackground() {
                 currentConfig.PARTICLE_MIN_SIZE),
           opacity: currentConfig.CLOUD_BASE_OPACITY + Math.random() * 0.15,
           baseOpacity: currentConfig.CLOUD_BASE_OPACITY + Math.random() * 0.15,
-          brightness: 0
+          brightness: 0,
         });
       }
 
       return particles;
     },
-    [currentConfig]
+    [currentConfig],
   );
 
   // Función para calcular la iluminación de una partícula
@@ -170,7 +170,7 @@ export function CloudLightningBackground() {
       particle: CloudParticle,
       mouseX: number,
       mouseY: number,
-      effectiveRadius: number
+      effectiveRadius: number,
     ): number => {
       const dx = particle.x - mouseX;
       const dy = particle.y - mouseY;
@@ -182,7 +182,7 @@ export function CloudLightningBackground() {
         (1 - distance / effectiveRadius) * currentConfig.LIGHT_INTENSITY;
       return intensity ** 2; // Exponential falloff para efecto más dramático
     },
-    [currentConfig]
+    [currentConfig],
   );
 
   // Función principal de animación
@@ -213,7 +213,7 @@ export function CloudLightningBackground() {
         ? 0
         : Math.max(
             MIN_PARTICLE_COUNT,
-            Math.floor(BASE_CONFIG.PARTICLE_COUNT * opacityVal)
+            Math.floor(BASE_CONFIG.PARTICLE_COUNT * opacityVal),
           );
 
     // Aplicar opacidad global según scroll
@@ -232,7 +232,7 @@ export function CloudLightningBackground() {
         0,
         mouse.x,
         mouse.y,
-        effectiveRadius
+        effectiveRadius,
       );
 
       // Colores del tema WebCode para el efecto de iluminación
@@ -278,7 +278,7 @@ export function CloudLightningBackground() {
         particle,
         mouse.x,
         mouse.y,
-        effectiveRadius
+        effectiveRadius,
       );
       particle.brightness = lighting;
 
@@ -324,12 +324,12 @@ export function CloudLightningBackground() {
         0,
         particle.x,
         particle.y,
-        glowSize
+        glowSize,
       );
       gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${finalOpacity})`);
       gradient.addColorStop(
         0.4,
-        `rgba(${r}, ${g}, ${b}, ${finalOpacity * 0.6})`
+        `rgba(${r}, ${g}, ${b}, ${finalOpacity * 0.6})`,
       );
       gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
 
@@ -353,7 +353,7 @@ export function CloudLightningBackground() {
     const rect = canvasRef.current.getBoundingClientRect();
     mouseRef.current = {
       x: event.clientX - rect.left,
-      y: event.clientY - rect.top
+      y: event.clientY - rect.top,
     };
   }, []);
 
@@ -400,8 +400,8 @@ export function CloudLightningBackground() {
       },
       {
         threshold: 0.1,
-        rootMargin: "100px 0px 100px 0px"
-      }
+        rootMargin: "100px 0px 100px 0px",
+      },
     );
 
     if (containerRef.current) {
@@ -447,7 +447,7 @@ export function CloudLightningBackground() {
         ref={canvasRef}
         className={`${styles.canvas} w-full h-full pointer-events-auto`}
         style={{
-          display: "block"
+          display: "block",
         }}
         aria-label="Fondo interactivo con nubes que se iluminan al pasar el cursor"
       />

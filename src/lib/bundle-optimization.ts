@@ -8,14 +8,14 @@ import { lazy } from "react";
 // Lazy load heavy animation components only when they're about to be visible
 export const LazyCloudLightningBackground = lazy(() =>
   import("@/components/landing/hero").then((mod) => ({
-    default: mod.CloudLightningBackground
-  }))
+    default: mod.CloudLightningBackground,
+  })),
 );
 
 export const LazyServicesSection = lazy(() =>
   import("@/components/landing/services").then((mod) => ({
-    default: mod.ServicesSection
-  }))
+    default: mod.ServicesSection,
+  })),
 );
 
 // Preload critical components during idle time
@@ -43,7 +43,7 @@ export const logBundleMetrics = () => {
 // Dynamic import helper with error handling
 export const safeDynamicImport = async <T>(
   importFn: () => Promise<T>,
-  fallback?: T
+  fallback?: T,
 ) => {
   try {
     return await importFn();

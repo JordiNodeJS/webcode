@@ -4,7 +4,7 @@ import { briefingFormSchema } from "@/types/briefing";
 
 // Esquema de validación para el servidor
 const briefingFormServerSchema = briefingFormSchema.extend({
-  timestamp: z.string()
+  timestamp: z.string(),
 });
 
 export async function POST(request: NextRequest) {
@@ -20,15 +20,15 @@ export async function POST(request: NextRequest) {
     // Retornar PDF como respuesta
     const arrayBuffer = pdfBuffer.buffer.slice(
       pdfBuffer.byteOffset,
-      pdfBuffer.byteOffset + pdfBuffer.byteLength
+      pdfBuffer.byteOffset + pdfBuffer.byteLength,
     ) as ArrayBuffer;
     return new Response(arrayBuffer, {
       status: 200,
       headers: {
         "Content-Type": "application/pdf",
         "Content-Disposition": `attachment; filename="briefing-${validatedData.nombre.replace(/\s+/g, "-").toLowerCase()}-${new Date().toISOString().split("T")[0]}.pdf"`,
-        "Cache-Control": "no-cache"
-      }
+        "Cache-Control": "no-cache",
+      },
     });
   } catch (error) {
     console.error("❌ Error generando PDF de briefing:", error);
@@ -37,25 +37,25 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error: "Datos del formulario inválidos",
-          details: error.issues
+          details: error.issues,
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     return NextResponse.json(
       {
         error: "Error al generar el PDF",
-        message: "No se pudo generar el PDF. Por favor, inténtalo de nuevo."
+        message: "No se pudo generar el PDF. Por favor, inténtalo de nuevo.",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
 // Función para generar el PDF del briefing
 async function generateBriefingPDF(
-  data: z.infer<typeof briefingFormServerSchema>
+  data: z.infer<typeof briefingFormServerSchema>,
 ): Promise<Uint8Array> {
   // Dynamic import to reduce bundle size - only load jsPDF when needed
   const { default: jsPDF } = await import("jspdf");
@@ -95,7 +95,7 @@ async function generateBriefingPDF(
   const addField = (
     label: string,
     value: string | string[] | boolean | undefined,
-    required: boolean = false
+    required: boolean = false,
   ) => {
     if (yPosition > 270) {
       doc.addPage();
@@ -145,7 +145,7 @@ async function generateBriefingPDF(
   doc.text(
     `Generado el ${new Date(data.timestamp).toLocaleString("es-ES")}`,
     margin,
-    25
+    25,
   );
 
   yPosition = 45;
@@ -169,7 +169,7 @@ async function generateBriefingPDF(
   addField(
     "Presupuesto Estimado",
     formatPresupuesto(data.presupuestoEstimado),
-    true
+    true,
   );
   addField("Plazo Preferido", formatPlazo(data.plazoPreferido), true);
 
@@ -192,7 +192,7 @@ async function generateBriefingPDF(
   addField(
     "Identidad Corporativa",
     formatIdentidad(data.tieneIdentidadCorporativa),
-    true
+    true,
   );
   addField("Tiene Logotipos", data.tieneLogotipos);
   addField("Colores Preferidos", data.coloresPreferidos);
@@ -206,7 +206,7 @@ async function generateBriefingPDF(
   addField(
     "Número de Páginas Estimadas",
     formatPaginas(data.numerosPaginasEstimadas),
-    true
+    true,
   );
   addField("Necesita Redacción", data.necesitaRedaccion);
   addField("Necesita Fotografía", data.necesitaFotografia);
@@ -264,7 +264,7 @@ function formatPresupuesto(presupuesto: string): string {
     "3000-8000": "3.000€ - 8.000€",
     "8000-15000": "8.000€ - 15.000€",
     "15000-30000": "15.000€ - 30.000€",
-    "30000+": "Más de 30.000€"
+    "30000+": "Más de 30.000€",
   };
   return presupuestoLabels[presupuesto] || presupuesto;
 }
@@ -275,7 +275,7 @@ function formatPlazo(plazo: string): string {
     urgente: "Urgente (menos de 1 mes)",
     "1-2-meses": "1-2 meses",
     "3-6-meses": "3-6 meses",
-    flexible: "Flexible"
+    flexible: "Flexible",
   };
   return plazoLabels[plazo] || plazo;
 }
@@ -284,7 +284,7 @@ function formatIdentidad(identidad: string): string {
   const identidadLabels: Record<string, string> = {
     si: "Sí, completamente definida",
     no: "No, necesitamos crearla",
-    parcialmente: "Parcialmente, necesita mejoras"
+    parcialmente: "Parcialmente, necesita mejoras",
   };
   return identidadLabels[identidad] || identidad;
 }
@@ -296,7 +296,7 @@ function formatPaginas(paginas: string): string {
     "11-20": "11-20 páginas",
     "21-50": "21-50 páginas",
     ">50": "Más de 50 páginas",
-    "no-definido": "No definido"
+    "no-definido": "No definido",
   };
   return paginasLabels[paginas] || paginas;
 }
@@ -306,7 +306,7 @@ function formatCMS(cms: string): string {
     no: "No, prefiero delegar la gestión",
     "si-simple": "Sí, panel simple para textos e imágenes",
     "si-avanzado": "Sí, CMS completo (WordPress, etc.)",
-    "no-se": "No lo sé aún"
+    "no-se": "No lo sé aún",
   };
   return cmsLabels[cms] || cms;
 }

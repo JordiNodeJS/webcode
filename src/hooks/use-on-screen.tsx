@@ -10,7 +10,7 @@ import useIsomorphicEffect from "./use-isomorphic-effect";
  */
 const useOnScreen = (
   threshold: number = 0.1,
-  rootMargin: string = "0px"
+  rootMargin: string = "0px",
 ): { ref: React.RefObject<HTMLDivElement | null>; isIntersecting: boolean } => {
   const ref = useRef<HTMLDivElement>(null);
   const [isIntersecting, setIsIntersecting] = useState(false);
@@ -34,8 +34,8 @@ const useOnScreen = (
       },
       {
         threshold,
-        rootMargin
-      }
+        rootMargin,
+      },
     );
 
     if (ref.current) {

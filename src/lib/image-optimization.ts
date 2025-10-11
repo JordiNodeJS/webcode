@@ -17,20 +17,20 @@ export const imageConfig = {
       protocol: "https" as const,
       hostname: "**.vercel.app",
       port: "",
-      pathname: "/**"
+      pathname: "/**",
     },
     {
       protocol: "https" as const,
       hostname: "webcode.es",
       port: "",
-      pathname: "/**"
-    }
+      pathname: "/**",
+    },
   ],
   unoptimized: false,
   loader: "default" as const,
   loaderFile: "",
   path: "/_next/image",
-  disableStaticImages: false
+  disableStaticImages: false,
 };
 
 export const optimizedImageProps = {
@@ -39,17 +39,17 @@ export const optimizedImageProps = {
   placeholder: "blur" as const,
   priority: false, // Solo true para LCP images
   loading: "lazy" as const,
-  decoding: "async" as const
+  decoding: "async" as const,
 };
 
 /**
  * Helper function to get optimized image props
  */
 export function getOptimizedImageProps(
-  overrides: Partial<typeof optimizedImageProps> = {}
+  overrides: Partial<typeof optimizedImageProps> = {},
 ) {
   return {
     ...optimizedImageProps,
-    ...overrides
+    ...overrides,
   };
 }

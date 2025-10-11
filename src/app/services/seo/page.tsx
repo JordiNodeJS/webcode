@@ -1,6 +1,6 @@
 export const metadata = {
   title: "SEO & Marketing - WEBCODE",
-  description: "Servicios de SEO y marketing digital de WEBCODE."
+  description: "Servicios de SEO y marketing digital de WEBCODE.",
 };
 
 export default function SeoPage() {

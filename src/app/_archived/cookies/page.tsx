@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Cookies - WEBCODE (archived)",
-  description: "Archived: Placeholder moved to route group (cookies)."
+  description: "Archived: Placeholder moved to route group (cookies).",
 };
 
 export default function ArchivedCookiesPage() {

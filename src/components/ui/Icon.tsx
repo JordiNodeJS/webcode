@@ -15,7 +15,7 @@ const iconVariants = cva(
         lg: "h-6 w-6",
         xl: "h-8 w-8",
         "2xl": "h-10 w-10",
-        "3xl": "h-12 w-12"
+        "3xl": "h-12 w-12",
       },
       variant: {
         default: "text-current",
@@ -24,14 +24,14 @@ const iconVariants = cva(
         accent: "text-brutal-purple",
         muted: "text-neutral-500 dark:text-neutral-400",
         destructive: "text-red-600 dark:text-red-400",
-        success: "text-green-600 dark:text-green-400"
-      }
+        success: "text-green-600 dark:text-green-400",
+      },
     },
     defaultVariants: {
       size: "md",
-      variant: "default"
-    }
-  }
+      variant: "default",
+    },
+  },
 );
 
 interface IconProps extends VariantProps<typeof iconVariants> {
@@ -67,7 +67,7 @@ export function Icon({
   className,
   "aria-label": ariaLabel,
   onClick,
-  onKeyDown
+  onKeyDown,
 }: IconProps) {
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (onClick && (e.key === "Enter" || e.key === " ")) {

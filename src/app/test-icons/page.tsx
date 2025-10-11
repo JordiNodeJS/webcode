@@ -6,8 +6,8 @@ export const metadata: Metadata = {
   description: "Showcase del nuevo sistema de iconos multi-familia de WebCode",
   robots: {
     index: false,
-    follow: false
-  }
+    follow: false,
+  },
 };
 
 export default function TestIconsPage() {

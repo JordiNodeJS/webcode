@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 const CloudLightningBackground = dynamic(
   () =>
     import("@/components/landing/hero").then((m) => m.CloudLightningBackground),
-  { ssr: false, loading: () => null }
+  { ssr: false, loading: () => null },
 );
 
 export function CloudBgClient() {

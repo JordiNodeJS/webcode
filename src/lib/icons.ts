@@ -73,7 +73,7 @@ import {
   User,
   Users,
   XIcon as X,
-  Zap
+  Zap,
 } from "lucide-react";
 
 import {
@@ -86,7 +86,7 @@ import {
   FaReact,
   FaTwitter,
   FaWhatsapp,
-  FaYoutube
+  FaYoutube,
 } from "react-icons/fa6";
 
 import {
@@ -103,7 +103,7 @@ import {
   FiPhone,
   FiShare2,
   FiUpload,
-  FiX
+  FiX,
 } from "react-icons/fi";
 
 import {
@@ -119,7 +119,7 @@ import {
   HiOutlineRocketLaunch,
   HiOutlineShieldCheck,
   HiOutlineSparkles,
-  HiOutlineXCircle
+  HiOutlineXCircle,
 } from "react-icons/hi2";
 
 import {
@@ -135,7 +135,7 @@ import {
   PiShoppingBag,
   PiStar,
   PiStorefront,
-  PiWine
+  PiWine,
 } from "react-icons/pi";
 
 import {
@@ -143,7 +143,7 @@ import {
   RiFlashlightFill,
   RiLayoutGridFill,
   RiPaletteFill,
-  RiSparklingFill
+  RiSparklingFill,
 } from "react-icons/ri";
 
 // ===== RE-EXPORTS PARA USO EXTERNO =====
@@ -200,7 +200,7 @@ export {
   User,
   Users,
   X,
-  Zap
+  Zap,
 };
 // Font Awesome
 export {
@@ -213,7 +213,7 @@ export {
   FaReact,
   FaTwitter,
   FaWhatsapp,
-  FaYoutube
+  FaYoutube,
 };
 
 // Feather
@@ -231,7 +231,7 @@ export {
   FiPhone,
   FiShare2,
   FiUpload,
-  FiX
+  FiX,
 };
 
 // Heroicons
@@ -248,7 +248,7 @@ export {
   HiOutlineRocketLaunch,
   HiOutlineShieldCheck,
   HiOutlineSparkles,
-  HiOutlineXCircle
+  HiOutlineXCircle,
 };
 
 // Phosphor
@@ -265,7 +265,7 @@ export {
   PiShoppingBag,
   PiStar,
   PiStorefront,
-  PiWine
+  PiWine,
 };
 
 // Remix Icon
@@ -274,7 +274,7 @@ export {
   RiFlashlightFill,
   RiLayoutGridFill,
   RiPaletteFill,
-  RiSparklingFill
+  RiSparklingFill,
 };
 
 // ===== MAPA DE COMPATIBILIDAD =====
@@ -316,7 +316,7 @@ export const ICON_COMPATIBILITY_MAP = {
   "paint-brush": HiOutlinePaintBrush,
   palette: HiOutlinePaintBrush,
   code: HiOutlineCodeBracket,
-  
+
   // Métricas y tendencias (Lucide)
   "trending-up": TrendingUp,
   "trending-down": TrendingDown,
@@ -382,7 +382,7 @@ export const ICON_COMPATIBILITY_MAP = {
   // Tecnologías
   react: FaReact,
   nodejs: FaNodeJs,
-  figma: FaFigma
+  figma: FaFigma,
 } as const;
 
 export type IconName = keyof typeof ICON_COMPATIBILITY_MAP;
