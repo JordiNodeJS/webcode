@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { generateSEOMetadata } from "@/lib/seo-metadata";
 
+
 export const metadata: Metadata = generateSEOMetadata({
   title: "Servicios - WEBCODE | Desarrollo Web en Barcelona",
   description:

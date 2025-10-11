@@ -54,7 +54,7 @@ export function EmojiToSvg({
       const element = node as React.ReactElement<{
         children?: React.ReactNode;
       }>;
-      if (element.props && element.props.children) {
+      if (element.props?.children) {
         const processedChildren = React.Children.map(
           element.props.children,
           processChildren
