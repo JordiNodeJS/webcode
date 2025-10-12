@@ -11,7 +11,7 @@ import {
   CardContent,
   CardFooter,
   CardHeader,
-  CardTitle
+  CardTitle,
 } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -21,7 +21,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import {
@@ -29,7 +29,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue
+  SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useBotProtection, useRateLimit } from "@/hooks/useBotProtection";
@@ -46,7 +46,7 @@ const contactFormSchema = z.object({
     .enum(["web-development", "e-commerce", "seo", "consulting", "other"])
     .optional()
     .refine((val) => val !== undefined, {
-      message: "Por favor, selecciona un tipo de servicio"
+      message: "Por favor, selecciona un tipo de servicio",
     }),
   message: z
     .string()
@@ -60,8 +60,8 @@ const contactFormSchema = z.object({
     .string()
     .optional()
     .refine((val) => !val || val.trim() === "", {
-      message: "Este campo debe estar vacío"
-    })
+      message: "Este campo debe estar vacío",
+    }),
 });
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
@@ -71,7 +71,7 @@ const serviceOptions = [
   { value: "e-commerce", label: "Tienda Online (E-commerce)" },
   { value: "seo", label: "SEO y Posicionamiento" },
   { value: "consulting", label: "Consultoría Digital" },
-  { value: "other", label: "Otro (especificar en mensaje)" }
+  { value: "other", label: "Otro (especificar en mensaje)" },
 ];
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
@@ -85,7 +85,7 @@ export function ContactForm() {
     honeypotFieldName: "website",
     timeThreshold: 3000,
     maxSubmissions: 3,
-    cooldownPeriod: 60000
+    cooldownPeriod: 60000,
   });
 
   const rateLimit = useRateLimit(5, 300000); // 5 envíos por 5 minutos
@@ -98,8 +98,8 @@ export function ContactForm() {
       serviceType: undefined,
       message: "",
       gdprConsent: false,
-      website: "" // Campo honeypot
-    }
+      website: "", // Campo honeypot
+    },
   });
 
   const onSubmit = async (data: ContactFormData) => {
@@ -111,7 +111,7 @@ export function ContactForm() {
       if (!rateLimit.isAllowed()) {
         setFormStatus("error");
         setErrorMessage(
-          "Has enviado demasiados mensajes. Por favor, espera antes de intentar de nuevo."
+          "Has enviado demasiados mensajes. Por favor, espera antes de intentar de nuevo.",
         );
         return;
       }
@@ -121,7 +121,7 @@ export function ContactForm() {
       if (botDetection.isBot) {
         setFormStatus("error");
         setErrorMessage(
-          "Actividad sospechosa detectada. Por favor, verifica que eres humano."
+          "Actividad sospechosa detectada. Por favor, verifica que eres humano.",
         );
         console.warn("Bot detected:", botDetection.reasons);
         return;
@@ -131,7 +131,7 @@ export function ContactForm() {
       if (botProtection.isBlocked) {
         setFormStatus("error");
         setErrorMessage(
-          `Demasiados envíos. Inténtalo de nuevo en ${Math.ceil(botProtection.remainingCooldown / 1000)} segundos.`
+          `Demasiados envíos. Inténtalo de nuevo en ${Math.ceil(botProtection.remainingCooldown / 1000)} segundos.`,
         );
         return;
       }
@@ -141,15 +141,15 @@ export function ContactForm() {
         ...data,
         consentTimestamp: new Date().toISOString(),
         userAgent: navigator.userAgent,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
 
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
 
       if (!response.ok) {
@@ -167,7 +167,7 @@ export function ContactForm() {
       setErrorMessage(
         error instanceof Error
           ? error.message
-          : "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo."
+          : "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.",
       );
     }
   };

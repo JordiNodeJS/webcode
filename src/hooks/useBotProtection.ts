@@ -23,7 +23,7 @@ export function useBotProtection(config: BotProtectionConfig = {}) {
     honeypotFieldName = "website",
     timeThreshold = 3000, // 3 segundos mínimo
     maxSubmissions = 5,
-    cooldownPeriod = 60000 // 1 minuto
+    cooldownPeriod = 60000, // 1 minuto
   } = config;
 
   const [formStartTime, setFormStartTime] = useState<number>(0);
@@ -104,7 +104,7 @@ export function useBotProtection(config: BotProtectionConfig = {}) {
     return {
       isBot: score >= 50,
       reasons,
-      score
+      score,
     };
   }, [
     honeypotValue,
@@ -112,7 +112,7 @@ export function useBotProtection(config: BotProtectionConfig = {}) {
     timeThreshold,
     submissionCount,
     maxSubmissions,
-    isBlocked
+    isBlocked,
   ]);
 
   // Registrar envío
@@ -140,7 +140,7 @@ export function useBotProtection(config: BotProtectionConfig = {}) {
     submissionCount,
     remainingCooldown: isBlocked
       ? Math.max(0, cooldownPeriod - (Date.now() - lastSubmission))
-      : 0
+      : 0,
   };
 }
 
@@ -149,7 +149,7 @@ export function useBotProtection(config: BotProtectionConfig = {}) {
  */
 export function useRateLimit(
   maxRequests: number = 10,
-  windowMs: number = 60000
+  windowMs: number = 60000,
 ) {
   const [requests, setRequests] = useState<number[]>([]);
 
@@ -159,7 +159,7 @@ export function useRateLimit(
 
     // Filtrar requests dentro de la ventana de tiempo
     const recentRequests = requests.filter(
-      (timestamp) => timestamp > windowStart
+      (timestamp) => timestamp > windowStart,
     );
 
     if (recentRequests.length >= maxRequests) {
@@ -179,7 +179,7 @@ export function useRateLimit(
     isAllowed,
     reset,
     currentCount: requests.length,
-    remainingRequests: Math.max(0, maxRequests - requests.length)
+    remainingRequests: Math.max(0, maxRequests - requests.length),
   };
 }
 
@@ -220,13 +220,13 @@ export function useFormBotValidation() {
         /crypto/i,
         /free money/i,
         /click here/i,
-        /urgent/i
+        /urgent/i,
       ];
 
       const messageValue = data.message;
       if (messageValue && typeof messageValue === "string") {
         const hasSpamPattern = spamPatterns.some((pattern) =>
-          pattern.test(messageValue)
+          pattern.test(messageValue),
         );
         if (hasSpamPattern) {
           errors.push("Message contains suspicious content");
@@ -247,13 +247,13 @@ export function useFormBotValidation() {
       setValidationErrors(errors);
       return errors.length === 0;
     },
-    []
+    [],
   );
 
   return {
     formData,
     setFormData,
     validationErrors,
-    validateForm
+    validateForm,
   };
 }

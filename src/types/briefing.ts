@@ -28,14 +28,14 @@ export const briefingFormSchema = z.object({
     "3000-8000",
     "8000-15000",
     "15000-30000",
-    "30000+"
+    "30000+",
   ]),
   plazoPreferido: z.enum([
     "no-definido",
     "urgente",
     "1-2-meses",
     "3-6-meses",
-    "flexible"
+    "flexible",
   ]),
   fechaLanzamiento: z.string().optional(),
 
@@ -71,7 +71,7 @@ export const briefingFormSchema = z.object({
     "juvenil",
     "elegante",
     "tecnico",
-    "otro"
+    "otro",
   ]),
 
   // Contenidos
@@ -82,7 +82,7 @@ export const briefingFormSchema = z.object({
     "11-20",
     "21-50",
     ">50",
-    "no-definido"
+    "no-definido",
   ]),
   necesitaRedaccion: z.boolean(),
   necesitaFotografia: z.boolean(),
@@ -106,7 +106,7 @@ export const briefingFormSchema = z.object({
   // RGPD
   gdprConsent: z
     .boolean()
-    .refine((val) => val === true, "Debes aceptar la política de privacidad")
+    .refine((val) => val === true, "Debes aceptar la política de privacidad"),
 });
 
 export type BriefingFormData = z.infer<typeof briefingFormSchema>;

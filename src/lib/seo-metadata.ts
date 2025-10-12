@@ -29,7 +29,7 @@ export function generateSEOMetadata({
     "diseño web responsive",
     "SEO Barcelona",
     "desarrollo web moderno",
-    "startup web solutions"
+    "startup web solutions",
   ],
   canonical = "https://webcode.es",
   ogImage = "https://webcode.es/og-image.jpg",
@@ -40,7 +40,7 @@ export function generateSEOMetadata({
   modifiedTime,
   author = "WEBCODE Team",
   section,
-  tags = []
+  tags = [],
 }: SEOMetadataProps): Metadata {
   const _baseUrl = "https://webcode.es";
 
@@ -62,8 +62,8 @@ export function generateSEOMetadata({
         follow: true,
         "max-video-preview": -1,
         "max-image-preview": "large",
-        "max-snippet": -1
-      }
+        "max-snippet": -1,
+      },
     },
 
     // Canonical URL
@@ -72,8 +72,8 @@ export function generateSEOMetadata({
       languages: {
         "es-ES": canonical,
         "ca-ES": `${canonical}?lang=ca`,
-        "en-ES": `${canonical}?lang=en`
-      }
+        "en-ES": `${canonical}?lang=en`,
+      },
     },
 
     // Open Graph
@@ -91,20 +91,20 @@ export function generateSEOMetadata({
           width: 1200,
           height: 630,
           alt: title,
-          type: "image/jpeg"
+          type: "image/jpeg",
         },
         {
           url: "https://webcode.es/og-image-square.jpg",
           width: 600,
           height: 600,
           alt: title,
-          type: "image/jpeg"
-        }
+          type: "image/jpeg",
+        },
       ],
       ...(publishedTime && { publishedTime }),
       ...(modifiedTime && { modifiedTime }),
       ...(section && { section }),
-      ...(tags.length > 0 && { tags })
+      ...(tags.length > 0 && { tags }),
     },
 
     // Twitter Card
@@ -114,7 +114,7 @@ export function generateSEOMetadata({
       creator: "@webcode_es",
       title,
       description,
-      images: [ogImage]
+      images: [ogImage],
     },
 
     // Additional meta tags
@@ -152,7 +152,7 @@ export function generateSEOMetadata({
       audience: "all",
       rating: "general",
       coverage: "worldwide",
-      target: "all"
+      target: "all",
     },
 
     // App-specific
@@ -160,15 +160,15 @@ export function generateSEOMetadata({
     appleWebApp: {
       capable: true,
       title: "WEBCODE",
-      statusBarStyle: "default"
+      statusBarStyle: "default",
     },
 
     // Format detection
     formatDetection: {
       telephone: false,
       address: false,
-      email: false
-    }
+      email: false,
+    },
 
     // Verification (these would be added when available)
     // verification: {

@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { generateSEOMetadata } from "@/lib/seo-metadata";
 
-
 export const metadata: Metadata = generateSEOMetadata({
   title: "Servicios - WEBCODE | Desarrollo Web en Barcelona",
   description:
     "Listado de servicios de desarrollo web: landing pages, e-commerce, aplicaciones a medida, SEO y mantenimiento. WEBCODE - Barcelona.",
-  canonical: "https://webcode.es/servicios"
+  canonical: "https://webcode.es/servicios",
 });
 
 export default function ServiciosPage() {

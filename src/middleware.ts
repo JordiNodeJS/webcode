@@ -58,7 +58,7 @@ const maliciousPatterns = [
   // Directory traversal attempts
   /\.\.\//i,
   /\.trash\d+\//i,
-  /css\/index\.php$/i
+  /css\/index\.php$/i,
 ];
 
 // Lista de User-Agents sospechosos
@@ -79,7 +79,7 @@ const suspiciousUserAgents = [
   /bot/i,
   /crawler/i,
   /spider/i,
-  /scraper/i
+  /scraper/i,
 ];
 
 export function middleware(request: NextRequest) {
@@ -88,26 +88,26 @@ export function middleware(request: NextRequest) {
 
   // Verificar patrones maliciosos en la URL
   const isMaliciousPath = maliciousPatterns.some((pattern) =>
-    pattern.test(pathname)
+    pattern.test(pathname),
   );
 
   // Verificar User-Agent sospechoso
   const isSuspiciousUA = suspiciousUserAgents.some((pattern) =>
-    pattern.test(userAgent)
+    pattern.test(userAgent),
   );
 
   // Si es un request malicioso, devolver 403 inmediatamente
   if (isMaliciousPath || isSuspiciousUA) {
     console.log(
-      `🚫 Blocked malicious request: ${pathname} from unknown (UA: ${userAgent})`
+      `🚫 Blocked malicious request: ${pathname} from unknown (UA: ${userAgent})`,
     );
 
     return new NextResponse("Forbidden", {
       status: 403,
       headers: {
         "X-Robots-Tag": "noindex, nofollow",
-        "Cache-Control": "no-cache, no-store, must-revalidate"
-      }
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+      },
     });
   }
 
@@ -124,6 +124,6 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      */
-    "/((?!api|_next/static|_next/image|favicon.ico).*)"
-  ]
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
+  ],
 };

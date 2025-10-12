@@ -12,7 +12,7 @@ import {
   CheckCircle,
   ExternalLink,
   FileText,
-  TrendingUp
+  TrendingUp,
 } from "@/lib/icons";
 
 export default function DocumentationSourcesPageClient() {

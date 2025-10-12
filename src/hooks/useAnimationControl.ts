@@ -14,13 +14,13 @@ interface AnimationControlOptions {
  */
 export function useAnimationControl(
   ref: RefObject<HTMLElement | null>,
-  options: AnimationControlOptions = {}
+  options: AnimationControlOptions = {},
 ) {
   const {
     onEnterViewport,
     onExitViewport,
     threshold = 0.1,
-    rootMargin = "0px"
+    rootMargin = "0px",
   } = options;
 
   const [isVisible, setIsVisible] = useState(false);
@@ -33,7 +33,7 @@ export function useAnimationControl(
 
     // Respetar preferencias de accesibilidad
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
 
     if (prefersReducedMotion) {
@@ -64,8 +64,8 @@ export function useAnimationControl(
       },
       {
         threshold,
-        rootMargin
-      }
+        rootMargin,
+      },
     );
 
     if (ref.current) {

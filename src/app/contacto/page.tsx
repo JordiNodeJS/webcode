@@ -7,8 +7,8 @@ export const metadata: Metadata = {
     "Ponte en contacto con WEBCODE para solicitar presupuesto o consultar sobre nuestros servicios de desarrollo web profesional.",
   robots: {
     index: true,
-    follow: true
-  }
+    follow: true,
+  },
 };
 
 export default function ContactoPage() {

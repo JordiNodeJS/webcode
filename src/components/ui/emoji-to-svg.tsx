@@ -24,7 +24,7 @@ export function EmojiToSvg({
   size = "md",
   variant = "default",
   className = "",
-  inline = false
+  inline = false,
 }: EmojiToSvgProps) {
   const { replaceEmojisInText } = useEmojiReplacement();
 
@@ -57,11 +57,11 @@ export function EmojiToSvg({
       if (element.props?.children) {
         const processedChildren = React.Children.map(
           element.props.children,
-          processChildren
+          processChildren,
         );
         return React.cloneElement(element, {
           ...element.props,
-          children: processedChildren
+          children: processedChildren,
         });
       }
       return element;
@@ -101,7 +101,7 @@ export function SingleEmojiToSvg({
   size = "md",
   variant = "default",
   className = "",
-  fallback = true
+  fallback = true,
 }: SingleEmojiToSvgProps) {
   const { replaceEmoji, hasSvgEquivalent } = useEmojiReplacement();
 

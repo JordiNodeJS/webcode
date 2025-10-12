@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 export const alt = "WEBCODE - Soluciones Web Profesionales";
 export const size = {
   width: 1200,
-  height: 630
+  height: 630,
 };
 export const contentType = "image/png";
 
@@ -19,7 +19,7 @@ export default async function Image() {
         alignItems: "center",
         justifyContent: "center",
         color: "white",
-        fontFamily: "Arial, sans-serif"
+        fontFamily: "Arial, sans-serif",
       }}
     >
       <div
@@ -27,7 +27,7 @@ export default async function Image() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          textAlign: "center"
+          textAlign: "center",
         }}
       >
         <div
@@ -38,7 +38,7 @@ export default async function Image() {
             background: "linear-gradient(45deg, #ffffff, #e0e0e0)",
             backgroundClip: "text",
             WebkitBackgroundClip: "text",
-            color: "transparent"
+            color: "transparent",
           }}
         >
           WEBCODE
@@ -48,7 +48,7 @@ export default async function Image() {
             fontSize: 36,
             color: "#cccccc",
             maxWidth: 800,
-            lineHeight: 1.3
+            lineHeight: 1.3,
           }}
         >
           Desarrollo Web Profesional en Barcelona
@@ -57,7 +57,7 @@ export default async function Image() {
           style={{
             fontSize: 24,
             color: "#999999",
-            marginTop: 20
+            marginTop: 20,
           }}
         >
           Soluciones Digitales • Next.js • React • TypeScript
@@ -65,7 +65,7 @@ export default async function Image() {
       </div>
     </div>,
     {
-      ...size
-    }
+      ...size,
+    },
   );
 }

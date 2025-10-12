@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 
 const WSFadeIn = dynamic(() =>
-  import("@/components/animations/ws-fade-in").then((m) => m.WSFadeIn)
+  import("@/components/animations/ws-fade-in").then((m) => m.WSFadeIn),
 );
 
 import { generateSEOMetadata } from "@/lib/seo-metadata";
@@ -13,29 +13,37 @@ import { generateSEOMetadata } from "@/lib/seo-metadata";
 const PhaseTimeline = dynamic(
   () => import("@/components/proceso/PhaseTimeline"),
   {
-    loading: () => <div className="h-96 animate-pulse bg-muted/50 rounded-lg" />
-  }
+    loading: () => (
+      <div className="h-96 animate-pulse bg-muted/50 rounded-lg" />
+    ),
+  },
 );
 
 const PhaseDetails = dynamic(
   () => import("@/components/proceso/PhaseDetails"),
   {
-    loading: () => <div className="h-96 animate-pulse bg-muted/50 rounded-lg" />
-  }
+    loading: () => (
+      <div className="h-96 animate-pulse bg-muted/50 rounded-lg" />
+    ),
+  },
 );
 
 const QualityGuarantees = dynamic(
   () => import("@/components/proceso/QualityGuarantees"),
   {
-    loading: () => <div className="h-96 animate-pulse bg-muted/50 rounded-lg" />
-  }
+    loading: () => (
+      <div className="h-96 animate-pulse bg-muted/50 rounded-lg" />
+    ),
+  },
 );
 
 const CommunicationChannels = dynamic(
   () => import("@/components/proceso/CommunicationChannels"),
   {
-    loading: () => <div className="h-64 animate-pulse bg-muted/50 rounded-lg" />
-  }
+    loading: () => (
+      <div className="h-64 animate-pulse bg-muted/50 rounded-lg" />
+    ),
+  },
 );
 
 export const metadata: Metadata = generateSEOMetadata({
@@ -48,9 +56,9 @@ export const metadata: Metadata = generateSEOMetadata({
     "desarrollo web barcelona",
     "proceso web",
     "agencia web proceso",
-    "desarrollo transparente"
+    "desarrollo transparente",
   ],
-  canonical: "https://webcode.es/proceso"
+  canonical: "https://webcode.es/proceso",
 });
 
 // Datos de las fases
@@ -64,15 +72,15 @@ const fases = [
       "Análisis de necesidades del negocio",
       "Research de competencia y mercado",
       "Definición de objetivos y KPIs",
-      "Arquitectura de información"
+      "Arquitectura de información",
     ],
     entregables: [
       "Estrategia digital completa",
       "Wireframes interactivos",
       "Cronograma detallado",
-      "Brief técnico"
+      "Brief técnico",
     ],
-    participacion: "8-10 horas (discovery, content review)"
+    participacion: "8-10 horas (discovery, content review)",
   },
   {
     numero: 2,
@@ -84,15 +92,15 @@ const fases = [
       "Design system personalizado",
       "Wireframes y flujos básicos",
       "Mockups high-fidelity",
-      "Testing de usabilidad + Microsoft Clarity"
+      "Testing de usabilidad + Microsoft Clarity",
     ],
     entregables: [
       "Diseños finales listos",
       "Guía de estilo completa",
       "Wireframes validados",
-      "Report de testing UX"
+      "Report de testing UX",
     ],
-    participacion: "2-3 horas/semana (design feedback)"
+    participacion: "2-3 horas/semana (design feedback)",
   },
   {
     numero: 3,
@@ -104,15 +112,15 @@ const fases = [
       "Código limpio y escalable (Next.js 15 + React 19)",
       "Integración de herramientas (Analytics, pagos, APIs)",
       "Testing automatizado",
-      "Optimización de performance"
+      "Optimización de performance",
     ],
     entregables: [
       "Sitio completamente funcional",
       "Panel de administración",
       "Suite de testing",
-      "Documentación técnica"
+      "Documentación técnica",
     ],
-    participacion: "1-2 horas/semana (testing, reviews)"
+    participacion: "1-2 horas/semana (testing, reviews)",
   },
   {
     numero: 4,
@@ -123,72 +131,72 @@ const fases = [
       "Deploy en producción (blue-green deployment)",
       "Configuración de analytics completa",
       "Interpretación de analytics y herramientas",
-      "Training del cliente (presencial BCN o remoto)"
+      "Training del cliente (presencial BCN o remoto)",
     ],
     entregables: [
       "Sitio live y optimizado",
       "Documentación gestión",
       "Credenciales herramientas",
-      "30 días soporte premium"
+      "30 días soporte premium",
     ],
-    participacion: "4-6 horas (training, launch)"
-  }
+    participacion: "4-6 horas (training, launch)",
+  },
 ];
 
 const garantias = [
   {
     icono: "✅",
     titulo: "Updates semanales",
-    descripcion: "Demos funcionales cada semana"
+    descripcion: "Demos funcionales cada semana",
   },
   {
     icono: "🔄",
     titulo: "2 rounds revisiones",
-    descripcion: "Por cada fase del proyecto"
+    descripcion: "Por cada fase del proyecto",
   },
   {
     icono: "📂",
     titulo: "Código fuente",
-    descripcion: "Acceso completo al código"
+    descripcion: "Acceso completo al código",
   },
   {
     icono: "📚",
     titulo: "Documentación",
-    descripcion: "Técnica y de usuario detallada"
+    descripcion: "Técnica y de usuario detallada",
   },
   {
     icono: "🛡️",
     titulo: "30 días soporte",
-    descripcion: "Post-lanzamiento incluido"
+    descripcion: "Post-lanzamiento incluido",
   },
   {
     icono: "🔒",
     titulo: "Backup completo",
-    descripcion: "Versionado del proyecto"
-  }
+    descripcion: "Versionado del proyecto",
+  },
 ];
 
 const canales = [
   {
     icono: "📧",
     titulo: "Email prioritario",
-    descripcion: "Respuesta <4h en horario laboral"
+    descripcion: "Respuesta <4h en horario laboral",
   },
   {
     icono: "💬",
     titulo: "WhatsApp Business",
-    descripcion: "Para consultas rápidas"
+    descripcion: "Para consultas rápidas",
   },
   {
     icono: "📹",
     titulo: "Videollamadas",
-    descripcion: "Reuniones semanales de seguimiento"
+    descripcion: "Reuniones semanales de seguimiento",
   },
   {
     icono: "🔗",
     titulo: "Slack/Teams",
-    descripcion: "Para proyectos enterprise"
-  }
+    descripcion: "Para proyectos enterprise",
+  },
 ];
 
 export default function ProcesoPage() {
@@ -235,7 +243,7 @@ export default function ProcesoPage() {
                 {[
                   { icon: "✓", text: "Transparencia total" },
                   { icon: "✓", text: "Updates semanales" },
-                  { icon: "✓", text: "Garantías de calidad" }
+                  { icon: "✓", text: "Garantías de calidad" },
                 ].map((item) => (
                   <div
                     key={item.text}
@@ -395,7 +403,7 @@ export default function ProcesoPage() {
                   {[
                     { icon: "⚡", text: "Respuesta en menos de 24h" },
                     { icon: "🤝", text: "Sin compromiso" },
-                    { icon: "📍", text: "Barcelona local" }
+                    { icon: "📍", text: "Barcelona local" },
                   ].map((item) => (
                     <div
                       key={item.text}

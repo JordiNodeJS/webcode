@@ -74,7 +74,7 @@ export class FullPerformanceAnalyzer {
       components,
       overallMetrics,
       criticalIssues: this.identifyTriticalIssues(components),
-      optimizationsPriority: this.prioritizeOptimizations(components)
+      optimizationsPriority: this.prioritizeOptimizations(components),
     };
 
     await this.generateHTMLReport(report);
@@ -106,7 +106,7 @@ export class FullPerformanceAnalyzer {
     const _afterInteraction = await this.measurePerformance(2000);
 
     await this.page.evaluate(() =>
-      window.scrollTo({ top: 0, behavior: "smooth" })
+      window.scrollTo({ top: 0, behavior: "smooth" }),
     );
 
     const warnings = [];
@@ -130,7 +130,7 @@ export class FullPerformanceAnalyzer {
       fpsActive: duringScroll.fps,
       memoryUsage: duringScroll.memoryUsage,
       warnings,
-      recommendations
+      recommendations,
     };
   }
 
@@ -143,7 +143,7 @@ export class FullPerformanceAnalyzer {
     // Scroll to cards section
     await this.page.evaluate(() => {
       const cardsSection = document.querySelector(
-        '[data-testid="value-props-grid"]'
+        '[data-testid="value-props-grid"]',
       );
       if (cardsSection) {
         cardsSection.scrollIntoView({ behavior: "smooth" });
@@ -200,7 +200,7 @@ export class FullPerformanceAnalyzer {
       fpsActive: activeMetrics.fps,
       memoryUsage: idle.memoryUsage,
       warnings,
-      recommendations
+      recommendations,
     };
   }
 
@@ -212,7 +212,7 @@ export class FullPerformanceAnalyzer {
 
     // Scroll to top to make sure waves are visible
     await this.page.evaluate(() =>
-      window.scrollTo({ top: 0, behavior: "smooth" })
+      window.scrollTo({ top: 0, behavior: "smooth" }),
     );
     await this.page.waitForTimeout(1000);
 
@@ -241,7 +241,7 @@ export class FullPerformanceAnalyzer {
       fpsActive: metrics.fps,
       memoryUsage: metrics.memoryUsage,
       warnings,
-      recommendations
+      recommendations,
     };
   }
 
@@ -260,7 +260,7 @@ export class FullPerformanceAnalyzer {
     await this.page.evaluate(() => {
       window.scrollTo({
         top: document.body.scrollHeight / 2,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     });
     await this.page.waitForTimeout(2000);
@@ -272,7 +272,7 @@ export class FullPerformanceAnalyzer {
 
     if (fadeInCount > 10) {
       warnings.push(
-        `${fadeInCount} WSFadeIn components may cause performance issues`
+        `${fadeInCount} WSFadeIn components may cause performance issues`,
       );
       recommendations.push("Implement shared IntersectionObserver");
       recommendations.push("Use lazy loading for non-critical animations");
@@ -292,7 +292,7 @@ export class FullPerformanceAnalyzer {
       fpsActive: metrics.fps,
       memoryUsage: metrics.memoryUsage,
       warnings,
-      recommendations
+      recommendations,
     };
   }
 
@@ -333,7 +333,7 @@ export class FullPerformanceAnalyzer {
       fpsActive: afterToggle.fps,
       memoryUsage: afterToggle.memoryUsage,
       warnings,
-      recommendations
+      recommendations,
     };
   }
 
@@ -350,7 +350,7 @@ export class FullPerformanceAnalyzer {
       fpsActive: metrics.fps,
       memoryUsage: metrics.memoryUsage,
       warnings: [],
-      recommendations: ["Server component - performance optimized by default"]
+      recommendations: ["Server component - performance optimized by default"],
     };
   }
 
@@ -364,7 +364,7 @@ export class FullPerformanceAnalyzer {
       fpsActive: metrics.fps,
       memoryUsage: metrics.memoryUsage,
       warnings: [],
-      recommendations: []
+      recommendations: [],
     };
   }
 
@@ -378,7 +378,7 @@ export class FullPerformanceAnalyzer {
       fpsActive: metrics.fps,
       memoryUsage: metrics.memoryUsage,
       warnings: [],
-      recommendations: []
+      recommendations: [],
     };
   }
 
@@ -392,7 +392,7 @@ export class FullPerformanceAnalyzer {
       fpsActive: metrics.fps,
       memoryUsage: metrics.memoryUsage,
       warnings: [],
-      recommendations: []
+      recommendations: [],
     };
   }
 
@@ -404,7 +404,7 @@ export class FullPerformanceAnalyzer {
 
     // Full page scroll test
     await this.page.evaluate(() =>
-      window.scrollTo({ top: 0, behavior: "instant" })
+      window.scrollTo({ top: 0, behavior: "instant" }),
     );
     await this.page.waitForTimeout(500);
 
@@ -425,7 +425,7 @@ export class FullPerformanceAnalyzer {
     const averageFPS =
       scrollMetrics.reduce((sum, m) => sum + m.fps, 0) / scrollMetrics.length;
     const totalMemoryUsage = Math.max(
-      ...scrollMetrics.map((m) => m.memoryUsage)
+      ...scrollMetrics.map((m) => m.memoryUsage),
     );
 
     // Performance score calculation
@@ -434,7 +434,7 @@ export class FullPerformanceAnalyzer {
     return {
       averageFPS,
       totalMemoryUsage,
-      performanceScore
+      performanceScore,
     };
   }
 
@@ -453,7 +453,7 @@ export class FullPerformanceAnalyzer {
 
         if (currentTime - startTime >= duration) {
           const fps = Math.round(
-            (frameCount * 1000) / (currentTime - startTime)
+            (frameCount * 1000) / (currentTime - startTime),
           );
 
           // Estimate memory usage (simplified)
@@ -465,7 +465,7 @@ export class FullPerformanceAnalyzer {
                   // biome-ignore lint/suspicious/noExplicitAny: Performance API memory extension
                   (performance as any).memory.totalJSHeapSize) /
                   1024 /
-                  1024
+                  1024,
               )
             : 0;
 
@@ -491,7 +491,7 @@ export class FullPerformanceAnalyzer {
       }
       if (comp.memoryUsage > 15) {
         critical.push(
-          `${comp.name}: High memory usage (${comp.memoryUsage}MB)`
+          `${comp.name}: High memory usage (${comp.memoryUsage}MB)`,
         );
       }
     });
@@ -506,7 +506,7 @@ export class FullPerformanceAnalyzer {
       .filter((c) => c.warnings.length > 2)
       .forEach((c) => {
         priorities.push(
-          `HIGH: Optimize ${c.name} - ${c.warnings.length} issues`
+          `HIGH: Optimize ${c.name} - ${c.warnings.length} issues`,
         );
       });
 
@@ -622,7 +622,7 @@ export class FullPerformanceAnalyzer {
                     <span class="text-red-500 mt-1">⚠️</span>
                     <span class="text-red-700">${issue}</span>
                 </li>
-                `
+                `,
                   )
                   .join("")}
             </ul>
@@ -680,7 +680,7 @@ export class FullPerformanceAnalyzer {
                               .map(
                                 (warning) => `
                             <li class="text-orange-700">• ${warning}</li>
-                            `
+                            `,
                               )
                               .join("")}
                         </ul>
@@ -699,7 +699,7 @@ export class FullPerformanceAnalyzer {
                               .map(
                                 (rec) => `
                             <li class="text-blue-700">• ${rec}</li>
-                            `
+                            `,
                               )
                               .join("")}
                         </ul>
@@ -708,7 +708,7 @@ export class FullPerformanceAnalyzer {
                         : ""
                     }
                 </div>
-                `
+                `,
                   )
                   .join("")}
             </div>
@@ -739,7 +739,7 @@ export class FullPerformanceAnalyzer {
                     </span>
                     <span class="flex-1">${priority}</span>
                 </div>
-                `
+                `,
                   )
                   .join("")}
             </div>

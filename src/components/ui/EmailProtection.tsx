@@ -9,7 +9,7 @@ interface EmailProtectionProps {
 export function EmailProtection({
   email,
   className = "",
-  showAsLink = true
+  showAsLink = true,
 }: EmailProtectionProps) {
   // Para evitar desajustes de hidratación, generamos exactamente el mismo
   // árbol en servidor y cliente sin usar innerHTML.

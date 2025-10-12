@@ -23,7 +23,7 @@ export function AutoEmojiReplacer({
   size = "md",
   variant = "default",
   className = "",
-  inline = false
+  inline = false,
 }: AutoEmojiReplacerProps) {
   const [processedContent, setProcessedContent] =
     useState<React.ReactNode>(children);
@@ -47,11 +47,11 @@ export function AutoEmojiReplacer({
         if (element.props?.children) {
           const processedChildren = React.Children.map(
             element.props.children,
-            processContent
+            processContent,
           );
           return React.cloneElement(element, {
             ...element.props,
-            children: processedChildren
+            children: processedChildren,
           });
         }
         return element;
@@ -84,7 +84,7 @@ export function useAutoEmojiReplacement() {
     options: {
       size?: "sm" | "md" | "lg" | "xl";
       variant?: "default" | "primary" | "secondary" | "accent";
-    } = {}
+    } = {},
   ) => {
     return (
       <AutoEmojiReplacer

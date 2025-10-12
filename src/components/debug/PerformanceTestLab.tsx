@@ -20,14 +20,14 @@ import {
   Target,
   TrendingDown,
   TrendingUp,
-  Zap
+  Zap,
 } from "@/lib/icons";
 
 // Componentes UI simplificados para evitar dependencias
 const Badge = ({
   children,
   variant = "default",
-  className = ""
+  className = "",
 }: {
   children: React.ReactNode;
   variant?: string;
@@ -51,7 +51,7 @@ const Badge = ({
 const Progress = ({
   value = 0,
   max = 100,
-  className = ""
+  className = "",
 }: {
   value?: number;
   max?: number;
@@ -73,7 +73,7 @@ const Progress = ({
 import { WSHover } from "@/components/animations/ws-hover";
 import {
   useComponentPerformanceMonitor,
-  usePerformanceMonitor
+  usePerformanceMonitor,
 } from "@/hooks/use-performance-monitor";
 
 interface TestScenario {
@@ -91,7 +91,7 @@ const OriginalCard = React.memo(() => {
     rotateY: 0,
     glareX: 50,
     glareY: 50,
-    isHovered: false
+    isHovered: false,
   });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -106,7 +106,7 @@ const OriginalCard = React.memo(() => {
       rotateY,
       glareX: (x / rect.width) * 100,
       glareY: (y / rect.height) * 100,
-      isHovered: true
+      isHovered: true,
     });
     logRender("mousemove update");
   };
@@ -117,7 +117,7 @@ const OriginalCard = React.memo(() => {
       rotateY: 0,
       glareX: 50,
       glareY: 50,
-      isHovered: false
+      isHovered: false,
     });
     logRender("mouseleave reset");
   };
@@ -223,7 +223,7 @@ const IdleOptimizedCard = React.memo(() => {
     rotateY: 0,
     glareX: 50,
     glareY: 50,
-    isHovered: false
+    isHovered: false,
   });
 
   // Gradiente estático para idle - MISMO SISTEMA QUE PRODUCCIÓN
@@ -262,7 +262,7 @@ const IdleOptimizedCard = React.memo(() => {
       rotateY,
       glareX: (x / rect.width) * 100,
       glareY: (y / rect.height) * 100,
-      isHovered: true
+      isHovered: true,
     });
     logRender("throttled mousemove update");
   };
@@ -278,7 +278,7 @@ const IdleOptimizedCard = React.memo(() => {
       rotateY: 0,
       glareX: 50,
       glareY: 50,
-      isHovered: false
+      isHovered: false,
     });
     logRender("mouseleave - deactivate GPU layers");
   };
@@ -304,7 +304,7 @@ const IdleOptimizedCard = React.memo(() => {
       rotateY,
       glareX: (x / rect.width) * 100,
       glareY: (y / rect.height) * 100,
-      isHovered: true
+      isHovered: true,
     });
   };
 
@@ -314,7 +314,7 @@ const IdleOptimizedCard = React.memo(() => {
       rotateY: 0,
       glareX: 50,
       glareY: 50,
-      isHovered: false
+      isHovered: false,
     });
   };
 
@@ -388,34 +388,34 @@ const testScenarios: TestScenario[] = [
     id: "original",
     name: "Tarjetas Originales",
     description: "Con todas las animaciones y efectos 3D actuales",
-    component: OriginalCard
+    component: OriginalCard,
   },
   {
     id: "optimized",
     name: "Tarjetas Optimizadas",
     description: "Con animaciones simplificadas, solo shadow hover",
-    component: OptimizedCard
+    component: OptimizedCard,
   },
   {
     id: "static",
     name: "Tarjetas Estáticas",
     description: "Sin animaciones, solo CSS básico",
-    component: StaticCard
+    component: StaticCard,
   },
   {
     id: "idle-optimized",
     name: "🎯 Idle Performance Optimized",
     description:
       "GPU layers solo cuando necesario, throttled events, gradientes estáticos",
-    component: IdleOptimizedCard
-  }
+    component: IdleOptimizedCard,
+  },
 ];
 
 export function PerformanceTestLab() {
   const { performanceData, isIdle, getPerformanceSummary } =
     usePerformanceMonitor({
       enabled: true,
-      logToConsole: false // UI más limpia
+      logToConsole: false, // UI más limpia
     });
 
   const [activeScenario, setActiveScenario] = useState("original");
@@ -437,12 +437,12 @@ export function PerformanceTestLab() {
         ? value
         : fallback;
     },
-    []
+    [],
   );
 
   const formatMetric = (
     value: number | undefined | null,
-    fallback: string = "--"
+    fallback: string = "--",
   ): string => {
     const safe = safeNumber(value);
     return safe === 0 && (value === undefined || value === null)
@@ -457,7 +457,7 @@ export function PerformanceTestLab() {
           perfHistory
             .slice(-10)
             .reduce((acc, entry) => acc + safeNumber(entry.data.fps), 0) /
-            Math.min(perfHistory.length, 10)
+            Math.min(perfHistory.length, 10),
         )
       : 0;
 
@@ -476,8 +476,8 @@ export function PerformanceTestLab() {
       {
         scenario: activeScenario,
         data: summary,
-        timestamp: Date.now()
-      }
+        timestamp: Date.now(),
+      },
     ]);
 
     // Actualizar resultados si está grabando
@@ -489,18 +489,18 @@ export function PerformanceTestLab() {
           avgFPS: safeNumber(avgFPS) || safeNumber(summary.fps),
           minFPS: Math.min(
             safeNumber(prev[activeScenario]?.minFPS, 60),
-            safeNumber(summary.fps)
+            safeNumber(summary.fps),
           ),
           maxFPS: Math.max(
             safeNumber(prev[activeScenario]?.maxFPS, 0),
-            safeNumber(summary.fps)
+            safeNumber(summary.fps),
           ),
           avgMemory: safeNumber(performanceData.memory),
           samples: (prev[activeScenario]?.samples || 0) + 1,
           idleTime: isIdle
             ? (prev[activeScenario]?.idleTime || 0) + 1
-            : prev[activeScenario]?.idleTime || 0
-        }
+            : prev[activeScenario]?.idleTime || 0,
+        },
       }));
     }
   }, [
@@ -510,7 +510,7 @@ export function PerformanceTestLab() {
     avgFPS,
     isIdle,
     getPerformanceSummary,
-    safeNumber
+    safeNumber,
   ]);
 
   const ActiveComponent =

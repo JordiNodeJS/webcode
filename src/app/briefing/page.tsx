@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 
 const WSFadeIn = dynamic(() =>
-  import("@/components/animations/ws-fade-in").then((m) => m.WSFadeIn)
+  import("@/components/animations/ws-fade-in").then((m) => m.WSFadeIn),
 );
 
 import { generateSEOMetadata } from "@/lib/seo-metadata";
@@ -13,22 +13,28 @@ import { generateSEOMetadata } from "@/lib/seo-metadata";
 const BriefingPhases = dynamic(
   () => import("@/components/briefing/BriefingPhases"),
   {
-    loading: () => <div className="h-96 animate-pulse bg-muted/50 rounded-lg" />
-  }
+    loading: () => (
+      <div className="h-96 animate-pulse bg-muted/50 rounded-lg" />
+    ),
+  },
 );
 
 const BriefingCategories = dynamic(
   () => import("@/components/briefing/BriefingCategories"),
   {
-    loading: () => <div className="h-96 animate-pulse bg-muted/50 rounded-lg" />
-  }
+    loading: () => (
+      <div className="h-96 animate-pulse bg-muted/50 rounded-lg" />
+    ),
+  },
 );
 
 const BriefingBenefits = dynamic(
   () => import("@/components/briefing/BriefingBenefits"),
   {
-    loading: () => <div className="h-64 animate-pulse bg-muted/50 rounded-lg" />
-  }
+    loading: () => (
+      <div className="h-64 animate-pulse bg-muted/50 rounded-lg" />
+    ),
+  },
 );
 
 export const metadata: Metadata = generateSEOMetadata({
@@ -43,9 +49,9 @@ export const metadata: Metadata = generateSEOMetadata({
     "briefing web Barcelona",
     "consultoría web",
     "análisis funcional web",
-    "definición proyecto digital"
+    "definición proyecto digital",
   ],
-  canonical: "https://webcode.es/briefing"
+  canonical: "https://webcode.es/briefing",
 });
 
 // Datos de las fases del ciclo de vida
@@ -63,14 +69,14 @@ const cicloFases = [
       "Análisis de competencia y mercado",
       "Identificación de objetivos y KPIs",
       "Definición de público objetivo",
-      "Recopilación de contenidos y assets"
+      "Recopilación de contenidos y assets",
     ],
     entregables: [
       "Documento de briefing completo",
       "Análisis de competencia",
       "Definición de objetivos SMART",
-      "Perfil de público objetivo"
-    ]
+      "Perfil de público objetivo",
+    ],
   },
   {
     numero: 2,
@@ -85,14 +91,14 @@ const cicloFases = [
       "Especificación de funcionalidades",
       "Definición de stack tecnológico",
       "Identificación de integraciones necesarias",
-      "Planificación de fases y entregables"
+      "Planificación de fases y entregables",
     ],
     entregables: [
       "Documento de especificaciones técnicas",
       "Arquitectura de información",
       "Mapa de sitio (sitemap)",
-      "Cronograma detallado del proyecto"
-    ]
+      "Cronograma detallado del proyecto",
+    ],
   },
   {
     numero: 3,
@@ -107,14 +113,14 @@ const cicloFases = [
       "Mockups de alta fidelidad",
       "Sistema de diseño personalizado",
       "Prototipo interactivo",
-      "Testing de usabilidad"
+      "Testing de usabilidad",
     ],
     entregables: [
       "Wireframes completos",
       "Mockups finales aprobados",
       "Guía de estilo visual",
-      "Prototipo navegable"
-    ]
+      "Prototipo navegable",
+    ],
   },
   {
     numero: 4,
@@ -129,14 +135,14 @@ const cicloFases = [
       "Integración de APIs y servicios",
       "Implementación de funcionalidades",
       "Optimización de rendimiento",
-      "Testing automatizado"
+      "Testing automatizado",
     ],
     entregables: [
       "Sitio web funcional",
       "Panel de administración",
       "Documentación técnica",
-      "Suite de tests"
-    ]
+      "Suite de tests",
+    ],
   },
   {
     numero: 5,
@@ -151,14 +157,14 @@ const cicloFases = [
       "Pruebas de rendimiento (Core Web Vitals)",
       "Testing cross-browser y dispositivos",
       "Validación de accesibilidad",
-      "Revisión y feedback del cliente"
+      "Revisión y feedback del cliente",
     ],
     entregables: [
       "Reporte de testing completo",
       "Correcciones implementadas",
       "Validación de accesibilidad",
-      "Aprobación del cliente"
-    ]
+      "Aprobación del cliente",
+    ],
   },
   {
     numero: 6,
@@ -173,15 +179,15 @@ const cicloFases = [
       "Configuración de analytics",
       "Formación del cliente",
       "Documentación de usuario",
-      "Soporte y mantenimiento"
+      "Soporte y mantenimiento",
     ],
     entregables: [
       "Sitio web en producción",
       "Documentación completa",
       "Sesión de formación",
-      "Plan de mantenimiento"
-    ]
-  }
+      "Plan de mantenimiento",
+    ],
+  },
 ];
 
 // Categorías de información a recopilar en el briefing
@@ -195,8 +201,8 @@ const categoriasInfo = [
       "KPIs y métricas de éxito",
       "Problemas a resolver",
       "Expectativas y timeline",
-      "Presupuesto disponible"
-    ]
+      "Presupuesto disponible",
+    ],
   },
   {
     icono: "👥",
@@ -207,8 +213,8 @@ const categoriasInfo = [
       "Comportamiento y necesidades",
       "Nivel tecnológico",
       "Dispositivos que utilizan",
-      "Puntos de dolor actuales"
-    ]
+      "Puntos de dolor actuales",
+    ],
   },
   {
     icono: "⚙️",
@@ -219,8 +225,8 @@ const categoriasInfo = [
       "Funcionalidades deseadas (nice-to-have)",
       "Integraciones necesarias (pagos, CRM, etc.)",
       "Requisitos de rendimiento",
-      "Requisitos de seguridad"
-    ]
+      "Requisitos de seguridad",
+    ],
   },
   {
     icono: "🎨",
@@ -231,8 +237,8 @@ const categoriasInfo = [
       "Referencias visuales (inspiración)",
       "Colores, tipografías preferidas",
       "Tono de comunicación",
-      "Assets disponibles (logos, imágenes)"
-    ]
+      "Assets disponibles (logos, imágenes)",
+    ],
   },
   {
     icono: "📝",
@@ -243,8 +249,8 @@ const categoriasInfo = [
       "Textos, imágenes y videos",
       "Idiomas necesarios",
       "Estrategia de contenidos",
-      "Responsable de crear contenido"
-    ]
+      "Responsable de crear contenido",
+    ],
   },
   {
     icono: "🔧",
@@ -255,9 +261,9 @@ const categoriasInfo = [
       "Hosting actual o preferido",
       "Dominios y emails",
       "Requisitos de accesibilidad",
-      "Cumplimiento legal (RGPD, cookies)"
-    ]
-  }
+      "Cumplimiento legal (RGPD, cookies)",
+    ],
+  },
 ];
 
 // Beneficios del briefing profesional
@@ -265,33 +271,33 @@ const beneficios = [
   {
     icono: "🎯",
     titulo: "Claridad total",
-    descripcion: "Todos entienden qué se va a construir y por qué"
+    descripcion: "Todos entienden qué se va a construir y por qué",
   },
   {
     icono: "💰",
     titulo: "Ahorro de costes",
-    descripcion: "Evita cambios costosos durante el desarrollo"
+    descripcion: "Evita cambios costosos durante el desarrollo",
   },
   {
     icono: "⏱️",
     titulo: "Entregas a tiempo",
-    descripcion: "Planning realista basado en requisitos claros"
+    descripcion: "Planning realista basado en requisitos claros",
   },
   {
     icono: "✅",
     titulo: "Expectativas alineadas",
-    descripcion: "Cliente y equipo en la misma página desde el día 1"
+    descripcion: "Cliente y equipo en la misma página desde el día 1",
   },
   {
     icono: "📊",
     titulo: "Decisiones basadas en datos",
-    descripcion: "Análisis de mercado y competencia informan el diseño"
+    descripcion: "Análisis de mercado y competencia informan el diseño",
   },
   {
     icono: "🔄",
     titulo: "Proceso optimizado",
-    descripcion: "Flujo de trabajo eficiente y sin sorpresas"
-  }
+    descripcion: "Flujo de trabajo eficiente y sin sorpresas",
+  },
 ];
 
 export default function BriefingPage() {
@@ -338,7 +344,7 @@ export default function BriefingPage() {
                 {[
                   { icon: "✓", text: "Sin sorpresas" },
                   { icon: "✓", text: "Expectativas claras" },
-                  { icon: "✓", text: "Planning realista" }
+                  { icon: "✓", text: "Planning realista" },
                 ].map((item) => (
                   <div
                     key={item.text}
@@ -562,7 +568,7 @@ export default function BriefingPage() {
                   {[
                     { icon: "⚡", text: "Consulta gratuita 30 min" },
                     { icon: "🤝", text: "Sin compromiso" },
-                    { icon: "📍", text: "Barcelona & Online" }
+                    { icon: "📍", text: "Barcelona & Online" },
                   ].map((item) => (
                     <div
                       key={item.text}
