@@ -12,11 +12,38 @@ export const metadata: Metadata = {
   title: "Blog | WebCode - Desarrollo Web y Soluciones Digitales",
   description:
     "Artículos y tutoriales sobre desarrollo web, Next.js, React, TypeScript y las últimas tendencias en tecnología.",
+  keywords: [
+    "blog desarrollo web",
+    "tutoriales programación",
+    "Next.js tutoriales",
+    "React Barcelona",
+    "TypeScript desarrollo",
+    "desarrollo web Barcelona",
+    "tecnología web",
+    "programación web",
+  ],
+  authors: [{ name: "WEBCODE Team" }],
+  creator: "WEBCODE",
+  publisher: "WEBCODE",
+  category: "Technology",
+  alternates: {
+    canonical: "https://webcode.es/blog",
+  },
   openGraph: {
     title: "Blog | WebCode",
     description:
       "Artículos sobre desarrollo web y soluciones digitales en Barcelona",
     type: "website",
+    url: "https://webcode.es/blog",
+    siteName: "WEBCODE",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog | WebCode",
+    description:
+      "Artículos sobre desarrollo web y soluciones digitales en Barcelona",
+    creator: "@webcode_es",
+    site: "@webcode_es",
   },
 };
 

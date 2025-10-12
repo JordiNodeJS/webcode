@@ -16,6 +16,7 @@ import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
 import "highlight.js/styles/github-dark.css"; // Tema de highlight.js
+import "../../styles/webcode-code-theme.css"; // Tema personalizado WebCode
 
 interface MarkdownRendererProps {
   content: string;
@@ -111,22 +112,33 @@ const components: Components = {
       </a>
     );
   },
-  // Bloques de código con estilo mejorado
-  pre: ({ children, ...props }) => (
-    <pre
-      className="my-6 overflow-x-auto rounded-lg border bg-zinc-950 p-4 dark:bg-zinc-900"
-      {...props}
-    >
-      {children}
-    </pre>
-  ),
+  // Bloques de código con estilo WebCode mejorado
+  pre: ({ children, className, ...props }) => {
+    // Extraer el lenguaje del className si está disponible
+    const languageMatch = className?.match(/language-(\w+)/);
+    const language = languageMatch ? languageMatch[1] : 'código';
+    
+    return (
+      <div className="webcode-code-block">
+        <div className="webcode-code-header">
+          <span>{language.charAt(0).toUpperCase() + language.slice(1)}</span>
+        </div>
+        <pre
+          className={`webcode-code-content ${className || ''}`}
+          {...props}
+        >
+          {children}
+        </pre>
+      </div>
+    );
+  },
   code: ({ children, className, ...props }) => {
     const isInline = !className;
     return (
       <code
         className={
           isInline
-            ? "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold"
+            ? "webcode-code-inline"
             : "font-mono text-sm"
         }
         {...props}
