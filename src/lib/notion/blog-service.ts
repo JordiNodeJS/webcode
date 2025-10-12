@@ -4,8 +4,9 @@
  */
 
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import { unstable_cache } from "next/cache";
 import { NotionToMarkdown } from "notion-to-md";
-import type { ExtendedNotionClient } from "./api-types";
+import type { DatabaseFilter, DatabaseSort } from "./api-types";
 import { DATABASE_ID, notion, queryDatabase } from "./client";
 import {
   calculateReadTime,
@@ -16,15 +17,47 @@ import type { BlogPost, BlogPostsResponse } from "./types";
 // Cliente para convertir bloques de Notion a Markdown
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
-// Cliente extendido con tipos completos
-const notionClient = notion as ExtendedNotionClient;
+/**
+ * Helper para obtener todos los resultados de una query con paginación completa
+ * Itera automáticamente por todos los next_cursor hasta obtener todos los datos
+ */
+async function getAllPagesFromDatabase(
+  filter?: DatabaseFilter,
+  sorts?: DatabaseSort[],
+): Promise<PageObjectResponse[]> {
+  const allPages: PageObjectResponse[] = [];
+  let hasMore = true;
+  let startCursor: string | undefined;
+
+  while (hasMore) {
+    const response = await queryDatabase({
+      database_id: DATABASE_ID,
+      filter,
+      sorts,
+      page_size: 100, // Máximo permitido por Notion API
+      start_cursor: startCursor,
+    });
+
+    const validPages = response.results.filter(
+      (page: unknown): page is PageObjectResponse => {
+        return (
+          typeof page === "object" && page !== null && "properties" in page
+        );
+      },
+    );
+
+    allPages.push(...validPages);
+    hasMore = response.has_more;
+    startCursor = response.next_cursor ?? undefined;
+  }
+
+  return allPages;
+}
 
 /**
- * Obtiene todos los posts publicados del blog
- * @param pageSize - Número de posts por página (default: 10)
- * @param startCursor - Cursor para paginación
+ * Obtiene todos los posts publicados del blog (sin cache, para uso interno)
  */
-export async function getBlogPosts(
+async function getBlogPostsUncached(
   pageSize = 10,
   startCursor?: string,
 ): Promise<BlogPostsResponse> {
@@ -36,7 +69,7 @@ export async function getBlogPosts(
         select: {
           equals: "Published",
         },
-      } as any,
+      },
       sorts: [
         {
           property: "PublishedDate",
@@ -94,10 +127,23 @@ export async function getBlogPosts(
 }
 
 /**
- * Obtiene un post individual por slug
- * @param slug - Slug del post
+ * Obtiene todos los posts publicados del blog (con cache)
+ * @param pageSize - Número de posts por página (default: 10)
+ * @param startCursor - Cursor para paginación
  */
-export async function getBlogPostBySlug(
+export const getBlogPosts = unstable_cache(
+  getBlogPostsUncached,
+  ["blog-posts"],
+  {
+    revalidate: 3600, // 1 hora
+    tags: ["notion-blog"],
+  },
+);
+
+/**
+ * Obtiene un post individual por slug (sin cache, para uso interno)
+ */
+async function getBlogPostBySlugUncached(
   slug: string,
 ): Promise<BlogPost | null> {
   try {
@@ -118,7 +164,7 @@ export async function getBlogPostBySlug(
             },
           },
         ],
-      } as any,
+      },
     });
 
     if (response.results.length === 0) {
@@ -146,49 +192,56 @@ export async function getBlogPostBySlug(
 }
 
 /**
- * Obtiene posts filtrados por tag
- * @param tag - Nombre del tag
+ * Obtiene un post individual por slug (con cache)
+ * @param slug - Slug del post
+ */
+export const getBlogPostBySlug = unstable_cache(
+  getBlogPostBySlugUncached,
+  ["blog-post-by-slug"],
+  {
+    revalidate: 3600, // 1 hora
+    tags: ["notion-blog"],
+  },
+);
+
+/**
+ * Obtiene posts filtrados por tag (sin cache, para uso interno)
+ * Usa getAllPagesFromDatabase para manejar bases de datos grandes
+ * @param tag - Nombre del tag (case-insensitive)
  * @param pageSize - Número de posts por página
  */
-export async function getBlogPostsByTag(
+async function getBlogPostsByTagUncached(
   tag: string,
   pageSize = 10,
 ): Promise<BlogPost[]> {
   try {
-    const response = await queryDatabase({
-      database_id: DATABASE_ID,
-      filter: {
-        and: [
-          {
-            property: "Status",
-            select: {
-              equals: "Published",
-            },
-          },
-          {
-            property: "Tags",
-            multi_select: {
-              contains: tag,
-            },
-          },
-        ],
-      } as any,
-      sorts: [
+    // Obtener TODOS los posts publicados usando paginación completa
+    const allPages = await getAllPagesFromDatabase(
+      {
+        property: "Status",
+        select: {
+          equals: "Published",
+        },
+      },
+      [
         {
           property: "PublishedDate",
           direction: "descending",
         },
       ],
-      page_size: pageSize,
-    });
+    );
 
-    return response.results
-      .filter((page: unknown): page is PageObjectResponse => {
-        return (
-          typeof page === "object" && page !== null && "properties" in page
-        );
-      })
-      .map(transformNotionPageToBlogPost);
+    const allPosts = allPages.map(transformNotionPageToBlogPost);
+
+    // Filtramos por tag de manera case-insensitive
+    const filteredPosts = allPosts.filter((post) =>
+      post.tags.some(
+        (postTag) => postTag.name.toLowerCase() === tag.toLowerCase(),
+      ),
+    );
+
+    // Limitamos los resultados según pageSize
+    return filteredPosts.slice(0, pageSize);
   } catch (error) {
     console.error(`Error al obtener posts con tag "${tag}":`, error);
     throw new Error(`No se pudieron obtener artículos con el tag "${tag}"`);
@@ -196,30 +249,41 @@ export async function getBlogPostsByTag(
 }
 
 /**
- * Obtiene todos los tags únicos del blog
+ * Obtiene posts filtrados por tag (con cache)
+ * @param tag - Nombre del tag (case-insensitive)
+ * @param pageSize - Número de posts por página
  */
-export async function getAllTags(): Promise<
+export const getBlogPostsByTag = unstable_cache(
+  getBlogPostsByTagUncached,
+  ["blog-posts-by-tag"],
+  {
+    revalidate: 3600, // 1 hora
+    tags: ["notion-blog"],
+  },
+);
+
+/**
+ * Obtiene todos los tags únicos del blog (sin cache, para uso interno)
+ * Usa getAllPagesFromDatabase para manejar bases de datos grandes
+ */
+async function getAllTagsUncached(): Promise<
   Array<{ name: string; count: number }>
 > {
   try {
-    const response = await queryDatabase({
-      database_id: DATABASE_ID,
-      filter: {
-        property: "Status",
-        select: {
-          equals: "Published",
-        },
-      } as any,
+    // Obtener TODOS los posts publicados usando paginación completa
+    const allPages = await getAllPagesFromDatabase({
+      property: "Status",
+      select: {
+        equals: "Published",
+      },
     });
 
     const tagCounts = new Map<string, number>();
 
-    for (const page of response.results) {
-      if ("properties" in page) {
-        const post = transformNotionPageToBlogPost(page);
-        for (const tag of post.tags) {
-          tagCounts.set(tag.name, (tagCounts.get(tag.name) ?? 0) + 1);
-        }
+    for (const page of allPages) {
+      const post = transformNotionPageToBlogPost(page);
+      for (const tag of post.tags) {
+        tagCounts.set(tag.name, (tagCounts.get(tag.name) ?? 0) + 1);
       }
     }
 
@@ -233,26 +297,29 @@ export async function getAllTags(): Promise<
 }
 
 /**
- * Obtiene todos los slugs publicados (útil para generateStaticParams)
+ * Obtiene todos los tags únicos del blog (con cache)
  */
-export async function getAllPublishedSlugs(): Promise<string[]> {
+export const getAllTags = unstable_cache(getAllTagsUncached, ["blog-tags"], {
+  revalidate: 3600, // 1 hora
+  tags: ["notion-blog"],
+});
+
+/**
+ * Obtiene todos los slugs publicados (sin cache, para uso interno)
+ * Usa getAllPagesFromDatabase para manejar bases de datos grandes
+ * Útil para generateStaticParams
+ */
+async function getAllPublishedSlugsUncached(): Promise<string[]> {
   try {
-    const response = await queryDatabase({
-      database_id: DATABASE_ID,
-      filter: {
-        property: "Status",
-        select: {
-          equals: "Published",
-        },
-      } as any,
+    // Obtener TODOS los posts publicados usando paginación completa
+    const allPages = await getAllPagesFromDatabase({
+      property: "Status",
+      select: {
+        equals: "Published",
+      },
     });
 
-    return response.results
-      .filter((page: unknown): page is PageObjectResponse => {
-        return (
-          typeof page === "object" && page !== null && "properties" in page
-        );
-      })
+    return allPages
       .map(transformNotionPageToBlogPost)
       .map((post: BlogPost) => post.slug)
       .filter((slug: string) => slug.length > 0);
@@ -263,10 +330,25 @@ export async function getAllPublishedSlugs(): Promise<string[]> {
 }
 
 /**
- * Busca posts por término de búsqueda
+ * Obtiene todos los slugs publicados (con cache)
+ * Útil para generateStaticParams
+ */
+export const getAllPublishedSlugs = unstable_cache(
+  getAllPublishedSlugsUncached,
+  ["blog-slugs"],
+  {
+    revalidate: 3600, // 1 hora
+    tags: ["notion-blog"],
+  },
+);
+
+/**
+ * Busca posts por término de búsqueda (sin cache, para uso interno)
  * @param searchTerm - Término de búsqueda
  */
-export async function searchBlogPosts(searchTerm: string): Promise<BlogPost[]> {
+async function searchBlogPostsUncached(
+  searchTerm: string,
+): Promise<BlogPost[]> {
   try {
     const response = await queryDatabase({
       database_id: DATABASE_ID,
@@ -295,7 +377,7 @@ export async function searchBlogPosts(searchTerm: string): Promise<BlogPost[]> {
             ],
           },
         ],
-      } as any,
+      },
       sorts: [
         {
           property: "PublishedDate",
@@ -316,3 +398,16 @@ export async function searchBlogPosts(searchTerm: string): Promise<BlogPost[]> {
     return [];
   }
 }
+
+/**
+ * Busca posts por término de búsqueda (con cache corto, 5 min)
+ * @param searchTerm - Término de búsqueda
+ */
+export const searchBlogPosts = unstable_cache(
+  searchBlogPostsUncached,
+  ["blog-search"],
+  {
+    revalidate: 300, // 5 minutos (búsquedas son más dinámicas)
+    tags: ["notion-blog"],
+  },
+);

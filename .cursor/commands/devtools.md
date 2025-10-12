@@ -1,0 +1,1 @@
+Comprueba que toda la web funciona con devtools.
