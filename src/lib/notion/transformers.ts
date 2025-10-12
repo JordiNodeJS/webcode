@@ -101,11 +101,22 @@ export function transformNotionPageToBlogPost(
       "Slug",
       "rich_text",
     );
-    const slug = slugProp ? extractRichText(slugProp.rich_text) : "";
+    let slug = slugProp ? extractRichText(slugProp.rich_text) : "";
+
+    // Limpiar slug de caracteres problemáticos
+    if (slug) {
+      slug = slug
+        .replace(/[\r\n\t]/g, "") // Elimina saltos de línea
+        .replace(/[^\w\s-]/g, "") // Elimina caracteres especiales
+        .replace(/\s+/g, "-") // Reemplaza espacios por guiones
+        .replace(/-+/g, "-") // Elimina guiones múltiples
+        .replace(/^-+|-+$/g, "") // Elimina guiones al inicio y final
+        .trim();
+    }
 
     if (!slug) {
       console.warn(
-        `Página ${page.id} ("${title}") no tiene slug. Se generará automáticamente.`,
+        `Página ${page.id} ("${title}") no tiene slug válido. Se generará automáticamente.`,
       );
     }
 
@@ -231,12 +242,14 @@ export function generateSlug(title: string): string {
     .toLowerCase()
     .normalize("NFD") // Normaliza caracteres acentuados
     .replace(/[\u0300-\u036f]/g, "") // Elimina diacríticos
+    .replace(/[\r\n\t]/g, "") // Elimina saltos de línea, retornos de carro y tabs
     .replace(/[^\w\s-]/g, "") // Elimina caracteres especiales
     .replace(/\s+/g, "-") // Reemplaza espacios por guiones
     .replace(/-+/g, "-") // Elimina guiones múltiples
     .replace(/^-+|-+$/g, "") // Elimina guiones al inicio y final
     .trim()
-    .substring(0, 100); // Limita la longitud para evitar URLs muy largas
+    .substring(0, 100) // Limita la longitud para evitar URLs muy largas
+    || "untitled"; // Fallback si el slug queda vacío
 }
 
 /**

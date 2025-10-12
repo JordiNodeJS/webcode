@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build:internal": "next build --turbopack",
-    "build": "next build --turbopack",
+    "build": "rm -rf .next && next build --turbopack",
     "start": "next start",
     "kill": "pnpm dlx kill-port 3000 3001 3002",
     "lint": "pnpm dlx @biomejs/biome check .",
