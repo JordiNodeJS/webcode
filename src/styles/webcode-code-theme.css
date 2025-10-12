@@ -1,0 +1,265 @@
+/* WebCode Custom Code Theme */
+/* Usando los colores del sistema WebCode: Rosa #ff6680, Naranja #ff8f66, Púrpura #9333ea */
+
+/* Variables CSS para el tema de código */
+:root {
+  --code-bg-primary: oklch(0.98 0.01 328.5); /* Fondo claro con tinte rosa */
+  --code-bg-secondary: oklch(0.97 0.02 184.1); /* Fondo alternativo con tinte aguamarina */
+  --code-border: oklch(0.45 0.1 328.5); /* Borde usando color primary */
+  --code-shadow: var(--shadow-3d-md); /* Usando sombras 3D del sistema */
+  
+  /* Colores de sintaxis usando la paleta WebCode */
+  --syntax-keyword: oklch(0.57 0.2 328.5); /* Rosa primary */
+  --syntax-string: oklch(0.43 0.18 184.1); /* Aguamarina secondary */
+  --syntax-comment: oklch(0.54 0 0); /* Gris para comentarios */
+  --syntax-number: oklch(0.7 0.15 30); /* Naranja para números */
+  --syntax-function: oklch(0.6 0.18 280); /* Púrpura para funciones */
+  --syntax-variable: oklch(0.5 0.12 200); /* Azul para variables */
+  --syntax-type: oklch(0.65 0.16 60); /* Amarillo para tipos */
+  --syntax-operator: oklch(0.4 0 0); /* Negro para operadores */
+}
+
+.dark {
+  --code-bg-primary: oklch(0.12 0.02 328.5); /* Fondo oscuro con tinte rosa */
+  --code-bg-secondary: oklch(0.14 0.02 184.1); /* Fondo alternativo oscuro */
+  --code-border: oklch(0.32 0.05 0); /* Borde más claro en modo oscuro */
+  --code-shadow: var(--shadow-3d-md); /* Mantener sombras 3D */
+  
+  /* Colores de sintaxis ajustados para modo oscuro */
+  --syntax-keyword: oklch(0.84 0.16 328.5); /* Rosa más brillante */
+  --syntax-string: oklch(0.75 0.18 184.1); /* Aguamarina más brillante */
+  --syntax-comment: oklch(0.52 0 0); /* Gris más claro para comentarios */
+  --syntax-number: oklch(0.8 0.15 30); /* Naranja más brillante */
+  --syntax-function: oklch(0.8 0.18 280); /* Púrpura más brillante */
+  --syntax-variable: oklch(0.7 0.12 200); /* Azul más brillante */
+  --syntax-type: oklch(0.75 0.16 60); /* Amarillo más brillante */
+  --syntax-operator: oklch(0.8 0 0); /* Blanco para operadores */
+}
+
+/* Estilos base para bloques de código */
+.webcode-code-block {
+  background: var(--code-bg-primary);
+  border: 3px solid var(--code-border);
+  border-radius: 0.75rem;
+  box-shadow: var(--code-shadow);
+  margin: 1.5rem 0;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.webcode-code-block:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-3d-lg);
+  border-color: oklch(var(--primary));
+}
+
+/* Header del bloque de código con estilo WebCode */
+.webcode-code-header {
+  background: linear-gradient(135deg, 
+    oklch(var(--primary) / 0.1) 0%, 
+    oklch(var(--secondary) / 0.08) 100%);
+  border-bottom: 2px solid var(--code-border);
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: oklch(var(--foreground));
+}
+
+.webcode-code-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.webcode-code-header-left::before {
+  content: "⚡";
+  font-size: 1rem;
+  color: oklch(var(--primary));
+}
+
+/* Contenedor del código con scroll */
+.webcode-code-content {
+  overflow-x: auto;
+  padding: 1rem;
+  background: var(--code-bg-primary);
+  font-family: 'Geist Mono', 'Fira Code', 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* Estilos para código inline */
+.webcode-code-inline {
+  background: oklch(var(--muted));
+  border: 1px solid oklch(var(--border));
+  border-radius: 0.375rem;
+  padding: 0.125rem 0.375rem;
+  font-family: 'Geist Mono', 'Fira Code', 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: oklch(var(--primary));
+}
+
+/* Syntax highlighting personalizado */
+.webcode-code-content .hljs-keyword,
+.webcode-code-content .hljs-selector-tag,
+.webcode-code-content .hljs-built_in {
+  color: var(--syntax-keyword);
+  font-weight: 600;
+}
+
+.webcode-code-content .hljs-string,
+.webcode-code-content .hljs-attr {
+  color: var(--syntax-string);
+}
+
+.webcode-code-content .hljs-comment,
+.webcode-code-content .hljs-quote {
+  color: var(--syntax-comment);
+  font-style: italic;
+}
+
+.webcode-code-content .hljs-number,
+.webcode-code-content .hljs-literal {
+  color: var(--syntax-number);
+  font-weight: 600;
+}
+
+.webcode-code-content .hljs-function,
+.webcode-code-content .hljs-title {
+  color: var(--syntax-function);
+  font-weight: 600;
+}
+
+.webcode-code-content .hljs-variable,
+.webcode-code-content .hljs-params {
+  color: var(--syntax-variable);
+}
+
+.webcode-code-content .hljs-type,
+.webcode-code-content .hljs-class {
+  color: var(--syntax-type);
+  font-weight: 600;
+}
+
+.webcode-code-content .hljs-operator,
+.webcode-code-content .hljs-punctuation {
+  color: var(--syntax-operator);
+  font-weight: 600;
+}
+
+/* Efectos de animación sutil */
+@keyframes codeGlow {
+  0%, 100% {
+    box-shadow: var(--shadow-3d-md);
+  }
+  50% {
+    box-shadow: var(--shadow-3d-lg), 
+                0 0 20px oklch(var(--primary) / 0.1);
+  }
+}
+
+.webcode-code-block:focus-within {
+  animation: codeGlow 2s ease-in-out infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .webcode-code-block {
+    margin: 1rem 0;
+    border-width: 2px;
+  }
+  
+  .webcode-code-header {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
+  
+  .webcode-code-content {
+    padding: 0.75rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Accesibilidad - soporte para prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .webcode-code-block {
+    transition: none;
+  }
+  
+  .webcode-code-block:hover {
+    transform: none;
+  }
+  
+  .webcode-code-block:focus-within {
+    animation: none;
+  }
+}
+
+/* Estilos para el botón de copia */
+.copy-button {
+  background: oklch(var(--background));
+  border: 2px solid oklch(var(--border));
+  color: oklch(var(--foreground));
+  box-shadow: var(--shadow-3d-xs);
+  transition: all 0.2s ease;
+}
+
+.copy-button:hover {
+  background: oklch(var(--primary) / 0.1);
+  border-color: oklch(var(--primary));
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-3d-sm);
+}
+
+.copy-button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-3d-xs);
+}
+
+.copy-button:focus {
+  outline: none;
+  ring: 2px solid oklch(var(--primary) / 0.5);
+  ring-offset: 2px;
+}
+
+.copy-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Estados del botón de copia */
+.copy-button[data-copied="true"] {
+  background: oklch(var(--secondary) / 0.1);
+  border-color: oklch(var(--secondary));
+  color: oklch(var(--secondary));
+}
+
+/* Animación sutil para el ícono */
+.copy-button svg {
+  transition: transform 0.2s ease;
+}
+
+.copy-button:hover svg {
+  transform: scale(1.1);
+}
+
+/* Alto contraste */
+@media (prefers-contrast: high) {
+  .webcode-code-block {
+    border-width: 4px;
+  }
+  
+  .webcode-code-inline {
+    border-width: 2px;
+  }
+  
+  .copy-button {
+    border-width: 3px;
+  }
+}

@@ -42,3 +42,6 @@ next-env.d.ts
 
 .playwright-mcp
 .vercel
+
+# Archivos temporales de análisis CSS
+public/css-chunks.json

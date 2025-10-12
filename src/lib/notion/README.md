@@ -1,109 +1,303 @@
-# 📚 Librería Notion para WebCode
+# 📚 Módulo de Integración con Notion
 
-Módulo para integración con Notion API y gestión del blog.
+Este módulo proporciona una capa de abstracción completa para interactuar con la API de Notion como CMS del blog.
 
-## 📦 Instalación
+## 🏗️ Arquitectura
 
-```bash
-pnpm add @notionhq/client notion-to-md
+```
+src/lib/notion/
+├── index.ts              # Exportaciones públicas del módulo
+├── client.ts             # Cliente Notion singleton + configuración
+├── blog-service.ts       # Lógica de negocio y queries
+├── transformers.ts       # Transformadores de datos Notion → BlogPost
+├── types.ts              # Tipos TypeScript
+├── api-types.ts          # Tipos extendidos de la API
+└── README.md            # Esta documentación
 ```
 
-## 🚀 Uso Rápido
+## � Componentes Principales
+
+### 1. `client.ts` - Cliente y Configuración
+**Responsabilidad**: Inicialización del cliente Notion y configuración base.
 
 ```typescript
-import { getBlogPosts, getBlogPostBySlug } from '@/lib/notion';
+import { notion, DATABASE_ID, queryDatabase } from './client';
 
-// Obtener todos los posts
-const { posts, meta } = await getBlogPosts();
-
-// Obtener un post específico
-const post = await getBlogPostBySlug('mi-articulo');
+// Cliente singleton ya configurado
+const posts = await queryDatabase({
+  database_id: DATABASE_ID,
+  filter: { /* ... */ }
+});
 ```
 
-## 📁 Archivos
+**Variables de entorno requeridas**:
+- `NOTION_API_KEY` - Token de integración
+- `NOTION_DATABASE_ID` - ID de la base de datos
 
-- **`client.ts`**: Cliente de Notion configurado con las credenciales
-- **`types.ts`**: Tipos TypeScript para el blog
-- **`api-types.ts`**: Tipos extendidos para la API de Notion
-- **`transformers.ts`**: Funciones de transformación de datos
-- **`blog-service.ts`**: Funciones principales del servicio
-- **`index.ts`**: Exportaciones públicas del módulo
+### 2. `blog-service.ts` - Lógica de Negocio
+**Características implementadas**:
+- ✅ **Caching con `unstable_cache`**: Reduce llamadas a la API (1 hora)
+- ✅ **Paginación completa**: Helper `getAllPagesFromDatabase()` itera automáticamente
+- ✅ **Manejo de errores**: Errores específicos de Notion mapeados a mensajes útiles
+- ✅ **Conversión a Markdown**: Integración con `notion-to-md`
 
-## 📖 Documentación Completa
-
-Ver [docs/BLOG-NOTION-GUIDE.md](../../docs/BLOG-NOTION-GUIDE.md) para:
-- Configuración de la base de datos
-- Variables de entorno
-- Ejemplos de uso avanzado
-- Solución de problemas
-
-## 🔑 Variables de Entorno Requeridas
-
-```bash
-NOTION_API_KEY=ntn_XXXX...
-NOTION_DATABASE_ID=XXXX...
-```
-
-## 🎯 Características
-
-- ✅ Server Components compatible (Next.js 15)
-- ✅ TypeScript strict mode
-- ✅ Paginación integrada
-- ✅ Cache y revalidación optimizada
-- ✅ Conversión de Notion a Markdown
-- ✅ Búsqueda y filtros por tags
-- ✅ Generación estática de rutas
-
-## 🧪 Ejemplo Completo
+**Funciones principales**:
 
 ```typescript
-import {
-  getBlogPosts,
-  getBlogPostBySlug,
-  getBlogPostsByTag,
-  getAllTags,
-  searchBlogPosts
-} from '@/lib/notion';
+// Obtener posts publicados (con paginación)
+const { posts, meta } = await getBlogPosts(pageSize?, startCursor?);
 
-// Listado con paginación
-const { posts, meta } = await getBlogPosts(10);
-if (meta.hasMore) {
-  const { posts: nextPosts } = await getBlogPosts(10, meta.nextCursor);
-}
+// Obtener post individual por slug
+const post = await getBlogPostBySlug('mi-primer-post');
 
-// Post individual con contenido
-const post = await getBlogPostBySlug('mi-slug');
-console.log(post.title, post.content);
+// Filtrar por tag (usa paginación completa automática)
+const posts = await getBlogPostsByTag('Next.js', 10);
 
-// Filtrar por tag
-const reactPosts = await getBlogPostsByTag('React');
-
-// Obtener todos los tags
+// Obtener todos los tags únicos
 const tags = await getAllTags();
 
-// Buscar
-const results = await searchBlogPosts('Next.js');
+// Obtener todos los slugs (para generateStaticParams)
+const slugs = await getAllPublishedSlugs();
+
+// Buscar posts (cache 5 min)
+const results = await searchBlogPosts('notion');
 ```
 
-## 🔄 Actualización de Datos
+**Cache y revalidación**:
+- Posts/Tags/Slugs: 1 hora (`revalidate: 3600`)
+- Búsquedas: 5 minutos (`revalidate: 300`)
+- Tag común: `['notion-blog']` para invalidación masiva
 
-Los datos se actualizan automáticamente según la configuración de `revalidate` en cada página:
+### 3. `transformers.ts` - Transformaciones y Validaciones
+**Características**:
+- ✅ **Validaciones estrictas**: Función `validateProperty()` verifica tipos
+- ✅ **Fallbacks seguros**: Valores por defecto si faltan propiedades
+- ✅ **Logging detallado**: Warnings/errors en consola para debugging
+- ✅ **Manejo de errores**: Try-catch global con fallback completo
+
+**Ejemplo de validación robusta**:
 
 ```typescript
-export const revalidate = 3600; // 1 hora
+const titleProp = validateProperty<NotionPageProperties['Title']>(
+  properties,
+  'Title',
+  'title'
+);
+
+const title = titleProp ? extractTitle(titleProp.title) : 'Sin título';
 ```
 
-Para forzar actualización: `pnpm build`
+Si una página tiene propiedades faltantes o mal formadas, el transformer **no crashea** y devuelve un `BlogPost` con valores seguros.
 
-## 🐛 Debugging
+### 4. `types.ts` - Tipos TypeScript
+**Tipos principales**:
+- `NotionPageProperties` - Mapea propiedades de Notion
+- `BlogPost` - Estructura de post procesado
+- `BlogPostsResponse` - Respuesta con metadatos de paginación
+- `PaginationMeta` - Cursor y hasMore
 
-Si los datos no aparecen, verifica:
+### 5. `api-types.ts` - Tipos de API
+**Tipos de filtros disponibles**:
+- `SelectFilter` - Para campos Select
+- `CheckboxFilter` - Para campos Checkbox
+- `RichTextFilter` - Para campos Text/Rich Text
+- `TitleFilter` - Para campos Title
+- `MultiSelectFilter` - Para campos Multi-select
+- `AndFilter` / `OrFilter` - Filtros compuestos
 
-1. Variables de entorno configuradas
-2. Integración conectada a la base de datos en Notion
-3. Propiedad `published` marcada en los posts
-4. Logs del servidor para errores de API
+## � Flujo de Datos
+
+```
+┌─────────────────┐
+│  Notion API     │
+│  (PageObject)   │
+└────────┬────────┘
+         │
+         │ queryDatabase()
+         ▼
+┌─────────────────┐
+│  client.ts      │
+│  Raw response   │
+└────────┬────────┘
+         │
+         │ transformNotionPageToBlogPost()
+         ▼
+┌─────────────────┐
+│ transformers.ts │
+│  Validaciones   │
+└────────┬────────┘
+         │
+         │ BlogPost[]
+         ▼
+┌─────────────────┐
+│ blog-service.ts │
+│  Cache (1h)     │
+└────────┬────────┘
+         │
+         │ Funciones públicas
+         ▼
+┌─────────────────┐
+│  App Router     │
+│  (page.tsx)     │
+└─────────────────┘
+```
+
+## ⚠️ Manejo de Errores
+
+El módulo maneja explícitamente estos errores de Notion:
+
+| Código | Descripción | Solución |
+|--------|-------------|----------|
+| `object_not_found` | Base de datos no compartida | Compartir DB con integración |
+| `unauthorized` | API Key inválida | Verificar `NOTION_API_KEY` |
+| `validation_error` | Filtro o query mal formado | Revisar tipos y estructura |
+| `rate_limited` | Demasiadas peticiones | Cache automático mitiga esto |
+
+## 🚀 Optimizaciones Implementadas
+
+### 1. Paginación Completa Automática
+```typescript
+// Obtiene TODOS los posts, iterando automáticamente
+const allPages = await getAllPagesFromDatabase(filter, sorts);
+// No se limita a 100 resultados (límite de Notion)
+```
+
+### 2. Cache Inteligente con Next.js
+```typescript
+export const getBlogPosts = unstable_cache(
+  getBlogPostsUncached,
+  ['blog-posts'],
+  {
+    revalidate: 3600,
+    tags: ['notion-blog']
+  }
+);
+```
+
+**Ventajas**:
+- Reduce llamadas a Notion API (~100x menos en producción)
+- Mejora tiempo de carga (cache en edge)
+- Evita rate limits
+
+### 3. Validaciones Robustas
+```typescript
+// Si toda la transformación falla, devuelve post de error
+return {
+  title: 'Error al cargar contenido',
+  slug: `error-${page.id}`,
+  published: false,
+  // ...
+};
+```
+
+## 📝 Ejemplos de Uso
+
+### Listado de posts en App Router
+
+```typescript
+// app/blog/page.tsx
+import { getBlogPosts } from '@/lib/notion';
+
+export default async function BlogPage() {
+  const { posts, meta } = await getBlogPosts(10);
+  
+  return (
+    <div>
+      {posts.map(post => (
+        <article key={post.id}>
+          <h2>{post.title}</h2>
+          <p>{post.excerpt}</p>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+export const revalidate = 3600; // ISR cada 1 hora
+```
+
+### Post individual con generateStaticParams
+
+```typescript
+// app/blog/[slug]/page.tsx
+import { getBlogPostBySlug, getAllPublishedSlugs } from '@/lib/notion';
+import ReactMarkdown from 'react-markdown';
+
+export async function generateStaticParams() {
+  const slugs = await getAllPublishedSlugs();
+  return slugs.map(slug => ({ slug }));
+}
+
+export default async function BlogPostPage({ 
+  params 
+}: { 
+  params: Promise<{ slug: string }> 
+}) {
+  const { slug } = await params;
+  const post = await getBlogPostBySlug(slug);
+  
+  if (!post) return <div>Post no encontrado</div>;
+  
+  return (
+    <article>
+      <h1>{post.title}</h1>
+      <ReactMarkdown>{post.content}</ReactMarkdown>
+    </article>
+  );
+}
+```
+
+## 🧪 Testing y Verificación
+
+### Comandos disponibles
+
+```bash
+# Verificar conexión y estructura
+pnpm notion:verify
+
+# Listar bases de datos accesibles
+pnpm notion:list
+
+# Ver contenido de la base de datos
+pnpm notion:content
+
+# Ver contenido detallado de páginas
+pnpm notion:pages
+
+# Publicar una página específica
+pnpm notion:publish <page_id>
+```
+
+### Tests manuales recomendados
+
+1. **Validar propiedades faltantes**:
+   - Crear post sin slug → Debe generar slug automático
+   - Crear post sin título → Debe usar "Sin título"
+   - Post sin Status → No debe publicarse
+
+2. **Paginación completa**:
+   - Base de datos con >100 posts → Debe obtener todos
+
+3. **Cache**:
+   - Hacer 2 requests seguidos → Segundo debe ser instantáneo
+   - Esperar 1 hora → Debe revalidar automáticamente
+
+## 🔒 Seguridad
+
+- **API Key**: Nunca commitear `.env.local`
+- **Server-side only**: Todas las llamadas son Server Components
+- **Validación**: Siempre validar tipos antes de usar datos
+
+## 📖 Referencias
+
+- [Notion API Docs](https://developers.notion.com/)
+- [Next.js unstable_cache](https://nextjs.org/docs/app/api-reference/functions/unstable_cache)
+- [notion-to-md](https://github.com/souvikinator/notion-to-md)
+- [Guía de Configuración Completa](../../../docs/NOTION-INTEGRATION-SETUP-GUIDE.md)
+- [Auditoría Técnica](../../../docs/BLOG-NOTION-DEVTOOLS-AUDIT.md)
 
 ---
 
-Desarrollado para WebCode - Soluciones Web Profesionales
+**Versión**: 2.0.0  
+**Última actualización**: Octubre 2025  
+**Cambios recientes**: Añadido caching, paginación completa, validaciones estrictas

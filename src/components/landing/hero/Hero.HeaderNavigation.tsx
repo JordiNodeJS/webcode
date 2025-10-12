@@ -24,6 +24,7 @@ interface NavigationItem {
 const navigationItems: NavigationItem[] = [
   { href: "#servicios", label: "Servicios" },
   { href: "/proceso", label: "Proceso" },
+  { href: "/blog", label: "Blog" },
   { href: "https://jordinodejs.github.io/", label: "Portfolio" },
   { href: "/faqs", label: "FAQ" },
   { href: "/contacto", label: "Contacto" },

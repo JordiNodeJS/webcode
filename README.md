@@ -20,6 +20,106 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## 📝 Integración con Notion (Blog)
+
+Este proyecto utiliza **Notion** como CMS para gestionar el blog. Los artículos se publican y editan directamente en Notion y se sincronizan automáticamente con el sitio.
+
+### 🔑 Configuración Rápida
+
+1. **Crea tu integración en Notion**
+   - Ve a [https://www.notion.so/my-integrations](https://www.notion.so/my-integrations)
+   - Crea una nueva integración interna
+   - Copia el **Internal Integration Token**
+
+2. **Configura las variables de entorno**
+   
+   Crea un archivo `.env.local` en la raíz del proyecto:
+   
+   ```bash
+   NOTION_API_KEY=secret_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+   NOTION_DATABASE_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+   ```
+
+3. **Comparte tu base de datos con la integración**
+   - Abre tu base de datos "WebCode Blog" en Notion
+   - Click en `...` → `Add connections`
+   - Selecciona tu integración
+
+4. **Verifica la conexión**
+   
+   ```bash
+   pnpm notion:verify
+   ```
+
+### 📊 Estructura de la Base de Datos Requerida
+
+Tu base de datos de Notion debe tener las siguientes propiedades:
+
+| Propiedad | Tipo | Obligatorio | Descripción |
+|-----------|------|-------------|-------------|
+| `Title` | Title | ✅ | Título del artículo |
+| `Slug` | Text | ✅ | URL amigable (ej: `mi-primer-post`) |
+| `Description` | Text | ✅ | Resumen/excerpt del artículo |
+| `Status` | Select | ✅ | Estado: `Published`, `Draft`, etc. |
+| `PublishedDate` | Date | ✅ | Fecha de publicación |
+| `Tags` | Multi-select | ⚪ | Categorías del artículo |
+| `Author` | Person | ⚪ | Autor del artículo |
+| `CoverImageURL` | URL | ⚪ | URL de la imagen de portada |
+| `Featured` | Checkbox | ⚪ | Marcar como destacado |
+
+**Nota:** Las propiedades marcadas con ✅ son obligatorias. El sistema incluye validaciones y fallbacks para propiedades faltantes.
+
+### 🛠️ Comandos Disponibles
+
+```bash
+# Verificar conexión y estructura
+pnpm notion:verify
+
+# Listar bases de datos accesibles
+pnpm notion:list
+
+# Buscar base de datos por nombre
+pnpm notion:search
+
+# Ver contenido de la base de datos
+pnpm notion:content
+
+# Ver contenido detallado de páginas
+pnpm notion:pages
+
+# Publicar una página específica
+ppnpm notion:publish <page_id>
+```
+
+### ⚡ Características Implementadas
+
+- **✅ Caching inteligente**: Usa `unstable_cache` de Next.js con revalidación de 1 hora
+- **✅ Paginación completa**: Itera automáticamente por todos los resultados (no se limita a 100)
+- **✅ Validaciones estrictas**: Manejo robusto de propiedades faltantes con fallbacks seguros
+- **✅ Conversión a Markdown**: Contenido rico de Notion → Markdown → HTML
+- **✅ Filtrado avanzado**: Por tags, búsqueda por texto, ordenación, etc.
+- **✅ Rate limit friendly**: Cache reduce llamadas a la API de Notion
+
+### 📚 Documentación Completa
+
+Para más detalles sobre configuración, solución de problemas y mejores prácticas:
+
+- **[Guía de Configuración Completa](docs/NOTION-INTEGRATION-SETUP-GUIDE.md)** - Setup paso a paso
+- **[Auditoría Técnica](docs/BLOG-NOTION-DEVTOOLS-AUDIT.md)** - Análisis técnico y debugging
+- **[Pasos Siguientes](NEXT-STEPS-NOTION.md)** - Checklist rápido de verificación
+- **[Código Fuente](src/lib/notion/)** - Implementación técnica
+
+### 🔄 Revalidación y Cache
+
+El blog usa **ISR (Incremental Static Regeneration)**:
+
+- **Posts listados**: Se revalidan cada 1 hora
+- **Posts individuales**: Se revalidan cada 1 hora
+- **Búsquedas**: Se revalidan cada 5 minutos
+- **Tags**: Se revalidan cada 1 hora
+
+Para forzar una actualización inmediata, reinicia el servidor de desarrollo.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
