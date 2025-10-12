@@ -34,6 +34,7 @@ export type DatabaseFilter =
   | CheckboxFilter
   | RichTextFilter
   | TitleFilter
+  | SelectFilter
   | MultiSelectFilter
   | AndFilter
   | OrFilter;
@@ -57,6 +58,13 @@ export interface TitleFilter {
   property: string;
   title: {
     contains: string;
+  };
+}
+
+export interface SelectFilter {
+  property: string;
+  select: {
+    equals: string;
   };
 }
 
