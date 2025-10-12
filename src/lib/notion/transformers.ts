@@ -234,7 +234,9 @@ export function generateSlug(title: string): string {
     .replace(/[^\w\s-]/g, "") // Elimina caracteres especiales
     .replace(/\s+/g, "-") // Reemplaza espacios por guiones
     .replace(/-+/g, "-") // Elimina guiones múltiples
-    .trim();
+    .replace(/^-+|-+$/g, "") // Elimina guiones al inicio y final
+    .trim()
+    .substring(0, 100); // Limita la longitud para evitar URLs muy largas
 }
 
 /**

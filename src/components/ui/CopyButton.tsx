@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { Check, Copy } from "lucide-react";
+import { useState } from "react";
 
 interface CopyButtonProps {
   text: string;
@@ -32,10 +32,12 @@ export function CopyButton({ text, className = "" }: CopyButtonProps) {
 
   return (
     <button
+      type="button"
       onClick={handleCopy}
       className={`copy-button inline-flex items-center gap-2 px-3 py-2 text-xs font-medium rounded-md border transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 ${className}`}
       title={copied ? "¡Copiado!" : "Copiar código"}
       disabled={copied}
+      data-copied={copied}
     >
       {copied ? (
         <>

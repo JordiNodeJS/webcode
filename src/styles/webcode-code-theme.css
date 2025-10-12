@@ -63,13 +63,20 @@
   padding: 0.75rem 1rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
   color: oklch(var(--foreground));
 }
 
-.webcode-code-header::before {
+.webcode-code-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.webcode-code-header-left::before {
   content: "⚡";
   font-size: 1rem;
   color: oklch(var(--primary));
@@ -193,6 +200,55 @@
   }
 }
 
+/* Estilos para el botón de copia */
+.copy-button {
+  background: oklch(var(--background));
+  border: 2px solid oklch(var(--border));
+  color: oklch(var(--foreground));
+  box-shadow: var(--shadow-3d-xs);
+  transition: all 0.2s ease;
+}
+
+.copy-button:hover {
+  background: oklch(var(--primary) / 0.1);
+  border-color: oklch(var(--primary));
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-3d-sm);
+}
+
+.copy-button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-3d-xs);
+}
+
+.copy-button:focus {
+  outline: none;
+  ring: 2px solid oklch(var(--primary) / 0.5);
+  ring-offset: 2px;
+}
+
+.copy-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Estados del botón de copia */
+.copy-button[data-copied="true"] {
+  background: oklch(var(--secondary) / 0.1);
+  border-color: oklch(var(--secondary));
+  color: oklch(var(--secondary));
+}
+
+/* Animación sutil para el ícono */
+.copy-button svg {
+  transition: transform 0.2s ease;
+}
+
+.copy-button:hover svg {
+  transform: scale(1.1);
+}
+
 /* Alto contraste */
 @media (prefers-contrast: high) {
   .webcode-code-block {
@@ -201,5 +257,9 @@
   
   .webcode-code-inline {
     border-width: 2px;
+  }
+  
+  .copy-button {
+    border-width: 3px;
   }
 }
