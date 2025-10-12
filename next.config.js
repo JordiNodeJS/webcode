@@ -2,6 +2,29 @@ const nextConfig = {
   experimental: {
     reactCompiler: true
   },
+  // Configuración de imágenes para permitir dominios externos
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.notion.so',
+        port: '',
+        pathname: '/images/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'via.placeholder.com',
+        port: '',
+        pathname: '/**',
+      }
+    ],
+  },
   // Redirects: keep English `/privacy` pointing to Spanish `/politica-privacidad`
   async redirects() {
     return [

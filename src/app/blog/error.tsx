@@ -5,8 +5,8 @@
  * Muestra errores de configuración de Notion de manera amigable
  */
 
+import { AlertCircle, ArrowLeft, Database, Key } from "lucide-react";
 import Link from "next/link";
-import { AlertCircle, Database, Key, ArrowLeft } from "lucide-react";
 
 interface BlogErrorPageProps {
   error: Error & { digest?: string };
@@ -19,8 +19,7 @@ export default function BlogError({ error, reset }: BlogErrorPageProps) {
     error.message.includes("not shared");
 
   const isAuthError =
-    error.message.includes("API Key") ||
-    error.message.includes("unauthorized");
+    error.message.includes("API Key") || error.message.includes("unauthorized");
 
   return (
     <div className="container mx-auto px-4 py-16">
@@ -30,9 +29,7 @@ export default function BlogError({ error, reset }: BlogErrorPageProps) {
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-destructive/10">
             <AlertCircle className="h-8 w-8 text-destructive" />
           </div>
-          <h1 className="mb-2 text-3xl font-bold">
-            Error al cargar el blog
-          </h1>
+          <h1 className="mb-2 text-3xl font-bold">Error al cargar el blog</h1>
           <p className="text-muted-foreground">
             Hubo un problema al conectar con Notion
           </p>
@@ -74,9 +71,7 @@ export default function BlogError({ error, reset }: BlogErrorPageProps) {
                   </li>
                   <li className="flex gap-2">
                     <span className="font-semibold">3.</span>
-                    <span>
-                      Selecciona "Add connections" o "Conectar a"
-                    </span>
+                    <span>Selecciona "Add connections" o "Conectar a"</span>
                   </li>
                   <li className="flex gap-2">
                     <span className="font-semibold">4.</span>

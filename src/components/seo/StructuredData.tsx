@@ -1,7 +1,7 @@
 import Script from "next/script";
 
 interface StructuredDataProps {
-  type?: "Organization" | "LocalBusiness" | "WebSite" | "Service";
+  type?: "Organization" | "LocalBusiness" | "WebSite" | "Service" | "Article";
   data?: Record<string, unknown>;
 }
 
