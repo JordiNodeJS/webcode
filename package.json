@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build:internal": "next build --turbopack && node scripts/extract-css-chunks.mjs",
-    "build": "next build --turbopack && node scripts/extract-css-chunks.mjs",
+    "build:internal": "next build --turbopack",
+    "build": "next build --turbopack",
     "start": "next start",
     "kill-ports": "pnpm dlx kill-port 3000 3001 3002",
     "lint": "pnpm dlx @biomejs/biome check .",
