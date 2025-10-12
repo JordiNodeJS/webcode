@@ -39,9 +39,13 @@ export async function queryDatabase(
 ): Promise<DatabaseQueryResponse> {
   // Convertir database_id a data_source_id para la API v5
   const { database_id, ...rest } = params;
-  const res = await (notion as any).dataSources.query({
+
+  // Usar unknown y validar el tipo del resultado
+  // @ts-expect-error - dataSources.query no está completamente tipado en @notionhq/client v5
+  const res: unknown = await notion.dataSources.query({
     data_source_id: database_id,
     ...rest,
   });
+
   return res as DatabaseQueryResponse;
 }
