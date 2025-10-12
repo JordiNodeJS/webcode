@@ -23,7 +23,7 @@ export function BlogPostCard({ post, priority = false }: BlogPostCardProps) {
               alt={post.title}
               width={800}
               height={400}
-              className="h-48 w-full object-cover transition-transform group-hover:scale-105"
+              className="h-48 w-full object-cover object-center transition-transform group-hover:scale-105"
               priority={priority}
             />
           </div>

@@ -82,7 +82,7 @@ export default async function BlogPage() {
                         alt={post.title}
                         width={800}
                         height={400}
-                        className="h-48 w-full object-cover transition-transform group-hover:scale-105"
+                        className="h-48 w-full object-cover object-center transition-transform group-hover:scale-105"
                       />
                     </div>
                   )}

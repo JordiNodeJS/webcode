@@ -89,8 +89,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             src={post.coverImage}
             alt={post.title}
             width={1200}
-            height={630}
-            className="w-full object-cover"
+            height={400}
+            className="w-full h-64 object-cover object-center"
             priority
           />
         </div>
@@ -158,7 +158,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       alt={relatedPost.title}
                       width={400}
                       height={200}
-                      className="h-32 w-full object-cover transition-transform group-hover:scale-105"
+                      className="h-32 w-full object-cover object-center transition-transform group-hover:scale-105"
                     />
                   </div>
                 )}
