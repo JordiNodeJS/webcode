@@ -4,9 +4,9 @@
  */
 
 import type { Metadata } from "next";
-import { getAllTags, getBlogPosts } from "@/lib/notion";
-import { BlogPostCard } from "@/components/blog/BlogPostCard";
 import { BlogCategoriesCard } from "@/components/blog/BlogCategoriesCard";
+import { BlogPostCard } from "@/components/blog/BlogPostCard";
+import { getAllTags, getBlogPosts } from "@/lib/notion";
 
 export const metadata: Metadata = {
   title: "Blog | WebCode - Desarrollo Web y Soluciones Digitales",

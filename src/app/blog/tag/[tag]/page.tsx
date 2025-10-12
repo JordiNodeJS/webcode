@@ -5,9 +5,9 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getAllTags, getBlogPostsByTag } from "@/lib/notion";
-import { BlogPostCard } from "@/components/blog/BlogPostCard";
 import { BlogCategoriesCard } from "@/components/blog/BlogCategoriesCard";
+import { BlogPostCard } from "@/components/blog/BlogPostCard";
+import { getAllTags, getBlogPostsByTag } from "@/lib/notion";
 
 interface TagPageProps {
   params: Promise<{ tag: string }>;

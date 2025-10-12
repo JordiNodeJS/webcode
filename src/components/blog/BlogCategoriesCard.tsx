@@ -5,8 +5,8 @@
  * Estilo brutalista inspirado en las tarjetas de servicios
  */
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
