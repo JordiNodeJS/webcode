@@ -147,7 +147,7 @@ export async function getBlogPostBySlug(
 
 /**
  * Obtiene posts filtrados por tag
- * @param tag - Nombre del tag
+ * @param tag - Nombre del tag (case-insensitive)
  * @param pageSize - Número de posts por página
  */
 export async function getBlogPostsByTag(
@@ -155,23 +155,14 @@ export async function getBlogPostsByTag(
   pageSize = 10,
 ): Promise<BlogPost[]> {
   try {
+    // Primero obtenemos todos los posts publicados
     const response = await queryDatabase({
       database_id: DATABASE_ID,
       filter: {
-        and: [
-          {
-            property: "Status",
-            select: {
-              equals: "Published",
-            },
-          },
-          {
-            property: "Tags",
-            multi_select: {
-              contains: tag,
-            },
-          },
-        ],
+        property: "Status",
+        select: {
+          equals: "Published",
+        },
       } as any,
       sorts: [
         {
@@ -179,16 +170,26 @@ export async function getBlogPostsByTag(
           direction: "descending",
         },
       ],
-      page_size: pageSize,
+      page_size: 100, // Obtenemos más posts para filtrar correctamente
     });
 
-    return response.results
+    const allPosts = response.results
       .filter((page: unknown): page is PageObjectResponse => {
         return (
           typeof page === "object" && page !== null && "properties" in page
         );
       })
       .map(transformNotionPageToBlogPost);
+
+    // Filtramos por tag de manera case-insensitive
+    const filteredPosts = allPosts.filter((post) =>
+      post.tags.some((postTag) =>
+        postTag.name.toLowerCase() === tag.toLowerCase()
+      )
+    );
+
+    // Limitamos los resultados según pageSize
+    return filteredPosts.slice(0, pageSize);
   } catch (error) {
     console.error(`Error al obtener posts con tag "${tag}":`, error);
     throw new Error(`No se pudieron obtener artículos con el tag "${tag}"`);
