@@ -5,15 +5,7 @@ const nextConfig: NextConfig = {
     reactCompiler: true,
     viewTransition: true,
     // Optimizaciones experimentales para bundle
-    optimizePackageImports: [
-      "lucide-react", 
-      "framer-motion",
-      "react-icons/fa6",
-      "react-icons/fi", 
-      "react-icons/hi2",
-      "react-icons/pi",
-      "react-icons/ri"
-    ],
+    optimizePackageImports: ["lucide-react", "framer-motion"],
     serverComponentsHmrCache: false
   },
   // Configurar orígenes permitidos para desarrollo
@@ -86,52 +78,11 @@ const nextConfig: NextConfig = {
               priority: 30,
               enforce: true
             },
-            // Lucide React - Iconos principales (carga inmediata)
-            lucide: {
-              name: "lucide-icons",
+            icons: {
+              name: "icons",
               test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
               chunks: "all",
               priority: 25,
-              enforce: true
-            },
-            // React Icons - Font Awesome (carga bajo demanda)
-            "react-icons-fa": {
-              name: "react-icons-fa",
-              test: /[\\/]node_modules[\\/]react-icons[\\/].*fa6/,
-              chunks: "async",
-              priority: 20,
-              enforce: true
-            },
-            // React Icons - Feather (carga bajo demanda)
-            "react-icons-fi": {
-              name: "react-icons-fi", 
-              test: /[\\/]node_modules[\\/]react-icons[\\/].*fi/,
-              chunks: "async",
-              priority: 20,
-              enforce: true
-            },
-            // React Icons - Heroicons (carga bajo demanda)
-            "react-icons-hi": {
-              name: "react-icons-hi",
-              test: /[\\/]node_modules[\\/]react-icons[\\/].*hi2/,
-              chunks: "async", 
-              priority: 20,
-              enforce: true
-            },
-            // React Icons - Phosphor (carga bajo demanda)
-            "react-icons-pi": {
-              name: "react-icons-pi",
-              test: /[\\/]node_modules[\\/]react-icons[\\/].*pi/,
-              chunks: "async",
-              priority: 20,
-              enforce: true
-            },
-            // React Icons - Remix (carga bajo demanda)
-            "react-icons-ri": {
-              name: "react-icons-ri",
-              test: /[\\/]node_modules[\\/]react-icons[\\/].*ri/,
-              chunks: "async",
-              priority: 20,
               enforce: true
             },
             pdf: {
