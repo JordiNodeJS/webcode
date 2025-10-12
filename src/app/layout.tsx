@@ -15,13 +15,13 @@ import { criticalCss } from "./critical-css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  display: "swap"
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-  display: "swap"
+  display: "swap",
 });
 
 export const metadata: Metadata = generateSEOMetadata({
@@ -42,13 +42,13 @@ export const metadata: Metadata = generateSEOMetadata({
     "startup web solutions",
     "Next.js desarrollo",
     "React Barcelona",
-    "TypeScript web development"
+    "TypeScript web development",
   ],
-  canonical: "https://webcode.es"
+  canonical: "https://webcode.es",
 });
 
 export default function RootLayout({
-  children
+  children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {

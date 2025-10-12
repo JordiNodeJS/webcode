@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import {
   EMOJI_TO_SVG_MAP,
   type EmojiKey,
-  getSvgIconName
+  getSvgIconName,
 } from "@/lib/svg-icons";
 
 /**
@@ -39,7 +39,7 @@ export function useEmojiReplacement() {
         size: options.size || "md",
         variant: options.variant || "default",
         className: options.className,
-        title: emoji
+        title: emoji,
       };
     };
   }, []);
@@ -101,6 +101,6 @@ export function useEmojiReplacement() {
     replaceEmoji,
     replaceEmojisInText,
     hasSvgEquivalent,
-    supportedEmojis
+    supportedEmojis,
   };
 }

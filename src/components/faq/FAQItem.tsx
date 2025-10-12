@@ -37,7 +37,7 @@ export function FAQItem({ question, answer, index }: FAQItemProps) {
           "text-left transition-colors duration-200",
           "hover:bg-accent/30 rounded-lg",
           "focus:outline-none",
-          "group"
+          "group",
         )}
         aria-expanded={isOpen}
       >
@@ -53,7 +53,7 @@ export function FAQItem({ question, answer, index }: FAQItemProps) {
             className={cn(
               "w-5 h-5 transition-colors",
               isOpen ? "text-primary" : "text-muted-foreground",
-              "group-hover:text-primary"
+              "group-hover:text-primary",
             )}
           />
         </motion.div>

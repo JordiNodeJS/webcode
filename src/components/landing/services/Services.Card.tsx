@@ -8,7 +8,7 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle
+  CardTitle,
 } from "@/components/ui/card";
 
 interface ServiceCardProps {
@@ -30,7 +30,7 @@ export function ServiceCard({
   features,
   target,
   ctaText,
-  delay
+  delay,
 }: ServiceCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -56,7 +56,7 @@ export function ServiceCard({
           : "hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
       }`}
       style={{
-        animationDelay: prefersReducedMotion ? "0s" : `${delay}s`
+        animationDelay: prefersReducedMotion ? "0s" : `${delay}s`,
       }}
       data-testid={`service-card-${title.toLowerCase().replace(/\s+/g, "-")}`}
       role="article"

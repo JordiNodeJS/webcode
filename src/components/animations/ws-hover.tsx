@@ -12,13 +12,13 @@ interface WSHoverProps {
 export function WSHover({
   children,
   effect = "lift",
-  className = ""
+  className = "",
 }: WSHoverProps) {
   const effects = {
     lift: wsConfig.effects.lift,
     glow: wsConfig.effects.glow,
     fade: wsConfig.effects.fade,
-    scale: wsConfig.effects.scale
+    scale: wsConfig.effects.scale,
   };
 
   return (
@@ -27,7 +27,7 @@ export function WSHover({
       whileHover={effects[effect]}
       transition={{
         duration: wsConfig.durations.quick,
-        ease: wsConfig.easings.smooth
+        ease: wsConfig.easings.smooth,
       }}
     >
       {children}

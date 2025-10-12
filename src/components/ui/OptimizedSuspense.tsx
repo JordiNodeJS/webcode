@@ -9,7 +9,7 @@ function LoadingSpinner({ size = "md", className = "" }: LoadingSpinnerProps) {
   const sizeClasses = {
     sm: "w-4 h-4",
     md: "w-8 h-8",
-    lg: "w-12 h-12"
+    lg: "w-12 h-12",
   };
 
   return (
@@ -37,7 +37,7 @@ export function OptimizedSuspense({
   children,
   fallback,
   size = "md",
-  className
+  className,
 }: OptimizedSuspenseProps) {
   return (
     <Suspense

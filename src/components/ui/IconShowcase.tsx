@@ -10,7 +10,7 @@ import {
   HiOutlineSparkles,
   PiCoffee,
   PiFlowerTulip,
-  PiScissors
+  PiScissors,
 } from "@/lib/icons";
 
 /**

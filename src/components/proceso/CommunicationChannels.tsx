@@ -14,7 +14,7 @@ interface CommunicationChannelsProps {
 }
 
 export default function CommunicationChannels({
-  canales
+  canales,
 }: CommunicationChannelsProps) {
   return (
     <section className="relative py-20 overflow-hidden">

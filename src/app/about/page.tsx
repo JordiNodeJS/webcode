@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Sobre Nosotros - WEBCODE",
-  description: "Conoce al equipo y la misión de WEBCODE."
+  description: "Conoce al equipo y la misión de WEBCODE.",
 };
 
 export default function AboutPage() {

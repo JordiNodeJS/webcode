@@ -52,9 +52,9 @@ export function FAQStructuredData({ faqs }: FAQStructuredDataProps) {
       name: faq.question,
       acceptedAnswer: {
         "@type": "Answer",
-        text: reactNodeToText(faq.answer)
-      }
-    }))
+        text: reactNodeToText(faq.answer),
+      },
+    })),
   };
 
   return (
@@ -63,7 +63,7 @@ export function FAQStructuredData({ faqs }: FAQStructuredDataProps) {
       type="application/ld+json"
       // biome-ignore lint/security/noDangerouslySetInnerHtml: Required for JSON-LD structured data
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(structuredData)
+        __html: JSON.stringify(structuredData),
       }}
     />
   );

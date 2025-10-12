@@ -14,7 +14,7 @@ interface QualityGuaranteesProps {
 }
 
 export default function QualityGuarantees({
-  garantias
+  garantias,
 }: QualityGuaranteesProps) {
   return (
     <section className="relative py-20 overflow-hidden">

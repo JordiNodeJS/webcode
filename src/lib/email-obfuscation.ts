@@ -10,7 +10,7 @@ export function encodeRot13Base64(email: string): string {
     return str.replace(/[a-zA-Z]/g, (char) => {
       const start = char <= "Z" ? 65 : 97;
       return String.fromCharCode(
-        ((char.charCodeAt(0) - start + 13) % 26) + start
+        ((char.charCodeAt(0) - start + 13) % 26) + start,
       );
     });
   };
@@ -28,7 +28,7 @@ export function decodeRot13Base64(encodedEmail: string): string {
     const rot13Decoded = base64Decoded.replace(/[a-zA-Z]/g, (char) => {
       const start = char <= "Z" ? 65 : 97;
       return String.fromCharCode(
-        ((char.charCodeAt(0) - start + 13) % 26) + start
+        ((char.charCodeAt(0) - start + 13) % 26) + start,
       );
     });
     return rot13Decoded;
@@ -103,7 +103,7 @@ export function encodeMultiTechnique(email: string): {
     { name: "html-entities", fn: () => encodeHtmlEntities(email) },
     { name: "unicode", fn: () => encodeUnicode(email) },
     { name: "css-rtl", fn: () => encodeCssRtl(email) },
-    { name: "invisible", fn: () => encodeInvisibleChars(email) }
+    { name: "invisible", fn: () => encodeInvisibleChars(email) },
   ];
 
   const randomTechnique =
@@ -111,7 +111,7 @@ export function encodeMultiTechnique(email: string): {
 
   return {
     encoded: randomTechnique.fn(),
-    method: randomTechnique.name
+    method: randomTechnique.name,
   };
 }
 
@@ -123,12 +123,12 @@ export function isRealBrowser(): boolean {
 
   // Verificar características del navegador
   const hasUserAgent = Boolean(
-    navigator.userAgent && navigator.userAgent.length > 10
+    navigator.userAgent && navigator.userAgent.length > 10,
   );
   const hasPlugins = Boolean(navigator.plugins && navigator.plugins.length > 0);
   const hasScreen = Boolean(screen.width > 200 && screen.height > 200);
   const hasLanguage = Boolean(
-    navigator.language && navigator.language.length > 0
+    navigator.language && navigator.language.length > 0,
   );
 
   return hasUserAgent && hasPlugins && hasScreen && hasLanguage;
@@ -163,7 +163,7 @@ export function detectBotPatterns(userAgent: string): boolean {
     /java/i,
     /headless/i,
     /phantom/i,
-    /selenium/i
+    /selenium/i,
   ];
 
   return botPatterns.some((pattern) => pattern.test(userAgent));
@@ -184,7 +184,7 @@ export function generateCSRFToken(): string {
  */
 export function checkFormCompletionTime(
   startTime: number,
-  minTime: number = 3000
+  minTime: number = 3000,
 ): boolean {
   return Date.now() - startTime >= minTime;
 }
@@ -205,7 +205,7 @@ export function detectSpamContent(content: string): boolean {
     /limited time/i,
     /act now/i,
     /guaranteed/i,
-    /no risk/i
+    /no risk/i,
   ];
 
   return spamPatterns.some((pattern) => pattern.test(content));
@@ -220,7 +220,7 @@ export function isSuspiciousIP(ip: string): boolean {
     /^127\./,
     /^192\.168\./,
     /^10\./,
-    /^172\.(1[6-9]|2[0-9]|3[0-1])\./
+    /^172\.(1[6-9]|2[0-9]|3[0-1])\./,
   ];
 
   return suspiciousPatterns.some((pattern) => pattern.test(ip));
@@ -236,7 +236,7 @@ export const EMAIL_PROTECTION_CONFIG = {
     "html-entities",
     "unicode",
     "css-rtl",
-    "invisible"
+    "invisible",
   ],
 
   // Configuración de detección de bots
@@ -244,15 +244,15 @@ export const EMAIL_PROTECTION_CONFIG = {
     minFormTime: 3000, // 3 segundos mínimo
     maxSubmissions: 5, // 5 envíos máximo
     cooldownPeriod: 60000, // 1 minuto de espera
-    suspiciousPatterns: [/bot/i, /crawler/i, /spider/i, /scraper/i]
+    suspiciousPatterns: [/bot/i, /crawler/i, /spider/i, /scraper/i],
   },
 
   // Configuración de rate limiting
   rateLimit: {
     maxRequests: 10,
     windowMs: 60000, // 1 minuto
-    blockDuration: 300000 // 5 minutos de bloqueo
-  }
+    blockDuration: 300000, // 5 minutos de bloqueo
+  },
 };
 
 /**
@@ -260,7 +260,7 @@ export const EMAIL_PROTECTION_CONFIG = {
  */
 export function protectEmail(
   email: string,
-  method: string = "auto"
+  method: string = "auto",
 ): {
   protected: string;
   method: string;
@@ -271,7 +271,7 @@ export function protectEmail(
     return {
       protected: result.encoded,
       method: result.method,
-      isProtected: true
+      isProtected: true,
     };
   }
 
@@ -299,6 +299,6 @@ export function protectEmail(
   return {
     protected: protectedEmail,
     method,
-    isProtected: protectedEmail !== email
+    isProtected: protectedEmail !== email,
   };
 }

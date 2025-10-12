@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Fuentes y Estadísticas | WebCode - Datos Verificables",
   description:
-    "Fuentes verificables y estadísticas utilizadas en WebCode para respaldar nuestras afirmaciones sobre desarrollo web."
+    "Fuentes verificables y estadísticas utilizadas en WebCode para respaldar nuestras afirmaciones sobre desarrollo web.",
 };
 
 export default function SourcesPage() {

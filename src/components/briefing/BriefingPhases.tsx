@@ -109,7 +109,7 @@ export default function BriefingPhases({ fases }: BriefingPhasesProps) {
                 initial={false}
                 animate={{
                   height: faseActiva === fase.numero ? "auto" : 0,
-                  opacity: faseActiva === fase.numero ? 1 : 0
+                  opacity: faseActiva === fase.numero ? 1 : 0,
                 }}
                 transition={{ duration: 0.3 }}
                 className="overflow-hidden"

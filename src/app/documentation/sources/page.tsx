@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     "PMI",
     "project management",
     "requirements",
-    "verifiable"
+    "verifiable",
   ],
   openGraph: {
     title: "Sources and Statistics | WebCode",
     description:
-      "Official sources and verifiable statistics about project management and requirements."
-  }
+      "Official sources and verifiable statistics about project management and requirements.",
+  },
 };
 
 export default function DocumentationSourcesPage() {

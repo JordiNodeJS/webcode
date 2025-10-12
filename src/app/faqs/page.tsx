@@ -27,7 +27,7 @@ const faqs = [
           <li>Migración de sitios y consultoría técnica</li>
         </ul>
       </>
-    )
+    ),
   },
   {
     question:
@@ -50,7 +50,7 @@ const faqs = [
           regulares para que el proyecto avance con transparencia.
         </p>
       </>
-    )
+    ),
   },
   {
     question: "¿Cuál es el precio de un sitio web profesional?",
@@ -80,7 +80,7 @@ const faqs = [
           compromiso.
         </p>
       </>
-    )
+    ),
   },
   {
     question: "¿Qué tecnologías utilizáis para desarrollar páginas web?",
@@ -119,7 +119,7 @@ const faqs = [
           de mantener, con foco en Core Web Vitals y SEO técnico.
         </p>
       </>
-    )
+    ),
   },
   {
     question: "¿Hacéis diseño responsive y mobile-first?",
@@ -135,7 +135,7 @@ const faqs = [
           experiencia consistente y accesible en todos los tamaños de pantalla.
         </p>
       </>
-    )
+    ),
   },
   {
     question: "¿Ofrecéis servicios de SEO en Barcelona?",
@@ -154,7 +154,7 @@ const faqs = [
           <li>Auditorías completas y planes de optimización</li>
         </ul>
       </>
-    )
+    ),
   },
   {
     question: "¿Qué incluye el mantenimiento web?",
@@ -180,7 +180,7 @@ const faqs = [
           proyectos.
         </p>
       </>
-    )
+    ),
   },
   {
     question: "¿Trabajáis con clientes de toda España o solo en Barcelona?",
@@ -198,7 +198,7 @@ const faqs = [
           es necesario.
         </p>
       </>
-    )
+    ),
   },
   {
     question: "¿Proporcionáis hosting y dominio?",
@@ -245,7 +245,7 @@ const faqs = [
           recomendación adaptada a tu proyecto.
         </p>
       </>
-    )
+    ),
   },
   {
     question: "¿Cómo es el proceso de trabajo en un proyecto web?",
@@ -279,7 +279,7 @@ const faqs = [
           parciales para revisión, y total transparencia en tiempos y costes.
         </p>
       </>
-    )
+    ),
   },
   {
     question:
@@ -333,7 +333,7 @@ const faqs = [
           adaptada.pnpm self-update
         </p>
       </>
-    )
+    ),
   },
   {
     question: "¿Qué diferencia a WEBCODE de otras agencias de desarrollo web?",
@@ -379,12 +379,12 @@ const faqs = [
           </li>
         </ul>
       </>
-    )
+    ),
   },
   {
     question: "¿Ofrecéis garantía en vuestros desarrollos web?",
     answer:
-      "Sí, todos nuestros proyectos incluyen garantía de 3 meses desde el lanzamiento que cubre cualquier error de programación, bug funcional, o problema técnico relacionado con nuestro desarrollo. Durante este período, cualquier corrección está incluida sin coste adicional. Además, el primer año de hosting incluye soporte técnico y actualizaciones de seguridad. Nuestro objetivo es tu satisfacción completa y una relación a largo plazo, por lo que siempre estamos disponibles para resolver cualquier duda o incidencia."
+      "Sí, todos nuestros proyectos incluyen garantía de 3 meses desde el lanzamiento que cubre cualquier error de programación, bug funcional, o problema técnico relacionado con nuestro desarrollo. Durante este período, cualquier corrección está incluida sin coste adicional. Además, el primer año de hosting incluye soporte técnico y actualizaciones de seguridad. Nuestro objetivo es tu satisfacción completa y una relación a largo plazo, por lo que siempre estamos disponibles para resolver cualquier duda o incidencia.",
   },
   {
     question: "¿Puedo ver ejemplos de vuestros trabajos anteriores?",
@@ -413,8 +413,8 @@ const faqs = [
           ejemplos similares a tu sector bajo petición.
         </p>
       </>
-    )
-  }
+    ),
+  },
 ];
 
 // Metadata optimizada para SEO
@@ -437,9 +437,9 @@ export const metadata: Metadata = generateSEOMetadata({
     "mantenimiento web Barcelona",
     "hosting web España",
     "diseño responsive FAQ",
-    "Next.js desarrollo Barcelona"
+    "Next.js desarrollo Barcelona",
   ],
-  canonical: "https://webcode.es/faqs"
+  canonical: "https://webcode.es/faqs",
 });
 
 export default function FAQsPage() {

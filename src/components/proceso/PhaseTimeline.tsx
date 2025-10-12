@@ -3,11 +3,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
 import { Icon } from "@/components/ui/Icon";
-import { 
-  HiOutlineCodeBracket as Code, 
-  HiOutlinePaintBrush as Palette, 
-  Search, 
-  TrendingUp 
+import {
+  HiOutlineCodeBracket as Code,
+  HiOutlinePaintBrush as Palette,
+  Search,
+  TrendingUp,
 } from "@/lib/icons";
 
 // Componente para iconos SVG de las fases usando el sistema centralizado
@@ -16,7 +16,7 @@ const PhaseIcon = ({ phase }: { phase: number }) => {
     1: Search, // Fase 1: Investigación y Análisis
     2: Palette, // Fase 2: Diseño y Prototipado
     3: Code, // Fase 3: Desarrollo
-    4: TrendingUp // Fase 4: Launch & Optimización
+    4: TrendingUp, // Fase 4: Launch & Optimización
   };
 
   const IconComponent = icons[phase as keyof typeof icons];
@@ -63,7 +63,7 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
     );
 
     if (sectionRef.current) {
@@ -111,7 +111,7 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
         () => {
           setVisibleCards((prev) => new Set(prev).add(fase.numero));
         },
-        Math.max(0, cardAppearTime)
+        Math.max(0, cardAppearTime),
       );
 
       animationTimeouts.current.push(timeout);
@@ -195,7 +195,7 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
                   className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary to-primary/20 transition-all duration-300 ease-out"
                   style={{
                     transform: `scaleX(${timelineProgress / 100})`,
-                    transformOrigin: "left"
+                    transformOrigin: "left",
                   }}
                 />
               </div>

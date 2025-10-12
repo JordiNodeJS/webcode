@@ -65,7 +65,7 @@ const presupuestoMap: Record<string, string> = {
   "8000-15000": "8.000€ - 15.000€",
   "15000-30000": "15.000€ - 30.000€",
   ">30000": "Más de 30.000€",
-  "no-definido": "Aún no definido"
+  "no-definido": "Aún no definido",
 };
 
 const plazoMap: Record<string, string> = {
@@ -73,7 +73,7 @@ const plazoMap: Record<string, string> = {
   "1-2-meses": "1-2 meses",
   "3-6-meses": "3-6 meses",
   flexible: "Flexible",
-  "no-definido": "Aún no definido"
+  "no-definido": "Aún no definido",
 };
 
 const tipoProyectoMap: Record<string, string> = {
@@ -83,7 +83,7 @@ const tipoProyectoMap: Record<string, string> = {
   webapp: "Aplicación Web",
   blog: "Blog / Revista Digital",
   portal: "Portal / Plataforma",
-  otro: "Otro"
+  otro: "Otro",
 };
 
 const tonoComunicacionMap: Record<string, string> = {
@@ -92,7 +92,7 @@ const tonoComunicacionMap: Record<string, string> = {
   juvenil: "Juvenil y dinámico",
   elegante: "Elegante y sofisticado",
   tecnico: "Técnico y especializado",
-  otro: "Otro"
+  otro: "Otro",
 };
 
 const paginasMap: Record<string, string> = {
@@ -101,14 +101,14 @@ const paginasMap: Record<string, string> = {
   "11-20": "11-20 páginas",
   "21-50": "21-50 páginas",
   ">50": "Más de 50 páginas",
-  "no-definido": "Aún no definido"
+  "no-definido": "Aún no definido",
 };
 
 const cmsMap: Record<string, string> = {
   no: "No necesito CMS",
   "si-simple": "Sí, CMS simple",
   "si-avanzado": "Sí, CMS avanzado",
-  "no-se": "No estoy seguro"
+  "no-se": "No estoy seguro",
 };
 
 const idiomasMap: Record<string, string> = {
@@ -117,12 +117,12 @@ const idiomasMap: Record<string, string> = {
   en: "Inglés",
   fr: "Francés",
   de: "Alemán",
-  otro: "Otro"
+  otro: "Otro",
 };
 
 export function generateBriefingPDF(
   data: BriefingPDFData,
-  isBlank = false
+  isBlank = false,
 ): jsPDF {
   const doc = new jsPDF();
 
@@ -161,7 +161,7 @@ export function generateBriefingPDF(
   doc.text(
     isBlank ? "BRIEFING DE PROYECTO WEB" : "Briefing de Proyecto Web",
     margin,
-    yPos
+    yPos,
   );
 
   yPos += 8;
@@ -179,11 +179,11 @@ export function generateBriefingPDF(
           month: "long",
           day: "numeric",
           hour: "2-digit",
-          minute: "2-digit"
-        }
+          minute: "2-digit",
+        },
       )}`,
       margin,
-      yPos
+      yPos,
     );
   }
 
@@ -192,7 +192,7 @@ export function generateBriefingPDF(
   // Función para añadir sección
   const addSection = (
     title: string,
-    content: Array<{ label: string; value: string | boolean | string[] }>
+    content: Array<{ label: string; value: string | boolean | string[] }>,
   ) => {
     checkPageBreak(50);
 
@@ -252,7 +252,7 @@ export function generateBriefingPDF(
     { label: "Nombre completo", value: data.nombre },
     { label: "Email", value: data.email },
     { label: "Empresa / Proyecto", value: data.empresa || "" },
-    { label: "Teléfono", value: data.telefono || "" }
+    { label: "Teléfono", value: data.telefono || "" },
   ]);
 
   // 2. OBJETIVOS DEL PROYECTO
@@ -262,13 +262,13 @@ export function generateBriefingPDF(
     {
       label: "Presupuesto estimado",
       value:
-        presupuestoMap[data.presupuestoEstimado] || data.presupuestoEstimado
+        presupuestoMap[data.presupuestoEstimado] || data.presupuestoEstimado,
     },
     {
       label: "Plazo preferido",
-      value: plazoMap[data.plazoPreferido] || data.plazoPreferido
+      value: plazoMap[data.plazoPreferido] || data.plazoPreferido,
     },
-    { label: "KPIs / Métricas de éxito", value: data.kpisExito || "" }
+    { label: "KPIs / Métricas de éxito", value: data.kpisExito || "" },
   ]);
 
   // 3. PÚBLICO OBJETIVO
@@ -279,47 +279,48 @@ export function generateBriefingPDF(
     { label: "Dispositivos principales", value: data.dispositivosPrincipales },
     {
       label: "Idiomas necesarios",
-      value: data.idiomasNecesarios.map((code) => idiomasMap[code] || code)
-    }
+      value: data.idiomasNecesarios.map((code) => idiomasMap[code] || code),
+    },
   ]);
 
   // 4. FUNCIONALIDADES REQUERIDAS
   addSection("4. Funcionalidades Requeridas", [
     {
       label: "Tipo de proyecto",
-      value: tipoProyectoMap[data.tipoProyecto] || data.tipoProyecto
+      value: tipoProyectoMap[data.tipoProyecto] || data.tipoProyecto,
     },
     {
       label: "Funcionalidades esenciales",
-      value: data.funcionalidadesEsenciales
+      value: data.funcionalidadesEsenciales,
     },
     {
       label: "Funcionalidades deseadas",
-      value: data.funcionalidadesDeseadas || ""
+      value: data.funcionalidadesDeseadas || "",
     },
     {
       label: "Integraciones necesarias",
-      value: data.integracionesNecesarias || ""
+      value: data.integracionesNecesarias || "",
     },
     {
       label: "Requisitos de seguridad",
-      value: data.requisitosSeguridadEspeciales || ""
-    }
+      value: data.requisitosSeguridadEspeciales || "",
+    },
   ]);
 
   // 5. ESTILO VISUAL Y MARCA
   addSection("5. Estilo Visual y Marca", [
     {
       label: "¿Tiene identidad corporativa?",
-      value: data.tieneIdentidadCorporativa
+      value: data.tieneIdentidadCorporativa,
     },
     { label: "Colores preferidos", value: data.coloresPreferidos || "" },
     { label: "Referencias visuales", value: data.referenciasVisuales || "" },
     {
       label: "Tono de comunicación",
-      value: tonoComunicacionMap[data.tonoComunicacion] || data.tonoComunicacion
+      value:
+        tonoComunicacionMap[data.tonoComunicacion] || data.tonoComunicacion,
     },
-    { label: "¿Tiene logotipos?", value: data.tieneLogotipos }
+    { label: "¿Tiene logotipos?", value: data.tieneLogotipos },
   ]);
 
   // 6. CONTENIDOS
@@ -328,17 +329,18 @@ export function generateBriefingPDF(
     {
       label: "Número de páginas estimadas",
       value:
-        paginasMap[data.numerosPaginasEstimadas] || data.numerosPaginasEstimadas
+        paginasMap[data.numerosPaginasEstimadas] ||
+        data.numerosPaginasEstimadas,
     },
     {
       label: "¿Necesita redacción de contenidos?",
-      value: data.necesitaRedaccion
+      value: data.necesitaRedaccion,
     },
     {
       label: "¿Necesita fotografía profesional?",
-      value: data.necesitaFotografia
+      value: data.necesitaFotografia,
     },
-    { label: "¿Necesita producción de videos?", value: data.necesitaVideos }
+    { label: "¿Necesita producción de videos?", value: data.necesitaVideos },
   ]);
 
   // 7. ASPECTOS TÉCNICOS
@@ -348,10 +350,10 @@ export function generateBriefingPDF(
     { label: "¿Necesita migración?", value: data.necesitaMigracion },
     {
       label: "Requisitos de CMS",
-      value: cmsMap[data.requisitosCMS] || data.requisitosCMS
+      value: cmsMap[data.requisitosCMS] || data.requisitosCMS,
     },
     { label: "¿Optimización SEO?", value: data.requisitosSEO },
-    { label: "¿Accesibilidad WCAG?", value: data.accesibilidadWCAG }
+    { label: "¿Accesibilidad WCAG?", value: data.accesibilidadWCAG },
   ]);
 
   // 8. INFORMACIÓN ADICIONAL
@@ -359,9 +361,9 @@ export function generateBriefingPDF(
     addSection("8. Información Adicional", [
       {
         label: "Comentarios adicionales",
-        value: data.informacionAdicional || ""
+        value: data.informacionAdicional || "",
       },
-      { label: "¿Cómo nos conociste?", value: data.comoConociste || "" }
+      { label: "¿Cómo nos conociste?", value: data.comoConociste || "" },
     ]);
   }
 
@@ -375,7 +377,7 @@ export function generateBriefingPDF(
       `WEBCODE Barcelona | info@webcode.es | Página ${i} de ${totalPages}`,
       pageWidth / 2,
       doc.internal.pageSize.height - 10,
-      { align: "center" }
+      { align: "center" },
     );
   }
 
@@ -421,7 +423,7 @@ export function generateBlankBriefingPDF(): jsPDF {
     requisitosSEO: false,
     accesibilidadWCAG: false,
     informacionAdicional: "",
-    comoConociste: ""
+    comoConociste: "",
   };
 
   return generateBriefingPDF(blankData, true);

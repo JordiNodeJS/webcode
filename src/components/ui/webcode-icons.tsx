@@ -17,7 +17,7 @@ interface WebCodeIconProps {
 export function WebCodeLogo({
   size = "md",
   variant = "primary",
-  className
+  className,
 }: WebCodeIconProps) {
   return (
     <svg
@@ -44,7 +44,7 @@ export function WebCodeLogo({
 export function WebCodeDev({
   size = "md",
   variant = "primary",
-  className
+  className,
 }: WebCodeIconProps) {
   return (
     <svg
@@ -99,7 +99,7 @@ export function WebCodeDev({
 export function BarcelonaIcon({
   size = "md",
   variant = "primary",
-  className
+  className,
 }: WebCodeIconProps) {
   return (
     <svg
@@ -133,7 +133,7 @@ export function BarcelonaIcon({
 export function QualityIcon({
   size = "md",
   variant = "primary",
-  className
+  className,
 }: WebCodeIconProps) {
   return (
     <svg
@@ -167,7 +167,7 @@ export function QualityIcon({
 export function InnovationIcon({
   size = "md",
   variant = "primary",
-  className
+  className,
 }: WebCodeIconProps) {
   return (
     <svg
@@ -195,7 +195,7 @@ export function InnovationIcon({
 export function ProcessIcon({
   size = "md",
   variant = "primary",
-  className
+  className,
 }: WebCodeIconProps) {
   return (
     <svg
@@ -232,7 +232,7 @@ export function ProcessIcon({
 export function CollaborationIcon({
   size = "md",
   variant = "primary",
-  className
+  className,
 }: WebCodeIconProps) {
   return (
     <svg
@@ -265,7 +265,7 @@ export function CollaborationIcon({
 export function SuccessIcon({
   size = "md",
   variant = "primary",
-  className
+  className,
 }: WebCodeIconProps) {
   return (
     <svg
@@ -308,7 +308,7 @@ function getSizeClasses(size: string): string {
     sm: "w-4 h-4",
     md: "w-6 h-6",
     lg: "w-8 h-8",
-    xl: "w-12 h-12"
+    xl: "w-12 h-12",
   };
   return sizes[size as keyof typeof sizes] || sizes.md;
 }
@@ -318,7 +318,7 @@ function getVariantClasses(variant: string): string {
     default: "text-foreground",
     primary: "text-primary",
     secondary: "text-secondary",
-    accent: "text-accent"
+    accent: "text-accent",
   };
   return variants[variant as keyof typeof variants] || variants.default;
 }
@@ -332,7 +332,7 @@ export const WEBCODE_ICONS = {
   innovation: InnovationIcon,
   process: ProcessIcon,
   collaboration: CollaborationIcon,
-  success: SuccessIcon
+  success: SuccessIcon,
 } as const;
 
 export type WebCodeIconName = keyof typeof WEBCODE_ICONS;

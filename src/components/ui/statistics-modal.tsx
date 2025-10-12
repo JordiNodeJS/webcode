@@ -27,7 +27,7 @@ export function StatisticsModal({
   sourceUrl,
   detailedExplanation,
   context,
-  impact
+  impact,
 }: StatisticsModalProps) {
   const modalTitleId = useId();
 

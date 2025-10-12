@@ -5,12 +5,7 @@ import { WSFadeIn } from "@/components/animations/ws-fade-in";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { StatisticsModal } from "@/components/ui/statistics-modal";
-import {
-  AlertTriangle,
-  ExternalLink,
-  FileText,
-  TrendingUp
-} from "@/lib/icons";
+import { AlertTriangle, ExternalLink, FileText, TrendingUp } from "@/lib/icons";
 
 export default function SourcesPageClient() {
   const [modalOpen, setModalOpen] = useState<string | null>(null);

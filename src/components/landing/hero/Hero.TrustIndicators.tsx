@@ -11,18 +11,18 @@ const trustIndicators: TrustIndicator[] = [
   {
     id: "rgpd",
     icon: <Shield className="h-4 w-4 text-primary" />,
-    text: "Cumplimiento RGPD"
+    text: "Cumplimiento RGPD",
   },
   {
     id: "spain",
     icon: <MapPin className="h-4 w-4 text-secondary-foreground" />,
-    text: "Normativas España"
+    text: "Normativas España",
   },
   {
     id: "barcelona",
     icon: <Users className="h-4 w-4 text-primary" />,
-    text: "Barcelona Local"
-  }
+    text: "Barcelona Local",
+  },
 ];
 
 /**

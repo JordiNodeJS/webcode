@@ -35,7 +35,7 @@ export function usePerformanceMonitor(options: PerformanceMonitorOptions = {}) {
   const {
     enabled = process.env.NODE_ENV === "development",
     sampleInterval = 1000,
-    logToConsole = false
+    logToConsole = false,
   } = options;
 
   const [performanceData, setPerformanceData] = useState<PerformanceData>({
@@ -44,7 +44,7 @@ export function usePerformanceMonitor(options: PerformanceMonitorOptions = {}) {
     domNodes: 0,
     renderCount: 0,
     isIdle: true,
-    timestamp: Date.now()
+    timestamp: Date.now(),
   });
 
   const frameCountRef = useRef(0);
@@ -92,7 +92,7 @@ export function usePerformanceMonitor(options: PerformanceMonitorOptions = {}) {
         domNodes,
         renderCount: renderCountRef.current,
         isIdle,
-        timestamp: Date.now()
+        timestamp: Date.now(),
       };
 
       setPerformanceData(newData);
@@ -103,7 +103,7 @@ export function usePerformanceMonitor(options: PerformanceMonitorOptions = {}) {
           fps: `${fps} FPS`,
           memory: `${memory} MB`,
           domNodes: `${domNodes} nodes`,
-          renders: renderCountRef.current
+          renders: renderCountRef.current,
         });
       }
     }
@@ -130,7 +130,7 @@ export function usePerformanceMonitor(options: PerformanceMonitorOptions = {}) {
       "mousemove",
       "click",
       "scroll",
-      "keydown"
+      "keydown",
     ];
 
     activities.forEach((event) => {
@@ -154,7 +154,7 @@ export function usePerformanceMonitor(options: PerformanceMonitorOptions = {}) {
   }, [
     enabled,
     measureFPS, // Inicializar como idle
-    resetIdleTimer
+    resetIdleTimer,
   ]);
 
   return {
@@ -167,8 +167,8 @@ export function usePerformanceMonitor(options: PerformanceMonitorOptions = {}) {
       memory: `${performanceData.memory} MB`,
       domNodes: performanceData.domNodes,
       renderCount: performanceData.renderCount,
-      timestamp: new Date(performanceData.timestamp).toLocaleTimeString()
-    })
+      timestamp: new Date(performanceData.timestamp).toLocaleTimeString(),
+    }),
   };
 }
 
@@ -194,8 +194,8 @@ export function useComponentPerformanceMonitor(componentName: string) {
       console.log(`🔄 ${componentName} re-render:`, {
         count: renderCountRef.current,
         reason: reason || "unknown",
-        uptime: `${Math.round((Date.now() - mountTimeRef.current) / 1000)}s`
+        uptime: `${Math.round((Date.now() - mountTimeRef.current) / 1000)}s`,
       });
-    }
+    },
   };
 }

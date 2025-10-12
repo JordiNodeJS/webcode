@@ -20,7 +20,7 @@ export function WSImageReveal({
   width,
   height,
   className = "",
-  priority = false
+  priority = false,
 }: WSImageRevealProps) {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -31,7 +31,7 @@ export function WSImageReveal({
       animate={isLoaded ? { scale: 1, opacity: 1 } : {}}
       transition={{
         duration: wsConfig.durations.dramatic,
-        ease: wsConfig.easings.primary
+        ease: wsConfig.easings.primary,
       }}
     >
       <Image

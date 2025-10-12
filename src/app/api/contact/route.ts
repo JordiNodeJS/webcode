@@ -25,7 +25,7 @@ const contactFormServerSchema = z.object({
     "e-commerce",
     "seo",
     "consulting",
-    "other"
+    "other",
   ]),
   message: z.string().min(10).max(1000),
   gdprConsent: z
@@ -39,8 +39,8 @@ const contactFormServerSchema = z.object({
     .string()
     .optional()
     .refine((val) => !val || val.trim() === "", {
-      message: "Bot detected"
-    })
+      message: "Bot detected",
+    }),
 });
 
 export async function POST(request: NextRequest) {
@@ -64,8 +64,8 @@ export async function POST(request: NextRequest) {
         ip: clientIP,
         referer,
         timestamp: new Date().toISOString(),
-        userAgent: validatedData.userAgent || "unknown"
-      }
+        userAgent: validatedData.userAgent || "unknown",
+      },
     };
 
     // Enviar email con Resend
@@ -80,7 +80,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       message: "Mensaje enviado correctamente",
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
   } catch (error) {
     console.error("❌ Error en formulario de contacto:", error);
@@ -89,9 +89,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           error: "Datos del formulario inválidos",
-          details: error.issues
+          details: error.issues,
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -99,9 +99,9 @@ export async function POST(request: NextRequest) {
       {
         error: "Error interno del servidor",
         message:
-          "No se pudo procesar tu mensaje. Por favor, inténtalo de nuevo."
+          "No se pudo procesar tu mensaje. Por favor, inténtalo de nuevo.",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -110,7 +110,7 @@ export async function POST(request: NextRequest) {
 async function sendEmailWithResend(
   contactData: z.infer<typeof contactFormServerSchema> & {
     metadata: RequestMetadata;
-  }
+  },
 ): Promise<EmailResponse> {
   try {
     const emailContent = {
@@ -119,7 +119,7 @@ async function sendEmailWithResend(
       subject: `Nueva consulta: ${contactData.subject}`,
       html: _generateEmailTemplate(contactData),
       text: generatePlainTextEmail(contactData),
-      replyTo: contactData.email
+      replyTo: contactData.email,
     };
 
     // Email send initiated (logs removed for production cleanliness)
@@ -136,7 +136,7 @@ async function sendEmailWithResend(
     console.error("❌ Error en sendEmailWithResend:", error);
     return {
       success: false,
-      error: error instanceof Error ? error.message : "Error desconocido"
+      error: error instanceof Error ? error.message : "Error desconocido",
     };
   }
 }
@@ -164,7 +164,7 @@ function toSafeContact(data: unknown) {
     metadata:
       typeof unk?.metadata === "object" && unk?.metadata !== null
         ? (unk.metadata as Record<string, unknown>)
-        : {}
+        : {},
   } as const;
 
   return safe;
@@ -178,7 +178,7 @@ function _generateEmailTemplate(data: unknown): string {
     "e-commerce": "Tienda Online (E-commerce)",
     seo: "SEO y Posicionamiento",
     consulting: "Consultoría Digital",
-    other: "Otro"
+    other: "Otro",
   };
 
   return `
@@ -233,7 +233,7 @@ function _generateEmailTemplate(data: unknown): string {
           <div class="consent">
             <div class="label">✅ Consentimiento RGPD:</div>
             <div>El usuario ha aceptado la política de privacidad el ${new Date(
-              safe.consentTimestamp
+              safe.consentTimestamp,
             ).toLocaleString("es-ES")}</div>
           </div>
           
@@ -263,7 +263,7 @@ function generatePlainTextEmail(data: unknown): string {
     "e-commerce": "Tienda Online (E-commerce)",
     seo: "SEO y Posicionamiento",
     consulting: "Consultoría Digital",
-    other: "Otro"
+    other: "Otro",
   };
 
   return `
@@ -280,7 +280,7 @@ ${safe.message}
 
 ✅ CONSENTIMIENTO RGPD:
 El usuario ha aceptado la política de privacidad el ${new Date(
-    safe.consentTimestamp
+    safe.consentTimestamp,
   ).toLocaleString("es-ES")}
 
 INFORMACIÓN TÉCNICA:

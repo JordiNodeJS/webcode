@@ -349,7 +349,7 @@ export const EMOJI_TO_SVG_MAP = {
   "🗼": "tower",
   "🗽": "monument",
   "🗾": "map",
-  "🗿": "monument"
+  "🗿": "monument",
 } as const;
 
 export type EmojiKey = keyof typeof EMOJI_TO_SVG_MAP;
@@ -361,7 +361,7 @@ export const ICON_SIZES = {
   sm: "w-4 h-4",
   md: "w-6 h-6",
   lg: "w-8 h-8",
-  xl: "w-12 h-12"
+  xl: "w-12 h-12",
 } as const;
 
 /**
@@ -371,7 +371,7 @@ export const ICON_VARIANTS = {
   default: "text-foreground",
   primary: "text-primary",
   secondary: "text-secondary",
-  accent: "text-accent"
+  accent: "text-accent",
 } as const;
 
 /**
@@ -386,7 +386,7 @@ export function getSvgIconName(emoji: string): string | null {
  */
 export function getIconClasses(
   size: SvgIconProps["size"] = "md",
-  variant: SvgIconProps["variant"] = "default"
+  variant: SvgIconProps["variant"] = "default",
 ): string {
   const sizeClass = ICON_SIZES[size];
   const variantClass = ICON_VARIANTS[variant];

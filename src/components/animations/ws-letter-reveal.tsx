@@ -13,7 +13,7 @@ interface WSLetterRevealProps {
 export function WSLetterReveal({
   text,
   delay = 0,
-  className = ""
+  className = "",
 }: WSLetterRevealProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -28,7 +28,7 @@ export function WSLetterReveal({
           transition={{
             duration: wsConfig.durations.normal,
             ease: wsConfig.easings.primary,
-            delay: delay + index * wsConfig.stagger.tight
+            delay: delay + index * wsConfig.stagger.tight,
           }}
           style={{ display: "inline-block" }}
         >
