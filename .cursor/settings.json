@@ -2,7 +2,7 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "biomejs.biome",
     "biome.enabled": true,
-    "biome.lsp.enabled": true,
+    "biome.lsp.enabled": false,
     "files.autoSave": "onFocusChange",
     "[typescript]": {
         "editor.defaultFormatter": "biomejs.biome",

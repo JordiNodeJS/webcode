@@ -34,12 +34,14 @@ Esta carpeta contiene las páginas individuales de cada solución/servicio ofrec
 
 ## Estilo Visual
 
-Todas las páginas utilizan el **estilo brutalista** de WEBCODE:
-- Bordes gruesos (`border-4 border-black`)
-- Sombras brutales (`shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]`)
-- Tipografía bold (`font-black`)
+Todas las páginas utilizan el **estilo general de WEBCODE** (suave con gradientes pasteles):
+- Bordes suaves (`border border-border/30`)
+- Gradientes de fondo (`bg-gradient-to-br from-white/95 via-white/90 to-slate-50/95`)
+- Efectos glow en hover con gradientes de colores
+- Tipografía semi-bold (`font-bold` y `font-semibold`)
+- Sombras suaves con efecto elevación (`hover:shadow-2xl hover:-translate-y-2`)
 - Colores del sistema: primary (#ff6680), secondary (#ff8f66), accent (#9333ea)
-- Efectos hover con translate y aumento de sombra
+- Componente reutilizable: `SolucionCard`
 
 ## Componentes Comunes
 

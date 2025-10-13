@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { SolucionCard } from "@/components/soluciones";
 
 export const metadata: Metadata = {
   title: "E-commerce & Tiendas Online | WEBCODE",
@@ -17,17 +18,20 @@ export default function EcommercePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-secondary/10 via-primary/10 to-accent/10 border-b-4 border-secondary">
-        <div className="container mx-auto max-w-6xl px-4 py-20 md:py-32">
+      <section className="relative overflow-hidden bg-gradient-to-br from-secondary/5 via-primary/5 to-accent/5 dark:from-secondary/10 dark:via-primary/10 dark:to-accent/10 py-20 md:py-32">
+        <div className="absolute inset-0 bg-gradient-to-r from-secondary/3 via-primary/3 to-accent/3 dark:from-secondary/5 dark:via-primary/5 dark:to-accent/5" />
+        <div className="container mx-auto max-w-6xl px-4 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-block mb-6 px-4 py-2 bg-secondary text-white font-bold uppercase text-sm tracking-wider border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <div className="inline-block mb-6 px-6 py-2 bg-gradient-to-r from-secondary/20 to-primary/20 dark:from-secondary/30 dark:to-primary/30 text-secondary dark:text-secondary font-bold uppercase text-sm tracking-wider rounded-full border border-secondary/30">
               E-commerce
             </div>
-            <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight text-foreground">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-foreground">
               Tiendas Online que{" "}
-              <span className="text-secondary">Venden 24/7</span>
+              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+                Venden 24/7
+              </span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 font-medium">
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8">
               Desarrollo de tiendas online completas. Desde catálogos básicos
               hasta marketplaces complejos.
             </p>
@@ -35,7 +39,7 @@ export default function EcommercePage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-secondary hover:bg-secondary/90 font-bold text-lg px-8 py-6 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+                className="font-bold text-lg px-8 py-6 bg-gradient-to-r from-secondary to-primary hover:shadow-lg hover:scale-105 transition-all duration-300"
               >
                 <Link href="/contacto">Empezar mi Tienda</Link>
               </Button>
@@ -43,7 +47,7 @@ export default function EcommercePage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="font-bold text-lg px-8 py-6 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+                className="font-bold text-lg px-8 py-6 hover:bg-gradient-to-r hover:from-secondary/10 hover:to-primary/10 transition-all duration-300"
               >
                 <Link href="/portfolio">Ver Tiendas Creadas</Link>
               </Button>
@@ -54,9 +58,12 @@ export default function EcommercePage() {
 
       {/* Features Grid */}
       <section className="container mx-auto max-w-6xl px-4 py-20">
-        <h2 className="text-3xl md:text-5xl font-black mb-12 text-center">
-          Todo lo que <span className="text-secondary">Necesitas</span> para
-          Vender Online
+        <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">
+          Todo lo que{" "}
+          <span className="bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
+            Necesitas
+          </span>{" "}
+          para Vender Online
         </h2>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -99,316 +106,238 @@ export default function EcommercePage() {
             },
             {
               icon: "📊",
-              title: "Analytics Avanzado",
+              title: "Panel de Administración",
               description:
-                "Métricas de ventas, conversión y comportamiento de clientes.",
+                "Dashboard completo para gestionar pedidos, clientes y productos.",
               features: [
-                "Dashboard de ventas",
-                "Análisis de conversión",
-                "Productos más vendidos",
-                "Informes automáticos",
+                "Gestión de pedidos",
+                "CRM de clientes",
+                "Informes de ventas",
+                "Métricas en tiempo real",
               ],
             },
             {
-              icon: "🎯",
-              title: "Marketing Integrado",
+              icon: "🎨",
+              title: "Diseño Personalizado",
               description:
-                "Herramientas para email marketing, cupones y recuperar carritos.",
+                "Diseño 100% a medida de tu marca. Sin plantillas genéricas.",
               features: [
-                "Email marketing",
-                "Cupones y descuentos",
-                "Carritos abandonados",
-                "Programa de fidelización",
+                "Diseño único",
+                "UX optimizada para conversión",
+                "Mobile-first",
+                "A/B Testing disponible",
               ],
             },
             {
-              icon: "📱",
-              title: "Mobile First",
+              icon: "🔐",
+              title: "Seguridad & Performance",
               description:
-                "Diseños optimizados para móvil. La mayoría de ventas vienen del móvil.",
+                "SSL, backups diarios, CDN global y monitorización 24/7.",
               features: [
-                "Responsive perfecto",
-                "PWA disponible",
-                "Touch optimizado",
-                "Carga ultra rápida",
+                "Certificado SSL incluido",
+                "Backups automáticos",
+                "CDN global (Cloudflare)",
+                "Uptime 99.9%",
               ],
             },
           ].map((feature) => (
-            <div
-              key={feature.title}
-              className="bg-white border-4 border-black p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
-            >
+            <SolucionCard key={feature.title}>
               <div className="text-5xl mb-4">{feature.icon}</div>
-              <h3 className="text-2xl font-black mb-2">{feature.title}</h3>
-              <p className="text-muted-foreground mb-4">
-                {feature.description}
-              </p>
-              <ul className="space-y-2">
+              <h3 className="text-2xl font-bold mb-3">{feature.title}</h3>
+              <p className="text-muted-foreground mb-4">{feature.description}</p>
+              <ul className="space-y-2 text-sm">
                 {feature.features.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm">
+                  <li key={item} className="flex items-start gap-2">
                     <span className="text-secondary font-bold">✓</span>
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
-            </div>
+            </SolucionCard>
           ))}
         </div>
       </section>
 
       {/* Platforms */}
-      <section className="bg-gradient-to-br from-accent/10 to-primary/10 border-y-4 border-black py-20">
+      <section className="bg-gradient-to-br from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10 py-20">
         <div className="container mx-auto max-w-6xl px-4">
-          <h2 className="text-3xl md:text-5xl font-black mb-6 text-center">
-            <span className="text-accent">Plataformas</span> que Dominamos
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-center">
+            Trabajamos con las{" "}
+            <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+              Mejores Plataformas
+            </span>
           </h2>
-          <p className="text-center text-muted-foreground mb-12 text-lg max-w-2xl mx-auto">
-            Trabajamos con las mejores plataformas de e-commerce del mercado.
+          <p className="text-xl text-muted-foreground text-center mb-12 max-w-3xl mx-auto">
+            Elegimos la tecnología perfecta para tu proyecto según tus
+            necesidades y presupuesto.
           </p>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 name: "Shopify",
-                icon: "🛍️",
                 description:
-                  "Plataforma todo-en-uno, perfecta para empezar rápido",
-                ideal: "Ideal para: Pequeñas y medianas tiendas",
+                  "Perfecta para empezar rápido. Setup en días, no en meses.",
+                best: "Tiendas pequeñas-medianas",
               },
               {
                 name: "WooCommerce",
-                icon: "🔌",
-                description: "Máxima personalización sobre WordPress",
-                ideal: "Ideal para: Tiendas con muchos productos",
+                description:
+                  "Máxima flexibilidad con WordPress. Open source y escalable.",
+                best: "Webs con blog integrado",
               },
               {
-                name: "Custom",
-                icon: "⚙️",
-                description: "Desarrollo a medida con Next.js y APIs",
-                ideal: "Ideal para: Marketplaces y necesidades únicas",
+                name: "Custom (Next.js)",
+                description:
+                  "Desarrollo a medida. Control total, performance máximo.",
+                best: "Proyectos únicos y complejos",
               },
             ].map((platform) => (
-              <div
-                key={platform.name}
-                className="bg-white border-4 border-black p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"
-              >
-                <div className="text-6xl mb-4 text-center">{platform.icon}</div>
-                <h3 className="text-2xl font-black mb-3 text-center">
+              <SolucionCard key={platform.name}>
+                <h3 className="text-2xl font-bold mb-3 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                   {platform.name}
                 </h3>
-                <p className="text-muted-foreground mb-4 text-center">
+                <p className="text-muted-foreground mb-4">
                   {platform.description}
                 </p>
-                <p className="text-sm font-bold text-center text-secondary">
-                  {platform.ideal}
-                </p>
-              </div>
+                <div className="text-sm">
+                  <span className="font-semibold text-secondary">
+                    Ideal para:
+                  </span>{" "}
+                  {platform.best}
+                </div>
+              </SolucionCard>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Packages */}
+      {/* Process */}
       <section className="container mx-auto max-w-6xl px-4 py-20">
-        <h2 className="text-3xl md:text-5xl font-black mb-12 text-center">
-          Paquetes <span className="text-primary">E-commerce</span>
+        <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">
+          De la Idea a las Ventas
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {/* Tienda Básica */}
-          <div className="bg-white border-4 border-black p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-            <div className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-2">
-              Tienda Básica
-            </div>
-            <div className="text-4xl font-black mb-4">
-              €1.490
-              <span className="text-lg font-normal text-muted-foreground">
-                {" "}
-                / pago único
-              </span>
-            </div>
-            <p className="text-muted-foreground mb-6">
-              Perfecta para empezar a vender online rápidamente.
-            </p>
-            <ul className="space-y-3 mb-8">
-              {[
-                "Hasta 50 productos",
-                "Diseño responsive",
-                "Pasarela de pago",
-                "Envíos básicos",
-                "Panel de gestión",
-                "2 revisiones incluidas",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2">
-                  <span className="text-secondary font-bold">✓</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-            <Button
-              asChild
-              className="w-full font-bold border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
-            >
-              <Link href="/contacto?service=tienda-basica">
-                Empezar Tienda Básica
-              </Link>
-            </Button>
-          </div>
-
-          {/* Tienda Pro */}
-          <div className="bg-secondary text-white border-4 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative -mt-4 md:scale-105">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-white px-4 py-1 font-bold text-sm uppercase border-4 border-black">
-              Más Popular
-            </div>
-            <div className="text-sm font-bold uppercase tracking-wider opacity-90 mb-2">
-              Tienda Pro
-            </div>
-            <div className="text-4xl font-black mb-4">
-              €3.990
-              <span className="text-lg font-normal opacity-90">
-                {" "}
-                / pago único
-              </span>
-            </div>
-            <p className="opacity-90 mb-6">
-              Tienda completa lista para escalar tu negocio.
-            </p>
-            <ul className="space-y-3 mb-8">
-              {[
-                "Productos ilimitados",
-                "Diseño 100% personalizado",
-                "Multi-pasarelas de pago",
-                "Envíos avanzados",
-                "Email marketing",
-                "SEO avanzado",
-                "Cupones y descuentos",
-                "Revisiones ilimitadas",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2">
-                  <span className="font-bold">✓</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-            <Button
-              asChild
-              variant="secondary"
-              className="w-full font-bold border-4 border-black bg-white text-secondary shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
-            >
-              <Link href="/contacto?service=tienda-pro">
-                Empezar Tienda Pro
-              </Link>
-            </Button>
-          </div>
-
-          {/* Marketplace */}
-          <div className="bg-white border-4 border-black p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-            <div className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-2">
-              Marketplace
-            </div>
-            <div className="text-4xl font-black mb-4">
-              Desde €8.900
-              <span className="text-lg font-normal text-muted-foreground block mt-1">
-                personalizado
-              </span>
-            </div>
-            <p className="text-muted-foreground mb-6">
-              Plataforma multi-vendor completa y escalable.
-            </p>
-            <ul className="space-y-3 mb-8">
-              {[
-                "Multi-vendedores",
-                "Comisiones automáticas",
-                "Panel para vendedores",
-                "Gestión de pagos split",
-                "Moderación de contenido",
-                "Analytics avanzado",
-                "API completa",
-                "Soporte prioritario",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2">
-                  <span className="text-accent font-bold">✓</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-            <Button
-              asChild
-              variant="outline"
-              className="w-full font-bold border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
-            >
-              <Link href="/contacto?service=marketplace">
-                Solicitar Presupuesto
-              </Link>
-            </Button>
-          </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            {
+              num: "01",
+              title: "Consultoría",
+              desc: "Analizamos tu producto, competencia y definimos estrategia de ventas.",
+            },
+            {
+              num: "02",
+              title: "Setup & Diseño",
+              desc: "Configuramos plataforma, diseñamos tu tienda y subimos productos.",
+            },
+            {
+              num: "03",
+              title: "Integraciones",
+              desc: "Conectamos pagos, envíos, email marketing y herramientas necesarias.",
+            },
+            {
+              num: "04",
+              title: "Lanzamiento",
+              desc: "Testing final, training completo y ¡a vender! Soporte incluido.",
+            },
+          ].map((step) => (
+            <SolucionCard key={step.num}>
+              <div className="text-5xl font-bold mb-4 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+                {step.num}
+              </div>
+              <h3 className="text-xl font-bold mb-3">{step.title}</h3>
+              <p className="text-muted-foreground text-sm">{step.desc}</p>
+            </SolucionCard>
+          ))}
         </div>
       </section>
 
-      {/* Legal Compliance */}
-      <section className="bg-gradient-to-br from-primary/10 to-secondary/10 border-y-4 border-black py-20">
+      {/* Pricing Hint */}
+      <section className="bg-gradient-to-br from-accent/5 to-secondary/5 dark:from-accent/10 dark:to-secondary/10 py-20">
         <div className="container mx-auto max-w-6xl px-4">
-          <h2 className="text-3xl md:text-5xl font-black mb-6 text-center">
-            100% <span className="text-primary">Legal</span> y Conforme
+          <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">
+            Inversión Aproximada
           </h2>
-          <p className="text-center text-muted-foreground mb-12 text-lg max-w-2xl mx-auto">
-            Todas nuestras tiendas cumplen con la legislación española y
-            europea.
-          </p>
 
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "RGPD",
-                description: "Cumplimiento completo de protección de datos",
+                title: "Tienda Básica",
+                price: "Desde €2.500",
+                features: [
+                  "Hasta 50 productos",
+                  "Shopify/WooCommerce",
+                  "Diseño semi-personalizado",
+                  "Pagos y envíos integrados",
+                  "Training básico",
+                ],
               },
               {
-                title: "LSSI-CE",
-                description:
-                  "Ley de Servicios de la Sociedad de la Información",
+                title: "Tienda Profesional",
+                price: "Desde €5.000",
+                features: [
+                  "Hasta 500 productos",
+                  "Diseño 100% personalizado",
+                  "Integraciones avanzadas",
+                  "Email marketing",
+                  "SEO optimizado",
+                  "Soporte 3 meses",
+                ],
               },
               {
-                title: "LOPD",
-                description: "Protección de datos de clientes",
+                title: "E-commerce Enterprise",
+                price: "Desde €15.000",
+                features: [
+                  "Productos ilimitados",
+                  "Desarrollo custom",
+                  "Multi-idioma y multi-moneda",
+                  "CRM integrado",
+                  "API personalizada",
+                  "Soporte prioritario 12 meses",
+                ],
               },
-              {
-                title: "Cookies",
-                description: "Banner de cookies conforme a la ley",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="bg-white border-4 border-black p-6 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-              >
-                <div className="text-3xl font-black text-primary mb-2">
-                  {item.title}
+            ].map((tier) => (
+              <SolucionCard key={tier.title}>
+                <h3 className="text-2xl font-bold mb-2">{tier.title}</h3>
+                <div className="text-3xl font-bold mb-6 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+                  {tier.price}
                 </div>
-                <p className="text-sm text-muted-foreground">
-                  {item.description}
-                </p>
-              </div>
+                <ul className="space-y-2 text-sm">
+                  {tier.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-2">
+                      <span className="text-secondary font-bold">✓</span>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </SolucionCard>
             ))}
           </div>
+
+          <p className="text-center text-muted-foreground mt-12 max-w-2xl mx-auto">
+            Precios orientativos. Cada proyecto es único. Solicita presupuesto
+            personalizado sin compromiso.
+          </p>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="bg-secondary text-white border-t-4 border-black py-20">
+      <section className="bg-gradient-to-br from-secondary/90 via-secondary to-primary/90 text-white py-20">
         <div className="container mx-auto max-w-4xl px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-black mb-6">
-            ¿Listo para Vender Online?
+          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+            ¿Listo para Empezar a Vender Online?
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Solicita una consultoría gratuita de 30 minutos. Analizamos tu
-            negocio y te recomendamos la mejor solución.
+            Te ayudamos a montar tu tienda y empezar a vender en semanas, no en
+            meses.
           </p>
           <Button
             asChild
             size="lg"
             variant="secondary"
-            className="bg-white text-secondary font-bold text-lg px-8 py-6 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+            className="font-bold text-lg px-8 py-6 hover:scale-105 transition-transform duration-300"
           >
-            <Link href="/contacto">Consultoría Gratuita</Link>
+            <Link href="/contacto">Solicitar Presupuesto Gratis</Link>
           </Button>
         </div>
       </section>

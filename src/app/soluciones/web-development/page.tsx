@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { SolucionCard } from "@/components/soluciones";
 
 export const metadata: Metadata = {
   title: "Desarrollo Web Profesional | WEBCODE",
@@ -17,18 +18,21 @@ export default function WebDevelopmentPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10 border-b-4 border-primary">
-        <div className="container mx-auto max-w-6xl px-4 py-20 md:py-32">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 dark:from-primary/10 dark:via-secondary/10 dark:to-accent/10 py-20 md:py-32">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/3 via-secondary/3 to-accent/3 dark:from-primary/5 dark:via-secondary/5 dark:to-accent/5" />
+        <div className="container mx-auto max-w-6xl px-4 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-block mb-6 px-4 py-2 bg-primary text-white font-bold uppercase text-sm tracking-wider border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <div className="inline-block mb-6 px-6 py-2 bg-gradient-to-r from-primary/20 to-secondary/20 dark:from-primary/30 dark:to-secondary/30 text-primary dark:text-primary font-bold uppercase text-sm tracking-wider rounded-full border border-primary/30">
               Desarrollo Web
             </div>
-            <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight text-foreground">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-foreground">
               Sitios Web que{" "}
-              <span className="text-primary">Convierten Visitantes</span> en
-              Clientes
+              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                Convierten Visitantes
+              </span>{" "}
+              en Clientes
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 font-medium">
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8">
               Desarrollo web profesional con Next.js, React y TailwindCSS.
               Diseños modernos, rápidos y optimizados para SEO.
             </p>
@@ -36,7 +40,7 @@ export default function WebDevelopmentPage() {
               <Button
                 asChild
                 size="lg"
-                className="font-bold text-lg px-8 py-6 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+                className="font-bold text-lg px-8 py-6 bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:scale-105 transition-all duration-300"
               >
                 <Link href="/contacto">Solicitar Presupuesto</Link>
               </Button>
@@ -44,7 +48,7 @@ export default function WebDevelopmentPage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="font-bold text-lg px-8 py-6 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+                className="font-bold text-lg px-8 py-6 hover:bg-gradient-to-r hover:from-primary/10 hover:to-secondary/10 transition-all duration-300"
               >
                 <Link href="/portfolio">Ver Portfolio</Link>
               </Button>
@@ -55,15 +59,18 @@ export default function WebDevelopmentPage() {
 
       {/* Services Grid */}
       <section className="container mx-auto max-w-6xl px-4 py-20">
-        <h2 className="text-3xl md:text-5xl font-black mb-12 text-center">
-          ¿Qué Tipo de Web <span className="text-secondary">Necesitas?</span>
+        <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">
+          ¿Qué Tipo de Web{" "}
+          <span className="bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
+            Necesitas?
+          </span>
         </h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Landing Pages */}
-          <div className="group relative bg-white border-4 border-black p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
+          <SolucionCard>
             <div className="text-5xl mb-4">🚀</div>
-            <h3 className="text-2xl font-black mb-3">Landing Pages</h3>
+            <h3 className="text-2xl font-bold mb-3">Landing Pages</h3>
             <p className="text-muted-foreground mb-4">
               Páginas de alta conversión diseñadas para captar leads y vender.
             </p>
@@ -85,12 +92,12 @@ export default function WebDevelopmentPage() {
                 <span>Analytics y tracking</span>
               </li>
             </ul>
-          </div>
+          </SolucionCard>
 
           {/* Corporate Websites */}
-          <div className="group relative bg-white border-4 border-black p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
+          <SolucionCard>
             <div className="text-5xl mb-4">🏢</div>
-            <h3 className="text-2xl font-black mb-3">Webs Corporativas</h3>
+            <h3 className="text-2xl font-bold mb-3">Webs Corporativas</h3>
             <p className="text-muted-foreground mb-4">
               Presencia profesional online para tu empresa o negocio.
             </p>
@@ -112,12 +119,12 @@ export default function WebDevelopmentPage() {
                 <span>SEO avanzado incluido</span>
               </li>
             </ul>
-          </div>
+          </SolucionCard>
 
           {/* Portfolios */}
-          <div className="group relative bg-white border-4 border-black p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
+          <SolucionCard>
             <div className="text-5xl mb-4">🎨</div>
-            <h3 className="text-2xl font-black mb-3">Portfolios</h3>
+            <h3 className="text-2xl font-bold mb-3">Portfolios</h3>
             <p className="text-muted-foreground mb-4">
               Muestra tu trabajo de forma impactante y profesional.
             </p>
@@ -139,12 +146,12 @@ export default function WebDevelopmentPage() {
                 <span>Responsive perfecto</span>
               </li>
             </ul>
-          </div>
+          </SolucionCard>
 
           {/* Web Apps */}
-          <div className="group relative bg-white border-4 border-black p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
+          <SolucionCard>
             <div className="text-5xl mb-4">⚡</div>
-            <h3 className="text-2xl font-black mb-3">Web Apps</h3>
+            <h3 className="text-2xl font-bold mb-3">Web Apps</h3>
             <p className="text-muted-foreground mb-4">
               Aplicaciones web complejas y escalables.
             </p>
@@ -166,12 +173,12 @@ export default function WebDevelopmentPage() {
                 <span>Dashboard admin</span>
               </li>
             </ul>
-          </div>
+          </SolucionCard>
 
-          {/* SaaS */}
-          <div className="group relative bg-white border-4 border-black p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
+          {/* SaaS Products */}
+          <SolucionCard>
             <div className="text-5xl mb-4">💼</div>
-            <h3 className="text-2xl font-black mb-3">SaaS Products</h3>
+            <h3 className="text-2xl font-bold mb-3">SaaS Products</h3>
             <p className="text-muted-foreground mb-4">
               Plataformas SaaS completas listas para escalar.
             </p>
@@ -193,12 +200,12 @@ export default function WebDevelopmentPage() {
                 <span>Analytics y métricas</span>
               </li>
             </ul>
-          </div>
+          </SolucionCard>
 
           {/* Custom Development */}
-          <div className="group relative bg-white border-4 border-black p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
+          <SolucionCard>
             <div className="text-5xl mb-4">🛠️</div>
-            <h3 className="text-2xl font-black mb-3">A Medida</h3>
+            <h3 className="text-2xl font-bold mb-3">A Medida</h3>
             <p className="text-muted-foreground mb-4">
               Desarrollo personalizado para necesidades específicas.
             </p>
@@ -220,39 +227,39 @@ export default function WebDevelopmentPage() {
                 <span>Consultoría incluida</span>
               </li>
             </ul>
-          </div>
+          </SolucionCard>
         </div>
       </section>
 
-      {/* Tech Stack */}
-      <section className="bg-gradient-to-br from-secondary/10 to-accent/10 border-y-4 border-black py-20">
+      {/* Technologies */}
+      <section className="bg-gradient-to-br from-accent/5 to-primary/5 dark:from-accent/10 dark:to-primary/10 py-20">
         <div className="container mx-auto max-w-6xl px-4">
-          <h2 className="text-3xl md:text-5xl font-black mb-6 text-center">
-            Tecnologías que <span className="text-accent">Dominamos</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-center">
+            Tecnologías que{" "}
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Dominamos
+            </span>
           </h2>
-          <p className="text-center text-muted-foreground mb-12 text-lg max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground text-center mb-12 max-w-3xl mx-auto">
             Utilizamos las tecnologías más modernas y probadas para garantizar
             rendimiento, escalabilidad y mantenibilidad.
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { name: "Next.js 15", icon: "⚡" },
-              { name: "React 19", icon: "⚛️" },
-              { name: "TypeScript", icon: "📘" },
-              { name: "TailwindCSS", icon: "🎨" },
-              { name: "Node.js", icon: "🟢" },
-              { name: "PostgreSQL", icon: "🐘" },
-              { name: "MongoDB", icon: "🍃" },
-              { name: "Vercel", icon: "▲" },
+              { icon: "⚡", name: "Next.js 15" },
+              { icon: "⚛️", name: "React 19" },
+              { icon: "📘", name: "TypeScript" },
+              { icon: "🎨", name: "TailwindCSS" },
+              { icon: "🟢", name: "Node.js" },
+              { icon: "🐘", name: "PostgreSQL" },
+              { icon: "🍃", name: "MongoDB" },
+              { icon: "▲", name: "Vercel" },
             ].map((tech) => (
-              <div
-                key={tech.name}
-                className="bg-white border-4 border-black p-6 text-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
-              >
-                <div className="text-4xl mb-2">{tech.icon}</div>
-                <div className="font-bold">{tech.name}</div>
-              </div>
+              <SolucionCard key={tech.name} hover={false}>
+                <div className="text-4xl mb-2 text-center">{tech.icon}</div>
+                <p className="text-center font-semibold text-sm">{tech.name}</p>
+              </SolucionCard>
             ))}
           </div>
         </div>
@@ -260,57 +267,48 @@ export default function WebDevelopmentPage() {
 
       {/* Process */}
       <section className="container mx-auto max-w-6xl px-4 py-20">
-        <h2 className="text-3xl md:text-5xl font-black mb-12 text-center">
-          Nuestro <span className="text-primary">Proceso</span>
+        <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">
+          Nuestro Proceso
         </h2>
 
-        <div className="space-y-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
             {
-              step: "01",
+              num: "01",
               title: "Descubrimiento",
-              description:
-                "Entendemos tu negocio, objetivos y audiencia. Definimos alcance y requisitos técnicos.",
+              desc: "Entendemos tu negocio, objetivos y audiencia. Definimos alcance y requisitos técnicos.",
             },
             {
-              step: "02",
+              num: "02",
               title: "Diseño & Prototipo",
-              description:
-                "Creamos wireframes y prototipos interactivos. Iteramos hasta lograr el diseño perfecto.",
+              desc: "Creamos wireframes y prototipos interactivos. Iteramos hasta lograr el diseño perfecto.",
             },
             {
-              step: "03",
+              num: "03",
               title: "Desarrollo",
-              description:
-                "Construimos tu web con código limpio y escalable. Testing continuo durante el desarrollo.",
+              desc: "Construimos tu web con código limpio y escalable. Testing continuo durante el desarrollo.",
             },
             {
-              step: "04",
+              num: "04",
               title: "Lanzamiento",
-              description:
-                "Deploy optimizado, configuración de analytics y monitorización. Tu web lista para crecer.",
+              desc: "Deploy optimizado, configuración de analytics y monitorización. Tu web lista para crecer.",
             },
-          ].map((phase) => (
-            <div
-              key={phase.step}
-              className="flex gap-6 items-start bg-white border-4 border-black p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"
-            >
-              <div className="text-5xl font-black text-primary/20">
-                {phase.step}
+          ].map((step) => (
+            <SolucionCard key={step.num}>
+              <div className="text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                {step.num}
               </div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-black mb-2">{phase.title}</h3>
-                <p className="text-muted-foreground">{phase.description}</p>
-              </div>
-            </div>
+              <h3 className="text-xl font-bold mb-3">{step.title}</h3>
+              <p className="text-muted-foreground text-sm">{step.desc}</p>
+            </SolucionCard>
           ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="bg-primary text-white border-t-4 border-black py-20">
+      <section className="bg-gradient-to-br from-primary/90 via-primary to-secondary/90 text-white py-20">
         <div className="container mx-auto max-w-4xl px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-black mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6">
             ¿Listo para Crear tu Web?
           </h2>
           <p className="text-xl mb-8 opacity-90">
@@ -321,7 +319,7 @@ export default function WebDevelopmentPage() {
             asChild
             size="lg"
             variant="secondary"
-            className="font-bold text-lg px-8 py-6 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+            className="font-bold text-lg px-8 py-6 hover:scale-105 transition-transform duration-300"
           >
             <Link href="/contacto">Solicitar Presupuesto Gratis</Link>
           </Button>

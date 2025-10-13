@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { SolucionCard } from "@/components/soluciones";
 
 export const metadata: Metadata = {
   title: "Consultoría Tecnológica | WEBCODE",
@@ -17,17 +18,21 @@ export default function ConsultingPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 border-b-4 border-primary">
-        <div className="container mx-auto max-w-6xl px-4 py-20 md:py-32">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 dark:from-primary/10 dark:via-accent/10 dark:to-secondary/10 py-20 md:py-32">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/3 via-accent/3 to-secondary/3 dark:from-primary/5 dark:via-accent/5 dark:to-secondary/5" />
+        <div className="container mx-auto max-w-6xl px-4 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-block mb-6 px-4 py-2 bg-primary text-white font-bold uppercase text-sm tracking-wider border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <div className="inline-block mb-6 px-6 py-2 bg-gradient-to-r from-primary/20 to-accent/20 dark:from-primary/30 dark:to-accent/30 text-primary dark:text-primary font-bold uppercase text-sm tracking-wider rounded-full border border-primary/30">
               Consultoría Tech
             </div>
-            <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight text-foreground">
-              Transformamos tu <span className="text-primary">Tecnología</span>{" "}
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-foreground">
+              Transformamos tu{" "}
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                Tecnología
+              </span>{" "}
               en Ventaja Competitiva
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 font-medium">
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8">
               Consultoría tecnológica y estratégica para empresas que quieren
               liderar en la era digital.
             </p>
@@ -35,7 +40,7 @@ export default function ConsultingPage() {
               <Button
                 asChild
                 size="lg"
-                className="font-bold text-lg px-8 py-6 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+                className="font-bold text-lg px-8 py-6 bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:scale-105 transition-all duration-300"
               >
                 <Link href="/contacto">Consulta Inicial Gratis</Link>
               </Button>
@@ -43,7 +48,7 @@ export default function ConsultingPage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="font-bold text-lg px-8 py-6 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+                className="font-bold text-lg px-8 py-6 hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10 transition-all duration-300"
               >
                 <Link href="/blog">Ver Casos de Éxito</Link>
               </Button>
@@ -54,8 +59,11 @@ export default function ConsultingPage() {
 
       {/* Services */}
       <section className="container mx-auto max-w-6xl px-4 py-20">
-        <h2 className="text-3xl md:text-5xl font-black mb-12 text-center">
-          Áreas de <span className="text-primary">Consultoría</span>
+        <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">
+          Áreas de{" "}
+          <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            Consultoría
+          </span>
         </h2>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -98,406 +106,277 @@ export default function ConsultingPage() {
                 "Automatización con IA",
                 "Integración de herramientas",
                 "DevOps y CI/CD",
-                "Reducción de costes",
+                "Monitorización y alertas",
               ],
             },
             {
-              icon: "🎯",
-              title: "Estrategia de Producto",
-              description: "Definimos la estrategia para tu producto digital.",
+              icon: "👨‍💼",
+              title: "CTO as a Service",
+              description:
+                "Un CTO senior a tu disposición sin contrato fijo.",
               features: [
-                "Product-market fit",
+                "Estrategia tecnológica",
+                "Gestión de equipos técnicos",
                 "Roadmap de producto",
-                "Validación de ideas",
-                "MVP y prototipado",
-                "User research",
-                "Go-to-market strategy",
-              ],
-            },
-            {
-              icon: "🔒",
-              title: "Seguridad y Compliance",
-              description: "Protegemos tu negocio y cumplimos normativas.",
-              features: [
-                "Auditorías de seguridad",
-                "RGPD compliance",
-                "Pentesting",
-                "Formación en seguridad",
-                "Planes de contingencia",
-                "ISO 27001 preparation",
-              ],
-            },
-            {
-              icon: "👥",
-              title: "Gestión de Equipos Tech",
-              description: "Estructuramos y optimizamos equipos de desarrollo.",
-              features: [
-                "Estructura de equipos",
-                "Metodologías ágiles",
-                "Hiring tech",
-                "Onboarding técnico",
-                "Code review processes",
-                "Performance management",
+                "Tech hiring",
+                "Code reviews",
+                "Budget planning",
               ],
             },
           ].map((service) => (
-            <div
-              key={service.title}
-              className="bg-white border-4 border-black p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
-            >
+            <SolucionCard key={service.title}>
               <div className="text-5xl mb-4">{service.icon}</div>
-              <h3 className="text-2xl font-black mb-2">{service.title}</h3>
-              <p className="text-muted-foreground mb-4">
-                {service.description}
-              </p>
-              <ul className="space-y-2">
+              <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
+              <p className="text-muted-foreground mb-4">{service.description}</p>
+              <ul className="space-y-2 text-sm">
                 {service.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2 text-sm">
+                  <li key={feature} className="flex items-start gap-2">
                     <span className="text-primary font-bold">✓</span>
                     <span>{feature}</span>
                   </li>
                 ))}
               </ul>
-            </div>
+            </SolucionCard>
           ))}
         </div>
       </section>
 
-      {/* Who We Help */}
-      <section className="bg-gradient-to-br from-secondary/10 to-accent/10 border-y-4 border-black py-20">
+      {/* Why Hire Us */}
+      <section className="bg-gradient-to-br from-accent/5 to-primary/5 dark:from-accent/10 dark:to-primary/10 py-20">
         <div className="container mx-auto max-w-6xl px-4">
-          <h2 className="text-3xl md:text-5xl font-black mb-6 text-center">
-            ¿A Quién <span className="text-secondary">Ayudamos?</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-center">
+            Por Qué Confiar en Nosotros
           </h2>
           <p className="text-center text-muted-foreground mb-12 text-lg max-w-2xl mx-auto">
-            Trabajamos con diferentes tipos de organizaciones en distintas
-            fases.
+            Experiencia real en startups, scaleups y empresas consolidadas.
           </p>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                type: "Startups",
-                icon: "🚀",
+                icon: "💡",
+                title: "Experiencia Real",
                 description:
-                  "Ayudamos a validar tu idea, diseñar el MVP y escalar técnicamente.",
-                challenges: [
-                  "Validar idea de negocio",
-                  "Diseñar arquitectura escalable",
-                  "Encontrar product-market fit",
-                  "Preparar para inversión",
-                ],
+                  "Más de 10 años construyendo productos digitales desde cero hasta scale.",
               },
               {
-                type: "PYMEs",
-                icon: "🏢",
+                icon: "🎯",
+                title: "Foco en Resultados",
                 description:
-                  "Digitalizamos procesos y optimizamos tu infraestructura tecnológica.",
-                challenges: [
-                  "Transformación digital",
-                  "Automatización de procesos",
-                  "Integración de sistemas",
-                  "Reducción de costes IT",
-                ],
+                  "No solo recomendamos, ejecutamos. Acompañamos la implementación.",
               },
               {
-                type: "Empresas",
-                icon: "🏛️",
+                icon: "🤝",
+                title: "Partnership Real",
                 description:
-                  "Modernizamos sistemas legacy y optimizamos equipos de desarrollo.",
-                challenges: [
-                  "Migración de legacy",
-                  "Optimización de equipos",
-                  "Cloud migration",
-                  "Seguridad enterprise",
-                ],
+                  "No somos consultores de PowerPoint. Nos ensuciamos las manos.",
               },
-            ].map((audience) => (
-              <div
-                key={audience.type}
-                className="bg-white border-4 border-black p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"
-              >
-                <div className="text-6xl mb-4 text-center">{audience.icon}</div>
-                <h3 className="text-2xl font-black mb-3 text-center">
-                  {audience.type}
+              {
+                icon: "⚙️",
+                title: "Tech Stack Moderno",
+                description:
+                  "Trabajamos con tecnologías actuales, no legacy obsoleto.",
+              },
+              {
+                icon: "📈",
+                title: "Escalabilidad",
+                description:
+                  "Diseñamos soluciones que crecen contigo, sin reescrituras.",
+              },
+              {
+                icon: "💰",
+                title: "ROI Medible",
+                description:
+                  "Todas nuestras recomendaciones tienen métricas claras de éxito.",
+              },
+            ].map((reason) => (
+              <SolucionCard key={reason.title} hover={false}>
+                <div className="text-4xl mb-3 text-center">{reason.icon}</div>
+                <h3 className="text-xl font-bold mb-2 text-center">
+                  {reason.title}
                 </h3>
-                <p className="text-muted-foreground mb-6 text-center">
-                  {audience.description}
+                <p className="text-muted-foreground text-sm text-center">
+                  {reason.description}
                 </p>
-                <ul className="space-y-2">
-                  {audience.challenges.map((challenge) => (
-                    <li
-                      key={challenge}
-                      className="flex items-start gap-2 text-sm"
-                    >
-                      <span className="text-secondary font-bold">✓</span>
-                      <span>{challenge}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              </SolucionCard>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Process */}
+      {/* How We Work */}
       <section className="container mx-auto max-w-6xl px-4 py-20">
-        <h2 className="text-3xl md:text-5xl font-black mb-12 text-center">
-          Cómo <span className="text-accent">Trabajamos</span>
+        <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">
+          Cómo Trabajamos
         </h2>
 
-        <div className="space-y-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
             {
-              step: "01",
-              title: "Diagnóstico Inicial",
-              description:
-                "Entendemos tu situación actual, retos y objetivos. Sesión inicial de 1-2 horas con stakeholders clave.",
-              deliverable: "Informe de situación",
+              num: "01",
+              title: "Discovery",
+              desc: "Entendemos tu negocio, stack actual, equipo y objetivos.",
             },
             {
-              step: "02",
-              title: "Análisis Profundo",
-              description:
-                "Auditoría técnica completa, entrevistas con equipos y análisis de procesos. Identificamos problemas y oportunidades.",
-              deliverable: "Diagnóstico detallado",
+              num: "02",
+              title: "Diagnóstico",
+              desc: "Auditoría completa e identificación de quick wins y mejoras estructurales.",
             },
             {
-              step: "03",
-              title: "Propuesta de Solución",
-              description:
-                "Presentamos roadmap detallado con acciones priorizadas, timeline y estimación de recursos necesarios.",
-              deliverable: "Roadmap estratégico",
+              num: "03",
+              title: "Roadmap",
+              desc: "Plan de acción priorizado con timelines y recursos necesarios.",
             },
             {
-              step: "04",
-              title: "Implementación",
-              description:
-                "Acompañamiento durante la ejecución con reuniones semanales, seguimiento de KPIs y ajustes continuos.",
-              deliverable: "Reporting continuo",
+              num: "04",
+              title: "Ejecución",
+              desc: "Implementación con tu equipo o el nuestro. Soporte continuo.",
             },
-            {
-              step: "05",
-              title: "Optimización",
-              description:
-                "Monitorización de resultados, refinamiento de procesos y formación de equipos para autonomía.",
-              deliverable: "Documentación final",
-            },
-          ].map((phase) => (
-            <div
-              key={phase.step}
-              className="flex gap-6 items-start bg-white border-4 border-black p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"
-            >
-              <div className="text-5xl font-black text-primary/20 min-w-[80px]">
-                {phase.step}
+          ].map((step) => (
+            <SolucionCard key={step.num}>
+              <div className="text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                {step.num}
               </div>
-              <div className="flex-1">
-                <h3 className="text-2xl font-black mb-2">{phase.title}</h3>
-                <p className="text-muted-foreground mb-3">
-                  {phase.description}
-                </p>
-                <div className="inline-block px-3 py-1 bg-primary/10 text-primary font-bold text-sm border-2 border-primary">
-                  📄 {phase.deliverable}
-                </div>
-              </div>
-            </div>
+              <h3 className="text-xl font-bold mb-3">{step.title}</h3>
+              <p className="text-muted-foreground text-sm">{step.desc}</p>
+            </SolucionCard>
           ))}
         </div>
       </section>
 
-      {/* Pricing */}
-      <section className="bg-gradient-to-br from-accent/10 to-primary/10 border-y-4 border-black py-20">
+      {/* Use Cases */}
+      <section className="bg-gradient-to-br from-secondary/5 to-accent/5 dark:from-secondary/10 dark:to-accent/10 py-20">
         <div className="container mx-auto max-w-6xl px-4">
-          <h2 className="text-3xl md:text-5xl font-black mb-12 text-center">
-            Modalidades de <span className="text-primary">Consultoría</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">
+            Casos de Uso Típicos
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Por Proyecto */}
-            <div className="bg-white border-4 border-black p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-              <div className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-2">
-                Por Proyecto
-              </div>
-              <div className="text-4xl font-black mb-4">
-                Desde €4.900
-                <span className="text-lg font-normal text-muted-foreground block mt-1">
-                  según alcance
-                </span>
-              </div>
-              <p className="text-muted-foreground mb-6">
-                Proyectos puntuales con alcance y entregables definidos.
-              </p>
-              <ul className="space-y-3 mb-8">
-                {[
-                  "Alcance cerrado",
-                  "Timeline definido",
-                  "Entregables claros",
-                  "Precio fijo",
-                  "Soporte post-proyecto",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <span className="text-primary font-bold">✓</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <Button
-                asChild
-                className="w-full font-bold border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
-              >
-                <Link href="/contacto?service=consultoria-proyecto">
-                  Solicitar Presupuesto
-                </Link>
-              </Button>
-            </div>
-
-            {/* Retainer Mensual */}
-            <div className="bg-primary text-white border-4 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative -mt-4 md:scale-105">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-white px-4 py-1 font-bold text-sm uppercase border-4 border-black">
-                Más Flexible
-              </div>
-              <div className="text-sm font-bold uppercase tracking-wider opacity-90 mb-2">
-                Retainer Mensual
-              </div>
-              <div className="text-4xl font-black mb-4">
-                €2.490
-                <span className="text-lg font-normal opacity-90"> / mes</span>
-              </div>
-              <p className="opacity-90 mb-6">
-                Consultoría continua con horas mensuales dedicadas.
-              </p>
-              <ul className="space-y-3 mb-8">
-                {[
-                  "20h mensuales dedicadas",
-                  "Flexibilidad total",
-                  "Reuniones semanales",
-                  "Acceso prioritario",
-                  "Revisiones estratégicas",
-                  "Sin permanencia",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <span className="font-bold">✓</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <Button
-                asChild
-                variant="secondary"
-                className="w-full font-bold border-4 border-black bg-white text-primary shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
-              >
-                <Link href="/contacto?service=consultoria-retainer">
-                  Empezar Retainer
-                </Link>
-              </Button>
-            </div>
-
-            {/* CTO as a Service */}
-            <div className="bg-white border-4 border-black p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-              <div className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-2">
-                CTO as a Service
-              </div>
-              <div className="text-4xl font-black mb-4">
-                €4.990
-                <span className="text-lg font-normal text-muted-foreground">
-                  {" "}
-                  / mes
-                </span>
-              </div>
-              <p className="text-muted-foreground mb-6">
-                CTO dedicado part-time para tu empresa.
-              </p>
-              <ul className="space-y-3 mb-8">
-                {[
-                  "40h mensuales",
-                  "Liderazgo técnico",
-                  "Gestión de equipos",
-                  "Arquitectura y decisiones",
-                  "Hiring técnico",
-                  "Reportes ejecutivos",
-                  "On-call disponibilidad",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <span className="text-accent font-bold">✓</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <Button
-                asChild
-                variant="outline"
-                className="w-full font-bold border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
-              >
-                <Link href="/contacto?service=cto-service">
-                  Hablemos de tu Caso
-                </Link>
-              </Button>
-            </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                scenario: "Startup Pre-Seed/Seed",
+                challenge: "Necesitas construir tu MVP rápido y escalable",
+                solution:
+                  "Te ayudamos a definir el stack, arquitectura y priorizar features. Evitamos deuda técnica desde día 1.",
+              },
+              {
+                scenario: "Scaleup Series A/B",
+                challenge: "Tu stack actual no escala, necesitas refactorizar",
+                solution:
+                  "Auditoría técnica, roadmap de migración y ejecución. Sin parar el negocio.",
+              },
+              {
+                scenario: "Empresa Consolidada",
+                challenge: "Legacy tech que frena innovación",
+                solution:
+                  "Modernización gradual, integraciones y APIs. Transformación sin risk.",
+              },
+              {
+                scenario: "Tech Team Building",
+                challenge: "No sabes cómo estructurar tu equipo técnico",
+                solution:
+                  "Hiring strategy, roles definition, procesos y tech culture.",
+              },
+            ].map((useCase) => (
+              <SolucionCard key={useCase.scenario}>
+                <h3 className="text-xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  {useCase.scenario}
+                </h3>
+                <div className="mb-3">
+                  <span className="font-semibold text-sm text-muted-foreground">
+                    Reto:
+                  </span>{" "}
+                  <span className="text-sm">{useCase.challenge}</span>
+                </div>
+                <div>
+                  <span className="font-semibold text-sm text-primary">
+                    Solución:
+                  </span>{" "}
+                  <span className="text-sm">{useCase.solution}</span>
+                </div>
+              </SolucionCard>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us */}
+      {/* Pricing */}
       <section className="container mx-auto max-w-6xl px-4 py-20">
-        <h2 className="text-3xl md:text-5xl font-black mb-12 text-center">
-          ¿Por Qué Elegirnos?
+        <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">
+          Modalidades de Trabajo
         </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-3 gap-8">
           {[
             {
-              icon: "🎓",
-              title: "Experiencia Real",
-              description:
-                "15+ años construyendo y escalando productos digitales.",
+              title: "Proyecto Puntual",
+              description: "Auditoría o consultoría específica",
+              price: "€3.000 - €10.000",
+              features: [
+                "Alcance definido",
+                "Entregable final (informe + roadmap)",
+                "1-2 semanas de trabajo",
+                "Ideal para diagnóstico",
+              ],
             },
             {
-              icon: "🔍",
-              title: "Enfoque Práctico",
-              description:
-                "Soluciones accionables, no reportes que se quedan en un cajón.",
+              title: "Retainer Mensual",
+              description: "CTO as a Service",
+              price: "€2.500 - €6.000/mes",
+              features: [
+                "Disponibilidad continuada",
+                "Estrategia + ejecución",
+                "Calls semanales",
+                "Soporte técnico permanente",
+              ],
             },
             {
-              icon: "🤝",
-              title: "Partner, no Vendor",
-              description: "Nos importa tu éxito, no solo facturar horas.",
+              title: "Equity Partnership",
+              description: "Para startups early-stage",
+              price: "Equity + cash",
+              features: [
+                "Skin in the game",
+                "Compromiso a largo plazo",
+                "Participación en producto",
+                "Network y fundraising support",
+              ],
             },
-            {
-              icon: "📊",
-              title: "ROI Medible",
-              description: "Cada recomendación con impacto medible en negocio.",
-            },
-          ].map((reason) => (
-            <div
-              key={reason.title}
-              className="bg-white border-4 border-black p-6 text-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"
-            >
-              <div className="text-5xl mb-3">{reason.icon}</div>
-              <h3 className="text-xl font-black mb-2">{reason.title}</h3>
-              <p className="text-sm text-muted-foreground">
-                {reason.description}
+          ].map((option) => (
+            <SolucionCard key={option.title}>
+              <h3 className="text-2xl font-bold mb-2">{option.title}</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                {option.description}
               </p>
-            </div>
+              <div className="text-3xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                {option.price}
+              </div>
+              <ul className="space-y-2 text-sm">
+                {option.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-2">
+                    <span className="text-primary font-bold">✓</span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </SolucionCard>
           ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="bg-primary text-white border-t-4 border-black py-20">
+      <section className="bg-gradient-to-br from-primary/90 via-primary to-accent/90 text-white py-20">
         <div className="container mx-auto max-w-4xl px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-black mb-6">
-            Primera Consulta Gratis
+          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+            ¿Hablamos de tu Proyecto?
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Agenda una videollamada de 30 minutos. Analizamos tu situación y te
-            damos recomendaciones iniciales sin compromiso.
+            Primera consulta gratis. Sin compromiso. Solo value.
           </p>
           <Button
             asChild
             size="lg"
             variant="secondary"
-            className="font-bold text-lg px-8 py-6 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+            className="font-bold text-lg px-8 py-6 hover:scale-105 transition-transform duration-300"
           >
             <Link href="/contacto">Agendar Consulta Gratis</Link>
           </Button>
