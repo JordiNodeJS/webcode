@@ -77,6 +77,7 @@ export function ServicesSection() {
       target:
         "Freelancers, consultores, pequeños negocios locales, profesionales que necesitan presencia online YA.",
       ctaText: "Empezar Web Express",
+      href: "/soluciones/web-development",
       delay: 0,
     },
     {
@@ -93,6 +94,7 @@ export function ServicesSection() {
       target:
         "Artesanos, pequeñas tiendas, productos locales, negocios familiares que quieren vender online.",
       ctaText: "Crear Mi Tienda",
+      href: "/soluciones/e-commerce",
       delay: 0.1,
     },
     {
@@ -109,6 +111,7 @@ export function ServicesSection() {
       target:
         "Peluquerías, consultas, terapeutas, instructores, cualquier negocio por citas.",
       ctaText: "Configurar Agenda",
+      href: "/soluciones/reservas",
       delay: 0.2,
     },
     {
@@ -125,6 +128,7 @@ export function ServicesSection() {
       target:
         "Coaches, cursos online, servicios premium, lanzamientos de producto.",
       ctaText: "Generar Leads",
+      href: "/soluciones/landing-pages",
       delay: 0.3,
     },
   ];

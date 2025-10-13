@@ -12,6 +12,106 @@ WEBCODE es una plataforma integral de desarrollo web y soluciones digitales para
 
 **Público objetivo**: Freelancers, PYMEs, startups en mercado español (principalmente Barcelona).
 
+---
+
+## 🎨 **SISTEMA DE ESTILO WEBCODE (WAS - WebCode Animation System)**
+
+### **REFERENCIA RÁPIDA OBLIGATORIA**
+
+**ANTES de generar cualquier componente o estilo, consulta:**
+
+📋 **`.github/WEBCODE-STYLE-REFERENCE.md`** - Referencia rápida completa del sistema de diseño
+
+### **Principios de Estilo Fundamentales**
+
+1. **Paleta Rosa/Aguamarina**
+   - Primary: `oklch(0.57 0.2 328.5)` (#dc7cb3)
+   - Secondary: `oklch(0.43 0.18 184.1)` (#bce3e5)
+   - Variables RGB disponibles: `--primary-rgb`, `--secondary-rgb`
+
+2. **Sombras 3D Características**
+   - Sistema de 5 niveles: xs, sm, md, lg, xl
+   - Offset de 2-6px con color del tema
+   - Variable CSS: `var(--shadow-3d-md)`
+
+3. **Animaciones WAS**
+   - Easing principal: `cubic-bezier(0.25, 0.46, 0.45, 0.94)`
+   - Duraciones: 100ms (instant), 200ms (quick), 300ms (normal)
+   - Hover estándar: `opacity-80` + `translate-y-0.5`
+
+4. **Tipografía del Sistema**
+   - `font-sans`: Poppins (texto general)
+   - `font-display`: Space Grotesk (títulos)
+   - `font-serif`: Lora (textos largos)
+   - `font-mono`: Fira Code (código)
+
+5. **Espaciado Semántico**
+   - Texto: `gap-3` / `p-3` (12px)
+   - Elemento: `gap-6` / `p-6` (24px)
+   - Componente: `gap-8` / `p-8` (32px)
+   - Sección: `gap-16` / `p-16` (64px)
+
+### **Clases Especiales WebCode**
+
+```tsx
+// Títulos con gradiente neón
+<h1 className="neon-cyan-title">
+<h2 className="neon-cyan-card-title">
+
+// Fondos con gradiente del tema
+<div className="bg-gradient-webcode">
+
+// Texto con gradiente
+<p className="text-gradient-webcode">
+
+// Sombras 3D directas
+<div className="shadow-3d-md">
+```
+
+### **Patrón de Componente Estándar**
+
+```tsx
+<Card 
+  className="border-primary" 
+  style={{ boxShadow: 'var(--shadow-3d-md)' }}
+>
+  <CardHeader>
+    <CardTitle className="neon-cyan-card-title font-display">
+      Título
+    </CardTitle>
+  </CardHeader>
+  <CardContent>
+    <p className="font-sans text-muted-foreground">Contenido</p>
+  </CardContent>
+  <CardFooter>
+    <Button 
+      className="
+        hover:opacity-80 
+        transition-all duration-200
+        ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
+      "
+      style={{ boxShadow: 'var(--shadow-3d-sm)' }}
+    >
+      Acción
+    </Button>
+  </CardFooter>
+</Card>
+```
+
+### **Checklist de Estilo Obligatorio** ✅
+
+Cada componente debe cumplir:
+- [ ] Usa colores del tema (primary/secondary)
+- [ ] Implementa sombras 3D donde corresponde
+- [ ] Usa tipografías correctas (font-display/font-sans)
+- [ ] Tiene hover:opacity-80 en elementos interactivos
+- [ ] Usa timing WAS (duration-200/300) y easing correcto
+- [ ] Es responsive mobile-first
+- [ ] Soporta dark mode
+- [ ] Usa espaciado semántico (3, 6, 8, 16)
+
+---
+
 ## **🧠 SISTEMA DE MEMORIA DE PROYECTO**
 
 ### **CONTEXTO AUTOMÁTICO ACTUALIZADO**

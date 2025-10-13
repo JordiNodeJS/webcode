@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -20,6 +21,7 @@ interface ServiceCardProps {
   target: string;
   ctaText: string;
   delay: number;
+  href: string;
 }
 
 export function ServiceCard({
@@ -31,6 +33,7 @@ export function ServiceCard({
   target,
   ctaText,
   delay,
+  href,
 }: ServiceCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -158,10 +161,11 @@ export function ServiceCard({
 
       <CardFooter className="relative z-10 pt-6">
         <Button
+          asChild
           className="w-full bg-gradient-to-r from-primary/70 via-secondary/60 to-primary/60 dark:bg-primary dark:hover:bg-primary/85 text-primary-foreground dark:text-primary-foreground font-semibold py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 dark:hover:shadow-primary/20"
           size="lg"
         >
-          {ctaText}
+          <Link href={href}>{ctaText}</Link>
         </Button>
       </CardFooter>
     </Card>
