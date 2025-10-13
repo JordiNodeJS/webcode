@@ -3,7 +3,7 @@
 /**
  * Componente de tarjeta para artículos del blog
  * Reutilizable en diferentes vistas
- * Estilo brutalista inspirado en las tarjetas de servicios
+ * Diseño moderno inspirado en las tarjetas de servicios
  */
 
 import Image from "next/image";

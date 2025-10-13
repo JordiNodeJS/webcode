@@ -49,7 +49,7 @@ mv "$DOCS_DIR/PRD-GLM-4.5.md" "$DOCS_DIR/01-planificacion/PRD-GLM-4.5.md" 2>/dev
 mv "$DOCS_DIR/00-RESUMEN-implementacion-was.md" "$DOCS_DIR/02-diseno/00-resumen-implementacion-was.md" 2>/dev/null || true
 mv "$DOCS_DIR/03-DISENO-guia-estilos-base.md" "$DOCS_DIR/02-diseno/03-guia-estilos-base.md" 2>/dev/null || true
 mv "$DOCS_DIR/04-DISENO-guia-estilos-extendida.md" "$DOCS_DIR/02-diseno/04-guia-estilos-extendida.md" 2>/dev/null || true
-mv "$DOCS_DIR/05-DISENO-sistema-animaciones-websnack.md" "$DOCS_DIR/02-diseno/05-sistema-animaciones-webcode.md" 2>/dev/null || true
+mv "$DOCS_DIR/05-DISENO-sistema-animaciones-webcode.md" "$DOCS_DIR/02-diseno/05-sistema-animaciones-webcode.md" 2>/dev/null || true
 mv "$DOCS_DIR/06-DISENO-documentacion-tecnica-was.md" "$DOCS_DIR/02-diseno/06-documentacion-tecnica-was.md" 2>/dev/null || true
 mv "$DOCS_DIR/07-DISENO-fundamentos-decision.md" "$DOCS_DIR/02-diseno/07-fundamentos-decision.md" 2>/dev/null || true
 

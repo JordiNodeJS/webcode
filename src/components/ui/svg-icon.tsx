@@ -7,7 +7,7 @@ import { getIconClasses, type SvgIconProps } from "@/lib/svg-icons";
  * Componente SVG Icon para WebCode
  *
  * Reemplaza emoticones por SVGs escalables de SVGRepo
- * Mantiene coherencia con el sistema de diseño brutalista
+ * Mantiene coherencia con el sistema de diseño moderno
  */
 
 interface SvgIconComponentProps extends SvgIconProps {
