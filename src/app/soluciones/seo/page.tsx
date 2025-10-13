@@ -80,9 +80,9 @@ export default function SeoPage() {
               problem: "❌ No sabes qué está funcionando",
               solution: "✅ Informes claros y métricas accionables",
             },
-          ].map((item, index) => (
+          ].map((item) => (
             <div
-              key={index}
+              key={item.problem}
               className="bg-white border-4 border-black p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"
             >
               <div className="text-lg font-bold mb-2 text-muted-foreground">
@@ -420,9 +420,9 @@ export default function SeoPage() {
               description: "Posicionamiento medio en keywords objetivo",
               timeframe: "en 3 meses",
             },
-          ].map((result, index) => (
+          ].map((result) => (
             <div
-              key={index}
+              key={result.metric}
               className="bg-white border-4 border-black p-8 text-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"
             >
               <div className="text-5xl font-black text-accent mb-3">
