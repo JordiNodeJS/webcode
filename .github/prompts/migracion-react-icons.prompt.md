@@ -553,7 +553,7 @@ import * as Icons from 'react-icons/lu';
 - [ ] Todas las importaciones son tree-shakeable
 - [ ] Todos los iconos tienen `aria-label` cuando son interactivos
 - [ ] Los tamaños usan variants (`size="md"`) no estilos inline
-- [ ] Se mantienen los colores del sistema brutalista
+- [ ] Se mantienen los colores del sistema moderno
 - [ ] Biome lint sin errores: `pnpm biome check --write .`
 
 ## Testing Visual (Chrome DevTools)
@@ -647,7 +647,7 @@ Ver documentación completa en `.github/prompts/migracion-react-icons.prompt.md`
 ### Visuales ✅
 
 - [ ] Mayor variedad y originalidad de iconos
-- [ ] Coherencia con sistema de diseño brutalista
+- [ ] Coherencia con sistema de diseño moderno
 - [ ] Colores correctos (#ff6680, #ff8f66, #9333ea)
 - [ ] Responsive en todos los dispositivos
 - [ ] Dark mode funcional
@@ -698,7 +698,7 @@ Ver documentación completa en `.github/prompts/migracion-react-icons.prompt.md`
 
 ### 🎯 Objetivo Final
 
-Crear un sistema de iconos **moderno**, **mantenible**, **accesible** y **original** que potencie la identidad visual de WebCode manteniendo su estilo brutalista único.
+Crear un sistema de iconos **moderno**, **mantenible**, **accesible** y **original** que potencie la identidad visual de WebCode manteniendo su estilo moderno único.
 
 ---
 

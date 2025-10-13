@@ -50,7 +50,7 @@ Se ha completado exitosamente la migración del sistema de iconos de WebCode des
 ✅ Componente reutilizable con:
 
 - **Variants de tamaño**: `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`
-- **Variants de color** (sistema brutalista):
+- **Variants de color** (sistema moderno):
   - `primary`: Rosa brutal (#ff6680)
   - `secondary`: Naranja brutal (#ff8f66)
   - `accent`: Púrpura brutal (#9333ea)
@@ -353,7 +353,7 @@ pnpm biome migrate
 
 - ✅ Mayor variedad de iconos disponibles (+5000)
 - ✅ 5 familias diferentes para originalidad
-- ⏳ Coherencia con diseño brutalista (pendiente verificación visual)
+- ⏳ Coherencia con diseño moderno (pendiente verificación visual)
 - ⏳ Responsive verificado
 
 ### Accesibilidad

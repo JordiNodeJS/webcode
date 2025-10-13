@@ -88,7 +88,7 @@ WEBCODE es una plataforma integral de desarrollo web para freelancers, pequeñas
 
 | Archivo | Descripción | Estado |
 |---------|-------------|--------|
-| [05-DISENO-sistema-animaciones-websnack.md](./05-DISENO-sistema-animaciones-websnack.md) | **Sistema WAS completo**: componentes, utilidades, microinteracciones | ✅ Completo |
+| [05-DISENO-sistema-animaciones-webcode.md](./05-DISENO-sistema-animaciones-webcode.md) | **Sistema WAS completo**: componentes, utilidades, microinteracciones | ✅ Completo |
 | [06-DISENO-documentacion-tecnica-was.md](./06-DISENO-documentacion-tecnica-was.md) | Documentación técnica WAS: APIs, hooks, performance, roadmap | ✅ Completo |
 | [00-RESUMEN-implementacion-was.md](./00-RESUMEN-implementacion-was.md) | Resumen ejecutivo migración a WAS, métricas, beneficios | ✅ Completo |
 
@@ -150,7 +150,7 @@ WEBCODE es una plataforma integral de desarrollo web para freelancers, pequeñas
 
 | Archivo | Descripción | Fecha |
 |---------|-------------|-------|
-| [CAMBIO-NOMBRE-WEBCODE.md](./CAMBIO-NOMBRE-WEBCODE.md) | Decisión de renombrado WebSnack → WebCode | Sep 2025 |
+| [CAMBIO-NOMBRE-WEBCODE.md](./CAMBIO-NOMBRE-WEBCODE.md) | Decisión de renombrado webcode → WebCode | Sep 2025 |
 | [00-REORGANIZACION-resumen.md](./00-REORGANIZACION-resumen.md) | Resumen de reorganización de documentación | Oct 2025 |
 
 **Para AI**: Estos documentos explican POR QUÉ tomamos decisiones técnicas específicas.
@@ -255,7 +255,7 @@ WEBCODE es una plataforma integral de desarrollo web para freelancers, pequeñas
 ### 🎨 Para Diseñadores
 1. `03-DISENO-guia-estilos-base.md` - Sistema de diseño
 2. `04-DISENO-guia-estilos-extendida.md` - Especificaciones
-3. `05-DISENO-sistema-animaciones-websnack.md` - Sistema WAS
+3. `05-DISENO-sistema-animaciones-webcode.md` - Sistema WAS
 
 ### 📊 Para Project Managers
 1. `00-ESTADO-ACTUAL.md` - Estado y progreso

@@ -2,7 +2,7 @@
 
 ## **Resumen**
 
-Esta guía documenta la integración completa de [SVGRepo](https://www.svgrepo.com/) en el proyecto WebCode para reemplazar emoticones por SVGs escalables, manteniendo la coherencia con el sistema de diseño brutalista.
+Esta guía documenta la integración completa de [SVGRepo](https://www.svgrepo.com/) en el proyecto WebCode para reemplazar emoticones por SVGs escalables, manteniendo la coherencia con el sistema de diseño moderno.
 
 **🌐 Recurso Principal:** [https://www.svgrepo.com/](https://www.svgrepo.com/) - Biblioteca de iconos SVG gratuitos y de código abierto.
 
@@ -125,7 +125,7 @@ export const ICON_VARIANTS = {
 - **API REST**: Integración programática para futuras mejoras
 
 #### **Ventajas de Diseño**
-- **Coherencia**: Mantiene el estilo brutalista del proyecto
+- **Coherencia**: Mantiene el estilo moderno del proyecto
 - **Flexibilidad**: Variantes de color (primary, secondary, accent)
 - **Tamaños**: 4 tamaños predefinidos (sm, md, lg, xl)
 - **Animaciones**: Compatible con el sistema de animaciones existente
@@ -148,7 +148,7 @@ Para cada emoji, se siguió este proceso:
    - Evaluación de opciones disponibles
 
 3. **Criterios de Selección**
-   - **Estilo**: Coherente con el diseño brutalista
+   - **Estilo**: Coherente con el diseño moderno
    - **Simplicidad**: Paths SVG optimizados y limpios
    - **Legibilidad**: Clara identificación del concepto
    - **Escalabilidad**: Funciona en todos los tamaños
@@ -168,7 +168,7 @@ Los iconos se integran perfectamente con la paleta de colores:
 
 ```css
 /* Variables CSS del sistema */
---primary: oklch(0.57 0.2 328.5);    /* Rosa brutalista #ff6680 */
+--primary: oklch(0.57 0.2 328.5);    /* Rosa moderno #ff6680 */
 --secondary: oklch(0.43 0.18 184.1); /* Naranja #ff8f66 */
 --accent: oklch(0.57 0.2 328.5);     /* Púrpura #9333ea */
 
@@ -419,7 +419,7 @@ pnpm dlx svg-repo-mapper --emoji "🆕" --search "new,plus,add"
 
 ---
 
-**🎯 Objetivo**: Sistema de iconos SVG completamente integrado que reemplace todos los emoticones del proyecto WebCode, manteniendo la coherencia visual del sistema de diseño brutalista.
+**🎯 Objetivo**: Sistema de iconos SVG completamente integrado que reemplace todos los emoticones del proyecto WebCode, manteniendo la coherencia visual del sistema de diseño moderno.
 
 **📅 Estado**: Implementación inicial completada, migración gradual en progreso.
 
