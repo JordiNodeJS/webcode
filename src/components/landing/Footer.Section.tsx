@@ -266,7 +266,7 @@ export function FooterSection() {
             {/* Enlaces legales - Colores corregidos del tema */}
             <div className="flex space-x-6 text-sm">
               <Link
-                href="/privacy"
+                href="/politica-privacidad"
                 className="transition-colors duration-200"
                 style={{ color: "oklch(var(--muted-foreground))" }}
                 onMouseEnter={(e) => {

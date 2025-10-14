@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import {
@@ -100,6 +100,13 @@ export function ContactForm() {
       gdprConsent: false,
       website: "", // Campo honeypot
     },
+  });
+
+  // Watch message field for character counter
+  const messageValue = useWatch({
+    control: form.control,
+    name: "message",
+    defaultValue: "",
   });
 
   const onSubmit = async (data: ContactFormData) => {
@@ -295,7 +302,7 @@ export function ContactForm() {
                     />
                   </FormControl>
                   <FormDescription>
-                    {field.value?.length || 0}/1000 caracteres
+                    {messageValue?.length || 0}/1000 caracteres
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -324,7 +331,7 @@ export function ContactForm() {
                         Al marcar esta casilla, consientes el tratamiento de tu
                         email para responder a tu consulta según nuestra{" "}
                         <Link
-                          href="/politica-de-privacidad"
+                          href="/politica-privacidad"
                           className="underline text-primary"
                           target="_blank"
                           rel="noopener noreferrer"
