@@ -31,7 +31,7 @@ export function CallToAction() {
               900,
             );
           });
-        } catch (_err) {
+        } catch {
           // noop - permitir que Link realice la navegación normalmente
         }
       }
