@@ -19,7 +19,7 @@ Se ha implementado un **formulario completo de briefing automatizado** que permi
 3. **[Completado]** Guardado automático en localStorage (draft recovery)
 4. **[Completado]** Endpoint API para procesar el formulario
 5. **[Completado]** Email HTML estructurado con toda la información
-6. **[Completado]** Diseño coherente con el estilo brutalista del proyecto
+6. **[Completado]** Diseño coherente con el estilo moderno del proyecto
 7. **[Completado]** UX optimizada con indicadores de progreso
 8. **[Completado]** Integración completa con el sistema existente
 
@@ -394,7 +394,7 @@ track('briefing_abandoned', { current_step });
 
 ### Colores Utilizados
 - **Primary:** `#ff6680` (Rosa) - Botones principales, progreso
-- **Border:** Bordes de 3-4px (estilo brutalista)
+- **Border:** Bordes de 3-4px (estilo moderno)
 - **Card:** Fondo translúcido con backdrop-blur
 - **Muted:** Textos secundarios y descripciones
 
@@ -408,7 +408,7 @@ track('briefing_abandoned', { current_step });
 - Progress (shadcn)
 - Form (react-hook-form + shadcn)
 
-### Estilo Brutalista
+### Estilo moderno
 - Sombras `shadow-brutal` (6px offset)
 - Bordes gruesos `border-3` y `border-4`
 - Tipografía `font-black` para títulos

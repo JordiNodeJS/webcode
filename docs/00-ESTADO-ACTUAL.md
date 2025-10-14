@@ -334,7 +334,7 @@ Completar migración de iconos y continuar con sección de Servicios.
 
 ### Para trabajar en código:
 1. **Guía de estilos**: `03-DISENO-guia-estilos-base.md`
-2. **Sistema WAS**: `05-DISENO-sistema-animaciones-websnack.md`
+2. **Sistema WAS**: `05-DISENO-sistema-animaciones-webcode.md`
 3. **Instrucciones Copilot**: `.github/copilot-instructions.md`
 
 ### Para performance:

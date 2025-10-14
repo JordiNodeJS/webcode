@@ -32,25 +32,25 @@ export function FooterSection() {
             </h3>
             <div className="space-y-3">
               <Link
-                href="/services/web-development"
+                href="/soluciones/web-development"
                 className="block text-muted-foreground hover:text-primary transition-colors duration-200"
               >
                 Desarrollo Web
               </Link>
               <Link
-                href="/services/e-commerce"
+                href="/soluciones/e-commerce"
                 className="block text-muted-foreground hover:text-primary transition-colors duration-200"
               >
                 E-commerce
               </Link>
               <Link
-                href="/services/seo"
+                href="/soluciones/seo"
                 className="block text-muted-foreground hover:text-primary transition-colors duration-200"
               >
                 SEO & Marketing
               </Link>
               <Link
-                href="/services/consulting"
+                href="/soluciones/consulting"
                 className="block text-muted-foreground hover:text-primary transition-colors duration-200"
               >
                 Consultoría
@@ -266,7 +266,7 @@ export function FooterSection() {
             {/* Enlaces legales - Colores corregidos del tema */}
             <div className="flex space-x-6 text-sm">
               <Link
-                href="/privacy"
+                href="/politica-privacidad"
                 className="transition-colors duration-200"
                 style={{ color: "oklch(var(--muted-foreground))" }}
                 onMouseEnter={(e) => {

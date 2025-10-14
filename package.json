@@ -8,11 +8,9 @@
     "build": "rm -rf .next && next build --turbopack",
     "start": "next start",
     "kill": "pnpm dlx kill-port 3000 3001 3002",
-    "lint": "pnpm dlx @biomejs/biome check .",
-    "lint:fix": "pnpm dlx @biomejs/biome check --write .",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
     "format": "pnpm dlx prettier --write .",
-    "format:biome": "pnpm dlx @biomejs/biome format ./src --write",
-    "format:current": "pnpm dlx @biomejs/biome format --write",
     "analyze": "cross-env ANALYZE=true next build",
     "notion:verify": "node scripts/verify-notion-connection.js",
     "notion:list": "node scripts/list-notion-databases.js",
@@ -57,7 +55,7 @@
     "zod": "^4.1.5"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.2.3",
+    "@eslint/eslintrc": "^3.3.1",
     "@next/bundle-analyzer": "^15.5.2",
     "@playwright/test": "^1.55.0",
     "@tailwindcss/postcss": "^4",
@@ -67,6 +65,8 @@
     "babel-plugin-react-compiler": "19.1.0-rc.3",
     "chrome-launcher": "^1.2.0",
     "cross-env": "^7.0.3",
+    "eslint": "^9.37.0",
+    "eslint-config-next": "^15.5.5",
     "lighthouse": "^12.8.2",
     "lint-staged": "^14.0.0",
     "playwright": "^1.55.0",
@@ -93,10 +93,10 @@
     ]
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json}": [
-      "pnpm dlx @biomejs/biome check --write"
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
     ],
-    "*.{css,scss,md,html,mdx,svg}": [
+    "*.{json,css,scss,md,html,mdx,svg}": [
       "pnpm dlx prettier --write"
     ]
   }

@@ -205,16 +205,8 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: "/servicios",
-        destination: "/services"
-      },
-      {
         source: "/sobre-nosotros",
         destination: "/about"
-      },
-      {
-        source: "/contacto",
-        destination: "/contact"
       }
     ];
   },
@@ -230,6 +222,32 @@ const nextConfig: NextConfig = {
       {
         source: "/index",
         destination: "/",
+        permanent: true
+      },
+      // Redirects de /services a /soluciones
+      {
+        source: "/services",
+        destination: "/soluciones",
+        permanent: true
+      },
+      {
+        source: "/services/web-development",
+        destination: "/soluciones/web-development",
+        permanent: true
+      },
+      {
+        source: "/services/e-commerce",
+        destination: "/soluciones/e-commerce",
+        permanent: true
+      },
+      {
+        source: "/services/seo",
+        destination: "/soluciones/seo",
+        permanent: true
+      },
+      {
+        source: "/services/consulting",
+        destination: "/soluciones/consulting",
         permanent: true
       }
     ];

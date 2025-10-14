@@ -41,7 +41,7 @@ Se ha completado exitosamente la **sustitución completa** del sistema de iconos
 #### **Archivo**: `src/components/ui/Icon.tsx` (100 líneas)
 - ✅ Wrapper component con CVA variants
 - ✅ 7 tamaños: xs, sm, md, lg, xl, 2xl, 3xl
-- ✅ 7 variantes de color (sistema brutalista)
+- ✅ 7 variantes de color (sistema moderno)
 - ✅ Accesibilidad completa (ARIA, keyboard navigation)
 
 #### **Archivo**: `src/components/ui/IconShowcase.tsx` (234 líneas)
@@ -143,7 +143,7 @@ IconShowcase.tsx → Demostración de todas las familias
 
 - **SvgIcon** (`src/components/ui/svg-icon.tsx`) - Sistema para reemplazo de emojis a SVG paths
 - **WebCodeIcons** (`src/components/ui/webcode-icons.tsx`) - Iconos personalizados del proyecto
-- **WebSnackIcons** (`src/components/ui/websnack-icons.tsx`) - Iconos personalizados legacy
+- **webcodeIcons** (`src/components/ui/webcode-icons.tsx`) - Iconos personalizados legacy
 
 Estos sistemas tienen propósitos específicos diferentes y se mantienen intencionalmente.
 
@@ -171,7 +171,7 @@ xl:  32px (h-8 w-8)
 3xl: 48px (h-12 w-12)
 ```
 
-### Variantes de Color (Sistema Brutalista)
+### Variantes de Color (Sistema moderno)
 ```typescript
 default: text-current
 primary: #ff6680 (Rosa brutal)
@@ -239,7 +239,7 @@ feat: migrate PhaseTimeline to react-icons system
 ✅ **Multi-familia**: 6 familias diferentes para máxima originalidad  
 ✅ **Tree-shaking**: Optimización automática del bundle  
 ✅ **Accesibilidad**: ARIA labels y keyboard navigation implementados  
-✅ **Diseño consistente**: Sistema de variants alineado con estilo brutalista  
+✅ **Diseño consistente**: Sistema de variants alineado con estilo moderno  
 ✅ **Backward compatibility**: Mapa de compatibilidad para migración gradual  
 ✅ **Testing exhaustivo**: Todas las páginas verificadas visualmente  
 ✅ **Documentación completa**: Prompts, reportes y ejemplos documentados  
@@ -292,7 +292,7 @@ El sistema de iconos está completamente optimizado:
 
 ### 🎨 Diseño Consistente
 
-Todos los iconos siguen el sistema de diseño brutalista:
+Todos los iconos siguen el sistema de diseño moderno:
 - Colores corporativos: Rosa (#ff6680), Naranja (#ff8f66), Púrpura (#9333ea)
 - Tamaños escalables de xs a 3xl
 - Variantes de color coherentes

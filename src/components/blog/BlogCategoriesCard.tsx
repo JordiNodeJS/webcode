@@ -2,7 +2,7 @@
 
 /**
  * Componente de tarjeta para categorías del blog
- * Estilo brutalista inspirado en las tarjetas de servicios
+ * Diseño moderno inspirado en las tarjetas de servicios
  */
 
 import Link from "next/link";

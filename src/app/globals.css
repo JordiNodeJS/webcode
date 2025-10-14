@@ -187,9 +187,19 @@
 /* Estilos personalizados para títulos con efecto neón cyan suavizado */
 .neon-cyan-title {
   position: relative;
+  display: block; /* block gives full line area for tall glyphs */
   text-align: center;
   font-size: 50px;
-  font-weight: bold;
+  font-weight: 700;
+  /* Evitar recortes en navegadores: suficiente line-height, padding y mejoras de render */
+  line-height: 1.15; /* más espacio vertical */
+  padding-block: 0.12em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translateZ(0.001px); /* forzar nueva capa de composición */
+  /* very subtle stroke to avoid thin edge clipping when using background-clip:text */
+  -webkit-text-stroke: 0.02em rgba(0,0,0,0.02);
   /* Modo claro: gradiente suave con colores del tema */
   background: linear-gradient(
     135deg,
@@ -390,13 +400,20 @@
 
 /* Utilidades para gradientes WebCode */
 .bg-gradient-webcode {
-  /* Modo claro: gradiente suave con colores del tema */
+  /* Modo claro: gradiente suave y neutral usando variables de tema (menos intenso) */
+  /* Esto evita lavados fuertes y deja espacio para overlays ligeros en CTAs */
   background: linear-gradient(
     135deg,
-    oklch(0.98 0.008 328.5) 0%,
-    /* Rosa muy claro */ oklch(0.99 0.005 184.1) 50%,
-    /* Blanco aguamarina */ oklch(0.97 0.01 184.1) 100%
-    /* Aguamarina muy claro */
+    var(--gradient-primary),
+    var(--gradient-secondary) 60%,
+    var(--gradient-muted) 100%
+  );
+
+  /* Variante CTA ligera pero no agresiva; se puede combinar con overlay oscuro sutil */
+  --bg-gradient-cta: linear-gradient(
+    135deg,
+    oklch(0.92 0.03 328.5) 0%,
+    oklch(0.92 0.03 184.1) 100%
   );
 }
 
@@ -482,7 +499,7 @@
   }
 }
 
-/* Sombras brutalistas para el estilo visual */
+/* Sombras modernas para el estilo visual */
 .shadow-brutal-sm {
   box-shadow: 3px 3px 0 0 rgb(0 0 0 / 0.1);
 }
@@ -510,7 +527,7 @@
   }
 }
 
-/* Clases de borde para el estilo brutalista */
+/* Clases de borde para el estilo moderno */
 .border-3 {
   border-width: 3px;
 }

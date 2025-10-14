@@ -12,7 +12,7 @@
 
 1. **Sistema Multi-Familia de Iconos**: Implementado sistema profesional con 6 familias de iconos diferentes
 2. **Arquitectura Centralizada**: Todos los iconos exportados desde `src/lib/icons.ts` para mejor tree-shaking
-3. **Componente Wrapper**: `Icon.tsx` con variants de tamaño y color integrados al sistema brutalista
+3. **Componente Wrapper**: `Icon.tsx` con variants de tamaño y color integrados al sistema moderno
 4. **Migración Completa**: 4 componentes migrados exitosamente
 5. **Validación**: 100% de los archivos pasan Biome lint sin errores
 6. **Zero Breaking Changes**: Sistema de compatibilidad mantiene componentes existentes funcionando
@@ -124,7 +124,7 @@ const IconComponent = ICON_COMPATIBILITY_MAP["sparkles"]; // HiOutlineSparkles
 - `2xl`: 40px (h-10 w-10)
 - `3xl`: 48px (h-12 w-12)
 
-### Variantes de Color (Sistema Brutalista)
+### Variantes de Color (Sistema moderno)
 - `default`: text-current
 - `primary`: Rosa brutal (#ff6680)
 - `secondary`: Naranja brutal (#ff8f66)
@@ -218,7 +218,7 @@ const IconComponent = ICON_COMPATIBILITY_MAP["sparkles"]; // HiOutlineSparkles
 
 ## 🎯 Conclusión
 
-La migración a React Icons se ha completado exitosamente, estableciendo un sistema profesional, escalable y optimizado para el crecimiento futuro de WebCode. El sistema multi-familia permite representar diferentes sectores y contextos de manera visual y consistente, alineado con la estética brutalista del proyecto.
+La migración a React Icons se ha completado exitosamente, estableciendo un sistema profesional, escalable y optimizado para el crecimiento futuro de WebCode. El sistema multi-familia permite representar diferentes sectores y contextos de manera visual y consistente, alineado con la estética moderno del proyecto.
 
 **Status Final**: ✅ **READY FOR PRODUCTION**
 
