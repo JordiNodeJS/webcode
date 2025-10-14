@@ -40,7 +40,7 @@ export function WebCodeLogo({
   );
 }
 
-// Icono de desarrollo web brutalista
+// Icono de desarrollo web
 export function WebCodeDev({
   size = "md",
   variant = "primary",
@@ -129,7 +129,7 @@ export function BarcelonaIcon({
   );
 }
 
-// Icono de calidad brutalista
+// Icono de calidad
 export function QualityIcon({
   size = "md",
   variant = "primary",

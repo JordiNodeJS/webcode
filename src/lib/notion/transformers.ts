@@ -238,18 +238,20 @@ export function transformNotionPageToBlogPost(
  * Genera un slug a partir de un título
  */
 export function generateSlug(title: string): string {
-  return title
-    .toLowerCase()
-    .normalize("NFD") // Normaliza caracteres acentuados
-    .replace(/[\u0300-\u036f]/g, "") // Elimina diacríticos
-    .replace(/[\r\n\t]/g, "") // Elimina saltos de línea, retornos de carro y tabs
-    .replace(/[^\w\s-]/g, "") // Elimina caracteres especiales
-    .replace(/\s+/g, "-") // Reemplaza espacios por guiones
-    .replace(/-+/g, "-") // Elimina guiones múltiples
-    .replace(/^-+|-+$/g, "") // Elimina guiones al inicio y final
-    .trim()
-    .substring(0, 100) // Limita la longitud para evitar URLs muy largas
-    || "untitled"; // Fallback si el slug queda vacío
+  return (
+    title
+      .toLowerCase()
+      .normalize("NFD") // Normaliza caracteres acentuados
+      .replace(/[\u0300-\u036f]/g, "") // Elimina diacríticos
+      .replace(/[\r\n\t]/g, "") // Elimina saltos de línea, retornos de carro y tabs
+      .replace(/[^\w\s-]/g, "") // Elimina caracteres especiales
+      .replace(/\s+/g, "-") // Reemplaza espacios por guiones
+      .replace(/-+/g, "-") // Elimina guiones múltiples
+      .replace(/^-+|-+$/g, "") // Elimina guiones al inicio y final
+      .trim()
+      .substring(0, 100) || // Limita la longitud para evitar URLs muy largas
+    "untitled"
+  ); // Fallback si el slug queda vacío
 }
 
 /**

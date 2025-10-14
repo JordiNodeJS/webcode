@@ -113,21 +113,17 @@ src/
 - Estrategias de caché apropiadas
 - Estados de carga y límites de error
 
+
 ### Comandos Principales
 ```bash
 # Setup inicial (pendiente)
-pnpm create next-app@latest websnack --typescript --tailwind --eslint --app --src-dir
+pnpm create next-app@latest webcode --typescript --tailwind --eslint --app --src-dir
 
 # Desarrollo
 pnpm dev
 
 # shadcn/ui setup
 pnpm dlx shadcn@latest init
-pnpm dlx shadcn@latest add button card input
-
-# Testing
-pnpm test
-pnpm test:e2e
 ```
 
 ### Decisiones Técnicas Recientes

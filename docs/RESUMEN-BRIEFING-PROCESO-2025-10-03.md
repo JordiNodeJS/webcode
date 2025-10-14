@@ -18,7 +18,7 @@ Se ha creado una nueva página moderna y completa sobre el **Briefing y Levantam
 2. **[Completado]** Explicar las 6 fases del ciclo de vida de un proyecto web
 3. **[Completado]** Detallar las categorías de información a recopilar
 4. **[Completado]** Destacar los beneficios de un briefing profesional
-5. **[Completado]** Mantener coherencia con el estilo brutalista del proyecto
+5. **[Completado]** Mantener coherencia con el estilo moderno del proyecto
 6. **[Completado]** Implementar componentes interactivos y animados
 7. **[Completado]** Optimizar SEO y metadata
 8. **[Completado]** Actualizar sitemap
@@ -98,7 +98,7 @@ Componente que destaca 6 beneficios clave del briefing profesional:
 ### Nuevas Clases CSS Añadidas a `globals.css`
 
 ```css
-/* Sombras Brutalistas */
+/* Sombras modernos */
 .shadow-brutal-sm { box-shadow: 3px 3px 0 0 rgb(0 0 0 / 0.1); }
 .shadow-brutal { box-shadow: 6px 6px 0 0 rgb(0 0 0 / 0.15); }
 .shadow-brutal-lg { box-shadow: 10px 10px 0 0 rgb(0 0 0 / 0.2); }
@@ -343,7 +343,7 @@ La página explica:
 
 Se ha implementado con éxito una página completa, educativa y visualmente atractiva sobre el proceso de briefing y levantamiento de requerimientos. La página:
 
-- **[Completado]** Cumple con el estilo brutalista del proyecto
+- **[Completado]** Cumple con el estilo moderno del proyecto
 - **[Completado]** Es completamente responsive
 - **[Completado]** Está optimizada para SEO
 - **[Completado]** Incluye animaciones fluidas y profesionales

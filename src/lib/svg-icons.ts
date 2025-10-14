@@ -2,9 +2,9 @@
  * Sistema de Iconos SVG para WebCode
  * Integración con SVGRepo para reemplazar emoticones por SVGs escalables
  *
- * Mantiene coherencia con el sistema de diseño brutalista:
+ * Mantiene coherencia con el sistema de diseño:
  * - Colores: Rosa #ff6680, Naranja #ff8f66, Púrpura #9333ea
- * - Estilo: Bold, geométrico, sombras brutales
+ * - Estilo: Bold, geométrico, moderno
  */
 
 export interface SvgIconProps {

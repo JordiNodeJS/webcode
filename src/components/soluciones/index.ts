@@ -1,0 +1,2 @@
+export { SolucionCard } from "./SolucionCard";
+

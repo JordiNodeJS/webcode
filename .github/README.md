@@ -1,6 +1,41 @@
 # 📁 Estructura del Directorio .github
 
-> **Reorganizado**: 2025-09-01 según mejores prácticas oficiales de GitHub y VS Code
+> **Reorganizado**: 2025-09-01 según mejores prácticas oficiales de GitHub y VS Code  
+> **Sistema de Diseño WebCode**: Consolidado Octubre 2025 ✨
+
+## 🎨 **SISTEMA DE DISEÑO WEBCODE (WAS)**
+
+### **📚 Documentación de Estilos (NUEVO)**
+
+#### **Consulta Rápida** ⚡
+- [`WEBCODE-CHEAT-SHEET.md`](./WEBCODE-CHEAT-SHEET.md) - Referencia ultra-rápida (1 página)
+
+#### **Documentación Principal** ⭐
+- [`WEBCODE-STYLE-REFERENCE.md`](./WEBCODE-STYLE-REFERENCE.md) - Guía completa del sistema
+- [`WEBCODE-STYLE-EXAMPLES.md`](./WEBCODE-STYLE-EXAMPLES.md) - Ejemplos prácticos
+- [`STYLE-UPDATE-SUMMARY.md`](./STYLE-UPDATE-SUMMARY.md) - Resumen de actualización
+
+### **🎯 Sistema en 30 Segundos**
+
+**Colores**: Rosa (#dc7cb3) + Aguamarina (#bce3e5)  
+**Sombras**: 3D offset con `var(--shadow-3d-md)`  
+**Animaciones**: `cubic-bezier(0.25, 0.46, 0.45, 0.94)` + 200-300ms  
+**Tipografía**: Poppins (body) + Space Grotesk (titles)  
+**Hover**: `opacity-80` + `translate-y-0.5`  
+**Espaciado**: 3, 6, 8, 16 (texto, elemento, componente, sección)
+
+### **✅ Checklist Express**
+
+- [ ] ¿Usa colores del tema (primary/secondary)?
+- [ ] ¿Tiene sombra 3D donde corresponde?
+- [ ] ¿Usa tipografía correcta (font-display/font-sans)?
+- [ ] ¿Tiene hover:opacity-80 en elementos interactivos?
+- [ ] ¿Usa timing WAS (duration-200/300)?
+- [ ] ¿Es responsive mobile-first?
+- [ ] ¿Funciona en dark mode?
+- [ ] ¿Espaciado semántico (3, 6, 8, 16)?
+
+---
 
 ## 🎯 **Organización Mejorada**
 

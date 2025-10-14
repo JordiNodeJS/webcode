@@ -30,7 +30,7 @@ export default function ServiciosPage() {
               conversión y rendimiento.
             </p>
             <Link
-              href="/services/web-development"
+              href="/soluciones/web-development"
               className="text-primary underline font-medium"
             >
               Ver detalle
@@ -44,7 +44,7 @@ export default function ServiciosPage() {
               optimización para ventas.
             </p>
             <Link
-              href="/services/e-commerce"
+              href="/soluciones/e-commerce"
               className="text-primary underline font-medium"
             >
               Ver detalle
@@ -58,7 +58,7 @@ export default function ServiciosPage() {
               presencia online.
             </p>
             <Link
-              href="/services/consulting"
+              href="/soluciones/consulting"
               className="text-primary underline font-medium"
             >
               Ver detalle
