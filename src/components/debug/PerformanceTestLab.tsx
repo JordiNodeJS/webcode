@@ -420,12 +420,10 @@ export function PerformanceTestLab() {
 
   const [activeScenario, setActiveScenario] = useState("original");
   const [perfHistory, setPerfHistory] = useState<
-    // biome-ignore lint/suspicious/noExplicitAny: Datos de performance complejos
-    Array<{ scenario: string; data: any; timestamp: number }>
+    Array<{ scenario: string; data: Record<string, unknown>; timestamp: number }>
   >([]);
   const [isRecording, setIsRecording] = useState(false);
-  // biome-ignore lint/suspicious/noExplicitAny: Resultados de test diversos
-  const [testResults, setTestResults] = useState<Record<string, any>>({});
+  const [testResults, setTestResults] = useState<Record<string, unknown>>({});
   const [startTime, setStartTime] = useState<number>(Date.now());
 
   // Funciones de validación para evitar NaN en el render
@@ -456,15 +454,15 @@ export function PerformanceTestLab() {
       ? Math.round(
           perfHistory
             .slice(-10)
-            .reduce((acc, entry) => acc + safeNumber(entry.data.fps), 0) /
+            .reduce((acc, entry) => acc + safeNumber((entry.data as Record<string, unknown>).fps as number), 0) /
             Math.min(perfHistory.length, 10),
         )
       : 0;
 
   const memoryTrend =
     perfHistory.length > 1
-      ? safeNumber(perfHistory[perfHistory.length - 1].data.memory) -
-        safeNumber(perfHistory[perfHistory.length - 2].data.memory)
+        ? safeNumber((perfHistory[perfHistory.length - 1].data as Record<string, unknown>).memory as number) -
+          safeNumber((perfHistory[perfHistory.length - 2].data as Record<string, unknown>).memory as number)
       : 0;
 
   const testDuration = Math.round((Date.now() - startTime) / 1000);
@@ -485,21 +483,21 @@ export function PerformanceTestLab() {
       setTestResults((prev) => ({
         ...prev,
         [activeScenario]: {
-          ...prev[activeScenario],
+          ...(prev[activeScenario] || {}),
           avgFPS: safeNumber(avgFPS) || safeNumber(summary.fps),
           minFPS: Math.min(
-            safeNumber(prev[activeScenario]?.minFPS, 60),
+            safeNumber((prev[activeScenario] as Record<string, unknown>)?.minFPS as number, 60),
             safeNumber(summary.fps),
           ),
           maxFPS: Math.max(
-            safeNumber(prev[activeScenario]?.maxFPS, 0),
+            safeNumber((prev[activeScenario] as Record<string, unknown>)?.maxFPS as number, 0),
             safeNumber(summary.fps),
           ),
           avgMemory: safeNumber(performanceData.memory),
-          samples: (prev[activeScenario]?.samples || 0) + 1,
+          samples: ((prev[activeScenario] as Record<string, unknown>)?.samples as number || 0) + 1,
           idleTime: isIdle
-            ? (prev[activeScenario]?.idleTime || 0) + 1
-            : prev[activeScenario]?.idleTime || 0,
+            ? ((prev[activeScenario] as Record<string, unknown>)?.idleTime as number || 0) + 1
+            : (prev[activeScenario] as Record<string, unknown>)?.idleTime as number || 0,
         },
       }));
     }
@@ -758,23 +756,26 @@ export function PerformanceTestLab() {
                   <h4 className="text-xs font-semibold mb-2">
                     Resultados de Prueba
                   </h4>
-                  {Object.entries(testResults).map(([scenario, data]) => (
+                  {Object.entries(testResults).map(([scenario, data]) => {
+                    const typedData = data as Record<string, unknown>;
+                    return (
                     <div key={scenario} className="text-xs space-y-1 mb-3">
                       <div className="font-medium">{scenario}</div>
                       <div className="flex justify-between">
                         <span>FPS Prom:</span>
                         <span className="font-mono">
-                          {formatMetric(data.avgFPS)}
+                          {formatMetric(typedData.avgFPS as number)}
                         </span>
                       </div>
                       <div className="flex justify-between">
                         <span>FPS Min:</span>
                         <span className="font-mono">
-                          {formatMetric(data.minFPS)}
+                          {formatMetric(typedData.minFPS as number)}
                         </span>
                       </div>
                     </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </CardContent>
@@ -871,24 +872,24 @@ export function PerformanceTestLab() {
                       >
                         <div className="flex justify-between items-center">
                           <span className="font-semibold">
-                            [{entry.data.timestamp}]
+                            [{(entry.data as Record<string, unknown>).timestamp as number}]
                           </span>
                           <Badge
                             variant={
-                              entry.data.state === "REPOSO"
+                              (entry.data as Record<string, unknown>).state === "REPOSO"
                                 ? "success"
                                 : "warning"
                             }
                             className="text-xs"
                           >
-                            {entry.data.state}
+                            {(entry.data as Record<string, unknown>).state as string}
                           </Badge>
                         </div>
                         <div className="flex justify-between mt-1 text-muted-foreground">
                           <span>{entry.scenario}</span>
                           <span>
-                            {formatMetric(entry.data.fps)} FPS •{" "}
-                            {entry.data.memory}
+                            {formatMetric((entry.data as Record<string, unknown>).fps as number)} FPS •{" "}
+                            {(entry.data as Record<string, unknown>).memory as number}
                           </span>
                         </div>
                       </motion.div>

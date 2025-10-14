@@ -25,13 +25,31 @@ export interface PerformanceReport {
   optimizationsPriority: string[];
 }
 
+interface PlaywrightPage {
+  goto: (url: string) => Promise<void>;
+  waitForLoadState: (state: string) => Promise<void>;
+  waitForTimeout: (timeout: number) => Promise<void>;
+  click: (selector: string) => Promise<void>;
+  $$: (selector: string) => Promise<unknown[]>;
+  evaluate: (fn: (...args: unknown[]) => unknown, ...args: unknown[]) => Promise<unknown>;
+  close: () => Promise<void>;
+}
+
+interface PerformanceMemory {
+  usedJSHeapSize: number;
+  totalJSHeapSize: number;
+  jsHeapSizeLimit: number;
+}
+
+interface PerformanceWithMemory extends Performance {
+  memory?: PerformanceMemory;
+}
+
 export class FullPerformanceAnalyzer {
-  // biome-ignore lint/suspicious/noExplicitAny: Tipo Playwright Page dinámico
-  private page: any;
+  private page: PlaywrightPage;
   private baseURL = "http://localhost:3001";
 
-  // biome-ignore lint/suspicious/noExplicitAny: Tipo Playwright Page dinámico
-  constructor(page: any) {
+  constructor(page: PlaywrightPage) {
     this.page = page;
   }
 
@@ -161,7 +179,7 @@ export class FullPerformanceAnalyzer {
     if (cards.length > 0) {
       // Hover over each card for 1 second
       for (let i = 0; i < Math.min(cards.length, 3); i++) {
-        await cards[i].hover();
+        await (cards[i] as { hover: () => Promise<void> }).hover();
         await this.page.waitForTimeout(1000);
 
         const currentMetrics = await this.measurePerformance(1000);
@@ -252,9 +270,9 @@ export class FullPerformanceAnalyzer {
     console.log("✨ Analizando WSFadeIn Animation System...");
 
     // Count total WSFadeIn components
-    const fadeInCount = await this.page.evaluate(() => {
+    const fadeInCount = (await this.page.evaluate(() => {
       return document.querySelectorAll("[data-ws-fade-in]").length;
-    });
+    })) as number;
 
     // Scroll through page to trigger fade ins
     await this.page.evaluate(() => {
@@ -412,9 +430,9 @@ export class FullPerformanceAnalyzer {
     const scrollPositions = [0, 0.25, 0.5, 0.75, 1.0];
 
     for (const position of scrollPositions) {
-      await this.page.evaluate((pos: number) => {
+      await this.page.evaluate((pos: unknown) => {
         const maxScroll = document.body.scrollHeight - window.innerHeight;
-        window.scrollTo({ top: maxScroll * pos, behavior: "smooth" });
+        window.scrollTo({ top: maxScroll * (pos as number), behavior: "smooth" });
       }, position);
 
       await this.page.waitForTimeout(1000);
@@ -457,13 +475,10 @@ export class FullPerformanceAnalyzer {
           );
 
           // Estimate memory usage (simplified)
-          // biome-ignore lint/suspicious/noExplicitAny: Performance API memory extension
-          const memoryUsage = (performance as any).memory
+          const memoryUsage = (performance as PerformanceWithMemory).memory
             ? Math.round(
-                // biome-ignore lint/suspicious/noExplicitAny: Performance API memory extension
-                ((performance as any).memory.usedJSHeapSize -
-                  // biome-ignore lint/suspicious/noExplicitAny: Performance API memory extension
-                  (performance as any).memory.totalJSHeapSize) /
+                ((performance as PerformanceWithMemory).memory!.usedJSHeapSize -
+                  (performance as PerformanceWithMemory).memory!.totalJSHeapSize) /
                   1024 /
                   1024,
               )

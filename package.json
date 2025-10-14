@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build:internal": "next build --turbopack",
-    "build": "rm -rf .next && next build --turbopack",
+    "build": "pnpm dlx rimraf .next && next build --turbopack",
     "start": "next start",
     "kill": "pnpm dlx kill-port 3000 3001 3002",
     "lint": "next lint",

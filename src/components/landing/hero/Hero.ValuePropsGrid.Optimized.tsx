@@ -129,7 +129,7 @@ const useThrottledCallback = <T extends (...args: never[]) => void>(
         timeoutRef.current = null;
       }, delay);
     }) as T,
-    [],
+    [callback, delay],
   );
 };
 

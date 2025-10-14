@@ -73,10 +73,13 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
     return () => {
       observer.disconnect();
       // Limpiar timeouts al desmontar
-      pulseTimeouts.current.forEach((timeout) => {
+      const currentPulseTimeouts = pulseTimeouts.current;
+      const currentAnimationTimeouts = animationTimeouts.current;
+      
+      currentPulseTimeouts.forEach((timeout) => {
         clearTimeout(timeout);
       });
-      animationTimeouts.current.forEach((timeout) => {
+      currentAnimationTimeouts.forEach((timeout) => {
         clearTimeout(timeout);
       });
     };

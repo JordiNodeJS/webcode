@@ -163,7 +163,6 @@ const components: Components = {
     );
   },
   // Imágenes responsivas - usa img nativo para contenido dinámico
-  // eslint-disable-next-line @next/next/no-img-element
   img: ({ src, alt, ...props }) => (
     <img
       src={src}

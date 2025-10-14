@@ -28,7 +28,7 @@ export function CookieBanner({ className }: CookieBannerProps) {
         } else {
           setIsLoading(false);
         }
-      } catch (_error) {
+      } catch {
         // Si localStorage no está disponible, mostrar el banner por defecto
         setIsVisible(true);
         setIsLoading(false);
@@ -56,7 +56,7 @@ export function CookieBanner({ className }: CookieBannerProps) {
     // Solo guarda que fue cerrado temporalmente, no que fue aceptado
     try {
       sessionStorage.setItem("webcode-cookie-banner-dismissed", "true");
-    } catch (_error) {
+    } catch {
       // Si sessionStorage no está disponible, continuamos sin problema
     }
   };
