@@ -53,10 +53,10 @@ export function ServiceCard({
 
   return (
     <Card
-      className={`group relative overflow-hidden border-4 border-foreground/20 dark:border-foreground/30 bg-gradient-to-br from-background via-background/95 to-muted/30 dark:from-background dark:via-background/95 dark:to-muted/20 focus-within:ring-4 focus-within:ring-primary focus-within:ring-offset-4 shadow-[6px_6px_0px_0px_rgb(0_0_0_/_15%)] dark:shadow-[6px_6px_0px_0px_rgb(255_255_255_/_10%)] ${
+      className={`group relative overflow-hidden border border-border/30 dark:border-border/20 bg-gradient-to-br from-slate-700/95 via-slate-600/90 to-slate-700/85 dark:from-slate-800/95 dark:via-slate-700/90 dark:to-slate-800/85 rounded-xl focus-within:ring-4 focus-within:ring-primary focus-within:ring-offset-4 ${
         prefersReducedMotion
-          ? "hover:shadow-[8px_8px_0px_0px_rgb(0_0_0_/_20%)] dark:hover:shadow-[8px_8px_0px_0px_rgb(255_255_255_/_15%)]"
-          : "hover:shadow-[8px_8px_0px_0px_rgb(0_0_0_/_20%)] dark:hover:shadow-[8px_8px_0px_0px_rgb(255_255_255_/_15%)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/40"
+          ? "hover:shadow-2xl"
+          : "hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
       }`}
       style={{
         animationDelay: prefersReducedMotion ? "0s" : `${delay}s`,
@@ -66,28 +66,20 @@ export function ServiceCard({
       aria-labelledby={`service-title-${id}`}
       aria-describedby={`service-description-${id}`}
     >
-      {/* Brutalist accent border */}
-      <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-primary via-secondary to-accent" />
+      {/* Glow effect on hover */}
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/6 via-secondary/6 to-primary/6 dark:from-primary/8 dark:via-primary/12 dark:to-primary/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-      <CardHeader className="relative z-10 pb-6 pt-8">
-        <div className="flex items-center gap-6 mb-6">
-          <div
-            className={`text-5xl p-4 bg-gradient-to-br from-primary/30 via-secondary/20 to-accent/30 dark:from-primary/40 dark:via-secondary/30 dark:to-accent/40 rounded-xl border-2 border-primary/50 dark:border-primary/60 shadow-[3px_3px_0px_0px_rgb(255_102_128_/_30%)] ${
-              prefersReducedMotion
-                ? ""
-                : "group-hover:scale-110 group-hover:shadow-[4px_4px_0px_0px_rgb(255_102_128_/_40%)] transition-all duration-300"
-            }`}
-          >
-            {icon}
-          </div>
+      <CardHeader className="relative z-10 pb-4 pt-8">
+        <div className="flex items-start gap-4 mb-6">
+          <div className="text-5xl">{icon}</div>
           <div className="flex-1">
             <CardTitle
-              className="text-2xl font-black text-foreground dark:text-foreground group-hover:text-primary transition-colors duration-300 mb-2"
+              className="text-3xl font-black text-white dark:text-white mb-1"
               id={`service-title-${id}`}
             >
               {title}
             </CardTitle>
-            <CardDescription className="text-sm font-bold text-secondary dark:text-secondary/90 uppercase tracking-widest mt-1 bg-secondary/10 dark:bg-secondary/20 px-3 py-1 rounded-md inline-block">
+            <CardDescription className="text-sm font-bold uppercase tracking-wider text-primary dark:text-primary">
               {subtitle}
             </CardDescription>
           </div>
@@ -99,7 +91,7 @@ export function ServiceCard({
         id={`service-description-${id}`}
       >
         {/* Features list - mostrar solo las primeras 2 si no está expandido */}
-        <div className="space-y-4">
+        <div className="space-y-3">
           {features
             .slice(0, isExpanded ? features.length : 2)
             .map((feature, index) => {
@@ -108,20 +100,18 @@ export function ServiceCard({
                 <div
                   // biome-ignore lint/suspicious/noArrayIndexKey: Features ordenados por posición, key incluye título único
                   key={`${title}-${index}`}
-                  className="group/feature bg-gradient-to-r from-muted/20 to-transparent dark:from-muted/30 dark:to-transparent p-4 rounded-lg border-l-4 border-primary/60"
+                  className="flex items-start gap-2"
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="w-3 h-3 bg-gradient-to-r from-primary to-secondary rounded-sm mt-1 flex-shrink-0 shadow-[2px_2px_0px_0px_rgb(255_102_128_/_30%)] group-hover/feature:scale-125 transition-transform duration-200" />
-                    <div className="flex-1">
-                      <p className="font-bold text-foreground dark:text-foreground leading-relaxed text-lg mb-2">
-                        {title}
+                  <span className="text-primary font-bold text-lg mt-0.5">✓</span>
+                  <div className="flex-1">
+                    <p className="font-bold text-white dark:text-white leading-relaxed">
+                      {title}
+                    </p>
+                    {description && (
+                      <p className="text-slate-300 dark:text-slate-400 leading-relaxed text-sm mt-1">
+                        {description}
                       </p>
-                      {description && (
-                        <p className="text-muted-foreground dark:text-muted-foreground/95 leading-relaxed text-sm">
-                          {description}
-                        </p>
-                      )}
-                    </div>
+                    )}
                   </div>
                 </div>
               );
@@ -133,36 +123,29 @@ export function ServiceCard({
           <button
             type="button"
             onClick={() => setIsExpanded(!isExpanded)}
-            className="text-primary dark:text-primary/95 hover:text-primary/80 dark:hover:text-primary/75 text-sm font-bold transition-all duration-200 flex items-center gap-2 bg-primary/10 dark:bg-primary/20 px-4 py-2 rounded-lg border border-primary/30 hover:border-primary/50"
+            className="text-primary dark:text-primary hover:text-primary/80 dark:hover:text-primary/80 text-sm font-bold transition-all duration-200 flex items-center gap-2 mt-2"
           >
             {isExpanded
-              ? "Ver menos"
-              : `Ver más (${features.length - 2} características adicionales)`}
-            <span
-              className={`transform transition-transform duration-200 ${
-                isExpanded ? "rotate-180" : ""
-              }`}
-            >
-              ↓
-            </span>
+              ? "Ver menos ↑"
+              : `Ver más (${features.length - 2} características adicionales) ↓`}
           </button>
         )}
 
         {/* Target audience */}
-        <div className="pt-6 border-t-2 border-accent/30 dark:border-accent/40">
-          <p className="text-sm text-muted-foreground dark:text-muted-foreground/90 bg-accent/5 dark:bg-accent/10 p-4 rounded-lg border border-accent/20">
-            <span className="font-bold text-accent dark:text-accent text-base block mb-1">
-              🎯 PERFECTO PARA:
+        <div className="pt-6 mt-6 border-t border-slate-600/50 dark:border-slate-600/50">
+          <p className="text-sm text-slate-400 dark:text-slate-400">
+            <span className="font-bold text-white dark:text-white text-base block mb-2">
+              Perfecto para:
             </span>
-            <span>{target}</span>
+            <span className="text-slate-300 dark:text-slate-400">{target}</span>
           </p>
         </div>
       </CardContent>
 
-      <CardFooter className="relative z-10 pt-8 pb-8">
+      <CardFooter className="relative z-10 pt-6 pb-8">
         <Button
           asChild
-          className="w-full bg-gradient-to-r from-primary via-secondary to-accent text-white font-black text-lg py-4 px-6 rounded-lg border-2 border-primary/50 shadow-[4px_4px_0px_0px_rgb(255_102_128_/_30%)] hover:shadow-[6px_6px_0px_0px_rgb(255_102_128_/_40%)] hover:-translate-y-0.5 transition-all duration-300 hover:scale-[1.02]"
+          className="w-full bg-gradient-to-r from-primary/70 via-secondary/60 to-primary/50 text-white font-semibold text-lg hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
           size="lg"
         >
           <Link href={href}>{ctaText}</Link>
