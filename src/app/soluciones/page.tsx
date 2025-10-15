@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { SolucionCard } from "@/components/soluciones";
+import { SolucionCard, EyeFollowButton } from "@/components/soluciones";
 
 export const metadata: Metadata = {
   title: "Soluciones Digitales | WEBCODE",
@@ -293,19 +293,7 @@ export default function ServicesIndexPage() {
                 </Link>
               </Button>
               
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="group relative font-semibold text-lg hover:bg-accent/30 transition-all duration-300 hover:-translate-y-1"
-              >
-                <Link href="/portfolio">
-                  👁️ Ver Portfolio
-                  <span className="ml-2 inline-block transition-transform group-hover:translate-x-1">
-                    →
-                  </span>
-                </Link>
-              </Button>
+              <EyeFollowButton />
             </div>
           </div>
         </div>
