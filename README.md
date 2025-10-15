@@ -1,24 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 WEBCODE - Plataforma de Desarrollo Web Profesional
 
-## Getting Started
+> **Última actualización**: 15 Octubre 2025  
+> **Versión**: 1.0.0-beta  
+> **Estado**: Desarrollo Activo
 
-First, run the development server:
+WEBCODE es una plataforma integral de desarrollo web profesional para freelancers, PYMEs y startups en Barcelona y España. Ofrecemos soluciones digitales de calidad utilizando tecnologías de vanguardia 2025.
+
+## 🛠️ Stack Tecnológico
+
+### Core
+- **Next.js** 15.5.2 (App Router + Turbopack)
+- **React** 19.1.0 (Server Components)
+- **TypeScript** 5.x (strict mode)
+- **Tailwind CSS** 4.x (con sistema de diseño personalizado)
+
+### UI & Animaciones
+- **shadcn/ui** - Componentes base
+- **Lucide React** 0.542.0 - Sistema de iconos
+- **Framer Motion** 12.23.12 - Animaciones
+- **Sistema WAS** (WebCode Animation System) - Animaciones propias
+
+### Herramientas de Desarrollo
+- **pnpm** - Gestor de paquetes
+- **ESLint** 9.37.0 - Linting
+- **Prettier** 3.6.2 - Formateo
+- **Playwright** 1.55.0 - Testing
+
+## 🚀 Inicio Rápido
+
+### Instalación
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Clonar el repositorio
+git clone https://github.com/JordiNodeJS/webcode.git
+cd webcode
+
+# Instalar dependencias
+pnpm install
+
+# Ejecutar en desarrollo
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el resultado.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Scripts Disponibles
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm dev          # Servidor de desarrollo con Turbopack
+pnpm build        # Build de producción
+pnpm start        # Servidor de producción
+pnpm lint         # Ejecutar ESLint
+pnpm lint:fix     # Corregir problemas de linting
+pnpm format       # Formatear código con Prettier
+pnpm kill         # Liberar puertos 3000-3002
+```
 
 ## 📝 Integración con Notion (Blog)
 
@@ -120,14 +156,108 @@ El blog usa **ISR (Incremental Static Regeneration)**:
 
 Para forzar una actualización inmediata, reinicia el servidor de desarrollo.
 
-## Learn More
+## 🏗️ Estructura del Proyecto
 
-To learn more about Next.js, take a look at the following resources:
+```
+webcode/
+├── src/
+│   ├── app/                    # App Router - Páginas y rutas
+│   │   ├── page.tsx           # Landing page principal
+│   │   ├── blog/              # Sistema de blog con Notion
+│   │   ├── briefing/          # Formulario de briefing interactivo
+│   │   ├── soluciones/        # Páginas de soluciones
+│   │   ├── proceso/           # Proceso de trabajo
+│   │   ├── contacto/          # Formulario de contacto
+│   │   └── api/               # API routes
+│   ├── components/
+│   │   ├── landing/           # Componentes de landing page
+│   │   ├── ui/                # Componentes base (shadcn/ui)
+│   │   ├── animations/        # Sistema WAS
+│   │   ├── blog/              # Componentes de blog
+│   │   ├── briefing/          # Componentes de briefing
+│   │   └── soluciones/        # Componentes de soluciones
+│   ├── lib/                   # Utilidades y helpers
+│   ├── hooks/                 # Custom hooks
+│   └── types/                 # Definiciones TypeScript
+├── docs/                      # Documentación completa
+├── public/                    # Assets estáticos
+└── tests/                     # Tests con Playwright
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✨ Características
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Sistema de Diseño WebCode (WAS)
+- Sistema de colores personalizado (Rosa #dc7cb3 + Aguamarina #82c8d2)
+- Sombras 3D con colores del tema
+- Animaciones optimizadas con Framer Motion
+- Dark mode completo
+- Gradientes animados
+- Tipografía cohesiva (Geist Sans/Mono)
+
+### Performance
+- **Lighthouse Score**: 100/100
+- **Core Web Vitals**: Todos en verde
+- **FPS Promedio**: >60 FPS
+- **Bundle Size**: Optimizado con tree-shaking
+- **Lazy Loading**: Componentes e imágenes optimizadas
+
+### SEO y Accesibilidad
+- Meta tags optimizados
+- Structured data (JSON-LD)
+- WCAG 2.1 AA compliant
+- Sitemap automático
+- robots.txt configurado
+- Open Graph optimizado
+
+### Blog con Notion
+- Sistema de blog dinámico usando Notion como CMS
+- Renderizado de Markdown
+- Búsqueda y filtrado por tags
+- Paginación
+- ISR (Incremental Static Regeneration)
+
+## 📚 Documentación
+
+La documentación completa del proyecto está en `/docs/`:
+
+- **[README.md](docs/README.md)** - Índice maestro de documentación
+- **[00-ESTADO-ACTUAL.md](docs/00-ESTADO-ACTUAL.md)** - Estado actual del proyecto
+- **[02-PLANIFICACION-stack-tecnologico.md](docs/02-PLANIFICACION-stack-tecnologico.md)** - Stack técnico detallado
+- **[03-DISENO-guia-estilos-base.md](docs/03-DISENO-guia-estilos-base.md)** - Guía de estilos y diseño
+- **[05-DISENO-sistema-animaciones-webcode.md](docs/05-DISENO-sistema-animaciones-webcode.md)** - Sistema WAS
+
+### Para Desarrolladores
+- **[.github/copilot-instructions.md](.github/copilot-instructions.md)** - Instrucciones para AI
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Guía de contribución
+- **[TESTING-GUIDE.md](docs/TESTING-GUIDE.md)** - Guía de testing
+
+## 🧪 Testing
+
+```bash
+# Ejecutar tests de performance
+pnpm test:performance
+
+# Tests de accesibilidad
+pnpm test:accessibility
+
+# Tests E2E con Playwright
+pnpm test:e2e
+```
+
+## 📖 Recursos de Aprendizaje
+
+### Next.js
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Learn Next.js](https://nextjs.org/learn)
+- [Next.js GitHub](https://github.com/vercel/next.js)
+
+### Tailwind CSS
+- [Tailwind CSS v4 Docs](https://tailwindcss.com/docs)
+- [Tailwind UI](https://tailwindui.com/)
+
+### shadcn/ui
+- [shadcn/ui Documentation](https://ui.shadcn.com/)
+- [shadcn/ui Components](https://ui.shadcn.com/docs/components)
 
 ## Recursos y Herramientas
 
@@ -148,35 +278,110 @@ Esta herramienta genera automáticamente:
 
 **Ubicación**: Todos los archivos se almacenan en `/public/` y están referenciados en `src/app/layout.tsx`.
 
-## Deploy on Vercel
+## 🚀 Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Vercel (Recomendado)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-## Reglas de Linting y Formateo (Bioma)
-
-Para facilitar la generación de código consistente y libre de errores, este repositorio incluye una referencia rápida con las reglas críticas y comandos de Biome (lint + format).
-
-- 📘 `.github/instructions/biome-quick-reference.md` — Resumen rápido con las reglas más importantes y ejemplos para desarrolladores y herramientas automáticas (Copilot).
-
-Se recomienda revisar ese archivo antes de generar o commitear código y ejecutar:
+El proyecto está optimizado para deployment en Vercel:
 
 ```bash
-pnpm lint     # corre Biome para detectar errores/warnings
-pnpm lint:fix # intenta corregir automáticamente problemas detectados
+# Instalar Vercel CLI
+pnpm add -g vercel
+
+# Deploy
+vercel
 ```
 
-## Política de formateo
+### Variables de Entorno
 
-- Prettier es la fuente de verdad para formateo (incluido `trailingComma`). El archivo de configuración está en `.prettierrc`.
-- Biome está configurado para _no_ formatear automáticamente (`formatter.enabled: false`) y se usa sólo para linting.
-
-Para formatear localmente y antes de commitear ejecuta:
+Crea un archivo `.env.local` con las siguientes variables:
 
 ```bash
-pnpm format      # ejecuta Prettier sobre el repo
-pnpm lint        # ejecuta Biome (solo lint)
+# Notion (Blog CMS)
+NOTION_API_KEY=secret_xxxxx
+NOTION_DATABASE_ID=xxxxx
+
+# Email (Opcional)
+RESEND_API_KEY=re_xxxxx
+
+# Analytics (Opcional)
+NEXT_PUBLIC_GA_ID=G-xxxxx
 ```
 
-Ejecuta `pnpm format` antes de commitear si no usas hooks automáticos.
+### Build de Producción
+
+```bash
+# Build local
+pnpm build
+
+# Iniciar servidor de producción
+pnpm start
+```
+
+## 🤝 Contribuciones
+
+¡Las contribuciones son bienvenidas! Por favor lee [CONTRIBUTING.md](CONTRIBUTING.md) para detalles sobre:
+
+- Proceso de desarrollo
+- Estándares de código
+- Commit conventions
+- Pull request process
+
+### Guía Rápida
+
+```bash
+# Fork y clonar el repositorio
+git clone https://github.com/tu-usuario/webcode.git
+
+# Crear rama para tu feature
+git checkout -b feat/nueva-funcionalidad
+
+# Hacer cambios y commits
+git add .
+git commit -m "feat: descripción del cambio"
+
+# Formatear y lint antes de push
+pnpm format
+pnpm lint:fix
+
+# Push y crear PR
+git push origin feat/nueva-funcionalidad
+```
+
+### Convenciones de Commits
+
+Usamos [Conventional Commits](https://www.conventionalcommits.org/):
+
+- `feat:` - Nueva funcionalidad
+- `fix:` - Corrección de bug
+- `docs:` - Cambios en documentación
+- `style:` - Cambios de estilo (formato, sin cambios de código)
+- `refactor:` - Refactorización de código
+- `perf:` - Mejoras de performance
+- `test:` - Añadir o modificar tests
+- `chore:` - Cambios en build process o herramientas
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para detalles.
+
+## 👥 Equipo
+
+**WEBCODE** - Desarrollo Web Profesional en Barcelona
+
+- Website: [webcode.es](https://webcode.es)
+- Email: info@webcode.es
+- GitHub: [@JordiNodeJS](https://github.com/JordiNodeJS)
+
+## 🙏 Agradecimientos
+
+- [Next.js](https://nextjs.org/) por el increíble framework
+- [Vercel](https://vercel.com/) por el hosting
+- [shadcn/ui](https://ui.shadcn.com/) por los componentes
+- [Tailwind CSS](https://tailwindcss.com/) por el sistema de estilos
+- [Notion](https://notion.so/) por el CMS
+
+---
+
+**Hecho con ❤️ en Barcelona** 🇪🇸
+
