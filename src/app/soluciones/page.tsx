@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { SolucionCard } from "@/components/soluciones";
+import { SolucionCard, EyeFollowButton } from "@/components/soluciones";
 
 export const metadata: Metadata = {
   title: "Soluciones Digitales | WEBCODE",
@@ -253,33 +253,48 @@ export default function ServicesIndexPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary/90 via-primary to-secondary/90 py-20">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-secondary/20" />
-        <div className="container mx-auto max-w-4xl px-4 text-center relative z-10">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
-            ¿Hablamos de tu Proyecto?
-          </h2>
-          <p className="text-xl mb-8 text-white/90">
-            Cuéntanos qué necesitas y te enviaremos un presupuesto personalizado
-            en 24h. Sin compromiso.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-white text-primary hover:bg-white/90 font-semibold text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all"
-            >
-              <Link href="/contacto">Solicitar Presupuesto</Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-2 border-white text-white hover:bg-white/10 font-semibold text-lg px-8 py-6 transition-all"
-            >
-              <Link href="/portfolio">Ver Portfolio</Link>
-            </Button>
+      {/* CTA Section */}
+      <section className="container mx-auto max-w-6xl px-4 py-20">
+        <div className="relative overflow-hidden rounded-xl border border-border/30 dark:border-border/20 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 dark:from-primary/10 dark:via-secondary/10 dark:to-accent/10 shadow-3d-lg hover:shadow-3d-xl transition-all duration-500">
+          {/* Animated gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/8 via-secondary/8 to-accent/8 dark:from-primary/15 dark:via-secondary/15 dark:to-accent/15 animate-gradient-x opacity-50" />
+          
+          <div className="relative z-10 p-8 md:p-12 lg:p-16 text-center">
+            {/* Badge */}
+            <div className="inline-flex items-center px-4 py-2 mb-6 bg-primary/20 dark:bg-primary/30 text-primary dark:text-primary-foreground rounded-full text-sm font-semibold shadow-3d-sm ring-1 ring-primary/30">
+              💬 Hablemos
+            </div>
+            
+            {/* Title with gradient */}
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              <span className="text-gradient-webcode">
+                ¿Hablamos de tu Proyecto?
+              </span>
+            </h2>
+            
+            {/* Description */}
+            <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
+              Cuéntanos qué necesitas y te enviaremos un presupuesto personalizado
+              en <span className="text-primary font-semibold">24h</span>. Sin compromiso.
+            </p>
+            
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button
+                asChild
+                size="lg"
+                className="group relative bg-gradient-to-r from-primary/70 via-secondary/60 to-primary/50 text-white font-semibold text-lg hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:-translate-y-1"
+              >
+                <Link href="/contacto">
+                  ✉️ Solicitar Presupuesto
+                  <span className="ml-2 inline-block transition-transform group-hover:translate-x-1">
+                    →
+                  </span>
+                </Link>
+              </Button>
+              
+              <EyeFollowButton />
+            </div>
           </div>
         </div>
       </section>
