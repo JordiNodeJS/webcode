@@ -164,6 +164,7 @@ const components: Components = {
   },
   // Imágenes responsivas - usa img nativo para contenido dinámico
   img: ({ src, alt, ...props }) => (
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       src={src}
       alt={alt || "Imagen del artículo"}

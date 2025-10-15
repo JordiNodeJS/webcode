@@ -73,7 +73,9 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
     return () => {
       observer.disconnect();
       // Limpiar timeouts al desmontar
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       const currentPulseTimeouts = pulseTimeouts.current;
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       const currentAnimationTimeouts = animationTimeouts.current;
       
       currentPulseTimeouts.forEach((timeout) => {

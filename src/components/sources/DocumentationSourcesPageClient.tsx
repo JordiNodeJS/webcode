@@ -89,8 +89,8 @@ export default function DocumentationSourcesPageClient() {
                         Project Management Institute (PMI)
                       </p>
                       <p className="text-sm text-muted-foreground mb-3">
-                        Pulse of the Profession 2014 - "The High Cost of Low
-                        Performance"
+                        Pulse of the Profession 2014 - &quot;The High Cost of Low
+                        Performance&quot;
                       </p>
                       <a
                         href="https://www.pmi.org/learning/thought-leadership/pulse/the-high-cost-of-low-performance-2014"
@@ -230,7 +230,7 @@ export default function DocumentationSourcesPageClient() {
                           Project Management Institute (PMI)
                         </p>
                         <p className="text-xs text-muted-foreground">
-                          World's leading project management organization
+                          World&apos;s leading project management organization
                         </p>
                       </div>
                       <div className="bg-muted/50 p-3 rounded-lg">
@@ -302,7 +302,7 @@ export default function DocumentationSourcesPageClient() {
         percentage="74%"
         description="In requirements management (IAG Consulting 2009)"
         source="IAG Consulting - Business Analysis Benchmark 2009"
-        detailedExplanation="IAG Consulting developed a maturity model to evaluate how well organizations manage business requirements. Companies with 'low maturity level' (levels 1-2 of 5) lack structured processes, consistent documentation, and developed requirements management capabilities."
+        detailedExplanation="IAG Consulting developed a maturity model to evaluate how well organizations manage business requirements. Companies with &apos;low maturity level&apos; (levels 1-2 of 5) lack structured processes, consistent documentation, and developed requirements management capabilities."
         context="The study evaluated more than 100 organizations and found that most operate with ad-hoc or repeatable but not systematic processes. This means they depend on specific individuals or particular teams rather than having robust organizational processes."
         impact="Companies with low maturity level achieve their business objectives only 54% of the time, take 35% more time to deliver results, and experience significant resource waste due to lack of effective requirements management processes."
       />
