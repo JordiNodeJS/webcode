@@ -24,28 +24,31 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-export const metadata: Metadata = generateSEOMetadata({
-  title:
-    "WEBCODE - Desarrollo Web Profesional en Barcelona | Soluciones Digitales",
-  description:
-    "Desarrollo web profesional, e-commerce y aplicaciones web para freelancers, PYMEs y startups en Barcelona y España. Soluciones digitales de calidad con tecnologías de vanguardia 2025.",
-  keywords: [
-    "desarrollo web Barcelona",
-    "freelancer desarrollo web",
-    "sitios web profesionales España",
-    "e-commerce Barcelona",
-    "aplicaciones web Catalunya",
-    "soluciones digitales Barcelona",
-    "diseño web responsive",
-    "SEO Barcelona",
-    "desarrollo web moderno",
-    "startup web solutions",
-    "Next.js desarrollo",
-    "React Barcelona",
-    "TypeScript web development",
-  ],
-  canonical: "https://webcode.es",
-});
+export const metadata: Metadata = {
+  ...generateSEOMetadata({
+    title:
+      "WEBCODE - Desarrollo Web Profesional en Barcelona | Soluciones Digitales",
+    description:
+      "Desarrollo web profesional, e-commerce y aplicaciones web para freelancers, PYMEs y startups en Barcelona y España. Soluciones digitales de calidad con tecnologías de vanguardia 2025.",
+    keywords: [
+      "desarrollo web Barcelona",
+      "freelancer desarrollo web",
+      "sitios web profesionales España",
+      "e-commerce Barcelona",
+      "aplicaciones web Catalunya",
+      "soluciones digitales Barcelona",
+      "diseño web responsive",
+      "SEO Barcelona",
+      "desarrollo web moderno",
+      "startup web solutions",
+      "Next.js desarrollo",
+      "React Barcelona",
+      "TypeScript web development",
+    ],
+    canonical: "https://webcode.es",
+  }),
+  metadataBase: new URL("https://webcode.es"),
+};
 
 export default function RootLayout({
   children,

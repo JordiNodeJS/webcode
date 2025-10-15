@@ -67,8 +67,8 @@ export default function SourcesPageClient() {
                         Project Management Institute (PMI)
                       </p>
                       <p className="text-sm text-muted-foreground mb-3">
-                        Pulse of the Profession 2014 - "The High Cost of Low
-                        Performance"
+                        Pulse of the Profession 2014 - &quot;The High Cost of Low
+                        Performance&quot;
                       </p>
                       <a
                         href="https://www.pmi.org/learning/thought-leadership/pulse/the-high-cost-of-low-performance-2014"

@@ -8,7 +8,7 @@ export default function AboutPage() {
     <div className="container mx-auto max-w-4xl px-4 py-12">
       <h1 className="text-3xl font-bold mb-6">Sobre Nosotros</h1>
       <p className="text-muted-foreground">
-        Esta es una página de placeholder para "Sobre Nosotros". Aquí podrás
+        Esta es una página de placeholder para &quot;Sobre Nosotros&quot;. Aquí podrás
         añadir la historia del equipo, valores y formas de colaboración.
       </p>
     </div>

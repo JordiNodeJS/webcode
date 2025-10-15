@@ -926,7 +926,7 @@ export function PerformanceTestLab() {
                   <ul className="text-red-700 space-y-1 text-xs">
                     <li>• FPS &lt; 58 sin interacción del usuario</li>
                     <li>• Memoria que crece constantemente</li>
-                    <li>• Estado "ACTIVO" sin hover real</li>
+                    <li>• Estado &quot;ACTIVO&quot; sin hover real</li>
                   </ul>
                 </div>
 
@@ -935,8 +935,8 @@ export function PerformanceTestLab() {
                     📊 Cómo Interpretar
                   </h4>
                   <ul className="text-blue-700 space-y-1 text-xs">
-                    <li>• Compara "Original" vs "Optimizada"</li>
-                    <li>• Usa "Estática" como referencia base</li>
+                    <li>• Compara &quot;Original&quot; vs &quot;Optimizada&quot;</li>
+                    <li>• Usa &quot;Estática&quot; como referencia base</li>
                     <li>• Graba por 30s mínimo por escenario</li>
                   </ul>
                 </div>

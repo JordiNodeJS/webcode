@@ -60,7 +60,7 @@ export default function BlogError({ error, reset }: BlogErrorPageProps) {
                 <ol className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex gap-2">
                     <span className="font-semibold">1.</span>
-                    <span>Abre tu base de datos "WebCode Blog" en Notion</span>
+                    <span>Abre tu base de datos &quot;WebCode Blog&quot; en Notion</span>
                   </li>
                   <li className="flex gap-2">
                     <span className="font-semibold">2.</span>
@@ -71,7 +71,7 @@ export default function BlogError({ error, reset }: BlogErrorPageProps) {
                   </li>
                   <li className="flex gap-2">
                     <span className="font-semibold">3.</span>
-                    <span>Selecciona "Add connections" o "Conectar a"</span>
+                    <span>Selecciona &quot;Add connections&quot; o &quot;Conectar a&quot;</span>
                   </li>
                   <li className="flex gap-2">
                     <span className="font-semibold">4.</span>
@@ -125,7 +125,7 @@ export default function BlogError({ error, reset }: BlogErrorPageProps) {
                   </li>
                   <li className="flex gap-2">
                     <span className="font-semibold">3.</span>
-                    <span>Regenera el "Internal Integration Token"</span>
+                    <span>Regenera el &quot;Internal Integration Token&quot;</span>
                   </li>
                   <li className="flex gap-2">
                     <span className="font-semibold">4.</span>
