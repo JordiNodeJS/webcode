@@ -53,7 +53,7 @@ export function ServiceCard({
 
   return (
     <Card
-      className={`group relative overflow-hidden border border-border/30 dark:border-border/20 bg-gradient-to-br from-slate-700/95 via-slate-600/90 to-slate-700/85 dark:from-slate-800/95 dark:via-slate-700/90 dark:to-slate-800/85 rounded-xl focus-within:ring-4 focus-within:ring-primary focus-within:ring-offset-4 ${
+      className={`group relative overflow-hidden border border-border/30 dark:border-border/20 bg-gradient-to-br from-white/95 via-white/90 to-slate-50/95 dark:from-slate-800/95 dark:via-slate-700/90 dark:to-slate-800/85 rounded-xl focus-within:ring-4 focus-within:ring-primary focus-within:ring-offset-4 ${
         prefersReducedMotion
           ? "hover:shadow-2xl"
           : "hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
@@ -74,12 +74,12 @@ export function ServiceCard({
           <div className="text-5xl">{icon}</div>
           <div className="flex-1">
             <CardTitle
-              className="text-3xl font-black text-white dark:text-white mb-1"
+              className="text-3xl font-black text-foreground dark:text-white mb-1"
               id={`service-title-${id}`}
             >
               {title}
             </CardTitle>
-            <CardDescription className="text-sm font-bold uppercase tracking-wider text-primary dark:text-primary">
+            <CardDescription className="text-sm font-bold uppercase tracking-wider text-primary">
               {subtitle}
             </CardDescription>
           </div>
@@ -104,11 +104,11 @@ export function ServiceCard({
                 >
                   <span className="text-primary font-bold text-lg mt-0.5">✓</span>
                   <div className="flex-1">
-                    <p className="font-bold text-white dark:text-white leading-relaxed">
+                    <p className="font-bold text-foreground dark:text-white leading-relaxed">
                       {title}
                     </p>
                     {description && (
-                      <p className="text-slate-300 dark:text-slate-400 leading-relaxed text-sm mt-1">
+                      <p className="text-muted-foreground leading-relaxed text-sm mt-1">
                         {description}
                       </p>
                     )}
@@ -132,12 +132,12 @@ export function ServiceCard({
         )}
 
         {/* Target audience */}
-        <div className="pt-6 mt-6 border-t border-slate-600/50 dark:border-slate-600/50">
-          <p className="text-sm text-slate-400 dark:text-slate-400">
-            <span className="font-bold text-white dark:text-white text-base block mb-2">
+        <div className="pt-6 mt-6 border-t border-border/50">
+          <p className="text-sm text-muted-foreground">
+            <span className="font-bold text-foreground dark:text-white text-base block mb-2">
               Perfecto para:
             </span>
-            <span className="text-slate-300 dark:text-slate-400">{target}</span>
+            <span className="text-muted-foreground">{target}</span>
           </p>
         </div>
       </CardContent>
