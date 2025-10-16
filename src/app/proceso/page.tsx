@@ -195,17 +195,8 @@ export default function ProcesoPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section Mejorado */}
-      <section className="relative py-20 md:py-32 overflow-hidden">
-        {/* Fondo con gradiente animado */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-secondary/10" />
-
-        {/* Patterns decorativos estáticos (optimizado) */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-2xl" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-2xl" />
-        </div>
-
-        {/* Grid pattern */}
+      <section className="relative py-20 md:py-32 overflow-hidden bg-[image:radial-gradient(circle_384px_at_75%_0%,rgb(var(--primary-rgb)_/_0.04),transparent),radial-gradient(circle_384px_at_25%_100%,rgb(var(--secondary-rgb)_/_0.04),transparent),linear-gradient(to_bottom_right,rgb(var(--primary-rgb)_/_0.10),var(--background),rgb(var(--secondary-rgb)_/_0.10))]">
+        {/* Grid pattern - kept separate as it uses complex SVG pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(var(--primary-rgb),0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(var(--primary-rgb),0.05)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
 
         <div className="container mx-auto px-4 relative z-10">

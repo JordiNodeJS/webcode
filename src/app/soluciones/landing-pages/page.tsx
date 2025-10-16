@@ -18,8 +18,7 @@ export default function LandingPagesPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5 dark:from-primary/10 dark:via-accent/10 dark:to-secondary/10 py-20 md:py-32">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/3 via-accent/3 to-secondary/3 dark:from-primary/5 dark:via-accent/5 dark:to-secondary/5" />
+      <section className="relative overflow-hidden bg-[image:linear-gradient(to_right,rgb(var(--primary-rgb)_/_0.03),rgb(var(--accent-rgb)_/_0.03),rgb(var(--secondary-rgb)_/_0.03)),linear-gradient(to_bottom_right,rgb(var(--primary-rgb)_/_0.05),rgb(var(--accent-rgb)_/_0.05),rgb(var(--secondary-rgb)_/_0.05))] dark:bg-[image:linear-gradient(to_right,rgb(var(--primary-rgb)_/_0.05),rgb(var(--accent-rgb)_/_0.05),rgb(var(--secondary-rgb)_/_0.05)),linear-gradient(to_bottom_right,rgb(var(--primary-rgb)_/_0.10),rgb(var(--accent-rgb)_/_0.10),rgb(var(--secondary-rgb)_/_0.10))] py-20 md:py-32">
         <div className="container mx-auto max-w-6xl px-4 relative z-10">
           <div className="max-w-3xl">
             <div className="inline-block mb-6 px-6 py-2 bg-gradient-to-r from-primary/20 to-accent/20 dark:from-primary/30 dark:to-accent/30 text-primary dark:text-primary font-bold uppercase text-sm tracking-wider rounded-full border border-primary/30">
