@@ -434,6 +434,20 @@
   );
 }
 
+/* Grid overlay used in hero/background sections */
+.bg-webcode-grid {
+  background-image:
+    linear-gradient(rgba(var(--primary-rgb), 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--primary-rgb), 0.05) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+  -webkit-mask-image: radial-gradient(
+    ellipse 80% 50% at 50% 50%,
+    black,
+    transparent
+  );
+  mask-image: radial-gradient(ellipse 80% 50% at 50% 50%, black, transparent);
+}
+
 .text-gradient-webcode {
   /* Broad fallback first (hex) for older UAs, then precise oklch for modern browsers */
   background: linear-gradient(
