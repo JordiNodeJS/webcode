@@ -76,8 +76,8 @@
   ); /* aguamarina suave más visible */
   --gradient-muted: oklch(0.975 0.02 0); /* neutral claro con ligero tinte */
   --muted: oklch(0.975 0.008 184.1); /* keep light muted background */
-  --muted-foreground: oklch(
-    0.54 0 0
+  --muted-foreground: oklab(
+    0.52 0 0
   ); /* lighter placeholder text for better distinction */
   --accent: oklch(
     0.57 0.2 328.5
@@ -128,7 +128,7 @@
   --gradient-muted: oklch(0.14 0.02 0); /* neutral oscuro con ligero tinte */
   --muted: oklch(0.149 0 0); /* #262626 */
   --muted-foreground: oklch(
-    0.52 0 0
+    0.7 0 0
   ); /* darker placeholder text in dark mode for better distinction */
   --accent: oklch(
     0.84 0.16 328.5
