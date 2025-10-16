@@ -93,7 +93,6 @@ export function CloudLightningBackground() {
   const mouseRef = useRef<MousePosition>({ x: -1000, y: -1000 });
   const isVisibleRef = useRef(true);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [mounted, setMounted] = useState(false);
   const [isIntersecting, setIsIntersecting] = useState<boolean>(true);
   const opacityRef = useRef<number>(1);
 
@@ -107,21 +106,9 @@ export function CloudLightningBackground() {
   );
   const opacity = 1 - progress; // 1 -> 0
 
-  // Evitar hidratación mismatch - solo inicializar después del mount
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   // Configuración actual basada en el tema resuelto (evita problemas de hidratación)
+  // Para evitar FOUC, usamos el tema directamente sin esperar mounted
   const currentConfig = useMemo(() => {
-    if (!mounted) {
-      // Durante SSR/hidratación, usar configuración neutral
-      return {
-        ...BASE_CONFIG,
-        ...createThemeConfig("light"), // Default neutral
-      };
-    }
-
     const isDark = resolvedTheme === "dark" || theme === "dark";
     const themeConfig = createThemeConfig(isDark ? "dark" : "light");
 
@@ -129,7 +116,7 @@ export function CloudLightningBackground() {
       ...BASE_CONFIG,
       ...themeConfig,
     };
-  }, [theme, resolvedTheme, mounted]);
+  }, [theme, resolvedTheme]);
 
   // Función para crear partículas de nube con optimización para móviles
   const createParticles = useCallback(

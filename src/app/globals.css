@@ -365,6 +365,12 @@
   }
   html {
     overflow-x: hidden;
+    /* Fondo blanco por defecto para prevenir flash */
+    background-color: #ffffff;
+  }
+  html.dark {
+    /* Fondo oscuro inmediato cuando se aplica la clase dark */
+    background-color: rgb(17, 24, 39);
   }
   body {
     background-color: hsl(var(--background));

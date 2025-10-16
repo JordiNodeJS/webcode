@@ -166,7 +166,10 @@ export default function RootLayout({
           <StructuredData type="LocalBusiness" />
 
           {/* Inline, non-blocking theme init to avoid FOUC without network fetch */}
-          <script>{`(function(){try{var s=localStorage.getItem('theme');var t=(s==='dark'||s==='light')?s:((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');var d=document.documentElement;d.classList.add(t);d.style.colorScheme=t;}catch(e){}})();`}</script>
+          <script>{`(function(){try{var s=localStorage.getItem('theme');var t=(s==='dark'||s==='light')?s:((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');var d=document.documentElement;d.classList.add(t);d.style.colorScheme=t;if(t==='dark'){d.style.backgroundColor='rgb(17, 24, 39)';}else{d.style.backgroundColor='rgb(255, 255, 255)';}}catch(e){}})();`}</script>
+          
+          {/* Critical CSS para prevenir FOUC en backgrounds */}
+          <style>{`html{background-color:#fff;}html.dark{background-color:rgb(17,24,39);}`}</style>
 
           {/* No manifest-based CSS injection */}
         </head>
