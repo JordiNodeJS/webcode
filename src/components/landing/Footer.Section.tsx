@@ -39,31 +39,31 @@ export function FooterSection() {
 						<div className="space-y-3">
 							<Link
 								href="/soluciones/web-development"
-								className="block text-muted-foreground hover:text-primary transition-colors duration-200"
+								className={cn(linkVariants({ variant: "default" }), "block")}
 							>
 								Desarrollo Web
 							</Link>
 							<Link
 								href="/soluciones/e-commerce"
-								className="block text-muted-foreground hover:text-primary transition-colors duration-200"
+								className={cn(linkVariants({ variant: "default" }), "block")}
 							>
 								E-commerce
 							</Link>
 							<Link
 								href="/soluciones/seo"
-								className="block text-muted-foreground hover:text-primary transition-colors duration-200"
+								className={cn(linkVariants({ variant: "default" }), "block")}
 							>
 								SEO & Marketing
 							</Link>
 							<Link
 								href="/soluciones/consulting"
-								className="block text-muted-foreground hover:text-primary transition-colors duration-200"
+								className={cn(linkVariants({ variant: "default" }), "block")}
 							>
 								Consultoría
 							</Link>
 						</div>
 
-						{/* Badge de ubicación - Colores corregidos del tema */}
+						{/* Badge de ubicación */}
 						<div
 							className="inline-flex items-center space-x-2 px-3 py-2 rounded-full text-sm"
 							style={{
@@ -100,19 +100,11 @@ export function FooterSection() {
 						<div className="space-y-3">
 							<EmailProtection
 								email="info@webcode.es"
-								className="block transition-colors duration-200 text-muted-foreground hover:text-secondary"
+								className={cn(linkVariants({ variant: "secondary" }), "block")}
 							/>
 							<Link
 								href="/contacto"
-								className="block transition-colors duration-200"
-								style={{ color: "oklch(var(--muted-foreground))" }}
-								onMouseEnter={(e) => {
-									e.currentTarget.style.color = "oklch(var(--secondary))";
-								}}
-								onMouseLeave={(e) => {
-									e.currentTarget.style.color =
-										"oklch(var(--muted-foreground))";
-								}}
+								className={cn(linkVariants({ variant: "secondary" }), "block")}
 							>
 								Contacto
 							</Link>
@@ -121,59 +113,26 @@ export function FooterSection() {
 								href="https://jordinodejs.github.io/"
 								target="_blank"
 								rel="noopener noreferrer"
-								className="block transition-colors duration-200"
-								style={{
-									color: "oklch(var(--muted-foreground))",
-								}}
-								onMouseEnter={(e) => {
-									e.currentTarget.style.color = "oklch(var(--secondary))";
-								}}
-								onMouseLeave={(e) => {
-									e.currentTarget.style.color =
-										"oklch(var(--muted-foreground))";
-								}}
+								className={cn(linkVariants({ variant: "secondary" }), "block")}
 							>
 								Portfolio
 							</a>
 
 							<Link
 								href="/faqs"
-								className="block transition-colors duration-200"
-								style={{ color: "oklch(var(--muted-foreground))" }}
-								onMouseEnter={(e) => {
-									e.currentTarget.style.color = "oklch(var(--secondary))";
-								}}
-								onMouseLeave={(e) => {
-									e.currentTarget.style.color =
-										"oklch(var(--muted-foreground))";
-								}}
+								className={cn(linkVariants({ variant: "secondary" }), "block")}
 							>
 								FAQ
 							</Link>
 						</div>
 
-						{/* Enlaces sociales - Colores corregidos del tema */}
+						{/* Enlaces sociales */}
 						<div className="flex justify-center lg:justify-end space-x-4 pt-4">
 							<a
 								href="https://linkedin.com/company/webcode"
 								target="_blank"
 								rel="noopener noreferrer"
-								className="w-10 h-10 rounded-full transition-all duration-200 flex items-center justify-center group"
-								style={{
-									backgroundColor: "oklch(var(--muted))",
-									color: "oklch(var(--muted-foreground))",
-								}}
-								onMouseEnter={(e) => {
-									e.currentTarget.style.backgroundColor =
-										"oklch(var(--primary))";
-									e.currentTarget.style.color =
-										"oklch(var(--primary-foreground))";
-								}}
-								onMouseLeave={(e) => {
-									e.currentTarget.style.backgroundColor = "oklch(var(--muted))";
-									e.currentTarget.style.color =
-										"oklch(var(--muted-foreground))";
-								}}
+								className={iconButtonVariants({ variant: "default" })}
 								aria-label="LinkedIn"
 							>
 								<svg
@@ -191,22 +150,7 @@ export function FooterSection() {
 								href="https://github.com/webcode-es"
 								target="_blank"
 								rel="noopener noreferrer"
-								className="w-10 h-10 rounded-full transition-all duration-200 flex items-center justify-center group"
-								style={{
-									backgroundColor: "oklch(var(--muted))",
-									color: "oklch(var(--muted-foreground))",
-								}}
-								onMouseEnter={(e) => {
-									e.currentTarget.style.backgroundColor =
-										"oklch(var(--secondary))";
-									e.currentTarget.style.color =
-										"oklch(var(--secondary-foreground))";
-								}}
-								onMouseLeave={(e) => {
-									e.currentTarget.style.backgroundColor = "oklch(var(--muted))";
-									e.currentTarget.style.color =
-										"oklch(var(--muted-foreground))";
-								}}
+								className={iconButtonVariants({ variant: "secondary" })}
 								aria-label="GitHub"
 							>
 								<svg
@@ -228,22 +172,7 @@ export function FooterSection() {
 								href="https://twitter.com/webcode_es"
 								target="_blank"
 								rel="noopener noreferrer"
-								className="w-10 h-10 rounded-full transition-all duration-200 flex items-center justify-center group"
-								style={{
-									backgroundColor: "oklch(var(--muted))",
-									color: "oklch(var(--muted-foreground))",
-								}}
-								onMouseEnter={(e) => {
-									e.currentTarget.style.backgroundColor =
-										"oklch(var(--primary))";
-									e.currentTarget.style.color =
-										"oklch(var(--primary-foreground))";
-								}}
-								onMouseLeave={(e) => {
-									e.currentTarget.style.backgroundColor = "oklch(var(--muted))";
-									e.currentTarget.style.color =
-										"oklch(var(--muted-foreground))";
-								}}
+								className={iconButtonVariants({ variant: "default" })}
 								aria-label="Twitter"
 							>
 								<svg
@@ -269,47 +198,23 @@ export function FooterSection() {
 							© {currentYear} WEBCODE. Todos los derechos reservados.
 						</div>
 
-						{/* Enlaces legales - Colores corregidos del tema */}
+						{/* Enlaces legales */}
 						<div className="flex space-x-6 text-sm">
 							<Link
 								href="/politica-privacidad"
-								className="transition-colors duration-200"
-								style={{ color: "oklch(var(--muted-foreground))" }}
-								onMouseEnter={(e) => {
-									e.currentTarget.style.color = "oklch(var(--foreground))";
-								}}
-								onMouseLeave={(e) => {
-									e.currentTarget.style.color =
-										"oklch(var(--muted-foreground))";
-								}}
+								className={linkVariants({ variant: "foreground", size: "sm" })}
 							>
 								Privacidad
 							</Link>
 							<Link
 								href="/terms"
-								className="transition-colors duration-200"
-								style={{ color: "oklch(var(--muted-foreground))" }}
-								onMouseEnter={(e) => {
-									e.currentTarget.style.color = "oklch(var(--foreground))";
-								}}
-								onMouseLeave={(e) => {
-									e.currentTarget.style.color =
-										"oklch(var(--muted-foreground))";
-								}}
+								className={linkVariants({ variant: "foreground", size: "sm" })}
 							>
 								Términos
 							</Link>
 							<Link
 								href="/cookies"
-								className="transition-colors duration-200"
-								style={{ color: "oklch(var(--muted-foreground))" }}
-								onMouseEnter={(e) => {
-									e.currentTarget.style.color = "oklch(var(--foreground))";
-								}}
-								onMouseLeave={(e) => {
-									e.currentTarget.style.color =
-										"oklch(var(--muted-foreground))";
-								}}
+								className={linkVariants({ variant: "foreground", size: "sm" })}
 							>
 								Cookies
 							</Link>
