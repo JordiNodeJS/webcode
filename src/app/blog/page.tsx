@@ -55,7 +55,7 @@ export default async function BlogPage() {
   const tags = await getAllTags();
 
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto px-4 pt-24 pb-16">
       {/* Hero Section */}
       <div className="mb-16 text-center">
         <h1 className="mb-4 text-5xl font-bold">Blog de WebCode</h1>
