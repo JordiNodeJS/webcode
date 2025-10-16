@@ -55,7 +55,7 @@ export default async function BlogPage() {
   const tags = await getAllTags();
 
   return (
-    <div className="container mx-auto px-4 pt-24 pb-16">
+    <>
       {/* Hero Section */}
       <div className="mb-16 text-center">
         <h1 className="mb-4 text-5xl font-bold">Blog de WebCode</h1>
@@ -74,7 +74,7 @@ export default async function BlogPage() {
         </aside>
 
         {/* Lista de Posts */}
-        <main className="lg:col-span-3">
+        <div className="lg:col-span-3">
           {posts.length === 0 ? (
             <div className="rounded-lg border bg-card p-12 text-center">
               <p className="text-lg text-muted-foreground">
@@ -93,8 +93,8 @@ export default async function BlogPage() {
               ))}
             </div>
           )}
-        </main>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -447,9 +447,7 @@ export default function FAQsPage() {
     <>
       <FAQStructuredData faqs={faqs} />
 
-      <div className="min-h-screen pt-24 pb-20 px-4">
-        <div className="container mx-auto max-w-4xl">
-          {/* Header Section */}
+      {/* Header Section */}
           <div className="text-center mb-16 space-y-6">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
               Preguntas Frecuentes
@@ -536,8 +534,6 @@ export default function FAQsPage() {
               descubre cómo podemos ayudarte a alcanzar tus objetivos digitales.
             </p>
           </div>
-        </div>
-      </div>
     </>
   );
 }
