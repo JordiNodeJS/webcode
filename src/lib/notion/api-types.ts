@@ -8,83 +8,83 @@ import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoint
 
 // Tipo extendido del cliente con el método query
 export interface ExtendedNotionClient extends Client {
-  databases: Client["databases"] & {
-    query: (args: DatabaseQueryParameters) => Promise<DatabaseQueryResponse>;
-  };
+	databases: Client["databases"] & {
+		query: (args: DatabaseQueryParameters) => Promise<DatabaseQueryResponse>;
+	};
 }
 
 // Parámetros para la consulta de base de datos
 export interface DatabaseQueryParameters {
-  database_id: string;
-  filter?: DatabaseFilter;
-  sorts?: DatabaseSort[];
-  page_size?: number;
-  start_cursor?: string;
+	database_id: string;
+	filter?: DatabaseFilter;
+	sorts?: DatabaseSort[];
+	page_size?: number;
+	start_cursor?: string;
 }
 
 // Respuesta de consulta de base de datos
 export interface DatabaseQueryResponse {
-  results: PageObjectResponse[];
-  has_more: boolean;
-  next_cursor: string | null;
+	results: PageObjectResponse[];
+	has_more: boolean;
+	next_cursor: string | null;
 }
 
 // Filtros de base de datos
 export type DatabaseFilter =
-  | CheckboxFilter
-  | RichTextFilter
-  | TitleFilter
-  | SelectFilter
-  | MultiSelectFilter
-  | AndFilter
-  | OrFilter;
+	| CheckboxFilter
+	| RichTextFilter
+	| TitleFilter
+	| SelectFilter
+	| MultiSelectFilter
+	| AndFilter
+	| OrFilter;
 
 export interface CheckboxFilter {
-  property: string;
-  checkbox: {
-    equals: boolean;
-  };
+	property: string;
+	checkbox: {
+		equals: boolean;
+	};
 }
 
 export interface RichTextFilter {
-  property: string;
-  rich_text: {
-    equals?: string;
-    contains?: string;
-  };
+	property: string;
+	rich_text: {
+		equals?: string;
+		contains?: string;
+	};
 }
 
 export interface TitleFilter {
-  property: string;
-  title: {
-    contains: string;
-  };
+	property: string;
+	title: {
+		contains: string;
+	};
 }
 
 export interface SelectFilter {
-  property: string;
-  select: {
-    equals: string;
-  };
+	property: string;
+	select: {
+		equals: string;
+	};
 }
 
 export interface MultiSelectFilter {
-  property: string;
-  multi_select: {
-    contains: string;
-  };
+	property: string;
+	multi_select: {
+		contains: string;
+	};
 }
 
 export interface AndFilter {
-  and: DatabaseFilter[];
+	and: DatabaseFilter[];
 }
 
 export interface OrFilter {
-  or: DatabaseFilter[];
+	or: DatabaseFilter[];
 }
 
 // Ordenación de base de datos
 export interface DatabaseSort {
-  property: string;
-  direction: "ascending" | "descending";
+	property: string;
+	direction: "ascending" | "descending";
 }

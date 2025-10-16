@@ -1,16 +1,16 @@
 {
-  "timestamp": "2025-09-08T23:48:12.847Z",
-  "url": "http://localhost:3000",
-  "wcag21aa": {
-    "colorContrast": "PASS",
-    "headingStructure": "PASS",
-    "keyboardNavigation": "PASS",
-    "ariaAttributes": "PASS",
-    "formLabels": "PASS",
-    "textAlternatives": "PASS",
-    "timingAdjustable": "PASS",
-    "textResize": "PASS",
-    "screenReaderCompatibility": "PASS"
-  },
-  "overall": "PASS"
+	"timestamp": "2025-09-08T23:48:12.847Z",
+	"url": "http://localhost:3000",
+	"wcag21aa": {
+		"colorContrast": "PASS",
+		"headingStructure": "PASS",
+		"keyboardNavigation": "PASS",
+		"ariaAttributes": "PASS",
+		"formLabels": "PASS",
+		"textAlternatives": "PASS",
+		"timingAdjustable": "PASS",
+		"textResize": "PASS",
+		"screenReaderCompatibility": "PASS"
+	},
+	"overall": "PASS"
 }
