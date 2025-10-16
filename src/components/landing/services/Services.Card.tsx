@@ -11,6 +11,11 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import {
+	serviceCardVariants,
+	serviceCardGlowVariants,
+} from "@/lib/variants";
 
 interface ServiceCardProps {
 	id: number;
@@ -53,11 +58,12 @@ export function ServiceCard({
 
 	return (
 		<Card
-			className={`group relative overflow-hidden border border-border/30 dark:border-border/20 bg-gradient-to-br from-white/95 via-white/90 to-slate-50/95 dark:from-slate-800/95 dark:via-slate-700/90 dark:to-slate-800/85 rounded-xl focus-within:ring-4 focus-within:ring-primary focus-within:ring-offset-4 ${
-				prefersReducedMotion
-					? "hover:shadow-2xl"
-					: "hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-			}`}
+			className={cn(
+				serviceCardVariants({
+					theme: "default",
+					interactive: !prefersReducedMotion,
+				}),
+			)}
 			style={{
 				animationDelay: prefersReducedMotion ? "0s" : `${delay}s`,
 			}}
@@ -67,7 +73,7 @@ export function ServiceCard({
 			aria-describedby={`service-description-${id}`}
 		>
 			{/* Glow effect on hover */}
-			<div className="absolute inset-0 bg-gradient-to-r from-primary/6 via-secondary/6 to-primary/6 dark:from-primary/8 dark:via-primary/12 dark:to-primary/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+			<div className={serviceCardGlowVariants({ theme: "default" })} />
 
 			<CardHeader className="relative z-10 pb-4 pt-8">
 				<div className="flex items-start gap-4 mb-6">
