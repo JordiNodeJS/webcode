@@ -173,7 +173,7 @@ export default function ServicesIndexPage() {
               {
                 icon: "⚡",
                 title: "Entrega Rápida",
-                description: "Webs en 7 días, tiendas en 10. Sin esperas."
+                description: "Webs en 2 semanas, tiendas en 2 meses. Sin esperas."
               },
               {
                 icon: "🎯",
