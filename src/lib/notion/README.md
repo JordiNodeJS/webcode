@@ -18,24 +18,30 @@ src/lib/notion/
 ## � Componentes Principales
 
 ### 1. `client.ts` - Cliente y Configuración
+
 **Responsabilidad**: Inicialización del cliente Notion y configuración base.
 
 ```typescript
-import { notion, DATABASE_ID, queryDatabase } from './client';
+import { notion, DATABASE_ID, queryDatabase } from "./client";
 
 // Cliente singleton ya configurado
 const posts = await queryDatabase({
   database_id: DATABASE_ID,
-  filter: { /* ... */ }
+  filter: {
+    /* ... */
+  }
 });
 ```
 
 **Variables de entorno requeridas**:
+
 - `NOTION_API_KEY` - Token de integración
 - `NOTION_DATABASE_ID` - ID de la base de datos
 
 ### 2. `blog-service.ts` - Lógica de Negocio
+
 **Características implementadas**:
+
 - ✅ **Caching con `unstable_cache`**: Reduce llamadas a la API (1 hora)
 - ✅ **Paginación completa**: Helper `getAllPagesFromDatabase()` itera automáticamente
 - ✅ **Manejo de errores**: Errores específicos de Notion mapeados a mensajes útiles
@@ -64,12 +70,15 @@ const results = await searchBlogPosts('notion');
 ```
 
 **Cache y revalidación**:
+
 - Posts/Tags/Slugs: 1 hora (`revalidate: 3600`)
 - Búsquedas: 5 minutos (`revalidate: 300`)
 - Tag común: `['notion-blog']` para invalidación masiva
 
 ### 3. `transformers.ts` - Transformaciones y Validaciones
+
 **Características**:
+
 - ✅ **Validaciones estrictas**: Función `validateProperty()` verifica tipos
 - ✅ **Fallbacks seguros**: Valores por defecto si faltan propiedades
 - ✅ **Logging detallado**: Warnings/errors en consola para debugging
@@ -78,26 +87,30 @@ const results = await searchBlogPosts('notion');
 **Ejemplo de validación robusta**:
 
 ```typescript
-const titleProp = validateProperty<NotionPageProperties['Title']>(
+const titleProp = validateProperty<NotionPageProperties["Title"]>(
   properties,
-  'Title',
-  'title'
+  "Title",
+  "title"
 );
 
-const title = titleProp ? extractTitle(titleProp.title) : 'Sin título';
+const title = titleProp ? extractTitle(titleProp.title) : "Sin título";
 ```
 
 Si una página tiene propiedades faltantes o mal formadas, el transformer **no crashea** y devuelve un `BlogPost` con valores seguros.
 
 ### 4. `types.ts` - Tipos TypeScript
+
 **Tipos principales**:
+
 - `NotionPageProperties` - Mapea propiedades de Notion
 - `BlogPost` - Estructura de post procesado
 - `BlogPostsResponse` - Respuesta con metadatos de paginación
 - `PaginationMeta` - Cursor y hasMore
 
 ### 5. `api-types.ts` - Tipos de API
+
 **Tipos de filtros disponibles**:
+
 - `SelectFilter` - Para campos Select
 - `CheckboxFilter` - Para campos Checkbox
 - `RichTextFilter` - Para campos Text/Rich Text
@@ -146,16 +159,17 @@ Si una página tiene propiedades faltantes o mal formadas, el transformer **no c
 
 El módulo maneja explícitamente estos errores de Notion:
 
-| Código | Descripción | Solución |
-|--------|-------------|----------|
+| Código             | Descripción                 | Solución                     |
+| ------------------ | --------------------------- | ---------------------------- |
 | `object_not_found` | Base de datos no compartida | Compartir DB con integración |
-| `unauthorized` | API Key inválida | Verificar `NOTION_API_KEY` |
-| `validation_error` | Filtro o query mal formado | Revisar tipos y estructura |
-| `rate_limited` | Demasiadas peticiones | Cache automático mitiga esto |
+| `unauthorized`     | API Key inválida            | Verificar `NOTION_API_KEY`   |
+| `validation_error` | Filtro o query mal formado  | Revisar tipos y estructura   |
+| `rate_limited`     | Demasiadas peticiones       | Cache automático mitiga esto |
 
 ## 🚀 Optimizaciones Implementadas
 
 ### 1. Paginación Completa Automática
+
 ```typescript
 // Obtiene TODOS los posts, iterando automáticamente
 const allPages = await getAllPagesFromDatabase(filter, sorts);
@@ -163,29 +177,32 @@ const allPages = await getAllPagesFromDatabase(filter, sorts);
 ```
 
 ### 2. Cache Inteligente con Next.js
+
 ```typescript
 export const getBlogPosts = unstable_cache(
   getBlogPostsUncached,
-  ['blog-posts'],
+  ["blog-posts"],
   {
     revalidate: 3600,
-    tags: ['notion-blog']
+    tags: ["notion-blog"]
   }
 );
 ```
 
 **Ventajas**:
+
 - Reduce llamadas a Notion API (~100x menos en producción)
 - Mejora tiempo de carga (cache en edge)
 - Evita rate limits
 
 ### 3. Validaciones Robustas
+
 ```typescript
 // Si toda la transformación falla, devuelve post de error
 return {
-  title: 'Error al cargar contenido',
+  title: "Error al cargar contenido",
   slug: `error-${page.id}`,
-  published: false,
+  published: false
   // ...
 };
 ```
@@ -200,7 +217,7 @@ import { getBlogPosts } from '@/lib/notion';
 
 export default async function BlogPage() {
   const { posts, meta } = await getBlogPosts(10);
-  
+
   return (
     <div>
       {posts.map(post => (
@@ -228,16 +245,16 @@ export async function generateStaticParams() {
   return slugs.map(slug => ({ slug }));
 }
 
-export default async function BlogPostPage({ 
-  params 
-}: { 
-  params: Promise<{ slug: string }> 
+export default async function BlogPostPage({
+  params
+}: {
+  params: Promise<{ slug: string }>
 }) {
   const { slug } = await params;
   const post = await getBlogPostBySlug(slug);
-  
+
   if (!post) return <div>Post no encontrado</div>;
-  
+
   return (
     <article>
       <h1>{post.title}</h1>
