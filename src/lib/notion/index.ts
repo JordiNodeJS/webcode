@@ -4,12 +4,12 @@
 
 // Funciones de servicio
 export {
-	getAllPublishedSlugs,
-	getAllTags,
-	getBlogPostBySlug,
-	getBlogPosts,
-	getBlogPostsByTag,
-	searchBlogPosts,
+  getAllPublishedSlugs,
+  getAllTags,
+  getBlogPostBySlug,
+  getBlogPosts,
+  getBlogPostsByTag,
+  searchBlogPosts
 } from "./blog-service";
 // Cliente y configuración
 export { DATABASE_ID, notion } from "./client";

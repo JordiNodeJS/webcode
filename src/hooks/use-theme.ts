@@ -10,23 +10,23 @@ import { useEffect, useState } from "react";
  * y sincroniza con las preferencias del sistema.
  */
 export function useTheme() {
-	const { theme, setTheme, systemTheme } = useNextTheme();
-	const [mounted, setMounted] = useState(false);
+  const { theme, setTheme, systemTheme } = useNextTheme();
+  const [mounted, setMounted] = useState(false);
 
-	// Esperar a que el componente se monte para evitar problemas de hidratación
-	useEffect(() => {
-		setMounted(true);
-	}, []);
+  // Esperar a que el componente se monte para evitar problemas de hidratación
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-	// Actualizar el tema cuando cambia
-	const toggleTheme = () => {
-		// Determinar el tema actual real (considerando el tema del sistema)
-		const currentTheme = theme === "system" ? systemTheme : theme;
-		const newTheme = currentTheme === "dark" ? "light" : "dark";
-		setTheme(newTheme);
-	};
+  // Actualizar el tema cuando cambia
+  const toggleTheme = () => {
+    // Determinar el tema actual real (considerando el tema del sistema)
+    const currentTheme = theme === "system" ? systemTheme : theme;
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+  };
 
-	// Solo renderizar el tema después de que el componente se monte
-	// para evitar hidratación incorrecta
-	return { theme, toggleTheme, mounted };
+  // Solo renderizar el tema después de que el componente se monte
+  // para evitar hidratación incorrecta
+  return { theme, toggleTheme, mounted };
 }

@@ -9,6 +9,6 @@ import { useEffect, useLayoutEffect } from "react";
  * @see https://reactjs.org/docs/hooks-reference.html#uselayouteffect
  */
 const useIsomorphicEffect =
-	typeof window !== "undefined" ? useLayoutEffect : useEffect;
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 export default useIsomorphicEffect;
