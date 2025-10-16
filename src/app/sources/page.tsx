@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function SourcesPage() {
   return (
-    <div className="min-h-screen bg-gradient-webcode py-16">
+    <div className="min-h-screen bg-gradient-webcode pt-24">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-black text-foreground mb-8 text-center">
@@ -37,6 +37,14 @@ export default function SourcesPage() {
                   <p className="text-sm text-muted-foreground">
                     En gestión de requisitos (IAG Consulting 2009)
                   </p>
+                  <a 
+                    href="https://www.pmi.org/learning/library/es-2014-pulse-gestion-de-requisitos-13529" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-block mt-2 text-primary hover:text-primary/80 underline text-sm font-medium transition-colors"
+                  >
+                    Ver fuente original →
+                  </a>
                 </div>
               </div>
             </div>
@@ -52,6 +60,14 @@ export default function SourcesPage() {
                   <p className="text-sm text-muted-foreground">
                     Se deben a gestión deficiente de requisitos
                   </p>
+                  <a 
+                    href="https://www.standishgroup.com/products/copy-of-chaos-report-beyond-infinity-digital-version" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-block mt-2 text-primary hover:text-primary/80 underline text-sm font-medium transition-colors"
+                  >
+                    Ver fuente original →
+                  </a>
                 </div>
               </div>
 
@@ -64,6 +80,14 @@ export default function SourcesPage() {
                   <p className="text-sm text-muted-foreground">
                     Exceden el presupuesto inicial
                   </p>
+                  <a 
+                    href="https://www.pmi.org/learning/library/es-2014-pulse-gestion-de-requisitos-13529" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-block mt-2 text-primary hover:text-primary/80 underline text-sm font-medium transition-colors"
+                  >
+                    Ver fuente original →
+                  </a>
                 </div>
               </div>
             </div>
