@@ -197,7 +197,7 @@ export default function ProcesoPage() {
       {/* Hero Section Mejorado */}
       <section className="relative pt-24 pb-20 md:pb-32 overflow-hidden bg-[image:radial-gradient(circle_384px_at_75%_0%,rgb(var(--primary-rgb)_/_0.04),transparent),radial-gradient(circle_384px_at_25%_100%,rgb(var(--secondary-rgb)_/_0.04),transparent),linear-gradient(to_bottom_right,rgb(var(--primary-rgb)_/_0.10),var(--background),rgb(var(--secondary-rgb)_/_0.10))]">
         {/* Grid pattern - kept separate as it uses complex SVG pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(var(--primary-rgb),0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(var(--primary-rgb),0.05)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
+  <div className="absolute inset-0 bg-webcode-grid" />
 
         <div className="container mx-auto px-4 relative z-10">
           <WSFadeIn delay={0.1}>
