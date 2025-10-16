@@ -1,6 +1,8 @@
 "use client";
 
 import { useId } from "react";
+import { cn } from "@/lib/utils";
+import { neonTitleVariants } from "@/lib/variants";
 
 export function ServiceHeader() {
 	const id = useId();
@@ -11,7 +13,10 @@ export function ServiceHeader() {
 			className="text-center max-w-4xl mx-auto"
 			aria-labelledby={`servicios-${id}`}
 		>
-			<h2 id={`servicios-${id}`} className="neon-cyan-title mb-6 scroll-mt-20">
+			<h2
+				id={`servicios-${id}`}
+				className={cn(neonTitleVariants({ size: "default" }), "mb-6 scroll-mt-20")}
+			>
 				Soluciones Simples
 			</h2>
 			<p
