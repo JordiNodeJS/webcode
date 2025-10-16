@@ -81,8 +81,7 @@ export default function ServicesIndexPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 dark:from-primary/10 dark:via-secondary/10 dark:to-accent/10 pt-14 pb-20 mt-8 md:pt-14 md:pb-32 md:mt-8 rounded-2xl">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/3 via-secondary/3 to-accent/3 dark:from-primary/5 dark:via-secondary/5 dark:to-accent/5 rounded-2xl" />
+      <section className="relative overflow-hidden bg-[image:linear-gradient(to_right,rgb(var(--primary-rgb)_/_0.03),rgb(var(--secondary-rgb)_/_0.03),rgb(var(--accent-rgb)_/_0.03)),linear-gradient(to_bottom_right,rgb(var(--primary-rgb)_/_0.05),rgb(var(--secondary-rgb)_/_0.05),rgb(var(--accent-rgb)_/_0.05))] dark:bg-[image:linear-gradient(to_right,rgb(var(--primary-rgb)_/_0.05),rgb(var(--secondary-rgb)_/_0.05),rgb(var(--accent-rgb)_/_0.05)),linear-gradient(to_bottom_right,rgb(var(--primary-rgb)_/_0.10),rgb(var(--secondary-rgb)_/_0.10),rgb(var(--accent-rgb)_/_0.10))] pt-14 pb-20 mt-8 md:pt-14 md:pb-32 md:mt-8 rounded-2xl">
         <div className="container mx-auto max-w-6xl px-4 relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             <div className="inline-block mb-6 px-6 py-2 bg-gradient-to-r from-primary/20 to-secondary/20 dark:from-primary/30 dark:to-secondary/30 text-primary dark:text-primary font-bold uppercase text-sm tracking-wider rounded-full border border-primary/30">
@@ -256,8 +255,8 @@ export default function ServicesIndexPage() {
       {/* CTA Section */}
       <section className="container mx-auto max-w-6xl px-4 py-20">
         <div className="relative overflow-hidden rounded-xl border border-border/30 dark:border-border/20 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 dark:from-primary/10 dark:via-secondary/10 dark:to-accent/10 shadow-3d-lg hover:shadow-3d-xl transition-all duration-500">
-          {/* Animated gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/8 via-secondary/8 to-accent/8 dark:from-primary/15 dark:via-secondary/15 dark:to-accent/15 animate-gradient-x opacity-50" />
+          {/* Animated gradient overlay - Must stay separate for animate-gradient-x (requires background-size: 200% 200%) */}
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/8 via-secondary/8 to-accent/8 dark:from-primary/15 dark:via-secondary/15 dark:to-accent/15 animate-gradient-x opacity-50 rounded-xl" />
 
           <div className="relative z-10 p-8 md:p-12 lg:p-16 text-center">
             {/* Badge */}
