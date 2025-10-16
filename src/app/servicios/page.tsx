@@ -11,7 +11,7 @@ export const metadata: Metadata = generateSEOMetadata({
 
 export default function ServiciosPage() {
   return (
-    <main className="min-h-screen py-20 px-4">
+    <main className="min-h-screen pt-24 pb-20 px-4">
       <div className="container mx-auto max-w-4xl">
         <header className="text-center mb-12">
           <h1 className="text-4xl font-bold text-foreground">Servicios</h1>

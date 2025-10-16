@@ -7,7 +7,7 @@ export default function PortfolioPage() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header Section */}
-      <div className="bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 dark:from-primary/10 dark:via-secondary/10 dark:to-accent/10 py-12 border-b border-border/30">
+      <div className="bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 dark:from-primary/10 dark:via-secondary/10 dark:to-accent/10 pt-24 pb-12 border-b border-border/30">
         <div className="container mx-auto max-w-7xl px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-gradient-webcode">Portfolio</span>

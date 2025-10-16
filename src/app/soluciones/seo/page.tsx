@@ -18,7 +18,7 @@ export default function SeoPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-[image:linear-gradient(to_right,rgb(var(--accent-rgb)_/_0.03),rgb(var(--primary-rgb)_/_0.03),rgb(var(--secondary-rgb)_/_0.03)),linear-gradient(to_bottom_right,rgb(var(--accent-rgb)_/_0.05),rgb(var(--primary-rgb)_/_0.05),rgb(var(--secondary-rgb)_/_0.05))] dark:bg-[image:linear-gradient(to_right,rgb(var(--accent-rgb)_/_0.05),rgb(var(--primary-rgb)_/_0.05),rgb(var(--secondary-rgb)_/_0.05)),linear-gradient(to_bottom_right,rgb(var(--accent-rgb)_/_0.10),rgb(var(--primary-rgb)_/_0.10),rgb(var(--secondary-rgb)_/_0.10))] py-20 md:py-32">
+      <section className="relative overflow-hidden bg-[image:linear-gradient(to_right,rgb(var(--accent-rgb)_/_0.03),rgb(var(--primary-rgb)_/_0.03),rgb(var(--secondary-rgb)_/_0.03)),linear-gradient(to_bottom_right,rgb(var(--accent-rgb)_/_0.05),rgb(var(--primary-rgb)_/_0.05),rgb(var(--secondary-rgb)_/_0.05))] dark:bg-[image:linear-gradient(to_right,rgb(var(--accent-rgb)_/_0.05),rgb(var(--primary-rgb)_/_0.05),rgb(var(--secondary-rgb)_/_0.05)),linear-gradient(to_bottom_right,rgb(var(--accent-rgb)_/_0.10),rgb(var(--primary-rgb)_/_0.10),rgb(var(--secondary-rgb)_/_0.10))] pt-24 pb-20 md:pb-32">
         <div className="container mx-auto max-w-6xl px-4 relative z-10">
           <div className="max-w-3xl">
             <div className="inline-block mb-6 px-6 py-2 bg-gradient-to-r from-accent/20 to-primary/20 dark:from-accent/30 dark:to-primary/30 text-accent dark:text-accent font-bold uppercase text-sm tracking-wider rounded-full border border-accent/30">

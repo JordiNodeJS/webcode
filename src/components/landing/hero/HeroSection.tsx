@@ -43,7 +43,7 @@ const HeroSection = () => {
       {/* Navigation */}
       <HeaderNavigation />
 
-      <div className="container relative z-10 mx-auto px-4 py-20 md:py-32">
+      <div className="container relative z-10 mx-auto px-4 pt-24 pb-20 md:pb-32">
         <div className="flex flex-col items-center text-center">
           {/* Hero Content */}
           <WSFadeIn delay={0.1} sectionId="hero">
