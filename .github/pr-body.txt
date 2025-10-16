@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## 🎨 CVA Refactor - Sprint 1 & 2 Complete
 
 ### Resumen
@@ -131,3 +132,34 @@ Este refactor establece las bases para:
 
 **Status**: ✅ Ready for review
 **Breaking Changes**: ❌ None - Visual parity maintained
+=======
+Resumen:
+- Refactor de la sección de servicios (CVA) para mejorar colocación de componentes y rendimiento.
+
+Cambios principales:
+- Reorganización de archivos y componentes en `src/components/landing/services`
+- Actualización de documentación en `docs/` relacionada con la refactorización
+- Ajustes de estilo y accesibilidad según WAS
+
+Archivos y contexto:
+- `.github/project/PROJECT-STATE.md` (estado del proyecto)
+- `.github/prompts/pr-github-cli.prompt.md` (procedimiento PR)
+- `docs/CVA-REFACTOR-PROGRESS-UPDATE.md` (detalles del refactor)
+
+Validaciones locales realizadas:
+- `pnpm lint` → OK
+- `pnpm format` → OK
+- `pnpm build` → Not fully executed locally (interrumpido) — recomiendo CI build
+
+Checklist pre-merge:
+- [ ] pnpm lint (local/CI)
+- [ ] pnpm build (CI)
+- [ ] Playwright tests (CI)
+- [ ] Accessibility audit
+
+Pasos para validar localmente:
+1. pnpm install
+2. pnpm lint
+3. pnpm format
+4. pnpm build
+>>>>>>> origin/main

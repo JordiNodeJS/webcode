@@ -12,7 +12,14 @@ import {
   CardTitle
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+<<<<<<< HEAD
 import { serviceCardVariants, serviceCardGlowVariants } from "@/lib/variants";
+=======
+import {
+	serviceCardVariants,
+	serviceCardGlowVariants,
+} from "@/lib/variants";
+>>>>>>> origin/main
 
 interface ServiceCardProps {
   id: number;
@@ -53,6 +60,7 @@ export function ServiceCard({
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
+<<<<<<< HEAD
   return (
     <Card
       className={cn(
@@ -71,6 +79,26 @@ export function ServiceCard({
     >
       {/* Glow effect on hover */}
       <div className={serviceCardGlowVariants({ theme: "default" })} />
+=======
+	return (
+		<Card
+			className={cn(
+				serviceCardVariants({
+					theme: "default",
+					interactive: !prefersReducedMotion,
+				}),
+			)}
+			style={{
+				animationDelay: prefersReducedMotion ? "0s" : `${delay}s`,
+			}}
+			data-testid={`service-card-${title.toLowerCase().replace(/\s+/g, "-")}`}
+			role="article"
+			aria-labelledby={`service-title-${id}`}
+			aria-describedby={`service-description-${id}`}
+		>
+			{/* Glow effect on hover */}
+			<div className={serviceCardGlowVariants({ theme: "default" })} />
+>>>>>>> origin/main
 
       <CardHeader className="relative z-10 pb-4 pt-8">
         <div className="flex items-start gap-4 mb-6">
