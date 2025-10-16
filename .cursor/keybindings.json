@@ -1,8 +1,8 @@
 [
-    {
-        "key": "ctrl+alt+f",
-        "command": "workbench.action.tasks.runTask",
-        "args": "Format with Biome",
-        "when": "editorTextFocus && resourceExtname =~ /\\.(ts|tsx|js|jsx)$/"
-    }
+	{
+		"key": "ctrl+alt+f",
+		"command": "workbench.action.tasks.runTask",
+		"args": "Format with Biome",
+		"when": "editorTextFocus && resourceExtname =~ /\\.(ts|tsx|js|jsx)$/"
+	}
 ]

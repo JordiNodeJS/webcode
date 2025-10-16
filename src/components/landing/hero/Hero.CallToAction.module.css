@@ -1,221 +1,221 @@
 .neonBtn3 {
-  position: relative;
-  display: inline-block;
-  padding: 16px 32px;
-  color: oklch(var(--primary));
-  font-family: inherit;
-  font-size: 1.125rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  text-decoration: none;
-  background: transparent;
-  border: 2px solid oklch(var(--primary));
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-  box-shadow:
-    0 0 10px rgba(var(--primary-rgb), 0.1),
-    inset 0 0 10px rgba(var(--primary-rgb), 0.05);
+	position: relative;
+	display: inline-block;
+	padding: 16px 32px;
+	color: oklch(var(--primary));
+	font-family: inherit;
+	font-size: 1.125rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.15em;
+	text-decoration: none;
+	background: transparent;
+	border: 2px solid oklch(var(--primary));
+	border-radius: 0.5rem;
+	cursor: pointer;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	overflow: hidden;
+	box-shadow:
+		0 0 10px rgba(var(--primary-rgb), 0.1),
+		inset 0 0 10px rgba(var(--primary-rgb), 0.05);
 }
 
 .neonBtn3::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: oklch(var(--primary));
-  transition: left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  z-index: -1;
+	content: "";
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: oklch(var(--primary));
+	transition: left 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	z-index: -1;
 }
 
 .neonBtn3:hover {
-  color: oklch(var(--primary-foreground));
-  border-color: oklch(var(--primary));
-  box-shadow:
-    0 0 10px rgba(var(--primary-rgb), 0.6),
-    0 0 20px rgba(var(--primary-rgb), 0.4),
-    0 0 30px rgba(var(--primary-rgb), 0.3),
-    0 0 40px rgba(var(--primary-rgb), 0.2),
-    inset 0 0 15px rgba(var(--primary-rgb), 0.1);
-  text-shadow:
-    0 0 5px rgba(255, 255, 255, 0.9),
-    0 0 10px rgba(255, 255, 255, 0.7),
-    0 0 15px rgba(var(--primary-rgb), 0.5);
-  transform: translateY(-2px);
+	color: oklch(var(--primary-foreground));
+	border-color: oklch(var(--primary));
+	box-shadow:
+		0 0 10px rgba(var(--primary-rgb), 0.6),
+		0 0 20px rgba(var(--primary-rgb), 0.4),
+		0 0 30px rgba(var(--primary-rgb), 0.3),
+		0 0 40px rgba(var(--primary-rgb), 0.2),
+		inset 0 0 15px rgba(var(--primary-rgb), 0.1);
+	text-shadow:
+		0 0 5px rgba(255, 255, 255, 0.9),
+		0 0 10px rgba(255, 255, 255, 0.7),
+		0 0 15px rgba(var(--primary-rgb), 0.5);
+	transform: translateY(-2px);
 }
 
 .neonBtn3:hover::before {
-  left: 0;
+	left: 0;
 }
 
 .neonBtn3::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 30%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
-  transition: left 0.8s ease;
-  z-index: 1;
-  opacity: 0;
+	content: "";
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 30%;
+	height: 100%;
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(255, 255, 255, 0.3),
+		transparent
+	);
+	transition: left 0.8s ease;
+	z-index: 1;
+	opacity: 0;
 }
 
 .neonBtn3:hover::after {
-  animation: shine 0.8s ease-out;
-  opacity: 1;
+	animation: shine 0.8s ease-out;
+	opacity: 1;
 }
 
 .neonBtn7 {
-  position: relative;
-  display: inline-block;
-  padding: 16px 32px;
-  color: oklch(var(--muted-foreground));
-  font-family: inherit;
-  font-size: 1rem;
-  font-weight: 500;
-  text-decoration: none;
-  background: transparent;
-  border: 2px solid oklch(var(--border));
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-  box-shadow:
-    0 0 5px rgba(var(--primary-rgb), 0.05),
-    inset 0 0 5px rgba(var(--muted-rgb), 0.1);
+	position: relative;
+	display: inline-block;
+	padding: 16px 32px;
+	color: oklch(var(--muted-foreground));
+	font-family: inherit;
+	font-size: 1rem;
+	font-weight: 500;
+	text-decoration: none;
+	background: transparent;
+	border: 2px solid oklch(var(--border));
+	border-radius: 0.5rem;
+	cursor: pointer;
+	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	overflow: hidden;
+	box-shadow:
+		0 0 5px rgba(var(--primary-rgb), 0.05),
+		inset 0 0 5px rgba(var(--muted-rgb), 0.1);
 }
 
 .neonBtn7::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0;
-  background: linear-gradient(
-    45deg,
-    oklch(var(--primary)),
-    oklch(var(--primary) / 0.9),
-    oklch(var(--primary) / 0.8)
-  );
-  transition: height 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  z-index: -1;
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 0;
+	background: linear-gradient(
+		45deg,
+		oklch(var(--primary)),
+		oklch(var(--primary) / 0.9),
+		oklch(var(--primary) / 0.8)
+	);
+	transition: height 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	z-index: -1;
 }
 
 .neonBtn7::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: radial-gradient(
-    circle,
-    rgba(var(--primary-rgb), 0.2) 0%,
-    transparent 70%
-  );
-  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transform: translate(-50%, -50%);
-  z-index: -2;
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 0;
+	height: 0;
+	background: radial-gradient(
+		circle,
+		rgba(var(--primary-rgb), 0.2) 0%,
+		transparent 70%
+	);
+	transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	transform: translate(-50%, -50%);
+	z-index: -2;
 }
 
 .neonBtn7:hover {
-  color: oklch(var(--primary-foreground));
-  border-color: oklch(var(--primary));
-  box-shadow:
-    0 0 15px rgba(var(--primary-rgb), 0.4),
-    0 0 25px rgba(var(--primary-rgb), 0.2),
-    0 0 35px rgba(var(--primary-rgb), 0.1),
-    inset 0 0 10px rgba(var(--primary-rgb), 0.1);
-  text-shadow:
-    0 0 3px rgba(255, 255, 255, 0.8),
-    0 0 8px rgba(var(--primary-rgb), 0.4);
-  transform: translateY(-1px);
+	color: oklch(var(--primary-foreground));
+	border-color: oklch(var(--primary));
+	box-shadow:
+		0 0 15px rgba(var(--primary-rgb), 0.4),
+		0 0 25px rgba(var(--primary-rgb), 0.2),
+		0 0 35px rgba(var(--primary-rgb), 0.1),
+		inset 0 0 10px rgba(var(--primary-rgb), 0.1);
+	text-shadow:
+		0 0 3px rgba(255, 255, 255, 0.8),
+		0 0 8px rgba(var(--primary-rgb), 0.4);
+	transform: translateY(-1px);
 }
 
 .neonBtn7:hover::after {
-  height: 100%;
+	height: 100%;
 }
 .neonBtn7:hover::before {
-  width: 120%;
-  height: 120%;
+	width: 120%;
+	height: 120%;
 }
 
 @keyframes shine {
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 100%;
-  }
+	0% {
+		left: -100%;
+	}
+	100% {
+		left: 100%;
+	}
 }
 
 /* Accessibility and motion preferences */
 .neonBtn3,
 .neonBtn7 {
-  min-height: 44px;
-  min-width: 44px;
-  user-select: none;
-  -webkit-user-select: none;
-  will-change: transform, box-shadow;
-  -webkit-tap-highlight-color: transparent;
+	min-height: 44px;
+	min-width: 44px;
+	user-select: none;
+	-webkit-user-select: none;
+	will-change: transform, box-shadow;
+	-webkit-tap-highlight-color: transparent;
 }
 
 .neonBtn3:focus,
 .neonBtn7:focus {
-  outline: none;
-  box-shadow:
-    0 0 20px rgba(var(--primary-rgb), 0.5),
-    0 0 0 3px rgba(var(--primary-rgb), 0.3);
+	outline: none;
+	box-shadow:
+		0 0 20px rgba(var(--primary-rgb), 0.5),
+		0 0 0 3px rgba(var(--primary-rgb), 0.3);
 }
 
 .neonBtn3:active,
 .neonBtn7:active {
-  transform: translateY(0px) scale(0.98);
+	transform: translateY(0px) scale(0.98);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .neonBtn3,
-  .neonBtn7 {
-    animation: none;
-    opacity: 1;
-    transform: none;
-    will-change: auto;
-  }
-  .neonBtn3::before,
-  .neonBtn3::after,
-  .neonBtn7::before,
-  .neonBtn7::after {
-    transition: none;
-    animation: none;
-  }
+	.neonBtn3,
+	.neonBtn7 {
+		animation: none;
+		opacity: 1;
+		transform: none;
+		will-change: auto;
+	}
+	.neonBtn3::before,
+	.neonBtn3::after,
+	.neonBtn7::before,
+	.neonBtn7::after {
+		transition: none;
+		animation: none;
+	}
 }
 
 @media (max-width: 640px) {
-  .neonBtn3,
-  .neonBtn7 {
-    padding: 14px 28px;
-    font-size: 1rem;
-    width: 100%;
-    margin-bottom: 1rem;
-    letter-spacing: 0.1em;
-  }
+	.neonBtn3,
+	.neonBtn7 {
+		padding: 14px 28px;
+		font-size: 1rem;
+		width: 100%;
+		margin-bottom: 1rem;
+		letter-spacing: 0.1em;
+	}
 }
 
 @media (max-width: 480px) {
-  .neonBtn3,
-  .neonBtn7 {
-    padding: 12px 24px;
-    font-size: 0.95rem;
-  }
+	.neonBtn3,
+	.neonBtn7 {
+		padding: 12px 24px;
+		font-size: 0.95rem;
+	}
 }
