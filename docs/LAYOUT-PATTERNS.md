@@ -284,11 +284,120 @@ The following files were updated to implement the `pt-24` standard (as of navbar
 ### Already Compliant
 - `src/app/blog/page.tsx` (already used `pt-24`)
 
+## PageWrapper Component
+
+To avoid code repetition and ensure consistency, use the `PageWrapper` component and its specialized variants.
+
+### Available Components
+
+#### 1. ContentPage (for simple content pages)
+
+```tsx
+import { ContentPage } from "@/components/layout";
+
+export default function MyPage() {
+  return (
+    <ContentPage>
+      <h1>Page Title</h1>
+      <p>Content</p>
+    </ContentPage>
+  );
+}
+
+// With custom max-width
+<ContentPage maxWidth="max-w-6xl">
+  {/* content */}
+</ContentPage>
+
+// With custom bottom padding
+<ContentPage containerClassName="pb-12">
+  {/* content */}
+</ContentPage>
+```
+
+#### 2. HeroSection (for hero sections with gradients)
+
+```tsx
+import { HeroSection } from "@/components/layout";
+
+export default function MyPage() {
+  const gradient = `linear-gradient(to_right,rgb(var(--primary-rgb)_/_0.03),rgb(var(--secondary-rgb)_/_0.03))`;
+  
+  return (
+    <HeroSection gradient={gradient}>
+      <div className="max-w-3xl">
+        <h1>Hero Title</h1>
+        <p>Hero description</p>
+      </div>
+    </HeroSection>
+  );
+}
+```
+
+#### 3. GridPage (for grid layouts like blog/faqs)
+
+```tsx
+import { GridPage } from "@/components/layout";
+
+export default function MyPage() {
+  return (
+    <GridPage maxWidth="max-w-4xl">
+      <div className="text-center mb-16">
+        <h1>Page Title</h1>
+      </div>
+      
+      <div className="grid grid-cols-1 gap-8">
+        {/* grid items */}
+      </div>
+    </GridPage>
+  );
+}
+```
+
+#### 4. PageWrapper (base component - use when you need custom behavior)
+
+```tsx
+import { PageWrapper } from "@/components/layout";
+
+export default function MyPage() {
+  return (
+    <PageWrapper
+      variant="content"
+      maxWidth="max-w-6xl"
+      className="custom-class"
+      containerClassName="pb-32"
+    >
+      {/* content */}
+    </PageWrapper>
+  );
+}
+```
+
+### Props Reference
+
+All PageWrapper components accept:
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | ReactNode | required | Page content |
+| `className` | string | undefined | Additional classes for outer wrapper |
+| `containerClassName` | string | undefined | Additional classes for container |
+| `maxWidth` | 'max-w-4xl' \| 'max-w-6xl' \| 'max-w-7xl' | variant-dependent | Maximum container width |
+
+Additional props for `PageWrapper` base component:
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | 'hero' \| 'content' \| 'full-width' \| 'grid' | 'content' | Page layout variant |
+| `gradient` | string | undefined | CSS gradient background (for hero) |
+| `overflow` | boolean | false | Apply overflow-hidden |
+| `relative` | boolean | true | Apply position-relative |
+
 ## Best Practices
 
-1. **Always use `pt-24`** for the first content element below the navbar
-2. **Never use `py-*`** for the top-level section with the page title
-3. **Keep bottom padding responsive** (`pb-20 md:pb-32` for heroes)
+1. **Use PageWrapper components** instead of manually applying `pt-24` classes
+2. **Choose the right variant**: `ContentPage` for simple pages, `HeroSection` for marketing pages, `GridPage` for list/grid layouts
+3. **Override only when necessary** using `containerClassName` for custom bottom padding
 4. **Test across breakpoints** before committing changes
 5. **Document any exceptions** if a page requires different spacing
 6. **Use DevTools** to verify measurements match the design system

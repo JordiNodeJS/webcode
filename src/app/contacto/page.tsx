@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/features/contact/ContactForm";
+import { ContentPage } from "@/components/layout";
 
 export const metadata: Metadata = {
   title: "Contacto - WEBCODE",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function ContactoPage() {
   return (
-    <div className="container mx-auto max-w-4xl px-4 pt-24 pb-12">
+    <ContentPage containerClassName="pb-12">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold mb-4 text-foreground">
           Contacta con nosotros
@@ -114,6 +115,6 @@ export default function ContactoPage() {
           </div>
         </div>
       </div>
-    </div>
+    </ContentPage>
   );
 }
