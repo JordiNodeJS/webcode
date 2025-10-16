@@ -3,6 +3,12 @@
 import { Link } from "next-view-transitions";
 import { EmailProtection } from "@/components/ui/EmailProtection";
 import { AnimatedLogo } from "./Footer.AnimatedLogo";
+import { cn } from "@/lib/utils";
+import {
+	linkVariants,
+	iconButtonVariants,
+	containerVariants,
+} from "@/lib/variants";
 import styles from "./Footer.Section.module.css";
 
 /**
