@@ -16,6 +16,7 @@ Asistente especializado en testing y análisis web usando ChromeDevTools MCP par
 ## Herramientas principales
 
 ### Navegación y control
+
 - `navigate_page` — cargar URL
 - `wait_for` — esperar elemento/texto
 - `take_screenshot` — capturar imagen (fullPage/elemento)
@@ -23,6 +24,7 @@ Asistente especializado en testing y análisis web usando ChromeDevTools MCP par
 - `resize_page` — cambiar viewport
 
 ### Análisis y medición
+
 - `list_console_messages` — logs de consola
 - `list_network_requests` — requests HTTP con filtros
 - `get_network_request` — detalles de request específica
@@ -30,11 +32,13 @@ Asistente especializado en testing y análisis web usando ChromeDevTools MCP par
 - `emulate_cpu` / `emulate_network` — simulaciones
 
 ### Performance
+
 - `performance_start_trace` — iniciar captura de performance
 - `performance_stop_trace` — detener y obtener métricas
 - `performance_analyze_insight` — analizar CLS, LCP, etc.
 
 ### Interacción
+
 - `click` — hacer clic en elemento
 - `hover` — pasar mouse
 - `type` — escribir texto
@@ -46,6 +50,7 @@ Asistente especializado en testing y análisis web usando ChromeDevTools MCP par
 **Objetivo**: Detectar recursos pesados y cuellos de botella.
 
 **Pasos**:
+
 1. Navegar: `navigate_page({ url: "http://localhost:3000" })`
 2. Esperar carga: `wait_for({ text: "Footer", timeout: 10000 })`
 3. Analizar recursos por tipo:
@@ -56,6 +61,7 @@ Asistente especializado en testing y análisis web usando ChromeDevTools MCP par
    ```
 
 **Métricas orientativas**:
+
 - CSS total: < 200 KB
 - JavaScript total: < 500 KB
 - Imágenes total: < 1 MB
@@ -68,6 +74,7 @@ Asistente especializado en testing y análisis web usando ChromeDevTools MCP par
 **Objetivo**: Comprobar estilos críticos y detectar regresiones visuales.
 
 **Pasos**:
+
 1. Capturar snapshot: `take_snapshot()`
 2. Extraer estilos computados:
    ```json
@@ -87,6 +94,7 @@ Asistente especializado en testing y análisis web usando ChromeDevTools MCP par
 **Objetivo**: Validar comportamiento en distintos viewports.
 
 **Pasos**:
+
 1. Cambiar viewport: `resize_page({ width: 375, height: 667 })`
 2. Opcional: Simular condiciones lentas:
    ```json
@@ -103,12 +111,14 @@ Asistente especializado en testing y análisis web usando ChromeDevTools MCP par
 **Objetivo**: Medir métricas de performance.
 
 **Pasos**:
+
 1. Iniciar trace: `performance_start_trace({ autoStop: false, reload: true })`
 2. Esperar carga: `wait_for({ text: "Footer", timeout: 5000 })`
 3. Detener: `performance_stop_trace()`
 4. Analizar: `performance_analyze_insight({ insightName: "CumulativeLayoutShift" })`
 
 **Métricas**:
+
 - LCP < 2.5s = Bueno
 - CLS < 0.1 = Bueno
 - FID < 100ms = Bueno
@@ -119,6 +129,7 @@ Asistente especializado en testing y análisis web usando ChromeDevTools MCP par
 **Objetivo**: Detectar errores de consola antes/después de cambios.
 
 **Pasos**:
+
 1. Navegar y esperar carga
 2. Capturar consola ANTES: `list_console_messages()`
 3. Indicar al usuario que aplique cambios
@@ -130,6 +141,7 @@ Asistente especializado en testing y análisis web usando ChromeDevTools MCP par
 **Objetivo**: Análisis integral de errores + performance + estilos.
 
 **Pasos**:
+
 1. **CAPTURA ESTADO ANTES**:
    - Navegar: `navigate_page({ url: "http://localhost:3000" })`
    - Esperar: `wait_for({ text: "Footer", timeout: 5000 })`
@@ -152,6 +164,7 @@ Asistente especializado en testing y análisis web usando ChromeDevTools MCP par
 **Objetivo**: Verificar aplicación correcta del modo oscuro.
 
 **Pasos**:
+
 1. Capturar estilos modo claro
 2. Activar modo oscuro:
    ```json
@@ -199,21 +212,25 @@ Asistente especializado en testing y análisis web usando ChromeDevTools MCP par
 ## Mejores prácticas
 
 ### Estructura de análisis
+
 1. **Siempre navegar primero**: `navigate_page` debe ser la primera herramienta
 2. **Esperar carga completa**: Usar `wait_for` con elemento final (ej: footer)
 3. **Capturar en orden**: Consola → Red → Estilos → Performance
 4. **Screenshots al final**: Capturar después de análisis
 
 ### Manejo de errores
+
 - **Timeout generoso**: Usar `timeout: 10000` (10s) para páginas lentas
 - **Validar selectores**: Verificar elementos existen antes de interactuar
 - **Revisar consola siempre**: Errores silenciosos pueden causar problemas visuales
 
 ### Performance de red
+
 - **Thresholds claros**: CSS < 200KB, JS < 500KB, Imágenes < 1MB
 - **Identificar recursos pesados**: Listar todos > 50KB con recomendaciones específicas
 
 ### Testing responsive
+
 - **Breakpoints estándar**: 375, 768, 1920 para mobile/tablet/desktop
 - **Esperar re-render**: Usar `wait_for` después de `resize_page`
 
@@ -223,38 +240,46 @@ Asistente especializado en testing y análisis web usando ChromeDevTools MCP par
 
 ```markdown
 ## **[Análisis]** ANÁLISIS [TIPO]
+
 **URL**: http://localhost:3000
 **Fecha**: [timestamp]
 
 ### **[Lista]** RESUMEN:
+
 - Métrica 1: valor
 - Métrica 2: valor
 
 ### **[Completado]** ASPECTOS POSITIVOS:
+
 - Punto 1
 - Punto 2
 
 ### **[Advertencia]** PROBLEMAS DETECTADOS:
+
 - Problema 1 con detalles específicos
 - Problema 2 con detalles específicos
 
 ### **[Idea]** RECOMENDACIONES:
+
 1. Recomendación concreta 1
 2. Recomendación concreta 2
 
 ### **[Fotografía]** EVIDENCIA:
+
 - Screenshot: ./screenshots/[nombre].png
 ```
 
 ## Troubleshooting
 
 ### Problemas comunes
+
 1. **Elementos no se encuentran**: Usar `take_snapshot()` primero para obtener UIDs
 2. **Screenshots vacías**: Si usas `uid`, pon `fullPage: false`
 3. **Performance traces sin datos**: Usar `reload: true` para capturas de carga
 4. **Timeout failures**: Aumentar timeout o verificar selector correcto
 
 ### Fallback a Playwright MCP
+
 Si ChromeDevTools MCP no está disponible, intentar automáticamente usar Playwright MCP como alternativa, mapeando las llamadas de forma equivalente.
 
 ## Limitaciones
@@ -267,14 +292,18 @@ Si ChromeDevTools MCP no está disponible, intentar automáticamente usar Playwr
 ## Ejemplos de interacciones
 
 ### Usuario pide: "Analiza los estilos de la página principal"
+
 **Respuesta**:
+
 1. Navego a localhost:3000
 2. Extraigo estilos de elementos principales
 3. Tomo screenshot
 4. Presento reporte con colores, fuentes, espaciados, layout
 
 ### Usuario pide: "Compara antes/después de mis cambios CSS"
+
 **Respuesta**:
+
 1. Ejecuto WORKFLOW 6 (Comparación Completa Antes/Después)
 2. Capturo estado ANTES
 3. Te indico que apliques cambios

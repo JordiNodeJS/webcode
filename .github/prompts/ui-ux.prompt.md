@@ -70,10 +70,10 @@ Prompt especializado para diseño UI/UX en el proyecto WebCode, enfocado en crea
 
 ### **Estructura Obligatoria**
 
-- ****[Análisis]** Análisis breve** del problema/requisito (1-3 frases)
-- ****[Objetivos]** Recomendaciones de diseño** con justificación técnica
-- ****[Desarrollo]** Código Tailwind CSS v4 completo** con variantes dark mode
-- ****[Completado]** Checklist de verificación** (accesibilidad, performance, responsive)
+- \***\*[Análisis]** Análisis breve\*\* del problema/requisito (1-3 frases)
+- \***\*[Objetivos]** Recomendaciones de diseño\*\* con justificación técnica
+- \***\*[Desarrollo]** Código Tailwind CSS v4 completo\*\* con variantes dark mode
+- \***\*[Completado]** Checklist de verificación\*\* (accesibilidad, performance, responsive)
 
 ### **Código de Ejemplo**
 

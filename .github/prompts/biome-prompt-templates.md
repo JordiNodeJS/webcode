@@ -1,6 +1,6 @@
-# Plantillas de prompt para generar código compatible con Biome
+# Plantillas de prompt para generar código compatible con el estilo del repositorio (ESLint + Prettier)
 
-Este archivo contiene plantillas y un checklist "preflight" para que cualquier prompt dirigido a la AI genere código que pase las reglas de Biome configuradas en este proyecto (`biome.json`). Pega la plantilla y rellena las secciones entre `{{ }}`.
+Este archivo contiene plantillas y un checklist "preflight" para que cualquier prompt dirigido a la AI genere código que pase las reglas de linting/formatting del proyecto (ESLint + Prettier). Pega la plantilla y rellena las secciones entre `{{ }}`.
 
 ---
 
@@ -9,7 +9,7 @@ Este archivo contiene plantillas y un checklist "preflight" para que cualquier p
 1. Copia la plantilla que más se adapte a tu necesidad.
 2. Rellena los campos `{{DESCRIPTION}}`, `{{FILES}}`, `{{CONSTRAINTS}}` y `{{TESTS}}`.
 3. Si quieres, añade ejemplos de input/output o tests mínimos.
-4. Ejecuta `pnpm biome check --write .` después de aplicar los cambios y corrige lo que Biome reporte.
+4. Ejecuta `pnpm lint --fix` y `pnpm format` después de aplicar los cambios y corrige lo que ESLint/Prettier reporte.
 
 ---
 
@@ -55,7 +55,7 @@ Al generar el código, ejecuta mentalmente el siguiente preflight checklist y de
 - JSX iterables tienen `key`.
 - Named exports para componentes reutilizables.
 - Event handlers tipados.
-- `pnpm biome check --write .` debe pasar sin errores.
+  -- `pnpm lint --fix` y `pnpm format` deben pasar sin errores.
 
 "
 
@@ -65,7 +65,7 @@ Al generar el código, ejecuta mentalmente el siguiente preflight checklist y de
 
 Prompt base:
 
-"Aplica las correcciones necesarias en {{FILES}} para que `pnpm biome check --write .` pase sin errores. Mantén el comportamiento existente y sólo realiza cambios seguros. Describe brevemente los cambios en un comentario al inicio de cada archivo modificado.
+"Aplica las correcciones necesarias en {{FILES}} para que `pnpm lint --fix` y `pnpm format` pasen sin errores. Mantén el comportamiento existente y sólo realiza cambios seguros. Describe brevemente los cambios en un comentario al inicio de cada archivo modificado.
 
 Requerimientos:
 
@@ -76,7 +76,7 @@ Requerimientos:
 
 Preflight checklist (mental):
 
-- Ejecutar `pnpm biome check --write .`.
+- Ejecutar `pnpm lint --fix` y `pnpm format`.
 - Verificar que los tests unitarios (si existen) pasen.
 
 "
@@ -106,7 +106,7 @@ Asegúrate que los tests respeten la configuración TypeScript del proyecto y qu
 - [ ] Named exports en componentes reutilizables.
 - [ ] Event handlers tipados con React types.
 - [ ] No `dangerouslySetInnerHTML` sin justificación (si se usa, mover a public/ y documentar).
-- [ ] `pnpm biome check --write .` debe pasar localmente.
+      -- [ ] `pnpm lint --fix` y `pnpm format` deben pasar localmente.
 
 ---
 
@@ -135,7 +135,8 @@ Tests:
 
 ## Consejos operativos
 
-- Siempre ejecutar `pnpm biome check --write .` después de aplicar cambios y corregir lo que Biome reporte.
+-- Siempre ejecutar `pnpm lint --fix` y `pnpm format` después de aplicar cambios y corregir lo que ESLint/Prettier reporte.
+
 - Si Biome sugiere reordenar imports o formateo, aplicar `pnpm biome check --write .` para que lo haga automáticamente.
 - Para cambios que toquen seguridad (XSS, dangerouslySetInnerHTML), priorizar extraer a `public/` y usar `<script src="/..." />`.
 

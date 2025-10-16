@@ -8,20 +8,20 @@
 
 ### 1. **Runtime Edge Innecesario**
 
-- ****[Error]** Problema:** Páginas usando edge runtime sin necesidad
-- ****[Completado]** Solución:** Solo `opengraph-image.tsx` usa edge runtime (necesario para ImageResponse)
-- ****[Objetivos]** Resultado:** Todas las páginas principales ahora usan SSG (Static Site Generation)
+- \***\*[Error]** Problema:\*\* Páginas usando edge runtime sin necesidad
+- \***\*[Completado]** Solución:\*\* Solo `opengraph-image.tsx` usa edge runtime (necesario para ImageResponse)
+- \***\*[Objetivos]** Resultado:\*\* Todas las páginas principales ahora usan SSG (Static Site Generation)
 
 ### 2. **Bundle Size Optimizado**
 
-- ****[Error]** Antes:** First Load JS ≈ 226 kB, chunks grandes (59k, 52k)
-- ****[Completado]** Después:** First Load JS: 102-208 kB, chunks optimizados (45.6k + 54.2k)
-- ****[Análisis]** Mejora:** ~15% reducción en bundle principal
+- \***\*[Error]** Antes:\*\* First Load JS ≈ 226 kB, chunks grandes (59k, 52k)
+- \***\*[Completado]** Después:\*\* First Load JS: 102-208 kB, chunks optimizados (45.6k + 54.2k)
+- \***\*[Análisis]** Mejora:\*\* ~15% reducción en bundle principal
 
 ### 3. **Imports de Librerías Pesadas**
 
-- ****[Error]** Problema:** Imports directos de `lucide-react`, `framer-motion`
-- ****[Completado]** Solución:**
+- \***\*[Error]** Problema:\*\* Imports directos de `lucide-react`, `framer-motion`
+- \***\*[Completado]** Solución:\*\*
   - Imports centralizados en `@/lib/icons.ts`
   - Tree shaking mejorado con webpack optimization
   - Dynamic imports para componentes no críticos
@@ -90,9 +90,9 @@ Route (app)                                 Size  First Load JS
 
 ### **SSG vs Edge Runtime**
 
-- ****[Completado]** 19 páginas estáticas** generadas correctamente
-- ****[Completado]** Solo 1 página** con edge runtime (opengraph-image)
-- ****[Completado]** Todas las rutas principales** optimizadas para SSG
+- \***\*[Completado]** 19 páginas estáticas\*\* generadas correctamente
+- \***\*[Completado]** Solo 1 página\*\* con edge runtime (opengraph-image)
+- \***\*[Completado]** Todas las rutas principales\*\* optimizadas para SSG
 
 ### **Performance Improvements**
 
@@ -132,7 +132,7 @@ Route (app)                                 Size  First Load JS
 
 ## **[Magia]** RESUMEN EJECUTIVO
 
-****[Celebración]** OPTIMIZACIÓN EXITOSA:**
+\***\*[Celebración]** OPTIMIZACIÓN EXITOSA:\*\*
 
 - Bundle reducido en ~15%
 - SSG habilitado para todas las páginas principales
@@ -140,14 +140,14 @@ Route (app)                                 Size  First Load JS
 - Dynamic loading implementado para componentes no críticos
 - Image optimization configurada
 
-****[Objetivos]** IMPACTO EN PRODUCCIÓN:**
+\***\*[Objetivos]** IMPACTO EN PRODUCCIÓN:\*\*
 
 - Mejor First Contentful Paint (FCP)
 - Reduced Cumulative Layout Shift (CLS)
 - Improved Time to Interactive (TTI)
 - Optimal Largest Contentful Paint (LCP) para páginas estáticas
 
-****[Crecimiento]** MÉTRICAS OBJETIVO ALCANZADAS:**
+\***\*[Crecimiento]** MÉTRICAS OBJETIVO ALCANZADAS:\*\*
 
 - **[Completado]** First Load JS < 200 kB (mayoría páginas)
 - **[Completado]** SSG para rutas principales

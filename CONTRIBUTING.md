@@ -169,16 +169,16 @@ Seguimos [Conventional Commits](https://www.conventionalcommits.org/):
 
 ### Tipos de Commits
 
-| Tipo | Descripción | Ejemplo |
-|------|-------------|---------|
-| `feat` | Nueva funcionalidad | `feat: add user authentication` |
-| `fix` | Corrección de bug | `fix: resolve navigation issue` |
-| `docs` | Cambios en documentación | `docs: update README with setup` |
-| `style` | Cambios de formato | `style: format code with prettier` |
-| `refactor` | Refactorización | `refactor: simplify auth logic` |
-| `perf` | Mejoras de performance | `perf: optimize image loading` |
-| `test` | Tests | `test: add unit tests for Button` |
-| `chore` | Mantenimiento | `chore: update dependencies` |
+| Tipo       | Descripción              | Ejemplo                            |
+| ---------- | ------------------------ | ---------------------------------- |
+| `feat`     | Nueva funcionalidad      | `feat: add user authentication`    |
+| `fix`      | Corrección de bug        | `fix: resolve navigation issue`    |
+| `docs`     | Cambios en documentación | `docs: update README with setup`   |
+| `style`    | Cambios de formato       | `style: format code with prettier` |
+| `refactor` | Refactorización          | `refactor: simplify auth logic`    |
+| `perf`     | Mejoras de performance   | `perf: optimize image loading`     |
+| `test`     | Tests                    | `test: add unit tests for Button`  |
+| `chore`    | Mantenimiento            | `chore: update dependencies`       |
 
 ### Ejemplos de Buenos Commits
 
@@ -251,15 +251,18 @@ fix: resolve mobile navigation
 
 ```markdown
 ## Descripción
+
 Breve descripción de los cambios
 
 ## Tipo de cambio
+
 - [ ] Bug fix
 - [ ] Nueva funcionalidad
 - [ ] Breaking change
 - [ ] Documentación
 
 ## Checklist
+
 - [ ] Código formateado
 - [ ] Tests añadidos/actualizados
 - [ ] Documentación actualizada

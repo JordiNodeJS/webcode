@@ -11,16 +11,19 @@
 ### 1. Consolidación del Sistema de Estilos
 
 ✅ **Referencia rápida completa creada**
+
 - Archivo: `.github/WEBCODE-STYLE-REFERENCE.md`
 - Contenido: Guía completa de consulta rápida con todos los elementos del sistema
 - Incluye: Colores, sombras, tipografía, animaciones, clases especiales, patrones
 
 ✅ **Ejemplos visuales prácticos**
+
 - Archivo: `.github/WEBCODE-STYLE-EXAMPLES.md`
 - Contenido: Implementaciones reales de componentes comunes
 - Incluye: Botones, cards, formularios, navegación, footer, grids
 
 ✅ **Instrucciones actualizadas**
+
 - `styling.instructions.md`: Actualizado con sistema WebCode completo
 - `components.instructions.md`: Reforzado con ejemplos del tema
 - `copilot-instructions.md`: Sección de estilos mejorada con checklist
@@ -32,24 +35,28 @@
 ### Paleta de Colores OKLCH
 
 **Modo Claro:**
+
 ```css
---primary: oklch(0.57 0.2 328.5)      /* #dc7cb3 - Rosa */
---secondary: oklch(0.43 0.18 184.1)   /* #bce3e5 - Aguamarina */
---primary-rgb: 220, 124, 179
---secondary-rgb: 130, 200, 210
+--primary:
+  oklch(0.57 0.2 328.5) /* #dc7cb3 - Rosa */ --secondary: oklch(0.43 0.18 184.1)
+    /* #bce3e5 - Aguamarina */ --primary-rgb: 220,
+  124, 179 --secondary-rgb: 130, 200, 210;
 ```
 
 **Modo Oscuro:**
+
 ```css
---primary: oklch(0.84 0.16 328.5)     /* Rosa brillante */
---secondary: oklch(0.45 0.18 184.1)   /* Aguamarina oscuro */
---primary-rgb: 255, 170, 215
---secondary-rgb: 100, 180, 200
+--primary:
+  oklch(0.84 0.16 328.5) /* Rosa brillante */
+    --secondary: oklch(0.45 0.18 184.1) /* Aguamarina oscuro */
+    --primary-rgb: 255,
+  170, 215 --secondary-rgb: 100, 180, 200;
 ```
 
 ### Sistema de Sombras 3D
 
 5 niveles definidos con offset de 2-6px:
+
 - `--shadow-3d-xs`: Bordes sutiles
 - `--shadow-3d-sm`: Botones (MÁS COMÚN)
 - `--shadow-3d-md`: Cards y containers (MÁS COMÚN)
@@ -66,11 +73,13 @@
 ### Animaciones WAS
 
 **Easing principal:**
+
 ```
 cubic-bezier(0.25, 0.46, 0.45, 0.94)
 ```
 
 **Duraciones:**
+
 - instant: 100ms
 - quick: 200ms (hover)
 - normal: 300ms (estándar)
@@ -78,8 +87,9 @@ cubic-bezier(0.25, 0.46, 0.45, 0.94)
 - dramatic: 800ms
 
 **Hover estándar:**
+
 ```tsx
-hover:opacity-80 
+hover:opacity-80
 hover:-translate-y-0.5
 transition-all duration-200
 ```
@@ -156,26 +166,21 @@ Cada componente debe cumplir:
 ### Card WebCode
 
 ```tsx
-<Card 
-  className="border-primary" 
-  style={{ boxShadow: 'var(--shadow-3d-md)' }}
->
+<Card className="border-primary" style={{ boxShadow: "var(--shadow-3d-md)" }}>
   <CardHeader>
-    <CardTitle className="neon-cyan-card-title font-display">
-      Título
-    </CardTitle>
+    <CardTitle className="neon-cyan-card-title font-display">Título</CardTitle>
   </CardHeader>
   <CardContent>
     <p className="font-sans text-muted-foreground">Contenido</p>
   </CardContent>
   <CardFooter>
-    <Button 
+    <Button
       className="
         hover:opacity-80 
         transition-all duration-200
         ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
       "
-      style={{ boxShadow: 'var(--shadow-3d-sm)' }}
+      style={{ boxShadow: "var(--shadow-3d-sm)" }}
     >
       Acción
     </Button>
@@ -194,7 +199,7 @@ Cada componente debe cumplir:
     hover:-translate-y-0.5
     transition-all duration-200
   "
-  style={{ boxShadow: 'var(--shadow-3d-sm)' }}
+  style={{ boxShadow: "var(--shadow-3d-sm)" }}
 >
   Botón WebCode
 </Button>
@@ -205,20 +210,24 @@ Cada componente debe cumplir:
 ```tsx
 <section className="bg-gradient-webcode min-h-screen flex items-center">
   <div className="container mx-auto px-4 py-16">
-    <h1 className="
+    <h1
+      className="
       neon-cyan-title 
       text-6xl md:text-7xl lg:text-8xl 
       font-display 
       mb-6
-    ">
+    "
+    >
       WebCode
     </h1>
-    <p className="
+    <p
+      className="
       text-lg md:text-xl 
       text-muted-foreground 
       font-sans 
       max-w-2xl
-    ">
+    "
+    >
       Descripción del servicio
     </p>
   </div>
@@ -316,28 +325,34 @@ Cada componente debe cumplir:
 ### Para Desarrolladores
 
 ✅ **Referencia rápida accesible**
+
 - Un solo archivo con toda la información esencial
 - No necesidad de buscar en múltiples documentos
 
 ✅ **Ejemplos prácticos listos**
+
 - Copy-paste directo de componentes comunes
 - Patrones validados y optimizados
 
 ✅ **Checklist de calidad**
+
 - Verificación paso a paso antes de commit
 - Estándares claros y medibles
 
 ### Para el Proyecto
 
 ✅ **Consistencia visual reforzada**
+
 - Todos los desarrolladores siguen el mismo sistema
 - Componentes uniformes en toda la aplicación
 
 ✅ **Velocidad de desarrollo**
+
 - Menos decisiones de diseño en cada componente
 - Patrones predefinidos y validados
 
 ✅ **Mantenibilidad mejorada**
+
 - Sistema de diseño documentado y accesible
 - Fácil onboarding de nuevos desarrolladores
 

@@ -23,6 +23,7 @@ pnpm add -D eslint eslint-config-next @eslint/eslintrc
 ```
 
 **Dependencias instaladas**:
+
 - `eslint` - Linter principal
 - `eslint-config-next` - Configuración oficial de Next.js
 - `@eslint/eslintrc` - Utilidad para compatibilidad con configuraciones legacy
@@ -40,7 +41,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const compat = new FlatCompat({
-  baseDirectory: __dirname,
+  baseDirectory: __dirname
 });
 
 const eslintConfig = [
@@ -49,14 +50,17 @@ const eslintConfig = [
     rules: {
       // Reglas personalizadas del proyecto
       "@typescript-eslint/no-explicit-any": "error",
-      "@typescript-eslint/no-unused-vars": ["warn", { 
-        argsIgnorePattern: "^_",
-        varsIgnorePattern: "^_" 
-      }],
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_"
+        }
+      ],
       "react/no-unescaped-entities": "warn",
-      "react-hooks/exhaustive-deps": "warn",
-    },
-  },
+      "react-hooks/exhaustive-deps": "warn"
+    }
+  }
 ];
 
 export default eslintConfig;
@@ -67,6 +71,7 @@ export default eslintConfig;
 Se restauraron los scripts originales de ESLint:
 
 **Antes (Biome)**:
+
 ```json
 {
   "scripts": {
@@ -80,6 +85,7 @@ Se restauraron los scripts originales de ESLint:
 ```
 
 **Después (ESLint)**:
+
 ```json
 {
   "scripts": {
@@ -95,29 +101,23 @@ Se restauraron los scripts originales de ESLint:
 Se actualizó la configuración de `lint-staged` para usar ESLint:
 
 **Antes (Biome)**:
+
 ```json
 {
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json}": [
-      "pnpm dlx @biomejs/biome check --write"
-    ],
-    "*.{css,scss,md,html,mdx,svg}": [
-      "pnpm dlx prettier --write"
-    ]
+    "*.{js,jsx,ts,tsx,json}": ["pnpm dlx @biomejs/biome check --write"],
+    "*.{css,scss,md,html,mdx,svg}": ["pnpm dlx prettier --write"]
   }
 }
 ```
 
 **Después (ESLint)**:
+
 ```json
 {
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix"
-    ],
-    "*.{json,css,scss,md,html,mdx,svg}": [
-      "pnpm dlx prettier --write"
-    ]
+    "*.{js,jsx,ts,tsx}": ["eslint --fix"],
+    "*.{json,css,scss,md,html,mdx,svg}": ["pnpm dlx prettier --write"]
   }
 }
 ```
@@ -187,6 +187,7 @@ rm biome.json
 Se actualizó el archivo `.github/copilot-instructions.md` para reflejar que el proyecto usa ESLint nuevamente:
 
 **Cambios realizados**:
+
 - Sección "Herramientas de Desarrollo": Se reemplazó "Biome v2.2.3" por "ESLint con eslint-config-next"
 - Sección "Estándares de Calidad": Se reemplazaron referencias a Biome por ESLint
 - Sección "Testing y Calidad": Se actualizó "Biome v2.2.3 configurado" a "ESLint + Prettier configurado"
@@ -197,11 +198,13 @@ Se actualizó el archivo `.github/copilot-instructions.md` para reflejar que el 
 ### Herramientas de Linting y Formateo
 
 **Linting**: ESLint con configuración de Next.js
+
 - Archivo de configuración: `eslint.config.mjs`
 - Comando: `pnpm lint`
 - Comando de auto-corrección: `pnpm lint:fix`
 
 **Formateo**: Prettier
+
 - Comando: `pnpm format`
 - Se ejecuta automáticamente en pre-commit hooks
 
@@ -256,6 +259,7 @@ pnpm format
 La reversión de Biome a ESLint se completó exitosamente, restaurando la configuración de linting que ya había sido probada en el proyecto. Esto asegura la estabilidad del proceso de desarrollo y elimina los problemas que estaban surgiendo con Biome.
 
 El proyecto ahora usa:
+
 - **ESLint** como linter principal con configuración de Next.js
 - **Prettier** para formateo de código
 - **lint-staged** para validación pre-commit

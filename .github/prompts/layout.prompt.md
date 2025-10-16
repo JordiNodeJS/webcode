@@ -17,13 +17,13 @@
 - **[Error]** **Prohibido**: Estilos inline con colores
 - **[Error]** **Prohibido**: Props de color en componentes sin mapear
 
-### ****[Completado]** SIEMPRE usar sistema centralizado**
+### \***\*[Completado]** SIEMPRE usar sistema centralizado\*\*
 
 - **Variables CSS**: `rgba(var(--color-primary), 0.8)` en `src/styles/theme.css`
 - **Clases del sistema**: `.contact-card-gradient-*`, `.text-primary`, `.bg-secondary`
 - **Mapeo automático**: `gradientClassMap` en componentes Astro
 
-### ****[Carpeta Abierta]** Arquitectura de colores:**
+### \***\*[Carpeta Abierta]** Arquitectura de colores:\*\*
 
 ```
 src/styles/
@@ -32,7 +32,7 @@ src/styles/
 └── global.css         # **[Advertencia]** Utilidades temporales Tailwind
 ```
 
-### ****[Diseño]** Paleta oficial (RGB format):**
+### \***\*[Diseño]** Paleta oficial (RGB format):\*\*
 
 ```css
 --color-primary: 38 78 112; /* #264e70 - Azul corporativo */
@@ -42,7 +42,7 @@ src/styles/
 --color-neutral: 187 212 206; /* #bbd4ce - Verde neutro */
 ```
 
-### ****[Herramientas]** Implementación correcta:**
+### \***\*[Herramientas]** Implementación correcta:\*\*
 
 ```css
 /* [CORRECTO] Color con opacidad */
@@ -56,7 +56,7 @@ background: linear-gradient(
 );
 ```
 
-### ****[Lista]** Verificación pre-commit:**
+### \***\*[Lista]** Verificación pre-commit:\*\*
 
 - [ ] No hay colores hardcodeados
 - [ ] Variables definidas en `theme.css`

@@ -1117,17 +1117,17 @@ export function ResponsiveWSCard({ children }: { children: React.ReactNode }) {
 
 #### **Nuevas Funcionalidades**
 
-1. ****[Videojuegos]** Gestos Táctiles**: Swipe animations para móvil
-2. ****[Recargar]** Loading States**: Skeleton loaders con animaciones WebCode
-3. ****[Diseño]** Theme Transitions**: Cambio suave entre tema claro/oscuro
-4. ****[Análisis]** Data Visualizations**: Animaciones para gráficos y métricas
+1. \***\*[Videojuegos]** Gestos Táctiles\*\*: Swipe animations para móvil
+2. \***\*[Recargar]** Loading States\*\*: Skeleton loaders con animaciones WebCode
+3. \***\*[Diseño]** Theme Transitions\*\*: Cambio suave entre tema claro/oscuro
+4. \***\*[Análisis]** Data Visualizations\*\*: Animaciones para gráficos y métricas
 
 #### **Optimizaciones Performance**
 
-1. ****[Rendimiento]** Bundle Splitting**: Carga lazy de animaciones complejas
-2. ****[Objetivos]** Intersection Observer Pool**: Reutilización de observadores
-3. ****[Guardar]** Animation Caching**: Cache de estados para mejor performance
-4. ****[Batería]** Battery API**: Reducir animaciones en dispositivos con batería baja
+1. \***\*[Rendimiento]** Bundle Splitting\*\*: Carga lazy de animaciones complejas
+2. \***\*[Objetivos]** Intersection Observer Pool\*\*: Reutilización de observadores
+3. \***\*[Guardar]** Animation Caching\*\*: Cache de estados para mejor performance
+4. \***\*[Batería]** Battery API\*\*: Reducir animaciones en dispositivos con batería baja
 
 ### **Integración con Ecosystem WebCode**
 

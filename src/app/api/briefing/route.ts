@@ -5,134 +5,134 @@ import type { EmailResponse } from "@/types/resend";
 
 // Importación dinámica de Resend para evitar problemas de Edge Runtime
 async function getResend() {
-	const { Resend } = await import("resend");
-	return new Resend(process.env.RESEND_API_KEY);
+  const { Resend } = await import("resend");
+  return new Resend(process.env.RESEND_API_KEY);
 }
 
 // Tipo para los metadatos de la request
 interface RequestMetadata {
-	ip: string;
-	referer: string;
-	timestamp: string;
-	userAgent: string;
+  ip: string;
+  referer: string;
+  timestamp: string;
+  userAgent: string;
 }
 
 // Esquema de validación para el servidor (añadir campos adicionales)
 const briefingFormServerSchema = briefingFormSchema.extend({
-	timestamp: z.string(),
-	userAgent: z.string().optional(),
-	// Campo honeypot - debe estar vacío
-	website: z
-		.string()
-		.optional()
-		.refine((val) => !val || val.trim() === "", {
-			message: "Bot detected",
-		}),
+  timestamp: z.string(),
+  userAgent: z.string().optional(),
+  // Campo honeypot - debe estar vacío
+  website: z
+    .string()
+    .optional()
+    .refine((val) => !val || val.trim() === "", {
+      message: "Bot detected"
+    })
 });
 
 export async function POST(request: NextRequest) {
-	try {
-		const body = await request.json();
+  try {
+    const body = await request.json();
 
-		// Validar datos del formulario
-		const validatedData = briefingFormServerSchema.parse(body);
+    // Validar datos del formulario
+    const validatedData = briefingFormServerSchema.parse(body);
 
-		// Obtener información adicional de la request
-		const clientIP =
-			request.headers.get("x-forwarded-for") ||
-			request.headers.get("x-real-ip") ||
-			"unknown";
-		const referer = request.headers.get("referer") || "direct";
+    // Obtener información adicional de la request
+    const clientIP =
+      request.headers.get("x-forwarded-for") ||
+      request.headers.get("x-real-ip") ||
+      "unknown";
+    const referer = request.headers.get("referer") || "direct";
 
-		// Datos completos para logging/envío
-		const briefingData = {
-			...validatedData,
-			metadata: {
-				ip: clientIP,
-				referer,
-				timestamp: new Date().toISOString(),
-				userAgent: validatedData.userAgent || "unknown",
-			},
-		};
+    // Datos completos para logging/envío
+    const briefingData = {
+      ...validatedData,
+      metadata: {
+        ip: clientIP,
+        referer,
+        timestamp: new Date().toISOString(),
+        userAgent: validatedData.userAgent || "unknown"
+      }
+    };
 
-		// Enviar email con Resend
-		const emailResult = await sendBriefingEmailWithResend(briefingData);
+    // Enviar email con Resend
+    const emailResult = await sendBriefingEmailWithResend(briefingData);
 
-		if (!emailResult.success) {
-			console.error("❌ Error enviando email de briefing:", emailResult.error);
-			throw new Error(emailResult.error || "Error enviando email");
-		}
+    if (!emailResult.success) {
+      console.error("❌ Error enviando email de briefing:", emailResult.error);
+      throw new Error(emailResult.error || "Error enviando email");
+    }
 
-		// Respuesta de éxito
-		return NextResponse.json({
-			success: true,
-			message: "Briefing enviado correctamente",
-			timestamp: new Date().toISOString(),
-		});
-	} catch (error) {
-		console.error("❌ Error en formulario de briefing:", error);
+    // Respuesta de éxito
+    return NextResponse.json({
+      success: true,
+      message: "Briefing enviado correctamente",
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error("❌ Error en formulario de briefing:", error);
 
-		if (error instanceof z.ZodError) {
-			return NextResponse.json(
-				{
-					error: "Datos del formulario inválidos",
-					details: error.issues,
-				},
-				{ status: 400 },
-			);
-		}
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        {
+          error: "Datos del formulario inválidos",
+          details: error.issues
+        },
+        { status: 400 }
+      );
+    }
 
-		return NextResponse.json(
-			{
-				error: "Error interno del servidor",
-				message:
-					"No se pudo procesar tu briefing. Por favor, inténtalo de nuevo.",
-			},
-			{ status: 500 },
-		);
-	}
+    return NextResponse.json(
+      {
+        error: "Error interno del servidor",
+        message:
+          "No se pudo procesar tu briefing. Por favor, inténtalo de nuevo."
+      },
+      { status: 500 }
+    );
+  }
 }
 
 // Función para enviar email de briefing con Resend
 async function sendBriefingEmailWithResend(
-	briefingData: z.infer<typeof briefingFormServerSchema> & {
-		metadata: RequestMetadata;
-	},
+  briefingData: z.infer<typeof briefingFormServerSchema> & {
+    metadata: RequestMetadata;
+  }
 ): Promise<EmailResponse> {
-	try {
-		const emailContent = {
-			from: process.env.RESEND_FROM_EMAIL || "contacto@webcode.es",
-			to: process.env.RESEND_TO_EMAIL || "info@webcode.es",
-			subject: `Nuevo Briefing de Proyecto: ${briefingData.empresa || briefingData.nombre}`,
-			html: generateBriefingEmailTemplate(briefingData),
-			text: generateBriefingPlainTextEmail(briefingData),
-			replyTo: briefingData.email,
-		};
+  try {
+    const emailContent = {
+      from: process.env.RESEND_FROM_EMAIL || "contacto@webcode.es",
+      to: process.env.RESEND_TO_EMAIL || "info@webcode.es",
+      subject: `Nuevo Briefing de Proyecto: ${briefingData.empresa || briefingData.nombre}`,
+      html: generateBriefingEmailTemplate(briefingData),
+      text: generateBriefingPlainTextEmail(briefingData),
+      replyTo: briefingData.email
+    };
 
-		const resend = await getResend();
-		const result = await resend.emails.send(emailContent);
+    const resend = await getResend();
+    const result = await resend.emails.send(emailContent);
 
-		if (result.error) {
-			return { success: false, error: result.error.message };
-		}
+    if (result.error) {
+      return { success: false, error: result.error.message };
+    }
 
-		return { success: true, id: result.data?.id };
-	} catch (error) {
-		console.error("❌ Error en sendBriefingEmailWithResend:", error);
-		return {
-			success: false,
-			error: error instanceof Error ? error.message : "Error desconocido",
-		};
-	}
+    return { success: true, id: result.data?.id };
+  } catch (error) {
+    console.error("❌ Error en sendBriefingEmailWithResend:", error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Error desconocido"
+    };
+  }
 }
 
 // Template de email HTML para briefing
 function generateBriefingEmailTemplate(
-	data: z.infer<typeof briefingFormServerSchema> & {
-		metadata: RequestMetadata;
-	},
+  data: z.infer<typeof briefingFormServerSchema> & {
+    metadata: RequestMetadata;
+  }
 ): string {
-	return `
+  return `
     <!DOCTYPE html>
     <html>
     <head>
@@ -178,25 +178,25 @@ function generateBriefingEmailTemplate(
               <div class="value">${data.telefono}</div>
             </div>
             ${
-							data.empresa
-								? `
+              data.empresa
+                ? `
             <div class="field">
               <div class="label">Empresa:</div>
               <div class="value">${data.empresa}</div>
             </div>
             `
-								: ""
-						}
+                : ""
+            }
             ${
-							data.sitioWeb
-								? `
+              data.sitioWeb
+                ? `
             <div class="field">
               <div class="label">Sitio Web Actual:</div>
               <div class="value">${data.sitioWeb}</div>
             </div>
             `
-								: ""
-						}
+                : ""
+            }
           </div>
 
           <!-- Objetivos del Proyecto -->
@@ -211,15 +211,15 @@ function generateBriefingEmailTemplate(
               <div class="value">${data.problemasResolver}</div>
             </div>
             ${
-							data.kpisExito
-								? `
+              data.kpisExito
+                ? `
             <div class="field">
               <div class="label">KPIs de Éxito:</div>
               <div class="value">${data.kpisExito}</div>
             </div>
             `
-								: ""
-						}
+                : ""
+            }
             <div class="field">
               <div class="label">Presupuesto Estimado:</div>
               <div class="value">${formatPresupuesto(data.presupuestoEstimado)}</div>
@@ -238,25 +238,25 @@ function generateBriefingEmailTemplate(
               <div class="value">${data.publicoObjetivo}</div>
             </div>
             ${
-							data.edadRango
-								? `
+              data.edadRango
+                ? `
             <div class="field">
               <div class="label">Rango de Edad:</div>
               <div class="value">${data.edadRango}</div>
             </div>
             `
-								: ""
-						}
+                : ""
+            }
             ${
-							data.ubicacionGeografica
-								? `
+              data.ubicacionGeografica
+                ? `
             <div class="field">
               <div class="label">Ubicación Geográfica:</div>
               <div class="value">${data.ubicacionGeografica}</div>
             </div>
             `
-								: ""
-						}
+                : ""
+            }
             <div class="field">
               <div class="label">Dispositivos Principales:</div>
               <div class="checkbox-list">
@@ -287,25 +287,25 @@ function generateBriefingEmailTemplate(
               </div>
             </div>
             ${
-							data.funcionalidadesDeseadas
-								? `
+              data.funcionalidadesDeseadas
+                ? `
             <div class="field">
               <div class="label">Otras Funcionalidades:</div>
               <div class="value">${data.funcionalidadesDeseadas}</div>
             </div>
             `
-								: ""
-						}
+                : ""
+            }
             ${
-							data.integracionesNecesarias
-								? `
+              data.integracionesNecesarias
+                ? `
             <div class="field">
               <div class="label">Integraciones Necesarias:</div>
               <div class="value">${data.integracionesNecesarias}</div>
             </div>
             `
-								: ""
-						}
+                : ""
+            }
           </div>
 
           <!-- Estilo Visual -->
@@ -320,25 +320,25 @@ function generateBriefingEmailTemplate(
               <div class="value">${data.tieneLogotipos ? "Sí" : "No"}</div>
             </div>
             ${
-							data.coloresPreferidos
-								? `
+              data.coloresPreferidos
+                ? `
             <div class="field">
               <div class="label">Colores Preferidos:</div>
               <div class="value">${data.coloresPreferidos}</div>
             </div>
             `
-								: ""
-						}
+                : ""
+            }
             ${
-							data.referenciasVisuales
-								? `
+              data.referenciasVisuales
+                ? `
             <div class="field">
               <div class="label">Referencias Visuales:</div>
               <div class="value">${data.referenciasVisuales}</div>
             </div>
             `
-								: ""
-						}
+                : ""
+            }
             <div class="field">
               <div class="label">Tono de Comunicación:</div>
               <div class="value">${data.tonoComunicacion}</div>
@@ -397,8 +397,8 @@ function generateBriefingEmailTemplate(
 
           <!-- Información Adicional -->
           ${
-						data.informacionAdicional
-							? `
+            data.informacionAdicional
+              ? `
           <div class="section">
             <div class="section-title">ℹ️ Información Adicional</div>
             <div class="field">
@@ -406,13 +406,13 @@ function generateBriefingEmailTemplate(
             </div>
           </div>
           `
-							: ""
-					}
+              : ""
+          }
 
           <!-- Cómo nos conoció -->
           ${
-						data.comoConociste
-							? `
+            data.comoConociste
+              ? `
           <div class="section">
             <div class="section-title">🔍 Cómo nos conoció</div>
             <div class="field">
@@ -420,8 +420,8 @@ function generateBriefingEmailTemplate(
             </div>
           </div>
           `
-							: ""
-					}
+              : ""
+          }
 
           <!-- Consentimiento RGPD -->
           <div class="consent">
@@ -450,11 +450,11 @@ function generateBriefingEmailTemplate(
 
 // Template de email en texto plano para briefing
 function generateBriefingPlainTextEmail(
-	data: z.infer<typeof briefingFormServerSchema> & {
-		metadata: RequestMetadata;
-	},
+  data: z.infer<typeof briefingFormServerSchema> & {
+    metadata: RequestMetadata;
+  }
 ): string {
-	return `
+  return `
 📋 NUEVO BRIEFING DE PROYECTO - WEBCODE
 
 Recibido el ${new Date(data.timestamp).toLocaleString("es-ES")}
@@ -497,12 +497,12 @@ Tono de Comunicación: ${data.tonoComunicacion}
 Contenidos Disponibles: ${data.contenidosDisponibles ? "Sí" : "No"}
 Páginas Estimadas: ${data.numerosPaginasEstimadas}
 Necesita Ayuda: ${[
-		data.necesitaRedaccion ? "Redacción" : "",
-		data.necesitaFotografia ? "Fotografía" : "",
-		data.necesitaVideos ? "Videos" : "",
-	]
-		.filter(Boolean)
-		.join(", ")}
+    data.necesitaRedaccion ? "Redacción" : "",
+    data.necesitaFotografia ? "Fotografía" : "",
+    data.necesitaVideos ? "Videos" : ""
+  ]
+    .filter(Boolean)
+    .join(", ")}
 
 === REQUISITOS TÉCNICOS ===
 Tiene Hosting: ${data.tieneHostingActual ? "Sí" : "No"}
@@ -532,35 +532,35 @@ Para responder al cliente, simplemente responde a este email.
 
 // Funciones auxiliares para formatear datos
 function formatPresupuesto(presupuesto: string): string {
-	const presupuestoLabels: Record<string, string> = {
-		"no-definido": "No definido",
-		"<3000": "Menos de 3.000€",
-		"3000-8000": "3.000€ - 8.000€",
-		"8000-15000": "8.000€ - 15.000€",
-		"15000-30000": "15.000€ - 30.000€",
-		"30000+": "Más de 30.000€",
-	};
-	return presupuestoLabels[presupuesto] || presupuesto;
+  const presupuestoLabels: Record<string, string> = {
+    "no-definido": "No definido",
+    "<3000": "Menos de 3.000€",
+    "3000-8000": "3.000€ - 8.000€",
+    "8000-15000": "8.000€ - 15.000€",
+    "15000-30000": "15.000€ - 30.000€",
+    "30000+": "Más de 30.000€"
+  };
+  return presupuestoLabels[presupuesto] || presupuesto;
 }
 
 function formatPlazo(plazo: string): string {
-	const plazoLabels: Record<string, string> = {
-		"no-definido": "No definido",
-		urgente: "Urgente (menos de 1 mes)",
-		"1-mes": "1 mes",
-		"2-3-meses": "2-3 meses",
-		"3-6-meses": "3-6 meses",
-		"6+ meses": "Más de 6 meses",
-		flexible: "Flexible",
-	};
-	return plazoLabels[plazo] || plazo;
+  const plazoLabels: Record<string, string> = {
+    "no-definido": "No definido",
+    urgente: "Urgente (menos de 1 mes)",
+    "1-mes": "1 mes",
+    "2-3-meses": "2-3 meses",
+    "3-6-meses": "3-6 meses",
+    "6+ meses": "Más de 6 meses",
+    flexible: "Flexible"
+  };
+  return plazoLabels[plazo] || plazo;
 }
 
 function formatIdentidad(identidad: string): string {
-	const identidadLabels: Record<string, string> = {
-		si: "Sí, completamente definida",
-		no: "No, necesitamos crearla",
-		parcialmente: "Parcialmente, necesita mejoras",
-	};
-	return identidadLabels[identidad] || identidad;
+  const identidadLabels: Record<string, string> = {
+    si: "Sí, completamente definida",
+    no: "No, necesitamos crearla",
+    parcialmente: "Parcialmente, necesita mejoras"
+  };
+  return identidadLabels[identidad] || identidad;
 }

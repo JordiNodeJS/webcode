@@ -71,26 +71,21 @@ WEBCODE es una plataforma integral de desarrollo web y soluciones digitales para
 ### **Patrón de Componente Estándar**
 
 ```tsx
-<Card 
-  className="border-primary" 
-  style={{ boxShadow: 'var(--shadow-3d-md)' }}
->
+<Card className="border-primary" style={{ boxShadow: "var(--shadow-3d-md)" }}>
   <CardHeader>
-    <CardTitle className="neon-cyan-card-title font-display">
-      Título
-    </CardTitle>
+    <CardTitle className="neon-cyan-card-title font-display">Título</CardTitle>
   </CardHeader>
   <CardContent>
     <p className="font-sans text-muted-foreground">Contenido</p>
   </CardContent>
   <CardFooter>
-    <Button 
+    <Button
       className="
         hover:opacity-80 
         transition-all duration-200
         ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
       "
-      style={{ boxShadow: 'var(--shadow-3d-sm)' }}
+      style={{ boxShadow: "var(--shadow-3d-sm)" }}
     >
       Acción
     </Button>
@@ -101,6 +96,7 @@ WEBCODE es una plataforma integral de desarrollo web y soluciones digitales para
 ### **Checklist de Estilo Obligatorio** ✅
 
 Cada componente debe cumplir:
+
 - [ ] Usa colores del tema (primary/secondary)
 - [ ] Implementa sombras 3D donde corresponde
 - [ ] Usa tipografías correctas (font-display/font-sans)
@@ -615,4 +611,3 @@ Consulta **`.github/prompts/README.md`** para el índice completo del sistema de
   - **`styling.instructions.md`** - Estilos con Tailwind CSS v4
   - **`app-router.instructions.md`** - App Router de Next.js 15
 - Sistema de prompts disponible en `.github/prompts/`
-

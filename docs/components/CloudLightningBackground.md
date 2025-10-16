@@ -8,10 +8,10 @@
 
 - **🌙 Soporte completo para modo claro y oscuro**: Se adapta automáticamente al tema activo
 - **☁️ Nubes vaporosas**: Partículas que simulan nubes con movimiento suave
-- ****[Rendimiento]** Iluminación interactiva**: Efecto de resplandor que sigue al cursor del usuario
-- ****[Diseño]** Efectos adaptativos**: Colores y opacidades diferentes según el tema
-- ****[Lanzamiento]** Optimizado para performance**: Pausado automáticamente cuando no está visible
-- ****[Móvil]** Responsive**: Funciona en dispositivos móviles con optimizaciones específicas
+- \***\*[Rendimiento]** Iluminación interactiva\*\*: Efecto de resplandor que sigue al cursor del usuario
+- \***\*[Diseño]** Efectos adaptativos\*\*: Colores y opacidades diferentes según el tema
+- \***\*[Lanzamiento]** Optimizado para performance\*\*: Pausado automáticamente cuando no está visible
+- \***\*[Móvil]** Responsive\*\*: Funciona en dispositivos móviles con optimizaciones específicas
 - **♿ Accesible**: Respeta `prefers-reduced-motion` y tiene etiquetas ARIA## **[Objetivos]** Casos de Uso
 
 ### Intercambio Directo con WavesBackground
@@ -103,37 +103,37 @@ CLOUD_BASE_OPACITY: 0.3,                     // Nubes más visibles
 - **Canvas optimizado**: Configuraciones específicas para mejorar el renderizado
 - **Memory management**: Limpieza automática de recursos al desmontar
 
-### ****[Rendimiento]** Versión Optimizada v2.0 (Recomendada)**
+### \***\*[Rendimiento]** Versión Optimizada v2.0 (Recomendada)\*\*
 
-- ****[Objetivos]** Detección automática de dispositivo**: Configuración adaptativa por hardware
-- ****[Recargar]** Frame rate adaptativo**: 30-60 FPS según capacidades
-- ****[Guardar]** Memory pool system**: -70% garbage collection
+- \***\*[Objetivos]** Detección automática de dispositivo\*\*: Configuración adaptativa por hardware
+- \***\*[Recargar]** Frame rate adaptativo\*\*: 30-60 FPS según capacidades
+- \***\*[Guardar]** Memory pool system\*\*: -70% garbage collection
 - **👁️ Visibility culling**: Solo renderiza partículas visibles
-- ****[Móvil]** Mobile-first**: Optimizaciones específicas para batería y performance
-- ****[Diseño]** Quality levels**: Alto/Medio/Bajo según dispositivo
+- \***\*[Móvil]** Mobile-first\*\*: Optimizaciones específicas para batería y performance
+- \***\*[Diseño]** Quality levels\*\*: Alto/Medio/Bajo según dispositivo
 
-****[Análisis]** Mejoras de Performance:**
+\***\*[Análisis]** Mejoras de Performance:\*\*
 
 - **Móviles**: +40-60% FPS, +45% duración de batería
 - **Desktop**: +25% eficiencia, soporte para 120 partículas
 - **Compatibilidad**: 100% dispositivos con fallback inteligente
 
-****[Herramientas]** Archivo optimizado:** `Hero.CloudLightningBackground.Optimized.tsx`
+\***\*[Herramientas]** Archivo optimizado:\*\* `Hero.CloudLightningBackground.Optimized.tsx`
 
 Ver documentación completa: [CloudLightningBackground-Performance-Optimization.md](./CloudLightningBackground-Performance-Optimization.md)
 
 ## **[Entretenimiento]** Comparación con WavesBackground
 
-| Característica            | WavesBackground      | CloudLightningBackground |
-| ------------------------- | -------------------- | ------------------------ |
-| **Tecnología**            | SVG + CSS Animations | Canvas + JavaScript      |
-| **Interactividad**        | **[Error]** Estático          | **[Completado]** Sigue al cursor       |
-| **Efecto Visual**         | Olas abstractas      | Nubes con relámpagos     |
-| **Soporte de Tema**       | **[Completado]** Automático CSS    | **[Completado]** Dinámico con useTheme |
-| **Performance**           | Ligero               | Moderado (optimizado)    |
-| **Personalización**       | Limitada             | Alta                     |
-| **Atmósfera Modo Oscuro** | Suave y minimalista  | Dramática y misteriosa   |
-| **Atmósfera Modo Claro**  | Elegante y limpia    | Sofisticada y dinámica   |
+| Característica            | WavesBackground                 | CloudLightningBackground               |
+| ------------------------- | ------------------------------- | -------------------------------------- |
+| **Tecnología**            | SVG + CSS Animations            | Canvas + JavaScript                    |
+| **Interactividad**        | **[Error]** Estático            | **[Completado]** Sigue al cursor       |
+| **Efecto Visual**         | Olas abstractas                 | Nubes con relámpagos                   |
+| **Soporte de Tema**       | **[Completado]** Automático CSS | **[Completado]** Dinámico con useTheme |
+| **Performance**           | Ligero                          | Moderado (optimizado)                  |
+| **Personalización**       | Limitada                        | Alta                                   |
+| **Atmósfera Modo Oscuro** | Suave y minimalista             | Dramática y misteriosa                 |
+| **Atmósfera Modo Claro**  | Elegante y limpia               | Sofisticada y dinámica                 |
 
 ## **[Herramientas]** Instalación y Uso
 
@@ -151,7 +151,7 @@ Ver documentación completa: [CloudLightningBackground-Performance-Optimization.
    <CloudLightningBackground />;
    ```
 
-### ****[Rendimiento]** Versión Optimizada (Recomendada)**
+### \***\*[Rendimiento]** Versión Optimizada (Recomendada)\*\*
 
 1. **El componente optimizado está en**:
 
@@ -171,7 +171,7 @@ Ver documentación completa: [CloudLightningBackground-Performance-Optimization.
    src/app/globals.css (sección "CLOUD LIGHTNING BACKGROUND STYLES")
    ```
 
-### ****[Lanzamiento]** Migración Recomendada**
+### \***\*[Lanzamiento]** Migración Recomendada\*\*
 
 Para obtener las mejoras de performance, simplemente cambia el import:
 
@@ -229,6 +229,6 @@ Este componente está inspirado en el efecto de fondo interactivo de [onlook.com
 
 ---
 
-****[Objetivos]** Resultado**: Un fondo que se adapta perfectamente al tema activo, manteniendo la experiencia interactiva y atmosférica en ambos modos.
+\***\*[Objetivos]** Resultado\*\*: Un fondo que se adapta perfectamente al tema activo, manteniendo la experiencia interactiva y atmosférica en ambos modos.
 
 **¿Necesitas más personalización?** El código está bien documentado y es fácil de modificar para ajustar colores, comportamientos o efectos adicionales.

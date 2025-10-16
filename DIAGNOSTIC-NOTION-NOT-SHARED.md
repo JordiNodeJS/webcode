@@ -10,6 +10,7 @@ He ejecutado el comando `pnpm notion:list` y el resultado es:
 ```
 
 **Esto significa que:**
+
 - ❌ La base de datos "WebCode Blog" **NO está compartida** con tu integración
 - ❌ O compartiste con una integración **diferente** a la que corresponde tu API Key
 
@@ -26,16 +27,19 @@ He ejecutado el comando `pnpm notion:list` y el resultado es:
 ### 2. Verifica el API Key
 
 Tu API Key actual en `.env.local`:
+
 ```
 NOTION_API_KEY=ntn_XXXX... (no empieza con "secret_")
 ```
 
 ⚠️ **NOTA**: Si tu API Key no empieza con `secret_`, es posible que:
+
 - Sea un formato antiguo
 - Sea una integración pública
 - Necesites regenerarla
 
 **Recomendación**: Genera un nuevo API Key:
+
 1. Ve a https://www.notion.so/my-integrations
 2. Selecciona tu integración
 3. En "Secrets" → Click en "Show" → Copia el token
@@ -44,10 +48,12 @@ NOTION_API_KEY=ntn_XXXX... (no empieza con "secret_")
 ### 3. Comparte la Base de Datos (Paso a Paso con Imágenes)
 
 #### **Paso 1: Abre tu base de datos en Notion**
+
 - Abre Notion en tu navegador
 - Busca y abre la base de datos llamada **"WebCode Blog"**
 
 #### **Paso 2: Encuentra el menú de conexiones**
+
 ```
 ┌─────────────────────────────────────────────────┐
 │  WebCode Blog                          ...  ⚙️  │ ← Click en los tres puntos
@@ -57,7 +63,9 @@ NOTION_API_KEY=ntn_XXXX... (no empieza con "secret_")
 ```
 
 #### **Paso 3: Busca "Connections" o "Conexiones"**
+
 Cuando hagas click en "...", verás un menú como este:
+
 ```
 ┌──────────────────────────────┐
 │  ✏️  Rename                   │
@@ -70,7 +78,9 @@ Cuando hagas click en "...", verás un menú como este:
 ```
 
 #### **Paso 4: Añade tu integración**
+
 Se abrirá un modal:
+
 ```
 ┌─────────────────────────────────────────┐
 │  Select connections                     │
@@ -86,7 +96,9 @@ Se abrirá un modal:
 ```
 
 #### **Paso 5: Confirma que se compartió**
+
 Después de confirmar, deberías ver en la parte superior de tu base de datos:
+
 ```
 ┌─────────────────────────────────────────────────┐
 │  WebCode Blog                  🔗 WebCode    ⚙️  │ ← Icono de tu integración
@@ -100,11 +112,13 @@ Después de confirmar, deberías ver en la parte superior de tu base de datos:
 Una vez que hayas compartido correctamente:
 
 ### 1. Verifica con el comando de listado:
+
 ```bash
 pnpm notion:list
 ```
 
 **Resultado esperado:**
+
 ```
 ✅ Se encontraron 1 base(s) de datos:
 
@@ -115,11 +129,13 @@ pnpm notion:list
 ```
 
 ### 2. Verifica la conexión:
+
 ```bash
 pnpm notion:verify
 ```
 
 **Resultado esperado:**
+
 ```
 ✅ Conexión con Notion: EXITOSA
 ✅ Base de datos accesible: SÍ
@@ -127,6 +143,7 @@ pnpm notion:verify
 ```
 
 ### 3. Reinicia el servidor y prueba el blog:
+
 ```bash
 # Ctrl+C para detener el servidor
 pnpm dev
@@ -158,6 +175,7 @@ Antes de continuar, asegúrate de que:
 ### Problema 1: No veo mi integración en la lista
 
 **Solución:**
+
 1. Crea una nueva integración en https://www.notion.so/my-integrations
 2. Nombre: `WebCode Blog Integration`
 3. Type: **Internal integration**
@@ -165,10 +183,11 @@ Antes de continuar, asegúrate de que:
 5. Copia el nuevo API Key
 6. Actualiza `.env.local` con el nuevo token
 
-### Problema 2: Mi API Key no empieza con "secret_"
+### Problema 2: Mi API Key no empieza con "secret\_"
 
 **Solución:**
 Tu token podría ser antiguo. Genera uno nuevo:
+
 1. Ve a https://www.notion.so/my-integrations
 2. Selecciona tu integración
 3. En "Secrets" → Regenera el token
@@ -178,6 +197,7 @@ Tu token podría ser antiguo. Genera uno nuevo:
 ### Problema 3: La base de datos no aparece en "Add connections"
 
 **Posibles causas:**
+
 - La base de datos está en un workspace diferente
 - La integración está en un workspace diferente
 - Necesitas permisos de administrador en el workspace
@@ -189,6 +209,7 @@ Tu token podría ser antiguo. Genera uno nuevo:
 **Por favor, sigue los pasos visuales de arriba para compartir la base de datos.**
 
 Una vez que lo hayas hecho, ejecuta:
+
 ```bash
 pnpm notion:list
 ```

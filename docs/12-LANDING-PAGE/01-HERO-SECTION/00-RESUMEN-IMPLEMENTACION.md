@@ -23,7 +23,7 @@ pnpm dlx shadcn@latest add button card input form label textarea select
 - **Sombras 3D**: Sistema de profundidad característico
 - **Dark Mode**: Adaptación automática completa
 
-### ****[Advertencia]** IMPORTANTE: Ejecutar ANTES de implementar componentes**
+### \***\*[Advertencia]** IMPORTANTE: Ejecutar ANTES de implementar componentes\*\*
 
 Este comando debe ejecutarse **INMEDIATAMENTE** al iniciar el proyecto para asegurar que todos los componentes de la Hero Section usen el sistema de colores correcto.
 

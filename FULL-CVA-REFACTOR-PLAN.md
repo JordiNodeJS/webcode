@@ -7,8 +7,9 @@ Extender la refactorización CVA a **TODA LA WEB**, reemplazando todas las clase
 ## ⚠️ ADVERTENCIA IMPORTANTE
 
 **Esta es una refactorización MASIVA** que afectará a:
+
 - **50+ archivos de componentes**
-- **28+ páginas**  
+- **28+ páginas**
 - **Múltiples secciones críticas**
 
 ### Riesgos
@@ -23,6 +24,7 @@ Extender la refactorización CVA a **TODA LA WEB**, reemplazando todas las clase
 ### Completado (Commit 5d5e39e)
 
 **Variantes CVA Creadas** (8 archivos):
+
 - ✅ `card.variants.ts` - Service cards y glow effects
 - ✅ `title.variants.ts` - Neon titles con gradientes
 - ✅ `badge.variants.ts` - Badges de tecnología y ubicación
@@ -33,11 +35,13 @@ Extender la refactorización CVA a **TODA LA WEB**, reemplazando todas las clase
 - ✅ `index.ts` - Barrel export completo
 
 **Componentes Refactorizados** (3 archivos):
+
 - ✅ `Services.Card.tsx` - Tarjetas de servicios
 - ✅ `Services.Header.tsx` - Título "Soluciones Simples"
 - ✅ `Hero.Content.tsx` - Contenido principal del hero (headlines, badges)
 
 **Componentes Parcialmente Refactorizados**:
+
 - 🔄 `Footer.Section.tsx` - Imports CVA añadidos, pendiente refactor completo
 
 ## 📋 Plan de Refactorización Completa
@@ -45,6 +49,7 @@ Extender la refactorización CVA a **TODA LA WEB**, reemplazando todas las clase
 ### Fase 1: Hero Section (Prioridad ALTA) ⏳
 
 **Componentes**:
+
 1. ✅ `Hero.Content.tsx` - COMPLETADO
 2. ⏳ `Hero.CallToAction.tsx` - Botones neon (usa CSS modules)
 3. ⏳ `Hero.TrustIndicators.tsx` - Indicadores de confianza
@@ -57,14 +62,16 @@ Extender la refactorización CVA a **TODA LA WEB**, reemplazando todas las clase
 ### Fase 2: Footer & Header (Prioridad ALTA) ⏳
 
 **Componentes**:
+
 1. ⏳ `Footer.Section.tsx` - Footer completo (muchos inline styles)
 2. ⏳ `Hero.HeaderNavigation.tsx` - Header/Nav
 
 **Estimación**: 1-2 horas
 
-### Fase 3: Páginas /soluciones/* (Prioridad ALTA) ⏳
+### Fase 3: Páginas /soluciones/\* (Prioridad ALTA) ⏳
 
 **Páginas a refactorizar** (8 páginas):
+
 1. ⏳ `/soluciones/page.tsx` - Índice de soluciones
 2. ⏳ `/soluciones/web-development/page.tsx`
 3. ⏳ `/soluciones/e-commerce/page.tsx`
@@ -78,6 +85,7 @@ Extender la refactorización CVA a **TODA LA WEB**, reemplazando todas las clase
 ### Fase 4: Páginas Principales (Prioridad MEDIA) ⏳
 
 **Páginas**:
+
 1. ⏳ `/proceso/page.tsx` - Página de proceso
 2. ⏳ `/blog/page.tsx` - Índice de blog
 3. ⏳ `/blog/[slug]/page.tsx` - Template de artículo
@@ -92,6 +100,7 @@ Extender la refactorización CVA a **TODA LA WEB**, reemplazando todas las clase
 ### Fase 5: Componentes UI (Prioridad BAJA) ⏳
 
 **Componentes**:
+
 1. ⏳ `src/components/briefing/*` - Componentes de briefing
 2. ⏳ `src/components/faq/*` - Componentes de FAQ
 3. ⏳ `src/components/proceso/*` - Componentes de proceso
@@ -103,6 +112,7 @@ Extender la refactorización CVA a **TODA LA WEB**, reemplazando todas las clase
 ### Fase 6: Cleanup (Prioridad MEDIA) ⏳
 
 **Tareas**:
+
 1. ⏳ Eliminar `.neon-cyan-title` de `globals.css`
 2. ⏳ Eliminar `.neon-cyan-card-title` si ya no se usa
 3. ⏳ Revisar y consolidar variantes duplicadas
@@ -113,6 +123,7 @@ Extender la refactorización CVA a **TODA LA WEB**, reemplazando todas las clase
 ### Fase 7: Testing & Verificación (Prioridad CRÍTICA) ⏳
 
 **Tests**:
+
 1. ⏳ Build completo sin errores
 2. ⏳ Verificación visual de todas las páginas (28+)
 3. ⏳ Testing de modo oscuro en todas las páginas
@@ -129,6 +140,7 @@ Extender la refactorización CVA a **TODA LA WEB**, reemplazando todas las clase
 **Tiempo total estimado**: **16-22 horas de trabajo**
 
 **Distribución**:
+
 - Refactorización de código: 13-17 horas
 - Testing y verificación: 3-5 horas
 
@@ -137,6 +149,7 @@ Extender la refactorización CVA a **TODA LA WEB**, reemplazando todas las clase
 ### Opción A: Refactorización Completa (Recomendado Solo Si...)
 
 **Proceder SOLO si**:
+
 - Tienes **20+ horas disponibles**
 - No hay trabajo concurrente en la web
 - Puedes hacer testing exhaustivo
@@ -157,7 +170,7 @@ Extender la refactorización CVA a **TODA LA WEB**, reemplazando todas las clase
    - Header/Navigation
 
 3. **Sprint 3**:
-   - Páginas /soluciones/* (las más importantes)
+   - Páginas /soluciones/\* (las más importantes)
 
 4. **Sprint 4**:
    - Páginas principales (/proceso, /blog, /contacto, etc.)
@@ -168,6 +181,7 @@ Extender la refactorización CVA a **TODA LA WEB**, reemplazando todas las clase
    - Testing final
 
 **Ventajas**:
+
 - ✅ Menor riesgo
 - ✅ Testing incremental
 - ✅ Rollback más fácil
@@ -176,12 +190,14 @@ Extender la refactorización CVA a **TODA LA WEB**, reemplazando todas las clase
 ### Opción C: Refactor Selectivo (MÁS CONSERVADOR)
 
 **Refactorizar SOLO**:
+
 - ✅ Services section (completado)
 - Hero section principal
 - Footer y Header
-- Páginas /soluciones/* que usan `.neon-cyan-title`
+- Páginas /soluciones/\* que usan `.neon-cyan-title`
 
 **Dejar sin tocar**:
+
 - Páginas menos críticas
 - Componentes con CSS modules complejos
 - Páginas raramente visitadas
@@ -189,17 +205,20 @@ Extender la refactorización CVA a **TODA LA WEB**, reemplazando todas las clase
 ## 📊 Métricas de Éxito
 
 ### Código
+
 - ✅ Reducción de 50%+ en líneas de className
 - ✅ Type-safety completo en todos los componentes
 - ✅ 0 errores de TypeScript
 - ✅ 0 errores de linting
 
 ### Performance
+
 - ✅ Build time sin incremento
 - ✅ Bundle size sin incremento significativo
 - ✅ Runtime performance mantenido o mejorado
 
 ### Calidad
+
 - ✅ Paridad visual 100%
 - ✅ Funcionalidad preservada
 - ✅ Modo oscuro funcionando
@@ -211,22 +230,26 @@ Extender la refactorización CVA a **TODA LA WEB**, reemplazando todas las clase
 **¿Qué enfoque prefieres?**
 
 ### A) Continuar con Refactorización Completa
+
 - Completaré todas las fases (16-22 horas)
 - Alto riesgo, alto beneficio
 - Requiere muchos commits y testing exhaustivo
 
-### B) Refactorización Incremental por Sprints  
+### B) Refactorización Incremental por Sprints
+
 - Completaré Sprint 2 ahora (Hero + Footer + Header)
 - Sprints adicionales en el futuro
 - **Más seguro y recomendado**
 
 ### C) Detener Aquí
+
 - Mantenemos el refactor actual (Services + Hero.Content)
 - Resto de la web sin tocar
 - Más conservador
 
 ### D) Refactor Selectivo
-- Solo Hero, Footer, Header, y páginas /soluciones/*
+
+- Solo Hero, Footer, Header, y páginas /soluciones/\*
 - Balance entre beneficio y riesgo
 
 ---
@@ -250,6 +273,7 @@ Extender la refactorización CVA a **TODA LA WEB**, reemplazando todas las clase
 **Progreso**: ~5% completado
 
 **Commits hasta ahora**: 4
+
 - `9b5a328` - Implementación inicial CVA
 - `fbecbb5` - Documentación inicial
 - `593be26` - Verificación completa
@@ -267,6 +291,7 @@ Extender la refactorización CVA a **TODA LA WEB**, reemplazando todas las clase
 4. ✅ Decidir si continuar con Sprint 3
 
 **Razones**:
+
 - Menor riesgo de romper la web
 - Testing incremental más manejable
 - Commits más pequeños y revisables
@@ -276,10 +301,9 @@ Extender la refactorización CVA a **TODA LA WEB**, reemplazando todas las clase
 **¿Deseas que continúe con el Sprint 2 (Hero + Footer + Header)?**
 
 Esto tomará ~3-4 horas e incluirá:
+
 - Completar Hero section (5 componentes)
 - Refactorizar Footer completo
 - Refactorizar Header/Navigation
 - Testing y verificación de estas secciones
 - Commit y documentación
-
-

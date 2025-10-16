@@ -29,7 +29,7 @@ Comprobaciones locales (pre-PR)
 
 Antes de crear/actualizar la PR, ejecutar las siguientes comprobaciones locales cuando sea posible:
 
-- pnpm biome check --write . # formato + lint
+- pnpm lint --fix (usa ESLint) y pnpm format (Prettier) # formato + lint
 - pnpm test # si existe script `test`
 - pnpm build # o build del paquete afectado en monorepos
 
@@ -53,7 +53,7 @@ Estrategia de PR y contenido
   - Lista de cambios (bullets)
   - Referencias a archivos de contexto y decisiones (por ejemplo `.github/project/PROJECT-STATE.md`, `.github/prompts/...`) con enlaces
   - Pasos para validar localmente
-  - Checklist de pre-merge (biome, tests, build, accessibility, performance)
+  - Checklist de pre-merge (lint/format, tests, build, accessibility, performance)
 
 Asignación y revisores
 

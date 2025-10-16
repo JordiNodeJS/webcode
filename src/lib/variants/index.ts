@@ -11,9 +11,9 @@ export { serviceCardVariants, serviceCardGlowVariants } from "./card.variants";
 // Titles & Text
 export { neonTitleVariants } from "./title.variants";
 export {
-	headingVariants,
-	paragraphVariants,
-	gradientTextVariants,
+  headingVariants,
+  paragraphVariants,
+  gradientTextVariants
 } from "./text.variants";
 
 // Buttons
@@ -27,4 +27,3 @@ export { badgeVariants } from "./badge.variants";
 
 // Containers & Sections
 export { containerVariants, sectionVariants } from "./container.variants";
-

@@ -13,6 +13,7 @@
 **Problema**: La línea conectora aparecía por encima de las tarjetas, tapándolas visualmente.
 
 **Solución**:
+
 ```tsx
 // **[Error]** ANTES: top-24 (demasiado arriba, tapaba las cards)
 <div className="absolute top-24 left-0 right-0 h-2 mx-20">
@@ -63,12 +64,15 @@ useEffect(() => {
 }, [isVisible]);
 
 // Animación CSS
-<div className={`absolute inset-0 bg-gradient-to-r from-primary/20 via-primary to-primary/20 transition-transform duration-1000 ease-out ${
-  isVisible ? 'translate-x-0' : '-translate-x-full'
-}`} />
+<div
+  className={`absolute inset-0 bg-gradient-to-r from-primary/20 via-primary to-primary/20 transition-transform duration-1000 ease-out ${
+    isVisible ? "translate-x-0" : "-translate-x-full"
+  }`}
+/>;
 ```
 
 **Características**:
+
 - ⏱️ **Duración**: 1 segundo
 - **[Arte]** **Easing**: ease-out (suave desaceleración)
 - **[Objetivos]** **Trigger**: Cuando el 20% de la sección es visible
@@ -95,16 +99,17 @@ useEffect(() => {
    - Evita ejecutar lógica fuera del viewport
 
 3. **Cleanup de Timeouts**
+
 ```tsx
 const pulseTimeouts = useRef<NodeJS.Timeout[]>([]);
 
 useEffect(() => {
   // ... setup
-  
+
   return () => {
     observer.disconnect();
     // Limpiar todos los timeouts al desmontar
-    pulseTimeouts.current.forEach(timeout => clearTimeout(timeout));
+    pulseTimeouts.current.forEach((timeout) => clearTimeout(timeout));
   };
 }, [isVisible]);
 ```
@@ -137,12 +142,12 @@ const startRandomPulses = () => {
 
     const timeout = setTimeout(() => {
       // Añadir badge al set de pulsos activos
-      setPulseBadges(prev => new Set(prev).add(randomBadge));
-      setPulseCount(prev => prev + 1);
+      setPulseBadges((prev) => new Set(prev).add(randomBadge));
+      setPulseCount((prev) => prev + 1);
 
       // Remover después de 1s (duración de animate-pulse)
       const removeTimeout = setTimeout(() => {
-        setPulseBadges(prev => {
+        setPulseBadges((prev) => {
           const newSet = new Set(prev);
           newSet.delete(randomBadge);
           return newSet;
@@ -220,12 +225,14 @@ const startRandomPulses = () => {
 ### Interactividad Mantenida
 
 #### En Desktop
+
 - **[Completado]** Hover en badge → escala 110% + sombra primary
 - **[Completado]** Hover en badge → animate-ping effect (ring pulsante)
 - **[Completado]** Hover en card → elevación + scale 105%
 - **[Completado]** Hover en icono → scale 110% + rotate 6°
 
 #### En Mobile
+
 - **[Completado]** Pulsos aleatorios funcionan igual
 - **[Completado]** Touch en card → mismos efectos de hover
 
@@ -234,12 +241,14 @@ const startRandomPulses = () => {
 ## **[Análisis]** Métricas de Performance
 
 ### Antes
+
 - **[Advertencia]** Riesgo de animaciones infinitas
 - **[Advertencia]** Línea mal posicionada (UX problem)
 - **[Advertencia]** Sin efecto de entrada (estático)
 - **[Advertencia]** No había pulsos en badges
 
 ### Después
+
 - **[Completado]** **0 animaciones infinitas** (todas controladas)
 - **[Completado]** **Línea perfectamente posicionada**
 - **[Completado]** **Animación de entrada suave** (1s)
@@ -249,13 +258,13 @@ const startRandomPulses = () => {
 
 ### Consumo de Recursos
 
-| Fase | Animaciones Activas | CPU Impact |
-|------|---------------------|------------|
-| **Antes de entrar** | 0 | 0% |
-| **Entrada (0-1s)** | 1 (timeline slide) | ~5% |
-| **Pulsos (1-15s)** | 1-2 (badges pulse) | ~3% |
-| **Después (15s+)** | 0 | 0% |
-| **En hover** | 1-2 (ping effect) | ~2% |
+| Fase                | Animaciones Activas | CPU Impact |
+| ------------------- | ------------------- | ---------- |
+| **Antes de entrar** | 0                   | 0%         |
+| **Entrada (0-1s)**  | 1 (timeline slide)  | ~5%        |
+| **Pulsos (1-15s)**  | 1-2 (badges pulse)  | ~3%        |
+| **Después (15s+)**  | 0                   | 0%         |
+| **En hover**        | 1-2 (ping effect)   | ~2%        |
 
 **Total**: Impacto mínimo y temporal, sin animaciones continuas.
 
@@ -290,7 +299,7 @@ const pulseTimeouts = useRef<NodeJS.Timeout[]>([]);
 
 ```tsx
 {
-  threshold: 0.2  // 20% visible para activar
+  threshold: 0.2; // 20% visible para activar
 }
 ```
 
@@ -301,6 +310,7 @@ const pulseTimeouts = useRef<NodeJS.Timeout[]>([]);
 ## **[Objetivos]** Casos de Uso
 
 ### Caso 1: Primera Vista
+
 1. Usuario llega a la página
 2. Scroll hasta "Las 4 Fases"
 3. **[Magia]** Línea aparece de izquierda a derecha
@@ -308,6 +318,7 @@ const pulseTimeouts = useRef<NodeJS.Timeout[]>([]);
 5. Después de 5 pulsos, todo se calma
 
 ### Caso 2: Scroll Rápido
+
 1. Usuario hace scroll rápido
 2. Pasa por la sección sin detenerse
 3. Observer detecta entrada pero user sale rápido
@@ -315,6 +326,7 @@ const pulseTimeouts = useRef<NodeJS.Timeout[]>([]);
 5. No hay re-trigger si vuelve a pasar
 
 ### Caso 3: Hover Interacción
+
 1. Usuario posa mouse sobre un badge
 2. **[Magia]** Badge hace scale + animate-ping
 3. Al salir, vuelve a la normalidad
@@ -325,21 +337,25 @@ const pulseTimeouts = useRef<NodeJS.Timeout[]>([]);
 ## **[Lanzamiento]** Ventajas del Approach
 
 ### 1. Performance First
+
 - No hay animaciones continuas desperdiciando CPU/GPU
 - Cleanup apropiado previene memory leaks
 - Solo anima cuando la sección es visible
 
 ### 2. UX Mejorado
+
 - Efecto de entrada llamativo pero no intrusivo
 - Pulsos aleatorios crean sensación de "vida"
 - Interactividad en hover mantiene engagement
 
 ### 3. Mantenibilidad
+
 - Código limpio y bien comentado
 - Lógica separada en funciones
 - Fácil de ajustar parámetros (maxPulses, delays)
 
 ### 4. Escalabilidad
+
 - Sistema puede aplicarse a otras secciones
 - Parámetros configurables (threshold, maxPulses)
 - No depende de bibliotecas externas
@@ -349,6 +365,7 @@ const pulseTimeouts = useRef<NodeJS.Timeout[]>([]);
 ## **[Herramientas]** Configuración y Ajustes
 
 ### Cambiar Cantidad de Pulsos
+
 ```tsx
 const startRandomPulses = () => {
   const maxPulses = 5; // Cambiar este número
@@ -357,6 +374,7 @@ const startRandomPulses = () => {
 ```
 
 ### Cambiar Timing de Pulsos
+
 ```tsx
 // Delay aleatorio actual: 500-2500ms
 const randomDelay = Math.random() * 2000 + 500;
@@ -369,21 +387,25 @@ const randomDelay = Math.random() * 2000 + 1000;
 ```
 
 ### Cambiar Duración de Timeline Slide
+
 ```tsx
 // Actual: 1s
-className="transition-transform duration-1000 ease-out"
+className = "transition-transform duration-1000 ease-out";
 
 // Más rápido: 500ms
-className="transition-transform duration-500 ease-out"
+className = "transition-transform duration-500 ease-out";
 
 // Más lento: 1.5s
-className="transition-transform duration-1500 ease-out"
+className = "transition-transform duration-1500 ease-out";
 ```
 
 ### Cambiar Threshold de Visibilidad
+
 ```tsx
 const observer = new IntersectionObserver(
-  (entries) => { /* ... */ },
+  (entries) => {
+    /* ... */
+  },
   { threshold: 0.2 } // Cambiar entre 0.0 - 1.0
 );
 
@@ -413,21 +435,25 @@ const observer = new IntersectionObserver(
 ## 🎓 Lecciones Aprendidas
 
 ### 1. Intersection Observer es Poderoso
+
 - Permite controlar animaciones basadas en scroll
 - Threshold configurable para ajustar sensibilidad
 - Cleanup automático con disconnect
 
 ### 2. Set<number> para Estados Múltiples
+
 - Ideal para trackear qué badges están pulsando
 - Add/delete son operaciones O(1)
 - has() es muy performante
 
 ### 3. Refs para Cleanup
+
 - Array de timeouts en ref evita stale closures
 - Importante para prevenir memory leaks
 - forEach + clearTimeout es pattern efectivo
 
 ### 4. Z-index para Layering
+
 - z-0 para línea de fondo
 - z-10 para cards que deben estar encima
 - Relative positioning en container parent
@@ -437,14 +463,18 @@ const observer = new IntersectionObserver(
 ## **[Lanzamiento]** Próximas Mejoras (Opcional)
 
 1. **Prefers Reduced Motion**
+
    ```tsx
-   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+   const prefersReducedMotion = window.matchMedia(
+     "(prefers-reduced-motion: reduce)"
+   ).matches;
    if (!prefersReducedMotion) {
      startRandomPulses();
    }
    ```
 
 2. **Debug Mode**
+
    ```tsx
    const DEBUG = false;
    if (DEBUG) {
@@ -471,6 +501,5 @@ const observer = new IntersectionObserver(
 
 **Desarrollado por**: WEBCODE Team  
 **Versión**: 2.2.0  
-**Performance Score**: **[Destacado]****[Destacado]****[Destacado]****[Destacado]****[Destacado]**  
+**Performance Score**: **[Destacado]\*\***[Destacado]\***\*[Destacado]\*\***[Destacado]\***\*[Destacado]**  
 **Status**: **[Completado]** Production Ready
-

@@ -21,6 +21,7 @@
 ## **[Lista]** DESCRIPCIÓN DETALLADA
 
 El análisis de rendimiento con CPU throttling reveló forced reflows de 101ms causados por JavaScript problemático. El stack trace identifica:
+
 - Función principal: `975d2d6dc773158a.js:0:18096` (101ms)
 - Función secundaria: `b4674caff68420c0.js:0:6784` (47ms)
 
@@ -127,4 +128,3 @@ El análisis de rendimiento con CPU throttling reveló forced reflows de 101ms c
 - [ ] Documentación actualizada
 - [ ] Código revisado y aprobado
 - [ ] Dependencias de salida desbloqueadas
-

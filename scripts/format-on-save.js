@@ -7,24 +7,24 @@ const path = require("path");
 const filePath = process.argv[2];
 
 if (!filePath) {
-	console.error("No file path provided");
-	process.exit(1);
+  console.error("No file path provided");
+  process.exit(1);
 }
 
 // Verificar si es un archivo TypeScript/JavaScript
 const ext = path.extname(filePath);
 if (![".ts", ".tsx", ".js", ".jsx"].includes(ext)) {
-	process.exit(0);
+  process.exit(0);
 }
 
 try {
-	// Ejecutar Biome format
-	execSync(`pnpm biome format --write "${filePath}"`, {
-		stdio: "pipe",
-		cwd: process.cwd(),
-	});
-	console.log(`Formatted: ${filePath}`);
+  // Ejecutar Prettier para el archivo actual
+  execSync(`pnpm dlx prettier --write "${filePath}"`, {
+    stdio: "pipe",
+    cwd: process.cwd()
+  });
+  console.log(`Formatted: ${filePath}`);
 } catch (error) {
-	// Silenciar errores para no interrumpir el flujo de trabajo
-	console.error(`Format error for ${filePath}:`, error.message);
+  // Silenciar errores para no interrumpir el flujo de trabajo
+  console.error(`Format error for ${filePath}:`, error.message);
 }

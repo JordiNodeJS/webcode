@@ -20,92 +20,92 @@ import { WavesBackground } from "@/components/landing/hero/Hero.WavesBackground"
 import { useReversibleScrollVisibility } from "@/hooks/use-reversible-scroll-visibility";
 
 const HeroSectionExample = () => {
-	const [_isScrolled, setIsScrolled] = useState(false);
+  const [_isScrolled, setIsScrolled] = useState(false);
 
-	// Hook optimizado para la flecha de scroll
-	const scrollIndicator = useReversibleScrollVisibility({
-		fadeStartThreshold: 0.1,
-		fadeOutThreshold: 0.5,
-		transitionDuration: 400,
-		respectReducedMotion: true,
-	});
+  // Hook optimizado para la flecha de scroll
+  const scrollIndicator = useReversibleScrollVisibility({
+    fadeStartThreshold: 0.1,
+    fadeOutThreshold: 0.5,
+    transitionDuration: 400,
+    respectReducedMotion: true
+  });
 
-	useEffect(() => {
-		const handleScroll = () => {
-			setIsScrolled(window.scrollY > 10);
-		};
-		window.addEventListener("scroll", handleScroll);
-		return () => window.removeEventListener("scroll", handleScroll);
-	}, []);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-	const scrollToContent = () => {
-		window.scrollTo({
-			top: window.innerHeight,
-			behavior: "smooth",
-		});
-	};
+  const scrollToContent = () => {
+    window.scrollTo({
+      top: window.innerHeight,
+      behavior: "smooth"
+    });
+  };
 
-	return (
-		<div
-			className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-cyan-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900"
-			data-animation-section="hero"
-		>
-			{/* Navigation */}
-			<HeaderNavigation />
+  return (
+    <div
+      className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-cyan-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900"
+      data-animation-section="hero"
+    >
+      {/* Navigation */}
+      <HeaderNavigation />
 
-			{/* 🌊 OPCIÓN 1: Fondo original con olas animadas */}
-			<WavesBackground />
+      {/* 🌊 OPCIÓN 1: Fondo original con olas animadas */}
+      <WavesBackground />
 
-			{/* ⚡ OPCIÓN 2: Fondo alternativo con nubes y relámpagos */}
-			{/* Descomenta la línea siguiente y comenta la anterior para cambiar: */}
-			{/* <CloudLightningBackground /> */}
+      {/* ⚡ OPCIÓN 2: Fondo alternativo con nubes y relámpagos */}
+      {/* Descomenta la línea siguiente y comenta la anterior para cambiar: */}
+      {/* <CloudLightningBackground /> */}
 
-			<div className="container relative z-10 mx-auto px-4 py-20 md:py-32">
-				<div className="flex flex-col items-center text-center">
-					{/* Hero Content */}
-					<WSFadeIn delay={0.1} sectionId="hero">
-						<h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-							<span className="block">Desarrollo Web</span>
-							<span className="block text-gradient-webcode">
-								Profesional Barcelona
-							</span>
-						</h1>
-					</WSFadeIn>
+      <div className="container relative z-10 mx-auto px-4 py-20 md:py-32">
+        <div className="flex flex-col items-center text-center">
+          {/* Hero Content */}
+          <WSFadeIn delay={0.1} sectionId="hero">
+            <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+              <span className="block">Desarrollo Web</span>
+              <span className="block text-gradient-webcode">
+                Profesional Barcelona
+              </span>
+            </h1>
+          </WSFadeIn>
 
-					<WSFadeIn delay={0.2} sectionId="hero">
-						<p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl">
-							Creamos experiencias digitales excepcionales con las últimas
-							tecnologías: Next.js, React, Astro y más para tu negocio en
-							Barcelona.
-						</p>
-					</WSFadeIn>
+          <WSFadeIn delay={0.2} sectionId="hero">
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl">
+              Creamos experiencias digitales excepcionales con las últimas
+              tecnologías: Next.js, React, Astro y más para tu negocio en
+              Barcelona.
+            </p>
+          </WSFadeIn>
 
-					{/* Trust Indicators */}
-					<TrustIndicators />
+          {/* Trust Indicators */}
+          <TrustIndicators />
 
-					{/* Main Content */}
-					<IdleOptimizedValuePropsGrid />
+          {/* Main Content */}
+          <IdleOptimizedValuePropsGrid />
 
-					{/* Call to Action */}
-					<CallToAction />
-				</div>
-			</div>
+          {/* Call to Action */}
+          <CallToAction />
+        </div>
+      </div>
 
-			{/* Indicador de scroll */}
-			{scrollIndicator.opacity > 0 && (
-				<div
-					className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer"
-					onClick={scrollToContent}
-					style={{
-						opacity: scrollIndicator.opacity,
-						transition: "opacity 300ms ease-out",
-					}}
-				>
-					<ChevronDown className="w-6 h-6 text-muted-foreground" />
-				</div>
-			)}
-		</div>
-	);
+      {/* Indicador de scroll */}
+      {scrollIndicator.opacity > 0 && (
+        <div
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer"
+          onClick={scrollToContent}
+          style={{
+            opacity: scrollIndicator.opacity,
+            transition: "opacity 300ms ease-out"
+          }}
+        >
+          <ChevronDown className="w-6 h-6 text-muted-foreground" />
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default HeroSectionExample;

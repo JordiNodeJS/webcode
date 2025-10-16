@@ -1,112 +1,112 @@
 /* Footer scoped styles migrated from globals to avoid render-blocking global CSS */
 
 :root {
-	--footer-primary-glow: oklch(var(--primary) / 0.15);
-	--footer-secondary-glow: oklch(var(--secondary) / 0.15);
+  --footer-primary-glow: oklch(var(--primary) / 0.15);
+  --footer-secondary-glow: oklch(var(--secondary) / 0.15);
 }
 
 .footerAnimatedLogo {
-	will-change: transform;
-	backface-visibility: hidden;
-	transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
 }
 
 @keyframes footerLogoSpin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes footerLogoPulse {
-	0%,
-	100% {
-		transform: scale(1);
-		opacity: 1;
-	}
-	50% {
-		transform: scale(1.02);
-		opacity: 0.95;
-	}
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.95;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-	.footerAnimatedLogo:hover .logo-spinner {
-		animation: footerLogoSpin 4s linear infinite;
-	}
-	.footerAnimatedLogo:hover .logo-text {
-		animation: footerLogoPulse 2s ease-in-out infinite;
-	}
+  .footerAnimatedLogo:hover .logo-spinner {
+    animation: footerLogoSpin 4s linear infinite;
+  }
+  .footerAnimatedLogo:hover .logo-text {
+    animation: footerLogoPulse 2s ease-in-out infinite;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.footerAnimatedLogo:hover .logo-spinner {
-		animation: none;
-		transform: scale(1.05);
-		transition: transform 0.3s ease;
-	}
-	.footerAnimatedLogo:hover .logo-text {
-		animation: none;
-		transform: scale(1.02);
-		transition: transform 0.3s ease;
-	}
+  .footerAnimatedLogo:hover .logo-spinner {
+    animation: none;
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+  .footerAnimatedLogo:hover .logo-text {
+    animation: none;
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+  }
 }
 
 .footerSvgGradientShapes {
-	filter: drop-shadow(0 0 8px var(--footer-primary-glow));
-	transition: filter 0.3s ease;
+  filter: drop-shadow(0 0 8px var(--footer-primary-glow));
+  transition: filter 0.3s ease;
 }
 .footerSvgGradientShapes:hover {
-	filter: drop-shadow(0 0 12px var(--footer-primary-glow))
-		drop-shadow(0 0 20px var(--footer-secondary-glow));
+  filter: drop-shadow(0 0 12px var(--footer-primary-glow))
+    drop-shadow(0 0 20px var(--footer-secondary-glow));
 }
 
 .footerVerdoso {
-	position: relative;
-	z-index: 20;
-	backdrop-filter: blur(25px) saturate(200%) brightness(1.3) hue-rotate(3deg);
-	-webkit-backdrop-filter: blur(25px) saturate(200%) brightness(1.3)
-		hue-rotate(3deg);
-	border-top: none;
-	box-shadow:
-		0 40px 100px rgba(0, 0, 0, 0.6),
-		0 20px 50px rgba(0, 0, 0, 0.4),
-		inset 0 1px 0 oklch(var(--secondary) / 0.05),
-		inset 0 -1px 0 oklch(var(--secondary) / 0.02);
+  position: relative;
+  z-index: 20;
+  backdrop-filter: blur(25px) saturate(200%) brightness(1.3) hue-rotate(3deg);
+  -webkit-backdrop-filter: blur(25px) saturate(200%) brightness(1.3)
+    hue-rotate(3deg);
+  border-top: none;
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.6),
+    0 20px 50px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 oklch(var(--secondary) / 0.05),
+    inset 0 -1px 0 oklch(var(--secondary) / 0.02);
 }
 
 /* Overlay verdoso para el fondo del footer */
 .footer-verdoso-overlay {
-	position: absolute;
-	inset: 0;
-	background: linear-gradient(
-		135deg,
-		oklch(var(--secondary) / 0.08) 0%,
-		oklch(var(--primary) / 0.05) 25%,
-		oklch(var(--background) / 0.95) 50%,
-		oklch(var(--accent) / 0.06) 75%,
-		oklch(var(--secondary) / 0.08) 100%
-	);
-	backdrop-filter: blur(1px);
-	-webkit-backdrop-filter: blur(1px);
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    oklch(var(--secondary) / 0.08) 0%,
+    oklch(var(--primary) / 0.05) 25%,
+    oklch(var(--background) / 0.95) 50%,
+    oklch(var(--accent) / 0.06) 75%,
+    oklch(var(--secondary) / 0.08) 100%
+  );
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
 }
 
 @media (min-width: 1024px) {
-	.footerVerdoso {
-		backdrop-filter: blur(30px) saturate(200%) brightness(1.3) hue-rotate(3deg);
-	}
+  .footerVerdoso {
+    backdrop-filter: blur(30px) saturate(200%) brightness(1.3) hue-rotate(3deg);
+  }
 }
 
 @media (max-width: 768px) {
-	.footerAnimatedLogo {
-		transform: scale(0.8);
-	}
+  .footerAnimatedLogo {
+    transform: scale(0.8);
+  }
 }
 
 @media (max-width: 640px) {
-	.footerAnimatedLogo {
-		transform: scale(0.7);
-	}
+  .footerAnimatedLogo {
+    transform: scale(0.7);
+  }
 }

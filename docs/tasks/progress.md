@@ -17,15 +17,15 @@
 
 ## **[Crecimiento]** **MÉTRICAS DE PROGRESO**
 
-| Categoría            | Completado | Pendiente | Progreso         |
-| -------------------- | ---------- | --------- | ---------------- |
-| **Infraestructura**  | 100%       | 0%        | **[Completado]** Completo      |
-| **Componentes Hero** | 100%       | 0%        | **[Completado]** Completo      |
-| **Performance**      | 100%       | 0%        | **[Completado]** Optimizado    |
-| **Testing**          | 90%        | 10%       | 🟡 Casi completo |
-| **Servicios**        | 30%        | 70%       | **[Recargar]** En progreso   |
-| **About/Portfolio**  | 0%         | 100%      | ⏳ Pendiente     |
-| **Formularios**      | 0%         | 100%      | ⏳ Pendiente     |
+| Categoría            | Completado | Pendiente | Progreso                    |
+| -------------------- | ---------- | --------- | --------------------------- |
+| **Infraestructura**  | 100%       | 0%        | **[Completado]** Completo   |
+| **Componentes Hero** | 100%       | 0%        | **[Completado]** Completo   |
+| **Performance**      | 100%       | 0%        | **[Completado]** Optimizado |
+| **Testing**          | 90%        | 10%       | 🟡 Casi completo            |
+| **Servicios**        | 30%        | 70%       | **[Recargar]** En progreso  |
+| **About/Portfolio**  | 0%         | 100%      | ⏳ Pendiente                |
+| **Formularios**      | 0%         | 100%      | ⏳ Pendiente                |
 
 ---
 

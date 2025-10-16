@@ -21,6 +21,7 @@ Esta carpeta contiene las páginas individuales de cada solución/servicio ofrec
 ## Nomenclatura
 
 **IMPORTANTE:** Para evitar confusión:
+
 - `/soluciones/` - Páginas individuales detalladas de cada solución (anteriormente `/services/`)
 - `/servicios` - Página general de listado de servicios (mantenida por compatibilidad)
 
@@ -35,6 +36,7 @@ Esta carpeta contiene las páginas individuales de cada solución/servicio ofrec
 ## Estilo Visual
 
 Todas las páginas utilizan el **estilo general de WEBCODE** (suave con gradientes pasteles):
+
 - Bordes suaves (`border border-border/30`)
 - Gradientes de fondo (`bg-gradient-to-br from-white/95 via-white/90 to-slate-50/95`)
 - Efectos glow en hover con gradientes de colores
@@ -55,4 +57,3 @@ Todas las páginas utilizan el **estilo general de WEBCODE** (suave con gradient
 - Implementar testimonios de clientes
 - Crear casos de estudio específicos
 - Añadir formularios de contacto específicos por servicio
-

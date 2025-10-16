@@ -1,36 +1,33 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "Format with Biome",
-			"type": "shell",
-			"command": "pnpm",
-			"args": ["format:biome"],
-			"group": "build",
-			"presentation": {
-				"echo": true,
-				"reveal": "silent",
-				"focus": false,
-				"panel": "shared"
-			},
-			"problemMatcher": []
-		},
-		{
-			"label": "Format Current File with Biome",
-			"type": "shell",
-			"command": "powershell",
-			"args": [
-				"-Command",
-				"pnpm dlx @biomejs/biome format \"${file}\" --write"
-			],
-			"group": "build",
-			"presentation": {
-				"echo": true,
-				"reveal": "silent",
-				"focus": false,
-				"panel": "shared"
-			},
-			"problemMatcher": []
-		}
-	]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Format with Prettier",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["format"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Format Current File with Prettier",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["dlx", "prettier", "--write", "${file}"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
 }

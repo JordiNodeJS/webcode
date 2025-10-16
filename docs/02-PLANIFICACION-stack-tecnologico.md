@@ -22,18 +22,18 @@ WebCode se desarrollará utilizando el stack tecnológico más avanzado disponib
 
 ### ✅ Estado de Implementación
 
-| Tecnología | Versión | Estado |
-|------------|---------|--------|
-| Next.js | 15.5.2 | ✅ Implementado |
-| React | 19.1.0 | ✅ Implementado |
-| TypeScript | 5.x | ✅ Implementado |
-| Tailwind CSS | 4.x | ✅ Implementado |
+| Tecnología    | Versión  | Estado          |
+| ------------- | -------- | --------------- |
+| Next.js       | 15.5.2   | ✅ Implementado |
+| React         | 19.1.0   | ✅ Implementado |
+| TypeScript    | 5.x      | ✅ Implementado |
+| Tailwind CSS  | 4.x      | ✅ Implementado |
 | Framer Motion | 12.23.12 | ✅ Implementado |
-| Lucide React | 0.542.0 | ✅ Implementado |
-| shadcn/ui | Latest | ✅ Implementado |
-| Playwright | 1.55.0 | ✅ Implementado |
-| ESLint | 9.37.0 | ✅ Implementado |
-| Prettier | 3.6.2 | ✅ Implementado |
+| Lucide React  | 0.542.0  | ✅ Implementado |
+| shadcn/ui     | Latest   | ✅ Implementado |
+| Playwright    | 1.55.0   | ✅ Implementado |
+| ESLint        | 9.37.0   | ✅ Implementado |
+| Prettier      | 3.6.2    | ✅ Implementado |
 
 ### Frontend Framework
 

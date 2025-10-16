@@ -17,7 +17,7 @@
 - **Mobile Menu State**: useState que puede causar re-renders innecesarios
 - **Language Selector**: Estado adicional con re-renders
 
-****[Objetivos]** Optimizaciones Implementadas:**
+\***\*[Objetivos]** Optimizaciones Implementadas:\*\*
 
 ```tsx
 // **[Error]** PROBLEMA: Scroll listener siempre activo
@@ -37,7 +37,7 @@ const [isScrolled, setIsScrolled] = useState(false);
 **Ubicación**: `src/components/landing/hero/Hero.Content.tsx`
 **Tipo**: Server Component (optimizado)
 
-****[Completado]** Rendimiento Bueno:**
+\***\*[Completado]** Rendimiento Bueno:\*\*
 
 - Server Component, sin JavaScript en cliente
 - WSLetterReveal solo cuando está visible
@@ -56,7 +56,7 @@ const [isScrolled, setIsScrolled] = useState(false);
 - Múltiples useCallback, useMemo, useState por tarjeta
 - Event listeners mousemove sin throttling
 
-****[Completado]** Solución Ya Implementada:**
+\***\*[Completado]** Solución Ya Implementada:\*\*
 
 - `Hero.ValuePropsGrid.Optimized.tsx` con todas las optimizaciones
 
@@ -65,7 +65,7 @@ const [isScrolled, setIsScrolled] = useState(false);
 **Ubicación**: `src/components/landing/hero/Hero.WavesBackground.tsx`
 **Tipo**: Server Component con SVG animado
 
-****[Advertencia]** Posibles Problemas:**
+\***\*[Advertencia]** Posibles Problemas:\*\*
 
 ```tsx
 // SVG con animaciones CSS que pueden consumir GPU
@@ -102,7 +102,7 @@ const isInView = useInView(ref, { once: true, margin: "-50px" });
 // Con 15+ instancias = 15+ observers activos
 ```
 
-****[Completado]** Optimización Propuesta:**
+\***\*[Completado]** Optimización Propuesta:\*\*
 
 ```tsx
 // Observer compartido y pooling de instancias
@@ -144,7 +144,7 @@ const useSharedIntersectionObserver = () => {
 **Ubicación**: `src/components/landing/hero/Hero.ThemeToggle.tsx`
 **Tipo**: Client Component
 
-****[Advertencia]** Problemas Potenciales:**
+\***\*[Advertencia]** Problemas Potenciales:\*\*
 
 - Estado del tema global que causa re-renders masivos
 - Transiciones de color en toda la aplicación
@@ -154,7 +154,7 @@ const useSharedIntersectionObserver = () => {
 **Ubicación**: `src/components/ui/`
 **Impacto**: Variable
 
-****[Completado]** Generalmente Optimizados:**
+\***\*[Completado]** Generalmente Optimizados:\*\*
 
 - Componentes estáticos sin lógica compleja
 - CSS puro para la mayoría de estilos

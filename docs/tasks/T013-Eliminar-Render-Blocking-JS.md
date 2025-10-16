@@ -124,4 +124,3 @@ El análisis de rendimiento reveló que `theme-init.js` está bloqueando el rend
 - [ ] Documentación actualizada
 - [ ] Código revisado y aprobado
 - [ ] Dependencias de salida desbloqueadas
-

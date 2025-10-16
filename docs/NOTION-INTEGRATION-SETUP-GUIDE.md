@@ -1,6 +1,7 @@
 # Guía de Configuración: Integración de Notion
 
 ## 📋 Resumen
+
 Esta guía te ayudará a configurar correctamente la integración de Notion con tu blog en WebCode.
 
 ---
@@ -74,6 +75,7 @@ curl 'https://api.notion.com/v1/search' \
 6. **Confirma** el acceso
 
 ### Visual:
+
 ```
 ┌─────────────────────────────────────┐
 │  WebCode Blog Database              │
@@ -127,43 +129,42 @@ Crea un archivo `test-notion-connection.js`:
 
 ```javascript
 // test-notion-connection.js
-require('dotenv').config({ path: '.env.local' });
-const { Client } = require('@notionhq/client');
+require("dotenv").config({ path: ".env.local" });
+const { Client } = require("@notionhq/client");
 
 const notion = new Client({
-  auth: process.env.NOTION_API_KEY,
+  auth: process.env.NOTION_API_KEY
 });
 
 async function testConnection() {
   try {
-    console.log('🔍 Probando conexión con Notion...\n');
-    
+    console.log("🔍 Probando conexión con Notion...\n");
+
     // Probar query a la base de datos
     const response = await notion.dataSources.query({
       data_source_id: process.env.NOTION_DATABASE_ID,
-      page_size: 1,
+      page_size: 1
     });
-    
-    console.log('✅ Conexión exitosa!');
+
+    console.log("✅ Conexión exitosa!");
     console.log(`📊 Total de páginas encontradas: ${response.results.length}`);
-    
+
     if (response.results.length > 0) {
       const page = response.results[0];
-      console.log('\n📄 Primera página:');
+      console.log("\n📄 Primera página:");
       console.log(`   ID: ${page.id}`);
       console.log(`   Creada: ${page.created_time}`);
     }
-    
   } catch (error) {
-    console.error('❌ Error de conexión:');
+    console.error("❌ Error de conexión:");
     console.error(`   Código: ${error.code}`);
     console.error(`   Mensaje: ${error.message}`);
-    
-    if (error.code === 'object_not_found') {
-      console.log('\n💡 Solución:');
-      console.log('   1. Abre tu base de datos en Notion');
+
+    if (error.code === "object_not_found") {
+      console.log("\n💡 Solución:");
+      console.log("   1. Abre tu base de datos en Notion");
       console.log('   2. Click en "..." → "Add connections"');
-      console.log('   3. Selecciona tu integración');
+      console.log("   3. Selecciona tu integración");
     }
   }
 }
@@ -172,6 +173,7 @@ testConnection();
 ```
 
 Ejecuta:
+
 ```bash
 node test-notion-connection.js
 ```
@@ -181,34 +183,42 @@ node test-notion-connection.js
 ## 🐛 Solución de Problemas Comunes
 
 ### Error: "object_not_found"
+
 **Causa:** La base de datos no está compartida con la integración.
 
 **Solución:**
+
 1. Ve a tu base de datos en Notion
 2. Click en "..." → "Add connections"
 3. Añade tu integración
 
 ### Error: "unauthorized"
+
 **Causa:** API Key inválido o mal configurado.
 
 **Solución:**
+
 1. Verifica que `NOTION_API_KEY` empiece con `secret_`
 2. Regenera el token desde https://www.notion.so/my-integrations
 3. Actualiza `.env.local` con el nuevo token
 4. Reinicia el servidor
 
 ### Error: "invalid_request_url"
+
 **Causa:** Database ID con formato incorrecto.
 
 **Solución:**
+
 1. Verifica que el ID tenga el formato: `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`
 2. No uses la URL completa, solo el ID
 3. Asegúrate de que los guiones estén en los lugares correctos
 
 ### Error: "rate_limited"
+
 **Causa:** Demasiadas peticiones a la API de Notion.
 
 **Solución:**
+
 1. Espera unos minutos antes de reintentar
 2. Implementa caching en tu aplicación
 3. Reduce la frecuencia de `revalidate` en Next.js
@@ -221,22 +231,22 @@ Tu base de datos "WebCode Blog" debe tener las siguientes propiedades:
 
 ### Propiedades Obligatorias:
 
-| Propiedad | Tipo | Descripción |
-|-----------|------|-------------|
-| `title` | Title | Título del post (campo principal) |
-| `published` | Checkbox | Estado de publicación |
-| `date` | Date | Fecha de publicación |
-| `slug` | Text | URL amigable del post |
+| Propiedad   | Tipo     | Descripción                       |
+| ----------- | -------- | --------------------------------- |
+| `title`     | Title    | Título del post (campo principal) |
+| `published` | Checkbox | Estado de publicación             |
+| `date`      | Date     | Fecha de publicación              |
+| `slug`      | Text     | URL amigable del post             |
 
 ### Propiedades Opcionales:
 
-| Propiedad | Tipo | Descripción |
-|-----------|------|-------------|
-| `excerpt` | Text | Resumen del artículo |
-| `coverImage` | Files & media | Imagen de portada |
-| `tags` | Multi-select | Categorías/tags del post |
-| `author` | Person | Autor del artículo |
-| `readTime` | Number | Tiempo de lectura (se calcula auto) |
+| Propiedad    | Tipo          | Descripción                         |
+| ------------ | ------------- | ----------------------------------- |
+| `excerpt`    | Text          | Resumen del artículo                |
+| `coverImage` | Files & media | Imagen de portada                   |
+| `tags`       | Multi-select  | Categorías/tags del post            |
+| `author`     | Person        | Autor del artículo                  |
+| `readTime`   | Number        | Tiempo de lectura (se calcula auto) |
 
 ### Ejemplo de Configuración:
 
@@ -264,6 +274,7 @@ export const revalidate = 3600; // Revalidar cada 1 hora
 ```
 
 Para forzar una actualización inmediata:
+
 1. Reinicia el servidor de desarrollo
 2. Borra la carpeta `.next`
 3. Ejecuta `pnpm dev` nuevamente
