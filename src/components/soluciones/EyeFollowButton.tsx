@@ -34,7 +34,7 @@ export function EyeFollowButton() {
 
       // Convertir a coordenadas x, y para la pupila
       // La pupila se mueve dentro del ojo, limitada por el radio del ojo
-      const maxPupilMovement = 4; // Máximo movimiento de la pupila en píxeles (reducido para ojo más pequeño)
+      const maxPupilMovement = 2; // Máximo movimiento de la pupila en píxeles (reducido para que no toque el borde)
       const x = Math.cos(angle) * (distance / 60) * maxPupilMovement;
       const y = Math.sin(angle) * (distance / 60) * maxPupilMovement;
 
