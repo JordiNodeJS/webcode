@@ -34,7 +34,7 @@ export function EyeFollowButton() {
 
       // Convertir a coordenadas x, y para la pupila
       // La pupila se mueve dentro del ojo, limitada por el radio del ojo
-      const maxPupilMovement = 8; // Máximo movimiento de la pupila en píxeles
+      const maxPupilMovement = 4; // Máximo movimiento de la pupila en píxeles (reducido para ojo más pequeño)
       const x = Math.cos(angle) * (distance / 60) * maxPupilMovement;
       const y = Math.sin(angle) * (distance / 60) * maxPupilMovement;
 
@@ -92,29 +92,28 @@ export function EyeFollowButton() {
     >
       <Link href="/portfolio" ref={buttonRef}>
         {/* Ojo 3D personalizado */}
-        <div className="relative inline-block w-6 h-6 sm:w-8 sm:h-8 mr-2">
+        <div className="relative inline-block w-4 h-4 sm:w-5 sm:h-5 mr-2">
           {/* Ojo exterior con efecto 3D */}
           <div 
-            className="absolute inset-0 rounded-full border-2 border-primary/30 dark:border-primary/50"
+            className="absolute inset-0 rounded-full border border-primary/30 dark:border-primary/50"
             style={{
               background: `
                 radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.5) 20%, rgba(220,220,220,0.7) 40%, rgba(180,180,180,0.9) 100%),
                 linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(245,245,245,0.8) 50%, rgba(225,225,225,0.95) 100%)
               `,
               boxShadow: `
-                inset 0 2px 4px rgba(0,0,0,0.1),
-                inset 0 -2px 4px rgba(255,255,255,0.4),
-                0 2px 8px rgba(var(--primary-rgb), 0.2),
-                0 4px 12px rgba(var(--primary-rgb), 0.1),
-                var(--shadow-3d-sm)
+                inset 0 1px 2px rgba(0,0,0,0.1),
+                inset 0 -1px 2px rgba(255,255,255,0.4),
+                0 1px 3px rgba(var(--primary-rgb), 0.15),
+                0 2px 6px rgba(var(--primary-rgb), 0.1)
               `,
-              transform: 'perspective(100px) rotateX(5deg) rotateY(-2deg)'
+              transform: 'perspective(80px) rotateX(3deg) rotateY(-1deg)'
             }}
           />
           
           {/* Pupila que sigue el ratón */}
           <div 
-            className="absolute top-1/2 left-1/2 w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-transform duration-150 ease-out"
+            className="absolute top-1/2 left-1/2 w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-transform duration-150 ease-out"
             style={{
               transform: `translate(calc(-50% + ${pupilPosition.x}px), calc(-50% + ${pupilPosition.y}px))`,
               background: `
@@ -122,21 +121,21 @@ export function EyeFollowButton() {
                 linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(30,30,30,0.9) 100%)
               `,
               boxShadow: `
-                inset 0 1px 2px rgba(255,255,255,0.4),
-                inset 0 -1px 2px rgba(0,0,0,0.6),
-                0 1px 3px rgba(0,0,0,0.4),
-                0 0 4px rgba(var(--primary-rgb), 0.3)
+                inset 0 0.5px 1px rgba(255,255,255,0.4),
+                inset 0 -0.5px 1px rgba(0,0,0,0.6),
+                0 0.5px 2px rgba(0,0,0,0.4),
+                0 0 2px rgba(var(--primary-rgb), 0.3)
               `
             }}
           />
           
           {/* Reflejo en la pupila */}
           <div 
-            className="absolute top-1/2 left-1/2 w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full transition-transform duration-150 ease-out"
+            className="absolute top-1/2 left-1/2 w-0.5 h-0.5 sm:w-1 sm:h-1 rounded-full transition-transform duration-150 ease-out"
             style={{
               transform: `translate(calc(-50% + ${pupilPosition.x * 0.3}px), calc(-50% + ${pupilPosition.y * 0.3}px))`,
               background: 'radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.4) 100%)',
-              boxShadow: '0 0 2px rgba(255,255,255,0.9), 0 0 4px rgba(255,255,255,0.5)'
+              boxShadow: '0 0 1px rgba(255,255,255,0.9), 0 0 2px rgba(255,255,255,0.5)'
             }}
           />
         </div>
