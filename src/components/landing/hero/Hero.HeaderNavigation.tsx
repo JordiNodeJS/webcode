@@ -306,8 +306,8 @@ export function HeaderNavigation() {
 
           {/* Language Selector & Theme Toggle & Mobile Menu Button */}
           <div className="flex items-center space-x-2">
-            {/* Language Selector */}
-            <WSFadeIn delay={0.3}>
+            {/* Language Selector - Temporarily hidden */}
+            {/* <WSFadeIn delay={0.3}>
               <div
                 className={`hidden md:flex items-center space-x-1 bg-muted/40 backdrop-blur-sm transition-all duration-300 ${
                   isScrolled ? "rounded-md p-0.5 scale-90" : "rounded-lg p-1"
@@ -330,7 +330,7 @@ export function HeaderNavigation() {
                   </button>
                 ))}
               </div>
-            </WSFadeIn>
+            </WSFadeIn> */}
 
             {/* CTA Button removed per user request; keep header minimal (only anchor links). */}
 
