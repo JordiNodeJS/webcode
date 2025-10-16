@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import type { ReactNode } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronDown } from "@/lib/icons";
 import { cn } from "@/lib/utils";
 
@@ -10,6 +10,7 @@ interface FAQItemProps {
   question: string;
   answer: ReactNode;
   index: number;
+  id?: string;
 }
 
 /**
@@ -18,11 +19,39 @@ interface FAQItemProps {
  * Incluye animaciones WAS (WEBCODE Animation System) para expandir/contraer
  * con efectos suaves y accesibles.
  */
-export function FAQItem({ question, answer, index }: FAQItemProps) {
+export function FAQItem({ question, answer, index, id }: FAQItemProps) {
   const [isOpen, setIsOpen] = useState(false);
+  
+  // Generar ID único basado en la pregunta si no se proporciona
+  const faqId = id || `faq-${question.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')}`;
+  
+  // Función para abrir FAQ desde hash de URL
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash === `#${faqId}`) {
+        setIsOpen(true);
+        // Scroll suave al elemento después de un breve delay
+        setTimeout(() => {
+          document.getElementById(faqId)?.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'center'
+          });
+        }, 100);
+      }
+    };
+    
+    // Verificar hash inicial
+    handleHashChange();
+    
+    // Escuchar cambios en el hash
+    window.addEventListener('hashchange', handleHashChange);
+    
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, [faqId]);
 
   return (
     <motion.div
+      id={faqId}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}

@@ -269,7 +269,7 @@ export default function ConsultingPage() {
                 scenario: "Empresa Consolidada",
                 challenge: "Legacy tech que frena innovación",
                 solution:
-                  "Modernización gradual, integraciones y APIs. Transformación sin risk."
+                  "Modernización gradual, integraciones y APIs. Transformación sin riesgos."
               },
               {
                 scenario: "Tech Team Building",

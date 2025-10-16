@@ -22,13 +22,22 @@ export default function ServicesIndexPage() {
       title: "Desarrollo Web",
       subtitle: "Sitios web profesionales",
       description:
-        "Landing pages, webs corporativas, portfolios y aplicaciones web a medida con Next.js y React.",
+        "Desarrollo web moderno con Next.js 15 y React 19. Páginas web corporativas, landing pages de alta conversión y aplicaciones web escalables.",
       highlights: [
+        "Páginas web corporativas",
         "Landing pages de alta conversión",
-        "Webs corporativas profesionales",
-        "Aplicaciones web escalables",
-        "Portfolios impactantes"
+        "Portfolios profesionales",
+        "Aplicaciones web a medida"
       ],
+      subservices: [
+        "Páginas web corporativas",
+        "Landing pages de conversión",
+        "Portfolios profesionales", 
+        "Aplicaciones web escalables",
+        "Webs institucionales",
+        "Microsites y campañas"
+      ],
+      technologies: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS"],
       color: "primary"
     },
     {
@@ -37,13 +46,22 @@ export default function ServicesIndexPage() {
       title: "E-commerce",
       subtitle: "Tiendas online que venden",
       description:
-        "Tiendas online completas con Shopify, WooCommerce o desarrollo personalizado. Listas para vender desde el día uno.",
+        "Tiendas online completas con Shopify, WooCommerce o desarrollo personalizado. Optimizadas para conversión y listas para vender desde el día uno.",
       highlights: [
-        "Hasta 50k productos",
-        "Pagos integrados (Stripe, PayPal, Bizum)",
-        "Envíos automatizados",
-        "Panel de gestión completo"
+        "Tiendas Shopify profesionales",
+        "E-commerce WooCommerce",
+        "Desarrollo personalizado",
+        "Integración de pagos completa"
       ],
+      subservices: [
+        "Tiendas Shopify",
+        "E-commerce WooCommerce",
+        "Desarrollo personalizado",
+        "Integración de pagos (Stripe, PayPal, Bizum)",
+        "Gestión de inventario",
+        "Panel de administración"
+      ],
+      technologies: ["Shopify", "WooCommerce", "Next.js", "Stripe"],
       color: "secondary"
     },
     {
@@ -52,13 +70,22 @@ export default function ServicesIndexPage() {
       title: "SEO & Marketing",
       subtitle: "Más visibilidad, más clientes",
       description:
-        "Posicionamiento SEO, marketing de contenidos y estrategias digitales para aparecer en Google.",
+        "Posicionamiento SEO técnico, marketing de contenidos y estrategias digitales para aparecer en Google y generar tráfico cualificado.",
       highlights: [
+        "SEO técnico avanzado",
+        "SEO Local (Google Business)",
+        "Google Ads y Meta Ads",
+        "Marketing de contenidos"
+      ],
+      subservices: [
         "SEO On-Page y Off-Page",
         "SEO Local (Google Business)",
+        "Google Ads y Meta Ads",
         "Marketing de contenidos",
-        "Analytics y reportes"
+        "Analytics y reportes",
+        "Optimización de conversiones"
       ],
+      technologies: ["Google Analytics", "Search Console", "Google Ads", "Meta Ads"],
       color: "accent"
     },
     {
@@ -67,13 +94,22 @@ export default function ServicesIndexPage() {
       title: "Consultoría Tech",
       subtitle: "Estrategia y transformación",
       description:
-        "Consultoría tecnológica y estratégica. Arquitectura de software, optimización de procesos y transformación digital.",
+        "Consultoría tecnológica especializada. Arquitectura de software, optimización de procesos y transformación digital para empresas.",
       highlights: [
         "Arquitectura de software",
         "Transformación digital",
         "Optimización de procesos",
         "CTO as a Service"
       ],
+      subservices: [
+        "Arquitectura de software",
+        "Transformación digital",
+        "Optimización de procesos",
+        "CTO as a Service",
+        "Auditorías técnicas",
+        "Migración de sistemas"
+      ],
+      technologies: ["Next.js", "React", "Node.js", "Cloud Services"],
       color: "primary"
     }
   ];
@@ -105,7 +141,7 @@ export default function ServicesIndexPage() {
       <section className="container mx-auto max-w-6xl px-4 py-20">
         <div className="grid md:grid-cols-2 gap-8">
           {solutions.map((solution) => (
-            <SolucionCard key={solution.slug}>
+            <SolucionCard key={solution.slug} className="h-full">
               {/* Header */}
               <div className="flex items-start gap-4 mb-6">
                 <div className="text-5xl">{solution.icon}</div>
@@ -124,19 +160,48 @@ export default function ServicesIndexPage() {
                 {solution.description}
               </p>
 
-              {/* Highlights */}
-              <ul className="space-y-3 mb-8">
-                {solution.highlights.map((highlight) => (
-                  <li key={highlight} className="flex items-start gap-2">
+              {/* Technologies */}
+              <div className="mb-6">
+                <h4 className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-3">
+                  Tecnologías
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {solution.technologies.map((tech) => (
                     <span
-                      className={`text-${solution.color} font-bold text-lg`}
+                      key={tech}
+                      className="px-3 py-1 text-xs font-medium bg-muted/50 text-muted-foreground rounded-full border border-border/50"
                     >
-                      ✓
+                      {tech}
                     </span>
-                    <span className="font-medium">{highlight}</span>
-                  </li>
-                ))}
-              </ul>
+                  ))}
+                </div>
+              </div>
+
+              {/* Subservices */}
+              <div className="mb-8">
+                <h4 className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-3">
+                  Servicios Incluidos
+                </h4>
+                <ul className="space-y-2">
+                  {solution.subservices.slice(0, 4).map((service) => (
+                    <li key={service} className="flex items-start gap-2">
+                      <span
+                        className={`text-${solution.color} font-bold text-sm mt-0.5`}
+                      >
+                        ✓
+                      </span>
+                      <span className="text-sm font-medium text-foreground">
+                        {service}
+                      </span>
+                    </li>
+                  ))}
+                  {solution.subservices.length > 4 && (
+                    <li className="text-xs text-muted-foreground ml-4">
+                      +{solution.subservices.length - 4} servicios más
+                    </li>
+                  )}
+                </ul>
+              </div>
 
               {/* CTA */}
               <Button
@@ -158,6 +223,101 @@ export default function ServicesIndexPage() {
         </div>
       </section>
 
+      {/* Credentials & Case Study */}
+      <section className="bg-gradient-to-br from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10 py-20">
+        <div className="container mx-auto max-w-6xl px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              Casos de{" "}
+              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                Éxito
+              </span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Proyectos reales con resultados medibles
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
+            {/* MudanzasAndy Case Study */}
+            <SolucionCard className="bg-gradient-to-br from-primary/10 to-secondary/10 border-2 border-primary/30">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center text-2xl font-bold text-white">
+                  MA
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold mb-1">MudanzasAndy.es</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Empresa de mudanzas en Barcelona
+                  </p>
+                </div>
+              </div>
+              
+              <div className="space-y-4 mb-6">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="text-center p-3 bg-background/50 rounded-lg">
+                    <div className="text-2xl font-bold text-primary">+180%</div>
+                    <div className="text-xs text-muted-foreground">Tráfico orgánico</div>
+                  </div>
+                  <div className="text-center p-3 bg-background/50 rounded-lg">
+                    <div className="text-2xl font-bold text-secondary">95/100</div>
+                    <div className="text-xs text-muted-foreground">Core Web Vitals</div>
+                  </div>
+                </div>
+                
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    <span>SEO Local optimizado</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    <span>Formulario de contacto inteligente</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    <span>Diseño responsive perfecto</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <Button asChild variant="outline" className="w-full">
+                <a href="https://mudanzasandy.es" target="_blank" rel="noopener noreferrer">
+                  Ver Proyecto →
+                </a>
+              </Button>
+            </SolucionCard>
+
+            {/* Technology Stack */}
+            <SolucionCard>
+              <h3 className="text-xl font-bold mb-4">Stack Tecnológico</h3>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-semibold text-sm text-muted-foreground mb-2">Frontend</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {["Next.js 15", "React 19", "TypeScript", "Tailwind CSS"].map((tech) => (
+                      <span key={tech} className="px-2 py-1 text-xs bg-primary/10 text-primary rounded">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-sm text-muted-foreground mb-2">Performance</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {["Core Web Vitals", "SEO Optimizado", "Accesibilidad WCAG"].map((tech) => (
+                      <span key={tech} className="px-2 py-1 text-xs bg-secondary/10 text-secondary rounded">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </SolucionCard>
+          </div>
+        </div>
+      </section>
+
       {/* Why Choose Us */}
       <section className="bg-gradient-to-br from-accent/5 to-primary/5 dark:from-accent/10 dark:to-primary/10 py-20">
         <div className="container mx-auto max-w-6xl px-4">
@@ -172,13 +332,13 @@ export default function ServicesIndexPage() {
             {[
               {
                 icon: "⚡",
-                title: "Entrega Rápida",
-                description: "Webs en 2 semanas, tiendas en 2 meses. Sin esperas."
+                title: "Tecnología Moderna",
+                description: "Next.js 15 + React 19. Lo último en desarrollo web."
               },
               {
                 icon: "🎯",
-                title: "Resultados Reales",
-                description: "+245% tráfico orgánico medio en clientes SEO."
+                title: "Resultados Medibles",
+                description: "Core Web Vitals en verde, SEO optimizado desde día 1."
               },
               {
                 icon: "💰",
@@ -189,7 +349,7 @@ export default function ServicesIndexPage() {
                 icon: "🤝",
                 title: "Soporte Continuo",
                 description:
-                  "No te dejamos solo. Soporte post-lanzamiento incluido."
+                  "30 días de soporte premium incluido post-lanzamiento."
               }
             ].map((benefit) => (
               <SolucionCard key={benefit.title} className="text-center">

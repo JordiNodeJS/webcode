@@ -48,7 +48,7 @@ export default function SeoPage() {
                 size="lg"
                 className="font-bold text-lg px-8 py-6 hover:bg-gradient-to-r hover:from-accent/10 hover:to-primary/10 transition-all duration-300"
               >
-                <Link href="/blog">Ver Casos de Éxito</Link>
+                <Link href="/faqs#casos-exito">Ver Casos de Éxito</Link>
               </Button>
             </div>
           </div>
