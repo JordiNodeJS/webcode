@@ -37,5 +37,8 @@
 	"[json]": {
 		"editor.defaultFormatter": "vscode.json-language-features",
 		"editor.formatOnSave": true
+	},
+	"[postcss]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	}
 }
