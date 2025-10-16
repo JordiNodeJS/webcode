@@ -118,7 +118,9 @@ export default function SeoPage() {
                   "Meta tags y estructura",
                   "Velocidad de carga",
                   "Core Web Vitals"
-                ]
+                ],
+                link: "/soluciones/seo/on-page",
+                tag: "optimización técnica"
               },
               {
                 icon: "🔗",
@@ -144,7 +146,8 @@ export default function SeoPage() {
                   "Optimización local",
                   "Reseñas y reputación",
                   "Directorios locales"
-                ]
+                ],
+                link: "/soluciones/seo/local"
               },
               {
                 icon: "✍️",

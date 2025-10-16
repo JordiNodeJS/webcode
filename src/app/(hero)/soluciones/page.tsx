@@ -46,22 +46,22 @@ export default function ServicesIndexPage() {
       title: "E-commerce",
       subtitle: "Tiendas online que venden",
       description:
-        "Tiendas online completas con Shopify, WooCommerce o desarrollo personalizado. Optimizadas para conversión y listas para vender desde el día uno.",
+        "Tiendas online completas con Wix Studio, o desarrollo personalizado. Optimizadas para conversión y listas para vender desde el día uno.",
       highlights: [
-        "Tiendas Shopify profesionales",
-        "E-commerce WooCommerce",
+        "Tiendas profesionales",
+        "E-commerce WixStudio",
         "Desarrollo personalizado",
         "Integración de pagos completa"
       ],
       subservices: [
-        "Tiendas Shopify",
-        "E-commerce WooCommerce",
+        "Tiendas WixStudio",
+        "E-commerce Webflow",
         "Desarrollo personalizado",
-        "Integración de pagos (Stripe, PayPal, Bizum)",
+        "Integración de pagos (Stripe, PayPal)",
         "Gestión de inventario",
         "Panel de administración"
       ],
-      technologies: ["Shopify", "WooCommerce", "Next.js", "Stripe"],
+      technologies: ["Webflow", "WixStudio", "Next.js", "Stripe"],
       color: "secondary"
     },
     {

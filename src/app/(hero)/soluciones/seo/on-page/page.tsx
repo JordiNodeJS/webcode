@@ -4,17 +4,17 @@ import { SolucionCard } from "@/components/soluciones";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "SEO Off-Page & Link Building | WEBCODE",
+  title: "SEO On-Page & Optimización Técnica | WEBCODE",
   description:
-    "Estrategias avanzadas de SEO Off-Page, link building de calidad y construcción de autoridad de dominio para mejorar tu posicionamiento en Google.",
+    "Optimización SEO On-Page completa: contenido, estructura técnica, Core Web Vitals y experiencia de usuario para mejorar tu posicionamiento.",
   openGraph: {
-    title: "SEO Off-Page & Link Building | WEBCODE",
+    title: "SEO On-Page & Optimización Técnica | WEBCODE",
     description:
-      "Link building profesional, guest posting y estrategias de autoridad de dominio que generan resultados reales en SEO."
+      "Optimización técnica completa de tu web para motores de búsqueda y usuarios."
   }
 };
 
-export default function SeoOffPage() {
+export default function SeoOnPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -22,18 +22,18 @@ export default function SeoOffPage() {
         <div className="container mx-auto max-w-6xl px-4 relative z-10">
           <div className="max-w-3xl">
             <div className="inline-block mb-6 px-6 py-2 bg-gradient-to-r from-accent/20 to-primary/20 dark:from-accent/30 dark:to-primary/30 text-accent dark:text-accent font-bold uppercase text-sm tracking-wider rounded-full border border-accent/30">
-              SEO Off-Page
+              SEO On-Page
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-foreground">
-              Construye{" "}
+              Optimiza tu Web{" "}
               <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-                Autoridad de Dominio
+                Desde Dentro
               </span>{" "}
-              con Link Building Estratégico
+              para Google
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-              Estrategias de SEO Off-Page que posicionan tu marca como autoridad
-              en tu sector y multiplican tu visibilidad en Google.
+              Optimización técnica completa de contenido, estructura y experiencia 
+              de usuario que mejora tu posicionamiento en Google.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button
@@ -41,7 +41,7 @@ export default function SeoOffPage() {
                 size="lg"
                 className="font-bold text-lg px-8 py-6 bg-gradient-to-r from-accent to-primary hover:shadow-lg hover:scale-105 transition-all duration-300"
               >
-                <Link href="/contacto">Auditoría de Enlaces Gratis</Link>
+                <Link href="/contacto">Auditoría On-Page Gratis</Link>
               </Button>
               <Button
                 asChild
@@ -49,179 +49,201 @@ export default function SeoOffPage() {
                 size="lg"
                 className="font-bold text-lg px-8 py-6 hover:bg-gradient-to-r hover:from-accent/10 hover:to-primary/10 transition-all duration-300"
               >
-                <Link href="/faqs#casos-exito">Ver Casos de Éxito</Link>
+                <Link href="/faqs#casos-exito">Ver Resultados</Link>
               </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why Off-Page SEO Matters */}
+      {/* What is On-Page SEO */}
       <section className="container mx-auto max-w-6xl px-4 py-20">
         <h2 className="text-3xl md:text-5xl font-bold mb-6 text-center">
-          ¿Por Qué el{" "}
+          ¿Qué es el{" "}
           <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-            SEO Off-Page
-          </span>{" "}
-          es Crucial?
+            SEO On-Page?
+          </span>
         </h2>
         <p className="text-center text-muted-foreground mb-12 text-lg max-w-3xl mx-auto">
-          Google considera los enlaces externos como "votos de confianza". 
-          Cuantos más enlaces de calidad apunten a tu sitio, mayor será tu autoridad y posicionamiento.
+          El SEO On-Page es la optimización de todos los elementos dentro de tu web 
+          que Google puede "ver" y analizar para determinar la relevancia y calidad de tu contenido.
         </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            {
-              icon: "🏆",
-              title: "Autoridad de Dominio",
-              description: "Los enlaces de calidad aumentan tu DA/DR y credibilidad ante Google.",
-              impact: "Mejora del 40-60% en rankings"
-            },
-            {
-              icon: "🚀",
-              title: "Tráfico de Referencia",
-              description: "Los enlaces generan tráfico directo desde sitios relevantes en tu sector.",
-              impact: "15-25% más tráfico orgánico"
-            },
-            {
-              icon: "🎯",
-              title: "Relevancia Temática",
-              description: "Enlaces contextuales mejoran la relevancia de tu sitio para keywords específicas.",
-              impact: "Rankings más estables"
-            },
-            {
-              icon: "⚡",
-              title: "Velocidad de Indexación",
-              description: "Google indexa más rápido sitios con enlaces de autoridad.",
-              impact: "Indexación 3x más rápida"
-            },
-            {
-              icon: "🛡️",
-              title: "Resistencia a Algoritmos",
-              description: "Una estrategia de enlaces sólida protege contra penalizaciones.",
-              impact: "Mayor estabilidad SEO"
-            },
-            {
-              icon: "💰",
-              title: "ROI a Largo Plazo",
-              description: "Los enlaces de calidad generan resultados duraderos sin coste recurrente.",
-              impact: "ROI del 300-500% anual"
-            }
-          ].map((benefit) => (
-            <SolucionCard key={benefit.title}>
-              <div className="text-5xl mb-4">{benefit.icon}</div>
-              <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
-              <p className="text-muted-foreground mb-4 text-sm">
-                {benefit.description}
-              </p>
-              <div className="text-sm font-bold bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-                {benefit.impact}
+        <div className="grid md:grid-cols-2 gap-8">
+          <SolucionCard>
+            <h3 className="text-xl font-bold mb-4">Elementos que Optimizamos</h3>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-start gap-3">
+                <span className="text-accent font-bold mt-1">📝</span>
+                <div>
+                  <span className="font-semibold">Contenido de calidad:</span> Artículos, páginas de servicio y descripciones optimizadas
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-accent font-bold mt-1">🏷️</span>
+                <div>
+                  <span className="font-semibold">Meta tags:</span> Títulos, descripciones y keywords estratégicas
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-accent font-bold mt-1">🔗</span>
+                <div>
+                  <span className="font-semibold">Estructura interna:</span> Enlaces internos, navegación y arquitectura de información
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-accent font-bold mt-1">⚡</span>
+                <div>
+                  <span className="font-semibold">Velocidad:</span> Core Web Vitals y optimización de rendimiento
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-accent font-bold mt-1">📱</span>
+                <div>
+                  <span className="font-semibold">Experiencia móvil:</span> Diseño responsive y usabilidad
+                </div>
+              </li>
+            </ul>
+          </SolucionCard>
+
+          <SolucionCard>
+            <h3 className="text-xl font-bold mb-4">Por Qué es Fundamental</h3>
+            <div className="space-y-4">
+              <div className="p-4 bg-gradient-to-r from-accent/10 to-primary/10 rounded-lg">
+                <h4 className="font-bold text-accent mb-2">🎯 Control Total</h4>
+                <p className="text-sm text-muted-foreground">
+                  Tienes control completo sobre todos los elementos de tu web, a diferencia del SEO Off-Page.
+                </p>
               </div>
-            </SolucionCard>
-          ))}
+              <div className="p-4 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg">
+                <h4 className="font-bold text-primary mb-2">⚡ Resultados Rápidos</h4>
+                <p className="text-sm text-muted-foreground">
+                  Los cambios On-Page se reflejan en Google en 2-4 semanas, mucho más rápido que el link building.
+                </p>
+              </div>
+              <div className="p-4 bg-gradient-to-r from-secondary/10 to-accent/10 rounded-lg">
+                <h4 className="font-bold text-secondary mb-2">💰 ROI Inmediato</h4>
+                <p className="text-sm text-muted-foreground">
+                  Mejoras la experiencia de usuario y conversiones desde el primer día.
+                </p>
+              </div>
+            </div>
+          </SolucionCard>
         </div>
       </section>
 
-      {/* Link Building Strategies */}
+      {/* On-Page SEO Elements */}
       <section className="bg-gradient-to-br from-secondary/5 to-primary/5 dark:from-secondary/10 dark:to-primary/10 py-20">
         <div className="container mx-auto max-w-6xl px-4">
           <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">
-            Estrategias de{" "}
+            Elementos de{" "}
             <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-              Link Building
+              SEO On-Page
             </span>
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                strategy: "Guest Posting Estratégico",
-                description: "Artículos de valor en blogs relevantes de tu sector.",
-                process: [
-                  "Identificación de blogs de autoridad",
-                  "Creación de contenido de alta calidad",
-                  "Negociación de enlaces contextuales",
-                  "Seguimiento y medición de resultados"
+                icon: "📝",
+                title: "Optimización de Contenido",
+                description: "Creación y optimización de contenido relevante y de calidad.",
+                elements: [
+                  "Keyword research y densidad óptima",
+                  "Estructura H1, H2, H3 jerárquica",
+                  "Contenido original y de valor",
+                  "Long-tail keywords estratégicas",
+                  "Actualización regular de contenido"
                 ],
-                results: "5-15 enlaces de calidad/mes"
+                impact: "Mejora del 60-80% en relevancia"
               },
               {
-                strategy: "Link Building de Recursos",
-                description: "Inclusión en directorios y listas de recursos del sector.",
-                process: [
-                  "Auditoría de directorios relevantes",
-                  "Optimización de perfiles empresariales",
-                  "Solicitud en listas de recursos",
-                  "Mantenimiento de presencia activa"
+                icon: "🏷️",
+                title: "Meta Tags & Schema",
+                description: "Optimización de metadatos para motores de búsqueda.",
+                elements: [
+                  "Títulos únicos y atractivos (50-60 chars)",
+                  "Meta descripciones optimizadas",
+                  "Schema markup estructurado",
+                  "Open Graph para redes sociales",
+                  "Canonical URLs correctas"
                 ],
-                results: "20-40 enlaces dofollow/mes"
+                impact: "Mejora del CTR del 25-40%"
               },
               {
-                strategy: "Digital PR & Menciones",
-                description: "Estrategia de relaciones públicas digitales para menciones naturales.",
-                process: [
-                  "Identificación de oportunidades de noticias",
-                  "Creación de contenido newsworthy",
-                  "Outreach a periodistas y bloggers",
-                  "Conversión de menciones en enlaces"
+                icon: "🔗",
+                title: "Estructura de Enlaces",
+                description: "Arquitectura de enlaces internos y navegación.",
+                elements: [
+                  "Enlaces internos estratégicos",
+                  "Anchor text optimizado",
+                  "Navegación clara y lógica",
+                  "Breadcrumbs implementados",
+                  "Sitemap XML actualizado"
                 ],
-                results: "2-5 enlaces de alta autoridad/mes"
+                impact: "Distribución de autoridad interna"
               },
               {
-                strategy: "Broken Link Building",
-                description: "Identificación y reemplazo de enlaces rotos con tu contenido.",
-                process: [
-                  "Auditoría de sitios relevantes",
-                  "Identificación de enlaces rotos",
-                  "Creación de contenido de reemplazo",
-                  "Outreach personalizado a webmasters"
+                icon: "⚡",
+                title: "Core Web Vitals",
+                description: "Optimización de velocidad y experiencia de usuario.",
+                elements: [
+                  "LCP (Largest Contentful Paint) < 2.5s",
+                  "FID (First Input Delay) < 100ms",
+                  "CLS (Cumulative Layout Shift) < 0.1",
+                  "Optimización de imágenes",
+                  "Minificación de código"
                 ],
-                results: "10-25 enlaces recuperados/mes"
+                impact: "Factor de ranking desde 2021"
               },
               {
-                strategy: "Skyscraper Technique",
-                description: "Creación de contenido superior para reemplazar contenido ranking.",
-                process: [
-                  "Análisis de contenido top ranking",
-                  "Creación de contenido mejorado",
-                  "Identificación de sitios que enlazan al original",
-                  "Outreach con el nuevo contenido"
+                icon: "📱",
+                title: "Mobile-First Design",
+                description: "Optimización completa para dispositivos móviles.",
+                elements: [
+                  "Diseño responsive perfecto",
+                  "Touch targets de 44px mínimo",
+                  "Texto legible sin zoom",
+                  "Velocidad móvil optimizada",
+                  "AMP cuando sea necesario"
                 ],
-                results: "3-8 enlaces de alta calidad/mes"
+                impact: "70% del tráfico es móvil"
               },
               {
-                strategy: "Partnerships & Colaboraciones",
-                description: "Colaboraciones estratégicas para enlaces mutuos de calidad.",
-                process: [
-                  "Identificación de partners complementarios",
-                  "Propuesta de colaboraciones de valor",
-                  "Creación de contenido conjunto",
-                  "Estrategia de enlaces recíprocos"
+                icon: "🔍",
+                title: "SEO Técnico",
+                description: "Aspectos técnicos fundamentales para SEO.",
+                elements: [
+                  "HTTPS y certificados SSL",
+                  "Robots.txt optimizado",
+                  "URLs limpias y descriptivas",
+                  "404 errors corregidos",
+                  "Duplicate content eliminado"
                 ],
-                results: "Enlaces sostenibles a largo plazo"
+                impact: "Base sólida para rankings"
               }
-            ].map((strategy) => (
-              <SolucionCard key={strategy.strategy}>
+            ].map((element) => (
+              <SolucionCard key={element.title}>
+                <div className="text-5xl mb-4">{element.icon}</div>
                 <h3 className="text-xl font-bold mb-3 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-                  {strategy.strategy}
+                  {element.title}
                 </h3>
                 <p className="text-muted-foreground mb-4 text-sm">
-                  {strategy.description}
+                  {element.description}
                 </p>
                 <div className="mb-4">
-                  <h4 className="font-bold text-sm mb-2">Proceso:</h4>
+                  <h4 className="font-bold text-sm mb-2">Elementos incluidos:</h4>
                   <ul className="space-y-1 text-xs">
-                    {strategy.process.map((step) => (
-                      <li key={step} className="flex items-start gap-2">
+                    {element.elements.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
                         <span className="text-accent font-bold">→</span>
-                        <span>{step}</span>
+                        <span>{item}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div className="text-sm font-bold bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
-                  Resultado: {strategy.results}
+                  Impacto: {element.impact}
                 </div>
               </SolucionCard>
             ))}
@@ -241,24 +263,24 @@ export default function SeoOffPage() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             {
-              tool: "Ahrefs",
-              purpose: "Análisis de backlinks y competencia",
-              features: ["Site Explorer", "Content Explorer", "Keyword Gap", "Link Intersect"]
+              tool: "Google Search Console",
+              purpose: "Monitoreo y optimización de presencia en Google",
+              features: ["Indexación", "Core Web Vitals", "Search Performance", "Mobile Usability"]
             },
             {
-              tool: "SEMrush",
-              purpose: "Investigación de enlaces y oportunidades",
-              features: ["Backlink Analytics", "Link Building Tool", "Brand Monitoring", "PR Monitoring"]
+              tool: "PageSpeed Insights",
+              purpose: "Análisis de rendimiento y Core Web Vitals",
+              features: ["LCP, FID, CLS", "Lab Data", "Field Data", "Optimización recomendada"]
             },
             {
-              tool: "Majestic",
-              purpose: "Métricas de autoridad y calidad",
-              features: ["Trust Flow", "Citation Flow", "Topical Trust", "Link Context"]
+              tool: "Screaming Frog",
+              purpose: "Auditoría técnica completa del sitio",
+              features: ["Crawl Analysis", "Technical SEO", "Broken Links", "Meta Tags Audit"]
             },
             {
-              tool: "Pitchbox",
-              purpose: "Automatización de outreach",
-              features: ["Prospect Discovery", "Email Templates", "Follow-up Sequences", "Campaign Tracking"]
+              tool: "Ahrefs Site Audit",
+              purpose: "Auditoría SEO integral y monitoreo",
+              features: ["On-Page SEO", "Technical Issues", "Content Analysis", "Competitor Analysis"]
             }
           ].map((tool) => (
             <SolucionCard key={tool.tool}>
@@ -292,19 +314,19 @@ export default function SeoOffPage() {
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {[
               {
-                metric: "+340%",
-                description: "Aumento promedio en Domain Authority en 12 meses",
-                timeframe: "12 meses"
+                metric: "+185%",
+                description: "Mejora promedio en Core Web Vitals",
+                timeframe: "4-6 semanas"
               },
               {
-                metric: "+180%",
-                description: "Incremento en tráfico de referencia",
-                timeframe: "6 meses"
+                metric: "+320%",
+                description: "Aumento en tráfico orgánico",
+                timeframe: "3 meses"
               },
               {
-                metric: "Top 5",
-                description: "Posiciones en keywords competitivas",
-                timeframe: "8 meses"
+                metric: "95/100",
+                description: "Puntuación promedio en PageSpeed",
+                timeframe: "Optimización completa"
               }
             ].map((result) => (
               <SolucionCard key={result.metric}>
@@ -319,45 +341,45 @@ export default function SeoOffPage() {
 
           {/* Case Study */}
           <SolucionCard>
-            <h3 className="text-2xl font-bold mb-4">Caso de Éxito: E-commerce de Moda</h3>
+            <h3 className="text-2xl font-bold mb-4">Caso de Éxito: Clínica Dental</h3>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <h4 className="font-bold mb-2">Situación Inicial:</h4>
                 <ul className="text-sm space-y-1 text-muted-foreground">
-                  <li>• DA: 15, tráfico orgánico: 2.000 visitas/mes</li>
-                  <li>• Competidores con DA 40+ dominando rankings</li>
-                  <li>• Presupuesto limitado para publicidad</li>
-                  <li>• Necesidad de aumentar autoridad rápidamente</li>
+                  <li>• Core Web Vitals en rojo (LCP: 4.2s)</li>
+                  <li>• Meta tags duplicados en 80% de páginas</li>
+                  <li>• Contenido sin optimizar para keywords locales</li>
+                  <li>• Estructura de enlaces internos deficiente</li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-bold mb-2">Estrategia Implementada:</h4>
+                <h4 className="font-bold mb-2">Optimizaciones Implementadas:</h4>
                 <ul className="text-sm space-y-1 text-muted-foreground">
-                  <li>• Guest posting en 15 blogs de moda</li>
-                  <li>• Broken link building en directorios</li>
-                  <li>• Digital PR con influencers del sector</li>
-                  <li>• Partnerships con marcas complementarias</li>
+                  <li>• Optimización completa de imágenes y código</li>
+                  <li>• Meta tags únicos y optimizados</li>
+                  <li>• Contenido optimizado para "dentista [ciudad]"</li>
+                  <li>• Arquitectura de enlaces internos mejorada</li>
                 </ul>
               </div>
             </div>
             <div className="mt-6 p-4 bg-gradient-to-r from-accent/10 to-primary/10 rounded-lg">
-              <h4 className="font-bold mb-2">Resultados en 8 meses:</h4>
+              <h4 className="font-bold mb-2">Resultados en 6 semanas:</h4>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                 <div>
-                  <div className="font-bold text-accent">DA: 45</div>
-                  <div className="text-muted-foreground">+200%</div>
+                  <div className="font-bold text-accent">LCP: 1.8s</div>
+                  <div className="text-muted-foreground">-57% tiempo</div>
                 </div>
                 <div>
-                  <div className="font-bold text-accent">8.500 visitas</div>
-                  <div className="text-muted-foreground">+325%</div>
+                  <div className="font-bold text-accent">+450% tráfico</div>
+                  <div className="text-muted-foreground">Local orgánico</div>
                 </div>
                 <div>
                   <div className="font-bold text-accent">Top 3</div>
-                  <div className="text-muted-foreground">15 keywords</div>
+                  <div className="text-muted-foreground">8 keywords locales</div>
                 </div>
                 <div>
-                  <div className="font-bold text-accent">+€45K</div>
-                  <div className="text-muted-foreground">Ingresos mensuales</div>
+                  <div className="font-bold text-accent">+65%</div>
+                  <div className="text-muted-foreground">Consultas online</div>
                 </div>
               </div>
             </div>
@@ -370,7 +392,7 @@ export default function SeoOffPage() {
         <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">
           Nuestro Proceso de{" "}
           <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-            Link Building
+            Optimización
           </span>
         </h2>
 
@@ -378,27 +400,27 @@ export default function SeoOffPage() {
           {[
             {
               num: "01",
-              title: "Auditoría de Enlaces",
-              desc: "Análisis completo de tu perfil de enlaces actual, competencia y oportunidades.",
+              title: "Auditoría Técnica",
+              desc: "Análisis completo de tu web: velocidad, estructura, contenido y aspectos técnicos.",
               duration: "1-2 semanas"
             },
             {
               num: "02",
-              title: "Estrategia Personalizada",
-              desc: "Plan de link building adaptado a tu sector, objetivos y presupuesto.",
-              duration: "1 semana"
+              title: "Plan de Optimización",
+              desc: "Estrategia personalizada con prioridades, timeline y objetivos medibles.",
+              duration: "3-5 días"
             },
             {
               num: "03",
-              title: "Prospección & Outreach",
-              desc: "Identificación de oportunidades y campañas de outreach personalizadas.",
-              duration: "Ongoing"
+              title: "Implementación",
+              desc: "Optimización de contenido, estructura técnica y elementos SEO On-Page.",
+              duration: "2-4 semanas"
             },
             {
               num: "04",
-              title: "Medición & Optimización",
-              desc: "Seguimiento de resultados, ajustes estratégicos y reportes mensuales.",
-              duration: "Mensual"
+              title: "Monitoreo & Ajustes",
+              desc: "Seguimiento de resultados, ajustes continuos y reportes de progreso.",
+              duration: "Continuo"
             }
           ].map((step) => (
             <SolucionCard key={step.num}>
@@ -421,53 +443,55 @@ export default function SeoOffPage() {
           <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">
             Planes de{" "}
             <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-              Link Building
+              SEO On-Page
             </span>
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "Link Building Básico",
-                price: "€800/mes",
+                title: "Optimización Básica",
+                price: "€400",
                 description: "Perfecto para sitios pequeños y startups",
                 features: [
-                  "5-10 enlaces de calidad/mes",
-                  "Guest posting básico",
-                  "Inclusión en directorios",
-                  "Informe mensual",
+                  "Auditoría técnica completa",
+                  "Optimización de meta tags",
+                  "Core Web Vitals básico",
+                  "Estructura de enlaces internos",
+                  "Informe de optimización",
                   "Soporte email"
                 ],
                 popular: false
               },
               {
-                title: "Link Building Profesional",
-                price: "€1.500/mes",
+                title: "Optimización Profesional",
+                price: "€800",
                 description: "Para empresas en crecimiento",
                 features: [
-                  "15-25 enlaces de calidad/mes",
-                  "Guest posting premium",
-                  "Digital PR básico",
-                  "Broken link building",
-                  "Keyword research incluido",
+                  "Todo lo de Básica",
+                  "Optimización de contenido",
+                  "Core Web Vitals avanzado",
+                  "Schema markup completo",
+                  "Mobile optimization",
+                  "SEO técnico completo",
                   "Soporte prioritario",
-                  "Call mensual"
+                  "Call de seguimiento"
                 ],
                 popular: true
               },
               {
-                title: "Link Building Enterprise",
-                price: "€2.800/mes",
-                description: "Para sitios competitivos y grandes",
+                title: "Optimización Enterprise",
+                price: "€1.500",
+                description: "Para sitios grandes y competitivos",
                 features: [
-                  "30-50 enlaces de calidad/mes",
-                  "Estrategia completa multi-canal",
-                  "Digital PR avanzado",
-                  "Partnerships estratégicos",
-                  "Skyscraper technique",
+                  "Todo lo de Profesional",
+                  "Optimización completa multi-página",
+                  "A/B testing de elementos SEO",
+                  "Monitoreo continuo",
+                  "Reporting mensual",
+                  "Consultoría estratégica",
                   "Account manager dedicado",
-                  "Reporting semanal",
-                  "Consultoría estratégica"
+                  "Optimizaciones ilimitadas"
                 ],
                 popular: false
               }
@@ -499,8 +523,8 @@ export default function SeoOffPage() {
 
           <div className="mt-12 text-center">
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              También ofrecemos proyectos puntuales de link building y auditorías de enlaces. 
-              Contratos flexibles sin permanencia.
+              También ofrecemos auditorías puntuales y proyectos de optimización específicos. 
+              Sin permanencia, solo pagas por lo que necesitas.
             </p>
             <Button
               asChild
@@ -522,11 +546,11 @@ export default function SeoOffPage() {
 
         <div className="container relative z-10 mx-auto max-w-4xl px-4 text-center">
           <h2 className="neon-cyan-title mb-6 text-3xl font-display font-bold md:text-5xl lg:text-6xl">
-            ¿Listo para Construir Autoridad?
+            ¿Listo para Optimizar tu Web?
           </h2>
           <p className="mb-8 text-lg font-sans md:text-xl lg:text-2xl text-slate-600 dark:text-white/95">
-            Auditoría gratuita de tu perfil de enlaces y propuesta personalizada 
-            de link building sin compromiso.
+            Auditoría gratuita de SEO On-Page y propuesta de optimización 
+            personalizada sin compromiso.
           </p>
           <Button
             asChild
@@ -545,7 +569,7 @@ export default function SeoOffPage() {
               boxShadow: "var(--shadow-3d-sm)"
             }}
           >
-            <Link href="/contacto">Solicitar Auditoría de Enlaces</Link>
+            <Link href="/contacto">Solicitar Auditoría On-Page</Link>
           </Button>
         </div>
       </section>
