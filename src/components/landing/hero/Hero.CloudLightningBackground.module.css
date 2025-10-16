@@ -1,40 +1,40 @@
 .container {
-  contain: layout style paint;
-  will-change: auto;
-  content-visibility: auto;
-  contain-intrinsic-size: 100vw 100vh;
+	contain: layout style paint;
+	will-change: auto;
+	content-visibility: auto;
+	contain-intrinsic-size: 100vw 100vh;
 }
 
 .canvas {
-  image-rendering: crisp-edges;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-context-menu: none;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+	image-rendering: crisp-edges;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-context-menu: none;
+	transform: translateZ(0);
+	-webkit-transform: translateZ(0);
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
 }
 
 @media (max-width: 480px) {
-  .container {
-    opacity: 0.7;
-  }
-  .canvas {
-    image-rendering: pixelated;
-  }
+	.container {
+		opacity: 0.7;
+	}
+	.canvas {
+		image-rendering: pixelated;
+	}
 }
 
 @media (max-width: 768px) {
-  .container {
-    opacity: 0.8;
-  }
+	.container {
+		opacity: 0.8;
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .container {
-    opacity: 0.6;
-  }
+	.container {
+		opacity: 0.6;
+	}
 }

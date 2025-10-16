@@ -11,91 +11,91 @@ import { EmojiToSvg } from "./emoji-to-svg";
  */
 
 interface AutoEmojiReplacerProps {
-  children: React.ReactNode;
-  size?: "sm" | "md" | "lg" | "xl";
-  variant?: "default" | "primary" | "secondary" | "accent";
-  className?: string;
-  inline?: boolean;
+	children: React.ReactNode;
+	size?: "sm" | "md" | "lg" | "xl";
+	variant?: "default" | "primary" | "secondary" | "accent";
+	className?: string;
+	inline?: boolean;
 }
 
 export function AutoEmojiReplacer({
-  children,
-  size = "md",
-  variant = "default",
-  className = "",
-  inline = false,
+	children,
+	size = "md",
+	variant = "default",
+	className = "",
+	inline = false,
 }: AutoEmojiReplacerProps) {
-  const [processedContent, setProcessedContent] =
-    useState<React.ReactNode>(children);
+	const [processedContent, setProcessedContent] =
+		useState<React.ReactNode>(children);
 
-  useEffect(() => {
-    // Procesar el contenido para reemplazar emoticones
-    const processContent = (node: React.ReactNode): React.ReactNode => {
-      if (typeof node === "string") {
-        // Detectar emoticones en strings y reemplazarlos
-        return (
-          <EmojiToSvg size={size} variant={variant} inline={inline}>
-            {node}
-          </EmojiToSvg>
-        );
-      }
+	useEffect(() => {
+		// Procesar el contenido para reemplazar emoticones
+		const processContent = (node: React.ReactNode): React.ReactNode => {
+			if (typeof node === "string") {
+				// Detectar emoticones en strings y reemplazarlos
+				return (
+					<EmojiToSvg size={size} variant={variant} inline={inline}>
+						{node}
+					</EmojiToSvg>
+				);
+			}
 
-      if (React.isValidElement(node)) {
-        const element = node as React.ReactElement<{
-          children?: React.ReactNode;
-        }>;
-        if (element.props?.children) {
-          const processedChildren = React.Children.map(
-            element.props.children,
-            processContent,
-          );
-          return React.cloneElement(element, {
-            ...element.props,
-            children: processedChildren,
-          });
-        }
-        return element;
-      }
+			if (React.isValidElement(node)) {
+				const element = node as React.ReactElement<{
+					children?: React.ReactNode;
+				}>;
+				if (element.props?.children) {
+					const processedChildren = React.Children.map(
+						element.props.children,
+						processContent,
+					);
+					return React.cloneElement(element, {
+						...element.props,
+						children: processedChildren,
+					});
+				}
+				return element;
+			}
 
-      if (Array.isArray(node)) {
-        const processed = node.map(processContent);
-        return React.Children.toArray(processed);
-      }
+			if (Array.isArray(node)) {
+				const processed = node.map(processContent);
+				return React.Children.toArray(processed);
+			}
 
-      return node;
-    };
+			return node;
+		};
 
-    setProcessedContent(processContent(children));
-  }, [children, size, variant, inline]);
+		setProcessedContent(processContent(children));
+	}, [children, size, variant, inline]);
 
-  if (inline) {
-    return <span className={className}>{processedContent}</span>;
-  }
+	if (inline) {
+		return <span className={className}>{processedContent}</span>;
+	}
 
-  return <div className={className}>{processedContent}</div>;
+	return <div className={className}>{processedContent}</div>;
 }
 
 /**
  * Hook para reemplazar emoticones en cualquier contenido
  */
 export function useAutoEmojiReplacement() {
-  const replaceAllEmojis = (
-    content: string,
-    options: {
-      size?: "sm" | "md" | "lg" | "xl";
-      variant?: "default" | "primary" | "secondary" | "accent";
-    } = {},
-  ) => {
-    return (
-      <AutoEmojiReplacer
-        size={options.size || "md"}
-        variant={options.variant || "default"}
-        inline
-      >
-        {content}
-      </AutoEmojiReplacer>
-    );
-  };
+	const replaceAllEmojis = (
+		content: string,
+		options: {
+			size?: "sm" | "md" | "lg" | "xl";
+			variant?: "default" | "primary" | "secondary" | "accent";
+		} = {},
+	) => {
+		return (
+			<AutoEmojiReplacer
+				size={options.size || "md"}
+				variant={options.variant || "default"}
+				inline
+			>
+				{content}
+			</AutoEmojiReplacer>
+		);
+	};
 
-  return { replaceAllEmojis };
+	return { replaceAllEmojis };
 }
