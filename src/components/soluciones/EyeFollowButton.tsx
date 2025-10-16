@@ -8,6 +8,7 @@ export function EyeFollowButton() {
   const buttonRef = useRef<HTMLAnchorElement>(null);
   const [pupilPosition, setPupilPosition] = useState({ x: 0, y: 0 });
   const animationFrameRef = useRef<number | undefined>(undefined);
+
   const lastMousePosition = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
