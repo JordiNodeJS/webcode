@@ -53,85 +53,133 @@ export const metadata: Metadata = generateSEOMetadata({
   canonical: "https://webcode.es/proceso"
 });
 
-// Datos de las fases
+// Datos de las fases - Expandido a 6 fases como La Teva Web
 const fases = [
   {
     numero: 1,
-    titulo: "Discovery & Strategy",
+    titulo: "Discovery & Briefing",
     duracion: "Semana 1",
-    descripcion: "Análisis profundo de tu proyecto y definición estratégica",
+    descripcion: "Análisis profundo de tu proyecto, objetivos y definición estratégica completa",
     actividades: [
-      "Análisis de necesidades del negocio",
-      "Research de competencia y mercado",
-      "Definición de objetivos y KPIs",
-      "Arquitectura de información"
+      "Entrevistas y cuestionarios con stakeholders",
+      "Análisis de competencia y mercado",
+      "Definición de objetivos y KPIs SMART",
+      "Arquitectura de información y sitemap",
+      "Recopilación de contenidos y assets"
     ],
     entregables: [
-      "Estrategia digital completa",
-      "Wireframes interactivos",
-      "Cronograma detallado",
-      "Brief técnico"
+      "Documento de briefing completo",
+      "Estrategia digital detallada",
+      "Análisis de competencia",
+      "Cronograma detallado del proyecto"
     ],
-    participacion: "8-10 horas (discovery, content review)"
+    participacion: "8-10 horas (discovery, content review)",
+    icono: "📋"
   },
   {
     numero: 2,
-    titulo: "Diseño & Experiencia",
-    duracion: "Semana 2-3",
-    descripcion:
-      "Creación de interfaces visuales y experiencia de usuario optimizada",
+    titulo: "Estrategia & Arquitectura",
+    duracion: "Semana 1-2",
+    descripcion: "Definición de arquitectura técnica, stack tecnológico y especificaciones funcionales",
     actividades: [
-      "Design system personalizado",
-      "Wireframes y flujos básicos",
-      "Mockups high-fidelity",
-      "Testing de usabilidad + Microsoft Clarity"
+      "Arquitectura de información detallada",
+      "Especificación de funcionalidades",
+      "Definición de stack tecnológico (Next.js 15 + React 19)",
+      "Identificación de integraciones necesarias",
+      "Planificación de fases y entregables"
     ],
     entregables: [
-      "Diseños finales listos",
-      "Guía de estilo completa",
-      "Wireframes validados",
-      "Report de testing UX"
+      "Documento de especificaciones técnicas",
+      "Arquitectura de información",
+      "Mapa de sitio (sitemap)",
+      "Brief técnico completo"
     ],
-    participacion: "2-3 horas/semana (design feedback)"
+    participacion: "4-6 horas (revisiones técnicas)",
+    icono: "🏗️"
   },
   {
     numero: 3,
-    titulo: "Desarrollo & Integración",
-    duracion: "Semana 3-5",
-    descripcion:
-      "Implementación técnica con código limpio y tecnología moderna",
+    titulo: "Diseño UX/UI",
+    duracion: "Semana 2-3",
+    descripcion: "Creación de interfaces visuales, sistema de diseño y experiencia de usuario optimizada",
     actividades: [
-      "Código limpio y escalable (Next.js 15 + React 19)",
-      "Integración de herramientas (Analytics, pagos, APIs)",
-      "Testing automatizado",
-      "Optimización de performance"
+      "Design system personalizado",
+      "Wireframes de baja y alta fidelidad",
+      "Mockups high-fidelity",
+      "Prototipo interactivo",
+      "Testing de usabilidad + Microsoft Clarity"
     ],
     entregables: [
-      "Sitio completamente funcional",
-      "Panel de administración",
-      "Suite de testing",
-      "Documentación técnica"
+      "Diseños finales listos para desarrollo",
+      "Guía de estilo completa",
+      "Wireframes validados",
+      "Prototipo navegable"
     ],
-    participacion: "1-2 horas/semana (testing, reviews)"
+    participacion: "2-3 horas/semana (design feedback)",
+    icono: "🎨"
   },
   {
     numero: 4,
-    titulo: "Launch & Optimización",
-    duracion: "Semana 6",
-    descripcion: "Despliegue en producción y formación completa del equipo",
+    titulo: "Desarrollo & Integración",
+    duracion: "Semana 3-5",
+    descripcion: "Implementación técnica con código limpio, escalable y tecnología moderna",
+    actividades: [
+      "Desarrollo front-end y back-end (Next.js 15 + React 19)",
+      "Integración de APIs y servicios externos",
+      "Implementación de funcionalidades core",
+      "Testing automatizado y manual",
+      "Optimización de performance (Core Web Vitals)"
+    ],
+    entregables: [
+      "Sitio web completamente funcional",
+      "Panel de administración",
+      "Suite de testing automatizado",
+      "Documentación técnica completa"
+    ],
+    participacion: "1-2 horas/semana (testing, reviews)",
+    icono: "⚡"
+  },
+  {
+    numero: 5,
+    titulo: "Testing & Optimización",
+    duracion: "Semana 5-6",
+    descripcion: "Pruebas exhaustivas, optimización de rendimiento y validación final",
+    actividades: [
+      "Testing funcional completo",
+      "Pruebas de rendimiento (Core Web Vitals)",
+      "Testing cross-browser y dispositivos",
+      "Validación de accesibilidad (WCAG 2.1 AA)",
+      "Revisión y feedback del cliente"
+    ],
+    entregables: [
+      "Reporte de testing completo",
+      "Correcciones implementadas",
+      "Validación de accesibilidad",
+      "Aprobación final del cliente"
+    ],
+    participacion: "3-4 horas (testing, validación)",
+    icono: "✅"
+  },
+  {
+    numero: 6,
+    titulo: "Launch & Soporte",
+    duracion: "Semana 6+",
+    descripcion: "Despliegue en producción, formación del equipo y soporte post-lanzamiento",
     actividades: [
       "Deploy en producción (blue-green deployment)",
       "Configuración de analytics completa",
       "Interpretación de analytics y herramientas",
-      "Training del cliente (presencial BCN o remoto)"
+      "Training del cliente (presencial BCN o remoto)",
+      "Soporte y mantenimiento continuo"
     ],
     entregables: [
-      "Sitio live y optimizado",
-      "Documentación gestión",
-      "Credenciales herramientas",
-      "30 días soporte premium"
+      "Sitio web live y optimizado",
+      "Documentación de gestión",
+      "Credenciales de herramientas",
+      "30 días de soporte premium incluido"
     ],
-    participacion: "4-6 horas (training, launch)"
+    participacion: "4-6 horas (training, launch)",
+    icono: "🚀"
   }
 ];
 
@@ -217,7 +265,7 @@ export default function ProcesoPage() {
 
               {/* Subtítulo */}
               <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Metodología probada en 4 fases para garantizar el éxito de tu
+                Metodología probada en 6 fases para garantizar el éxito de tu
                 proyecto digital
               </p>
 
