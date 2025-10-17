@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { EyeFollowButton, SolucionCard } from "@/components/soluciones";
+import { AnimatedRocketIcon } from "@/components/soluciones/AnimatedRocketIcon";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
@@ -144,7 +145,7 @@ export default function ServicesIndexPage() {
             <SolucionCard key={solution.slug} className="h-full">
               {/* Header */}
               <div className="flex items-start gap-4 mb-6">
-                <div className="text-5xl">{solution.icon}</div>
+                <AnimatedRocketIcon icon={solution.icon} slug={solution.slug} />
                 <div className="flex-1">
                   <h2 className="text-3xl font-black mb-1">{solution.title}</h2>
                   <p
