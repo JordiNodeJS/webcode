@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "E-commerce & Tiendas Online | WEBCODE",
   description:
-    "Creamos tiendas online profesionales con Shopify, WooCommerce y soluciones personalizadas. Optimizadas para vender desde el día uno.",
+    "Creamos tiendas online profesionales con Wix Studio, Webflow y soluciones personalizadas con Strapi. Optimizadas para vender desde el día uno.",
   openGraph: {
     title: "E-commerce & Tiendas Online | WEBCODE",
     description:
@@ -176,16 +176,16 @@ export default function EcommercePage() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                name: "Shopify",
+                name: "Wix Studio",
                 description:
                   "Perfecta para empezar rápido. Setup en días, no en meses.",
                 best: "Tiendas pequeñas-medianas"
               },
               {
-                name: "WooCommerce",
+                name: "Webflow",
                 description:
-                  "Máxima flexibilidad con WordPress. Open source y escalable.",
-                best: "Webs con blog integrado"
+                  "Diseño visual avanzado con CMS integrado. Máxima flexibilidad visual.",
+                best: "Tiendas con diseño único"
               },
               {
                 name: "Custom (Next.js)",
@@ -267,7 +267,7 @@ export default function EcommercePage() {
                 price: "Desde €2.500",
                 features: [
                   "Hasta 50 productos",
-                  "Shopify/WooCommerce",
+                  "Wix Studio/Webflow",
                   "Diseño semi-personalizado",
                   "Pagos y envíos integrados",
                   "Training básico"

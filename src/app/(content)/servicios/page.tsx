@@ -71,10 +71,10 @@ export default function ServiciosPage() {
               segura y rápida.
             </p>
             <Link
-              href="/contacto"
+              href="/soluciones/mantenimiento"
               className="text-primary underline font-medium"
             >
-              Consultar planes
+              Ver detalle
             </Link>
           </article>
         </section>

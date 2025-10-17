@@ -48,7 +48,7 @@ const HeroSection = () => {
           {/* Hero Content */}
           <WSFadeIn delay={0.1} sectionId="hero">
             <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-              <span className="block">Desarrollo Web</span>
+              <span className="block">Diseño Web</span>
               <span className="block text-gradient-webcode">
                 Profesional Barcelona
               </span>
@@ -57,9 +57,9 @@ const HeroSection = () => {
 
           <WSFadeIn delay={0.2} sectionId="hero">
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl">
-              Creamos experiencias digitales excepcionales con las últimas
-              tecnologías: Next.js, React, Astro y más para tu negocio en
-              Barcelona.
+              Creamos <strong className="text-foreground">páginas web únicas</strong> con diseños originales y 
+              <strong className="text-foreground"> 100% orientados a los resultados</strong> que buscas. 
+              Diseño web a medida para tu negocio en Barcelona.
             </p>
           </WSFadeIn>
 

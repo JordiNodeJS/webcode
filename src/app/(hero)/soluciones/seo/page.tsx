@@ -186,27 +186,29 @@ export default function SeoPage() {
                 ]
               }
             ].map((service) => (
-              <SolucionCard key={service.title} href={service.link}>
-                <div className="text-5xl mb-4">{service.icon}</div>
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-2xl font-bold">{service.title}</h3>
-                  {service.tag && (
-                    <span className="px-3 py-1 text-xs font-bold bg-gradient-to-r from-secondary/20 to-accent/20 text-secondary dark:text-accent rounded-full border border-secondary/30 dark:border-accent/30">
-                      {service.tag}
-                    </span>
-                  )}
-                </div>
-                <p className="text-muted-foreground mb-4">
-                  {service.description}
-                </p>
-                <ul className="space-y-2 text-sm">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2">
-                      <span className="text-accent font-bold">✓</span>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+              <SolucionCard key={service.title}>
+                <Link href={service.link || "#"}>
+                  <div className="text-5xl mb-4">{service.icon}</div>
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="text-2xl font-bold">{service.title}</h3>
+                    {service.tag && (
+                      <span className="px-3 py-1 text-xs font-bold bg-gradient-to-r from-secondary/20 to-accent/20 text-secondary dark:text-accent rounded-full border border-secondary/30 dark:border-accent/30">
+                        {service.tag}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-muted-foreground mb-4">
+                    {service.description}
+                  </p>
+                  <ul className="space-y-2 text-sm">
+                    {service.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-2">
+                        <span className="text-accent font-bold">✓</span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </Link>
               </SolucionCard>
             ))}
           </div>

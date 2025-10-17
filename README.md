@@ -1,30 +1,36 @@
 # 🚀 WEBCODE - Plataforma de Desarrollo Web Profesional
 
-> **Última actualización**: 15 Octubre 2025  
-> **Versión**: 1.0.0-beta  
-> **Estado**: Desarrollo Activo
+> **Última actualización**: 17 Octubre 2025  
+> **Versión**: 1.0.0-rc  
+> **Estado**: Release Candidate - Preparación para Producción
 
 WEBCODE es una plataforma integral de desarrollo web profesional para freelancers, PYMEs y startups en Barcelona y España. Ofrecemos soluciones digitales de calidad utilizando tecnologías de vanguardia 2025.
 
 ## 🛠️ Stack Tecnológico
 
 ### Core
-- **Next.js** 15.5.2 (App Router + Turbopack)
-- **React** 19.1.0 (Server Components)
+- **Next.js** 15.5.2 (App Router + Turbopack + React Compiler)
+- **React** 19.1.0 (Server Components + React Compiler)
 - **TypeScript** 5.x (strict mode)
-- **Tailwind CSS** 4.x (con sistema de diseño personalizado)
+- **Tailwind CSS** 4.x (con sistema de diseño WAS personalizado)
 
 ### UI & Animaciones
-- **shadcn/ui** - Componentes base
-- **Lucide React** 0.542.0 - Sistema de iconos
-- **Framer Motion** 12.23.12 - Animaciones
-- **Sistema WAS** (WebCode Animation System) - Animaciones propias
+- **shadcn/ui** - Componentes base (Button, Card, Input, Select, Dialog, etc.)
+- **Lucide React** 0.542.0 - Sistema de iconos completo
+- **Framer Motion** 12.23.12 - Animaciones avanzadas
+- **Sistema WAS** (WebCode Animation System) - Sistema de animaciones propio documentado
+
+### CMS & Backend
+- **Notion API** 5.1.0 - CMS para blog
+- **React Hook Form** 7.62.0 + **Zod** 4.1.5 - Validación de formularios
+- **Resend** 6.1.0 - Servicio de email
 
 ### Herramientas de Desarrollo
-- **pnpm** - Gestor de paquetes
-- **ESLint** 9.37.0 - Linting
-- **Prettier** 3.6.2 - Formateo
-- **Playwright** 1.55.0 - Testing
+- **pnpm** - Gestor de paquetes (obligatorio)
+- **ESLint** 9.37.0 - Linting con configuración estricta
+- **Prettier** 3.6.2 - Formateo de código
+- **Playwright** 1.55.0 - Testing E2E automatizado
+- **Lighthouse** 12.8.2 - Auditorías de performance
 
 ## 🚀 Inicio Rápido
 
@@ -54,6 +60,13 @@ pnpm lint         # Ejecutar ESLint
 pnpm lint:fix     # Corregir problemas de linting
 pnpm format       # Formatear código con Prettier
 pnpm kill         # Liberar puertos 3000-3002
+pnpm analyze      # Análisis de bundle con webpack-bundle-analyzer
+
+# Scripts de Notion CMS
+pnpm notion:verify   # Verificar conexión con Notion
+pnpm notion:list     # Listar bases de datos
+pnpm notion:content  # Ver contenido de la BD del blog
+pnpm notion:publish  # Publicar/despublicar páginas
 ```
 
 ## 📝 Integración con Notion (Blog)
