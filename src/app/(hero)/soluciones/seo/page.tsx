@@ -48,7 +48,7 @@ export default function SeoPage() {
                 size="lg"
                 className="font-bold text-lg px-8 py-6 hover:bg-gradient-to-r hover:from-accent/10 hover:to-primary/10 transition-all duration-300"
               >
-                <Link href="/blog">Ver Casos de Éxito</Link>
+                <Link href="/faqs#casos-exito">Ver Casos de Éxito</Link>
               </Button>
             </div>
           </div>
@@ -118,7 +118,9 @@ export default function SeoPage() {
                   "Meta tags y estructura",
                   "Velocidad de carga",
                   "Core Web Vitals"
-                ]
+                ],
+                link: "/soluciones/seo/on-page",
+                tag: "optimización técnica"
               },
               {
                 icon: "🔗",
@@ -130,7 +132,9 @@ export default function SeoPage() {
                   "Guest posting",
                   "Menciones de marca",
                   "Estrategia de backlinks"
-                ]
+                ],
+                link: "/soluciones/seo/off-page",
+                tag: "servicios externos"
               },
               {
                 icon: "📍",
@@ -142,7 +146,8 @@ export default function SeoPage() {
                   "Optimización local",
                   "Reseñas y reputación",
                   "Directorios locales"
-                ]
+                ],
+                link: "/soluciones/seo/local"
               },
               {
                 icon: "✍️",
@@ -182,19 +187,28 @@ export default function SeoPage() {
               }
             ].map((service) => (
               <SolucionCard key={service.title}>
-                <div className="text-5xl mb-4">{service.icon}</div>
-                <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
-                <p className="text-muted-foreground mb-4">
-                  {service.description}
-                </p>
-                <ul className="space-y-2 text-sm">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2">
-                      <span className="text-accent font-bold">✓</span>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                <Link href={service.link || "#"}>
+                  <div className="text-5xl mb-4">{service.icon}</div>
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="text-2xl font-bold">{service.title}</h3>
+                    {service.tag && (
+                      <span className="px-3 py-1 text-xs font-bold bg-gradient-to-r from-secondary/20 to-accent/20 text-secondary dark:text-accent rounded-full border border-secondary/30 dark:border-accent/30">
+                        {service.tag}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-muted-foreground mb-4">
+                    {service.description}
+                  </p>
+                  <ul className="space-y-2 text-sm">
+                    {service.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-2">
+                        <span className="text-accent font-bold">✓</span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </Link>
               </SolucionCard>
             ))}
           </div>
@@ -344,12 +358,16 @@ export default function SeoPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-br from-accent/90 via-accent to-primary/90 text-white py-20">
-        <div className="container mx-auto max-w-4xl px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+      <section className="relative overflow-hidden bg-gradient-webcode py-20 md:py-28">
+        {/* Decoración de fondo con patrón */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.06),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.04),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(188,227,229,0.12),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_80%,rgba(188,227,229,0.08),transparent_50%)]" />
+
+        <div className="container relative z-10 mx-auto max-w-4xl px-4 text-center">
+          <h2 className="neon-cyan-title mb-6 text-3xl font-display font-bold md:text-5xl lg:text-6xl">
             ¿Listo para Aparecer en Google?
           </h2>
-          <p className="text-xl mb-8 opacity-90">
+          <p className="mb-8 text-lg font-sans md:text-xl lg:text-2xl text-slate-600 dark:text-white/95">
             Solicita tu auditoría SEO gratuita y descubre cómo mejorar tu
             posicionamiento.
           </p>
@@ -357,7 +375,18 @@ export default function SeoPage() {
             asChild
             size="lg"
             variant="secondary"
-            className="font-bold text-lg px-8 py-6 hover:scale-105 transition-transform duration-300"
+            className={`
+              font-bold text-base md:text-lg px-6 py-4 md:px-8 md:py-5
+              hover:opacity-90 hover:-translate-y-0.5
+              transition-all duration-200 
+              ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
+              border-0
+            `}
+            style={{
+              backgroundColor: `rgb(var(--secondary-rgb))`,
+              color: "rgb(8 11 12)",
+              boxShadow: "var(--shadow-3d-sm)"
+            }}
           >
             <Link href="/contacto">Solicitar Auditoría Gratis</Link>
           </Button>

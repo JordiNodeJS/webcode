@@ -40,29 +40,39 @@ export function CallToAction() {
 
   return (
     <div className="flex flex-col sm:flex-row items-center gap-6 mt-8">
-      {/* CTA Principal - Estilo Botón 3: Líneas deslizantes (link a /contacto) */}
+      {/* CTA Principal - Estilo La Teva Web: "¿Hablamos?" */}
       <Link
         href="/contacto"
         onClick={onClickCTA}
         className={`${styles.neonBtn3} group relative inline-flex items-center justify-center`}
       >
         <span className="relative z-10 flex items-center">
-          Consulta Gratuita
-          <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+          ¿Hablamos?
+          <span className="ml-2 text-lg">💬</span>
         </span>
       </Link>
 
-      {/* CTA Secundario - Estilo Botón 7: Barrido completo */}
-      <a
-        href="https://jordinodejs.github.io/"
-        target="_blank"
-        rel="noopener noreferrer"
+      {/* CTA Secundario - Ver Servicios */}
+      <Link
+        href="/soluciones"
+        onClick={onClickCTA}
         className={`${styles.neonBtn7} group relative`}
       >
         <span className="relative z-10 flex items-center">
           <Eye className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
-          Ver Portfolio
+          Ver Servicios
         </span>
+      </Link>
+
+      {/* CTA Terciario - Portfolio */}
+      <a
+        href="https://jordinodejs.github.io/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 px-6 py-3 bg-background/80 backdrop-blur-sm border border-border text-foreground font-semibold rounded-xl shadow-3d-sm hover:shadow-3d-md transition-all duration-300 hover:scale-105"
+      >
+        <span>Portfolio</span>
+        <span className="text-lg">🚀</span>
       </a>
     </div>
   );

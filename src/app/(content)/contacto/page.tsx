@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { ContactForm } from "@/components/features/contact/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contacto - WEBCODE",
+  title: "Contacto - WEBCODE | ¿Hablamos?",
   description:
-    "Ponte en contacto con WEBCODE para solicitar presupuesto o consultar sobre nuestros servicios de desarrollo web profesional.",
+    "¿Hablamos? Ponte en contacto con WEBCODE para solicitar presupuesto o consultar sobre nuestros servicios de diseño web profesional en Barcelona.",
   robots: {
     index: true,
     follow: true
@@ -15,13 +15,16 @@ export default function ContactoPage() {
   return (
     <>
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4 text-foreground">
-          Contacta con nosotros
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-4">
+          <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+          Contacto Directo
+        </div>
+        <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+          ¿Hablamos?
         </h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          ¿Tienes un proyecto en mente? Nos encantaría conocer tus ideas y
-          ayudarte a hacerlas realidad. Completa el formulario y te
-          responderemos lo antes posible.
+        <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          Cada empresa es única. Te creamos un <strong className="text-foreground">servicio de diseño web a medida</strong>: 
+          webs únicas con diseños originales y <strong className="text-foreground">100% orientados a los resultados</strong> que buscas.
         </p>
       </div>
 
@@ -35,24 +38,24 @@ export default function ContactoPage() {
         <div className="space-y-8">
           <div>
             <h2 className="text-2xl font-semibold mb-4 text-foreground">
-              ¿Por qué elegirnos?
+              Nuestra ventaja: diseño web a medida
             </h2>
             <ul className="space-y-3 text-muted-foreground">
               <li className="flex items-start gap-3">
                 <span className="text-primary font-bold">✓</span>
-                <span>Desarrollo web profesional con tecnologías modernas</span>
+                <span>Páginas web únicas con diseños originales</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary font-bold">✓</span>
-                <span>Soluciones personalizadas para tu negocio</span>
+                <span>100% orientados a los resultados que buscas</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary font-bold">✓</span>
-                <span>Respuesta rápida y atención personalizada</span>
+                <span>Sistema de gestión propio de alto rendimiento</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary font-bold">✓</span>
-                <span>Precios competitivos y transparentes</span>
+                <span>Específicamente preparado para optimización SEO</span>
               </li>
             </ul>
           </div>

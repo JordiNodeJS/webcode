@@ -2,6 +2,22 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SolucionCard } from "@/components/soluciones";
 import { Button } from "@/components/ui/button";
+import { 
+  SiNextdotjs, 
+  SiReact, 
+  SiTypescript, 
+  SiTailwindcss, 
+  SiNodedotjs, 
+  SiPostgresql, 
+  SiMongodb, 
+  SiVercel,
+  SiRender,
+  SiRailway,
+  SiAppwrite,
+  SiSanity,
+  SiStrapi,
+  SiNetlify
+} from "react-icons/si";
 
 export const metadata: Metadata = {
   title: "Desarrollo Web Profesional | WEBCODE",
@@ -246,20 +262,52 @@ export default function WebDevelopmentPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { icon: "⚡", name: "Next.js 15" },
-              { icon: "⚛️", name: "React 19" },
-              { icon: "📘", name: "TypeScript" },
-              { icon: "🎨", name: "TailwindCSS" },
-              { icon: "🟢", name: "Node.js" },
-              { icon: "🐘", name: "PostgreSQL" },
-              { icon: "🍃", name: "MongoDB" },
-              { icon: "▲", name: "Vercel" }
-            ].map((tech) => (
-              <SolucionCard key={tech.name} hover={false}>
-                <div className="text-4xl mb-2 text-center">{tech.icon}</div>
-                <p className="text-center font-semibold text-sm">{tech.name}</p>
-              </SolucionCard>
-            ))}
+              { icon: SiNextdotjs, name: "Next.js 15" },
+              { icon: SiReact, name: "React 19" },
+              { icon: SiTypescript, name: "TypeScript" },
+              { icon: SiTailwindcss, name: "TailwindCSS" },
+              { icon: SiNodedotjs, name: "Node.js" },
+              { icon: SiPostgresql, name: "PostgreSQL" },
+              { icon: SiMongodb, name: "MongoDB" },
+              { icon: SiVercel, name: "Vercel" },
+              { icon: SiRender, name: "Render" },
+              { icon: SiRailway, name: "Railway" },
+              { icon: SiAppwrite, name: "Appwrite" },
+              { icon: SiSanity, name: "Sanity" },
+              { icon: SiPostgresql, name: "Neon" },
+              { icon: SiStrapi, name: "Strapi" },
+              { icon: SiNetlify, name: "Netlify" }
+            ].map((tech) => {
+              const IconComponent = tech.icon;
+              return (
+                <div key={tech.name} className="relative group">
+                  {/* Medalla con el estilo actual de SolucionCard */}
+                  <div className="relative overflow-hidden border border-border/30 dark:border-border/20 bg-gradient-to-br from-white/95 via-white/90 to-slate-50/95 dark:from-slate-800/95 dark:via-slate-700/90 dark:to-slate-800/85 rounded-full p-6 shadow-3d-lg hover:shadow-3d-xl transition-all duration-500 hover:-translate-y-2">
+                    {/* Glow effect on hover - conservando el efecto actual */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/6 via-secondary/6 to-primary/6 dark:from-primary/8 dark:via-primary/12 dark:to-primary/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-full" />
+                    
+                    {/* Brillo metálico superior */}
+                    <div className="absolute inset-2 bg-gradient-to-br from-white/20 via-white/10 to-transparent rounded-full opacity-50"></div>
+                    
+                    {/* Reflejo metálico lateral */}
+                    <div className="absolute top-3 left-3 w-6 h-6 bg-gradient-to-br from-white/30 to-transparent rounded-full opacity-60"></div>
+                    
+                    {/* Contenido centrado */}
+                    <div className="relative z-10 flex flex-col items-center justify-center">
+                      <div className="mb-3 p-3 bg-background/80 rounded-full shadow-inner border border-border/20">
+                        <IconComponent className="h-8 w-8 text-foreground" />
+                      </div>
+                      <p className="text-center font-semibold text-sm text-foreground bg-background/60 px-3 py-1 rounded-full border border-border/20 shadow-sm">
+                        {tech.name}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {/* Sombra de la medalla */}
+                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-4 bg-black/20 rounded-full blur-sm"></div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -305,12 +353,13 @@ export default function WebDevelopmentPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-br from-primary/90 via-primary to-secondary/90 text-white py-20">
-        <div className="container mx-auto max-w-4xl px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+      <section className="relative overflow-hidden bg-[image:linear-gradient(to_right,rgb(var(--primary-rgb)_/_0.03),rgb(var(--secondary-rgb)_/_0.03),rgb(var(--accent-rgb)_/_0.03)),linear-gradient(to_bottom_right,rgb(var(--primary-rgb)_/_0.05),rgb(var(--secondary-rgb)_/_0.05),rgb(var(--accent-rgb)_/_0.05))] dark:bg-[image:linear-gradient(to_right,rgb(var(--primary-rgb)_/_0.05),rgb(var(--secondary-rgb)_/_0.05),rgb(var(--accent-rgb)_/_0.05)),linear-gradient(to_bottom_right,rgb(var(--primary-rgb)_/_0.10),rgb(var(--secondary-rgb)_/_0.10),rgb(var(--accent-rgb)_/_0.10))] py-20 md:py-28">
+
+        <div className="container relative z-10 mx-auto max-w-4xl px-4 text-center">
+          <h2 className="mb-6 text-3xl font-display font-bold md:text-5xl lg:text-6xl text-foreground">
             ¿Listo para Crear tu Web?
           </h2>
-          <p className="text-xl mb-8 opacity-90">
+          <p className="mb-8 text-lg font-sans md:text-xl lg:text-2xl text-muted-foreground">
             Cuéntanos tu proyecto y te enviaremos un presupuesto personalizado
             en 24h.
           </p>
@@ -318,7 +367,18 @@ export default function WebDevelopmentPage() {
             asChild
             size="lg"
             variant="secondary"
-            className="font-bold text-lg px-8 py-6 hover:scale-105 transition-transform duration-300"
+            className={`
+              font-bold text-base md:text-lg px-6 py-4 md:px-8 md:py-5
+              hover:opacity-90 hover:-translate-y-0.5
+              transition-all duration-200 
+              ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
+              border-0
+            `}
+            style={{
+              backgroundColor: `rgb(var(--secondary-rgb))`,
+              color: "rgb(8 11 12)",
+              boxShadow: "var(--shadow-3d-sm)"
+            }}
           >
             <Link href="/contacto">Solicitar Presupuesto Gratis</Link>
           </Button>

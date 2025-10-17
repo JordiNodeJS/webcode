@@ -251,27 +251,31 @@ const faqs = [
     question: "¿Cómo es el proceso de trabajo en un proyecto web?",
     answer: (
       <>
-        <p>Nuestro proceso de trabajo está estructurado en 5 fases claras:</p>
+        <p>Nuestro proceso de trabajo está estructurado en 6 fases claras:</p>
         <ol className="mt-3 ml-5 list-decimal space-y-2">
           <li>
-            <strong>Consulta inicial gratuita:</strong> entendemos tus
-            necesidades y objetivos.
+            <strong>Discovery & Briefing:</strong> análisis profundo de tu proyecto, 
+            objetivos y definición estratégica completa.
           </li>
           <li>
-            <strong>Propuesta y presupuesto:</strong> entregamos un plan
-            detallado con calendario de entregas.
+            <strong>Estrategia & Arquitectura:</strong> definición de arquitectura técnica, 
+            stack tecnológico y especificaciones funcionales.
           </li>
           <li>
-            <strong>Diseño y desarrollo:</strong> trabajamos con revisiones
-            regulares y tu feedback continuo.
+            <strong>Diseño UX/UI:</strong> creación de interfaces visuales, sistema de 
+            diseño y experiencia de usuario optimizada.
           </li>
           <li>
-            <strong>Testing completo:</strong> pruebas de funcionalidad,
-            rendimiento, dispositivos, navegadores y accesibilidad.
+            <strong>Desarrollo & Integración:</strong> implementación técnica con código 
+            limpio, escalable y tecnología moderna.
           </li>
           <li>
-            <strong>Lanzamiento y formación:</strong> publicamos el sitio y te
-            formamos para gestionarlo.
+            <strong>Testing & Optimización:</strong> pruebas exhaustivas, optimización 
+            de rendimiento y validación final.
+          </li>
+          <li>
+            <strong>Launch & Soporte:</strong> despliegue en producción, formación del 
+            equipo y soporte post-lanzamiento.
           </li>
         </ol>
         <p className="mt-3">
@@ -414,6 +418,144 @@ const faqs = [
         </p>
       </>
     )
+  },
+  {
+    question: "¿Qué es Next.js 15 y por qué lo utilizáis?",
+    answer: (
+      <>
+        <p>
+          <strong>Next.js 15</strong> es el framework de React más avanzado para 2025, 
+          que nos permite crear aplicaciones web ultra-rápidas y optimizadas.
+        </p>
+
+        <ul className="mt-3 ml-5 list-disc space-y-2">
+          <li><strong>App Router:</strong> nuevo sistema de enrutamiento que mejora la performance</li>
+          <li><strong>Server Components:</strong> renderizado en servidor para mayor velocidad</li>
+          <li><strong>Optimización automática:</strong> imágenes, fuentes y código optimizados</li>
+          <li><strong>SEO nativo:</strong> metadatos y estructura optimizada para buscadores</li>
+          <li><strong>Core Web Vitals:</strong> puntuaciones perfectas en Google PageSpeed</li>
+        </ul>
+
+        <p className="mt-3">
+          Esto se traduce en sitios web que cargan hasta 3x más rápido que WordPress 
+          tradicional, mejor posicionamiento en Google y una experiencia de usuario superior.
+        </p>
+      </>
+    )
+  },
+  {
+    question: "¿Hacéis desarrollo con WordPress o solo con tecnologías modernas?",
+    answer: (
+      <>
+        <p>
+          Nos especializamos en <strong>tecnologías modernas</strong> (Next.js, React, Astro) 
+          porque ofrecen mejor rendimiento, seguridad y escalabilidad.
+        </p>
+
+        <p className="mt-3">
+          <strong>¿Por qué no WordPress?</strong>
+        </p>
+        <ul className="mt-3 ml-5 list-disc space-y-2">
+          <li>Velocidad: Next.js es 3-5x más rápido que WordPress</li>
+          <li>Seguridad: menos vulnerabilidades y ataques</li>
+          <li>SEO: mejor optimización técnica nativa</li>
+          <li>Mantenimiento: menos actualizaciones y problemas</li>
+          <li>Escalabilidad: mejor para crecer con tu negocio</li>
+        </ul>
+
+        <p className="mt-3">
+          Si necesitas un CMS, utilizamos <strong>headless CMS</strong> como Sanity o 
+          Contentful, que ofrecen la flexibilidad de WordPress pero con la velocidad 
+          de las tecnologías modernas.
+        </p>
+      </>
+    )
+  },
+  {
+    question: "¿Qué garantías ofrecéis en vuestros proyectos?",
+    answer: (
+      <>
+        <p>
+          Ofrecemos <strong>garantías específicas y medibles</strong> que demuestran 
+          nuestra confianza en la calidad de nuestro trabajo:
+        </p>
+
+        <ul className="mt-3 ml-5 list-disc space-y-2">
+          <li><strong>Core Web Vitals en verde:</strong> garantizamos puntuación 90+ en Google PageSpeed</li>
+          <li><strong>Accesibilidad WCAG 2.1 AA:</strong> cumplimiento total de estándares</li>
+          <li><strong>Garantía de funcionamiento:</strong> 3 meses de correcciones gratuitas</li>
+          <li><strong>Hosting incluido:</strong> primer año sin coste adicional</li>
+          <li><strong>Soporte 30 días:</strong> post-lanzamiento incluido</li>
+          <li><strong>Entrega a tiempo:</strong> o descuento del 10% por cada semana de retraso</li>
+        </ul>
+
+        <p className="mt-3">
+          Si no cumplimos estas garantías, <strong>reembolsamos el 50% del proyecto</strong> 
+          o trabajamos gratis hasta cumplirlas.
+        </p>
+      </>
+    )
+  },
+  {
+    question: "¿Cómo medís el éxito de un proyecto web?",
+    answer: (
+      <>
+        <p>
+          Utilizamos <strong>métricas objetivas y medibles</strong> para demostrar 
+          el éxito de cada proyecto:
+        </p>
+
+        <div className="mt-4 grid md:grid-cols-2 gap-4">
+          <div className="p-4 bg-primary/10 rounded-lg">
+            <h4 className="font-semibold text-primary mb-2">Performance</h4>
+            <ul className="text-sm space-y-1">
+              <li>• Core Web Vitals 90+</li>
+              <li>• Tiempo de carga &lt;2s</li>
+              <li>• Puntuación SEO 95+</li>
+            </ul>
+          </div>
+          <div className="p-4 bg-secondary/10 rounded-lg">
+            <h4 className="font-semibold text-secondary mb-2">Negocio</h4>
+            <ul className="text-sm space-y-1">
+              <li>• Incremento tráfico orgánico</li>
+              <li>• Mejora tasa conversión</li>
+              <li>• Reducción tasa rebote</li>
+            </ul>
+          </div>
+        </div>
+
+        <p className="mt-3">
+          Proporcionamos <strong>reportes mensuales</strong> con estas métricas 
+          y recomendaciones de mejora continua.
+        </p>
+      </>
+    )
+  },
+  {
+    question: "¿Trabajáis con empresas fuera de Barcelona?",
+    answer: (
+      <>
+        <p>
+          <strong>Sí, trabajamos con clientes de toda España y también internacionalmente.</strong>
+        </p>
+
+        <p className="mt-3">
+          Nuestro proceso está optimizado para trabajo remoto:
+        </p>
+        <ul className="mt-3 ml-5 list-disc space-y-2">
+          <li><strong>Comunicación:</strong> videollamadas semanales, Slack/Teams</li>
+          <li><strong>Gestión:</strong> herramientas en la nube para seguimiento</li>
+          <li><strong>Entregas:</strong> demos en vivo cada semana</li>
+          <li><strong>Formación:</strong> sesiones online con grabación</li>
+        </ul>
+
+        <p className="mt-3">
+          Para clientes en <strong>Barcelona</strong> ofrecemos reuniones presenciales 
+          si es necesario. Para el resto de España, el trabajo remoto es igual de 
+          eficiente y transparente.
+        </p>
+      </>
+    )
   }
 ];
 
@@ -464,10 +606,11 @@ export default function FAQsPage() {
             <div className="divide-y divide-border/30">
               {faqs.map((faq, index) => (
                 <FAQItem
-                  key={`faq-${faq.question.slice(0, 20).replace(/\s+/g, "-")}`}
+                  key={`faq-${index}-${faq.question.slice(0, 20).replace(/\s+/g, "-")}`}
                   question={faq.question}
                   answer={faq.answer}
                   index={index}
+                  id={faq.question === "¿Puedo ver ejemplos de vuestros trabajos anteriores?" ? "casos-exito" : undefined}
                 />
               ))}
             </div>
