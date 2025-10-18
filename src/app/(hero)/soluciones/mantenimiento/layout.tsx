@@ -18,3 +18,6 @@ export default function MantenimientoLayout({
 }) {
   return children;
 }
+
+
+
