@@ -3,7 +3,7 @@ import { CloudBgClient } from "@/components/landing/hero/CloudBgClient";
 import { ServicesSection } from "@/components/landing/services";
 import { EnhancedServicesSection } from "@/components/landing/services";
 import { WorkflowSection } from "@/components/landing/workflow";
-import { PortfolioSection } from "@/components/landing/portfolio";
+// import { PortfolioSection } from "@/components/landing/portfolio";
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
         <ServicesSection />
         <EnhancedServicesSection />
         <WorkflowSection />
-        <PortfolioSection />
+        {/* <PortfolioSection /> */}
       </div>
     </main>
   );
