@@ -16,7 +16,8 @@ import {
   SiShopify,
   SiCloudflare,
   SiLighthouse,
-  SiPagespeedinsights
+  SiPagespeedinsights,
+  SiNetlify
 } from "react-icons/si";
 
 export const metadata: Metadata = {
@@ -275,6 +276,7 @@ export default function RedisenoPage() {
               { icon: SiShopify, name: "Shopify" },
               { icon: SiCloudflare, name: "Cloudflare" },
               { icon: SiVercel, name: "Vercel" },
+              { icon: SiNetlify, name: "Netlify" },
               { icon: SiNodedotjs, name: "Node.js" }
             ].map((tech) => {
               const IconComponent = tech.icon;
