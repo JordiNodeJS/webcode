@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
 		optimizePackageImports: ["lucide-react", "framer-motion"],
 		serverComponentsHmrCache: false,
 	},
+	// Deshabilitar AMP explícitamente
+	amp: {
+		canonicalBase: "https://webcode.es",
+	},
 	// Configurar orígenes permitidos para desarrollo
 	allowedDevOrigins: ["192.168.0.15:3000", "localhost:3000", "127.0.0.1:3000"],
 
@@ -163,6 +167,10 @@ const nextConfig: NextConfig = {
 						key: "Content-Security-Policy",
 						value:
 							"default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';",
+					},
+					{
+						key: "X-AMP-Cache-Transform",
+						value: "none",
 					},
 				],
 			},
