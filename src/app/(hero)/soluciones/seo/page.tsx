@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SolucionCard } from "@/components/soluciones";
 import { Button } from "@/components/ui/button";
+import { MultipleOffersSchema } from "@/components/seo/MultipleOffersSchema";
 
 export const metadata: Metadata = {
   title: "SEO & Marketing Digital | WEBCODE",
@@ -392,6 +393,32 @@ export default function SeoPage() {
           </Button>
         </div>
       </section>
+
+      {/* Structured Data for SEO Services */}
+      <MultipleOffersSchema
+        serviceName="Servicios de SEO y Marketing Digital"
+        serviceDescription="Posicionamiento SEO, marketing de contenidos y estrategias digitales que generan resultados reales para aumentar tu visibilidad en Google y conseguir más clientes."
+        offers={[
+          {
+            name: "SEO Básico",
+            description: "Optimización On-Page, 5 artículos/mes, Google Business, Informe mensual, Soporte email",
+            price: "600",
+            category: "SEO Básico"
+          },
+          {
+            name: "SEO Profesional", 
+            description: "Todo lo de Básico, 10 artículos/mes, Link building, Keyword research, Soporte prioritario, Call mensual",
+            price: "1200",
+            category: "SEO Profesional"
+          },
+          {
+            name: "SEO Enterprise",
+            description: "Todo lo de Profesional, Contenidos ilimitados, Estrategia avanzada, Link building agresivo, Account manager dedicado, Reporting semanal",
+            price: "0", // Personalizado
+            category: "SEO Enterprise"
+          }
+        ]}
+      />
     </div>
   );
 }

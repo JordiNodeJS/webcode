@@ -1,7 +1,7 @@
 import Script from "next/script";
 
 interface StructuredDataProps {
-  type?: "Organization" | "LocalBusiness" | "WebSite" | "Service" | "Article";
+  type?: "Organization" | "LocalBusiness" | "WebSite" | "Service" | "Article" | "Product" | "Offer";
   data?: Record<string, unknown>;
 }
 
@@ -105,6 +105,105 @@ export function StructuredData({
     paymentAccepted: "Cash, Credit Card, Bank Transfer"
   };
 
+  const productData = {
+    ...baseData,
+    "@type": "Product",
+    name: "Servicios de Desarrollo Web",
+    description: "Servicios profesionales de desarrollo web, SEO y soluciones digitales",
+    brand: {
+      "@type": "Brand",
+      name: "WEBCODE"
+    },
+    manufacturer: organizationData,
+    category: "Servicios de Desarrollo Web",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "EUR",
+      availability: "https://schema.org/InStock",
+      seller: organizationData,
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        applicableCountry: "ES",
+        returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+        merchantReturnDays: 14,
+        returnMethod: "https://schema.org/ReturnByMail",
+        returnFees: "https://schema.org/FreeReturn"
+      },
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingRate: {
+          "@type": "MonetaryAmount",
+          value: "0",
+          currency: "EUR"
+        },
+        deliveryTime: {
+          "@type": "ShippingDeliveryTime",
+          handlingTime: {
+            "@type": "QuantitativeValue",
+            minValue: 1,
+            maxValue: 3,
+            unitCode: "DAY"
+          },
+          transitTime: {
+            "@type": "QuantitativeValue",
+            minValue: 1,
+            maxValue: 2,
+            unitCode: "DAY"
+          }
+        },
+        shippingDestination: {
+          "@type": "DefinedRegion",
+          addressCountry: "ES"
+        }
+      }
+    }
+  };
+
+  const offerData = {
+    ...baseData,
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "EUR",
+    availability: "https://schema.org/InStock",
+    seller: organizationData,
+    hasMerchantReturnPolicy: {
+      "@type": "MerchantReturnPolicy",
+      applicableCountry: "ES",
+      returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+      merchantReturnDays: 14,
+      returnMethod: "https://schema.org/ReturnByMail",
+      returnFees: "https://schema.org/FreeReturn"
+    },
+    shippingDetails: {
+      "@type": "OfferShippingDetails",
+      shippingRate: {
+        "@type": "MonetaryAmount",
+        value: "0",
+        currency: "EUR"
+      },
+      deliveryTime: {
+        "@type": "ShippingDeliveryTime",
+        handlingTime: {
+          "@type": "QuantitativeValue",
+          minValue: 1,
+          maxValue: 3,
+          unitCode: "DAY"
+        },
+        transitTime: {
+          "@type": "QuantitativeValue",
+          minValue: 1,
+          maxValue: 2,
+          unitCode: "DAY"
+        }
+      },
+      shippingDestination: {
+        "@type": "DefinedRegion",
+        addressCountry: "ES"
+      }
+    }
+  };
+
   let structuredData: Record<string, unknown>;
   switch (type) {
     case "WebSite":
@@ -122,6 +221,12 @@ export function StructuredData({
         areaServed: "Spain",
         ...data
       };
+      break;
+    case "Product":
+      structuredData = { ...productData, ...data };
+      break;
+    case "Offer":
+      structuredData = { ...offerData, ...data };
       break;
     default:
       structuredData = { ...organizationData, ...data };

@@ -7,6 +7,10 @@ Disallow: /_next/
 Disallow: /admin/
 Disallow: /dashboard/
 
+# Explicitly disallow AMP cache
+User-agent: Googlebot
+Disallow: /amp/
+
 # SEO-friendly paths - explicitly allow important pages
 Allow: /servicios/
 Allow: /sobre-nosotros/
