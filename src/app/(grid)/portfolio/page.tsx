@@ -1,6 +1,51 @@
 export const metadata = {
-  title: "Portfolio - WEBCODE",
-  description: "Ejemplos de trabajos y proyectos realizados por WEBCODE."
+  title: "Portfolio - WEBCODE | Desarrollo Web Profesional",
+  description: "Explora el portfolio de WEBCODE: proyectos de desarrollo web, e-commerce y aplicaciones modernas realizadas en Barcelona. Tecnologías: Next.js, React, TypeScript.",
+  keywords: [
+    "portfolio desarrollo web",
+    "proyectos web Barcelona",
+    "desarrollo web profesional",
+    "Next.js portfolio",
+    "React proyectos",
+    "TypeScript desarrollo"
+  ],
+  openGraph: {
+    title: "Portfolio - WEBCODE | Desarrollo Web Profesional",
+    description: "Explora el portfolio de WEBCODE: proyectos de desarrollo web, e-commerce y aplicaciones modernas realizadas en Barcelona.",
+    url: "https://webcode.es/portfolio",
+    siteName: "WEBCODE",
+    images: [
+      {
+        url: "https://webcode.es/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Portfolio WEBCODE - Desarrollo Web Profesional",
+        type: "image/png"
+      }
+    ],
+    locale: "es_ES",
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Portfolio - WEBCODE | Desarrollo Web Profesional",
+    description: "Explora el portfolio de WEBCODE: proyectos de desarrollo web, e-commerce y aplicaciones modernas.",
+    images: ["https://webcode.es/opengraph-image"]
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1
+    }
+  },
+  alternates: {
+    canonical: "https://webcode.es/portfolio"
+  }
 };
 
 export default function PortfolioPage() {
