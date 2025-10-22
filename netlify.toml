@@ -1,0 +1,181 @@
+# Configuración de Netlify para Next.js 15
+# Proyecto: WEBCODE
+# Framework: Next.js 15.5.2 con App Router + Turbopack
+
+[build]
+  # Comando de build para Next.js con Turbopack
+  command = "pnpm build"
+  
+  # Directorio de salida del build de Next.js
+  publish = ".next"
+  
+  # Variables de entorno para el build
+  [build.environment]
+    # Node.js version (recomendado: 20.x para Next.js 15)
+    NODE_VERSION = "20"
+    
+    # pnpm como package manager
+    NPM_FLAGS = "--version"
+    PNPM_VERSION = "9"
+    
+    # Deshabilitar telemetría de Next.js
+    NEXT_TELEMETRY_DISABLED = "1"
+    
+    # Optimizaciones de build
+    NODE_OPTIONS = "--max-old-space-size=4096"
+
+# Plugin de Next.js Runtime para Netlify
+# Este plugin se instala automáticamente, no requiere instalación manual
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Configuración de funciones
+[functions]
+  # Directorio de funciones serverless (generado automáticamente por el adapter)
+  directory = ".netlify/functions"
+  
+  # Node.js version para las funciones
+  node_bundler = "esbuild"
+  
+  # Timeout máximo para funciones (10 segundos por defecto)
+  # Ajustar según necesidad de las API routes
+  [functions.config]
+    timeout = 10
+
+# Redirects y rewrites (migrados desde next.config.ts)
+[[redirects]]
+  from = "/home"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/index"
+  to = "/"
+  status = 301
+  force = true
+
+# Redirects de /services a /soluciones
+[[redirects]]
+  from = "/services"
+  to = "/soluciones"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/web-development"
+  to = "/soluciones/web-development"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/e-commerce"
+  to = "/soluciones/e-commerce"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/seo"
+  to = "/soluciones/seo"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/consulting"
+  to = "/soluciones/consulting"
+  status = 301
+  force = true
+
+# Rewrite para SEO-friendly URL
+[[redirects]]
+  from = "/sobre-nosotros"
+  to = "/about"
+  status = 200
+  force = false
+
+# Headers de seguridad (migrados desde next.config.ts)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';"
+    X-AMP-Cache-Transform = "none"
+
+# Cache headers para assets estáticos
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/favicon.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.jpeg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.gif"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.woff"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Configuración específica para Next.js Middleware
+# El middleware se ejecuta automáticamente como Edge Function
+[context.production]
+  command = "pnpm build"
+  
+[context.deploy-preview]
+  command = "pnpm build"
+
+[context.branch-deploy]
+  command = "pnpm build"
+
+# Configuración de desarrollo local
+[dev]
+  command = "pnpm dev"
+  port = 3000
+  targetPort = 3000
+  autoLaunch = false
