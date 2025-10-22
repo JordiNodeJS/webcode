@@ -293,9 +293,51 @@ Esta herramienta genera automáticamente:
 
 ## 🚀 Deployment
 
-### Vercel (Recomendado)
+El proyecto está optimizado para deployment en **Netlify** y **Vercel**.
 
-El proyecto está optimizado para deployment en Vercel:
+### Netlify (Recomendado) ⭐
+
+Soporte completo para Next.js 15 con configuración lista para usar:
+
+**📖 Documentación Completa**:
+- [`docs/NETLIFY-DEPLOYMENT-GUIDE.md`](docs/NETLIFY-DEPLOYMENT-GUIDE.md) - Guía paso a paso
+- [`docs/NETLIFY-DEPLOYMENT-CHECKLIST.md`](docs/NETLIFY-DEPLOYMENT-CHECKLIST.md) - Checklist de verificación
+- [`docs/NETLIFY-MIGRATION-SUMMARY.md`](docs/NETLIFY-MIGRATION-SUMMARY.md) - Resumen ejecutivo
+
+**Deployment Rápido**:
+
+1. **Conectar repositorio en Netlify**
+   ```bash
+   # Netlify detecta automáticamente la configuración desde netlify.toml
+   ```
+
+2. **Configurar variables de entorno** en Netlify Dashboard:
+   ```
+   NODE_VERSION=20
+   PNPM_VERSION=9
+   NETLIFY=true
+   NOTION_API_KEY=secret_xxxxx
+   NOTION_DATABASE_ID=xxxxx
+   RESEND_API_KEY=re_xxxxx
+   ```
+
+3. **Deploy**
+   - Click en "Deploy site"
+   - La configuración está en `netlify.toml`
+
+**CLI Alternativo**:
+```bash
+# Instalar Netlify CLI
+pnpm add -g netlify-cli
+
+# Login y deploy
+netlify login
+netlify deploy --prod
+```
+
+### Vercel
+
+También compatible con Vercel:
 
 ```bash
 # Instalar Vercel CLI
@@ -314,12 +356,14 @@ Crea un archivo `.env.local` con las siguientes variables:
 NOTION_API_KEY=secret_xxxxx
 NOTION_DATABASE_ID=xxxxx
 
-# Email (Opcional)
+# Email (Contacto/Briefing)
 RESEND_API_KEY=re_xxxxx
 
 # Analytics (Opcional)
 NEXT_PUBLIC_GA_ID=G-xxxxx
 ```
+
+Ver [`.env.netlify.example`](.env.netlify.example) para template completo.
 
 ### Build de Producción
 

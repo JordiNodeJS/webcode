@@ -1,0 +1,103 @@
+# Configuración de Netlify para Next.js 15
+# Proyecto: WEBCODE
+# Framework: Next.js 15.5.2 con App Router + Turbopack
+
+[build]
+  # Comando de build para Next.js con Turbopack
+  command = "pnpm build"
+  
+  # Directorio de salida del build de Next.js
+  publish = ".next"
+  
+  # Variables de entorno para el build
+  [build.environment]
+    # Node.js version (recomendado: 20.x para Next.js 15)
+    NODE_VERSION = "20"
+    
+    # pnpm como package manager
+    NPM_FLAGS = "--version"
+    PNPM_VERSION = "9"
+    
+    # Deshabilitar telemetría de Next.js
+    NEXT_TELEMETRY_DISABLED = "1"
+    
+    # Optimizaciones de build
+    NODE_OPTIONS = "--max-old-space-size=4096"
+
+# Plugin de Next.js Runtime para Netlify
+# Este plugin se instala automáticamente, no requiere instalación manual
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Configuración de funciones
+[functions]
+  # Directorio de funciones serverless (generado automáticamente por el adapter)
+  directory = ".netlify/functions"
+  
+  # Node.js version para las funciones
+  node_bundler = "esbuild"
+  
+  # Timeout máximo para funciones (10 segundos por defecto)
+  # Ajustar según necesidad de las API routes
+  [functions.config]
+    timeout = 10
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# REDIRECTS Y REWRITES
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# ⚙️ CONFIGURACIÓN CENTRALIZADA
+# Los redirects y rewrites se gestionan desde next.config.ts
+# Netlify los detecta y aplica automáticamente desde allí.
+# Esto evita duplicación y mantiene una única fuente de verdad.
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# Headers de seguridad
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# HEADERS DE SEGURIDAD Y CACHE
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# ⚙️ CONFIGURACIÓN CENTRALIZADA
+# La mayoría de headers se gestionan desde next.config.ts
+# Aquí solo mantenemos headers específicos de Netlify o que requieren
+# configuración especial en esta plataforma.
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# Headers críticos de seguridad para todas las rutas
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+
+# Cache agresivo para assets estáticos de Next.js
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache para archivos estáticos generales
+[[headers]]
+  for = "/*.@(ico|png|jpg|jpeg|gif|webp|svg|woff|woff2)"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+
+# Configuración específica para Next.js Middleware
+# El middleware se ejecuta automáticamente como Edge Function
+[context.production]
+  command = "pnpm build"
+  
+[context.deploy-preview]
+  command = "pnpm build"
+
+[context.branch-deploy]
+  command = "pnpm build"
+
+# Configuración de desarrollo local
+[dev]
+  command = "pnpm dev"
+  port = 3000
+  targetPort = 3000
+  autoLaunch = false
