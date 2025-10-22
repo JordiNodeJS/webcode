@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+	// Configuración compatible con Netlify
+	output: process.env.NETLIFY ? "standalone" : undefined,
+	
 	experimental: {
 		reactCompiler: true,
 		viewTransition: true,
@@ -30,6 +33,12 @@ const nextConfig: NextConfig = {
 			{
 				protocol: "https",
 				hostname: "**.vercel.app",
+				port: "",
+				pathname: "/**",
+			},
+			{
+				protocol: "https",
+				hostname: "**.netlify.app",
 				port: "",
 				pathname: "/**",
 			},
