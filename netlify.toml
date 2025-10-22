@@ -42,125 +42,47 @@
   [functions.config]
     timeout = 10
 
-# Redirects y rewrites (migrados desde next.config.ts)
-[[redirects]]
-  from = "/home"
-  to = "/"
-  status = 301
-  force = true
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# REDIRECTS Y REWRITES
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# ⚙️ CONFIGURACIÓN CENTRALIZADA
+# Los redirects y rewrites se gestionan desde next.config.ts
+# Netlify los detecta y aplica automáticamente desde allí.
+# Esto evita duplicación y mantiene una única fuente de verdad.
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-[[redirects]]
-  from = "/index"
-  to = "/"
-  status = 301
-  force = true
+# Headers de seguridad
 
-# Redirects de /services a /soluciones
-[[redirects]]
-  from = "/services"
-  to = "/soluciones"
-  status = 301
-  force = true
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# HEADERS DE SEGURIDAD Y CACHE
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# ⚙️ CONFIGURACIÓN CENTRALIZADA
+# La mayoría de headers se gestionan desde next.config.ts
+# Aquí solo mantenemos headers específicos de Netlify o que requieren
+# configuración especial en esta plataforma.
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-[[redirects]]
-  from = "/services/web-development"
-  to = "/soluciones/web-development"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/services/e-commerce"
-  to = "/soluciones/e-commerce"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/services/seo"
-  to = "/soluciones/seo"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/services/consulting"
-  to = "/soluciones/consulting"
-  status = 301
-  force = true
-
-# Rewrite para SEO-friendly URL
-[[redirects]]
-  from = "/sobre-nosotros"
-  to = "/about"
-  status = 200
-  force = false
-
-# Headers de seguridad (migrados desde next.config.ts)
+# Headers críticos de seguridad para todas las rutas
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
-    X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';"
-    X-AMP-Cache-Transform = "none"
 
-# Cache headers para assets estáticos
+# Cache agresivo para assets estáticos de Next.js
 [[headers]]
   for = "/_next/static/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Cache para archivos estáticos generales
 [[headers]]
-  for = "/favicon.ico"
+  for = "/*.@(ico|png|jpg|jpeg|gif|webp|svg|woff|woff2)"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-[[headers]]
-  for = "/*.ico"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.png"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.jpg"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.jpeg"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.gif"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.webp"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.svg"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.woff"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.woff2"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
 
 # Configuración específica para Next.js Middleware
 # El middleware se ejecuta automáticamente como Edge Function
