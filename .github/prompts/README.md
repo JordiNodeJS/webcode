@@ -1,5 +1,9 @@
 # WEBCODE Prompts & Guidelines
 
+> **Última actualización**: 2025-10-23  
+> **Estado del Proyecto**: Release Candidate 98%  
+> **Stack**: Next.js 15.5.2 + React 19.1.0 + Tailwind v4
+
 Este directorio contiene prompts y guías de desarrollo para mantener la consistencia y calidad del proyecto WEBCODE.
 
 ## **[Recursos]** Índice de Prompts

@@ -1,0 +1,20 @@
+
+> next-webcode@0.1.0 build G:\DEV\WEBCODE-PROJECT\webcode
+> pnpm dlx rimraf .next && next build --turbopack
+
+   ▲ Next.js 15.5.2 (Turbopack)
+   - Environments: .env.local, .env.production, .env
+   - Experiments (use with caution):
+     ✓ reactCompiler
+     ✓ viewTransition
+     · optimizePackageImports
+     ⨯ serverComponentsHmrCache
+
+   Creating an optimized production build ...
+ ✓ Finished writing to disk in 309ms
+ ✓ Compiled successfully in 12.1s
+   Linting and checking validity of types ...
+(node:34444) ESLintIgnoreWarning: The ".eslintignore" file is no longer supported. Switch to using the "ignores" property in "eslint.config.js": https://eslint.org/docs/latest/use/configure/migration-guide#ignoring-files
+(Use `node --trace-warnings ...` to show where the warning was created)
+   Collecting page data ...
+   Generating static pages (0/50) ...
