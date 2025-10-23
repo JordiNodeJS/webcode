@@ -66,7 +66,7 @@ export default function SeoOnPage() {
         </h2>
         <p className="text-center text-muted-foreground mb-12 text-lg max-w-3xl mx-auto">
           El SEO On-Page es la optimización de todos los elementos dentro de tu web 
-          que Google puede "ver" y analizar para determinar la relevancia y calidad de tu contenido.
+          que Google puede &ldquo;ver&rdquo; y analizar para determinar la relevancia y calidad de tu contenido.
         </p>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -357,7 +357,7 @@ export default function SeoOnPage() {
                 <ul className="text-sm space-y-1 text-muted-foreground">
                   <li>• Optimización completa de imágenes y código</li>
                   <li>• Meta tags únicos y optimizados</li>
-                  <li>• Contenido optimizado para "dentista [ciudad]"</li>
+                  <li>• Contenido optimizado para &ldquo;dentista [ciudad]&rdquo;</li>
                   <li>• Arquitectura de enlaces internos mejorada</li>
                 </ul>
               </div>

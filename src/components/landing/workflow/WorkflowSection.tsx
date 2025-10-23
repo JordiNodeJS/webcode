@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 export function WorkflowSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const { disableAnimationsForSection } = useAnimationContext();
+  const { disableAnimationsForSection: _disableAnimationsForSection } = useAnimationContext();
 
   const workflowSteps = [
     {

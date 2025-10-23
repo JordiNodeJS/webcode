@@ -11,10 +11,6 @@ const nextConfig: NextConfig = {
 		optimizePackageImports: ["lucide-react", "framer-motion"],
 		serverComponentsHmrCache: false,
 	},
-	// Deshabilitar AMP explícitamente
-	amp: {
-		canonicalBase: "https://webcode.es",
-	},
 	// Configurar orígenes permitidos para desarrollo
 	allowedDevOrigins: ["192.168.0.15:3000", "localhost:3000", "127.0.0.1:3000"],
 
@@ -71,75 +67,77 @@ const nextConfig: NextConfig = {
 		disableStaticImages: false,
 	},
 
-	// Bundle optimizations
-	webpack: (config, { dev, isServer }) => {
-		// Optimizaciones para reducir bundle size
-		if (!dev && !isServer) {
-			config.optimization = {
-				...config.optimization,
-				splitChunks: {
-					chunks: "all",
-					minSize: 20000, // Only split chunks larger than 20KB
-					maxSize: 50000, // Maximum chunk size of 50KB
-					cacheGroups: {
-						// Separar vendor chunks por tamaño
-						framework: {
-							chunks: "all",
-							name: "framework",
-							test: /(?<!node_modules.*)[\\/]node_modules[\\/](react|react-dom|scheduler|prop-types|use-subscription)[\\/]/,
-							priority: 40,
-							enforce: true,
-						},
-						animations: {
-							name: "animations",
-							test: /[\\/]node_modules[\\/](framer-motion|motion)[\\/]/,
-							chunks: "all",
-							priority: 30,
-							enforce: true,
-						},
-						icons: {
-							name: "icons",
-							test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
-							chunks: "all",
-							priority: 25,
-							enforce: true,
-						},
-						pdf: {
-							name: "pdf",
-							test: /[\\/]node_modules[\\/](jspdf|jspdf-autotable)[\\/]/,
-							chunks: "async", // Only load when needed
-							priority: 35,
-							enforce: true,
-						},
-						email: {
-							name: "email",
-							test: /[\\/]node_modules[\\/](resend|@react-email)[\\/]/,
-							chunks: "async", // Only load when needed
-							priority: 35,
-							enforce: true,
-						},
-						commons: {
-							name: "commons",
-							chunks: "all",
-							minChunks: 2,
-							priority: 20,
-							reuseExistingChunk: true,
-						},
-					},
+	// Bundle optimizations - Solo se aplica cuando NO se usa Turbopack
+	...(process.env.TURBOPACK
+		? {}
+		: {
+				webpack: (config: any, { dev, isServer }: { dev: boolean; isServer: boolean }) => {
+					// Optimizaciones para reducir bundle size
+					if (!dev && !isServer) {
+						config.optimization = {
+							...config.optimization,
+							splitChunks: {
+								chunks: "all",
+								minSize: 20000,
+								maxSize: 50000,
+								cacheGroups: {
+									framework: {
+										chunks: "all",
+										name: "framework",
+										test: /(?<!node_modules.*)[\\/]node_modules[\\/](react|react-dom|scheduler|prop-types|use-subscription)[\\/]/,
+										priority: 40,
+										enforce: true,
+									},
+									animations: {
+										name: "animations",
+										test: /[\\/]node_modules[\\/](framer-motion|motion)[\\/]/,
+										chunks: "all",
+										priority: 30,
+										enforce: true,
+									},
+									icons: {
+										name: "icons",
+										test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
+										chunks: "all",
+										priority: 25,
+										enforce: true,
+									},
+									pdf: {
+										name: "pdf",
+										test: /[\\/]node_modules[\\/](jspdf|jspdf-autotable)[\\/]/,
+										chunks: "async",
+										priority: 35,
+										enforce: true,
+									},
+									email: {
+										name: "email",
+										test: /[\\/]node_modules[\\/](resend|@react-email)[\\/]/,
+										chunks: "async",
+										priority: 35,
+										enforce: true,
+									},
+									commons: {
+										name: "commons",
+										chunks: "all",
+										minChunks: 2,
+										priority: 20,
+										reuseExistingChunk: true,
+									},
+								},
+							},
+						};
+					}
+
+					// Optimización de tree shaking
+					config.resolve.alias = {
+						...config.resolve.alias,
+						"framer-motion": "framer-motion/dist/es/index.js",
+						motion: "motion/dist/es/index.js",
+					};
+
+					return config;
 				},
-			};
-		}
-
-		// Optimización de tree shaking
-		config.resolve.alias = {
-			...config.resolve.alias,
-			// Force ESM builds for better tree-shaking
-			"framer-motion": "framer-motion/dist/es/index.js",
-			motion: "motion/dist/es/index.js",
-		};
-
-		return config;
-	},
+			}),
 
 	// Headers de seguridad mejorados para SEO y Best Practices
 	async headers() {
@@ -213,7 +211,7 @@ const nextConfig: NextConfig = {
 				],
 			},
 			{
-				source: "/(.*\\.(ico|png|jpg|jpeg|gif|webp|svg|woff|woff2))",
+				source: "/:path*\\.(ico|png|jpg|jpeg|gif|webp|svg|woff|woff2)",
 				headers: [
 					{
 						key: "Cache-Control",

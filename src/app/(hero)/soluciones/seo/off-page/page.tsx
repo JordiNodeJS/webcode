@@ -66,7 +66,7 @@ export default function SeoOffPage() {
           es Crucial?
         </h2>
         <p className="text-center text-muted-foreground mb-12 text-lg max-w-3xl mx-auto">
-          Google considera los enlaces externos como "votos de confianza". 
+          Google considera los enlaces externos como &ldquo;votos de confianza&rdquo;. 
           Cuantos más enlaces de calidad apunten a tu sitio, mayor será tu autoridad y posicionamiento.
         </p>
 
