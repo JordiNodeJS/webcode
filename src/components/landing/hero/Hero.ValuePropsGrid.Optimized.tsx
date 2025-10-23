@@ -261,7 +261,7 @@ const PerformanceOptimizedCard = React.memo(({ prop }: { prop: ValueProp }) => {
       onTouchEnd={handleTouchEnd}
       className={`
         relative h-full group transition-transform duration-200 ease-out
-        ${isActive ? "will-change-transform [transform-style:preserve-3d]" : ""}
+        ${isActive ? "will-change-transform transform-3d" : ""}
         contain-layout contain-style contain-paint
       `}
       aria-label={`Propuesta de valor: ${prop.title}`}
@@ -281,7 +281,7 @@ const PerformanceOptimizedCard = React.memo(({ prop }: { prop: ValueProp }) => {
         `}
       />
 
-      <Card className="h-full bg-background/80 backdrop-blur-sm border-border/30 shadow-3d-sm group-hover:shadow-3d-md relative z-0 overflow-hidden transition-shadow duration-300 [transform-style:preserve-3d]">
+      <Card className="h-full bg-background/80 backdrop-blur-sm border-border/30 shadow-3d-sm group-hover:shadow-3d-md relative z-0 overflow-hidden transition-shadow duration-300 transform-3d">
         {/* Gradiente optimizado - estático en reposo */}
         <div
           className={`
@@ -306,7 +306,7 @@ const PerformanceOptimizedCard = React.memo(({ prop }: { prop: ValueProp }) => {
           <h3
             className={`
             text-lg font-bold text-foreground mb-4 transition-transform duration-200
-            ${isActive ? "group-hover:[transform:translateZ(30px)]" : ""}
+            ${isActive ? "group-hover:transform-[translateZ(30px)]" : ""}
           `}
           >
             {prop.title}
@@ -316,17 +316,17 @@ const PerformanceOptimizedCard = React.memo(({ prop }: { prop: ValueProp }) => {
           <ul
             className={`
             space-y-2 text-sm text-muted-foreground mt-4 transition-all duration-200
-            ${isActive ? "group-hover:[transform:translateZ(15px)]" : ""}
+            ${isActive ? "group-hover:transform-[translateZ(15px)]" : ""}
           `}
           >
             {prop.features.map((feature) => (
               <li
                 key={feature}
                 className={`
-                  flex items-center justify-center text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-500 font-medium transition-all duration-200
+                  flex items-center justify-center text-center text-transparent bg-clip-text bg-linear-to-r from-pink-500 to-teal-500 font-medium transition-all duration-200
                   ${
                     isActive
-                      ? "group-hover:[transform:translateZ(10px)_scale(1.02)]"
+                      ? "group-hover:transform-[translateZ(10px)_scale(1.02)]"
                       : ""
                   }
                 `}
@@ -387,7 +387,7 @@ export const ValuePropsGridOptimized = React.memo(() => {
     <div className="w-full max-w-6xl mx-auto mt-16">
       <div
         ref={ref}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 min-h-[384px]"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 min-h-96"
         aria-hidden={!hasBeenVisible}
       >
         {!hasBeenVisible
