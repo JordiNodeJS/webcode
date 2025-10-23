@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -40,7 +40,8 @@ export function ServiceCard({
   const [isExpanded, setIsExpanded] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
-  useEffect(() => {
+  // useLayoutEffect para evitar warning de setState en effect
+  useLayoutEffect(() => {
     // Detectar preferencias de accesibilidad
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     setPrefersReducedMotion(mediaQuery.matches);

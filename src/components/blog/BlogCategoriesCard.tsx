@@ -6,7 +6,7 @@
  */
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -38,7 +38,9 @@ export function BlogCategoriesCard({
   const titleId = `categories-title-${cardId}`;
   const descId = `categories-description-${cardId}`;
 
-  useEffect(() => {
+  // useLayoutEffect para evitar warning de setState en effect
+  // Se ejecuta antes del render, sincronizando el estado inicial
+  useLayoutEffect(() => {
     // Detectar preferencias de accesibilidad
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     setPrefersReducedMotion(mediaQuery.matches);

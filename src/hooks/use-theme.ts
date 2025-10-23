@@ -1,7 +1,7 @@
 "use client";
 
 import { useTheme as useNextTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 /**
  * Hook personalizado para manejar el tema oscuro/claro
@@ -13,8 +13,9 @@ export function useTheme() {
   const { theme, setTheme, systemTheme } = useNextTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Esperar a que el componente se monte para evitar problemas de hidratación
-  useEffect(() => {
+  // useLayoutEffect para evitar warning de setState en effect
+  // Se ejecuta antes del render para prevenir problemas de hidratación
+  useLayoutEffect(() => {
     setMounted(true);
   }, []);
 

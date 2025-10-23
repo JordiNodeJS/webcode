@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 interface ScrollVisibilityOptions {
   /** Umbral de scroll donde la flecha debe desaparecer completamente (0-1) */
@@ -57,8 +57,8 @@ export function useReversibleScrollVisibility(
   const rafRef = useRef<number | undefined>(undefined);
   const isObservingRef = useRef(false);
 
-  // Detectar prefers-reduced-motion
-  useEffect(() => {
+  // Detectar prefers-reduced-motion - useLayoutEffect para evitar warning
+  useLayoutEffect(() => {
     if (!respectReducedMotion) return;
 
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
