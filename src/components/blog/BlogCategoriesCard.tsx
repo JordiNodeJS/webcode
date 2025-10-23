@@ -31,19 +31,20 @@ export function BlogCategoriesCard({
   title = "Categorías",
   delay = 0
 }: BlogCategoriesCardProps) {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  // Inicializar con función para evitar warning de React Compiler
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  });
 
   // IDs estables para evitar problemas de hidratación
   const cardId = title.toLowerCase().replace(/\s+/g, "-");
   const titleId = `categories-title-${cardId}`;
   const descId = `categories-description-${cardId}`;
 
-  // useLayoutEffect para evitar warning de setState en effect
-  // Se ejecuta antes del render, sincronizando el estado inicial
+  // Listener para cambios en las preferencias
   useLayoutEffect(() => {
-    // Detectar preferencias de accesibilidad
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
 
     const handleChange = (e: MediaQueryListEvent) => {
       setPrefersReducedMotion(e.matches);

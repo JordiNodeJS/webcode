@@ -1,7 +1,7 @@
 "use client";
 
 import { useTheme as useNextTheme } from "next-themes";
-import { useLayoutEffect, useState } from "react";
+import { useState } from "react";
 
 /**
  * Hook personalizado para manejar el tema oscuro/claro
@@ -11,13 +11,14 @@ import { useLayoutEffect, useState } from "react";
  */
 export function useTheme() {
   const { theme, setTheme, systemTheme } = useNextTheme();
-  const [mounted, setMounted] = useState(false);
-
-  // useLayoutEffect para evitar warning de setState en effect
-  // Se ejecuta antes del render para prevenir problemas de hidratación
-  useLayoutEffect(() => {
-    setMounted(true);
-  }, []);
+  
+  // Inicializar mounted con función para hidratación correcta
+  // En SSR será false, en cliente será true desde el inicio
+  // No necesitamos useLayoutEffect ya que la inicialización lazy lo maneja
+  const [mounted] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return true;
+  });
 
   // Actualizar el tema cuando cambia
   const toggleTheme = () => {
