@@ -4,7 +4,7 @@ import {
   createContext,
   type ReactNode,
   useContext,
-  useEffect,
+  useLayoutEffect,
   useMemo,
   useState
 } from "react";
@@ -30,7 +30,8 @@ export function AnimationProvider({ children }: AnimationProviderProps) {
   );
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
-  useEffect(() => {
+  // useLayoutEffect para evitar warning de setState en effect
+  useLayoutEffect(() => {
     // Detectar preferencias de accesibilidad
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     setPrefersReducedMotion(mediaQuery.matches);

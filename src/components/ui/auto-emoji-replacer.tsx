@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useMemo } from "react";
 import { EmojiToSvg } from "./emoji-to-svg";
 
 /**
@@ -25,10 +25,8 @@ export function AutoEmojiReplacer({
   className = "",
   inline = false
 }: AutoEmojiReplacerProps) {
-  const [processedContent, setProcessedContent] =
-    useState<React.ReactNode>(children);
-
-  useEffect(() => {
+  // useMemo en lugar de useEffect + useState para evitar warning de React Compiler
+  const processedContent = useMemo(() => {
     // Procesar el contenido para reemplazar emoticones
     const processContent = (node: React.ReactNode): React.ReactNode => {
       if (typeof node === "string") {
@@ -65,7 +63,7 @@ export function AutoEmojiReplacer({
       return node;
     };
 
-    setProcessedContent(processContent(children));
+    return processContent(children);
   }, [children, size, variant, inline]);
 
   if (inline) {
