@@ -132,7 +132,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 
 ```tsx
 <Card 
-  className="border-l-4 border-l-primary bg-gradient-to-br from-background to-muted/20"
+  className="border-l-4 border-l-primary bg-linear-to-br from-background to-muted/20"
   style={{ boxShadow: 'var(--shadow-3d-lg)' }}
 >
   <CardContent className="pt-6">
@@ -542,7 +542,7 @@ import { Label } from "@/components/ui/label";
 
 ```tsx
 <footer className="
-  bg-gradient-to-b 
+  bg-linear-to-b 
   from-background 
   to-muted/20 
   border-t border-border 
