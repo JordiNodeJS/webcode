@@ -12,6 +12,7 @@
 		"lint:fix": "next lint --fix",
 		"format": "pnpm dlx prettier --write .",
 		"analyze": "cross-env ANALYZE=true next build",
+		"clean:install": "rm -rf .next && pnpm store prune && pnpm install --force",
 		"notion:verify": "node scripts/verify-notion-connection.js",
 		"notion:list": "node scripts/list-notion-databases.js",
 		"notion:search": "node scripts/search-notion-database.js",
