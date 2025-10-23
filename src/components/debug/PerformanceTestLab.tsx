@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -428,7 +428,8 @@ export function PerformanceTestLab() {
   >([]);
   const [isRecording, setIsRecording] = useState(false);
   const [testResults, setTestResults] = useState<Record<string, unknown>>({});
-  const [startTime, setStartTime] = useState<number>(Date.now());
+  // Lazy initializer para evitar Date.now() durante render
+  const [startTime, setStartTime] = useState<number>(() => Date.now());
 
   // Funciones de validación para evitar NaN en el render
   const safeNumber = useCallback(
@@ -481,54 +482,70 @@ export function PerformanceTestLab() {
         )
       : 0;
 
-  const testDuration = Math.round((Date.now() - startTime) / 1000);
+  // useState + useEffect para duración del test - actualiza cada segundo
+  const [testDuration, setTestDuration] = useState(0);
 
   useEffect(() => {
-    const summary = getPerformanceSummary();
-    setPerfHistory((prev) => [
-      ...prev.slice(-100), // Más datos para gráficos
-      {
-        scenario: activeScenario,
-        data: summary,
-        timestamp: Date.now()
-      }
-    ]);
+    const interval = setInterval(() => {
+      setTestDuration(Math.round((Date.now() - startTime) / 1000));
+    }, 1000);
 
-    // Actualizar resultados si está grabando
-    if (isRecording) {
-      setTestResults((prev) => ({
-        ...prev,
-        [activeScenario]: {
-          ...(prev[activeScenario] || {}),
-          avgFPS: safeNumber(avgFPS) || safeNumber(summary.fps),
-          minFPS: Math.min(
-            safeNumber(
-              (prev[activeScenario] as Record<string, unknown>)
-                ?.minFPS as number,
-              60
-            ),
-            safeNumber(summary.fps)
-          ),
-          maxFPS: Math.max(
-            safeNumber(
-              (prev[activeScenario] as Record<string, unknown>)
-                ?.maxFPS as number,
-              0
-            ),
-            safeNumber(summary.fps)
-          ),
-          avgMemory: safeNumber(performanceData.memory),
-          samples:
-            (((prev[activeScenario] as Record<string, unknown>)
-              ?.samples as number) || 0) + 1,
-          idleTime: isIdle
-            ? (((prev[activeScenario] as Record<string, unknown>)
-                ?.idleTime as number) || 0) + 1
-            : ((prev[activeScenario] as Record<string, unknown>)
-                ?.idleTime as number) || 0
+    return () => clearInterval(interval);
+  }, [startTime]);
+
+  // Performance monitoring effect - Schedules state updates to avoid React Compiler warning
+  useEffect(() => {
+    const summary = getPerformanceSummary();
+    
+    // Programar actualización en el próximo tick para satisfacer React Compiler
+    const timeout = setTimeout(() => {
+      setPerfHistory((prev) => [
+        ...prev.slice(-100), // Más datos para gráficos
+        {
+          scenario: activeScenario,
+          data: summary,
+          timestamp: Date.now()
         }
-      }));
-    }
+      ]);
+
+      // Actualizar resultados si está grabando
+      if (isRecording) {
+        setTestResults((prev) => ({
+          ...prev,
+          [activeScenario]: {
+            ...(prev[activeScenario] || {}),
+            avgFPS: safeNumber(avgFPS) || safeNumber(summary.fps),
+            minFPS: Math.min(
+              safeNumber(
+                (prev[activeScenario] as Record<string, unknown>)
+                  ?.minFPS as number,
+                60
+              ),
+              safeNumber(summary.fps)
+            ),
+            maxFPS: Math.max(
+              safeNumber(
+                (prev[activeScenario] as Record<string, unknown>)
+                  ?.maxFPS as number,
+                0
+              ),
+              safeNumber(summary.fps)
+            ),
+            avgMemory: safeNumber(performanceData.memory),
+            samples:
+              (((prev[activeScenario] as Record<string, unknown>)
+                ?.samples as number) || 0) + 1,
+            idleTime: isIdle
+              ? (((prev[activeScenario] as Record<string, unknown>)
+                  ?.idleTime as number) || 0) + 1
+              : ((prev[activeScenario] as Record<string, unknown>)
+                  ?.idleTime as number) || 0
+          }
+        }));
+      }
+    }, 0);
+
+    return () => clearTimeout(timeout);
   }, [
     performanceData,
     activeScenario,

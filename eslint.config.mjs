@@ -31,6 +31,7 @@ const eslintConfig = defineConfig([
 		"node_modules/**",
 		"pnpm-lock.yaml",
 		"public/**",
+		"scripts/**", // Ignore CommonJS scripts
 	]),
 ]);
 

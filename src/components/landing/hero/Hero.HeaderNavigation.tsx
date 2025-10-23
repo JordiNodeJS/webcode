@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { Link } from "next-view-transitions";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
 import { Button } from "@/components/ui/button";
 import {
@@ -53,11 +53,10 @@ export function HeaderNavigation() {
   const isScrolled = scrollPosition.y > 10;
 
   // Active navigation tracking (page or section)
-  const [activeHref, setActiveHref] = useState<string | null>(null);
-  const observerRef = useRef<IntersectionObserver | null>(null);
-
-  // Update active link when pathname changes (handles page links like '/contacto')
-  useEffect(() => {
+  const [manualActiveHref, setManualActiveHref] = useState<string | null>(null);
+  
+  // Calcular activeHref basado en pathname (sin useEffect para evitar warning)
+  const activeHref = useMemo(() => {
     // Prefer exact path matches for non-hash, non-external links
     const pathMatch = navigationItems.find((it) => {
       if (it.href.startsWith("#") || it.href.startsWith("http")) return false;
@@ -66,15 +65,23 @@ export function HeaderNavigation() {
     });
 
     if (pathMatch) {
-      setActiveHref(pathMatch.href);
-      return;
+      return pathMatch.href;
     }
 
-    // If no path match, fallback to hash (if present)
-    if (typeof window !== "undefined") {
-      setActiveHref(window.location.hash || null);
+    // Si tenemos un hash manual seleccionado, usarlo
+    if (manualActiveHref) {
+      return manualActiveHref;
     }
-  }, [pathname]);
+
+    // Fallback to hash (if present)
+    if (typeof window !== "undefined") {
+      return window.location.hash || null;
+    }
+
+    return null;
+  }, [pathname, manualActiveHref]);
+
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
   // Scroll-spy for hash sections when on the root path
   useEffect(() => {
@@ -107,7 +114,7 @@ export function HeaderNavigation() {
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
 
         if (visible.length > 0) {
-          setActiveHref(`#${visible[0].target.id}`);
+          setManualActiveHref(`#${visible[0].target.id}`);
         }
       },
       {
@@ -167,12 +174,12 @@ export function HeaderNavigation() {
             block: "start"
           });
           // mark active immediately for better feedback
-          setActiveHref(href);
+          setManualActiveHref(href);
           return;
         }
 
-        // If element not found on the page (edge-case), update the hash as fallback
-        window.location.hash = targetId;
+        // If element not found on the page (edge-case), use router to update the hash
+        router.push(`#${targetId}`, { scroll: false });
         return;
       }
 

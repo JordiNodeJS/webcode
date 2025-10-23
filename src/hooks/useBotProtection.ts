@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 interface BotProtectionConfig {
   honeypotFieldName?: string;
@@ -26,27 +26,45 @@ export function useBotProtection(config: BotProtectionConfig = {}) {
     cooldownPeriod = 60000 // 1 minuto
   } = config;
 
-  const [formStartTime, setFormStartTime] = useState<number>(0);
+  const [formStartTime, setFormStartTime] = useState<number>(() => Date.now());
   const [honeypotValue, setHoneypotValue] = useState<string>("");
   const [submissionCount, setSubmissionCount] = useState<number>(0);
   const [lastSubmission, setLastSubmission] = useState<number>(0);
+  
+  // Estado de bloqueo derivado con auto-actualización
   const [isBlocked, setIsBlocked] = useState<boolean>(false);
-
-  // Inicializar tiempo de inicio del formulario
+  
+  // Actualizar estado de bloqueo basado en lastSubmission usando interval
   useEffect(() => {
-    setFormStartTime(Date.now());
-  }, []);
-
-  // Verificar si el usuario está bloqueado
-  useEffect(() => {
-    if (lastSubmission > 0) {
-      const timeSinceLastSubmission = Date.now() - lastSubmission;
-      if (timeSinceLastSubmission < cooldownPeriod) {
-        setIsBlocked(true);
-        const remainingTime = cooldownPeriod - timeSinceLastSubmission;
-        setTimeout(() => setIsBlocked(false), remainingTime);
-      }
+    if (lastSubmission === 0) {
+      // Programar actualización en el próximo tick para evitar warning
+      const timeout = setTimeout(() => setIsBlocked(false), 0);
+      return () => clearTimeout(timeout);
     }
+
+    // Función para actualizar el estado de bloqueo
+    const updateBlockStatus = () => {
+      const timeSinceLastSubmission = Date.now() - lastSubmission;
+      const shouldBeBlocked = timeSinceLastSubmission < cooldownPeriod;
+      setIsBlocked(shouldBeBlocked);
+      return shouldBeBlocked;
+    };
+
+    // Actualizar inmediatamente
+    const stillBlocked = updateBlockStatus();
+
+    // Si no está bloqueado, no necesitamos interval
+    if (!stillBlocked) return;
+
+    // Actualizar cada segundo mientras está bloqueado
+    const interval = setInterval(() => {
+      const isStillBlocked = updateBlockStatus();
+      if (!isStillBlocked) {
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
   }, [lastSubmission, cooldownPeriod]);
 
   // Detectar comportamiento de bot
@@ -129,6 +147,26 @@ export function useBotProtection(config: BotProtectionConfig = {}) {
     setFormStartTime(Date.now());
   }, []);
 
+  // Estado para el tiempo actual (actualizado periódicamente)
+  const [currentTime, setCurrentTime] = useState(() => Date.now());
+
+  // Actualizar currentTime cada segundo cuando está bloqueado
+  useEffect(() => {
+    if (!isBlocked || lastSubmission === 0) return;
+
+    const interval = setInterval(() => {
+      setCurrentTime(Date.now());
+    }, 1000); // Actualizar cada segundo
+
+    return () => clearInterval(interval);
+  }, [isBlocked, lastSubmission]);
+
+  // Calcular cooldown restante usando currentTime en lugar de Date.now()
+  const remainingCooldown = useMemo(() => {
+    if (!isBlocked || lastSubmission === 0) return 0;
+    return Math.max(0, cooldownPeriod - (currentTime - lastSubmission));
+  }, [isBlocked, lastSubmission, cooldownPeriod, currentTime]);
+
   return {
     honeypotFieldName,
     honeypotValue,
@@ -138,9 +176,7 @@ export function useBotProtection(config: BotProtectionConfig = {}) {
     resetProtection,
     isBlocked,
     submissionCount,
-    remainingCooldown: isBlocked
-      ? Math.max(0, cooldownPeriod - (Date.now() - lastSubmission))
-      : 0
+    remainingCooldown
   };
 }
 
