@@ -1,5 +1,14 @@
 import type { NextConfig } from "next";
 
+// Type for webpack config to avoid 'any' type
+interface WebpackConfig {
+	optimization?: Record<string, unknown>;
+	resolve?: Record<string, unknown>;
+	module?: Record<string, unknown>;
+	plugins?: unknown[];
+	[key: string]: unknown;
+}
+
 const nextConfig: NextConfig = {
 	// Configuración compatible con Netlify
 	output: process.env.NETLIFY ? "standalone" : undefined,
@@ -73,7 +82,10 @@ const nextConfig: NextConfig = {
 	...(process.env.TURBOPACK
 		? {}
 		: {
-				webpack: (config: any, { dev, isServer }: { dev: boolean; isServer: boolean }) => {
+				webpack: (
+					config: WebpackConfig,
+					{ dev, isServer }: { dev: boolean; isServer: boolean },
+				) => {
 					// Optimizaciones para reducir bundle size
 					if (!dev && !isServer) {
 						config.optimization = {
@@ -131,8 +143,11 @@ const nextConfig: NextConfig = {
 					}
 
 					// Optimización de tree shaking
+					if (!config.resolve) {
+						config.resolve = {};
+					}
 					config.resolve.alias = {
-						...config.resolve.alias,
+						...(config.resolve.alias || {}),
 						"framer-motion": "framer-motion/dist/es/index.js",
 						motion: "motion/dist/es/index.js",
 					};

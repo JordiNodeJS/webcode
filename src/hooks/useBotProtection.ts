@@ -138,7 +138,8 @@ export function useBotProtection(config: BotProtectionConfig = {}) {
     resetProtection,
     isBlocked,
     submissionCount,
-    remainingCooldown: isBlocked
+    // Calcular cooldown restante de forma pura
+    remainingCooldown: isBlocked && lastSubmission > 0
       ? Math.max(0, cooldownPeriod - (Date.now() - lastSubmission))
       : 0
   };
