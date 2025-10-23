@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Eye } from "@/lib/icons";
+import { Eye } from "@/lib/icons";
 import styles from "./Hero.CallToAction.module.css";
 
 /**
