@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 interface PerformanceMemory {
   usedJSHeapSize: number;
@@ -177,10 +177,29 @@ export function usePerformanceMonitor(options: PerformanceMonitorOptions = {}) {
  */
 export function useComponentPerformanceMonitor(componentName: string) {
   const renderCountRef = useRef(0);
-  const mountTimeRef = useRef(Date.now());
+  const mountTimeRef = useRef(0);
+  const [uptime, setUptime] = useState(0);
+  const [renderCount, setRenderCount] = useState(0);
+
+  // Inicializar mountTime en useEffect para evitar Date.now() durante render
+  useEffect(() => {
+    if (mountTimeRef.current === 0) {
+      mountTimeRef.current = Date.now();
+    }
+
+    // Actualizar uptime periódicamente
+    const interval = setInterval(() => {
+      if (mountTimeRef.current > 0) {
+        setUptime(Date.now() - mountTimeRef.current);
+      }
+    }, 1000); // Actualizar cada segundo
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     renderCountRef.current++;
+    setRenderCount(renderCountRef.current);
 
     if (process.env.NODE_ENV === "development") {
       console.log(`🎯 ${componentName} render #${renderCountRef.current}`);
@@ -188,13 +207,13 @@ export function useComponentPerformanceMonitor(componentName: string) {
   });
 
   return {
-    renderCount: renderCountRef.current,
-    uptime: Date.now() - mountTimeRef.current,
+    renderCount,
+    uptime,
     logRender: (reason?: string) => {
       console.log(`🔄 ${componentName} re-render:`, {
         count: renderCountRef.current,
         reason: reason || "unknown",
-        uptime: `${Math.round((Date.now() - mountTimeRef.current) / 1000)}s`
+        uptime: `${Math.round(uptime / 1000)}s`
       });
     }
   };

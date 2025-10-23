@@ -172,8 +172,11 @@ export function CloudLightningBackground() {
     [currentConfig]
   );
 
-  // Función principal de animación
-  const animate = useCallback(() => {
+  // Ref para la función animate (evita referencia circular)
+  const animateRef = useRef<() => void>(() => {});
+
+  // Función principal de animación (como callback)
+  const animateCallback = useCallback(() => {
     if (
       !canvasRef.current ||
       !isVisibleRef.current ||
@@ -330,8 +333,16 @@ export function CloudLightningBackground() {
 
     ctx.restore();
 
-    animationRef.current = requestAnimationFrame(animate);
+    // Usar ref para evitar referencia circular
+    if (animateRef.current) {
+      animationRef.current = requestAnimationFrame(animateRef.current);
+    }
   }, [calculateLighting, currentConfig, theme]);
+
+  // Actualizar ref en effect para evitar warning de React Compiler
+  useEffect(() => {
+    animateRef.current = animateCallback;
+  }, [animateCallback]);
 
   // Manejador de movimiento del mouse
   const handleMouseMove = useCallback((event: MouseEvent) => {
@@ -396,8 +407,8 @@ export function CloudLightningBackground() {
     }
 
     // Iniciar animación (si corresponde)
-    if (isVisibleRef.current && opacityRef.current > 0.01) {
-      animate();
+    if (isVisibleRef.current && opacityRef.current > 0.01 && animateRef.current) {
+      animateRef.current();
     }
 
     // Cleanup
@@ -410,19 +421,19 @@ export function CloudLightningBackground() {
       window.removeEventListener("resize", resizeCanvas);
       observer.disconnect();
     };
-  }, [animate, handleMouseMove, handleMouseLeave, resizeCanvas]);
+  }, [handleMouseMove, handleMouseLeave, resizeCanvas]);
 
   // Arrancar/parar animación según intersección u opacidad
   useEffect(() => {
     opacityRef.current = opacity;
     const shouldAnimate = isIntersecting && opacity > 0.01;
-    if (shouldAnimate && !animationRef.current) {
-      animate();
+    if (shouldAnimate && !animationRef.current && animateRef.current) {
+      animateRef.current();
     } else if (!shouldAnimate && animationRef.current) {
       cancelAnimationFrame(animationRef.current);
       animationRef.current = null;
     }
-  }, [isIntersecting, opacity, animate]);
+  }, [isIntersecting, opacity]);
 
   return (
     <div

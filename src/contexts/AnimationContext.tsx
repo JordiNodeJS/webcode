@@ -4,7 +4,7 @@ import {
   createContext,
   type ReactNode,
   useContext,
-  useEffect,
+  useLayoutEffect,
   useMemo,
   useState
 } from "react";
@@ -28,12 +28,16 @@ export function AnimationProvider({ children }: AnimationProviderProps) {
   const [disabledSections, setDisabledSections] = useState<Set<string>>(
     new Set()
   );
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  
+  // Inicializar con función para evitar warning de React Compiler
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  });
 
-  useEffect(() => {
-    // Detectar preferencias de accesibilidad
+  // Listener para cambios en las preferencias
+  useLayoutEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
 
     const handleChange = (e: MediaQueryListEvent) => {
       setPrefersReducedMotion(e.matches);

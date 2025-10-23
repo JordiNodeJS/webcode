@@ -6,7 +6,7 @@
  */
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -31,17 +31,20 @@ export function BlogCategoriesCard({
   title = "Categorías",
   delay = 0
 }: BlogCategoriesCardProps) {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  // Inicializar con función para evitar warning de React Compiler
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  });
 
   // IDs estables para evitar problemas de hidratación
   const cardId = title.toLowerCase().replace(/\s+/g, "-");
   const titleId = `categories-title-${cardId}`;
   const descId = `categories-description-${cardId}`;
 
-  useEffect(() => {
-    // Detectar preferencias de accesibilidad
+  // Listener para cambios en las preferencias
+  useLayoutEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
 
     const handleChange = (e: MediaQueryListEvent) => {
       setPrefersReducedMotion(e.matches);

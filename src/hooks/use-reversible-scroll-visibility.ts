@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 interface ScrollVisibilityOptions {
   /** Umbral de scroll donde la flecha debe desaparecer completamente (0-1) */
@@ -46,23 +46,38 @@ export function useReversibleScrollVisibility(
     respectReducedMotion = true
   } = options;
 
-  const [state, setState] = useState<ScrollVisibilityInternalState>({
-    opacity: 0,
-    isInViewport: false,
-    scrollProgress: 0,
-    isReducedMotion: false
+  // Inicializar estado con función para evitar warning de React Compiler
+  const [state, setState] = useState<ScrollVisibilityInternalState>(() => {
+    if (typeof window === "undefined") {
+      return {
+        opacity: 0,
+        isInViewport: false,
+        scrollProgress: 0,
+        isReducedMotion: false
+      };
+    }
+
+    const isReducedMotion =
+      respectReducedMotion &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    return {
+      opacity: 0,
+      isInViewport: false,
+      scrollProgress: 0,
+      isReducedMotion
+    };
   });
 
   const elementRef = useRef<HTMLElement | null>(null);
   const rafRef = useRef<number | undefined>(undefined);
   const isObservingRef = useRef(false);
 
-  // Detectar prefers-reduced-motion
-  useEffect(() => {
+  // Listener para cambios en prefers-reduced-motion
+  useLayoutEffect(() => {
     if (!respectReducedMotion) return;
 
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setState((prev) => ({ ...prev, isReducedMotion: mediaQuery.matches }));
 
     const handleChange = (e: MediaQueryListEvent) => {
       setState((prev) => ({ ...prev, isReducedMotion: e.matches }));
