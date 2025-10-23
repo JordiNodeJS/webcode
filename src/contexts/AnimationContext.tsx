@@ -5,6 +5,7 @@ import {
   type ReactNode,
   useContext,
   useEffect,
+  useMemo,
   useState
 } from "react";
 
@@ -42,29 +43,43 @@ export function AnimationProvider({ children }: AnimationProviderProps) {
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
-  const disableAnimationsForSection = (sectionId: string) => {
-    setDisabledSections((prev) => new Set(prev).add(sectionId));
-  };
+  const disableAnimationsForSection = useMemo(
+    () => (sectionId: string) => {
+      setDisabledSections((prev) => new Set(prev).add(sectionId));
+    },
+    []
+  );
 
-  const enableAnimationsForSection = (sectionId: string) => {
-    setDisabledSections((prev) => {
-      const newSet = new Set(prev);
-      newSet.delete(sectionId);
-      return newSet;
-    });
-  };
+  const enableAnimationsForSection = useMemo(
+    () => (sectionId: string) => {
+      setDisabledSections((prev) => {
+        const newSet = new Set(prev);
+        newSet.delete(sectionId);
+        return newSet;
+      });
+    },
+    []
+  );
 
   const isAnimationEnabled = !prefersReducedMotion;
 
+  const contextValue = useMemo(
+    () => ({
+      isAnimationEnabled,
+      disableAnimationsForSection,
+      enableAnimationsForSection,
+      disabledSections
+    }),
+    [
+      isAnimationEnabled,
+      disableAnimationsForSection,
+      enableAnimationsForSection,
+      disabledSections
+    ]
+  );
+
   return (
-    <AnimationContext.Provider
-      value={{
-        isAnimationEnabled,
-        disableAnimationsForSection,
-        enableAnimationsForSection,
-        disabledSections
-      }}
-    >
+    <AnimationContext.Provider value={contextValue}>
       {children}
     </AnimationContext.Provider>
   );

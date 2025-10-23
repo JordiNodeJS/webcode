@@ -24,7 +24,7 @@
 **Tipografía**: Geist Sans (body) + Space Grotesk (titles) + Fira Code (mono)  
 **Hover**: `opacity-80` + `translate-y-0.5` + `scale-102`  
 **Espaciado**: 3, 6, 8, 16 (texto, elemento, componente, sección)  
-**Stack**: Next.js 15.5.2 + React 19.1.0 + Tailwind v4 + TypeScript 5
+**Stack**: Next.js 16.0.0 + React 19.2.0 + Tailwind v4 + TypeScript 5
 
 ### **✅ Checklist Express**
 
