@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 export function PortfolioSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const { disableAnimationsForSection } = useAnimationContext();
+  const { disableAnimationsForSection: _disableAnimationsForSection } = useAnimationContext();
 
   const portfolioItems = [
     {
@@ -155,7 +155,7 @@ export function PortfolioSection() {
 
         {/* Portfolio Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {portfolioItems.map((item, index) => {
+          {portfolioItems.map((item) => {
             const colors = getColorClasses(item.color);
             return (
               <div

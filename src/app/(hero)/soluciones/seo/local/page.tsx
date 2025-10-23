@@ -305,7 +305,7 @@ export default function SeoLocalPage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="text-secondary">✓</span>
-                    <span>Top 3 en "mudanzas Barcelona"</span>
+                    <span>Top 3 en &ldquo;mudanzas Barcelona&rdquo;</span>
                   </li>
                 </ul>
               </div>
