@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 interface BotProtectionConfig {
   honeypotFieldName?: string;
@@ -129,6 +129,12 @@ export function useBotProtection(config: BotProtectionConfig = {}) {
     setFormStartTime(Date.now());
   }, []);
 
+  // useMemo para cálculo de cooldown - evita Date.now() durante render
+  const remainingCooldown = useMemo(() => {
+    if (!isBlocked || lastSubmission === 0) return 0;
+    return Math.max(0, cooldownPeriod - (Date.now() - lastSubmission));
+  }, [isBlocked, lastSubmission, cooldownPeriod]);
+
   return {
     honeypotFieldName,
     honeypotValue,
@@ -138,10 +144,7 @@ export function useBotProtection(config: BotProtectionConfig = {}) {
     resetProtection,
     isBlocked,
     submissionCount,
-    // Calcular cooldown restante de forma pura
-    remainingCooldown: isBlocked && lastSubmission > 0
-      ? Math.max(0, cooldownPeriod - (Date.now() - lastSubmission))
-      : 0
+    remainingCooldown
   };
 }
 
