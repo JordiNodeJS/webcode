@@ -4,7 +4,7 @@
 
 > **Documento de referencia para mantener consistencia visual en toda la web**  
 > **Última actualización**: 2025-10-23 - Release Candidate 98%  
-> **Stack**: Next.js 15.5.2 + React 19.1.0 + Tailwind v4 + Lucide React 0.542.0
+> **Stack**: Next.js 16.0.0 + React 19.2.0 + Tailwind v4 + Lucide React 0.542.0
 
 ---
 

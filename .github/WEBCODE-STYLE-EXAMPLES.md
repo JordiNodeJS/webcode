@@ -132,7 +132,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 
 ```tsx
 <Card 
-  className="border-l-4 border-l-primary bg-gradient-to-br from-background to-muted/20"
+  className="border-l-4 border-l-primary bg-linear-to-br from-background to-muted/20"
   style={{ boxShadow: 'var(--shadow-3d-lg)' }}
 >
   <CardContent className="pt-6">
@@ -542,7 +542,7 @@ import { Label } from "@/components/ui/label";
 
 ```tsx
 <footer className="
-  bg-gradient-to-b 
+  bg-linear-to-b 
   from-background 
   to-muted/20 
   border-t border-border 
@@ -739,4 +739,4 @@ import { Label } from "@/components/ui/label";
 
 **Última actualización**: Octubre 2025  
 **Estado**: ✅ Listo para producción - Performance 100/100  
-**Stack**: Next.js 15.5.2 + React 19.1.0 + Tailwind v4
+**Stack**: Next.js 16.0.0 + React 19.2.0 + Tailwind v4

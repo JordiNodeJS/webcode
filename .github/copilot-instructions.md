@@ -144,8 +144,8 @@ Eres un asistente especializado en el desarrollo del proyecto WEBCODE. Sigue est
 
 ### **Framework Principal**
 
-- **Next.js 15.5.2** con App Router y Turbopack ✅
-- **React 19.1.0** con Server Components ✅
+- **Next.js 16.0.0** con App Router y Turbopack (por defecto) ✅
+- **React 19.2.0** con Server Components ✅
 - **TypeScript 5.x** con configuración estricta ✅
 
 ### **Herramientas de Desarrollo**
@@ -164,7 +164,7 @@ Eres un asistente especializado en el desarrollo del proyecto WEBCODE. Sigue est
 
 ✅ **PROYECTO EN RELEASE CANDIDATE (98%)**: Landing page completa con Hero Section optimizada (100/100 performance), Blog totalmente funcional con Notion CMS y 6 scripts CLI de gestión, Sistema de Briefing con exportación PDF, todas las páginas de soluciones completadas (Web Dev, SEO con subpáginas, Reservas), páginas adicionales implementadas (Servicios, Contacto, FAQs, Portfolio). Migración completa a Lucide React (150KB reducidos). React Compiler habilitado para optimización automática.
 
-**Stack Actual**: Next.js 15.5.2, React 19.1.0 (con React Compiler), TypeScript 5.x, Tailwind CSS 4.x, Lucide React 0.542.0, Framer Motion 12.23.12, shadcn/ui, Playwright 1.55.0, ESLint 9.37.0, Prettier 3.6.2, @notionhq/client 5.1.0, jsPDF 3.0.3.
+**Stack Actual**: Next.js 16.0.0, React 19.2.0 (con React Compiler estable), TypeScript 5.x, Tailwind CSS 4.x, Lucide React 0.542.0, Framer Motion 12.23.12, shadcn/ui, Playwright 1.55.0, ESLint 9.37.0, Prettier 3.6.2, @notionhq/client 5.1.0, jsPDF 3.0.3.
 
 **Funcionalidades Completadas**:
 - ✅ Landing Page Hero (8 componentes optimizados)
@@ -179,13 +179,15 @@ Eres un asistente especializado en el desarrollo del proyecto WEBCODE. Sigue est
 
 ## **REGLAS FUNDAMENTALES DE DESARROLLO**
 
-### **Patrones de Next.js 15**
+### **Patrones de Next.js 16**
 
 - Usar **App Router exclusivamente** (directorio app/)
 - **Server Components por defecto**, 'use client' solo cuando sea necesario
 - Fetch moderno con opciones de caché nativas
 - Route handlers para endpoints de API
 - **APIs asíncronas**: `cookies()`, `headers()`, `params`, `searchParams` son ahora Promises
+- **React Compiler estable**: Habilitado con `reactCompiler: true` en next.config.ts (movido de experimental)
+- **Turbopack por defecto**: No requiere flag `--turbopack` en comandos dev/build
 
 ### **Estándares de TypeScript**
 
@@ -206,7 +208,7 @@ Eres un asistente especializado en el desarrollo del proyecto WEBCODE. Sigue est
 #### **Default Exports Solo para Páginas Next.js**
 
 - Usar `export default` únicamente en `page.tsx` y `layout.tsx`
-- Requerido por el App Router de Next.js 15
+- Requerido por el App Router de Next.js 16
 - Para configuraciones y utilidades que son el único export del archivo
 
 ```typescript
@@ -249,7 +251,7 @@ export default function AboutPage() { ... }
 
 ## **ESTRUCTURA DE ARCHIVOS DEL PROYECTO**
 
-⚠️ **NOTA IMPORTANTE**: El proyecto se creará con la estructura estándar de Next.js 15 usando `src/` y siguiendo principios de colocación cercana (colocation).
+⚠️ **NOTA IMPORTANTE**: El proyecto se creará con la estructura estándar de Next.js 16 usando `src/` y siguiendo principios de colocación cercana (colocation).
 
 ### **Estructura de Directorio Principal**
 
@@ -326,7 +328,7 @@ package.json                   # Dependencias del proyecto - PENDIENTE INSTALACI
   app/components/HeroSection.tsx  # Para componentes de la página principal
   ```
 
-**🎯 RECOMENDACIÓN PRINCIPAL**: Usar colocación cercana siempre que sea posible. Es más fácil de mantener, más claro para el contexto, y sigue las mejores prácticas de Next.js 15.
+**🎯 RECOMENDACIÓN PRINCIPAL**: Usar colocación cercana siempre que sea posible. Es más fácil de mantener, más claro para el contexto, y sigue las mejores prácticas de Next.js 16.
 
 #### **2. Componentes Compartidos**
 
@@ -483,7 +485,7 @@ src/components/features/search/SearchBar.tsx
 #### **Setup inicial del proyecto (PENDIENTE)**
 
 ```bash
-# Crear proyecto Next.js 15
+# Crear proyecto Next.js 16
 pnpm create next-app@latest webcode --typescript --tailwind --eslint --app --src-dir --import-alias "@/*"
 
 # Instalar dependencias principales
@@ -599,7 +601,7 @@ Para tareas específicas, consulta estos prompts consolidados en `.github/prompt
 #### **Prompts Principales**
 
 - **`desarrollo.prompt.md`** - 🛠️ Herramientas de desarrollo, testing, MCPs (Playwright, Chrome DevTools, Context7, shadcn)
-- **`arquitectura-estructura.prompt.md`** - 🏗️ Arquitectura Next.js 15, layouts, patrones de componentes, estructura de proyecto
+- **`arquitectura-estructura.prompt.md`** - 🏗️ Arquitectura Next.js 16, layouts, patrones de componentes, estructura de proyecto
 - **`ui-styling.prompt.md`** - 🎨 Sistema WAS, shadcn/ui, Tailwind v4, estilos y diseño UI/UX
 - **`git-workflow.prompt.md`** - 🔀 Git workflow, Conventional Commits, PRs con GitHub CLI
 - **`performance.prompt.md`** - ⚡ Performance, Core Web Vitals, optimización de imágenes/JS/animaciones
@@ -624,7 +626,7 @@ Consulta **`.github/prompts/README.md`** para:
 
 #### **Guías de Desarrollo** (`.github/support/`)
 
-- **`nextjs-best-practices.md`** - App Router Next.js 15, estructura de proyecto, data fetching, routing, layouts, metadata, error handling
+- **`nextjs-best-practices.md`** - App Router Next.js 16, estructura de proyecto, data fetching, routing, layouts, metadata, error handling
 - **`styling-guide.md`** - Tailwind CSS v4, sistema WAS, reglas de colores, responsive design, accesibilidad WCAG 2.1 AA
 - **`git-commit-standards.md`** - Conventional Commits, mensajes de commit
 - **`pnpm-package-management.md`** - Gestión de paquetes con pnpm
@@ -634,7 +636,7 @@ Consulta **`.github/prompts/README.md`** para:
 
 #### **Instrucciones por Tipo de Archivo** (`.github/instructions/`)
 
-- **`app-router.instructions.md`** - App Router de Next.js 15, Server Components, Client Components
+- **`app-router.instructions.md`** - App Router de Next.js 16, Server Components, Client Components
 - **`components.instructions.md`** - Componentes React y shadcn/ui, patrones de composición
 - **`styling.instructions.md`** - Estilos con Tailwind CSS v4, clases utilitarias
 - **`typescript.instructions.md`** - Patrones TypeScript, tipos, interfaces
