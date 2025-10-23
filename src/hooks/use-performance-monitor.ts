@@ -179,6 +179,7 @@ export function useComponentPerformanceMonitor(componentName: string) {
   const renderCountRef = useRef(0);
   const mountTimeRef = useRef(0);
   const [uptime, setUptime] = useState(0);
+  const [renderCount, setRenderCount] = useState(0);
 
   // Inicializar mountTime en useEffect para evitar Date.now() durante render
   useEffect(() => {
@@ -198,6 +199,7 @@ export function useComponentPerformanceMonitor(componentName: string) {
 
   useEffect(() => {
     renderCountRef.current++;
+    setRenderCount(renderCountRef.current);
 
     if (process.env.NODE_ENV === "development") {
       console.log(`🎯 ${componentName} render #${renderCountRef.current}`);
@@ -205,7 +207,7 @@ export function useComponentPerformanceMonitor(componentName: string) {
   });
 
   return {
-    renderCount: renderCountRef.current,
+    renderCount,
     uptime,
     logRender: (reason?: string) => {
       console.log(`🔄 ${componentName} re-render:`, {

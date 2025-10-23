@@ -120,17 +120,19 @@ const useThrottledCallback = <T extends (...args: never[]) => void>(
 ): T => {
   const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
-  return React.useCallback(
-    ((...args: Parameters<T>) => {
+  const throttled = React.useCallback(
+    (...args: Parameters<T>) => {
       if (timeoutRef.current) return; // Skip si ya hay una actualización pendiente
 
       timeoutRef.current = setTimeout(() => {
         callback(...args);
         timeoutRef.current = null;
       }, delay);
-    }) as T,
+    },
     [callback, delay]
   );
+
+  return throttled as T;
 };
 
 // Componente optimizado para rendimiento

@@ -493,52 +493,59 @@ export function PerformanceTestLab() {
     return () => clearInterval(interval);
   }, [startTime]);
 
+  // Performance monitoring effect - Schedules state updates to avoid React Compiler warning
   useEffect(() => {
     const summary = getPerformanceSummary();
-    setPerfHistory((prev) => [
-      ...prev.slice(-100), // Más datos para gráficos
-      {
-        scenario: activeScenario,
-        data: summary,
-        timestamp: Date.now()
-      }
-    ]);
-
-    // Actualizar resultados si está grabando
-    if (isRecording) {
-      setTestResults((prev) => ({
-        ...prev,
-        [activeScenario]: {
-          ...(prev[activeScenario] || {}),
-          avgFPS: safeNumber(avgFPS) || safeNumber(summary.fps),
-          minFPS: Math.min(
-            safeNumber(
-              (prev[activeScenario] as Record<string, unknown>)
-                ?.minFPS as number,
-              60
-            ),
-            safeNumber(summary.fps)
-          ),
-          maxFPS: Math.max(
-            safeNumber(
-              (prev[activeScenario] as Record<string, unknown>)
-                ?.maxFPS as number,
-              0
-            ),
-            safeNumber(summary.fps)
-          ),
-          avgMemory: safeNumber(performanceData.memory),
-          samples:
-            (((prev[activeScenario] as Record<string, unknown>)
-              ?.samples as number) || 0) + 1,
-          idleTime: isIdle
-            ? (((prev[activeScenario] as Record<string, unknown>)
-                ?.idleTime as number) || 0) + 1
-            : ((prev[activeScenario] as Record<string, unknown>)
-                ?.idleTime as number) || 0
+    
+    // Programar actualización en el próximo tick para satisfacer React Compiler
+    const timeout = setTimeout(() => {
+      setPerfHistory((prev) => [
+        ...prev.slice(-100), // Más datos para gráficos
+        {
+          scenario: activeScenario,
+          data: summary,
+          timestamp: Date.now()
         }
-      }));
-    }
+      ]);
+
+      // Actualizar resultados si está grabando
+      if (isRecording) {
+        setTestResults((prev) => ({
+          ...prev,
+          [activeScenario]: {
+            ...(prev[activeScenario] || {}),
+            avgFPS: safeNumber(avgFPS) || safeNumber(summary.fps),
+            minFPS: Math.min(
+              safeNumber(
+                (prev[activeScenario] as Record<string, unknown>)
+                  ?.minFPS as number,
+                60
+              ),
+              safeNumber(summary.fps)
+            ),
+            maxFPS: Math.max(
+              safeNumber(
+                (prev[activeScenario] as Record<string, unknown>)
+                  ?.maxFPS as number,
+                0
+              ),
+              safeNumber(summary.fps)
+            ),
+            avgMemory: safeNumber(performanceData.memory),
+            samples:
+              (((prev[activeScenario] as Record<string, unknown>)
+                ?.samples as number) || 0) + 1,
+            idleTime: isIdle
+              ? (((prev[activeScenario] as Record<string, unknown>)
+                  ?.idleTime as number) || 0) + 1
+              : ((prev[activeScenario] as Record<string, unknown>)
+                  ?.idleTime as number) || 0
+          }
+        }));
+      }
+    }, 0);
+
+    return () => clearTimeout(timeout);
   }, [
     performanceData,
     activeScenario,
