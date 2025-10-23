@@ -157,23 +157,23 @@ gh pr view 42
 gh pr merge 42 --squash
 ```
 
-### **B) Template de PR**
+### B) Template de PR
 
 ```markdown
-## 📋 Descripción
+## Descripción
 
 Breve descripción de los cambios realizados.
 
-## 🎯 Tipo de Cambio
+## Tipo de cambio
 
-- [ ] ✨ Nueva funcionalidad (feat)
-- [ ] 🐛 Corrección de bug (fix)
-- [ ] 📝 Documentación (docs)
-- [ ] 💎 Refactorización (refactor)
-- [ ] ⚡ Performance (perf)
-- [ ] 🧪 Tests (test)
+- [ ] Nueva funcionalidad (feat)
+- [ ] Corrección de bug (fix)
+- [ ] Documentación (docs)
+- [ ] Refactorización (refactor)
+- [ ] Performance (perf)
+- [ ] Tests (test)
 
-## 🔍 Checklist
+## Checklist
 
 - [ ] El código sigue los estándares del proyecto
 - [ ] Los cambios pasan todos los tests
@@ -181,17 +181,17 @@ Breve descripción de los cambios realizados.
 - [ ] Los commits siguen el formato Conventional Commits
 - [ ] Se ha probado en diferentes navegadores/dispositivos
 
-## 📸 Screenshots (si aplica)
+## Capturas (si aplica)
 
 Capturas de pantalla de los cambios visuales.
 
-## 🔗 Issues Relacionados
+## Issues relacionados
 
 Closes #123
 Refs #456
 ```
 
-### **C) Usando Copilot para PRs**
+### C) Usando Copilot para PRs
 
 ```bash
 # Copilot puede generar descripciones de PR automáticamente
@@ -199,24 +199,24 @@ Refs #456
 
 # 1. Asegurarse de que los commits están bien escritos
 # 2. Usar el comando de Copilot en VS Code:
-#    Cmd/Ctrl + Shift + P → "GitHub Copilot: Generate PR Description"
+#    Cmd/Ctrl + Shift + P -> "GitHub Copilot: Generate PR Description"
 ```
 
 ---
 
 ## **4. REVIEW DE CÓDIGO**
 
-### **Checklist de Reviewer**
+### Checklist de reviewer
 
-- [ ] **Funcionalidad**: ¿Los cambios funcionan como se esperaba?
-- [ ] **Código limpio**: ¿El código es legible y mantenible?
-- [ ] **Performance**: ¿No hay regresiones de rendimiento?
-- [ ] **Tests**: ¿Hay tests adecuados?
-- [ ] **Documentación**: ¿Está actualizada?
-- [ ] **Seguridad**: ¿No introduce vulnerabilidades?
-- [ ] **Accesibilidad**: ¿Cumple WCAG 2.1 AA?
+- [ ] Funcionalidad: ¿Los cambios funcionan como se esperaba?
+- [ ] Código limpio: ¿El código es legible y mantenible?
+- [ ] Performance: ¿No hay regresiones de rendimiento?
+- [ ] Tests: ¿Hay tests adecuados?
+- [ ] Documentación: ¿Está actualizada?
+- [ ] Seguridad: ¿No introduce vulnerabilidades?
+- [ ] Accesibilidad: ¿Cumple WCAG 2.1 AA?
 
-### **Comentarios de Review**
+### Comentarios de review
 
 ```markdown
 # Sugerencia (opcional)
@@ -232,7 +232,7 @@ Refs #456
 **Nit**: Typo en el comentario, línea 42.
 
 # Aprobación con comentarios
-**LGTM** (Looks Good To Me) 👍 
+**LGTM** (Looks Good To Me)
 Solo un par de nits menores.
 ```
 
@@ -366,26 +366,26 @@ git mergetool
 
 ## **8. MEJORES PRÁCTICAS**
 
-### **Commits**
+### Commits
 
-- ✅ **Commits pequeños y atómicos** - Un cambio lógico por commit
-- ✅ **Mensajes descriptivos** - Explicar el "por qué", no el "qué"
-- ✅ **Formato consistente** - Seguir Conventional Commits
-- ✅ **Evitar commits de "WIP"** - Usar stash o ramas temporales
+- [x] Commits pequeños y atómicos - Un cambio lógico por commit
+- [x] Mensajes descriptivos - Explicar el "por qué", no el "qué"
+- [x] Formato consistente - Seguir Conventional Commits
+- [x] Evitar commits de "WIP" - Usar stash o ramas temporales
 
-### **Ramas**
+### Ramas
 
-- ✅ **Nombres descriptivos** - `feat/add-portfolio-page`
-- ✅ **Vida corta** - Mergear rápido, evitar ramas de larga duración
-- ✅ **Actualizar frecuentemente** - Rebase con main regularmente
-- ✅ **Limpiar ramas mergeadas** - Eliminar después de merge
+- [x] Nombres descriptivos - `feat/add-portfolio-page`
+- [x] Vida corta - Mergear rápido, evitar ramas de larga duración
+- [x] Actualizar frecuentemente - Rebase con main regularmente
+- [x] Limpiar ramas mergeadas - Eliminar después de merge
 
-### **Pull Requests**
+### Pull Requests
 
-- ✅ **PRs pequeños** - Más fáciles de revisar (< 400 líneas)
-- ✅ **Descripción clara** - Contexto, motivación, cambios
-- ✅ **Screenshots** - Para cambios visuales
-- ✅ **Tests pasando** - CI verde antes de mergear
+- [x] PRs pequeños - Más fáciles de revisar (< 400 líneas)
+- [x] Descripción clara - Contexto, motivación, cambios
+- [x] Screenshots - Para cambios visuales
+- [x] Tests pasando - CI verde antes de mergear
 
 ---
 
