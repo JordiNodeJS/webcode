@@ -739,4 +739,4 @@ import { Label } from "@/components/ui/label";
 
 **Última actualización**: Octubre 2025  
 **Estado**: ✅ Listo para producción - Performance 100/100  
-**Stack**: Next.js 15.5.2 + React 19.1.0 + Tailwind v4
+**Stack**: Next.js 16.0.0 + React 19.2.0 + Tailwind v4

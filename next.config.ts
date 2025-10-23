@@ -4,8 +4,10 @@ const nextConfig: NextConfig = {
 	// Configuración compatible con Netlify
 	output: process.env.NETLIFY ? "standalone" : undefined,
 	
+	// React Compiler ahora es estable en Next.js 16 (movido a top-level)
+	reactCompiler: true,
+	
 	experimental: {
-		reactCompiler: true,
 		viewTransition: true,
 		// Optimizaciones experimentales para bundle
 		optimizePackageImports: ["lucide-react", "framer-motion"],
