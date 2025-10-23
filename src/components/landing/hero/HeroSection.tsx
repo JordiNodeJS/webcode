@@ -20,6 +20,9 @@ const HeroSection = () => {
     respectReducedMotion: true
   });
 
+  // Desestructurar para evitar acceso a refs durante render
+  const { opacity, isReducedMotion, setElementRef } = scrollIndicator;
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -76,23 +79,23 @@ const HeroSection = () => {
 
       {/* Scroll Indicator - Optimizado para Performance */}
       <button
-        ref={scrollIndicator.setElementRef}
+        ref={setElementRef}
         type="button"
         className="absolute bottom-8 left-1/2 cursor-pointer transition-transform duration-200 will-change-transform hover:scale-110 focus:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 bg-transparent border-none p-2"
         onClick={scrollToContent}
         aria-label="Desplazarse hacia abajo para ver más contenido"
         style={{
           transform: `translateX(-50%) translateY(0)`,
-          opacity: scrollIndicator.opacity,
-          visibility: scrollIndicator.opacity > 0 ? "visible" : "hidden",
-          transition: scrollIndicator.isReducedMotion
+          opacity: opacity,
+          visibility: opacity > 0 ? "visible" : "hidden",
+          transition: isReducedMotion
             ? "opacity 0.2s ease-out, visibility 0.2s ease-out"
             : "opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s ease-out"
         }}
       >
         <ChevronDown
           className={`h-8 w-8 text-gray-400 dark:text-gray-500 transition-colors duration-200 ${
-            !scrollIndicator.isReducedMotion ? "animate-bounce" : ""
+            !isReducedMotion ? "animate-bounce" : ""
           }`}
         />
       </button>
