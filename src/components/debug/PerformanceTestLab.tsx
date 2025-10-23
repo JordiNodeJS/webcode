@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -428,7 +428,8 @@ export function PerformanceTestLab() {
   >([]);
   const [isRecording, setIsRecording] = useState(false);
   const [testResults, setTestResults] = useState<Record<string, unknown>>({});
-  const [startTime, setStartTime] = useState<number>(Date.now());
+  // Lazy initializer para evitar Date.now() durante render
+  const [startTime, setStartTime] = useState<number>(() => Date.now());
 
   // Funciones de validación para evitar NaN en el render
   const safeNumber = useCallback(
@@ -481,7 +482,16 @@ export function PerformanceTestLab() {
         )
       : 0;
 
-  const testDuration = Math.round((Date.now() - startTime) / 1000);
+  // useState + useEffect para duración del test - actualiza cada segundo
+  const [testDuration, setTestDuration] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTestDuration(Math.round((Date.now() - startTime) / 1000));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [startTime]);
 
   useEffect(() => {
     const summary = getPerformanceSummary();
