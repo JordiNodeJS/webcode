@@ -2,7 +2,9 @@
 
 ## **Contexto y Objetivo**
 
-Prompt especializado para el uso del MCP de shadcn/ui v4 en el proyecto WebCode, optimizado para integración con **Next.js 15 + Tailwind CSS v4 + TypeScript estricto** y producción de componentes listos para usar.
+Prompt especializado para el uso del MCP de shadcn/ui v4 en el proyecto WebCode, optimizado para integración con **Next.js 15.5.2 + React 19.1.0 + Tailwind CSS v4 + TypeScript estricto** y producción de componentes listos para usar.
+
+**Estado del Proyecto**: Release Candidate 98% - Landing completa, Blog Notion CMS, Sistema Briefing, Páginas de Soluciones completas.
 
 ## **Alcance**
 

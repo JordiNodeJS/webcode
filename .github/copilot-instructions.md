@@ -162,11 +162,20 @@ Eres un asistente especializado en el desarrollo del proyecto WEBCODE. Sigue est
 
 ### Estado del Proyecto
 
-✅ **PROYECTO EN RELEASE CANDIDATE (95%)**: El proyecto cuenta con landing page funcional, blog con Notion CMS, sistema de briefing con exportación PDF, y todas las páginas de soluciones y adicionales implementadas. Todos los componentes principales están instalados, configurados y optimizados.
+✅ **PROYECTO EN RELEASE CANDIDATE (98%)**: Landing page completa con Hero Section optimizada (100/100 performance), Blog totalmente funcional con Notion CMS y 6 scripts CLI de gestión, Sistema de Briefing con exportación PDF, todas las páginas de soluciones completadas (Web Dev, SEO con subpáginas, Reservas), páginas adicionales implementadas (Servicios, Contacto, FAQs, Portfolio). Migración completa a Lucide React (150KB reducidos). React Compiler habilitado para optimización automática.
 
-**Stack Actual**: Next.js 15.5.2, React 19.1.0 (con React Compiler), TypeScript 5.x, Tailwind CSS 4.x, Lucide React 0.542.0, Framer Motion 12.23.12, shadcn/ui, Playwright 1.55.0, ESLint 9.37.0, Prettier 3.6.2.
+**Stack Actual**: Next.js 15.5.2, React 19.1.0 (con React Compiler), TypeScript 5.x, Tailwind CSS 4.x, Lucide React 0.542.0, Framer Motion 12.23.12, shadcn/ui, Playwright 1.55.0, ESLint 9.37.0, Prettier 3.6.2, @notionhq/client 5.1.0, jsPDF 3.0.3.
 
-**Próximo paso**: Deploy a producción en Vercel.
+**Funcionalidades Completadas**:
+- ✅ Landing Page Hero (8 componentes optimizados)
+- ✅ Blog con Notion CMS (ISR + Scripts CLI)
+- ✅ Sistema de Briefing (Multi-paso + PDF Export)
+- ✅ Páginas de Soluciones (Web Dev, SEO completo, Reservas)
+- ✅ Páginas Adicionales (Servicios, Contacto, FAQs, Portfolio)
+- ✅ Testing E2E con Playwright
+- ✅ Performance 100/100 Desktop, 90+ Mobile
+
+**Próximo paso**: Deploy a producción en Vercel + configuración de dominio + monitoreo.
 
 ## **REGLAS FUNDAMENTALES DE DESARROLLO**
 
@@ -577,42 +586,57 @@ export default function ContactForm() {
 
 **Referencias detalladas**:
 
-- Consulta los archivos en `.github/support/` para patrones específicos, mejores prácticas y anti-patrones a evitar
-- Revisa `.github/instructions/` para guías específicas por tipo de archivo
-- Sistema de prompts disponible en `.github/prompts/`
+- **Guías consolidadas**: `.github/support/` (nextjs-best-practices, styling-guide, etc.)
+- **Instrucciones por archivo**: `.github/instructions/` (app-router, components, styling, typescript)
+- **Prompts especializados**: `.github/prompts/` (desarrollo, arquitectura, ui-styling, git-workflow, performance)
 
 ## **SISTEMA DE PROMPTS ESPECIALIZADOS**
 
-### **Prompts Principales (Estandarizados)**
+### **Prompts Consolidados (Octubre 2025)**
 
-Para tareas específicas, consulta estos prompts especializados en `.github/prompts/`:
+Para tareas específicas, consulta estos prompts consolidados en `.github/prompts/`:
 
-- **`herramientas-desarrollo.prompt.md`** - MCPs, Testing automatizado, Playwright
-- **`shadcn.prompt.md`** - Componentes shadcn/ui v4 con Next.js 15
-- **`ui-ux.prompt.md`** - Diseño UI/UX con Tailwind CSS v4
-- **`llm.prompt.md`** - Generación de archivos llms.txt optimizados
+#### **Prompts Principales**
 
-### **Prompts Técnicos Complementarios**
+- **`desarrollo.prompt.md`** - 🛠️ Herramientas de desarrollo, testing, MCPs (Playwright, Chrome DevTools, Context7, shadcn)
+- **`arquitectura-estructura.prompt.md`** - 🏗️ Arquitectura Next.js 15, layouts, patrones de componentes, estructura de proyecto
+- **`ui-styling.prompt.md`** - 🎨 Sistema WAS, shadcn/ui, Tailwind v4, estilos y diseño UI/UX
+- **`git-workflow.prompt.md`** - 🔀 Git workflow, Conventional Commits, PRs con GitHub CLI
+- **`performance.prompt.md`** - ⚡ Performance, Core Web Vitals, optimización de imágenes/JS/animaciones
 
-- **`arquitectura.prompt.md`** - Patrones de arquitectura
-- **`layout.prompt.md`** - Layouts y estructura de páginas
-- **`mcp-tools-nextjs.prompt.md`** - MCPs específicos para Next.js
-- **`tailwind4-theming.prompt.md`** - Sistema de temas Tailwind v4
-- **`theme.prompt.md`** - Gestión avanzada de temas
+#### **Prompts Especializados**
+
+- **`llm.prompt.md`** - 🤖 Generación de archivos llms.txt optimizados
+- **`component-naming-convention.prompt.md`** - 📝 Convención de nombres jerárquica de componentes
+- **`hero-naming-convention.prompt.md`** - 🎯 Convención de nombres para Hero Section
 
 ### **Navegación Completa**
 
-Consulta **`.github/prompts/README.md`** para el índice completo del sistema de prompts, estado de estandarización y guías de uso.
+Consulta **`.github/prompts/README.md`** para:
+- Índice completo de prompts consolidados con descripciones
+- Guía de uso por categoría
+- Historial de consolidación (24 → 9 archivos, -62.5%)
+- Templates y mejores prácticas
 
 ## **INSTRUCCIONES ESPECÍFICAS POR TIPO DE ARCHIVO**
 
-### **Referencias detalladas**:
+### **Referencias Consolidadas por Categoría**:
 
-- Consulta los archivos en `.github/support/` para patrones específicos, mejores prácticas y anti-patrones a evitar
-- Revisa `.github/instructions/` para guías específicas por tipo de archivo:
-  - **`typescript.instructions.md`** - Patrones TypeScript y validación
-  - **`components.instructions.md`** - Componentes React y shadcn/ui
-  - **`styling.instructions.md`** - Estilos con Tailwind CSS v4
-  - **`app-router.instructions.md`** - App Router de Next.js 15
-- Sistema de prompts disponible en `.github/prompts/`
+#### **Guías de Desarrollo** (`.github/support/`)
+
+- **`nextjs-best-practices.md`** - App Router Next.js 15, estructura de proyecto, data fetching, routing, layouts, metadata, error handling
+- **`styling-guide.md`** - Tailwind CSS v4, sistema WAS, reglas de colores, responsive design, accesibilidad WCAG 2.1 AA
+- **`git-commit-standards.md`** - Conventional Commits, mensajes de commit
+- **`pnpm-package-management.md`** - Gestión de paquetes con pnpm
+- **`typescript-best-practices.md`** - Patrones TypeScript y tipos
+- **`anti-patterns-to-avoid.md`** - Anti-patrones comunes y soluciones
+- **`shadcn-ui-components.md`** - Componentes shadcn/ui y patrones de composición
+
+#### **Instrucciones por Tipo de Archivo** (`.github/instructions/`)
+
+- **`app-router.instructions.md`** - App Router de Next.js 15, Server Components, Client Components
+- **`components.instructions.md`** - Componentes React y shadcn/ui, patrones de composición
+- **`styling.instructions.md`** - Estilos con Tailwind CSS v4, clases utilitarias
+- **`typescript.instructions.md`** - Patrones TypeScript, tipos, interfaces
+- **`biome.instructions.md`** - Configuración y uso de Biome (linter/formatter)
 

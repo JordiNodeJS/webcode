@@ -1,0 +1,128 @@
+
+> next-webcode@0.1.0 build G:\DEV\WEBCODE-PROJECT\webcode
+> pnpm dlx rimraf .next && next build --turbopack
+
+ ⚠ Built-in amp support is deprecated and the `amp` configuration option will be removed in Next.js 16.
+   ▲ Next.js 15.5.2 (Turbopack)
+   - Environments: .env.local, .env.production, .env
+   - Experiments (use with caution):
+     ✓ reactCompiler
+     ✓ viewTransition
+     · optimizePackageImports
+     ⨯ serverComponentsHmrCache
+
+   Creating an optimized production build ...
+ ⚠ Webpack is configured while Turbopack is not, which may cause problems.
+ ⚠ See instructions if you need to configure Turbopack:
+  https://nextjs.org/docs/app/api-reference/next-config-js/turbopack
+
+ ✓ Finished writing to disk in 1657ms
+ ✓ Compiled successfully in 10.4s
+   Linting and checking validity of types ...
+(node:3024) ESLintIgnoreWarning: The ".eslintignore" file is no longer supported. Switch to using the "ignores" property in "eslint.config.js": https://eslint.org/docs/latest/use/configure/migration-guide#ignoring-files
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+./src/app/(hero)/soluciones/seo/local/page.tsx
+308:36  Warning: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+308:55  Warning: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+
+./src/app/(hero)/soluciones/seo/off-page/page.tsx
+69:54  Warning: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+69:73  Warning: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+
+./src/app/(hero)/soluciones/seo/on-page/page.tsx
+69:28  Warning: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+69:32  Warning: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+360:51  Warning: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+360:69  Warning: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+
+./src/components/landing/hero/Hero.CallToAction.tsx
+4:10  Warning: 'ArrowRight' is defined but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/components/landing/portfolio/PortfolioSection.tsx
+10:11  Warning: 'disableAnimationsForSection' is assigned a value but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+158:38  Warning: 'index' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/components/landing/services/EnhancedServicesSection.tsx
+9:11  Warning: 'disableAnimationsForSection' is assigned a value but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+170:35  Warning: 'index' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/components/landing/workflow/WorkflowSection.tsx
+9:11  Warning: 'disableAnimationsForSection' is assigned a value but never used. Allowed unused vars must match /^_/u.  @typescript-eslint/no-unused-vars
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
+   Collecting page data ...
+   Generating static pages (0/50) ...
+   Generating static pages (12/50) 
+   Generating static pages (24/50) 
+   Generating static pages (37/50) 
+ ✓ Generating static pages (50/50)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                                   Size  First Load JS  Revalidate  Expire
+┌ ○ /                                                        11 kB         254 kB
+├ ○ /_not-found                                                0 B         234 kB
+├ ○ /about                                                     0 B         234 kB
+├ ƒ /api/briefing                                              0 B            0 B
+├ ƒ /api/briefing/download                                     0 B            0 B
+├ ƒ /api/contact                                               0 B            0 B
+├ ○ /blog                                                      0 B         241 kB          1h      1y
+├ ● /blog/[slug]                                            147 kB         383 kB          1h      1y
+├   ├ /blog/understanding-javascript-promises                                              1h      1y
+├   ├ /blog/api-security-best-practices                                                    1h      1y
+├   └ /blog/biome-herramienta-linting-formateo-javascript                                  1h      1y
+├ ○ /blog/sitemap.xml                                          0 B            0 B          1h      1y
+├ ● /blog/tag/[tag]                                            0 B         241 kB          1h      1y
+├   ├ /blog/tag/javascript                                                                 1h      1y
+├   ├ /blog/tag/frontend                                                                   1h      1y
+├   ├ /blog/tag/api                                                                        1h      1y
+├   └ [+3 more paths]
+├ ○ /briefing                                              11.7 kB         246 kB
+├ ○ /briefing/formulario                                    109 kB         344 kB
+├ ○ /contacto                                                95 kB         329 kB
+├ ○ /cookies                                                   0 B         245 kB
+├ ○ /dev-performance-test                                    670 B         235 kB
+├ ○ /documentation/sources                                 6.46 kB         241 kB
+├ ○ /faqs                                                  4.93 kB         239 kB
+├ ○ /opengraph-image                                           0 B            0 B
+├ ○ /politica-privacidad                                       0 B         245 kB
+├ ○ /portfolio                                                 0 B         234 kB
+├ ○ /portfolio/opengraph-image-1w0yt0                          0 B            0 B
+├ ○ /privacy                                                   0 B         245 kB
+├ ○ /proceso                                               22.4 kB         257 kB
+├ ○ /servicios                                                 0 B         234 kB
+├ ○ /sitemap.xml                                               0 B            0 B
+├ ○ /soluciones                                                0 B         237 kB
+├ ○ /soluciones/consulting                                     0 B         237 kB
+├ ○ /soluciones/e-commerce                                     0 B         237 kB
+├ ○ /soluciones/landing-pages                                  0 B         237 kB
+├ ○ /soluciones/mantenimiento                                10 kB         244 kB
+├ ○ /soluciones/rediseno                                       0 B         237 kB
+├ ○ /soluciones/reservas                                       0 B         237 kB
+├ ○ /soluciones/seo                                            0 B         237 kB
+├ ○ /soluciones/seo/local                                      0 B         237 kB
+├ ○ /soluciones/seo/off-page                                   0 B         237 kB
+├ ○ /soluciones/seo/on-page                                    0 B         237 kB
+├ ○ /soluciones/web-development                                0 B         237 kB
+├ ○ /sources                                                   0 B         234 kB
+├ ○ /terms                                                     0 B         245 kB
+└ ○ /test-icons                                            2.23 kB         236 kB
++ First Load JS shared by all                               265 kB
+  ├ chunks/30f1760dfdccf0de.js                             16.6 kB
+  ├ chunks/38f206b3e35f6877.js                             17.6 kB
+  ├ chunks/419d2eadb9efdf10.js                             42.7 kB
+  ├ chunks/4618c7b9661ffa11.js                             70.9 kB
+  ├ chunks/76fc47ddb9ceb3d3.js                               15 kB
+  ├ chunks/98404f233e447e27.js                             20.5 kB
+  ├ chunks/fcd9070d10ab62c9.js                               17 kB
+  ├ chunks/172332fdabdfe372.css                            29.6 kB
+  └ other shared chunks (total)                            35.5 kB
+
+
+ƒ Middleware                                               38.9 kB
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+
