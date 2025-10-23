@@ -202,6 +202,174 @@ Refs #456
 #    Cmd/Ctrl + Shift + P -> "GitHub Copilot: Generate PR Description"
 ```
 
+### D) Etiquetado y Asignación de PRs
+
+#### **Etiquetado Automático**
+
+```bash
+# Crear PR con etiquetas específicas
+gh pr create \
+  --title "feat(blog): add Notion CMS integration" \
+  --body "Integración completa con Notion para gestión de posts del blog" \
+  --label "enhancement,blog,notion" \
+  --assignee @me
+
+# Etiquetas por tipo de cambio
+gh pr create --label "feat" --assignee @me
+gh pr create --label "fix" --assignee @me
+gh pr create --label "docs" --assignee @me
+```
+
+#### **Etiquetas Estándar en WebCode**
+
+```bash
+# Por tipo de cambio
+- feat: Nueva funcionalidad
+- fix: Corrección de bug
+- docs: Documentación
+- refactor: Refactorización
+- perf: Performance
+- test: Tests
+- chore: Mantenimiento
+
+# Por área del proyecto
+- hero: Sección hero
+- blog: Blog y posts
+- services: Servicios
+- briefing: Briefing
+- ui: Componentes UI
+- components: Componentes
+- layouts: Layouts
+- api: API y endpoints
+- lib: Librerías
+- hooks: Hooks personalizados
+- styles: Estilos y CSS
+- animations: Animaciones
+- config: Configuración
+- deps: Dependencias
+
+# Por prioridad
+- priority:high: Alta prioridad
+- priority:medium: Prioridad media
+- priority:low: Baja prioridad
+
+# Por estado
+- ready:ready: Listo para review
+- needs:review: Necesita revisión
+- needs:testing: Necesita testing
+- blocked: Bloqueado
+- wip: Work in progress
+```
+
+#### **Asignación Automática**
+
+```bash
+# Asignar al autor de la PR
+gh pr create --assignee @me
+
+# Asignar a un usuario específico
+gh pr create --assignee username
+
+# Asignar a múltiples usuarios
+gh pr create --assignee @me,username1,username2
+
+# Asignar basado en el área del código
+gh pr create --assignee @frontend-team  # Para cambios en UI
+gh pr create --assignee @backend-team   # Para cambios en API
+```
+
+#### **Script de Automatización**
+
+```bash
+# Crear script para PRs con etiquetado automático
+#!/bin/bash
+# scripts/create-pr.sh
+
+BRANCH_NAME=$(git branch --show-current)
+PR_TYPE=$(echo $BRANCH_NAME | cut -d'/' -f1)
+SCOPE=$(echo $BRANCH_NAME | cut -d'/' -f2)
+
+# Mapear tipo de rama a etiquetas
+case $PR_TYPE in
+  "feat")
+    LABELS="enhancement,$SCOPE"
+    ;;
+  "fix")
+    LABELS="bug,$SCOPE"
+    ;;
+  "docs")
+    LABELS="documentation,$SCOPE"
+    ;;
+  "refactor")
+    LABELS="refactor,$SCOPE"
+    ;;
+  *)
+    LABELS="$PR_TYPE,$SCOPE"
+    ;;
+esac
+
+# Crear PR con etiquetas y asignación
+gh pr create \
+  --title "$(git log -1 --pretty=format:'%s')" \
+  --body "Auto-generated PR from $BRANCH_NAME" \
+  --label "$LABELS" \
+  --assignee @me
+```
+
+#### **Configuración de GitHub Actions (Opcional)**
+
+```yaml
+# .github/workflows/auto-label-pr.yml
+name: Auto Label PR
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  auto-label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto label based on branch name
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const branchName = context.payload.pull_request.head.ref;
+            const labels = [];
+            
+            // Etiquetar por tipo de rama
+            if (branchName.startsWith('feat/')) {
+              labels.push('enhancement');
+            } else if (branchName.startsWith('fix/')) {
+              labels.push('bug');
+            } else if (branchName.startsWith('docs/')) {
+              labels.push('documentation');
+            }
+            
+            // Etiquetar por scope
+            const scope = branchName.split('/')[1];
+            if (scope) {
+              labels.push(scope);
+            }
+            
+            // Aplicar etiquetas
+            if (labels.length > 0) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.pull_request.number,
+                labels: labels
+              });
+            }
+            
+            // Auto-asignar al autor
+            await github.rest.issues.addAssignees({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              assignees: [context.payload.pull_request.user.login]
+            });
+```
+
 ---
 
 ## **4. REVIEW DE CÓDIGO**
