@@ -27,18 +27,17 @@ export function ThemeToggle() {
         setTheme(currentTheme);
       }}
       aria-label="Toggle theme"
-      data-testid="theme-toggle"
     >
       {/* Mostrar Sol en modo oscuro (para cambiar a claro) */}
       <Sun 
         size={20} 
-        className="hidden dark:block text-foreground" 
+        className="hidden dark:block" 
         aria-hidden="true" 
       />
       {/* Mostrar Luna en modo claro (para cambiar a oscuro) */}
       <Moon 
         size={20} 
-        className="block dark:hidden text-foreground" 
+        className="block dark:hidden" 
         aria-hidden="true" 
       />
     </Button>

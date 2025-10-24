@@ -249,6 +249,106 @@ export default function AboutPage() { ... }
 - Estrategias de caché apropiadas
 - Estados de carga y límites de error
 
+### **⚠️ ANIMACIONES Y PROBLEMAS DE HIDRATACIÓN**
+
+**PROBLEMA CRÍTICO**: Las animaciones de Framer Motion pueden causar errores de hidratación en Next.js SSR.
+
+#### **¿Por qué ocurre?**
+- **Servidor (SSR)**: Renderiza HTML estático sin JavaScript
+- **Cliente**: Ejecuta JavaScript y modifica el DOM
+- **Resultado**: HTML diferente entre servidor y cliente = Error de hidratación
+
+#### **Patrón MODERNO para animaciones en Next.js 16 + React 19:**
+
+```tsx
+// ✅ MODERNO 2024 - Next.js Dynamic Import (RECOMENDADO)
+import dynamic from 'next/dynamic';
+
+const WSFadeIn = dynamic(() => import('./AnimatedComponent').then(mod => ({ default: mod.WSFadeIn })), {
+  ssr: false,
+  loading: () => <div>{children}</div>
+});
+
+// ✅ ALTERNATIVO - React 19 useId + Suspense
+"use client";
+import { motion } from "framer-motion";
+import { useId, Suspense } from "react";
+
+export function WSFadeIn({ children, delay = 0 }) {
+  const id = useId(); // React 19: IDs estables para SSR
+  
+  return (
+    <Suspense fallback={<div>{children}</div>}>
+      <motion.div
+        key={id}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay }}
+      >
+        {children}
+      </motion.div>
+    </Suspense>
+  );
+}
+```
+
+#### **Alternativas recomendadas:**
+
+**A) CSS puro para animaciones simples:**
+```tsx
+// ✅ Mejor para SSR
+export function WSFadeIn({ children }) {
+  return (
+    <div className="animate-fade-in">
+      {children}
+    </div>
+  );
+}
+```
+
+**B) Animaciones solo en cliente:**
+```tsx
+// ✅ Patrón seguro
+export function AnimatedComponent({ children }) {
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+
+  useEffect(() => {
+    setShouldAnimate(true);
+  }, []);
+
+  if (!shouldAnimate) {
+    return <div>{children}</div>;
+  }
+
+  return <motion.div>{children}</motion.div>;
+}
+```
+
+#### **❌ PATRONES A EVITAR:**
+
+```tsx
+// ❌ INCORRECTO - Causa errores de hidratación
+export function BadAnimation({ children }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}  // Diferente en servidor vs cliente
+      animate={{ opacity: 1 }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+```
+
+#### **Checklist para animaciones (React 19 + Next.js 16):**
+- [ ] **Next.js Dynamic Import** con `ssr: false` (RECOMENDADO 2024)
+- [ ] **React 19 useId** para IDs estables en SSR
+- [ ] **Suspense boundaries** para componentes animados
+- [ ] **CSS puro + Tailwind** para animaciones simples
+- [ ] Evitar `data-testid` en componentes animados
+- [ ] No usar clases condicionales que cambien entre servidor/cliente
+- [ ] **Testing exhaustivo** de hidratación con DevTools
+
 ## **ESTRUCTURA DE ARCHIVOS DEL PROYECTO**
 
 ⚠️ **NOTA IMPORTANTE**: El proyecto se creará con la estructura estándar de Next.js 16 usando `src/` y siguiendo principios de colocación cercana (colocation).

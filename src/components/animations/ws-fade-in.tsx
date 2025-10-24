@@ -1,8 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { useAnimationContext } from "@/contexts/AnimationContext";
+import { useRef, useId, Suspense } from "react";
 import { wsConfig } from "@/lib/webcode-motion-config";
 
 interface WSFadeInProps {
@@ -11,7 +10,7 @@ interface WSFadeInProps {
   direction?: "up" | "down" | "left" | "right";
   distance?: number;
   className?: string;
-  sectionId?: string;
+  _sectionId?: string; // Prefijo _ para parámetros no utilizados
 }
 
 export function WSFadeIn({
@@ -20,41 +19,39 @@ export function WSFadeIn({
   direction = "up",
   distance = 20,
   className = "",
-  sectionId = ""
+  _sectionId = ""
 }: WSFadeInProps) {
+  const id = useId(); // React 19: IDs estables para SSR
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
-  const { isAnimationEnabled, disabledSections } = useAnimationContext();
 
-  const directionOffset = {
-    up: { y: distance },
-    down: { y: -distance },
-    left: { x: distance },
-    right: { x: -distance }
+  // En cliente: renderizar con animación
+  const getInitialPosition = () => {
+    switch (direction) {
+      case "up": return { opacity: 0, y: distance };
+      case "down": return { opacity: 0, y: -distance };
+      case "left": return { opacity: 0, x: distance };
+      case "right": return { opacity: 0, x: -distance };
+      default: return { opacity: 0, y: distance };
+    }
   };
 
-  // Determinar si la animación debe ejecutarse
-  const shouldAnimate =
-    isAnimationEnabled && !disabledSections.has(sectionId) && isInView;
-
-  // Si las animaciones están deshabilitadas, mostrar directamente sin animación
-  if (!isAnimationEnabled || disabledSections.has(sectionId)) {
-    return <div className={className}>{children}</div>;
-  }
-
   return (
-    <motion.div
-      ref={ref}
-      className={className}
-      initial={{ opacity: 0, ...directionOffset[direction] }}
-      animate={shouldAnimate ? { opacity: 1, x: 0, y: 0 } : {}}
-      transition={{
-        duration: wsConfig.durations.smooth,
-        ease: wsConfig.easings.primary,
-        delay
-      }}
-    >
-      {children}
-    </motion.div>
+    <Suspense fallback={<div className={className}>{children}</div>}>
+      <motion.div
+        ref={ref}
+        key={id} // Evita conflictos de hidratación
+        initial={getInitialPosition()}
+        animate={isInView ? { opacity: 1, x: 0, y: 0 } : {}}
+        transition={{
+          duration: wsConfig.durations.normal,
+          ease: wsConfig.easings.primary,
+          delay
+        }}
+        className={className}
+      >
+        {children}
+      </motion.div>
+    </Suspense>
   );
 }

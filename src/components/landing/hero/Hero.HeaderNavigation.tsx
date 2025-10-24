@@ -30,11 +30,12 @@ const navigationItems: NavigationItem[] = [
   { href: "/contacto", label: "Contacto" }
 ];
 
-const languages = [
-  { code: "es", label: "ES" },
-  { code: "ca", label: "CA" },
-  { code: "en", label: "EN" }
-];
+// Language configuration - Temporarily disabled for future use
+// const languages = [
+//   { code: "es", label: "ES" },
+//   { code: "ca", label: "CA" },
+//   { code: "en", label: "EN" }
+// ];
 
 /**
  * Navegación principal del header
@@ -46,16 +47,23 @@ const languages = [
  */
 export function HeaderNavigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [currentLanguage, setCurrentLanguage] = useState("es");
+  // Language state - Temporarily disabled for future use
+  // const [currentLanguage, setCurrentLanguage] = useState("es");
   const scrollPosition = useScrollPosition();
   const pathname = usePathname();
   const router = useRouter();
   const isScrolled = scrollPosition.y > 10;
 
   // Active navigation tracking (page or section)
-  const [manualActiveHref, setManualActiveHref] = useState<string | null>(null);
+  // Inicializar con el hash actual solo en cliente (lazy initialization)
+  const [manualActiveHref, setManualActiveHref] = useState<string | null>(() => {
+    if (typeof window !== "undefined" && window.location.hash) {
+      return window.location.hash;
+    }
+    return null;
+  });
   
-  // Calcular activeHref basado en pathname (sin useEffect para evitar warning)
+  // Calcular activeHref basado en pathname
   const activeHref = useMemo(() => {
     // Prefer exact path matches for non-hash, non-external links
     const pathMatch = navigationItems.find((it) => {
@@ -71,11 +79,6 @@ export function HeaderNavigation() {
     // Si tenemos un hash manual seleccionado, usarlo
     if (manualActiveHref) {
       return manualActiveHref;
-    }
-
-    // Fallback to hash (if present)
-    if (typeof window !== "undefined") {
-      return window.location.hash || null;
     }
 
     return null;
@@ -238,7 +241,7 @@ export function HeaderNavigation() {
                     alt="WEBCODE Logo"
                     width={32}
                     height={32}
-                    className={`transition-all duration-300 flex-shrink-0 object-contain ${
+                    className={`transition-all duration-300 shrink-0 object-contain ${
                       isScrolled ? "w-6 h-6" : "w-8 h-8"
                     }`}
                   />
@@ -346,9 +349,8 @@ export function HeaderNavigation() {
               <ThemeToggle />
             </WSFadeIn>
 
-            {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center space-x-2">
-              {/* Mobile Language Selector */}
+            {/* Mobile Language Selector - Temporarily disabled for future use */}
+            {/* <div className="md:hidden">
               <WSFadeIn delay={0.3}>
                 <div className="flex items-center space-x-1 bg-muted/40 backdrop-blur-sm rounded-md p-0.5">
                   {languages.map((lang) => (
@@ -367,19 +369,19 @@ export function HeaderNavigation() {
                   ))}
                 </div>
               </WSFadeIn>
+            </div> */}
 
-              {/* Sheet para menú móvil */}
-              <WSFadeIn delay={0.4}>
-                <Sheet
-                  open={isMobileMenuOpen}
-                  onOpenChange={setIsMobileMenuOpen}
-                >
-                  <SheetTrigger asChild>
+            {/* Mobile Menu Button */}
+            <WSFadeIn delay={0.4}>
+              <Sheet
+                open={isMobileMenuOpen}
+                onOpenChange={setIsMobileMenuOpen}
+              >
+                <SheetTrigger asChild>
                     <Button
                       variant="ghost"
                       size="sm"
                       className="md:hidden text-foreground"
-                      data-testid="mobile-menu-toggle"
                       aria-label="Toggle mobile menu"
                       aria-expanded={isMobileMenuOpen}
                     >
@@ -461,7 +463,6 @@ export function HeaderNavigation() {
                   </SheetContent>
                 </Sheet>
               </WSFadeIn>
-            </div>
           </div>
         </div>
       </nav>
