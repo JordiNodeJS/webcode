@@ -1,0 +1,91 @@
+---
+description: "Comando para hacer squash y merge de Pull Requests automáticamente"
+---
+
+# Squash and Merge Workflow
+
+## Comando: Squash y Merge PR
+
+Cuando el usuario solicite hacer squash y merge de una PR, seguir este flujo automatizado:
+
+### 1. Verificación de Estado
+- **Verificar estado de la PR**: `gh pr view <pr-number> --json state,mergeable,mergeStateStatus`
+- **Verificar checks**: `gh pr checks <pr-number>`
+- **Verificar reviews**: `gh pr review <pr-number> --list`
+
+### 2. Estados de PR y Acciones
+- **OPEN + MERGEABLE + CLEAN**: ✅ Proceder al squash y merge
+- **OPEN + CONFLICTING**: ❌ Reportar conflictos, no mergear
+- **OPEN + BEHIND**: ⚠️ Actualizar rama base, luego verificar
+- **CLOSED**: ℹ️ Reportar que la PR ya está cerrada
+- **MERGED**: ℹ️ Reportar que la PR ya está mergeada
+
+### 3. Manejo de Conflictos
+- Si `mergeStateStatus` es `DIRTY` o `CONFLICTING`: reportar conflictos
+- Si `mergeStateStatus` es `BEHIND`: actualizar rama base
+- Si `mergeStateStatus` es `CLEAN`: proceder al merge
+
+### 4. Squash y Merge
+- **Comando**: `gh pr merge <pr-number> --squash --delete-branch`
+- **Verificar éxito**: Obtener hash del commit de merge
+- **Estrategia**: Squash and merge (por defecto)
+
+### 5. Limpieza Post-merge
+- **Verificar eliminación de rama remota**
+- **Eliminar rama local**: `git branch -D <branch>`
+- **Cambiar a main**: `git checkout main`
+- **Actualizar main**: `git pull origin main`
+
+### 6. Manejo de Errores
+- **Conflictos**: Etiquetar `status/conflicts`
+- **CI fallido**: Etiquetar `ci/failed`
+- **Sin aprobaciones**: Etiquetar `status/needs-review`
+
+### 7. Comandos de Referencia
+```bash
+# Verificar estado de la PR
+gh pr view <pr-number> --json state,mergeable,mergeStateStatus
+
+# Verificar checks
+gh pr checks <pr-number>
+
+# Verificar reviews
+gh pr review <pr-number> --list
+
+# Squash y merge
+gh pr merge <pr-number> --squash --delete-branch
+
+# Limpiar rama local
+git branch -D <branch>
+
+# Actualizar main
+git checkout main && git pull origin main
+```
+
+### 8. Salida Esperada
+Devolver formato markdown con:
+- pr_number: número de la PR
+- pr_url: URL de la PR
+- branch: rama origen
+- merge_commit: hash del commit de merge
+- deleted_remote_branch: true/false
+- deleted_local_branch: true/false
+- warnings: lista de advertencias
+- errors: lista de errores
+
+### 9. Estados que Impiden el Merge
+- **CONFLICTING**: La PR tiene conflictos de merge
+- **BEHIND**: La PR está desactualizada respecto a main
+- **CI_FAILED**: Los checks de CI han fallado
+- **NEEDS_REVIEW**: La PR necesita aprobaciones
+
+### 10. Estados que Permiten el Merge
+- **CLEAN**: La PR está lista para merge
+- **MERGEABLE**: No hay conflictos
+- **APPROVED**: Tiene las aprobaciones requeridas
+
+## Ejemplo de Uso
+```
+Usuario: "squash y merge la pr"
+→ Ejecutar flujo completo de squash y merge con verificaciones
+```
