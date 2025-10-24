@@ -1,5 +1,4 @@
-"use client";
-
+// ✅ Server Component - Solo usa CSS hover effects, no necesita JavaScript en cliente
 import type { ReactNode } from "react";
 
 interface SolucionCardProps {
