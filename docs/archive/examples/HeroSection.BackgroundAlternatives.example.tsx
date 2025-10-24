@@ -63,7 +63,7 @@ const HeroSectionExample = () => {
 			<div className="container relative z-10 mx-auto px-4 py-20 md:py-32">
 				<div className="flex flex-col items-center text-center">
 					{/* Hero Content */}
-					<WSFadeIn delay={0.1} sectionId="hero">
+					<WSFadeIn delay={0.1} _sectionId="hero">
 						<h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
 							<span className="block">Desarrollo Web</span>
 							<span className="block text-gradient-webcode">
@@ -72,7 +72,7 @@ const HeroSectionExample = () => {
 						</h1>
 					</WSFadeIn>
 
-					<WSFadeIn delay={0.2} sectionId="hero">
+					<WSFadeIn delay={0.2} _sectionId="hero">
 						<p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl">
 							Creamos experiencias digitales excepcionales con las últimas
 							tecnologías: Next.js, React, Astro y más para tu negocio en
