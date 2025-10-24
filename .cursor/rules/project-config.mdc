@@ -64,7 +64,8 @@ description: "Configuración y herramientas específicas del proyecto webcode"
 ## Archivos de Documentación
 - [README.md](mdc:README.md) - Documentación principal
 - [.github/copilot-instructions.md](mdc:.github/copilot-instructions.md) - Instrucciones para AI
-- [.cursor/commands/pr.md](mdc:.cursor/commands/pr.md) - Flujo de PRs
+- [.cursor/commands/pr-create.md](mdc:.cursor/commands/pr-create.md) - Flujo de PRs
+- [.cursor/commands/pr-squash-merge.md](mdc:.cursor/commands/pr-squash-merge.md) - Squash y merge de PRs
 - [docs/](mdc:docs/) - Documentación del proyecto
 
 ## Reglas Específicas

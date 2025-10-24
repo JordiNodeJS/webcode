@@ -71,7 +71,13 @@ gh pr comment <pr-number> --body-file comment.md
 - **Limpiar archivos temporales** después de usar
 - **Verificar codificación** antes de enviar
 
-### 8. Salida Esperada
+### 9. Squash y Merge
+- **Para mergear PRs**: Usar el comando `/squash-merge` definido en [pr-squash-merge.md](mdc:.cursor/commands/pr-squash-merge.md)
+- **Verificar estado** antes de intentar merge
+- **Manejar conflictos** apropiadamente
+- **Limpiar ramas** después del merge exitoso
+
+### 10. Salida Esperada
 Devolver formato markdown con:
 - pr_number: número de la PR
 - pr_url: URL de la PR  

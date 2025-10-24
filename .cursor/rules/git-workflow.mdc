@@ -72,7 +72,7 @@ description: "Reglas de flujo de trabajo Git y GitHub para el proyecto webcode"
 
 ## Archivos de Contexto
 - [package.json](mdc:package.json) - Scripts y dependencias
-- [.cursor/commands/pr.md](mdc:.cursor/commands/pr.md) - Flujo completo de PR
+- [.cursor/commands/pr-create.md](mdc:.cursor/commands/pr-create.md) - Flujo completo de PR
 - [.github/copilot-instructions.md](mdc:.github/copilot-instructions.md) - Instrucciones del proyecto
 - [.github/prompts/](mdc:.github/prompts/) - Prompts específicos del proyecto
 

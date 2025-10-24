@@ -1,0 +1,124 @@
+---
+description: "Integración completa del flujo de trabajo de Pull Requests"
+---
+
+# PR Workflow Integration
+
+## Comandos Disponibles
+
+### 1. Crear PR (`/pr-create`)
+- **Archivo**: [.cursor/commands/pr-create.md](mdc:.cursor/commands/pr-create.md)
+- **Propósito**: Crear, etiquetar y asignar Pull Requests automáticamente
+- **Uso**: "crea la pr y etiquétala"
+- **Funcionalidades**:
+  - Detección automática de rama
+  - Validaciones locales (lint, build, test)
+  - Creación/actualización de PR con etiquetado inteligente
+  - Asignación automática a `JordiNodeJS`
+  - Prevención de problemas de codificación UTF-8
+
+### 2. Squash y Merge (`/squash-merge`)
+- **Archivo**: [.cursor/commands/pr-squash-merge.md](mdc:.cursor/commands/pr-squash-merge.md)
+- **Propósito**: Hacer squash y merge de Pull Requests automáticamente
+- **Uso**: "squash y merge la pr"
+- **Funcionalidades**:
+  - Verificación de estado de la PR
+  - Manejo de conflictos y reviews
+  - Squash y merge automático
+  - Limpieza de ramas locales y remotas
+  - Etiquetado de estados problemáticos
+
+## Flujo Completo de Trabajo
+
+### Paso 1: Crear PR
+```bash
+# El usuario ejecuta
+/pr-create
+# o dice "crea la pr y etiquétala"
+```
+
+### Paso 2: Desarrollo y Revisión
+- Resolver conflictos si existen
+- Obtener aprobaciones requeridas
+- Verificar que todos los checks pasen
+
+### Paso 3: Squash y Merge
+```bash
+# El usuario ejecuta
+/squash-merge
+# o dice "squash y merge la pr"
+```
+
+## Estados de PR y Acciones
+
+### ✅ Estados que Permiten el Merge
+- **CLEAN**: PR lista para merge
+- **MERGEABLE**: Sin conflictos
+- **APPROVED**: Con aprobaciones requeridas
+
+### ❌ Estados que Impiden el Merge
+- **CONFLICTING**: Conflictos de merge
+- **BEHIND**: Desactualizada respecto a main
+- **CI_FAILED**: Checks de CI fallidos
+- **NEEDS_REVIEW**: Sin aprobaciones
+
+## Integración con Reglas Existentes
+
+### Archivos de Reglas Relacionados
+- [.cursor/rules/pr-creation-workflow.mdc](mdc:.cursor/rules/pr-creation-workflow.mdc) - Creación de PRs
+- [.cursor/rules/squash-merge-workflow.mdc](mdc:.cursor/rules/squash-merge-workflow.mdc) - Squash y merge
+- [.cursor/rules/git-workflow.mdc](mdc:.cursor/rules/git-workflow.mdc) - Convenciones de Git
+- [.cursor/rules/project-config.mdc](mdc:.cursor/rules/project-config.mdc) - Configuración del proyecto
+
+### Comandos de Referencia
+```bash
+# Crear PR
+gh pr create --title "..." --body-file pr-body.md --base main --head <branch> --assignee JordiNodeJS
+
+# Squash y merge
+gh pr merge <pr-number> --squash --delete-branch
+
+# Verificar estado
+gh pr view <pr-number> --json state,mergeable,mergeStateStatus
+```
+
+## Manejo de Errores
+
+### Conflictos
+- Etiquetar `status/conflicts`
+- Comentar instrucciones de resolución
+- No proceder al merge automático
+
+### CI Fallido
+- Etiquetar `ci/failed`
+- Reportar errores específicos
+- Sugerir correcciones
+
+### Sin Aprobaciones
+- Etiquetar `status/needs-review`
+- Solicitar review a `JordiNodeJS`
+- No proceder al merge
+
+## Resultado Esperado
+
+Ambos comandos devuelven formato markdown con:
+- pr_number: número de la PR
+- pr_url: URL de la PR
+- branch: rama origen
+- merge_commit: hash del commit (si se mergea)
+- deleted_remote_branch: true/false
+- deleted_local_branch: true/false
+- warnings: lista de advertencias
+- errors: lista de errores
+
+## Ejemplo de Uso Completo
+
+```
+Usuario: "crea la pr y etiquétala"
+→ Sistema ejecuta /pr-create
+→ PR creada con etiquetas y asignación
+
+Usuario: "squash y merge la pr"
+→ Sistema ejecuta /squash-merge
+→ PR mergeada y ramas limpiadas
+```
