@@ -1,0 +1,488 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - img "Patrón de ondas decorativas" [ref=e4]
+  - generic [ref=e6]:
+    - banner [ref=e7]:
+      - navigation [ref=e8]:
+        - generic [ref=e9]:
+          - link "WEBCODE Logo WebCode" [ref=e12] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e13]:
+              - img "WEBCODE Logo" [ref=e14]
+              - generic [ref=e15]: WebCode
+          - generic [ref=e16]:
+            - link "Soluciones" [ref=e18] [cursor=pointer]:
+              - /url: /soluciones
+            - link "Proceso" [ref=e20] [cursor=pointer]:
+              - /url: /proceso
+            - link "Blog" [ref=e22] [cursor=pointer]:
+              - /url: /blog
+            - link "Portfolio" [ref=e24] [cursor=pointer]:
+              - /url: https://jordinodejs.github.io/
+            - link "FAQ" [ref=e26] [cursor=pointer]:
+              - /url: /faqs
+            - link "Contacto" [ref=e28] [cursor=pointer]:
+              - /url: /contacto
+          - button "Toggle theme" [ref=e31]:
+            - img
+    - main [ref=e32]:
+      - main [ref=e33]:
+        - generic [ref=e36]:
+          - generic [ref=e37]:
+            - navigation [ref=e39]:
+              - generic [ref=e40]:
+                - link "WEBCODE Logo WebCode" [ref=e43] [cursor=pointer]:
+                  - /url: /
+                  - generic [ref=e44]:
+                    - img "WEBCODE Logo" [ref=e45]
+                    - generic [ref=e46]: WebCode
+                - generic [ref=e47]:
+                  - link "Soluciones" [ref=e49] [cursor=pointer]:
+                    - /url: /soluciones
+                  - link "Proceso" [ref=e51] [cursor=pointer]:
+                    - /url: /proceso
+                  - link "Blog" [ref=e53] [cursor=pointer]:
+                    - /url: /blog
+                  - link "Portfolio" [ref=e55] [cursor=pointer]:
+                    - /url: https://jordinodejs.github.io/
+                  - link "FAQ" [ref=e57] [cursor=pointer]:
+                    - /url: /faqs
+                  - link "Contacto" [ref=e59] [cursor=pointer]:
+                    - /url: /contacto
+                - button "Toggle theme" [ref=e62]:
+                  - img
+            - generic [ref=e64]:
+              - heading "Diseño Web Profesional Barcelona" [level=1] [ref=e66]:
+                - generic [ref=e67]: Diseño Web
+                - generic [ref=e68]: Profesional Barcelona
+              - paragraph [ref=e70]:
+                - text: Creamos
+                - strong [ref=e71]: páginas web únicas
+                - text: con diseños originales y
+                - strong [ref=e72]: 100% orientados a los resultados
+                - text: que buscas. Diseño web a medida para tu negocio en Barcelona.
+              - generic [ref=e73]:
+                - generic [ref=e75]:
+                  - img [ref=e76]
+                  - generic [ref=e78]: ✓ Cumplimiento RGPD
+                - generic [ref=e80]:
+                  - img [ref=e81]
+                  - generic [ref=e84]: ✓ Normativas España
+                - generic [ref=e86]:
+                  - img [ref=e87]
+                  - generic [ref=e92]: ✓ Barcelona Local
+              - generic [ref=e99]:
+                - link "¿Hablamos? 💬" [ref=e100] [cursor=pointer]:
+                  - /url: /contacto
+                  - generic [ref=e101]:
+                    - text: ¿Hablamos?
+                    - generic [ref=e102]: 💬
+                - link "Ver Servicios" [ref=e103] [cursor=pointer]:
+                  - /url: /soluciones
+                  - generic [ref=e104]:
+                    - img [ref=e105]
+                    - text: Ver Servicios
+                - link "Portfolio 🚀" [ref=e108] [cursor=pointer]:
+                  - /url: https://jordinodejs.github.io/
+                  - generic [ref=e109]: Portfolio
+                  - generic [ref=e110]: 🚀
+          - generic [ref=e112]:
+            - region "Soluciones Simples" [ref=e113]:
+              - heading "Soluciones Simples" [level=2] [ref=e114]
+              - paragraph [ref=e115]: Para negocios que necesitan presencia digital rápida y efectiva
+              - generic [ref=e116]: Sección de servicios con soluciones rápidas y efectivas para negocios.
+            - generic [ref=e117]:
+              - article "Web Express" [ref=e119]:
+                - generic [ref=e121]:
+                  - generic [ref=e122]: 🚀
+                  - generic [ref=e123]:
+                    - generic [ref=e124]: Web Express
+                    - generic [ref=e125]: PRESENCIA DIGITAL EN 7 DÍAS
+                - generic [ref=e126]:
+                  - generic [ref=e127]:
+                    - generic [ref=e128]:
+                      - generic [ref=e129]: ✓
+                      - generic [ref=e130]:
+                        - paragraph [ref=e131]: Sitio profesional listo para usar
+                        - paragraph [ref=e132]: Plantilla premium personalizada con tu contenido, colores de marca y logo. Responsive en todos los dispositivos y optimizado para Google desde el primer día.
+                    - generic [ref=e133]:
+                      - generic [ref=e134]: ✓
+                      - generic [ref=e135]:
+                        - paragraph [ref=e136]: Gestión de contenido fácil
+                        - paragraph [ref=e137]: Panel simple donde puedes editar textos, cambiar imágenes y añadir nuevos servicios sin conocimientos técnicos. Todo visual, todo intuitivo.
+                  - button "Ver más (2 características adicionales) ↓" [ref=e138]
+                  - paragraph [ref=e140]:
+                    - generic [ref=e141]: "Perfecto para:"
+                    - text: Freelancers, consultores, pequeños negocios locales, profesionales que necesitan presencia online YA.
+                - link "Empezar Web Express" [ref=e143] [cursor=pointer]:
+                  - /url: /soluciones/web-development
+              - article "Tienda Online Básica" [ref=e145]:
+                - generic [ref=e147]:
+                  - generic [ref=e148]: 🛒
+                  - generic [ref=e149]:
+                    - generic [ref=e150]: Tienda Online Básica
+                    - generic [ref=e151]: VENDE ONLINE SIN COMPLICACIONES
+                - generic [ref=e152]:
+                  - generic [ref=e153]:
+                    - generic [ref=e154]:
+                      - generic [ref=e155]: ✓
+                      - generic [ref=e156]:
+                        - paragraph [ref=e157]: Catálogo de productos simple
+                        - paragraph [ref=e158]: Sube fotos, añade descripciones y precios. Tus clientes pueden navegar, seleccionar y comprar en 3 clics. Gestión de stock automática.
+                    - generic [ref=e159]:
+                      - generic [ref=e160]: ✓
+                      - generic [ref=e161]:
+                        - paragraph [ref=e162]: Pagos seguros integrados
+                        - paragraph [ref=e163]: Acepta pagos con tarjeta, Bizum y transferencia. Todo configurado y listo para recibir dinero desde el día uno. Sin mensualidades extra de pasarelas.
+                  - button "Ver más (2 características adicionales) ↓" [ref=e164]
+                  - paragraph [ref=e166]:
+                    - generic [ref=e167]: "Perfecto para:"
+                    - text: Artesanos, pequeñas tiendas, productos locales, negocios familiares que quieren vender online.
+                - link "Crear Mi Tienda" [ref=e169] [cursor=pointer]:
+                  - /url: /soluciones/e-commerce
+              - article "Reservas y Citas" [ref=e171]:
+                - generic [ref=e173]:
+                  - generic [ref=e174]: 📅
+                  - generic [ref=e175]:
+                    - generic [ref=e176]: Reservas y Citas
+                    - generic [ref=e177]: AGENDA DIGITAL AUTOMÁTICA
+                - generic [ref=e178]:
+                  - generic [ref=e179]:
+                    - generic [ref=e180]:
+                      - generic [ref=e181]: ✓
+                      - generic [ref=e182]:
+                        - paragraph [ref=e183]: Calendario online 24/7
+                        - paragraph [ref=e184]: Tus clientes reservan cuando quieren, tu agenda se actualiza sola. Evita llamadas constantes y dobles reservas. Sincronización con Google Calendar.
+                    - generic [ref=e185]:
+                      - generic [ref=e186]: ✓
+                      - generic [ref=e187]:
+                        - paragraph [ref=e188]: Recordatorios automáticos
+                        - paragraph [ref=e189]: SMS y emails de confirmación se envían solos. Menos no-shows, más organización. Tus clientes nunca olvidan su cita.
+                  - button "Ver más (2 características adicionales) ↓" [ref=e190]
+                  - paragraph [ref=e192]:
+                    - generic [ref=e193]: "Perfecto para:"
+                    - text: Peluquerías, consultas, terapeutas, instructores, cualquier negocio por citas.
+                - link "Configurar Agenda" [ref=e195] [cursor=pointer]:
+                  - /url: /soluciones/reservas
+              - article "Landing de Captación" [ref=e197]:
+                - generic [ref=e199]:
+                  - generic [ref=e200]: 🎯
+                  - generic [ref=e201]:
+                    - generic [ref=e202]: Landing de Captación
+                    - generic [ref=e203]: GENERA LEADS MIENTRAS DUERMES
+                - generic [ref=e204]:
+                  - generic [ref=e205]:
+                    - generic [ref=e206]:
+                      - generic [ref=e207]: ✓
+                      - generic [ref=e208]:
+                        - paragraph [ref=e209]: Página enfocada en conversión
+                        - paragraph [ref=e210]: "Una sola página diseñada para un objetivo: conseguir clientes. Formulario optimizado, testimonios reales y llamada a la acción clara."
+                    - generic [ref=e211]:
+                      - generic [ref=e212]: ✓
+                      - generic [ref=e213]:
+                        - paragraph [ref=e214]: Lead magnets irresistibles
+                        - paragraph [ref=e215]: Descarga gratuita (PDF, checklist, mini-curso) a cambio del email. Base de datos de clientes potenciales que crece automáticamente.
+                  - button "Ver más (2 características adicionales) ↓" [ref=e216]
+                  - paragraph [ref=e218]:
+                    - generic [ref=e219]: "Perfecto para:"
+                    - text: Coaches, cursos online, servicios premium, lanzamientos de producto.
+                - link "Generar Leads" [ref=e221] [cursor=pointer]:
+                  - /url: /soluciones/landing-pages
+          - generic [ref=e223]:
+            - generic [ref=e224]:
+              - generic [ref=e225]: Servicios de Diseño Web
+              - heading "Nuestros servicios destacados" [level=2] [ref=e227]
+              - paragraph [ref=e228]: Al contar con una larga experiencia y un equipo de desarrolladores y diseñadores web con diferentes especializaciones, somos capaces de ofrecer una gran variedad de servicios en la realización de páginas web a medida.
+            - generic [ref=e229]:
+              - generic [ref=e230]:
+                - generic [ref=e231]: 📱
+                - generic [ref=e232]:
+                  - generic [ref=e233]: CONVERSIÓN MAXIMIZADA
+                  - heading "Landing Pages" [level=3] [ref=e234]
+                  - paragraph [ref=e235]: "Páginas de aterrizaje diseñadas para un objetivo específico: convertir visitantes en clientes. Optimizadas para cada campaña."
+                - generic [ref=e236]:
+                  - generic [ref=e239]: Diseño enfocado en conversión
+                  - generic [ref=e242]: A/B testing integrado
+                  - generic [ref=e245]: Formularios optimizados
+                  - generic [ref=e248]: Analytics y tracking completo
+                - generic [ref=e250]:
+                  - generic [ref=e251]: Next.js
+                  - generic [ref=e252]: Framer Motion
+                  - generic [ref=e253]: Google Analytics
+                  - generic [ref=e254]: Hotjar
+                - link "Ver Detalles →" [ref=e255] [cursor=pointer]:
+                  - /url: /soluciones/landing-pages
+                  - generic [ref=e256]: Ver Detalles
+                  - generic [ref=e257]: →
+              - generic [ref=e258]:
+                - generic [ref=e259]: 🏛️
+                - generic [ref=e260]:
+                  - generic [ref=e261]: PRESENCIA CORPORATIVA
+                  - heading "Webs Institucionales" [level=3] [ref=e262]
+                  - paragraph [ref=e263]: Páginas web para instituciones, organizaciones y empresas que necesitan transmitir profesionalidad y confianza.
+                - generic [ref=e264]:
+                  - generic [ref=e267]: Diseño institucional profesional
+                  - generic [ref=e270]: Gestión de contenidos avanzada
+                  - generic [ref=e273]: Integración con sistemas existentes
+                  - generic [ref=e276]: Mantenimiento y soporte incluido
+                - generic [ref=e278]:
+                  - generic [ref=e279]: Next.js
+                  - generic [ref=e280]: Strapi
+                  - generic [ref=e281]: Appwrite
+                  - generic [ref=e282]: Cloudflare
+              - generic [ref=e283]:
+                - generic [ref=e284]: 📊
+                - generic [ref=e285]:
+                  - generic [ref=e286]: MODERNIZA TU PRESENCIA
+                  - heading "Rediseño de Páginas Web" [level=3] [ref=e287]
+                  - paragraph [ref=e288]: Actualizamos tu página web existente con las últimas tecnologías y tendencias de diseño. Sin perder el posicionamiento SEO.
+                - generic [ref=e289]:
+                  - generic [ref=e292]: Migración sin pérdida de SEO
+                  - generic [ref=e295]: Diseño moderno y responsive
+                  - generic [ref=e298]: Optimización de rendimiento
+                  - generic [ref=e301]: Nuevas funcionalidades
+                - generic [ref=e303]:
+                  - generic [ref=e304]: Next.js
+                  - generic [ref=e305]: SEO Migration
+                  - generic [ref=e306]: Performance Optimization
+                  - generic [ref=e307]: Modern CSS
+                - link "Ver Detalles →" [ref=e308] [cursor=pointer]:
+                  - /url: /soluciones/rediseno
+                  - generic [ref=e309]: Ver Detalles
+                  - generic [ref=e310]: →
+              - generic [ref=e311]:
+                - generic [ref=e312]: 🔧
+                - generic [ref=e313]:
+                  - generic [ref=e314]: SOPORTE ESPECIALIZADO
+                  - heading "Mantenimiento Web" [level=3] [ref=e315]
+                  - paragraph [ref=e316]: Mantenimiento continuo, actualizaciones de seguridad y soporte técnico para que tu página web siempre funcione perfectamente.
+                - generic [ref=e317]:
+                  - generic [ref=e320]: Actualizaciones de seguridad
+                  - generic [ref=e323]: Backups automáticos
+                  - generic [ref=e326]: Soporte técnico 24/7
+                  - generic [ref=e329]: Optimización continua
+                - generic [ref=e331]:
+                  - generic [ref=e332]: Monitoring
+                  - generic [ref=e333]: Strapi
+                  - generic [ref=e334]: Security Updates
+                  - generic [ref=e335]: Performance Tuning
+                - link "Ver Detalles →" [ref=e336] [cursor=pointer]:
+                  - /url: /soluciones/mantenimiento
+                  - generic [ref=e337]: Ver Detalles
+                  - generic [ref=e338]: →
+              - generic [ref=e339]:
+                - generic [ref=e340]: 🏢
+                - generic [ref=e341]:
+                  - generic [ref=e342]: DISEÑO WEB A MEDIDA
+                  - heading "Páginas Web Corporativas" [level=3] [ref=e343]
+                  - paragraph [ref=e344]: Creamos páginas web profesionales completamente personalizadas que transmiten credibilidad, generan confianza y convierten visitantes en clientes. Diseño único adaptado a tu marca, valores y objetivos de negocio con las últimas tecnologías web.
+                - generic [ref=e345]:
+                  - generic [ref=e348]: Diseño web a medida y único - Cada página es exclusiva para tu marca
+                  - generic [ref=e351]: Optimización SEO desde el primer día - Posicionamiento orgánico garantizado
+                  - generic [ref=e354]: Sistema de gestión de contenidos propio - Fácil actualización sin conocimientos técnicos
+                - generic [ref=e356]:
+                  - generic [ref=e357]: Next.js 15
+                  - generic [ref=e358]: React 19
+                  - generic [ref=e359]: TypeScript
+                  - generic [ref=e360]: Tailwind CSS
+                  - generic [ref=e361]: Strapi CMS
+                  - generic [ref=e362]: Framer Motion
+                  - generic [ref=e363]: Google Analytics 4
+                  - generic [ref=e364]: Cloudflare
+                  - generic [ref=e365]: Vercel
+                  - generic [ref=e366]: Stripe
+                  - generic [ref=e367]: EmailJS
+                - link "Ver Detalles →" [ref=e368] [cursor=pointer]:
+                  - /url: /soluciones/web-development
+                  - generic [ref=e369]: Ver Detalles
+                  - generic [ref=e370]: →
+              - generic [ref=e371]:
+                - generic [ref=e372]: 🛒
+                - generic [ref=e373]:
+                  - generic [ref=e374]: E-COMMERCE QUE VENDE
+                  - heading "Tiendas Online" [level=3] [ref=e375]
+                  - paragraph [ref=e376]: Tiendas online completas optimizadas para conversión. Desde catálogos simples hasta e-commerce complejos con múltiples funcionalidades.
+                - generic [ref=e377]:
+                  - generic [ref=e380]: Tiendas WordPress y Webflow
+                  - generic [ref=e383]: Integración de pagos segura
+                  - generic [ref=e386]: Gestión de inventario automatizada
+                  - generic [ref=e389]: Panel de administración intuitivo
+                - generic [ref=e391]:
+                  - generic [ref=e392]: Wix Studio
+                  - generic [ref=e393]: Webflow
+                  - generic [ref=e394]: Stripe
+                  - generic [ref=e395]: PayPal
+                - link "Ver Detalles →" [ref=e396] [cursor=pointer]:
+                  - /url: /soluciones/e-commerce
+                  - generic [ref=e397]: Ver Detalles
+                  - generic [ref=e398]: →
+            - generic [ref=e400]:
+              - heading "¿Necesitas alguno de nuestros servicios?" [level=3] [ref=e401]
+              - paragraph [ref=e402]:
+                - text: Sea cual sea tu proyecto, lo podemos afrontar.
+                - strong [ref=e403]: Páginas web únicas
+                - text: con diseños originales y
+                - strong [ref=e404]: 100% orientados a los resultados
+                - text: .
+              - link "¿Hablamos? 💬" [ref=e405] [cursor=pointer]:
+                - /url: /contacto
+                - generic [ref=e406]: ¿Hablamos?
+                - generic [ref=e407]: 💬
+          - generic [ref=e409]:
+            - generic [ref=e410]:
+              - generic [ref=e411]: Nuestro Proceso
+              - heading "¿Cómo trabajamos el diseño web?" [level=2] [ref=e413]
+              - paragraph [ref=e414]: En WebSnack entendemos el proceso de creación de páginas web como un proceso integral, que incluye desde el servicio de diseño web hasta su completa implementación y marketing digital.
+            - generic [ref=e417]:
+              - generic [ref=e418]:
+                - generic [ref=e419]:
+                  - generic [ref=e420]: "01"
+                  - generic [ref=e421]: 🔍
+                - generic [ref=e422]:
+                  - generic [ref=e423]:
+                    - heading "Estudio y Análisis" [level=3] [ref=e424]
+                    - paragraph [ref=e425]: Analizamos tu negocio, objetivos y competencia para definir la estrategia digital que tu proyecto necesita.
+                  - generic [ref=e426]:
+                    - generic [ref=e429]: Análisis de mercado y competencia
+                    - generic [ref=e432]: Definición de objetivos digitales
+                    - generic [ref=e435]: Identificación del público objetivo
+                    - generic [ref=e438]: Estrategia de posicionamiento
+              - generic [ref=e439]:
+                - generic [ref=e440]:
+                  - generic [ref=e441]: "02"
+                  - generic [ref=e442]: 💬
+                - generic [ref=e443]:
+                  - generic [ref=e444]:
+                    - heading "Definición del Mensaje" [level=3] [ref=e445]
+                    - paragraph [ref=e446]: Definimos el mensaje que deseas comunicar para implementar los elementos comunicativos necesarios en el diseño.
+                  - generic [ref=e447]:
+                    - generic [ref=e450]: Arquitectura de la información
+                    - generic [ref=e453]: Propuesta de valor única
+                    - generic [ref=e456]: Estrategia de contenidos
+                    - generic [ref=e459]: Tonality y comunicación
+              - generic [ref=e460]:
+                - generic [ref=e461]:
+                  - generic [ref=e462]: "03"
+                  - generic [ref=e463]: ⚡
+                - generic [ref=e464]:
+                  - generic [ref=e465]:
+                    - heading "Diseño y Desarrollo" [level=3] [ref=e466]
+                    - paragraph [ref=e467]: Realizamos el diseño web y la programación de la página web con las últimas tecnologías.
+                  - generic [ref=e468]:
+                    - generic [ref=e471]: Diseño UX/UI personalizado
+                    - generic [ref=e474]: Desarrollo con Next.js 15
+                    - generic [ref=e477]: Optimización para móviles
+                    - generic [ref=e480]: Integración de funcionalidades
+              - generic [ref=e481]:
+                - generic [ref=e482]:
+                  - generic [ref=e483]: "04"
+                  - generic [ref=e484]: 📈
+                - generic [ref=e485]:
+                  - generic [ref=e486]:
+                    - heading "Marketing Digital" [level=3] [ref=e487]
+                    - paragraph [ref=e488]: Desplegamos acciones de marketing digital para atraer tráfico de calidad y maximizar las conversiones.
+                  - generic [ref=e489]:
+                    - generic [ref=e492]: SEO técnico y de contenidos
+                    - generic [ref=e495]: Google Ads y Meta Ads
+                    - generic [ref=e498]: Analytics y tracking
+                    - generic [ref=e501]: Optimización de conversiones
+              - generic [ref=e502]:
+                - generic [ref=e503]:
+                  - generic [ref=e504]: "05"
+                  - generic [ref=e505]: 🎯
+                - generic [ref=e506]:
+                  - generic [ref=e507]:
+                    - heading "Monitoreo y Resultados" [level=3] [ref=e508]
+                    - paragraph [ref=e509]: Monitorizamos todo el proceso, asesorándote y acompañándote para obtener los mejores resultados.
+                  - generic [ref=e510]:
+                    - generic [ref=e513]: Reportes mensuales de resultados
+                    - generic [ref=e516]: Optimización continua
+                    - generic [ref=e519]: Mantenimiento y actualizaciones
+                    - generic [ref=e522]: Soporte técnico especializado
+            - generic [ref=e524]:
+              - heading "¿Listo para empezar tu proyecto?" [level=3] [ref=e525]
+              - paragraph [ref=e526]:
+                - text: "Cada empresa es única. Te creamos un servicio de diseño web a medida:"
+                - strong [ref=e527]: webs únicas
+                - text: con diseños originales y
+                - strong [ref=e528]: 100% orientados a los resultados
+                - text: que buscas.
+              - generic [ref=e529]:
+                - link "¿Hablamos? 💬" [ref=e530] [cursor=pointer]:
+                  - /url: /contacto
+                  - generic [ref=e531]: ¿Hablamos?
+                  - generic [ref=e532]: 💬
+                - link "Ver Servicios 🚀" [ref=e533] [cursor=pointer]:
+                  - /url: /soluciones
+                  - generic [ref=e534]: Ver Servicios
+                  - generic [ref=e535]: 🚀
+    - contentinfo [ref=e536]:
+      - generic [ref=e538]:
+        - generic [ref=e539]:
+          - generic [ref=e540]:
+            - heading "Servicios" [level=3] [ref=e541]
+            - generic [ref=e542]:
+              - link "Desarrollo Web" [ref=e543] [cursor=pointer]:
+                - /url: /soluciones/web-development
+              - link "E-commerce" [ref=e544] [cursor=pointer]:
+                - /url: /soluciones/e-commerce
+              - link "SEO & Marketing" [ref=e545] [cursor=pointer]:
+                - /url: /soluciones/seo
+              - link "Consultoría" [ref=e546] [cursor=pointer]:
+                - /url: /soluciones/consulting
+            - generic [ref=e547]:
+              - 'img "Ubicación: Barcelona" [ref=e548]'
+              - generic [ref=e550]: Barcelona, España
+          - generic [ref=e551]:
+            - generic "Logo animado WEBCODE":
+              - generic:
+                - img "Logo animado WEBCODE"
+              - generic:
+                - heading "WebCode" [level=2]
+                - generic: WEBDesign
+          - generic [ref=e552]:
+            - heading "Contacto" [level=3] [ref=e553]
+            - generic [ref=e554]:
+              - link "info@webcode.es" [ref=e555] [cursor=pointer]:
+                - /url: mailto:info@webcode.es
+              - link "Contacto" [ref=e556] [cursor=pointer]:
+                - /url: /contacto
+              - link "Portfolio" [ref=e557] [cursor=pointer]:
+                - /url: https://jordinodejs.github.io/
+              - link "FAQ" [ref=e558] [cursor=pointer]:
+                - /url: /faqs
+            - generic [ref=e559]:
+              - link "LinkedIn" [ref=e560] [cursor=pointer]:
+                - /url: https://linkedin.com/company/webcode
+                - img "LinkedIn" [ref=e561]
+              - link "GitHub" [ref=e563] [cursor=pointer]:
+                - /url: https://github.com/webcode-es
+                - img "GitHub" [ref=e564]
+              - link "Twitter" [ref=e566] [cursor=pointer]:
+                - /url: https://twitter.com/webcode_es
+                - img "Twitter" [ref=e567]
+        - generic [ref=e570]:
+          - generic [ref=e571]: © 2025 WEBCODE. Todos los derechos reservados.
+          - generic [ref=e572]:
+            - link "Privacidad" [ref=e573] [cursor=pointer]:
+              - /url: /politica-privacidad
+            - link "Términos" [ref=e574] [cursor=pointer]:
+              - /url: /terms
+            - link "Cookies" [ref=e575] [cursor=pointer]:
+              - /url: /cookies
+          - generic [ref=e576]:
+            - generic [ref=e577]: Desarrollado con
+            - generic [ref=e578]: Next.js
+            - generic [ref=e579]: "&"
+            - generic [ref=e580]: React
+  - button "Open Next.js Dev Tools" [ref=e587] [cursor=pointer]:
+    - generic [ref=e590]:
+      - text: Compiling
+      - generic [ref=e591]:
+        - generic [ref=e592]: .
+        - generic [ref=e593]: .
+        - generic [ref=e594]: .
+  - alert [ref=e595]
+```

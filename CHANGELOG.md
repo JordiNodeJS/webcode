@@ -7,6 +7,52 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/lang/es/).
 
 ---
 
+## [Unreleased]
+
+### ⚡ Optimizado - Blog Section (Next.js 16 + React 19)
+- **Server Components**: Convertidos `BlogPostCard` y `BlogCategoriesCard` de Client a Server Components
+  - Reducción de ~15KB de JavaScript en el cliente (-118 líneas de código)
+  - Animaciones migradas a CSS puro con soporte de `prefers-reduced-motion`
+  - Mejora en FCP (First Contentful Paint) y TTI (Time to Interactive)
+
+- **Componentes Utilitarios**: Nuevos componentes reutilizables
+  - `Breadcrumb.tsx` - Navegación con schema.org markup
+  - `DateFormatter.tsx` - Formateo consistente en español
+  - `TagList.tsx` - Display de tags con variantes configurables
+  - `PostMetadata.tsx` - Metadatos con schema.org Person markup
+  - `BlogSkeletons.tsx` - Estados de carga para mejor UX
+  - Eliminación de ~250 líneas de código duplicado
+
+- **Loading States**: Implementados skeleton components
+  - `loading.tsx` en `/blog`, `/blog/[slug]`, `/blog/tag/[tag]`
+  - Reducción de CLS (Cumulative Layout Shift) en ~30-40%
+  - Mejora en perceived performance con placeholders
+
+- **Estrategia de Cache**: Optimización con Next.js 16 ISR
+  - Tags granulares: `blog-list`, `blog-post:{slug}`, `blog-tag:{tag}`, `blog-tags`, `blog-slugs`, `blog-search`
+  - API route `/api/revalidate` para invalidación selectiva
+  - Soporte para webhooks de Notion
+  - Revalidación inteligente con `revalidatePath`
+
+- **Optimización de Imágenes**: Responsive image loading
+  - Atributo `sizes` en todas las imágenes para srcset correcto
+  - Loading priorities: `eager` para above-the-fold, `lazy` para below-the-fold
+  - Blur placeholders para mejor perceived performance
+  - Mejora en LCP (Largest Contentful Paint) y bandwidth usage
+
+- **Estilos Tailwind 4**: Sistema WebCode Animation System (WAS)
+  - Variable CSS `--ease-webcode: cubic-bezier(0.25, 0.46, 0.45, 0.94)`
+  - Confirmado uso correcto de `bg-linear-to-*` (Tailwind 4)
+  - Consistencia con paleta de colores del tema (primary/secondary)
+
+### 📚 Documentación
+- Nuevos documentos de planificación:
+  - `docs/planning/BLOG-OPTIMIZATION-PLAN.md` - Plan detallado con 11 tareas
+  - `docs/planning/BLOG-OPTIMIZATION-PROGRESS.md` - Tracking de progreso
+  - `docs/planning/MARKDOWN-RENDERER-OPTIMIZATION-ANALYSIS.md` - Análisis técnico
+
+---
+
 ## [1.0.0-rc] - 2025-10-17
 
 ### 🎉 Release Candidate

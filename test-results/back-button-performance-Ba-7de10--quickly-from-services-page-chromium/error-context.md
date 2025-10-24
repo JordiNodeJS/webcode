@@ -1,0 +1,287 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - img "Patrón de ondas decorativas" [ref=e4]
+  - generic [ref=e6]:
+    - banner [ref=e7]:
+      - navigation [ref=e8]:
+        - generic [ref=e9]:
+          - link "WEBCODE Logo WebCode" [ref=e12] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e13]:
+              - img "WEBCODE Logo" [ref=e14]
+              - generic [ref=e15]: WebCode
+          - generic [ref=e16]:
+            - link "Soluciones" [ref=e18] [cursor=pointer]:
+              - /url: /soluciones
+              - text: Soluciones
+            - link "Proceso" [ref=e21] [cursor=pointer]:
+              - /url: /proceso
+            - link "Blog" [ref=e23] [cursor=pointer]:
+              - /url: /blog
+            - link "Portfolio" [ref=e25] [cursor=pointer]:
+              - /url: https://jordinodejs.github.io/
+            - link "FAQ" [ref=e27] [cursor=pointer]:
+              - /url: /faqs
+            - link "Contacto" [ref=e29] [cursor=pointer]:
+              - /url: /contacto
+          - button "Toggle theme" [ref=e32]:
+            - img
+    - main [ref=e33]:
+      - generic [ref=e35]:
+        - generic [ref=e38]:
+          - generic [ref=e39]: Desarrollo Web
+          - heading "Sitios Web que Convierten Visitantes en Clientes" [level=1] [ref=e40]
+          - paragraph [ref=e41]: Desarrollo web profesional con Next.js, React y TailwindCSS. Diseños modernos, rápidos y optimizados para SEO.
+          - generic [ref=e42]:
+            - link "Solicitar Presupuesto" [ref=e43] [cursor=pointer]:
+              - /url: /contacto
+            - link "Ver Portfolio" [ref=e44] [cursor=pointer]:
+              - /url: /portfolio
+        - generic [ref=e45]:
+          - heading "¿Qué Tipo de Web Necesitas?" [level=2] [ref=e46]
+          - generic [ref=e47]:
+            - generic [ref=e49]:
+              - generic [ref=e50]: 🚀
+              - heading "Landing Pages" [level=3] [ref=e51]
+              - paragraph [ref=e52]: Páginas de alta conversión diseñadas para captar leads y vender.
+              - list [ref=e53]:
+                - listitem [ref=e54]:
+                  - generic [ref=e55]: ✓
+                  - generic [ref=e56]: Diseño optimizado para conversión
+                - listitem [ref=e57]:
+                  - generic [ref=e58]: ✓
+                  - generic [ref=e59]: A/B Testing integrado
+                - listitem [ref=e60]:
+                  - generic [ref=e61]: ✓
+                  - generic [ref=e62]: Formularios optimizados
+                - listitem [ref=e63]:
+                  - generic [ref=e64]: ✓
+                  - generic [ref=e65]: Analytics y tracking
+            - generic [ref=e67]:
+              - generic [ref=e68]: 🏢
+              - heading "Webs Corporativas" [level=3] [ref=e69]
+              - paragraph [ref=e70]: Presencia profesional online para tu empresa o negocio.
+              - list [ref=e71]:
+                - listitem [ref=e72]:
+                  - generic [ref=e73]: ✓
+                  - generic [ref=e74]: Diseño a medida de tu marca
+                - listitem [ref=e75]:
+                  - generic [ref=e76]: ✓
+                  - generic [ref=e77]: CMS para gestión de contenido
+                - listitem [ref=e78]:
+                  - generic [ref=e79]: ✓
+                  - generic [ref=e80]: Multi-idioma disponible
+                - listitem [ref=e81]:
+                  - generic [ref=e82]: ✓
+                  - generic [ref=e83]: SEO avanzado incluido
+            - generic [ref=e85]:
+              - generic [ref=e86]: 🎨
+              - heading "Portfolios" [level=3] [ref=e87]
+              - paragraph [ref=e88]: Muestra tu trabajo de forma impactante y profesional.
+              - list [ref=e89]:
+                - listitem [ref=e90]:
+                  - generic [ref=e91]: ✓
+                  - generic [ref=e92]: Galerías optimizadas
+                - listitem [ref=e93]:
+                  - generic [ref=e94]: ✓
+                  - generic [ref=e95]: Casos de estudio detallados
+                - listitem [ref=e96]:
+                  - generic [ref=e97]: ✓
+                  - generic [ref=e98]: Animaciones fluidas
+                - listitem [ref=e99]:
+                  - generic [ref=e100]: ✓
+                  - generic [ref=e101]: Responsive perfecto
+            - generic [ref=e103]:
+              - generic [ref=e104]: ⚡
+              - heading "Web Apps" [level=3] [ref=e105]
+              - paragraph [ref=e106]: Aplicaciones web complejas y escalables.
+              - list [ref=e107]:
+                - listitem [ref=e108]:
+                  - generic [ref=e109]: ✓
+                  - generic [ref=e110]: Arquitectura escalable
+                - listitem [ref=e111]:
+                  - generic [ref=e112]: ✓
+                  - generic [ref=e113]: APIs REST y GraphQL
+                - listitem [ref=e114]:
+                  - generic [ref=e115]: ✓
+                  - generic [ref=e116]: Autenticación y roles
+                - listitem [ref=e117]:
+                  - generic [ref=e118]: ✓
+                  - generic [ref=e119]: Dashboard admin
+            - generic [ref=e121]:
+              - generic [ref=e122]: 💼
+              - heading "SaaS Products" [level=3] [ref=e123]
+              - paragraph [ref=e124]: Plataformas SaaS completas listas para escalar.
+              - list [ref=e125]:
+                - listitem [ref=e126]:
+                  - generic [ref=e127]: ✓
+                  - generic [ref=e128]: Multi-tenancy
+                - listitem [ref=e129]:
+                  - generic [ref=e130]: ✓
+                  - generic [ref=e131]: Pagos recurrentes
+                - listitem [ref=e132]:
+                  - generic [ref=e133]: ✓
+                  - generic [ref=e134]: Planes y subscripciones
+                - listitem [ref=e135]:
+                  - generic [ref=e136]: ✓
+                  - generic [ref=e137]: Analytics y métricas
+            - generic [ref=e139]:
+              - generic [ref=e140]: 🛠️
+              - heading "A Medida" [level=3] [ref=e141]
+              - paragraph [ref=e142]: Desarrollo personalizado para necesidades específicas.
+              - list [ref=e143]:
+                - listitem [ref=e144]:
+                  - generic [ref=e145]: ✓
+                  - generic [ref=e146]: Soluciones únicas
+                - listitem [ref=e147]:
+                  - generic [ref=e148]: ✓
+                  - generic [ref=e149]: Integraciones complejas
+                - listitem [ref=e150]:
+                  - generic [ref=e151]: ✓
+                  - generic [ref=e152]: Lógica de negocio custom
+                - listitem [ref=e153]:
+                  - generic [ref=e154]: ✓
+                  - generic [ref=e155]: Consultoría incluida
+        - generic [ref=e157]:
+          - heading "Tecnologías que Dominamos" [level=2] [ref=e158]
+          - paragraph [ref=e159]: Utilizamos las tecnologías más modernas y probadas para garantizar rendimiento, escalabilidad y mantenibilidad.
+          - generic [ref=e160]:
+            - generic [ref=e165]:
+              - img [ref=e167]
+              - paragraph [ref=e169]: Next.js 15
+            - generic [ref=e175]:
+              - img [ref=e177]
+              - paragraph [ref=e179]: React 19
+            - generic [ref=e185]:
+              - img [ref=e187]
+              - paragraph [ref=e189]: TypeScript
+            - generic [ref=e195]:
+              - img [ref=e197]
+              - paragraph [ref=e199]: TailwindCSS
+            - generic [ref=e205]:
+              - img [ref=e207]
+              - paragraph [ref=e209]: Node.js
+            - generic [ref=e215]:
+              - img [ref=e217]
+              - paragraph [ref=e219]: PostgreSQL
+            - generic [ref=e225]:
+              - img [ref=e227]
+              - paragraph [ref=e229]: MongoDB
+            - generic [ref=e235]:
+              - img [ref=e237]
+              - paragraph [ref=e239]: Vercel
+            - generic [ref=e245]:
+              - img [ref=e247]
+              - paragraph [ref=e249]: Render
+            - generic [ref=e255]:
+              - img [ref=e257]
+              - paragraph [ref=e259]: Railway
+            - generic [ref=e265]:
+              - img [ref=e267]
+              - paragraph [ref=e269]: Appwrite
+            - generic [ref=e275]:
+              - img [ref=e277]
+              - paragraph [ref=e279]: Sanity
+            - generic [ref=e285]:
+              - img [ref=e287]
+              - paragraph [ref=e289]: Neon
+            - generic [ref=e295]:
+              - img [ref=e297]
+              - paragraph [ref=e299]: Strapi
+            - generic [ref=e305]:
+              - img [ref=e307]
+              - paragraph [ref=e309]: Netlify
+        - generic [ref=e311]:
+          - heading "Nuestro Proceso" [level=2] [ref=e312]
+          - generic [ref=e313]:
+            - generic [ref=e315]:
+              - generic [ref=e316]: "01"
+              - heading "Descubrimiento" [level=3] [ref=e317]
+              - paragraph [ref=e318]: Entendemos tu negocio, objetivos y audiencia. Definimos alcance y requisitos técnicos.
+            - generic [ref=e320]:
+              - generic [ref=e321]: "02"
+              - heading "Diseño & Prototipo" [level=3] [ref=e322]
+              - paragraph [ref=e323]: Creamos wireframes y prototipos interactivos. Iteramos hasta lograr el diseño perfecto.
+            - generic [ref=e325]:
+              - generic [ref=e326]: "03"
+              - heading "Desarrollo" [level=3] [ref=e327]
+              - paragraph [ref=e328]: Construimos tu web con código limpio y escalable. Testing continuo durante el desarrollo.
+            - generic [ref=e330]:
+              - generic [ref=e331]: "04"
+              - heading "Lanzamiento" [level=3] [ref=e332]
+              - paragraph [ref=e333]: Deploy optimizado, configuración de analytics y monitorización. Tu web lista para crecer.
+        - generic [ref=e335]:
+          - heading "¿Listo para Crear tu Web?" [level=2] [ref=e336]
+          - paragraph [ref=e337]: Cuéntanos tu proyecto y te enviaremos un presupuesto personalizado en 24h.
+          - link "Solicitar Presupuesto Gratis" [ref=e338] [cursor=pointer]:
+            - /url: /contacto
+    - contentinfo [ref=e339]:
+      - generic [ref=e341]:
+        - generic [ref=e342]:
+          - generic [ref=e343]:
+            - heading "Servicios" [level=3] [ref=e344]
+            - generic [ref=e345]:
+              - link "Desarrollo Web" [ref=e346] [cursor=pointer]:
+                - /url: /soluciones/web-development
+              - link "E-commerce" [ref=e347] [cursor=pointer]:
+                - /url: /soluciones/e-commerce
+              - link "SEO & Marketing" [ref=e348] [cursor=pointer]:
+                - /url: /soluciones/seo
+              - link "Consultoría" [ref=e349] [cursor=pointer]:
+                - /url: /soluciones/consulting
+            - generic [ref=e350]:
+              - 'img "Ubicación: Barcelona" [ref=e351]'
+              - generic [ref=e353]: Barcelona, España
+          - generic [ref=e354]:
+            - generic "Logo animado WEBCODE":
+              - generic:
+                - img "Logo animado WEBCODE"
+              - generic:
+                - heading "WebCode" [level=2]
+                - generic: WEBDesign
+          - generic [ref=e355]:
+            - heading "Contacto" [level=3] [ref=e356]
+            - generic [ref=e357]:
+              - link "info@webcode.es" [ref=e358] [cursor=pointer]:
+                - /url: mailto:info@webcode.es
+              - link "Contacto" [ref=e359] [cursor=pointer]:
+                - /url: /contacto
+              - link "Portfolio" [ref=e360] [cursor=pointer]:
+                - /url: https://jordinodejs.github.io/
+              - link "FAQ" [ref=e361] [cursor=pointer]:
+                - /url: /faqs
+            - generic [ref=e362]:
+              - link "LinkedIn" [ref=e363] [cursor=pointer]:
+                - /url: https://linkedin.com/company/webcode
+                - img "LinkedIn" [ref=e364]
+              - link "GitHub" [ref=e366] [cursor=pointer]:
+                - /url: https://github.com/webcode-es
+                - img "GitHub" [ref=e367]
+              - link "Twitter" [ref=e369] [cursor=pointer]:
+                - /url: https://twitter.com/webcode_es
+                - img "Twitter" [ref=e370]
+        - generic [ref=e373]:
+          - generic [ref=e374]: © 2025 WEBCODE. Todos los derechos reservados.
+          - generic [ref=e375]:
+            - link "Privacidad" [ref=e376] [cursor=pointer]:
+              - /url: /politica-privacidad
+            - link "Términos" [ref=e377] [cursor=pointer]:
+              - /url: /terms
+            - link "Cookies" [ref=e378] [cursor=pointer]:
+              - /url: /cookies
+          - generic [ref=e379]:
+            - generic [ref=e380]: Desarrollado con
+            - generic [ref=e381]: Next.js
+            - generic [ref=e382]: "&"
+            - generic [ref=e383]: React
+  - button "Open Next.js Dev Tools" [ref=e390] [cursor=pointer]:
+    - generic [ref=e393]:
+      - text: Compiling
+      - generic [ref=e394]:
+        - generic [ref=e395]: .
+        - generic [ref=e396]: .
+        - generic [ref=e397]: .
+  - alert [ref=e398]
+```
