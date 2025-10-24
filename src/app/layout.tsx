@@ -60,7 +60,7 @@ export default function RootLayout({
 
   return (
     <ViewTransitions>
-      <html lang="es" suppressHydrationWarning>
+      <html lang="es" suppressHydrationWarning data-scroll-behavior="smooth">
         <head>
           {/* Inline Critical CSS (small) for above-the-fold, guarded by flag */}
           {process.env.NEXT_PUBLIC_ENABLE_CRITICAL_CSS === "1" && (
