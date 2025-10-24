@@ -168,6 +168,9 @@
   --shadow-3d-xl:
     6px 6px 0px 0px oklch(0.57 0.2 328.5 / 0.9),
     3px 3px 6px -1px oklch(0.57 0.2 328.5 / 0.5);
+
+  /* WebCode Animation System (WAS) - Easing personalizado */
+  --ease-webcode: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .dark {
