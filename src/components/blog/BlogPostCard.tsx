@@ -82,6 +82,7 @@ export function BlogPostCard({ post, priority = false }: BlogPostCardProps) {
                 height={400}
                 className="h-48 w-full object-cover object-center transition-transform group-hover:scale-105"
                 priority={priority}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
               />
             </div>
           </Link>
