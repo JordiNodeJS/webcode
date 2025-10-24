@@ -6,7 +6,6 @@
  * Se usa como respaldo cuando otros fondos no están activos.
  *
  * Optimizado para prevenir FOUC (Flash of Unstyled Content) en modo oscuro:
- * - Usa suppressHydrationWarning para evitar errores de hidratación
  * - Renderiza ambos fondos y usa CSS para mostrar el correcto
  * - No espera a que el componente se monte para decidir el tema
  */

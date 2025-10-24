@@ -6,7 +6,7 @@
  */
 
 import Link from "next/link";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import {
   Card,
   CardContent,

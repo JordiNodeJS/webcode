@@ -382,7 +382,6 @@ export function HeaderNavigation() {
                       variant="ghost"
                       size="sm"
                       className="md:hidden text-foreground"
-                      data-testid="mobile-menu-toggle"
                       aria-label="Toggle mobile menu"
                       aria-expanded={isMobileMenuOpen}
                     >
