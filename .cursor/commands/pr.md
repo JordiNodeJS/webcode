@@ -74,8 +74,9 @@ Flujo operativo (resumen de pasos que debe ejecutar el agente — abstracción d
    - Usar `gh pr list --head <branch>` para saber si ya existe una PR desde esta rama.
 
 4. Crear o actualizar PR con `gh`
-   - Si no existe: `gh pr create --title "..." --body "..." --base main --head <branch> --assignee JordiNodeJS`.
-   - Si existe: `gh pr edit <pr-number> --title "..." --body "..."` para actualizar contenido.
+   - Si no existe: `gh pr create --title "..." --body-file <archivo.md> --base main --head <branch> --assignee JordiNodeJS`.
+   - Si existe: `gh pr edit <pr-number> --title "..." --body-file <archivo.md>` para actualizar contenido.
+   - **IMPORTANTE**: Usar `--body-file` en lugar de `--body` para evitar problemas de codificación UTF-8.
 
 5. Etiquetas y assignación
    - Listar labels (`gh label list`). Crear las faltantes (`gh label create`) y asignarlas a la PR (`gh pr edit <pr> --add-label "..."`).
@@ -157,9 +158,17 @@ Este bloque es sólo un ejemplo que el agente actualizará dinámicamente según
 1. **Detectar rama actual**: `git rev-parse --abbrev-ref HEAD`
 2. **Validaciones locales**: `pnpm lint && pnpm build`
 3. **Verificar PR existente**: `gh pr list --head <branch>`
-4. **Crear/actualizar PR** con título, body y asignación
-5. **Añadir etiquetas automáticas** según tipo de rama
-6. **Devolver resultado** en formato markdown
+4. **Crear archivo temporal** con el body de la PR (UTF-8)
+5. **Crear/actualizar PR** usando `--body-file` para evitar problemas de codificación
+6. **Añadir etiquetas automáticas** según tipo de rama
+7. **Limpiar archivos temporales**
+8. **Devolver resultado** en formato markdown
+
+### ⚠️ Prevención de Problemas de Codificación
+- **SIEMPRE usar `--body-file`** en lugar de `--body` para contenido con acentos
+- **Crear archivo temporal** con codificación UTF-8
+- **Limpiar archivos temporales** después de usar
+- **Verificar codificación** antes de enviar
 
 **Etiquetas automáticas por tipo de rama**:
 - `feat/*` → `type/feature`, `status/ready-for-review`, `priority/medium`
