@@ -354,33 +354,12 @@ export const ValuePropsGrid = React.memo(() => {
             memoizedValueProps.map((prop, index) => (
               <WSFadeIn
                 key={`${prop.title}-${index}`}
-                delay={0.1 + index * 0.1}
+                delay={prefersReducedMotion ? 0 : 0.1 + index * 0.1}
+                direction="up"
+                distance={prefersReducedMotion ? 0 : 50}
+                className="h-full"
               >
-                <motion.div
-                  initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: prefersReducedMotion
-                      ? 0
-                      : ANIMATION_CONFIG.DURATION,
-                    delay: prefersReducedMotion
-                      ? 0
-                      : index * ANIMATION_CONFIG.STAGGER_DELAY
-                  }}
-                  whileHover={
-                    prefersReducedMotion
-                      ? {}
-                      : {
-                          y: ANIMATION_CONFIG.HOVER_Y_OFFSET,
-                          transition: {
-                            duration: ANIMATION_CONFIG.HOVER_TRANSITION_DURATION
-                          }
-                        }
-                  }
-                  className="h-full"
-                >
-                  <ValuePropCard prop={prop} />
-                </motion.div>
+                <ValuePropCard prop={prop} />
               </WSFadeIn>
             ))}
       </div>
