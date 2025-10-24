@@ -13,11 +13,11 @@ Guía consolidada de mejores prácticas para Next.js 15 App Router, estructura d
 ```tsx
 // ✅ Server Component (por defecto, sin 'use client')
 export default async function ProductsPage() {
-  const products = await fetch('/api/products').then(res => res.json());
-  
+  const products = await fetch("/api/products").then((res) => res.json());
+
   return (
     <div>
-      {products.map(product => (
+      {products.map((product) => (
         <ProductCard key={product.id} {...product} />
       ))}
     </div>
@@ -35,24 +35,28 @@ export default async function ProductsPage() {
 
 ```tsx
 // Next.js 15: cookies, headers, params, searchParams son ahora Promises
-import { cookies, headers } from 'next/headers';
+import { cookies, headers } from "next/headers";
 
-export default async function Page({ 
+export default async function Page({
   params,
-  searchParams 
-}: { 
+  searchParams
+}: {
   params: Promise<{ slug: string }>;
   searchParams: Promise<{ query: string }>;
 }) {
   // ✅ Await params y searchParams
   const { slug } = await params;
   const { query } = await searchParams;
-  
+
   // ✅ Await cookies y headers
   const cookieStore = await cookies();
   const headersList = await headers();
-  
-  return <div>Slug: {slug}, Query: {query}</div>;
+
+  return (
+    <div>
+      Slug: {slug}, Query: {query}
+    </div>
+  );
 }
 ```
 
@@ -113,42 +117,42 @@ src/components/features/shopping-cart/CartItem.tsx
 
 ```tsx
 // ✅ Fetch con caché (ISR - Incremental Static Regeneration)
-const data = await fetch('/api/data', {
-  cache: 'force-cache',
-  next: { revalidate: 3600 }, // Revalidar cada hora
+const data = await fetch("/api/data", {
+  cache: "force-cache",
+  next: { revalidate: 3600 } // Revalidar cada hora
 });
 
 // ✅ Fetch sin caché (SSR - Server Side Rendering)
-const dynamicData = await fetch('/api/dynamic', {
-  cache: 'no-store',
+const dynamicData = await fetch("/api/dynamic", {
+  cache: "no-store"
 });
 
 // ✅ Fetch paralelo para mejor performance
 const [users, posts, stats] = await Promise.all([
-  fetch('/api/users').then(r => r.json()),
-  fetch('/api/posts').then(r => r.json()),
-  fetch('/api/stats').then(r => r.json()),
+  fetch("/api/users").then((r) => r.json()),
+  fetch("/api/posts").then((r) => r.json()),
+  fetch("/api/stats").then((r) => r.json())
 ]);
 ```
 
 ### **Streaming con Suspense**
 
 ```tsx
-import { Suspense } from 'react';
+import { Suspense } from "react";
 
 export default function Page() {
   return (
     <>
       <Header />
-      
+
       {/* Contenido rápido se muestra inmediatamente */}
       <FastContent />
-      
+
       {/* Contenido lento se muestra cuando esté listo */}
       <Suspense fallback={<LoadingSkeleton />}>
         <SlowContent />
       </Suspense>
-      
+
       <Footer />
     </>
   );
@@ -195,7 +199,7 @@ app/
 export default function Layout({
   children,
   modal,
-  sidebar,
+  sidebar
 }: {
   children: React.ReactNode;
   modal: React.ReactNode;
@@ -228,23 +232,23 @@ app/
 ### **Layout Raíz (app/layout.tsx)**
 
 ```tsx
-import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
-import './globals.css';
+import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
+import "./globals.css";
 
 const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '600', '700'],
-  variable: '--font-sans',
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-sans"
 });
 
 export const metadata: Metadata = {
-  title: 'WebCode',
-  description: 'Desarrollo web Barcelona',
+  title: "WebCode",
+  description: "Desarrollo web Barcelona"
 };
 
 export default function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode;
 }) {
@@ -260,11 +264,11 @@ export default function RootLayout({
 
 ```tsx
 // app/(marketing)/layout.tsx
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
 
 export default function MarketingLayout({
-  children,
+  children
 }: {
   children: React.ReactNode;
 }) {
@@ -286,24 +290,24 @@ export default function MarketingLayout({
 
 ```tsx
 // app/api/services/route.ts
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
 // GET /api/services
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
-  const query = searchParams.get('query');
-  
+  const query = searchParams.get("query");
+
   const data = await fetchServices(query);
-  
+
   return NextResponse.json(data);
 }
 
 // POST /api/services
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  
+
   const result = await createService(body);
-  
+
   return NextResponse.json(result, { status: 201 });
 }
 ```
@@ -317,13 +321,13 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params; // Next.js 15: await params
-  
+
   const service = await fetchService(id);
-  
+
   if (!service) {
-    return NextResponse.json({ error: 'Not found' }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
-  
+
   return NextResponse.json(service);
 }
 ```
@@ -336,16 +340,16 @@ export async function GET(
 
 ```tsx
 // app/about/page.tsx
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Sobre Nosotros - WebCode',
-  description: 'Conoce al equipo de WebCode',
+  title: "Sobre Nosotros - WebCode",
+  description: "Conoce al equipo de WebCode",
   openGraph: {
-    title: 'Sobre Nosotros',
-    description: 'Conoce al equipo',
-    images: ['/og-about.jpg'],
-  },
+    title: "Sobre Nosotros",
+    description: "Conoce al equipo",
+    images: ["/og-about.jpg"]
+  }
 };
 
 export default function AboutPage() {
@@ -357,22 +361,22 @@ export default function AboutPage() {
 
 ```tsx
 // app/blog/[slug]/page.tsx
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: Promise<{ slug: string }> 
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = await fetchPost(slug);
-  
+
   return {
     title: post.title,
     description: post.excerpt,
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      images: [post.coverImage],
-    },
+      images: [post.coverImage]
+    }
   };
 }
 ```
@@ -385,13 +389,13 @@ export async function generateMetadata({
 
 ```tsx
 // app/error.tsx - Captura errores en producción
-'use client';
+"use client";
 
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 export default function Error({
   error,
-  reset,
+  reset
 }: {
   error: Error & { digest?: string };
   reset: () => void;
@@ -423,16 +427,20 @@ export default function NotFound() {
 }
 
 // Trigger not-found desde página
-import { notFound } from 'next/navigation';
+import { notFound } from "next/navigation";
 
-export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+export default async function Page({
+  params
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const { id } = await params;
   const item = await fetchItem(id);
-  
+
   if (!item) {
     notFound(); // Renderiza not-found.tsx
   }
-  
+
   return <div>{item.name}</div>;
 }
 ```
@@ -456,18 +464,18 @@ export default function Loading() {
 
 ```tsx
 // app/dashboard/page.tsx
-import { Suspense } from 'react';
+import { Suspense } from "react";
 
 export default function DashboardPage() {
   return (
     <>
       <h1>Dashboard</h1>
-      
+
       {/* Muestra Loading mientras Posts se carga */}
       <Suspense fallback={<PostsSkeleton />}>
         <Posts />
       </Suspense>
-      
+
       {/* Muestra Loading mientras Stats se carga */}
       <Suspense fallback={<StatsSkeleton />}>
         <Stats />

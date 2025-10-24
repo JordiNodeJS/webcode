@@ -37,9 +37,9 @@ export default function SourcesPage() {
                   <p className="text-sm text-muted-foreground">
                     En gestión de requisitos (IAG Consulting 2009)
                   </p>
-                  <a 
-                    href="https://www.pmi.org/learning/library/es-2014-pulse-gestion-de-requisitos-13529" 
-                    target="_blank" 
+                  <a
+                    href="https://www.pmi.org/learning/library/es-2014-pulse-gestion-de-requisitos-13529"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block mt-2 text-primary hover:text-primary/80 underline text-sm font-medium transition-colors"
                   >
@@ -60,9 +60,9 @@ export default function SourcesPage() {
                   <p className="text-sm text-muted-foreground">
                     Se deben a gestión deficiente de requisitos
                   </p>
-                  <a 
-                    href="https://www.standishgroup.com/products/copy-of-chaos-report-beyond-infinity-digital-version" 
-                    target="_blank" 
+                  <a
+                    href="https://www.standishgroup.com/products/copy-of-chaos-report-beyond-infinity-digital-version"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block mt-2 text-primary hover:text-primary/80 underline text-sm font-medium transition-colors"
                   >
@@ -80,9 +80,9 @@ export default function SourcesPage() {
                   <p className="text-sm text-muted-foreground">
                     Exceden el presupuesto inicial
                   </p>
-                  <a 
-                    href="https://www.pmi.org/learning/library/es-2014-pulse-gestion-de-requisitos-13529" 
-                    target="_blank" 
+                  <a
+                    href="https://www.pmi.org/learning/library/es-2014-pulse-gestion-de-requisitos-13529"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block mt-2 text-primary hover:text-primary/80 underline text-sm font-medium transition-colors"
                   >

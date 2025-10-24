@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SolucionCard } from "@/components/soluciones";
 import { Button } from "@/components/ui/button";
-import { 
-  SiNextdotjs, 
-  SiReact, 
-  SiTypescript, 
-  SiTailwindcss, 
-  SiNodedotjs, 
-  SiPostgresql, 
-  SiMongodb, 
+import {
+  SiNextdotjs,
+  SiReact,
+  SiTypescript,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiPostgresql,
+  SiMongodb,
   SiVercel,
   SiRender,
   SiRailway,
@@ -285,13 +285,13 @@ export default function WebDevelopmentPage() {
                   <div className="relative overflow-hidden border border-border/30 dark:border-border/20 bg-gradient-to-br from-white/95 via-white/90 to-slate-50/95 dark:from-slate-800/95 dark:via-slate-700/90 dark:to-slate-800/85 rounded-full p-6 shadow-3d-lg hover:shadow-3d-xl transition-all duration-500 hover:-translate-y-2">
                     {/* Glow effect on hover - conservando el efecto actual */}
                     <div className="absolute inset-0 bg-gradient-to-r from-primary/6 via-secondary/6 to-primary/6 dark:from-primary/8 dark:via-primary/12 dark:to-primary/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-full" />
-                    
+
                     {/* Brillo metálico superior */}
                     <div className="absolute inset-2 bg-gradient-to-br from-white/20 via-white/10 to-transparent rounded-full opacity-50"></div>
-                    
+
                     {/* Reflejo metálico lateral */}
                     <div className="absolute top-3 left-3 w-6 h-6 bg-gradient-to-br from-white/30 to-transparent rounded-full opacity-60"></div>
-                    
+
                     {/* Contenido centrado */}
                     <div className="relative z-10 flex flex-col items-center justify-center">
                       <div className="mb-3 p-3 bg-background/80 rounded-full shadow-inner border border-border/20">
@@ -302,7 +302,7 @@ export default function WebDevelopmentPage() {
                       </p>
                     </div>
                   </div>
-                  
+
                   {/* Sombra de la medalla */}
                   <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-4 bg-black/20 rounded-full blur-sm"></div>
                 </div>
@@ -354,7 +354,6 @@ export default function WebDevelopmentPage() {
 
       {/* CTA */}
       <section className="relative overflow-hidden bg-[image:linear-gradient(to_right,rgb(var(--primary-rgb)_/_0.03),rgb(var(--secondary-rgb)_/_0.03),rgb(var(--accent-rgb)_/_0.03)),linear-gradient(to_bottom_right,rgb(var(--primary-rgb)_/_0.05),rgb(var(--secondary-rgb)_/_0.05),rgb(var(--accent-rgb)_/_0.05))] dark:bg-[image:linear-gradient(to_right,rgb(var(--primary-rgb)_/_0.05),rgb(var(--secondary-rgb)_/_0.05),rgb(var(--accent-rgb)_/_0.05)),linear-gradient(to_bottom_right,rgb(var(--primary-rgb)_/_0.10),rgb(var(--secondary-rgb)_/_0.10),rgb(var(--accent-rgb)_/_0.10))] py-20 md:py-28">
-
         <div className="container relative z-10 mx-auto max-w-4xl px-4 text-center">
           <h2 className="mb-6 text-3xl font-display font-bold md:text-5xl lg:text-6xl text-foreground">
             ¿Listo para Crear tu Web?

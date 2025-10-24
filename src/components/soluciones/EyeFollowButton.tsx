@@ -95,7 +95,7 @@ export function EyeFollowButton() {
         {/* Ojo 3D personalizado */}
         <div className="relative inline-block w-4 h-4 sm:w-5 sm:h-5 mr-2">
           {/* Ojo exterior con efecto 3D */}
-          <div 
+          <div
             className="absolute inset-0 rounded-full border border-primary/30 dark:border-primary/50"
             style={{
               background: `
@@ -108,12 +108,12 @@ export function EyeFollowButton() {
                 0 1px 3px rgba(var(--primary-rgb), 0.15),
                 0 2px 6px rgba(var(--primary-rgb), 0.1)
               `,
-              transform: 'perspective(80px) rotateX(3deg) rotateY(-1deg)'
+              transform: "perspective(80px) rotateX(3deg) rotateY(-1deg)"
             }}
           />
-          
+
           {/* Pupila que sigue el ratón */}
-          <div 
+          <div
             className="absolute top-1/2 left-1/2 w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-transform duration-150 ease-out"
             style={{
               transform: `translate(calc(-50% + ${pupilPosition.x}px), calc(-50% + ${pupilPosition.y}px))`,
@@ -129,18 +129,20 @@ export function EyeFollowButton() {
               `
             }}
           />
-          
+
           {/* Reflejo en la pupila */}
-          <div 
+          <div
             className="absolute top-1/2 left-1/2 w-0.5 h-0.5 sm:w-1 sm:h-1 rounded-full transition-transform duration-150 ease-out"
             style={{
               transform: `translate(calc(-50% + ${pupilPosition.x * 0.3}px), calc(-50% + ${pupilPosition.y * 0.3}px))`,
-              background: 'radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.4) 100%)',
-              boxShadow: '0 0 1px rgba(255,255,255,0.9), 0 0 2px rgba(255,255,255,0.5)'
+              background:
+                "radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.4) 100%)",
+              boxShadow:
+                "0 0 1px rgba(255,255,255,0.9), 0 0 2px rgba(255,255,255,0.5)"
             }}
           />
         </div>
-        
+
         <span className="ml-2">Ver Portfolio</span>
         <span className="ml-2 inline-block transition-transform group-hover:translate-x-1">
           →

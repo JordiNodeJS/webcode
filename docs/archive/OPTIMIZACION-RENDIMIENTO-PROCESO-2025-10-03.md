@@ -15,6 +15,7 @@ La página de Proceso tenía un **consumo excesivo de CPU/GPU** en reposo (>100 
 ## **[Análisis]** Análisis Inicial
 
 ### Antes de la Optimización
+
 ```json
 {
   "totalAnimatedElements": 24,
@@ -32,13 +33,14 @@ La página de Proceso tenía un **consumo excesivo de CPU/GPU** en reposo (>100 
 ```
 
 ### Después de la Optimización
+
 ```json
 {
   "totalAnimatedElements": 4,
   "blurElements": 91,
   "gradientElements": 111,
   "animationTypes": {
-    "animate-pulse": 4  // Solo skeleton loaders de Suspense
+    "animate-pulse": 4 // Solo skeleton loaders de Suspense
   }
 }
 ```
@@ -50,6 +52,7 @@ La página de Proceso tenía un **consumo excesivo de CPU/GPU** en reposo (>100 
 ### 1. Eliminación de Animaciones Costosas
 
 #### Background Blobs
+
 ```tsx
 // **[Error]** ANTES (costoso)
 <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" />
@@ -59,11 +62,13 @@ La página de Proceso tenía un **consumo excesivo de CPU/GPU** en reposo (>100 
 ```
 
 **Cambios**:
+
 - **[Error]** Removed: `animate-pulse` (8 elementos)
 - **[Error]** Removed: `animate-blob` (6 elementos)
 - **[Rendimiento]** Optimized: `blur-3xl` → `blur-2xl` (menos GPU usage)
 
 #### Timeline Connector
+
 ```tsx
 // **[Error]** ANTES
 <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary to-primary/20 animate-shimmer bg-[length:200%_100%]" />
@@ -73,10 +78,12 @@ La página de Proceso tenía un **consumo excesivo de CPU/GPU** en reposo (>100 
 ```
 
 **Cambios**:
+
 - **[Error]** Removed: `animate-shimmer`
 - **[Error]** Removed: `bg-[length:200%_100%]`
 
 #### Badge Effects
+
 ```tsx
 // **[Error]** ANTES
 <div className="absolute inset-0 rounded-full bg-primary animate-ping opacity-0 group-hover:opacity-20" />
@@ -86,6 +93,7 @@ La página de Proceso tenía un **consumo excesivo de CPU/GPU** en reposo (>100 
 ```
 
 #### Hero Emoji
+
 ```tsx
 // **[Error]** ANTES
 <div className="inline-block text-6xl md:text-7xl animate-bounce">**[Lanzamiento]**</div>
@@ -95,6 +103,7 @@ La página de Proceso tenía un **consumo excesivo de CPU/GPU** en reposo (>100 
 ```
 
 #### Card Glow Effects
+
 ```tsx
 // **[Error]** ANTES
 <div className="absolute -inset-2 bg-gradient-to-r from-primary via-secondary to-primary opacity-20 blur-2xl group-hover:opacity-40 transition-all duration-700 rounded-3xl animate-gradient-x" />
@@ -106,6 +115,7 @@ La página de Proceso tenía un **consumo excesivo de CPU/GPU** en reposo (>100 
 ### 2. Mejoras Visuales
 
 #### Alineación de Checkmarks
+
 ```tsx
 // **[Error]** ANTES (desalineado)
 <li className="flex items-start gap-3">
@@ -121,12 +131,14 @@ La página de Proceso tenía un **consumo excesivo de CPU/GPU** en reposo (>100 
 ```
 
 **Mejoras**:
+
 - **[Completado]** `items-start` → `items-center` (alineación vertical)
 - **[Completado]** Contenedor de `w-5 h-5` para checkmark consistente
 - **[Completado]** Eliminado `mt-0.5` (ajuste manual innecesario)
 - **[Completado]** Añadido `leading-relaxed` para mejor legibilidad
 
 #### Armonía del Header de Cards
+
 ```tsx
 // **[Error]** ANTES (desproporcionado)
 <div className="flex items-start gap-4 mb-6">
@@ -158,6 +170,7 @@ La página de Proceso tenía un **consumo excesivo de CPU/GPU** en reposo (>100 
 ```
 
 **Mejoras**:
+
 - **[Completado]** `items-start` → `items-center` (mejor alineación vertical)
 - **[Completado]** Badge: `w-14 h-14` → `w-16 h-16` (mejor proporción)
 - **[Completado]** Título: `text-2xl md:text-3xl` → `text-xl md:text-2xl` (más equilibrado)
@@ -170,25 +183,25 @@ La página de Proceso tenía un **consumo excesivo de CPU/GPU** en reposo (>100 
 
 ### Métricas de Animación
 
-| Métrica | Antes | Después | Mejora |
-|---------|-------|---------|--------|
-| Elementos animados | 24 | 4 | **-83%** |
-| `animate-pulse` | 8 | 4* | -50% |
-| `animate-blob` | 6 | 0 | **-100%** |
-| `animate-shimmer` | 1 | 0 | **-100%** |
-| `animate-ping` | 4 | 0 | **-100%** |
-| `animate-bounce` | 1 | 0 | **-100%** |
-| `animate-gradient-x` | 1 | 0 | **-100%** |
+| Métrica              | Antes | Después | Mejora    |
+| -------------------- | ----- | ------- | --------- |
+| Elementos animados   | 24    | 4       | **-83%**  |
+| `animate-pulse`      | 8     | 4\*     | -50%      |
+| `animate-blob`       | 6     | 0       | **-100%** |
+| `animate-shimmer`    | 1     | 0       | **-100%** |
+| `animate-ping`       | 4     | 0       | **-100%** |
+| `animate-bounce`     | 1     | 0       | **-100%** |
+| `animate-gradient-x` | 1     | 0       | **-100%** |
 
-*Los 4 elementos con `animate-pulse` son skeleton loaders de Suspense (necesarios)
+\*Los 4 elementos con `animate-pulse` son skeleton loaders de Suspense (necesarios)
 
 ### GPU Usage
 
-| Métrica | Antes | Después | Mejora |
-|---------|-------|---------|--------|
-| Blur effects | `blur-3xl` | `blur-2xl` | ~30% menos GPU |
-| Animated backgrounds | 8 | 0 | **-100%** |
-| Animated badges | 4 | 0 | **-100%** |
+| Métrica              | Antes      | Después    | Mejora         |
+| -------------------- | ---------- | ---------- | -------------- |
+| Blur effects         | `blur-3xl` | `blur-2xl` | ~30% menos GPU |
+| Animated backgrounds | 8          | 0          | **-100%**      |
+| Animated badges      | 4          | 0          | **-100%**      |
 
 ### Estimación de Mejora en CPU/GPU
 
@@ -222,7 +235,7 @@ A pesar de las optimizaciones, se mantiene:
 **[Completado]** **Gradientes** estáticos (no animados)  
 **[Completado]** **Sombras dinámicas** en hover  
 **[Completado]** **Transformaciones** (`scale`, `translate-y`, `rotate`)  
-**[Completado]** **Suspense loaders** con `animate-pulse`  
+**[Completado]** **Suspense loaders** con `animate-pulse`
 
 ## **[Documentación]** Archivos Modificados
 
@@ -251,11 +264,13 @@ A pesar de las optimizaciones, se mantiene:
 ## **[Lanzamiento]** Próximos Pasos
 
 ### Monitoreo
+
 1. **Medir con Lighthouse**: Verificar mejoras en performance score
 2. **Test en dispositivos reales**: Especialmente móviles de gama media
 3. **Monitor CPU/GPU**: Confirmar reducción a <30 en idle
 
 ### Optimizaciones Futuras (si es necesario)
+
 1. **Lazy load images**: Si se añaden imágenes grandes
 2. **Intersection Observer**: Para animaciones solo al hacer scroll visible
 3. **Reducir blur elements**: De 91 a menos (solo si es necesario)
@@ -264,12 +279,14 @@ A pesar de las optimizaciones, se mantiene:
 ## **[Análisis]** Comparativa Visual
 
 ### Antes
+
 - **[Error]** 24 animaciones corriendo constantemente
 - **[Error]** CPU/GPU usage >100 en idle
 - **[Error]** Checkmarks desalineados
 - **[Error]** Headers desproporcionados
 
 ### Después
+
 - **[Completado]** Solo 4 animaciones (skeleton loaders necesarios)
 - **[Completado]** CPU/GPU usage ~20-30 en idle (estimado)
 - **[Completado]** Checkmarks perfectamente alineados
@@ -291,5 +308,4 @@ El diseño mantiene su **atractivo visual** mientras es mucho más **eficiente**
 
 **Desarrollado por**: WEBCODE  
 **Versión**: 2.1.0  
-**Performance Score**: **[Destacado]****[Destacado]****[Destacado]****[Destacado]****[Destacado]**
-
+**Performance Score**: **[Destacado]\*\***[Destacado]\***\*[Destacado]\*\***[Destacado]\***\*[Destacado]**

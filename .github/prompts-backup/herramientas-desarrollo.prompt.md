@@ -50,7 +50,7 @@ Utilizar el MCP Context7 para:
 
 ### **Favicon Generator**
 
-****[Enlace]** Herramienta**: [https://www.favicon-generator.org/](https://www.favicon-generator.org/)
+\***\*[Enlace]** Herramienta\*\*: [https://www.favicon-generator.org/](https://www.favicon-generator.org/)
 
 **Propósito**: Generación completa de favicons y app icons para todas las plataformas
 

@@ -254,28 +254,29 @@ const faqs = [
         <p>Nuestro proceso de trabajo está estructurado en 6 fases claras:</p>
         <ol className="mt-3 ml-5 list-decimal space-y-2">
           <li>
-            <strong>Discovery & Briefing:</strong> análisis profundo de tu proyecto, 
-            objetivos y definición estratégica completa.
+            <strong>Discovery & Briefing:</strong> análisis profundo de tu
+            proyecto, objetivos y definición estratégica completa.
           </li>
           <li>
-            <strong>Estrategia & Arquitectura:</strong> definición de arquitectura técnica, 
-            stack tecnológico y especificaciones funcionales.
+            <strong>Estrategia & Arquitectura:</strong> definición de
+            arquitectura técnica, stack tecnológico y especificaciones
+            funcionales.
           </li>
           <li>
-            <strong>Diseño UX/UI:</strong> creación de interfaces visuales, sistema de 
-            diseño y experiencia de usuario optimizada.
+            <strong>Diseño UX/UI:</strong> creación de interfaces visuales,
+            sistema de diseño y experiencia de usuario optimizada.
           </li>
           <li>
-            <strong>Desarrollo & Integración:</strong> implementación técnica con código 
-            limpio, escalable y tecnología moderna.
+            <strong>Desarrollo & Integración:</strong> implementación técnica
+            con código limpio, escalable y tecnología moderna.
           </li>
           <li>
-            <strong>Testing & Optimización:</strong> pruebas exhaustivas, optimización 
-            de rendimiento y validación final.
+            <strong>Testing & Optimización:</strong> pruebas exhaustivas,
+            optimización de rendimiento y validación final.
           </li>
           <li>
-            <strong>Launch & Soporte:</strong> despliegue en producción, formación del 
-            equipo y soporte post-lanzamiento.
+            <strong>Launch & Soporte:</strong> despliegue en producción,
+            formación del equipo y soporte post-lanzamiento.
           </li>
         </ol>
         <p className="mt-3">
@@ -424,32 +425,51 @@ const faqs = [
     answer: (
       <>
         <p>
-          <strong>Next.js 15</strong> es el framework de React más avanzado para 2025, 
-          que nos permite crear aplicaciones web ultra-rápidas y optimizadas.
+          <strong>Next.js 15</strong> es el framework de React más avanzado para
+          2025, que nos permite crear aplicaciones web ultra-rápidas y
+          optimizadas.
         </p>
 
         <ul className="mt-3 ml-5 list-disc space-y-2">
-          <li><strong>App Router:</strong> nuevo sistema de enrutamiento que mejora la performance</li>
-          <li><strong>Server Components:</strong> renderizado en servidor para mayor velocidad</li>
-          <li><strong>Optimización automática:</strong> imágenes, fuentes y código optimizados</li>
-          <li><strong>SEO nativo:</strong> metadatos y estructura optimizada para buscadores</li>
-          <li><strong>Core Web Vitals:</strong> puntuaciones perfectas en Google PageSpeed</li>
+          <li>
+            <strong>App Router:</strong> nuevo sistema de enrutamiento que
+            mejora la performance
+          </li>
+          <li>
+            <strong>Server Components:</strong> renderizado en servidor para
+            mayor velocidad
+          </li>
+          <li>
+            <strong>Optimización automática:</strong> imágenes, fuentes y código
+            optimizados
+          </li>
+          <li>
+            <strong>SEO nativo:</strong> metadatos y estructura optimizada para
+            buscadores
+          </li>
+          <li>
+            <strong>Core Web Vitals:</strong> puntuaciones perfectas en Google
+            PageSpeed
+          </li>
         </ul>
 
         <p className="mt-3">
-          Esto se traduce en sitios web que cargan hasta 3x más rápido que WordPress 
-          tradicional, mejor posicionamiento en Google y una experiencia de usuario superior.
+          Esto se traduce en sitios web que cargan hasta 3x más rápido que
+          WordPress tradicional, mejor posicionamiento en Google y una
+          experiencia de usuario superior.
         </p>
       </>
     )
   },
   {
-    question: "¿Hacéis desarrollo con WordPress o solo con tecnologías modernas?",
+    question:
+      "¿Hacéis desarrollo con WordPress o solo con tecnologías modernas?",
     answer: (
       <>
         <p>
-          Nos especializamos en <strong>tecnologías modernas</strong> (Next.js, React, Astro) 
-          porque ofrecen mejor rendimiento, seguridad y escalabilidad.
+          Nos especializamos en <strong>tecnologías modernas</strong> (Next.js,
+          React, Astro) porque ofrecen mejor rendimiento, seguridad y
+          escalabilidad.
         </p>
 
         <p className="mt-3">
@@ -464,9 +484,9 @@ const faqs = [
         </ul>
 
         <p className="mt-3">
-          Si necesitas un CMS, utilizamos <strong>headless CMS</strong> como Sanity o 
-          Contentful, que ofrecen la flexibilidad de WordPress pero con la velocidad 
-          de las tecnologías modernas.
+          Si necesitas un CMS, utilizamos <strong>headless CMS</strong> como
+          Sanity o Contentful, que ofrecen la flexibilidad de WordPress pero con
+          la velocidad de las tecnologías modernas.
         </p>
       </>
     )
@@ -476,22 +496,39 @@ const faqs = [
     answer: (
       <>
         <p>
-          Ofrecemos <strong>garantías específicas y medibles</strong> que demuestran 
-          nuestra confianza en la calidad de nuestro trabajo:
+          Ofrecemos <strong>garantías específicas y medibles</strong> que
+          demuestran nuestra confianza en la calidad de nuestro trabajo:
         </p>
 
         <ul className="mt-3 ml-5 list-disc space-y-2">
-          <li><strong>Core Web Vitals en verde:</strong> garantizamos puntuación 90+ en Google PageSpeed</li>
-          <li><strong>Accesibilidad WCAG 2.1 AA:</strong> cumplimiento total de estándares</li>
-          <li><strong>Garantía de funcionamiento:</strong> 3 meses de correcciones gratuitas</li>
-          <li><strong>Hosting incluido:</strong> primer año sin coste adicional</li>
-          <li><strong>Soporte 30 días:</strong> post-lanzamiento incluido</li>
-          <li><strong>Entrega a tiempo:</strong> o descuento del 10% por cada semana de retraso</li>
+          <li>
+            <strong>Core Web Vitals en verde:</strong> garantizamos puntuación
+            90+ en Google PageSpeed
+          </li>
+          <li>
+            <strong>Accesibilidad WCAG 2.1 AA:</strong> cumplimiento total de
+            estándares
+          </li>
+          <li>
+            <strong>Garantía de funcionamiento:</strong> 3 meses de correcciones
+            gratuitas
+          </li>
+          <li>
+            <strong>Hosting incluido:</strong> primer año sin coste adicional
+          </li>
+          <li>
+            <strong>Soporte 30 días:</strong> post-lanzamiento incluido
+          </li>
+          <li>
+            <strong>Entrega a tiempo:</strong> o descuento del 10% por cada
+            semana de retraso
+          </li>
         </ul>
 
         <p className="mt-3">
-          Si no cumplimos estas garantías, <strong>reembolsamos el 50% del proyecto</strong> 
-          o trabajamos gratis hasta cumplirlas.
+          Si no cumplimos estas garantías,{" "}
+          <strong>reembolsamos el 50% del proyecto</strong>o trabajamos gratis
+          hasta cumplirlas.
         </p>
       </>
     )
@@ -501,8 +538,8 @@ const faqs = [
     answer: (
       <>
         <p>
-          Utilizamos <strong>métricas objetivas y medibles</strong> para demostrar 
-          el éxito de cada proyecto:
+          Utilizamos <strong>métricas objetivas y medibles</strong> para
+          demostrar el éxito de cada proyecto:
         </p>
 
         <div className="mt-4 grid md:grid-cols-2 gap-4">
@@ -525,7 +562,7 @@ const faqs = [
         </div>
 
         <p className="mt-3">
-          Proporcionamos <strong>reportes mensuales</strong> con estas métricas 
+          Proporcionamos <strong>reportes mensuales</strong> con estas métricas
           y recomendaciones de mejora continua.
         </p>
       </>
@@ -536,23 +573,34 @@ const faqs = [
     answer: (
       <>
         <p>
-          <strong>Sí, trabajamos con clientes de toda España y también internacionalmente.</strong>
+          <strong>
+            Sí, trabajamos con clientes de toda España y también
+            internacionalmente.
+          </strong>
         </p>
 
         <p className="mt-3">
           Nuestro proceso está optimizado para trabajo remoto:
         </p>
         <ul className="mt-3 ml-5 list-disc space-y-2">
-          <li><strong>Comunicación:</strong> videollamadas semanales, Slack/Teams</li>
-          <li><strong>Gestión:</strong> herramientas en la nube para seguimiento</li>
-          <li><strong>Entregas:</strong> demos en vivo cada semana</li>
-          <li><strong>Formación:</strong> sesiones online con grabación</li>
+          <li>
+            <strong>Comunicación:</strong> videollamadas semanales, Slack/Teams
+          </li>
+          <li>
+            <strong>Gestión:</strong> herramientas en la nube para seguimiento
+          </li>
+          <li>
+            <strong>Entregas:</strong> demos en vivo cada semana
+          </li>
+          <li>
+            <strong>Formación:</strong> sesiones online con grabación
+          </li>
         </ul>
 
         <p className="mt-3">
-          Para clientes en <strong>Barcelona</strong> ofrecemos reuniones presenciales 
-          si es necesario. Para el resto de España, el trabajo remoto es igual de 
-          eficiente y transparente.
+          Para clientes en <strong>Barcelona</strong> ofrecemos reuniones
+          presenciales si es necesario. Para el resto de España, el trabajo
+          remoto es igual de eficiente y transparente.
         </p>
       </>
     )
@@ -590,93 +638,95 @@ export default function FAQsPage() {
       <FAQStructuredData faqs={faqs} />
 
       {/* Header Section */}
-          <div className="text-center mb-16 space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
-              Preguntas Frecuentes
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              Encuentra respuestas a las dudas más comunes sobre nuestros
-              servicios de desarrollo web, diseño, SEO y soluciones digitales en
-              Barcelona.
-            </p>
-          </div>
+      <div className="text-center mb-16 space-y-6">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
+          Preguntas Frecuentes
+        </h1>
+        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+          Encuentra respuestas a las dudas más comunes sobre nuestros servicios
+          de desarrollo web, diseño, SEO y soluciones digitales en Barcelona.
+        </p>
+      </div>
 
-          {/* FAQ Items */}
-          <div className="bg-card/50 backdrop-blur-sm rounded-2xl border border-border/50 p-6 md:p-8 shadow-lg">
-            <div className="divide-y divide-border/30">
-              {faqs.map((faq, index) => (
-                <FAQItem
-                  key={`faq-${index}-${faq.question.slice(0, 20).replace(/\s+/g, "-")}`}
-                  question={faq.question}
-                  answer={faq.answer}
-                  index={index}
-                  id={faq.question === "¿Puedo ver ejemplos de vuestros trabajos anteriores?" ? "casos-exito" : undefined}
-                />
-              ))}
-            </div>
-          </div>
+      {/* FAQ Items */}
+      <div className="bg-card/50 backdrop-blur-sm rounded-2xl border border-border/50 p-6 md:p-8 shadow-lg">
+        <div className="divide-y divide-border/30">
+          {faqs.map((faq, index) => (
+            <FAQItem
+              key={`faq-${index}-${faq.question.slice(0, 20).replace(/\s+/g, "-")}`}
+              question={faq.question}
+              answer={faq.answer}
+              index={index}
+              id={
+                faq.question ===
+                "¿Puedo ver ejemplos de vuestros trabajos anteriores?"
+                  ? "casos-exito"
+                  : undefined
+              }
+            />
+          ))}
+        </div>
+      </div>
 
-          {/* CTA Section */}
-          <div className="mt-16 text-center space-y-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-              ¿No encuentras lo que buscas?
-            </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">
-              Estamos aquí para ayudarte. Contáctanos y resolveremos todas tus
-              dudas sobre tu proyecto web.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link
-                href="/contacto"
-                className="inline-flex items-center justify-center px-8 py-3 rounded-lg bg-primary text-primary-foreground font-semibold shadow-lg hover:bg-primary/90 transition-all duration-200 hover:scale-105 group"
-              >
-                Consulta Gratuita
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                href="/servicios"
-                aria-label="Ver todos los servicios - listado completo"
-                title="Ver todos los servicios"
-                className="inline-flex items-center justify-center px-8 py-3 rounded-lg border border-border bg-background/50 backdrop-blur-sm font-semibold hover:bg-accent transition-all duration-200"
-              >
-                Ver todos los servicios
-              </Link>
-            </div>
-          </div>
+      {/* CTA Section */}
+      <div className="mt-16 text-center space-y-6">
+        <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+          ¿No encuentras lo que buscas?
+        </h2>
+        <p className="text-muted-foreground max-w-xl mx-auto">
+          Estamos aquí para ayudarte. Contáctanos y resolveremos todas tus dudas
+          sobre tu proyecto web.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <Link
+            href="/contacto"
+            className="inline-flex items-center justify-center px-8 py-3 rounded-lg bg-primary text-primary-foreground font-semibold shadow-lg hover:bg-primary/90 transition-all duration-200 hover:scale-105 group"
+          >
+            Consulta Gratuita
+            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+          </Link>
+          <Link
+            href="/servicios"
+            aria-label="Ver todos los servicios - listado completo"
+            title="Ver todos los servicios"
+            className="inline-flex items-center justify-center px-8 py-3 rounded-lg border border-border bg-background/50 backdrop-blur-sm font-semibold hover:bg-accent transition-all duration-200"
+          >
+            Ver todos los servicios
+          </Link>
+        </div>
+      </div>
 
-          {/* Additional SEO Content */}
-          <div className="mt-20 prose prose-lg dark:prose-invert max-w-none">
-            <h2 className="text-3xl font-bold text-foreground mb-6">
-              Servicios de Desarrollo Web en Barcelona
-            </h2>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              En <strong>WEBCODE</strong>, nos especializamos en ofrecer
-              soluciones de <strong>desarrollo web profesional</strong> para
-              freelancers, PYMEs y startups en <strong>Barcelona</strong> y toda
-              España. Nuestro equipo utiliza las tecnologías más avanzadas de
-              2025, incluyendo <strong>Next.js 15</strong>,{" "}
-              <strong>React 19</strong>, y <strong>TypeScript</strong>, para
-              crear sitios web de alto rendimiento que destacan en los motores
-              de búsqueda.
-            </p>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              Desde <strong>landing pages optimizadas</strong> hasta{" "}
-              <strong>tiendas online completas</strong> y{" "}
-              <strong>aplicaciones web personalizadas</strong>, cada proyecto se
-              desarrolla con un enfoque en el <strong>rendimiento</strong>, la{" "}
-              <strong>accesibilidad</strong> y el <strong>SEO</strong>.
-              Integramos animaciones y microinteracciones diseñadas para mejorar
-              la experiencia de usuario, reforzar la personalidad de la marca y
-              favorecer la conversión.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              ¿Buscas una{" "}
-              <strong>agencia de desarrollo web en Barcelona</strong> que
-              combine tecnología de vanguardia con comprensión del mercado
-              local? Contáctanos para una <strong>consulta gratuita</strong> y
-              descubre cómo podemos ayudarte a alcanzar tus objetivos digitales.
-            </p>
-          </div>
+      {/* Additional SEO Content */}
+      <div className="mt-20 prose prose-lg dark:prose-invert max-w-none">
+        <h2 className="text-3xl font-bold text-foreground mb-6">
+          Servicios de Desarrollo Web en Barcelona
+        </h2>
+        <p className="text-muted-foreground leading-relaxed mb-4">
+          En <strong>WEBCODE</strong>, nos especializamos en ofrecer soluciones
+          de <strong>desarrollo web profesional</strong> para freelancers, PYMEs
+          y startups en <strong>Barcelona</strong> y toda España. Nuestro equipo
+          utiliza las tecnologías más avanzadas de 2025, incluyendo{" "}
+          <strong>Next.js 15</strong>, <strong>React 19</strong>, y{" "}
+          <strong>TypeScript</strong>, para crear sitios web de alto rendimiento
+          que destacan en los motores de búsqueda.
+        </p>
+        <p className="text-muted-foreground leading-relaxed mb-4">
+          Desde <strong>landing pages optimizadas</strong> hasta{" "}
+          <strong>tiendas online completas</strong> y{" "}
+          <strong>aplicaciones web personalizadas</strong>, cada proyecto se
+          desarrolla con un enfoque en el <strong>rendimiento</strong>, la{" "}
+          <strong>accesibilidad</strong> y el <strong>SEO</strong>. Integramos
+          animaciones y microinteracciones diseñadas para mejorar la experiencia
+          de usuario, reforzar la personalidad de la marca y favorecer la
+          conversión.
+        </p>
+        <p className="text-muted-foreground leading-relaxed">
+          ¿Buscas una <strong>agencia de desarrollo web en Barcelona</strong>{" "}
+          que combine tecnología de vanguardia con comprensión del mercado
+          local? Contáctanos para una <strong>consulta gratuita</strong> y
+          descubre cómo podemos ayudarte a alcanzar tus objetivos digitales.
+        </p>
+      </div>
     </>
   );
 }

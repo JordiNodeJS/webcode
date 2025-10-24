@@ -1,14 +1,14 @@
 /**
  * Componente de ejemplo: React 19 'use' Hook
- * 
+ *
  * Este componente demuestra cómo usar el nuevo hook 'use()' de React 19
  * para unwrapping de Promises en Client Components.
- * 
+ *
  * Casos de uso:
  * - Client Components que reciben params/searchParams como Promise
  * - Resolución de datos asíncronos en componentes de cliente
  * - Suspense boundaries con loading states
- * 
+ *
  * @see https://react.dev/reference/react/use
  * @see Next.js 16: https://nextjs.org/docs/app/api-reference/file-conventions/page
  */
@@ -30,7 +30,10 @@ interface ClientPageProps {
  * Client Component que usa 'use()' para resolver params y searchParams
  * Esta es la forma recomendada en Next.js 16 + React 19
  */
-export function ClientPageWithParams({ params, searchParams }: ClientPageProps) {
+export function ClientPageWithParams({
+  params,
+  searchParams
+}: ClientPageProps) {
   // ✅ Usar 'use()' hook para unwrap las Promises
   const { id } = use(params);
   const { filter } = use(searchParams);
@@ -57,7 +60,9 @@ export function ClientPageWithParams({ params, searchParams }: ClientPageProps) 
 /**
  * Función que simula fetch de datos (devuelve Promise)
  */
-function fetchUserData(userId: string): Promise<{ name: string; email: string }> {
+function fetchUserData(
+  userId: string
+): Promise<{ name: string; email: string }> {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({
@@ -121,9 +126,11 @@ const ThemeContext = createContext<Promise<"light" | "dark"> | null>(null);
  */
 export function ThemeConsumer() {
   const themePromise = use(ThemeContext);
-  
+
   if (!themePromise) {
-    throw new Error("ThemeConsumer debe usarse dentro de ThemeContext.Provider");
+    throw new Error(
+      "ThemeConsumer debe usarse dentro de ThemeContext.Provider"
+    );
   }
 
   // ✅ use() también puede unwrap Promises de Context
@@ -132,7 +139,9 @@ export function ThemeConsumer() {
   return (
     <div className="rounded-lg border p-6">
       <h3 className="font-bold text-lg mb-2">Tema Actual</h3>
-      <p>Tema: <span className="text-primary">{theme}</span></p>
+      <p>
+        Tema: <span className="text-primary">{theme}</span>
+      </p>
     </div>
   );
 }
@@ -143,7 +152,7 @@ export function ThemeConsumer() {
 
 /**
  * ❌ PATRÓN ANTIGUO (No funciona en Next.js 16)
- * 
+ *
  * export function OldClientComponent({ params }: { params: { id: string } }) {
  *   const { id } = params; // ❌ params es Promise, esto falla
  *   return <div>{id}</div>;
@@ -152,17 +161,17 @@ export function ThemeConsumer() {
 
 /**
  * ✅ PATRÓN NUEVO (Next.js 16 + React 19)
- * 
+ *
  * Opción A: Server Component (Recomendado)
  * export default async function Page({ params }: { params: Promise<{ id: string }> }) {
  *   const { id } = await params;
  *   return <div>{id}</div>;
  * }
- * 
+ *
  * Opción B: Client Component con use()
  * "use client";
  * import { use } from "react";
- * 
+ *
  * export function ClientComponent({ params }: { params: Promise<{ id: string }> }) {
  *   const { id } = use(params);
  *   return <div>{id}</div>;
@@ -188,8 +197,8 @@ export function React19UseHookDemo() {
           React 19 &apos;use()&apos; Hook - Ejemplos
         </h1>
         <p className="text-muted-foreground mb-8">
-          Demostraciones del nuevo hook &apos;use()&apos; de React 19 para unwrapping de
-          Promises
+          Demostraciones del nuevo hook &apos;use()&apos; de React 19 para
+          unwrapping de Promises
         </p>
       </div>
 
@@ -209,7 +218,9 @@ export function React19UseHookDemo() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-4">Ventajas del &apos;use()&apos; Hook</h2>
+        <h2 className="text-2xl font-bold mb-4">
+          Ventajas del &apos;use()&apos; Hook
+        </h2>
         <ul className="list-disc list-inside space-y-2 text-muted-foreground">
           <li>✅ Unwrap de Promises directamente en componentes</li>
           <li>✅ Integración perfecta con Suspense</li>
@@ -220,10 +231,14 @@ export function React19UseHookDemo() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-4">Cuándo Usar &apos;use()&apos;</h2>
+        <h2 className="text-2xl font-bold mb-4">
+          Cuándo Usar &apos;use()&apos;
+        </h2>
         <div className="rounded-lg border p-6 space-y-4">
           <div>
-            <h3 className="font-bold text-green-600">✅ Usar &apos;use()&apos; cuando:</h3>
+            <h3 className="font-bold text-green-600">
+              ✅ Usar &apos;use()&apos; cuando:
+            </h3>
             <ul className="list-disc list-inside text-sm space-y-1 mt-2">
               <li>Necesitas params/searchParams en un Client Component</li>
               <li>Tienes una Promise que ya está iniciada</li>
@@ -237,7 +252,9 @@ export function React19UseHookDemo() {
             </h3>
             <ul className="list-disc list-inside text-sm space-y-1 mt-2">
               <li>Usa Server Components con async/await cuando sea posible</li>
-              <li>Solo usa Client Components cuando necesites interactividad</li>
+              <li>
+                Solo usa Client Components cuando necesites interactividad
+              </li>
               <li>Server Components tienen mejor performance</li>
             </ul>
           </div>

@@ -1,7 +1,7 @@
 /**
  * Componente para formatear fechas de manera consistente
  * Server Component - Renderiza fechas en formato español
- * 
+ *
  * Utiliza Intl.DateTimeFormat para mejor performance y i18n
  */
 
@@ -56,17 +56,17 @@ function toISODate(date: string | Date): string {
 
 /**
  * Componente para mostrar fechas formateadas
- * 
+ *
  * @example
  * ```tsx
  * // Formato largo (por defecto)
  * <DateFormatter date="2025-10-24" />
  * // "24 de octubre de 2025"
- * 
+ *
  * // Formato corto
  * <DateFormatter date="2025-10-24" format="short" />
  * // "24 oct 2025"
- * 
+ *
  * // Como elemento <time>
  * <DateFormatter date="2025-10-24" asTimeElement />
  * // <time datetime="2025-10-24T00:00:00.000Z">24 de octubre de 2025</time>
@@ -94,12 +94,12 @@ export function DateFormatter({
 
 /**
  * Componente para mostrar rango de fechas
- * 
+ *
  * @example
  * ```tsx
- * <DateRangeFormatter 
- *   startDate="2025-10-24" 
- *   endDate="2025-10-26" 
+ * <DateRangeFormatter
+ *   startDate="2025-10-24"
+ *   endDate="2025-10-26"
  * />
  * // "24 - 26 de octubre de 2025"
  * ```

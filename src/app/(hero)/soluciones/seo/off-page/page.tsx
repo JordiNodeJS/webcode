@@ -66,8 +66,9 @@ export default function SeoOffPage() {
           es Crucial?
         </h2>
         <p className="text-center text-muted-foreground mb-12 text-lg max-w-3xl mx-auto">
-          Google considera los enlaces externos como &ldquo;votos de confianza&rdquo;. 
-          Cuantos más enlaces de calidad apunten a tu sitio, mayor será tu autoridad y posicionamiento.
+          Google considera los enlaces externos como &ldquo;votos de
+          confianza&rdquo;. Cuantos más enlaces de calidad apunten a tu sitio,
+          mayor será tu autoridad y posicionamiento.
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -75,37 +76,43 @@ export default function SeoOffPage() {
             {
               icon: "🏆",
               title: "Autoridad de Dominio",
-              description: "Los enlaces de calidad aumentan tu DA/DR y credibilidad ante Google.",
+              description:
+                "Los enlaces de calidad aumentan tu DA/DR y credibilidad ante Google.",
               impact: "Mejora del 40-60% en rankings"
             },
             {
               icon: "🚀",
               title: "Tráfico de Referencia",
-              description: "Los enlaces generan tráfico directo desde sitios relevantes en tu sector.",
+              description:
+                "Los enlaces generan tráfico directo desde sitios relevantes en tu sector.",
               impact: "15-25% más tráfico orgánico"
             },
             {
               icon: "🎯",
               title: "Relevancia Temática",
-              description: "Enlaces contextuales mejoran la relevancia de tu sitio para keywords específicas.",
+              description:
+                "Enlaces contextuales mejoran la relevancia de tu sitio para keywords específicas.",
               impact: "Rankings más estables"
             },
             {
               icon: "⚡",
               title: "Velocidad de Indexación",
-              description: "Google indexa más rápido sitios con enlaces de autoridad.",
+              description:
+                "Google indexa más rápido sitios con enlaces de autoridad.",
               impact: "Indexación 3x más rápida"
             },
             {
               icon: "🛡️",
               title: "Resistencia a Algoritmos",
-              description: "Una estrategia de enlaces sólida protege contra penalizaciones.",
+              description:
+                "Una estrategia de enlaces sólida protege contra penalizaciones.",
               impact: "Mayor estabilidad SEO"
             },
             {
               icon: "💰",
               title: "ROI a Largo Plazo",
-              description: "Los enlaces de calidad generan resultados duraderos sin coste recurrente.",
+              description:
+                "Los enlaces de calidad generan resultados duraderos sin coste recurrente.",
               impact: "ROI del 300-500% anual"
             }
           ].map((benefit) => (
@@ -137,7 +144,8 @@ export default function SeoOffPage() {
             {[
               {
                 strategy: "Guest Posting Estratégico",
-                description: "Artículos de valor en blogs relevantes de tu sector.",
+                description:
+                  "Artículos de valor en blogs relevantes de tu sector.",
                 process: [
                   "Identificación de blogs de autoridad",
                   "Creación de contenido de alta calidad",
@@ -148,7 +156,8 @@ export default function SeoOffPage() {
               },
               {
                 strategy: "Link Building de Recursos",
-                description: "Inclusión en directorios y listas de recursos del sector.",
+                description:
+                  "Inclusión en directorios y listas de recursos del sector.",
                 process: [
                   "Auditoría de directorios relevantes",
                   "Optimización de perfiles empresariales",
@@ -159,7 +168,8 @@ export default function SeoOffPage() {
               },
               {
                 strategy: "Digital PR & Menciones",
-                description: "Estrategia de relaciones públicas digitales para menciones naturales.",
+                description:
+                  "Estrategia de relaciones públicas digitales para menciones naturales.",
                 process: [
                   "Identificación de oportunidades de noticias",
                   "Creación de contenido newsworthy",
@@ -170,7 +180,8 @@ export default function SeoOffPage() {
               },
               {
                 strategy: "Broken Link Building",
-                description: "Identificación y reemplazo de enlaces rotos con tu contenido.",
+                description:
+                  "Identificación y reemplazo de enlaces rotos con tu contenido.",
                 process: [
                   "Auditoría de sitios relevantes",
                   "Identificación de enlaces rotos",
@@ -181,7 +192,8 @@ export default function SeoOffPage() {
               },
               {
                 strategy: "Skyscraper Technique",
-                description: "Creación de contenido superior para reemplazar contenido ranking.",
+                description:
+                  "Creación de contenido superior para reemplazar contenido ranking.",
                 process: [
                   "Análisis de contenido top ranking",
                   "Creación de contenido mejorado",
@@ -192,7 +204,8 @@ export default function SeoOffPage() {
               },
               {
                 strategy: "Partnerships & Colaboraciones",
-                description: "Colaboraciones estratégicas para enlaces mutuos de calidad.",
+                description:
+                  "Colaboraciones estratégicas para enlaces mutuos de calidad.",
                 process: [
                   "Identificación de partners complementarios",
                   "Propuesta de colaboraciones de valor",
@@ -243,22 +256,42 @@ export default function SeoOffPage() {
             {
               tool: "Ahrefs",
               purpose: "Análisis de backlinks y competencia",
-              features: ["Site Explorer", "Content Explorer", "Keyword Gap", "Link Intersect"]
+              features: [
+                "Site Explorer",
+                "Content Explorer",
+                "Keyword Gap",
+                "Link Intersect"
+              ]
             },
             {
               tool: "SEMrush",
               purpose: "Investigación de enlaces y oportunidades",
-              features: ["Backlink Analytics", "Link Building Tool", "Brand Monitoring", "PR Monitoring"]
+              features: [
+                "Backlink Analytics",
+                "Link Building Tool",
+                "Brand Monitoring",
+                "PR Monitoring"
+              ]
             },
             {
               tool: "Majestic",
               purpose: "Métricas de autoridad y calidad",
-              features: ["Trust Flow", "Citation Flow", "Topical Trust", "Link Context"]
+              features: [
+                "Trust Flow",
+                "Citation Flow",
+                "Topical Trust",
+                "Link Context"
+              ]
             },
             {
               tool: "Pitchbox",
               purpose: "Automatización de outreach",
-              features: ["Prospect Discovery", "Email Templates", "Follow-up Sequences", "Campaign Tracking"]
+              features: [
+                "Prospect Discovery",
+                "Email Templates",
+                "Follow-up Sequences",
+                "Campaign Tracking"
+              ]
             }
           ].map((tool) => (
             <SolucionCard key={tool.tool}>
@@ -311,15 +344,21 @@ export default function SeoOffPage() {
                 <div className="text-5xl font-bold mb-4 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
                   {result.metric}
                 </div>
-                <p className="text-lg text-foreground mb-2">{result.description}</p>
-                <p className="text-sm text-muted-foreground">{result.timeframe}</p>
+                <p className="text-lg text-foreground mb-2">
+                  {result.description}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  {result.timeframe}
+                </p>
               </SolucionCard>
             ))}
           </div>
 
           {/* Case Study */}
           <SolucionCard>
-            <h3 className="text-2xl font-bold mb-4">Caso de Éxito: E-commerce de Moda</h3>
+            <h3 className="text-2xl font-bold mb-4">
+              Caso de Éxito: E-commerce de Moda
+            </h3>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <h4 className="font-bold mb-2">Situación Inicial:</h4>
@@ -357,7 +396,9 @@ export default function SeoOffPage() {
                 </div>
                 <div>
                   <div className="font-bold text-accent">+€45K</div>
-                  <div className="text-muted-foreground">Ingresos mensuales</div>
+                  <div className="text-muted-foreground">
+                    Ingresos mensuales
+                  </div>
                 </div>
               </div>
             </div>
@@ -472,7 +513,10 @@ export default function SeoOffPage() {
                 popular: false
               }
             ].map((plan) => (
-              <SolucionCard key={plan.title} className={plan.popular ? "ring-2 ring-accent" : ""}>
+              <SolucionCard
+                key={plan.title}
+                className={plan.popular ? "ring-2 ring-accent" : ""}
+              >
                 {plan.popular && (
                   <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
                     <span className="bg-gradient-to-r from-accent to-primary text-white px-4 py-1 rounded-full text-sm font-bold">
@@ -481,7 +525,9 @@ export default function SeoOffPage() {
                   </div>
                 )}
                 <h3 className="text-2xl font-bold mb-2 mt-4">{plan.title}</h3>
-                <p className="text-sm text-muted-foreground mb-4">{plan.description}</p>
+                <p className="text-sm text-muted-foreground mb-4">
+                  {plan.description}
+                </p>
                 <div className="text-3xl font-bold mb-6 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
                   {plan.price}
                 </div>
@@ -499,8 +545,8 @@ export default function SeoOffPage() {
 
           <div className="mt-12 text-center">
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              También ofrecemos proyectos puntuales de link building y auditorías de enlaces. 
-              Contratos flexibles sin permanencia.
+              También ofrecemos proyectos puntuales de link building y
+              auditorías de enlaces. Contratos flexibles sin permanencia.
             </p>
             <Button
               asChild
@@ -525,7 +571,7 @@ export default function SeoOffPage() {
             ¿Listo para Construir Autoridad?
           </h2>
           <p className="mb-8 text-lg font-sans md:text-xl lg:text-2xl text-slate-600 dark:text-white/95">
-            Auditoría gratuita de tu perfil de enlaces y propuesta personalizada 
+            Auditoría gratuita de tu perfil de enlaces y propuesta personalizada
             de link building sin compromiso.
           </p>
           <Button

@@ -165,14 +165,16 @@ Este bloque es sólo un ejemplo que el agente actualizará dinámicamente según
 8. **Devolver resultado** en formato markdown
 
 ### ⚠️ Prevención de Problemas de Codificación
+
 - **SIEMPRE usar `--body-file`** en lugar de `--body` para contenido con acentos
 - **Crear archivo temporal** con codificación UTF-8
 - **Limpiar archivos temporales** después de usar
 - **Verificar codificación** antes de enviar
 
 **Etiquetas automáticas por tipo de rama**:
+
 - `feat/*` → `type/feature`, `status/ready-for-review`, `priority/medium`
-- `fix/*` → `type/bugfix`, `status/ready-for-review`, `priority/medium`  
+- `fix/*` → `type/bugfix`, `status/ready-for-review`, `priority/medium`
 - `refactor/*` → `type/refactor`, `status/ready-for-review`, `priority/medium`
 - `docs/*` → `type/docs`, `status/ready-for-review`, `priority/low`
 
@@ -180,6 +182,7 @@ Este bloque es sólo un ejemplo que el agente actualizará dinámicamente según
 **Base branch**: `main`
 
 **Mejoras implementadas basadas en PR #66:**
+
 - Flujo optimizado con validaciones paralelas
 - Manejo de errores de TypeScript en build
 - Etiquetado automático estándar

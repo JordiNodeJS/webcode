@@ -46,7 +46,7 @@ export async function generateMetadata({
   params
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  
+
   return {
     title: `${slug} | Blog WebCode`,
     // ...resto de metadata
@@ -54,16 +54,16 @@ export async function generateMetadata({
 }
 
 // Página principal
-export default async function BlogPostPage({ 
-  params, 
-  searchParams 
+export default async function BlogPostPage({
+  params,
+  searchParams
 }: BlogPostPageProps) {
   // ✅ await params y searchParams
   const { slug } = await params;
   const { filter } = await searchParams;
-  
+
   const post = await getBlogPostBySlug(slug);
-  
+
   return (
     <div>
       <h1>{post.title}</h1>
@@ -77,9 +77,9 @@ export default async function BlogPostPage({
 
 ```typescript
 // ❌ Esto causará error en Next.js 16
-export default function BlogPostPage({ 
-  params, 
-  searchParams 
+export default function BlogPostPage({
+  params,
+  searchParams
 }: {
   params: { slug: string }; // ❌ No es Promise
   searchParams: { filter?: string }; // ❌ No es Promise
@@ -101,10 +101,10 @@ export async function GET() {
   // ✅ await cookies() y headers()
   const cookieStore = await cookies();
   const headersList = await headers();
-  
+
   const token = cookieStore.get("token");
   const userAgent = headersList.get("user-agent");
-  
+
   return Response.json({ token, userAgent });
 }
 ```
@@ -136,11 +136,11 @@ async function getAuthToken(): Promise<string | undefined> {
 // Uso en página
 export default async function ProtectedPage() {
   const token = await getAuthToken();
-  
+
   if (!token) {
     redirect("/login");
   }
-  
+
   return <div>Contenido protegido</div>;
 }
 ```
@@ -167,12 +167,12 @@ El hook `use()` de React 19 permite **unwrap** (desenvolver) Promises y Context 
 
 ### Cuándo usar use()
 
-| Usar `use()` | Usar `async/await` (Server Component) |
-|--------------|--------------------------------------|
-| Client Component necesita params/searchParams | Server Component (Preferido) |
-| Promise ya está iniciada | Fetch de datos en server |
-| Integración con Suspense | Mejor performance |
-| Componente requiere interactividad | No necesita JavaScript en cliente |
+| Usar `use()`                                  | Usar `async/await` (Server Component) |
+| --------------------------------------------- | ------------------------------------- |
+| Client Component necesita params/searchParams | Server Component (Preferido)          |
+| Promise ya está iniciada                      | Fetch de datos en server              |
+| Integración con Suspense                      | Mejor performance                     |
+| Componente requiere interactividad            | No necesita JavaScript en cliente     |
 
 ### Patrón: use() con params en Client Component
 
@@ -190,10 +190,10 @@ export function ClientPage({ params, searchParams }: ClientPageProps) {
   // ✅ use() unwrap las Promises en Client Component
   const { id } = use(params);
   const { filter } = use(searchParams);
-  
+
   // Ahora puedes usar hooks de cliente
   const [count, setCount] = useState(0);
-  
+
   return (
     <div>
       <h1>ID: {id}</h1>
@@ -216,7 +216,7 @@ import { use, Suspense } from "react";
 function UserProfile({ userPromise }: { userPromise: Promise<User> }) {
   // ✅ use() suspende el componente hasta que se resuelve
   const user = use(userPromise);
-  
+
   return (
     <div>
       <h2>{user.name}</h2>
@@ -228,7 +228,7 @@ function UserProfile({ userPromise }: { userPromise: Promise<User> }) {
 export function UserProfilePage({ userId }: { userId: string }) {
   // Iniciar el fetch antes de renderizar
   const userPromise = fetchUser(userId);
-  
+
   return (
     <Suspense fallback={<div>Cargando usuario...</div>}>
       <UserProfile userPromise={userPromise} />
@@ -250,11 +250,11 @@ function MyComponent({ shouldFetch, dataPromise }) {
 // ✅ Correcto: use() siempre en el top level
 function MyComponent({ shouldFetch, dataPromise }) {
   const data = use(dataPromise); // ✅ OK
-  
+
   if (!shouldFetch) {
     return null;
   }
-  
+
   return <div>{data}</div>;
 }
 ```
@@ -274,7 +274,7 @@ React Compiler está **habilitado** en el proyecto:
 ```typescript
 // next.config.ts
 const nextConfig: NextConfig = {
-  reactCompiler: true, // ✅ Habilitado (movido de experimental en Next.js 16)
+  reactCompiler: true // ✅ Habilitado (movido de experimental en Next.js 16)
   // ...
 };
 ```
@@ -298,13 +298,13 @@ export function BlogPostCard({ post, priority = false }: BlogPostCardProps) {
   // No necesitas useMemo para funciones puras
   const generateIcon = (title: string) => {
     const words = title.split(" ");
-    return words.length >= 2 
+    return words.length >= 2
       ? `${words[0][0]}${words[1][0]}`.toUpperCase()
       : title.slice(0, 2).toUpperCase();
   };
-  
+
   const icon = generateIcon(post.title);
-  
+
   return (
     <Card>
       <div className="icon">{icon}</div>
@@ -318,9 +318,9 @@ export function BlogPostCard({ post, priority = false }: BlogPostCardProps) {
   const generateIcon = useCallback((title: string) => {
     // ... lógica
   }, []);
-  
+
   const icon = useMemo(() => generateIcon(post.title), [post.title]);
-  
+
   return <Card>...</Card>;
 }
 ```
@@ -331,7 +331,7 @@ export function BlogPostCard({ post, priority = false }: BlogPostCardProps) {
 // ✅ Server Component - Mejor performance
 export async function BlogPage() {
   const posts = await getBlogPosts();
-  
+
   // React Compiler + Server Component = Óptimo
   return (
     <div>
@@ -410,16 +410,16 @@ Los siguientes componentes ya están optimizados para React Compiler:
 
 ### Tabla de Decisión Rápida
 
-| Necesitas... | Usar |
-|--------------|------|
-| Fetch de datos | Server Component + `async/await` |
-| Formulario sin JS | Server Component + Server Actions |
-| Formulario con validación client-side | Client Component + `useForm` |
-| Animaciones CSS | Server Component + clases CSS |
-| Animaciones JS | Client Component + Framer Motion |
-| Metadata dinámica | Server Component + `generateMetadata` |
-| Params/SearchParams | Server Component + `await params` |
-| Params en componente interactivo | Client Component + `use(params)` |
+| Necesitas...                          | Usar                                  |
+| ------------------------------------- | ------------------------------------- |
+| Fetch de datos                        | Server Component + `async/await`      |
+| Formulario sin JS                     | Server Component + Server Actions     |
+| Formulario con validación client-side | Client Component + `useForm`          |
+| Animaciones CSS                       | Server Component + clases CSS         |
+| Animaciones JS                        | Client Component + Framer Motion      |
+| Metadata dinámica                     | Server Component + `generateMetadata` |
+| Params/SearchParams                   | Server Component + `await params`     |
+| Params en componente interactivo      | Client Component + `use(params)`      |
 
 ### Patrón: Composition (Server + Client)
 
@@ -427,13 +427,13 @@ Los siguientes componentes ya están optimizados para React Compiler:
 // ✅ Server Component (page.tsx)
 export default async function BlogPage() {
   const posts = await getBlogPosts();
-  
+
   return (
     <div>
       <h1>Blog</h1>
       {/* Server Component para datos estáticos */}
       <BlogPostList posts={posts} />
-      
+
       {/* Client Component solo donde se necesita interactividad */}
       <SearchBar />
     </div>
@@ -456,9 +456,9 @@ export function BlogPostList({ posts }: { posts: BlogPost[] }) {
 
 export function SearchBar() {
   const [query, setQuery] = useState("");
-  
+
   return (
-    <input 
+    <input
       value={query}
       onChange={(e) => setQuery(e.target.value)}
       placeholder="Buscar..."

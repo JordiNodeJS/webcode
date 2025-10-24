@@ -4,7 +4,7 @@
 
 ## **[Búsqueda]** **ANÁLISIS DEL PROBLEMA**
 
-### ****[Objetivos]** FUENTES IDENTIFICADAS DEL CONSUMO DE CPU EN IDLE**
+### \***\*[Objetivos]** FUENTES IDENTIFICADAS DEL CONSUMO DE CPU EN IDLE\*\*
 
 #### **1. GPU Composite Layers Permanentemente Activas** 🚨 **CRÍTICO**
 
@@ -20,7 +20,7 @@ className = "... will-change-transform [transform-style:preserve-3d]";
 - **Incluso sin hover**, el motor gráfico está preparado para transforms 3D
 - **4 capas GPU × contextos 3D** = recursos gráficos consumidos permanentemente
 
-****[Idea]** Analogía:** Es como tener 4 motores de coche encendidos en punto muerto, consumiendo gasolina sin moverse.
+\***\*[Idea]** Analogía:\*\* Es como tener 4 motores de coche encendidos en punto muerto, consumiendo gasolina sin moverse.
 
 #### **2. Contexto 3D Costoso Siempre Activo** **[Advertencia]** **ALTO IMPACTO**
 
@@ -97,7 +97,7 @@ style={{ background: dynamicGradient }}
 
 ## 🛠️ **SOLUCIONES IMPLEMENTADAS**
 
-### ****[Completado]** Versión Idle-Optimized: Activación Condicional de GPU**
+### \***\*[Completado]** Versión Idle-Optimized: Activación Condicional de GPU\*\*
 
 #### **1. GPU Layers Solo Cuando Necesario**
 
@@ -113,7 +113,7 @@ className={`
 `}
 ```
 
-****[Análisis]** Impacto:**
+\***\*[Análisis]** Impacto:\*\*
 
 - **En idle**: 0 capas GPU activas
 - **Durante hover**: 4 capas GPU (solo las necesarias)
@@ -128,7 +128,7 @@ const cardTransform = cardState.isHovered
   : "none"; // NO transforms en idle = NO GPU
 ```
 
-****[Análisis]** Impacto:**
+\***\*[Análisis]** Impacto:\*\*
 
 - **En idle**: Sin transforms = sin capas de composición
 - **Durante hover**: Transform 3D completo activado
@@ -148,7 +148,7 @@ const STATIC_GRADIENTS = {
 const currentGradient = cardState.isHovered ? dynamicGradient : staticGradient;
 ```
 
-****[Análisis]** Impacto:**
+\***\*[Análisis]** Impacto:\*\*
 
 - **En idle**: Gradientes pre-calculados (sin JavaScript)
 - **Durante hover**: Gradientes dinámicos calculados
@@ -166,7 +166,7 @@ const handleMouseMove = (e) => {
 };
 ```
 
-****[Análisis]** Impacto:**
+\***\*[Análisis]** Impacto:\*\*
 
 - **Eventos limitados**: Máximo 60 updates/segundo
 - **Reducción de re-renders**: ~75% menos actualizaciones de estado
@@ -182,7 +182,7 @@ const handleMouseMove = (e) => {
 <article onMouseEnter={activateEffects} onMouseLeave={deactivateEffects}>
 ```
 
-****[Análisis]** Impacto:**
+\***\*[Análisis]** Impacto:\*\*
 
 - **Sin JavaScript framework**: Solo CSS y event handlers nativos
 - **Menor overhead**: Sin animation engine de Framer Motion
@@ -192,7 +192,7 @@ const handleMouseMove = (e) => {
 
 ## **[Análisis]** **MÉTRICAS COMPARATIVAS**
 
-### ****[Triángulo Rojo Invertido]** Consumo en Idle (Reposo)**
+### \***\*[Triángulo Rojo Invertido]** Consumo en Idle (Reposo)\*\*
 
 | Aspecto                           | Original                  | Idle-Optimized | Reducción |
 | --------------------------------- | ------------------------- | -------------- | --------- |
@@ -202,7 +202,7 @@ const handleMouseMove = (e) => {
 | **JavaScript Event Listeners**    | 8 (Framer Motion)         | 4 (nativos)    | **-50%**  |
 | **Style Recalculations**          | Continuas                 | Solo en hover  | **-90%**  |
 
-### ****[Triángulo Pequeño]** Rendimiento Durante Hover (Interacción)**
+### \***\*[Triángulo Pequeño]** Rendimiento Durante Hover (Interacción)\*\*
 
 | Aspecto                   | Original    | Idle-Optimized | Cambio         |
 | ------------------------- | ----------- | -------------- | -------------- |

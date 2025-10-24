@@ -8,6 +8,7 @@
 ## 🎯 PROBLEMA ACTUAL
 
 La carpeta `/docs` contiene 50+ archivos en un solo nivel, lo que dificulta:
+
 - Encontrar información específica rápidamente
 - Distinguir entre documentos actuales vs históricos
 - Entender la jerarquía de información
@@ -134,26 +135,31 @@ docs/
 ## 🎯 VENTAJAS DE ESTA ESTRUCTURA
 
 ### 1. **Navegación Intuitiva**
+
 - Carpetas temáticas claras
 - Jerarquía visual de 2-3 niveles
 - README.md en cada carpeta como índice
 
 ### 2. **Contexto Rápido para AI**
+
 - `00-ESTADO-ACTUAL.md` en la raíz (acceso inmediato)
 - Carpetas nombradas por tema (fácil de encontrar)
 - READMEs que resumen contenido de cada carpeta
 
 ### 3. **Separación Clara**
+
 - Actual vs Histórico (carpeta `archive/`)
 - Reportes por fecha (carpetas `2025-09/`, `2025-10/`)
 - Decisiones vs Implementaciones separadas
 
 ### 4. **Escalabilidad**
+
 - Fácil agregar nuevos documentos sin saturar
 - Estructura permite crecimiento orgánico
 - Claridad en qué va dónde
 
 ### 5. **Mantenibilidad**
+
 - Fácil identificar docs desactualizados
 - Movimientos a `archive/` simples
 - Consolidación de docs similares clara
@@ -190,23 +196,27 @@ docs/
 ## 🚀 IMPLEMENTACIÓN SUGERIDA
 
 ### Fase 1: Crear Estructura (sin mover archivos)
+
 1. Crear carpetas temáticas
 2. Crear README.md en cada carpeta
 3. Revisar y validar estructura
 
 ### Fase 2: Mover Documentos (con backup)
+
 1. Crear backup completo de `/docs`
 2. Mover archivos a nuevas carpetas
 3. Actualizar referencias en documentos
 4. Actualizar `README.md` principal
 
 ### Fase 3: Validación
+
 1. Verificar todos los enlaces
 2. Probar navegación
 3. Actualizar `00-ESTADO-ACTUAL.md` con nueva estructura
 4. Commit con mensaje claro
 
 ### Fase 4: Consolidación
+
 1. Eliminar duplicados
 2. Mover docs obsoletos a `archive/`
 3. Actualizar fechas de última revisión
@@ -216,16 +226,19 @@ docs/
 ## ⚠️ CONSIDERACIONES
 
 ### Mantener Compatibilidad
+
 - Los archivos numerados (01, 02, etc.) mantienen su numeración
 - Los enlaces externos pueden requerir actualización
 - Git history se preserva con `git mv`
 
 ### Referencias en Código
+
 - Verificar si algún script/tool referencia paths actuales
 - Actualizar paths en `.github/` si es necesario
 - Probar que nada se rompa
 
 ### Documentación Viva
+
 - Esta estructura debe evolucionar según necesidades
 - Agregar carpetas cuando haya >5 documentos del mismo tipo
 - Consolidar carpetas que tengan <3 documentos
@@ -235,17 +248,20 @@ docs/
 ## 🎯 RESULTADO ESPERADO
 
 ### Para Desarrolladores
+
 - Encuentran lo que buscan en <30 segundos
 - Estructura clara y predecible
 - Fácil de mantener actualizada
 
 ### Para AI Assistants
+
 - Contexto rápido desde `00-ESTADO-ACTUAL.md`
 - Navegación jerárquica clara
 - READMEs que guían hacia docs específicos
 - Separación clara de actual vs histórico
 
 ### Para el Proyecto
+
 - Documentación profesional y escalable
 - Fácil onboarding de nuevos colaboradores
 - Base sólida para crecimiento futuro

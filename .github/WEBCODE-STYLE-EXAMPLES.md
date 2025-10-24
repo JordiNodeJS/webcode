@@ -23,13 +23,14 @@ import { Button } from "@/components/ui/button";
     transition-all duration-200
     ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
   "
-  style={{ boxShadow: 'var(--shadow-3d-sm)' }}
+  style={{ boxShadow: "var(--shadow-3d-sm)" }}
 >
   Solicitar Presupuesto
-</Button>
+</Button>;
 ```
 
 **Características:**
+
 - Color: `bg-primary` (rosa #dc7cb3)
 - Sombra: `shadow-3d-sm`
 - Hover: opacidad 0.8 + elevación -2px
@@ -47,7 +48,7 @@ import { Button } from "@/components/ui/button";
     hover:opacity-80
     transition-all duration-200
   "
-  style={{ boxShadow: 'var(--shadow-3d-xs)' }}
+  style={{ boxShadow: "var(--shadow-3d-xs)" }}
 >
   Ver Más
 </Button>
@@ -76,30 +77,39 @@ import { Button } from "@/components/ui/button";
 #### Card de Servicio con Sombra 3D
 
 ```tsx
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter
+} from "@/components/ui/card";
 
-<Card 
+<Card
   className="
     border-primary/20 
     hover:border-primary
     transition-all duration-300
-  " 
-  style={{ boxShadow: 'var(--shadow-3d-md)' }}
+  "
+  style={{ boxShadow: "var(--shadow-3d-md)" }}
 >
   <CardHeader>
-    <CardTitle className="
+    <CardTitle
+      className="
       neon-cyan-card-title 
       text-2xl 
       font-display 
       mb-2
-    ">
+    "
+    >
       Desarrollo Web
     </CardTitle>
     <CardDescription className="font-sans">
       Sitios web profesionales y aplicaciones modernas
     </CardDescription>
   </CardHeader>
-  
+
   <CardContent>
     <ul className="space-y-3 text-muted-foreground font-sans">
       <li className="flex items-center gap-2">
@@ -116,28 +126,29 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
       </li>
     </ul>
   </CardContent>
-  
+
   <CardFooter>
-    <Button 
+    <Button
       className="w-full hover:opacity-80"
-      style={{ boxShadow: 'var(--shadow-3d-sm)' }}
+      style={{ boxShadow: "var(--shadow-3d-sm)" }}
     >
       Comenzar Proyecto
     </Button>
   </CardFooter>
-</Card>
+</Card>;
 ```
 
 #### Card Testimonial
 
 ```tsx
-<Card 
+<Card
   className="border-l-4 border-l-primary bg-linear-to-br from-background to-muted/20"
-  style={{ boxShadow: 'var(--shadow-3d-lg)' }}
+  style={{ boxShadow: "var(--shadow-3d-lg)" }}
 >
   <CardContent className="pt-6">
     <blockquote className="font-serif text-lg italic mb-4">
-      "WebCode transformó nuestra presencia digital. El equipo es profesional y los resultados superaron nuestras expectativas."
+      "WebCode transformó nuestra presencia digital. El equipo es profesional y
+      los resultados superaron nuestras expectativas."
     </blockquote>
     <div className="flex items-center gap-4">
       <div className="w-12 h-12 rounded-full bg-gradient-webcode" />
@@ -157,37 +168,44 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 #### Hero Principal Landing
 
 ```tsx
-<section className="
+<section
+  className="
   bg-gradient-webcode 
   min-h-screen 
   flex items-center 
   relative overflow-hidden
-">
+"
+>
   <div className="container mx-auto px-4 py-16 relative z-10">
     <div className="max-w-4xl">
-      <h1 className="
+      <h1
+        className="
         neon-cyan-title 
         text-6xl md:text-7xl lg:text-8xl 
         font-display 
         font-bold 
         mb-6 
         leading-tight
-      ">
+      "
+      >
         Desarrollamos tu Presencia Digital
       </h1>
-      
-      <p className="
+
+      <p
+        className="
         text-xl md:text-2xl 
         text-muted-foreground 
         font-sans 
         mb-8 
         max-w-2xl
-      ">
-        Soluciones web profesionales para freelancers, PYMEs y startups en Barcelona
+      "
+      >
+        Soluciones web profesionales para freelancers, PYMEs y startups en
+        Barcelona
       </p>
-      
+
       <div className="flex flex-col sm:flex-row gap-4">
-        <Button 
+        <Button
           size="lg"
           className="
             text-lg
@@ -195,12 +213,12 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
             hover:-translate-y-1
             transition-all duration-200
           "
-          style={{ boxShadow: 'var(--shadow-3d-md)' }}
+          style={{ boxShadow: "var(--shadow-3d-md)" }}
         >
           Solicitar Presupuesto Gratis
         </Button>
-        
-        <Button 
+
+        <Button
           size="lg"
           variant="outline"
           className="
@@ -215,7 +233,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
       </div>
     </div>
   </div>
-  
+
   {/* Background decorativo */}
   <div className="absolute inset-0 opacity-20">
     {/* Animaciones de fondo */}
@@ -226,28 +244,34 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 #### Hero de Página Interior
 
 ```tsx
-<section className="
+<section
+  className="
   bg-gradient-webcode 
   py-16 md:py-24 
   border-b border-border
-">
+"
+>
   <div className="container mx-auto px-4">
     <div className="max-w-3xl mx-auto text-center">
-      <h1 className="
+      <h1
+        className="
         neon-cyan-title 
         text-5xl md:text-6xl 
         font-display 
         font-bold 
         mb-6
-      ">
+      "
+      >
         Nuestros Servicios
       </h1>
-      
-      <p className="
+
+      <p
+        className="
         text-lg md:text-xl 
         text-muted-foreground 
         font-sans
-      ">
+      "
+      >
         Soluciones digitales completas adaptadas a las necesidades de tu negocio
       </p>
     </div>
@@ -262,17 +286,19 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 #### Header con Logo Animado
 
 ```tsx
-<header className="
+<header
+  className="
   sticky top-0 z-50 
   bg-background/95 backdrop-blur 
   border-b border-border
   transition-all duration-300
-">
+"
+>
   <nav className="container mx-auto px-4 py-4">
     <div className="flex items-center justify-between">
       {/* Logo */}
-      <a 
-        href="/" 
+      <a
+        href="/"
         className="
           flex items-center gap-2 
           hover:opacity-80 
@@ -280,21 +306,23 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
         "
       >
         <div className="w-10 h-10 bg-gradient-webcode rounded-lg" />
-        <span className="
+        <span
+          className="
           text-2xl 
           font-display 
           font-bold 
           text-gradient-webcode
-        ">
+        "
+        >
           WebCode
         </span>
       </a>
-      
+
       {/* Navegación Desktop */}
       <ul className="hidden md:flex items-center gap-8">
         <li>
-          <a 
-            href="/servicios" 
+          <a
+            href="/servicios"
             className="
               text-muted-foreground 
               hover:text-foreground
@@ -306,8 +334,8 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
           </a>
         </li>
         <li>
-          <a 
-            href="/proyectos" 
+          <a
+            href="/proyectos"
             className="
               text-muted-foreground 
               hover:text-foreground
@@ -319,24 +347,20 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
           </a>
         </li>
         <li>
-          <Button 
+          <Button
             className="
               hover:opacity-80 
               transition-all duration-200
             "
-            style={{ boxShadow: 'var(--shadow-3d-sm)' }}
+            style={{ boxShadow: "var(--shadow-3d-sm)" }}
           >
             Contactar
           </Button>
         </li>
       </ul>
-      
+
       {/* Menú Mobile */}
-      <Button 
-        variant="ghost" 
-        size="icon"
-        className="md:hidden"
-      >
+      <Button variant="ghost" size="icon" className="md:hidden">
         <Menu className="w-6 h-6" />
       </Button>
     </div>
@@ -355,9 +379,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 
-<Card 
+<Card
   className="max-w-xl mx-auto border-primary/20"
-  style={{ boxShadow: 'var(--shadow-3d-lg)' }}
+  style={{ boxShadow: "var(--shadow-3d-lg)" }}
 >
   <CardHeader>
     <CardTitle className="neon-cyan-card-title font-display text-3xl">
@@ -367,14 +391,14 @@ import { Label } from "@/components/ui/label";
       Completa el formulario y te respondemos en menos de 24 horas
     </CardDescription>
   </CardHeader>
-  
+
   <CardContent>
     <form className="space-y-6">
       <div className="space-y-2">
         <Label htmlFor="name" className="font-sans font-medium">
           Nombre completo
         </Label>
-        <Input 
+        <Input
           id="name"
           placeholder="Juan Pérez"
           className="
@@ -386,12 +410,12 @@ import { Label } from "@/components/ui/label";
           "
         />
       </div>
-      
+
       <div className="space-y-2">
         <Label htmlFor="email" className="font-sans font-medium">
           Email
         </Label>
-        <Input 
+        <Input
           id="email"
           type="email"
           placeholder="juan@ejemplo.com"
@@ -404,12 +428,12 @@ import { Label } from "@/components/ui/label";
           "
         />
       </div>
-      
+
       <div className="space-y-2">
         <Label htmlFor="message" className="font-sans font-medium">
           Cuéntanos sobre tu proyecto
         </Label>
-        <Textarea 
+        <Textarea
           id="message"
           placeholder="Necesito un sitio web para..."
           rows={5}
@@ -423,8 +447,8 @@ import { Label } from "@/components/ui/label";
           "
         />
       </div>
-      
-      <Button 
+
+      <Button
         type="submit"
         size="lg"
         className="
@@ -433,13 +457,13 @@ import { Label } from "@/components/ui/label";
           hover:-translate-y-0.5
           transition-all duration-200
         "
-        style={{ boxShadow: 'var(--shadow-3d-sm)' }}
+        style={{ boxShadow: "var(--shadow-3d-sm)" }}
       >
         Enviar Solicitud
       </Button>
     </form>
   </CardContent>
-</Card>
+</Card>;
 ```
 
 ---
@@ -450,51 +474,59 @@ import { Label } from "@/components/ui/label";
 <section className="py-16 md:py-24">
   <div className="container mx-auto px-4">
     <div className="text-center mb-12">
-      <h2 className="
+      <h2
+        className="
         neon-cyan-title 
         text-4xl md:text-5xl 
         font-display 
         mb-4
-      ">
+      "
+      >
         Nuestros Servicios
       </h2>
-      <p className="
+      <p
+        className="
         text-lg 
         text-muted-foreground 
         font-sans 
         max-w-2xl 
         mx-auto
-      ">
+      "
+      >
         Soluciones digitales completas para hacer crecer tu negocio
       </p>
     </div>
-    
-    <div className="
+
+    <div
+      className="
       grid 
       grid-cols-1 
       md:grid-cols-2 
       lg:grid-cols-3 
       gap-8
-    ">
+    "
+    >
       {services.map((service, index) => (
-        <Card 
+        <Card
           key={index}
           className="
             border-primary/20 
             hover:border-primary
             hover:-translate-y-2
             transition-all duration-300
-          " 
-          style={{ boxShadow: 'var(--shadow-3d-md)' }}
+          "
+          style={{ boxShadow: "var(--shadow-3d-md)" }}
         >
           <CardHeader>
-            <div className="
+            <div
+              className="
               w-12 h-12 
               rounded-lg 
               bg-gradient-webcode 
               flex items-center justify-center 
               mb-4
-            ">
+            "
+            >
               <service.icon className="w-6 h-6 text-primary" />
             </div>
             <CardTitle className="neon-cyan-card-title font-display">
@@ -517,8 +549,8 @@ import { Label } from "@/components/ui/label";
             </ul>
           </CardContent>
           <CardFooter>
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
               className="
                 w-full 
                 hover:bg-primary/10
@@ -541,51 +573,60 @@ import { Label } from "@/components/ui/label";
 ### 7. Footer
 
 ```tsx
-<footer className="
+<footer
+  className="
   bg-linear-to-b 
   from-background 
   to-muted/20 
   border-t border-border 
   py-12 md:py-16
-">
+"
+>
   <div className="container mx-auto px-4">
     <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
       {/* Logo y descripción */}
       <div className="md:col-span-2">
         <div className="flex items-center gap-2 mb-4">
           <div className="w-10 h-10 bg-gradient-webcode rounded-lg" />
-          <span className="
+          <span
+            className="
             text-2xl 
             font-display 
             font-bold 
             text-gradient-webcode
-          ">
+          "
+          >
             WebCode
           </span>
         </div>
-        <p className="
+        <p
+          className="
           text-muted-foreground 
           font-sans 
           max-w-md 
           mb-4
-        ">
-          Soluciones web profesionales para freelancers y pequeñas empresas en Barcelona
+        "
+        >
+          Soluciones web profesionales para freelancers y pequeñas empresas en
+          Barcelona
         </p>
       </div>
-      
+
       {/* Links */}
       <div>
-        <h3 className="
+        <h3
+          className="
           font-display 
           font-semibold 
           mb-4 
           text-foreground
-        ">
+        "
+        >
           Servicios
         </h3>
         <ul className="space-y-2">
           <li>
-            <a 
+            <a
               href="/servicios/web"
               className="
                 text-muted-foreground 
@@ -600,19 +641,21 @@ import { Label } from "@/components/ui/label";
           {/* Más links */}
         </ul>
       </div>
-      
+
       <div>
-        <h3 className="
+        <h3
+          className="
           font-display 
           font-semibold 
           mb-4 
           text-foreground
-        ">
+        "
+        >
           Empresa
         </h3>
         <ul className="space-y-2">
           <li>
-            <a 
+            <a
               href="/sobre-nosotros"
               className="
                 text-muted-foreground 
@@ -628,21 +671,23 @@ import { Label } from "@/components/ui/label";
         </ul>
       </div>
     </div>
-    
+
     {/* Copyright */}
-    <div className="
+    <div
+      className="
       border-t border-border 
       pt-8 
       flex flex-col md:flex-row 
       justify-between 
       items-center 
       gap-4
-    ">
+    "
+    >
       <p className="text-sm text-muted-foreground font-sans">
         © 2025 WebCode. Todos los derechos reservados.
       </p>
       <div className="flex gap-6">
-        <a 
+        <a
           href="/privacidad"
           className="
             text-sm 
@@ -653,7 +698,7 @@ import { Label } from "@/components/ui/label";
         >
           Privacidad
         </a>
-        <a 
+        <a
           href="/terminos"
           className="
             text-sm 

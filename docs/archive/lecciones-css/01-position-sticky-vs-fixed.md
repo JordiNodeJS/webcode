@@ -18,7 +18,7 @@ Para headers de navegación que deben permanecer visibles al hacer scroll:
 
 ## **[Completado]** **Solución Elegante: Principio de Responsabilidad Única**
 
-### ****[Error]** ANTES: overflow-hidden "global" que bloquea todo**
+### \***\*[Error]** ANTES: overflow-hidden "global" que bloquea todo\*\*
 
 ```tsx
 <section className="... overflow-hidden">
@@ -27,7 +27,7 @@ Para headers de navegación que deben permanecer visibles al hacer scroll:
 </section>
 ```
 
-### ****[Completado]** DESPUÉS: overflow-hidden específico donde se necesita**
+### \***\*[Completado]** DESPUÉS: overflow-hidden específico donde se necesita\*\*
 
 ```tsx
 <section className="..."> {/* sin overflow-hidden */}

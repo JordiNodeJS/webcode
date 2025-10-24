@@ -12,13 +12,13 @@ Se ha completado una reorganización integral y consolidación de toda la docume
 
 ### **Resultados Globales**
 
-| Métrica | Antes | Después | Mejora |
-|---------|-------|---------|--------|
-| **Prompts (.github/prompts/)** | 24 archivos | 9 archivos | **-62.5%** |
-| **Support (.github/support/)** | 12 archivos | 6 archivos | **-50%** |
-| **Docs (raíz)** | 80+ archivos | 15 archivos | **-81%** |
-| **Navegabilidad** | Caótica | Estructurada | **✅ 100%** |
-| **Redundancia** | Alta | Eliminada | **✅ 0%** |
+| Métrica                        | Antes        | Después      | Mejora      |
+| ------------------------------ | ------------ | ------------ | ----------- |
+| **Prompts (.github/prompts/)** | 24 archivos  | 9 archivos   | **-62.5%**  |
+| **Support (.github/support/)** | 12 archivos  | 6 archivos   | **-50%**    |
+| **Docs (raíz)**                | 80+ archivos | 15 archivos  | **-81%**    |
+| **Navegabilidad**              | Caótica      | Estructurada | **✅ 100%** |
+| **Redundancia**                | Alta         | Eliminada    | **✅ 0%**   |
 
 ---
 
@@ -75,7 +75,7 @@ Se ha completado una reorganización integral y consolidación de toda la docume
 - llm.prompt.md
 - component-naming-convention.prompt.md
 - hero-naming-convention.prompt.md
-- _template-estandar.md
+- \_template-estandar.md
 
 #### **README.md Actualizado**
 
@@ -124,6 +124,7 @@ Se ha completado una reorganización integral y consolidación de toda la docume
 **Acción**: Carpeta `.github/docs/` eliminada, contenido movido a `support/`
 
 **Archivos procesados**:
+
 - COLOR-SYSTEM-RULES.md → Fusionado en styling-guide.md
 - THEMING.md → Fusionado en styling-guide.md
 
@@ -145,6 +146,7 @@ docs/
 #### **Archivos Movidos por Directorio**
 
 **`design/`** (5 archivos)
+
 - 03-DISENO-guia-estilos-base.md
 - 04-DISENO-guia-estilos-extendida.md
 - 05-DISENO-sistema-animaciones-websnack.md
@@ -152,6 +154,7 @@ docs/
 - 07-DISENO-fundamentos-decision.md
 
 **`guides/`** (8 archivos)
+
 - BLOG-NOTION-GUIDE.md
 - BLOG-NOTION-IMPLEMENTATION.md
 - BLOG-NOTION-POST-TEMPLATE.md
@@ -162,10 +165,12 @@ docs/
 - TESTING-GUIDE.md
 
 **`planning/`** (2 archivos)
+
 - 01-PLANIFICACION-requisitos-del-producto.md
 - 02-PLANIFICACION-stack-tecnologico.md
 
 **`reports/`** (5 archivos)
+
 - FINAL-PERFORMANCE-REPORT.md
 - SEO-OPTIMIZATION-REPORT.md
 - BUNDLE-OPTIMIZATION-RESULTS.md
@@ -173,7 +178,8 @@ docs/
 - MIGRATION-SUMMARY.md
 
 **`archive/`** (80+ archivos)
-- Todos los archivos 00-*, REPORTE-*, ACTUALIZACION-*, RESUMEN-*
+
+- Todos los archivos 00-_, REPORTE-_, ACTUALIZACION-_, RESUMEN-_
 - Archivos de Netlify (5), Notion (5), Performance (5), Biome (3)
 - Documentación histórica y obsoleta
 - Carpetas: 12-LANDING-PAGE, components, examples, lecciones-css, notion-organized, tasks, bundle-analyzer

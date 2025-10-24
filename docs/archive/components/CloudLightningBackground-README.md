@@ -141,4 +141,4 @@ const CONFIG = {
 
 ---
 
-****[Celebración]** ¡El componente está listo para usar!** Solo necesitas cambiar una línea de código en HeroSection.tsx para ver el nuevo efecto en acción.
+\***\*[Celebración]** ¡El componente está listo para usar!\*\* Solo necesitas cambiar una línea de código en HeroSection.tsx para ver el nuevo efecto en acción.

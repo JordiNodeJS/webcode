@@ -10,21 +10,22 @@
 
 ### ✅ Tu aplicación es 100% compatible con Netlify
 
-| Aspecto | Estado | Notas |
-|---------|--------|-------|
-| **Next.js 15.5.2** | ✅ Compatible | Soporte completo vía OpenNext adapter |
-| **App Router** | ✅ Compatible | Funcionalidad idéntica a Vercel |
-| **React 19** | ✅ Compatible | Sin cambios necesarios |
-| **Server Components** | ✅ Compatible | Soporte completo |
-| **Middleware** | ✅ Compatible | Se ejecuta como Edge Function |
-| **API Routes** | ✅ Compatible | Se convierten en Netlify Functions |
-| **Image Optimization** | ✅ Compatible | Usa Netlify Image CDN |
-| **ISR/Revalidation** | ✅ Compatible | Soporte completo |
-| **Turbopack** | ✅ Compatible | Build + Dev mode |
+| Aspecto                | Estado        | Notas                                 |
+| ---------------------- | ------------- | ------------------------------------- |
+| **Next.js 15.5.2**     | ✅ Compatible | Soporte completo vía OpenNext adapter |
+| **App Router**         | ✅ Compatible | Funcionalidad idéntica a Vercel       |
+| **React 19**           | ✅ Compatible | Sin cambios necesarios                |
+| **Server Components**  | ✅ Compatible | Soporte completo                      |
+| **Middleware**         | ✅ Compatible | Se ejecuta como Edge Function         |
+| **API Routes**         | ✅ Compatible | Se convierten en Netlify Functions    |
+| **Image Optimization** | ✅ Compatible | Usa Netlify Image CDN                 |
+| **ISR/Revalidation**   | ✅ Compatible | Soporte completo                      |
+| **Turbopack**          | ✅ Compatible | Build + Dev mode                      |
 
 ### 🎯 Sin Dependencias de Vercel
 
 Tu código **NO usa** ninguna característica exclusiva de Vercel:
+
 - ❌ `@vercel/analytics` - No instalado
 - ❌ `@vercel/edge-config` - No instalado
 - ❌ `@vercel/kv` - No instalado
@@ -71,14 +72,14 @@ Tu código **NO usa** ninguna característica exclusiva de Vercel:
 
 ### Tiempo Estimado Total: 60-75 minutos
 
-| Fase | Duración | Actividades |
-|------|----------|-------------|
-| **1. Preparación Local** | 10 min | Verificar build, commit changes |
-| **2. Setup Netlify** | 15 min | Crear cuenta, conectar repo, configurar variables |
-| **3. Primer Deploy** | 10 min | Iniciar build, monitorear logs |
-| **4. Verificación** | 20 min | Tests de funcionalidad, performance, seguridad |
-| **5. Dominio Custom** | 15 min | Configurar DNS, activar SSL (opcional) |
-| **6. Optimizaciones** | 10 min | Deploy previews, analytics, notificaciones |
+| Fase                     | Duración | Actividades                                       |
+| ------------------------ | -------- | ------------------------------------------------- |
+| **1. Preparación Local** | 10 min   | Verificar build, commit changes                   |
+| **2. Setup Netlify**     | 15 min   | Crear cuenta, conectar repo, configurar variables |
+| **3. Primer Deploy**     | 10 min   | Iniciar build, monitorear logs                    |
+| **4. Verificación**      | 20 min   | Tests de funcionalidad, performance, seguridad    |
+| **5. Dominio Custom**    | 15 min   | Configurar DNS, activar SSL (opcional)            |
+| **6. Optimizaciones**    | 10 min   | Deploy previews, analytics, notificaciones        |
 
 ---
 
@@ -114,10 +115,11 @@ NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 ### Inmediato (Hoy)
 
 1. **Revisar documentación**
+
    ```bash
    # Leer guía completa
    code docs/NETLIFY-DEPLOYMENT-GUIDE.md
-   
+
    # Abrir checklist
    code docs/NETLIFY-DEPLOYMENT-CHECKLIST.md
    ```
@@ -231,13 +233,13 @@ NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 
 ### Comparativa Esperada
 
-| Métrica | Vercel | Netlify | Diferencia |
-|---------|--------|---------|------------|
-| Build Time | 2-3 min | 3-5 min | +1-2 min más lento |
-| TTFB | ~100ms | ~100ms | Similar |
-| LCP | < 2.5s | < 2.5s | Similar |
-| Bandwidth | 100 GB/mes | 100 GB/mes | Igual |
-| Costo | $0 (Free) | $0 (Free) | Igual |
+| Métrica    | Vercel     | Netlify    | Diferencia         |
+| ---------- | ---------- | ---------- | ------------------ |
+| Build Time | 2-3 min    | 3-5 min    | +1-2 min más lento |
+| TTFB       | ~100ms     | ~100ms     | Similar            |
+| LCP        | < 2.5s     | < 2.5s     | Similar            |
+| Bandwidth  | 100 GB/mes | 100 GB/mes | Igual              |
+| Costo      | $0 (Free)  | $0 (Free)  | Igual              |
 
 ---
 

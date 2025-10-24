@@ -42,11 +42,11 @@ export default function Home() {
 
 ## **[Análisis]** **MEJORAS INMEDIATAS QUE OBTIENES**
 
-| Dispositivo    | Mejora de FPS   | Ahorro de Memoria       | Duración Batería |
-| -------------- | --------------- | ----------------------- | ---------------- |
-| ****[Móvil]** Móvil**   | +40-60%         | -38% (28MB vs 45MB)     | +45%             |
-| ****[Monitor]** Desktop** | +25% eficiencia | -70% garbage collection | N/A              |
-| ****[Móvil]** Tablet**  | +35% fluidez    | Optimizada              | +30%             |
+| Dispositivo                   | Mejora de FPS   | Ahorro de Memoria       | Duración Batería |
+| ----------------------------- | --------------- | ----------------------- | ---------------- |
+| \***\*[Móvil]** Móvil\*\*     | +40-60%         | -38% (28MB vs 45MB)     | +45%             |
+| \***\*[Monitor]** Desktop\*\* | +25% eficiencia | -70% garbage collection | N/A              |
+| \***\*[Móvil]** Tablet\*\*    | +35% fluidez    | Optimizada              | +30%             |
 
 ---
 
@@ -79,21 +79,21 @@ export default function Home() {
 
 ## **[Videojuegos]** **CONFIGURACIONES AUTOMÁTICAS POR DISPOSITIVO**
 
-### ****[Monitor]** Tu Desktop** (probablemente)
+### \***\*[Monitor]** Tu Desktop\*\* (probablemente)
 
 - **FPS**: 60
 - **Partículas**: 80-120
 - **Calidad**: High/Medium
 - **Efectos**: Completos con blur y shadows
 
-### ****[Móvil]** Dispositivos Móviles** (automático)
+### \***\*[Móvil]** Dispositivos Móviles\*\* (automático)
 
 - **FPS**: 30
 - **Partículas**: 40
 - **Calidad**: Low
 - **Efectos**: Optimizados para batería
 
-### ****[Móvil]** Tablets** (automático)
+### \***\*[Móvil]** Tablets\*\* (automático)
 
 - **FPS**: 45
 - **Partículas**: 60
@@ -170,6 +170,6 @@ Si quieres optimizar aún más, puedes:
 
 ---
 
-****[Objetivos]** Con este simple cambio de import, tu aplicación tendrá un rendimiento significativamente mejor, especialmente en dispositivos móviles, sin perder ninguna funcionalidad visual.**
+\***\*[Objetivos]** Con este simple cambio de import, tu aplicación tendrá un rendimiento significativamente mejor, especialmente en dispositivos móviles, sin perder ninguna funcionalidad visual.\*\*
 
 **⏱️ Tiempo estimado de implementación: 30 segundos**

@@ -24,12 +24,14 @@ Crear una página de preguntas frecuentes optimizada para SEO que:
 ### **[Completado]** SEO Técnico
 
 #### **1. Structured Data (Schema.org)**
+
 - **Tipo**: `FAQPage` con `Question` y `Answer` entities
 - **Beneficio**: Aparición en rich snippets de Google
 - **Implementación**: Componente `FAQStructuredData.tsx` reutilizable
 - **Validación**: Compatible con [Google Rich Results Test](https://search.google.com/test/rich-results)
 
 #### **2. Metadata Optimizada**
+
 ```typescript
 {
   title: "Preguntas Frecuentes - Desarrollo Web Barcelona | WEBCODE FAQ",
@@ -48,12 +50,14 @@ Crear una página de preguntas frecuentes optimizada para SEO que:
 #### **3. Palabras Clave Objetivo**
 
 **Primarias:**
+
 - "preguntas frecuentes desarrollo web"
 - "FAQ desarrollo web Barcelona"
 - "precio página web Barcelona"
 - "servicios web Barcelona"
 
 **Secundarias (Long-tail):**
+
 - "cuánto cuesta una web profesional"
 - "tiempo desarrollo web"
 - "tecnologías desarrollo web 2025"
@@ -61,6 +65,7 @@ Crear una página de preguntas frecuentes optimizada para SEO que:
 - "hosting web España"
 
 **Semánticas:**
+
 - "desarrollo web profesional"
 - "diseño responsive"
 - "SEO Barcelona"
@@ -105,12 +110,14 @@ Crear una página de preguntas frecuentes optimizada para SEO que:
 ### Componentes Utilizados
 
 #### **FAQItem.tsx**
+
 - **Animaciones WAS**: Fade-in con stagger delay
 - **Interactividad**: Expand/collapse con Framer Motion
 - **Accesibilidad**: `aria-expanded`, `role="button"`
 - **Responsive**: Mobile-first design
 
 **Características:**
+
 ```typescript
 - Initial state: Collapsed (SEO-friendly)
 - Animación de apertura: Height auto con easing
@@ -120,6 +127,7 @@ Crear una página de preguntas frecuentes optimizada para SEO que:
 ```
 
 ### Paleta de Colores
+
 - Consistente con el sistema de diseño WEBCODE
 - Utiliza variables CSS de tema (dark/light mode)
 - Efectos de hover con colores primarios
@@ -131,6 +139,7 @@ Crear una página de preguntas frecuentes optimizada para SEO que:
 ### Navegación Actualizada
 
 **Header Navigation:**
+
 ```typescript
 navigationItems = [
   { href: "#servicios", label: "Servicios" },
@@ -138,15 +147,17 @@ navigationItems = [
   { href: "https://jordinodejs.github.io/", label: "Portfolio" },
   { href: "/preguntas-frecuentes", label: "FAQ" }, // NEW
   { href: "/contacto", label: "Contacto" }
-]
+];
 ```
 
 **Footer:**
+
 - Enlace añadido en columna de contacto
 - Mismo estilo de hover que otros enlaces
 - Visible en todas las páginas
 
 **Sitemap.xml:**
+
 ```xml
 <url>
   <loc>https://webcode.es/faqs</loc>
@@ -334,11 +345,13 @@ Actualizados:
 ## **[Enlace]** Referencias
 
 ### Documentación Técnica
+
 - [Schema.org FAQPage](https://schema.org/FAQPage)
 - [Google Search Central - FAQ Rich Results](https://developers.google.com/search/docs/appearance/structured-data/faqpage)
 - [Next.js SEO Best Practices](https://nextjs.org/learn/seo/introduction-to-seo)
 
 ### Herramientas de Validación
+
 - [Google Rich Results Test](https://search.google.com/test/rich-results)
 - [Schema Markup Validator](https://validator.schema.org/)
 - [Google Search Console](https://search.google.com/search-console)
@@ -356,6 +369,7 @@ Esta página FAQ ha sido diseñada como una **inversión a largo plazo en SEO or
 5. **[Completado]** Captura tráfico long-tail de alta intención
 
 **Mantenimiento recomendado**: Revisar y actualizar cada 3 meses basándose en:
+
 - Nuevas preguntas de clientes reales
 - Cambios en servicios o precios
 - Análisis de Search Console keywords
@@ -366,4 +380,3 @@ Esta página FAQ ha sido diseñada como una **inversión a largo plazo en SEO or
 _Documento creado por: WEBCODE Development Team_  
 _Fecha: 3 de Octubre 2025_  
 _Versión: 1.0_
-

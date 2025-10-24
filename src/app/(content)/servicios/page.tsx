@@ -13,71 +13,71 @@ export default function ServiciosPage() {
   return (
     <>
       <header className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-foreground">Servicios</h1>
-          <p className="text-muted-foreground mt-3">
-            Ofrecemos servicios de desarrollo web profesional adaptados a
-            freelancers, PYMEs y startups: desde landing pages hasta tiendas
-            online y aplicaciones a medida.
+        <h1 className="text-4xl font-bold text-foreground">Servicios</h1>
+        <p className="text-muted-foreground mt-3">
+          Ofrecemos servicios de desarrollo web profesional adaptados a
+          freelancers, PYMEs y startups: desde landing pages hasta tiendas
+          online y aplicaciones a medida.
+        </p>
+      </header>
+
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <article className="p-6 border rounded-lg">
+          <h3 className="text-xl font-semibold mb-2">Desarrollo Web</h3>
+          <p className="text-muted-foreground mb-4">
+            Sitios web corporativos y landing pages optimizadas para conversión
+            y rendimiento.
           </p>
-        </header>
+          <Link
+            href="/soluciones/web-development"
+            className="text-primary underline font-medium"
+          >
+            Ver detalle
+          </Link>
+        </article>
 
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <article className="p-6 border rounded-lg">
-            <h3 className="text-xl font-semibold mb-2">Desarrollo Web</h3>
-            <p className="text-muted-foreground mb-4">
-              Sitios web corporativos y landing pages optimizadas para
-              conversión y rendimiento.
-            </p>
-            <Link
-              href="/soluciones/web-development"
-              className="text-primary underline font-medium"
-            >
-              Ver detalle
-            </Link>
-          </article>
+        <article className="p-6 border rounded-lg">
+          <h3 className="text-xl font-semibold mb-2">E‑commerce</h3>
+          <p className="text-muted-foreground mb-4">
+            Tiendas online completas, integraciones de pasarelas de pago y
+            optimización para ventas.
+          </p>
+          <Link
+            href="/soluciones/e-commerce"
+            className="text-primary underline font-medium"
+          >
+            Ver detalle
+          </Link>
+        </article>
 
-          <article className="p-6 border rounded-lg">
-            <h3 className="text-xl font-semibold mb-2">E‑commerce</h3>
-            <p className="text-muted-foreground mb-4">
-              Tiendas online completas, integraciones de pasarelas de pago y
-              optimización para ventas.
-            </p>
-            <Link
-              href="/soluciones/e-commerce"
-              className="text-primary underline font-medium"
-            >
-              Ver detalle
-            </Link>
-          </article>
+        <article className="p-6 border rounded-lg">
+          <h3 className="text-xl font-semibold mb-2">Consultoría</h3>
+          <p className="text-muted-foreground mb-4">
+            Auditorías técnicas, migraciones y consultoría estratégica para tu
+            presencia online.
+          </p>
+          <Link
+            href="/soluciones/consulting"
+            className="text-primary underline font-medium"
+          >
+            Ver detalle
+          </Link>
+        </article>
 
-          <article className="p-6 border rounded-lg">
-            <h3 className="text-xl font-semibold mb-2">Consultoría</h3>
-            <p className="text-muted-foreground mb-4">
-              Auditorías técnicas, migraciones y consultoría estratégica para tu
-              presencia online.
-            </p>
-            <Link
-              href="/soluciones/consulting"
-              className="text-primary underline font-medium"
-            >
-              Ver detalle
-            </Link>
-          </article>
-
-          <article className="p-6 border rounded-lg">
-            <h3 className="text-xl font-semibold mb-2">Mantenimiento</h3>
-            <p className="text-muted-foreground mb-4">
-              Planes de soporte, actualizaciones y backups para mantener tu web
-              segura y rápida.
-            </p>
-            <Link
-              href="/soluciones/mantenimiento"
-              className="text-primary underline font-medium"
-            >
-              Ver detalle
-            </Link>
-          </article>
-        </section>
+        <article className="p-6 border rounded-lg">
+          <h3 className="text-xl font-semibold mb-2">Mantenimiento</h3>
+          <p className="text-muted-foreground mb-4">
+            Planes de soporte, actualizaciones y backups para mantener tu web
+            segura y rápida.
+          </p>
+          <Link
+            href="/soluciones/mantenimiento"
+            className="text-primary underline font-medium"
+          >
+            Ver detalle
+          </Link>
+        </article>
+      </section>
     </>
   );
 }

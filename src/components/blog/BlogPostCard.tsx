@@ -1,7 +1,7 @@
 /**
  * Componente de tarjeta para artículos del blog
  * Server Component - No requiere JavaScript en el cliente
- * 
+ *
  * Las animaciones se manejan con CSS puro mediante la clase 'blog-card'
  * y respetan prefers-reduced-motion mediante media queries.
  */

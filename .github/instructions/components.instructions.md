@@ -59,14 +59,14 @@ applyTo: "src/components/**/*.{ts,tsx}"
 ```tsx
 // ✅ Transición estándar WebCode
 <div className="
-  transition-all 
-  duration-300 
+  transition-all
+  duration-300
   ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
 ">
 
 // ✅ Hover estándar
 <button className="
-  hover:opacity-80 
+  hover:opacity-80
   hover:-translate-y-0.5
   transition-all duration-200
 ">
@@ -151,22 +151,22 @@ interface ServiceCardProps {
 
 export function ServiceCard({ title, description, icon }: ServiceCardProps) {
   return (
-    <Card 
+    <Card
       className="
-        border-primary/20 
+        border-primary/20
         hover:border-primary
         hover:-translate-y-2
         transition-all duration-300
-      " 
+      "
       style={{ boxShadow: 'var(--shadow-3d-md)' }}
     >
       <CardHeader>
         {icon && (
           <div className="
-            w-12 h-12 
-            rounded-lg 
-            bg-gradient-webcode 
-            flex items-center justify-center 
+            w-12 h-12
+            rounded-lg
+            bg-gradient-webcode
+            flex items-center justify-center
             mb-4
           ">
             {icon}
@@ -202,7 +202,7 @@ export function CTAButton({ children, className, ...props }: CTAButtonProps) {
   return (
     <Button
       className={`
-        hover:opacity-80 
+        hover:opacity-80
         hover:-translate-y-0.5
         transition-all duration-200
         ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
@@ -268,3 +268,4 @@ export function HeroSection({ title, subtitle, ctaText }: HeroSectionProps) {
   );
 }
 ```
+````

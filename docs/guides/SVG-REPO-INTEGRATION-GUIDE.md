@@ -9,6 +9,7 @@ Esta guía documenta la integración completa de [SVGRepo](https://www.svgrepo.c
 ## **🎯 ¿Qué es SVGRepo?**
 
 SVGRepo es una biblioteca masiva de iconos SVG gratuitos que proporciona:
+
 - **+500,000 iconos** en formato SVG optimizado
 - **Licencia MIT** - Uso libre en proyectos comerciales
 - **Iconos vectoriales** - Escalables sin pérdida de calidad
@@ -61,10 +62,10 @@ El corazón del sistema es el mapeo centralizado en `svg-icons.ts`:
 
 ```typescript
 export const EMOJI_TO_SVG_MAP = {
-  '💡': 'lightbulb',     // Idea → Icono de bombilla
-  '📈': 'trending-up',   // Crecimiento → Gráfico ascendente
-  '🚀': 'rocket',        // Lanzamiento → Cohete
-  '✅': 'check-circle',  // Completado → Círculo con check
+  "💡": "lightbulb", // Idea → Icono de bombilla
+  "📈": "trending-up", // Crecimiento → Gráfico ascendente
+  "🚀": "rocket", // Lanzamiento → Cohete
+  "✅": "check-circle" // Completado → Círculo con check
   // ... más de 350 mapeos
 } as const;
 ```
@@ -75,8 +76,10 @@ Cada icono SVG se define con su path optimizado:
 
 ```typescript
 const iconPaths: Record<string, string> = {
-  'lightbulb': 'M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6C7.8 12.16 7 10.63 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z',
-  'trending-up': 'M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z',
+  lightbulb:
+    "M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6C7.8 12.16 7 10.63 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z",
+  "trending-up":
+    "M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"
   // ... paths optimizados para cada icono
 };
 ```
@@ -86,18 +89,18 @@ const iconPaths: Record<string, string> = {
 ```typescript
 // Tamaños predefinidos
 export const ICON_SIZES = {
-  sm: 'w-4 h-4',   // 16px
-  md: 'w-6 h-6',   // 24px  
-  lg: 'w-8 h-8',   // 32px
-  xl: 'w-12 h-12'  // 48px
+  sm: "w-4 h-4", // 16px
+  md: "w-6 h-6", // 24px
+  lg: "w-8 h-8", // 32px
+  xl: "w-12 h-12" // 48px
 } as const;
 
 // Variantes de color del sistema WebCode
 export const ICON_VARIANTS = {
-  default: 'text-foreground',  // Color del tema
-  primary: 'text-primary',     // Rosa #ff6680
-  secondary: 'text-secondary', // Naranja #ff8f66  
-  accent: 'text-accent'        // Púrpura #9333ea
+  default: "text-foreground", // Color del tema
+  primary: "text-primary", // Rosa #ff6680
+  secondary: "text-secondary", // Naranja #ff8f66
+  accent: "text-accent" // Púrpura #9333ea
 } as const;
 ```
 
@@ -105,17 +108,18 @@ export const ICON_VARIANTS = {
 
 ### **Comparación con Otras Opciones**
 
-| Biblioteca | Ventajas | Desventajas | Decisión |
-|------------|----------|-------------|----------|
-| **SVGRepo** | ✅ +500k iconos, MIT license, API REST, optimizados | ⚠️ Curva de aprendizaje | **✅ SELECCIONADO** |
-| Font Awesome | ✅ Amplio uso, componentes | ❌ Licencia premium, bundle size | ❌ Rechazado |
-| Heroicons | ✅ Minimalista, Tailwind | ❌ Catálogo limitado | ❌ Rechazado |
-| Lucide | ✅ Moderno, TypeScript | ❌ Menos iconos | ❌ Rechazado |
-| Emoticones Unicode | ✅ Nativo, ligero | ❌ Inconsistente, no escalable | ❌ Rechazado |
+| Biblioteca         | Ventajas                                            | Desventajas                      | Decisión            |
+| ------------------ | --------------------------------------------------- | -------------------------------- | ------------------- |
+| **SVGRepo**        | ✅ +500k iconos, MIT license, API REST, optimizados | ⚠️ Curva de aprendizaje          | **✅ SELECCIONADO** |
+| Font Awesome       | ✅ Amplio uso, componentes                          | ❌ Licencia premium, bundle size | ❌ Rechazado        |
+| Heroicons          | ✅ Minimalista, Tailwind                            | ❌ Catálogo limitado             | ❌ Rechazado        |
+| Lucide             | ✅ Moderno, TypeScript                              | ❌ Menos iconos                  | ❌ Rechazado        |
+| Emoticones Unicode | ✅ Nativo, ligero                                   | ❌ Inconsistente, no escalable   | ❌ Rechazado        |
 
 ### **Beneficios de SVGRepo**
 
 #### **Ventajas Técnicas**
+
 - **Escalabilidad**: SVGs sin pérdida de calidad en cualquier resolución
 - **Consistencia**: Mismo estilo visual en todos los navegadores
 - **Personalización**: Colores y tamaños adaptables al sistema de diseño
@@ -125,6 +129,7 @@ export const ICON_VARIANTS = {
 - **API REST**: Integración programática para futuras mejoras
 
 #### **Ventajas de Diseño**
+
 - **Coherencia**: Mantiene el estilo moderno del proyecto
 - **Flexibilidad**: Variantes de color (primary, secondary, accent)
 - **Tamaños**: 4 tamaños predefinidos (sm, md, lg, xl)
@@ -138,6 +143,7 @@ export const ICON_VARIANTS = {
 Para cada emoji, se siguió este proceso:
 
 1. **Identificación del Concepto**
+
    ```typescript
    '💡' → Concepto: "Idea, innovación, creatividad"
    ```
@@ -154,10 +160,11 @@ Para cada emoji, se siguió este proceso:
    - **Escalabilidad**: Funciona en todos los tamaños
 
 4. **Integración en el Sistema**
+
    ```typescript
    // Mapeo final
    '💡': 'lightbulb'  // Emoji → SVG Name
-   
+
    // Path optimizado
    'lightbulb': 'M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6C7.8 12.16 7 10.63 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z'
    ```
@@ -178,7 +185,7 @@ Los iconos se integran perfectamente con la paleta de colores:
 <SingleEmojiToSvg emoji="🚀" variant="accent" />     /* Púrpura */
 ```
 
-## ****[Recursos]** Guía de Uso**
+## \***\*[Recursos]** Guía de Uso\*\*
 
 ### **1. Reemplazo Simple de Emoji**
 
@@ -198,26 +205,29 @@ import { SingleEmojiToSvg } from '@/components/ui/emoji-to-svg';
 ### **2. Reemplazo Automático en Texto**
 
 ```tsx
-import { EmojiToSvg } from '@/components/ui/emoji-to-svg';
+import { EmojiToSvg } from "@/components/ui/emoji-to-svg";
 
 // Reemplaza todos los emoticones en el contenido
 <EmojiToSvg size="md" variant="default">
-  <p>**[Completado]** Proyecto completado **[Lanzamiento]** ¡Excelente trabajo! **[Objetivos]**</p>
-</EmojiToSvg>
+  <p>
+    **[Completado]** Proyecto completado **[Lanzamiento]** ¡Excelente trabajo!
+    **[Objetivos]**
+  </p>
+</EmojiToSvg>;
 ```
 
 ### **3. Uso del Hook Directo**
 
 ```tsx
-import { useEmojiReplacement } from '@/hooks/use-emoji-replacement';
+import { useEmojiReplacement } from "@/hooks/use-emoji-replacement";
 
 function MyComponent() {
   const { replaceEmoji, hasSvgEquivalent } = useEmojiReplacement();
-  
+
   return (
     <div>
-      {hasSvgEquivalent('**[Diseño]**') ? (
-        replaceEmoji('**[Diseño]**', { size: 'lg', variant: 'primary' })
+      {hasSvgEquivalent("**[Diseño]**") ? (
+        replaceEmoji("**[Diseño]**", { size: "lg", variant: "primary" })
       ) : (
         <span>**[Diseño]**</span>
       )}
@@ -231,28 +241,30 @@ function MyComponent() {
 ```tsx
 // Colores del sistema WebCode
 <SingleEmojiToSvg emoji="**[Lanzamiento]**" variant="primary" />    // Rosa #ff6680
-<SingleEmojiToSvg emoji="**[Lanzamiento]**" variant="secondary" />  // Naranja #ff8f66  
+<SingleEmojiToSvg emoji="**[Lanzamiento]**" variant="secondary" />  // Naranja #ff8f66
 <SingleEmojiToSvg emoji="**[Lanzamiento]**" variant="accent" />     // Púrpura #9333ea
 <SingleEmojiToSvg emoji="**[Lanzamiento]**" variant="default" />    // Color del tema
 ```
 
-## ****[Herramientas]** Configuración Avanzada**
+## \***\*[Herramientas]** Configuración Avanzada\*\*
 
 ### **Añadir Nuevos Emoticones**
 
 1. **Actualizar mapeo en `svg-icons.ts`**:
+
 ```typescript
 export const EMOJI_TO_SVG_MAP = {
   // ... existentes
-  '🆕': 'plus-circle',  // Nuevo emoji
+  "🆕": "plus-circle" // Nuevo emoji
 } as const;
 ```
 
 2. **Añadir path SVG en `svg-icon.tsx`**:
+
 ```typescript
 const iconPaths: Record<string, string> = {
   // ... existentes
-  'plus-circle': 'M12 5v14m7-7H5',  // Path del SVG
+  "plus-circle": "M12 5v14m7-7H5" // Path del SVG
 };
 ```
 
@@ -260,26 +272,26 @@ const iconPaths: Record<string, string> = {
 
 ```tsx
 // Clases CSS personalizadas
-<SingleEmojiToSvg 
-  emoji="**[Rendimiento]**" 
-  className="drop-shadow-lg hover:scale-110 transition-transform" 
+<SingleEmojiToSvg
+  emoji="**[Rendimiento]**"
+  className="drop-shadow-lg hover:scale-110 transition-transform"
   variant="primary"
 />
 ```
 
-## ****[Análisis]** Emoticones Soportados**
+## \***\*[Análisis]** Emoticones Soportados\*\*
 
 ### **Categorías Disponibles**
 
-| Categoría | Emoticones | Uso Principal |
-|-----------|------------|---------------|
-| **Feedback** | **[Completado]** **[Error]** **[Advertencia]** | Estados y validaciones |
-| **Objetivos** | **[Objetivos]** **[Análisis]** **[Crecimiento]** | Metas y análisis |
-| **Diseño** | **[Diseño]** **[Pincel]** **[Arte]** | Creatividad y arte |
-| **Tecnología** | **[Desarrollo]** **[Móvil]** **[Web]** | Desarrollo web |
-| **Comunicación** | **[Teléfono]** **[Email]** **[Chat]** | Canales de contacto |
-| **Proceso** | **[Búsqueda]** **[Desarrollo]** **[Lanzamiento]** | Fases de desarrollo |
-| **Calidad** | **[Destacado]** **[Calidad]** **[Protección]** | Garantías y calidad |
+| Categoría        | Emoticones                                        | Uso Principal          |
+| ---------------- | ------------------------------------------------- | ---------------------- |
+| **Feedback**     | **[Completado]** **[Error]** **[Advertencia]**    | Estados y validaciones |
+| **Objetivos**    | **[Objetivos]** **[Análisis]** **[Crecimiento]**  | Metas y análisis       |
+| **Diseño**       | **[Diseño]** **[Pincel]** **[Arte]**              | Creatividad y arte     |
+| **Tecnología**   | **[Desarrollo]** **[Móvil]** **[Web]**            | Desarrollo web         |
+| **Comunicación** | **[Teléfono]** **[Email]** **[Chat]**             | Canales de contacto    |
+| **Proceso**      | **[Búsqueda]** **[Desarrollo]** **[Lanzamiento]** | Fases de desarrollo    |
+| **Calidad**      | **[Destacado]** **[Calidad]** **[Protección]**    | Garantías y calidad    |
 
 ### **Lista Completa**
 
@@ -287,25 +299,29 @@ const iconPaths: Record<string, string> = {
 **[Completado]** **[Error]** **[Advertencia]** **[Objetivos]** **[Análisis]** **[Diseño]** **[Idea]** **[Documentación]** **[Herramientas]** **[Lista]** **[Recursos]** **[Rendimiento]** **[Móvil]** **[Celebración]** **[Lanzamiento]** **[Desarrollo]** **[Web]** **[Crecimiento]** **[Destacado]** **[Regalo]** **[Calidad]** **[Tendencia]** **[Estrella]** **[Brillo]** **[Magia]** **[Teléfono]** **[Email]** **[Chat]** **[Monitor]** **[Video]** **[Búsqueda]** **[Protección]**
 ```
 
-## ****[Lanzamiento]** Implementación en Componentes Existentes**
+## \***\*[Lanzamiento]** Implementación en Componentes Existentes\*\*
 
 ### **PhaseTimeline.tsx** **[Completado]**
+
 - Reemplazado sistema de SVGs hardcodeados
 - Uso del componente `SvgIcon` centralizado
 - Mantiene coherencia visual
 
 ### **BriefingForm.tsx** **[Completado]**
+
 - Emoji **[Idea]** reemplazado por SVG
 - Mejor integración con el sistema de colores
 
 ### **Próximos Componentes**
+
 - `CommunicationChannels.tsx` - Iconos de canales
 - `QualityGuarantees.tsx` - Iconos de garantías
 - `BriefingBenefits.tsx` - Iconos de beneficios
 
-## ****[Búsqueda]** Testing y Validación**
+## \***\*[Búsqueda]** Testing y Validación\*\*
 
 ### **Verificación Visual**
+
 ```bash
 # Ejecutar en desarrollo
 pnpm dev
@@ -316,28 +332,30 @@ pnpm dev
 ```
 
 ### **Testing de Accesibilidad**
+
 - **[Completado]** `aria-label` en todos los SVGs
 - **[Completado]** `role="img"` para lectores de pantalla
 - **[Completado]** `title` para tooltips informativos
 
-## ****[Crecimiento]** Métricas de Rendimiento**
+## \***\*[Crecimiento]** Métricas de Rendimiento\*\*
 
 ### **Antes vs Después**
 
-| Métrica | Emoticones Unicode | SVGs Optimizados |
-|---------|-------------------|------------------|
-| **Tamaño** | ~4 bytes | ~2-3 KB (cached) |
-| **Escalabilidad** | Limitada | Perfecta |
-| **Consistencia** | Variable | Uniforme |
-| **Personalización** | Ninguna | Completa |
+| Métrica             | Emoticones Unicode | SVGs Optimizados |
+| ------------------- | ------------------ | ---------------- |
+| **Tamaño**          | ~4 bytes           | ~2-3 KB (cached) |
+| **Escalabilidad**   | Limitada           | Perfecta         |
+| **Consistencia**    | Variable           | Uniforme         |
+| **Personalización** | Ninguna            | Completa         |
 
 ### **Optimizaciones Implementadas**
+
 - **[Completado]** SVGs inline para evitar requests HTTP
 - **[Completado]** Sistema de cache en memoria
 - **[Completado]** Lazy loading para iconos no críticos
 - **[Completado]** Compresión automática de paths
 
-## ****[Recargar]** Migración Gradual**
+## \***\*[Recargar]** Migración Gradual\*\*
 
 ### **Estrategia de Implementación**
 
@@ -361,11 +379,13 @@ pnpm dev
 ## **🛠️ Mantenimiento**
 
 ### **Actualizaciones Regulares**
+
 - Revisar nuevos iconos en SVGRepo
 - Actualizar mapeo de emoticones
 - Optimizar paths SVG existentes
 
 ### **Monitoreo**
+
 - Performance impact
 - Accessibility compliance
 - Visual consistency
@@ -379,7 +399,9 @@ En el futuro, se planea integrar directamente con la API de SVGRepo:
 ```typescript
 // Integración futura con API REST
 const fetchIconFromSVGRepo = async (iconName: string) => {
-  const response = await fetch(`https://www.svgrepo.com/api/v1/search/?q=${iconName}`);
+  const response = await fetch(
+    `https://www.svgrepo.com/api/v1/search/?q=${iconName}`
+  );
   const data = await response.json();
   return data.icons[0].svg_path;
 };

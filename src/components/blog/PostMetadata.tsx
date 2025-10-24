@@ -1,7 +1,7 @@
 /**
  * Componente para mostrar metadata de posts del blog
  * Server Component - Información de autor, fecha y tiempo de lectura
- * 
+ *
  * Incluye structured data para SEO
  */
 
@@ -84,26 +84,26 @@ function UpdatedDateInfo({ updatedDate }: { updatedDate: string }) {
 
 /**
  * Metadata completa del post (autor, fecha, tiempo de lectura)
- * 
+ *
  * @example
  * ```tsx
  * // Metadata completa
- * <PostMetadata 
+ * <PostMetadata
  *   author="John Doe"
  *   publishedDate="2025-10-24"
  *   readTime={5}
  * />
- * 
+ *
  * // Con fecha de actualización
- * <PostMetadata 
+ * <PostMetadata
  *   author="John Doe"
  *   publishedDate="2025-10-24"
  *   updatedDate="2025-10-25"
  *   readTime={5}
  * />
- * 
+ *
  * // Solo fecha
- * <PostMetadata 
+ * <PostMetadata
  *   author="John Doe"
  *   publishedDate="2025-10-24"
  *   dateOnly
@@ -152,10 +152,10 @@ export function PostMetadata({
 
 /**
  * Metadata compacta (solo fecha y tiempo de lectura)
- * 
+ *
  * @example
  * ```tsx
- * <CompactPostMetadata 
+ * <CompactPostMetadata
  *   publishedDate="2025-10-24"
  *   readTime={5}
  * />

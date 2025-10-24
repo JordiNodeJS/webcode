@@ -20,6 +20,7 @@ Preparar la aplicación WEBCODE (Next.js 15 + React 19 + Tailwind CSS v4) para d
 **Resultado**: La aplicación es **100% compatible** con Netlify sin modificaciones mayores.
 
 **Hallazgos clave**:
+
 - ✅ No hay dependencias específicas de Vercel en el código
 - ✅ Next.js 15.5.2 soportado completamente por Netlify
 - ✅ Todas las características (App Router, Server Components, Middleware, ISR) funcionan en Netlify
@@ -37,6 +38,7 @@ Preparar la aplicación WEBCODE (Next.js 15 + React 19 + Tailwind CSS v4) para d
 Ubicación: `/netlify.toml`
 
 **Contenido**:
+
 - Build command: `pnpm build`
 - Publish directory: `.next`
 - Plugin `@netlify/plugin-nextjs` (se instala automáticamente)
@@ -48,6 +50,7 @@ Ubicación: `/netlify.toml`
 - Soporte para deploy previews y branch deploys
 
 **Características especiales**:
+
 - Detección automática de Turbopack
 - Edge Functions para middleware
 - Fine-grained caching para ISR
@@ -60,6 +63,7 @@ Ubicación: `/netlify.toml`
 **Cambios realizados**:
 
 1. **Detección de entorno Netlify**:
+
    ```typescript
    output: process.env.NETLIFY ? "standalone" : undefined,
    ```
@@ -71,9 +75,9 @@ Ubicación: `/netlify.toml`
      {
        protocol: "https",
        hostname: "**.netlify.app",
-       pathname: "/**",
-     },
-   ]
+       pathname: "/**"
+     }
+   ];
    ```
 
 **Nota**: Configuración es **retrocompatible** con Vercel. El proyecto puede desplegarse en ambas plataformas sin cambios adicionales.
@@ -87,17 +91,20 @@ Ubicación: `/netlify.toml`
 **Variables incluidas**:
 
 **Obligatorias para Netlify**:
+
 - `NODE_VERSION=20`
 - `PNPM_VERSION=9`
 - `NETLIFY=true`
 - `NEXT_TELEMETRY_DISABLED=1`
 
 **Variables de funcionalidad**:
+
 - `NOTION_API_KEY` - Blog con Notion CMS
 - `NOTION_DATABASE_ID` - ID de base de datos Notion
 - `RESEND_API_KEY` - Envío de emails (contacto/briefing)
 
 **Variables opcionales**:
+
 - `NEXT_PUBLIC_GA_ID` - Google Analytics 4
 - `NEXT_PUBLIC_SITE_URL` - URL del sitio (se configura automáticamente)
 
@@ -112,6 +119,7 @@ Se crearon 3 documentos exhaustivos:
 #### **5.1. Guía de Deployment (`docs/NETLIFY-DEPLOYMENT-GUIDE.md`)**
 
 **Contenido** (15,000+ palabras):
+
 - Resumen ejecutivo con análisis de compatibilidad
 - Análisis detallado de todas las dependencias
 - Cambios realizados documentados
@@ -135,6 +143,7 @@ Se crearon 3 documentos exhaustivos:
 #### **5.2. Checklist de Verificación (`docs/NETLIFY-DEPLOYMENT-CHECKLIST.md`)**
 
 **Contenido** (8,000+ palabras):
+
 - **8 fases de verificación**:
   1. Preparación Local
   2. Configuración en Netlify
@@ -156,6 +165,7 @@ Se crearon 3 documentos exhaustivos:
 #### **5.3. Resumen Ejecutivo (`docs/NETLIFY-MIGRATION-SUMMARY.md`)**
 
 **Contenido** (3,500+ palabras):
+
 - Análisis de compatibilidad en tabla
 - Lista de archivos creados/modificados
 - Plan de deployment con tiempos
@@ -173,6 +183,7 @@ Se crearon 3 documentos exhaustivos:
 ### 6. **Actualización del README.md** ✅
 
 **Cambios**:
+
 - Sección de Deployment actualizada
 - Netlify marcado como "Recomendado" con estrella ⭐
 - Enlaces a documentación completa
@@ -184,13 +195,13 @@ Se crearon 3 documentos exhaustivos:
 
 ## 📁 Archivos Creados
 
-| Archivo | Ubicación | Tamaño | Propósito |
-|---------|-----------|--------|-----------|
-| `netlify.toml` | `/` | ~5 KB | Configuración de build y deploy |
-| `.env.netlify.example` | `/` | ~2 KB | Template de variables de entorno |
-| `NETLIFY-DEPLOYMENT-GUIDE.md` | `/docs/` | ~60 KB | Guía completa paso a paso |
-| `NETLIFY-DEPLOYMENT-CHECKLIST.md` | `/docs/` | ~35 KB | Checklist de verificación |
-| `NETLIFY-MIGRATION-SUMMARY.md` | `/docs/` | ~15 KB | Resumen ejecutivo |
+| Archivo                           | Ubicación | Tamaño | Propósito                        |
+| --------------------------------- | --------- | ------ | -------------------------------- |
+| `netlify.toml`                    | `/`       | ~5 KB  | Configuración de build y deploy  |
+| `.env.netlify.example`            | `/`       | ~2 KB  | Template de variables de entorno |
+| `NETLIFY-DEPLOYMENT-GUIDE.md`     | `/docs/`  | ~60 KB | Guía completa paso a paso        |
+| `NETLIFY-DEPLOYMENT-CHECKLIST.md` | `/docs/`  | ~35 KB | Checklist de verificación        |
+| `NETLIFY-MIGRATION-SUMMARY.md`    | `/docs/`  | ~15 KB | Resumen ejecutivo                |
 
 **Total**: 5 archivos, ~117 KB de documentación.
 
@@ -198,10 +209,10 @@ Se crearon 3 documentos exhaustivos:
 
 ## 🔧 Archivos Modificados
 
-| Archivo | Cambios | Impacto |
-|---------|---------|---------|
-| `next.config.ts` | + Detección Netlify<br>+ remotePattern *.netlify.app | Bajo - Retrocompatible |
-| `README.md` | + Sección Netlify<br>+ Referencias a docs | Bajo - Solo docs |
+| Archivo          | Cambios                                               | Impacto                |
+| ---------------- | ----------------------------------------------------- | ---------------------- |
+| `next.config.ts` | + Detección Netlify<br>+ remotePattern \*.netlify.app | Bajo - Retrocompatible |
+| `README.md`      | + Sección Netlify<br>+ Referencias a docs             | Bajo - Solo docs       |
 
 **Total**: 2 archivos modificados, cambios mínimos y no breaking.
 
@@ -256,36 +267,36 @@ Se crearon 3 documentos exhaustivos:
 
 ### Tiempo de Implementación
 
-| Tarea | Tiempo Real |
-|-------|-------------|
-| Análisis de compatibilidad | 15 min |
-| Creación de `netlify.toml` | 20 min |
-| Modificación de `next.config.ts` | 10 min |
-| Documentación completa | 60 min |
-| Testing y verificación | 15 min |
-| **Total** | **2 horas** |
+| Tarea                            | Tiempo Real |
+| -------------------------------- | ----------- |
+| Análisis de compatibilidad       | 15 min      |
+| Creación de `netlify.toml`       | 20 min      |
+| Modificación de `next.config.ts` | 10 min      |
+| Documentación completa           | 60 min      |
+| Testing y verificación           | 15 min      |
+| **Total**                        | **2 horas** |
 
 ### Tiempo de Deployment Estimado
 
-| Fase | Duración Estimada |
-|------|-------------------|
-| Preparación local | 10 min |
-| Setup en Netlify | 15 min |
-| Primer deploy | 10 min |
-| Verificación post-deploy | 20 min |
-| Dominio custom (opcional) | 15 min |
-| Optimizaciones | 10 min |
-| **Total** | **60-75 min** |
+| Fase                      | Duración Estimada |
+| ------------------------- | ----------------- |
+| Preparación local         | 10 min            |
+| Setup en Netlify          | 15 min            |
+| Primer deploy             | 10 min            |
+| Verificación post-deploy  | 20 min            |
+| Dominio custom (opcional) | 15 min            |
+| Optimizaciones            | 10 min            |
+| **Total**                 | **60-75 min**     |
 
 ### Performance Esperada
 
-| Métrica | Vercel | Netlify | Diferencia |
-|---------|--------|---------|------------|
-| Build Time | 2-3 min | 3-5 min | +33% más lento |
-| TTFB | ~100ms | ~100ms | Sin cambios |
-| LCP | < 2.5s | < 2.5s | Sin cambios |
-| CLS | < 0.1 | < 0.1 | Sin cambios |
-| Lighthouse Score | 90+ | 90+ | Sin cambios |
+| Métrica          | Vercel  | Netlify | Diferencia     |
+| ---------------- | ------- | ------- | -------------- |
+| Build Time       | 2-3 min | 3-5 min | +33% más lento |
+| TTFB             | ~100ms  | ~100ms  | Sin cambios    |
+| LCP              | < 2.5s  | < 2.5s  | Sin cambios    |
+| CLS              | < 0.1   | < 0.1   | Sin cambios    |
+| Lighthouse Score | 90+     | 90+     | Sin cambios    |
 
 ---
 
@@ -293,17 +304,17 @@ Se crearon 3 documentos exhaustivos:
 
 ### Guías Creadas
 
-| Aspecto | Documentado | Nivel de Detalle |
-|---------|-------------|------------------|
-| Análisis de compatibilidad | ✅ | Exhaustivo |
-| Proceso de deployment | ✅ | Paso a paso |
-| Configuración de variables | ✅ | Completo |
-| Troubleshooting | ✅ | 6 problemas + soluciones |
-| Verificación post-deploy | ✅ | 150+ items |
-| Comparativa Vercel vs Netlify | ✅ | Tabla detallada |
-| Alternativas para features Vercel | ✅ | 5 features cubiertos |
-| Monitoreo y analytics | ✅ | 2 opciones documentadas |
-| Deploy con CLI | ✅ | Comandos completos |
+| Aspecto                           | Documentado | Nivel de Detalle         |
+| --------------------------------- | ----------- | ------------------------ |
+| Análisis de compatibilidad        | ✅          | Exhaustivo               |
+| Proceso de deployment             | ✅          | Paso a paso              |
+| Configuración de variables        | ✅          | Completo                 |
+| Troubleshooting                   | ✅          | 6 problemas + soluciones |
+| Verificación post-deploy          | ✅          | 150+ items               |
+| Comparativa Vercel vs Netlify     | ✅          | Tabla detallada          |
+| Alternativas para features Vercel | ✅          | 5 features cubiertos     |
+| Monitoreo y analytics             | ✅          | 2 opciones documentadas  |
+| Deploy con CLI                    | ✅          | Comandos completos       |
 
 ### Público Objetivo
 
@@ -455,14 +466,14 @@ Al completar el deployment siguiendo la documentación:
 
 ### Riesgos Identificados y Mitigados
 
-| Riesgo | Probabilidad | Impacto | Mitigación |
-|--------|--------------|---------|------------|
-| Build falla por falta Node.js | Media | Alto | ✅ Variables de entorno documentadas |
-| Variables de entorno incorrectas | Media | Alto | ✅ Template y validación en docs |
-| Dependencias no compatibles | Baja | Alto | ✅ Análisis exhaustivo completado |
-| Performance degradada | Baja | Medio | ✅ Comparativa y métricas documentadas |
-| Funcionalidades no funcionan | Baja | Alto | ✅ Checklist completo de verificación |
-| DNS misconfiguration | Media | Medio | ✅ Instrucciones detalladas paso a paso |
+| Riesgo                           | Probabilidad | Impacto | Mitigación                              |
+| -------------------------------- | ------------ | ------- | --------------------------------------- |
+| Build falla por falta Node.js    | Media        | Alto    | ✅ Variables de entorno documentadas    |
+| Variables de entorno incorrectas | Media        | Alto    | ✅ Template y validación en docs        |
+| Dependencias no compatibles      | Baja         | Alto    | ✅ Análisis exhaustivo completado       |
+| Performance degradada            | Baja         | Medio   | ✅ Comparativa y métricas documentadas  |
+| Funcionalidades no funcionan     | Baja         | Alto    | ✅ Checklist completo de verificación   |
+| DNS misconfiguration             | Media        | Medio   | ✅ Instrucciones detalladas paso a paso |
 
 ---
 

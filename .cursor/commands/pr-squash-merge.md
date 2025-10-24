@@ -117,12 +117,14 @@ Autor: agente automático (prompt maintainer)
 7. **Devolver resultado** en formato markdown
 
 ### ⚠️ Estados que impiden el merge
+
 - **CONFLICTING**: La PR tiene conflictos de merge
 - **BEHIND**: La PR está desactualizada respecto a main
 - **CI_FAILED**: Los checks de CI han fallado
 - **NEEDS_REVIEW**: La PR necesita aprobaciones
 
 ### ✅ Estados que permiten el merge
+
 - **CLEAN**: La PR está lista para merge
 - **MERGEABLE**: No hay conflictos
 - **APPROVED**: Tiene las aprobaciones requeridas

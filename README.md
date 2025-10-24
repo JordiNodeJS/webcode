@@ -9,23 +9,27 @@ WEBCODE es una plataforma integral de desarrollo web profesional para freelancer
 ## 🛠️ Stack Tecnológico
 
 ### Core
+
 - **Next.js** 15.5.2 (App Router + Turbopack + React Compiler)
 - **React** 19.1.0 (Server Components + React Compiler)
 - **TypeScript** 5.x (strict mode)
 - **Tailwind CSS** 4.x (con sistema de diseño WAS personalizado)
 
 ### UI & Animaciones
+
 - **shadcn/ui** - Componentes base (Button, Card, Input, Select, Dialog, etc.)
 - **Lucide React** 0.542.0 - Sistema de iconos completo
 - **Framer Motion** 12.23.12 - Animaciones avanzadas
 - **Sistema WAS** (WebCode Animation System) - Sistema de animaciones propio documentado
 
 ### CMS & Backend
+
 - **Notion API** 5.1.0 - CMS para blog
 - **React Hook Form** 7.62.0 + **Zod** 4.1.5 - Validación de formularios
 - **Resend** 6.1.0 - Servicio de email
 
 ### Herramientas de Desarrollo
+
 - **pnpm** - Gestor de paquetes (obligatorio)
 - **ESLint** 9.37.0 - Linting con configuración estricta
 - **Prettier** 3.6.2 - Formateo de código
@@ -81,9 +85,9 @@ Este proyecto utiliza **Notion** como CMS para gestionar el blog. Los artículos
    - Copia el **Internal Integration Token**
 
 2. **Configura las variables de entorno**
-   
+
    Crea un archivo `.env.local` en la raíz del proyecto:
-   
+
    ```bash
    NOTION_API_KEY=secret_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
    NOTION_DATABASE_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
@@ -95,7 +99,7 @@ Este proyecto utiliza **Notion** como CMS para gestionar el blog. Los artículos
    - Selecciona tu integración
 
 4. **Verifica la conexión**
-   
+
    ```bash
    pnpm notion:verify
    ```
@@ -104,17 +108,17 @@ Este proyecto utiliza **Notion** como CMS para gestionar el blog. Los artículos
 
 Tu base de datos de Notion debe tener las siguientes propiedades:
 
-| Propiedad | Tipo | Obligatorio | Descripción |
-|-----------|------|-------------|-------------|
-| `Title` | Title | ✅ | Título del artículo |
-| `Slug` | Text | ✅ | URL amigable (ej: `mi-primer-post`) |
-| `Description` | Text | ✅ | Resumen/excerpt del artículo |
-| `Status` | Select | ✅ | Estado: `Published`, `Draft`, etc. |
-| `PublishedDate` | Date | ✅ | Fecha de publicación |
-| `Tags` | Multi-select | ⚪ | Categorías del artículo |
-| `Author` | Person | ⚪ | Autor del artículo |
-| `CoverImageURL` | URL | ⚪ | URL de la imagen de portada |
-| `Featured` | Checkbox | ⚪ | Marcar como destacado |
+| Propiedad       | Tipo         | Obligatorio | Descripción                         |
+| --------------- | ------------ | ----------- | ----------------------------------- |
+| `Title`         | Title        | ✅          | Título del artículo                 |
+| `Slug`          | Text         | ✅          | URL amigable (ej: `mi-primer-post`) |
+| `Description`   | Text         | ✅          | Resumen/excerpt del artículo        |
+| `Status`        | Select       | ✅          | Estado: `Published`, `Draft`, etc.  |
+| `PublishedDate` | Date         | ✅          | Fecha de publicación                |
+| `Tags`          | Multi-select | ⚪          | Categorías del artículo             |
+| `Author`        | Person       | ⚪          | Autor del artículo                  |
+| `CoverImageURL` | URL          | ⚪          | URL de la imagen de portada         |
+| `Featured`      | Checkbox     | ⚪          | Marcar como destacado               |
 
 **Nota:** Las propiedades marcadas con ✅ son obligatorias. El sistema incluye validaciones y fallbacks para propiedades faltantes.
 
@@ -200,6 +204,7 @@ webcode/
 ## ✨ Características
 
 ### Sistema de Diseño WebCode (WAS)
+
 - Sistema de colores personalizado (Rosa #dc7cb3 + Aguamarina #82c8d2)
 - Sombras 3D con colores del tema
 - Animaciones optimizadas con Framer Motion
@@ -208,6 +213,7 @@ webcode/
 - Tipografía cohesiva (Geist Sans/Mono)
 
 ### Performance
+
 - **Lighthouse Score**: 100/100
 - **Core Web Vitals**: Todos en verde
 - **FPS Promedio**: >60 FPS
@@ -215,6 +221,7 @@ webcode/
 - **Lazy Loading**: Componentes e imágenes optimizadas
 
 ### SEO y Accesibilidad
+
 - Meta tags optimizados
 - Structured data (JSON-LD)
 - WCAG 2.1 AA compliant
@@ -223,6 +230,7 @@ webcode/
 - Open Graph optimizado
 
 ### Blog con Notion
+
 - Sistema de blog dinámico usando Notion como CMS
 - Renderizado de Markdown
 - Búsqueda y filtrado por tags
@@ -240,6 +248,7 @@ La documentación completa del proyecto está en `/docs/`:
 - **[05-DISENO-sistema-animaciones-webcode.md](docs/05-DISENO-sistema-animaciones-webcode.md)** - Sistema WAS
 
 ### Para Desarrolladores
+
 - **[.github/copilot-instructions.md](.github/copilot-instructions.md)** - Instrucciones para AI
 - **[CONTRIBUTING.md](CONTRIBUTING.md)** - Guía de contribución
 - **[TESTING-GUIDE.md](docs/TESTING-GUIDE.md)** - Guía de testing
@@ -260,15 +269,18 @@ pnpm test:e2e
 ## 📖 Recursos de Aprendizaje
 
 ### Next.js
+
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Learn Next.js](https://nextjs.org/learn)
 - [Next.js GitHub](https://github.com/vercel/next.js)
 
 ### Tailwind CSS
+
 - [Tailwind CSS v4 Docs](https://tailwindcss.com/docs)
 - [Tailwind UI](https://tailwindui.com/)
 
 ### shadcn/ui
+
 - [shadcn/ui Documentation](https://ui.shadcn.com/)
 - [shadcn/ui Components](https://ui.shadcn.com/docs/components)
 
@@ -300,6 +312,7 @@ El proyecto está optimizado para deployment en **Netlify** y **Vercel**.
 Soporte completo para Next.js 15 con configuración lista para usar:
 
 **📖 Documentación Completa**:
+
 - [`docs/NETLIFY-DEPLOYMENT-GUIDE.md`](docs/NETLIFY-DEPLOYMENT-GUIDE.md) - Guía paso a paso
 - [`docs/NETLIFY-DEPLOYMENT-CHECKLIST.md`](docs/NETLIFY-DEPLOYMENT-CHECKLIST.md) - Checklist de verificación
 - [`docs/NETLIFY-MIGRATION-SUMMARY.md`](docs/NETLIFY-MIGRATION-SUMMARY.md) - Resumen ejecutivo
@@ -307,11 +320,13 @@ Soporte completo para Next.js 15 con configuración lista para usar:
 **Deployment Rápido**:
 
 1. **Conectar repositorio en Netlify**
+
    ```bash
    # Netlify detecta automáticamente la configuración desde netlify.toml
    ```
 
 2. **Configurar variables de entorno** en Netlify Dashboard:
+
    ```
    NODE_VERSION=20
    PNPM_VERSION=9
@@ -326,6 +341,7 @@ Soporte completo para Next.js 15 con configuración lista para usar:
    - La configuración está en `netlify.toml`
 
 **CLI Alternativo**:
+
 ```bash
 # Instalar Netlify CLI
 pnpm add -g netlify-cli
@@ -441,4 +457,3 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 ---
 
 **Hecho con ❤️ en Barcelona** 🇪🇸
-

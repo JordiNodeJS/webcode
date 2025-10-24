@@ -6,7 +6,8 @@ import { cn } from "@/lib/utils";
 
 export function EnhancedServicesSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const { disableAnimationsForSection: _disableAnimationsForSection } = useAnimationContext();
+  const { disableAnimationsForSection: _disableAnimationsForSection } =
+    useAnimationContext();
 
   const services = [
     {
@@ -14,7 +15,8 @@ export function EnhancedServicesSection() {
       icon: "📱",
       title: "Landing Pages",
       subtitle: "CONVERSIÓN MAXIMIZADA",
-      description: "Páginas de aterrizaje diseñadas para un objetivo específico: convertir visitantes en clientes. Optimizadas para cada campaña.",
+      description:
+        "Páginas de aterrizaje diseñadas para un objetivo específico: convertir visitantes en clientes. Optimizadas para cada campaña.",
       features: [
         "Diseño enfocado en conversión",
         "A/B testing integrado",
@@ -30,7 +32,8 @@ export function EnhancedServicesSection() {
       icon: "🏛️",
       title: "Webs Institucionales",
       subtitle: "PRESENCIA CORPORATIVA",
-      description: "Páginas web para instituciones, organizaciones y empresas que necesitan transmitir profesionalidad y confianza.",
+      description:
+        "Páginas web para instituciones, organizaciones y empresas que necesitan transmitir profesionalidad y confianza.",
       features: [
         "Diseño institucional profesional",
         "Gestión de contenidos avanzada",
@@ -46,14 +49,20 @@ export function EnhancedServicesSection() {
       icon: "📊",
       title: "Rediseño de Páginas Web",
       subtitle: "MODERNIZA TU PRESENCIA",
-      description: "Actualizamos tu página web existente con las últimas tecnologías y tendencias de diseño. Sin perder el posicionamiento SEO.",
+      description:
+        "Actualizamos tu página web existente con las últimas tecnologías y tendencias de diseño. Sin perder el posicionamiento SEO.",
       features: [
         "Migración sin pérdida de SEO",
         "Diseño moderno y responsive",
         "Optimización de rendimiento",
         "Nuevas funcionalidades"
       ],
-      technologies: ["Next.js", "SEO Migration", "Performance Optimization", "Modern CSS"],
+      technologies: [
+        "Next.js",
+        "SEO Migration",
+        "Performance Optimization",
+        "Modern CSS"
+      ],
       color: "secondary",
       href: "/soluciones/rediseno"
     },
@@ -62,14 +71,20 @@ export function EnhancedServicesSection() {
       icon: "🔧",
       title: "Mantenimiento Web",
       subtitle: "SOPORTE ESPECIALIZADO",
-      description: "Mantenimiento continuo, actualizaciones de seguridad y soporte técnico para que tu página web siempre funcione perfectamente.",
+      description:
+        "Mantenimiento continuo, actualizaciones de seguridad y soporte técnico para que tu página web siempre funcione perfectamente.",
       features: [
         "Actualizaciones de seguridad",
         "Backups automáticos",
         "Soporte técnico 24/7",
         "Optimización continua"
       ],
-      technologies: ["Monitoring", "Strapi", "Security Updates", "Performance Tuning"],
+      technologies: [
+        "Monitoring",
+        "Strapi",
+        "Security Updates",
+        "Performance Tuning"
+      ],
       color: "accent",
       href: "/soluciones/mantenimiento"
     },
@@ -78,13 +93,26 @@ export function EnhancedServicesSection() {
       icon: "🏢",
       title: "Páginas Web Corporativas",
       subtitle: "DISEÑO WEB A MEDIDA",
-      description: "Creamos páginas web profesionales completamente personalizadas que transmiten credibilidad, generan confianza y convierten visitantes en clientes. Diseño único adaptado a tu marca, valores y objetivos de negocio con las últimas tecnologías web.",
+      description:
+        "Creamos páginas web profesionales completamente personalizadas que transmiten credibilidad, generan confianza y convierten visitantes en clientes. Diseño único adaptado a tu marca, valores y objetivos de negocio con las últimas tecnologías web.",
       features: [
         "Diseño web a medida y único - Cada página es exclusiva para tu marca",
         "Optimización SEO desde el primer día - Posicionamiento orgánico garantizado",
         "Sistema de gestión de contenidos propio - Fácil actualización sin conocimientos técnicos"
       ],
-      technologies: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Strapi CMS", "Framer Motion", "Google Analytics 4", "Cloudflare", "Vercel", "Stripe", "EmailJS"],
+      technologies: [
+        "Next.js 15",
+        "React 19",
+        "TypeScript",
+        "Tailwind CSS",
+        "Strapi CMS",
+        "Framer Motion",
+        "Google Analytics 4",
+        "Cloudflare",
+        "Vercel",
+        "Stripe",
+        "EmailJS"
+      ],
       color: "primary",
       href: "/soluciones/web-development"
     },
@@ -93,7 +121,8 @@ export function EnhancedServicesSection() {
       icon: "🛒",
       title: "Tiendas Online",
       subtitle: "E-COMMERCE QUE VENDE",
-      description: "Tiendas online completas optimizadas para conversión. Desde catálogos simples hasta e-commerce complejos con múltiples funcionalidades.",
+      description:
+        "Tiendas online completas optimizadas para conversión. Desde catálogos simples hasta e-commerce complejos con múltiples funcionalidades.",
       features: [
         "Tiendas WordPress y Webflow",
         "Integración de pagos segura",
@@ -159,9 +188,10 @@ export function EnhancedServicesSection() {
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Al contar con una larga experiencia y un equipo de desarrolladores y diseñadores web 
-            con diferentes especializaciones, somos capaces de ofrecer una gran variedad de servicios 
-            en la realización de páginas web a medida.
+            Al contar con una larga experiencia y un equipo de desarrolladores y
+            diseñadores web con diferentes especializaciones, somos capaces de
+            ofrecer una gran variedad de servicios en la realización de páginas
+            web a medida.
           </p>
         </div>
 
@@ -179,16 +209,23 @@ export function EnhancedServicesSection() {
                 )}
               >
                 {/* Icon */}
-                <div className={cn(
-                  "w-16 h-16 rounded-2xl flex items-center justify-center text-white text-2xl mb-6 shadow-3d-md",
-                  colors.icon
-                )}>
+                <div
+                  className={cn(
+                    "w-16 h-16 rounded-2xl flex items-center justify-center text-white text-2xl mb-6 shadow-3d-md",
+                    colors.icon
+                  )}
+                >
                   {service.icon}
                 </div>
 
                 {/* Content */}
                 <div className="mb-6">
-                  <div className={cn("text-sm font-semibold uppercase tracking-wide mb-2", colors.accent)}>
+                  <div
+                    className={cn(
+                      "text-sm font-semibold uppercase tracking-wide mb-2",
+                      colors.accent
+                    )}
+                  >
                     {service.subtitle}
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-3">
@@ -203,8 +240,15 @@ export function EnhancedServicesSection() {
                 <div className="space-y-2 mb-6">
                   {service.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-center gap-3">
-                      <div className={cn("w-2 h-2 rounded-full flex-shrink-0", colors.accent)}></div>
-                      <span className="text-sm text-foreground/90">{feature}</span>
+                      <div
+                        className={cn(
+                          "w-2 h-2 rounded-full flex-shrink-0",
+                          colors.accent
+                        )}
+                      ></div>
+                      <span className="text-sm text-foreground/90">
+                        {feature}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -224,8 +268,8 @@ export function EnhancedServicesSection() {
                 </div>
 
                 {/* CTA - Solo mostrar si la página existe */}
-                {(service.href === "/soluciones/landing-pages" || 
-                  service.href === "/soluciones/web-development" || 
+                {(service.href === "/soluciones/landing-pages" ||
+                  service.href === "/soluciones/web-development" ||
                   service.href === "/soluciones/e-commerce" ||
                   service.href === "/soluciones/rediseno" ||
                   service.href === "/soluciones/mantenimiento") && (
@@ -256,9 +300,17 @@ export function EnhancedServicesSection() {
               ¿Necesitas alguno de nuestros servicios?
             </h3>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Sea cual sea tu proyecto, lo podemos afrontar. 
-              <strong className="text-foreground"> Páginas web únicas</strong> con diseños originales y 
-              <strong className="text-foreground"> 100% orientados a los resultados</strong>.
+              Sea cual sea tu proyecto, lo podemos afrontar.
+              <strong className="text-foreground">
+                {" "}
+                Páginas web únicas
+              </strong>{" "}
+              con diseños originales y
+              <strong className="text-foreground">
+                {" "}
+                100% orientados a los resultados
+              </strong>
+              .
             </p>
             <a
               href="/contacto"

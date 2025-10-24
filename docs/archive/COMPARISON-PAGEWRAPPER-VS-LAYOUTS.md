@@ -7,9 +7,7 @@
 ```tsx
 // Se repite en 25+ páginas
 <div className="pt-24 pb-20 px-4">
-  <div className="container mx-auto max-w-4xl">
-    {/* contenido */}
-  </div>
+  <div className="container mx-auto max-w-4xl">{/* contenido */}</div>
 </div>
 ```
 
@@ -23,9 +21,7 @@ export function ContentPage({ children }) {
   return (
     <main className="min-h-screen">
       <article className="pt-24 pb-20 px-4">
-        <div className="container mx-auto max-w-4xl">
-          {children}
-        </div>
+        <div className="container mx-auto max-w-4xl">{children}</div>
       </article>
     </main>
   );
@@ -52,8 +48,10 @@ export default function ContactoPage() {
 <body>
   <div>
     <HeaderNavigation />
-    <main class="flex-1">           <!-- De layout.tsx -->
-      <main class="min-h-screen">   <!-- De PageWrapper ❌ DUPLICADO -->
+    <main class="flex-1">
+      <!-- De layout.tsx -->
+      <main class="min-h-screen">
+        <!-- De PageWrapper ❌ DUPLICADO -->
         <article class="pt-24">
           <h1>Contacto</h1>
         </article>
@@ -78,8 +76,8 @@ Si olvidas el import → spacing incorrecto.
 #### ❌ Props Confusas
 
 ```tsx
-<ContentPage 
-  as="div"           // Para evitar <main> duplicado
+<ContentPage
+  as="div" // Para evitar <main> duplicado
   sectionAs="article" // ¿Qué elemento usar?
   maxWidth="max-w-4xl"
   containerClassName="..."
@@ -108,9 +106,7 @@ export default function ContentGroupLayout({ children }) {
 export function ContentLayout({ children }) {
   return (
     <article className="min-h-screen pt-24 pb-20 px-4">
-      <div className="container mx-auto max-w-4xl">
-        {children}
-      </div>
+      <div className="container mx-auto max-w-4xl">{children}</div>
     </article>
   );
 }
@@ -134,8 +130,10 @@ export default function ContactoPage() {
 <body>
   <div>
     <HeaderNavigation />
-    <main class="flex-1">         <!-- De layout.tsx raíz -->
-      <article class="pt-24">     <!-- De (content)/layout.tsx -->
+    <main class="flex-1">
+      <!-- De layout.tsx raíz -->
+      <article class="pt-24">
+        <!-- De (content)/layout.tsx -->
         <h1>Contacto</h1>
       </article>
     </main>
@@ -197,6 +195,7 @@ Usa el sistema como está diseñado.
 ### Crear Nueva Página
 
 #### Con PageWrapper ❌
+
 ```tsx
 // app/nueva-pagina/page.tsx
 import { ContentPage } from "@/components/layout";
@@ -220,6 +219,7 @@ export default function NuevaPagina() {
 **Pasos**: 4 (crear folder, crear page.tsx, importar componente, configurar props)
 
 #### Con Next.js Layouts ✅
+
 ```tsx
 // app/(content)/nueva-pagina/page.tsx
 import { generateSEOMetadata } from "@/lib/seo-metadata";
@@ -244,10 +244,11 @@ export default function NuevaPagina() {
 ### Cambiar Max Width de Todas las Páginas
 
 #### Con PageWrapper ❌
+
 ```tsx
 // Opción 1: Cambiar default prop (afecta a todas)
 // PageWrapper.tsx
-export function ContentPage({ 
+export function ContentPage({
   maxWidth = "max-w-5xl" // Cambiar aquí
 }) { ... }
 
@@ -256,13 +257,16 @@ export function ContentPage({
 ```
 
 #### Con Next.js Layouts ✅
+
 ```tsx
 // Editar UN solo archivo:
 // components/layouts/ContentLayout.tsx
 export function ContentLayout({ children }) {
   return (
     <article className="...">
-      <div className="container mx-auto max-w-5xl"> {/* Cambiar aquí */}
+      <div className="container mx-auto max-w-5xl">
+        {" "}
+        {/* Cambiar aquí */}
         {children}
       </div>
     </article>
@@ -273,24 +277,28 @@ export function ContentLayout({ children }) {
 ### TypeScript y Autocompletado
 
 #### Con PageWrapper ❌
+
 ```tsx
 <ContentPage
-  as="div"              // string
-  sectionAs="article"   // string
-  maxWidth="max-w-4xl"  // string (sin validación)
-  overflow={true}       // boolean
-  gradient="..."        // string
-  relative={true}       // boolean
-  className="..."       // string
+  as="div" // string
+  sectionAs="article" // string
+  maxWidth="max-w-4xl" // string (sin validación)
+  overflow={true} // boolean
+  gradient="..." // string
+  relative={true} // boolean
+  className="..." // string
 />
 ```
 
 Muchas props → fácil equivocarse.
 
 #### Con Next.js Layouts ✅
+
 ```tsx
 // Solo children, resto es automático
-{children}
+{
+  children;
+}
 ```
 
 Cero configuración → cero errores.
@@ -408,18 +416,18 @@ Mejor performance con Server Components.
 
 ## Resumen de Decisión
 
-| Aspecto | PageWrapper | Next.js Layouts |
-|---------|-------------|----------------|
-| HTML Semántico | ❌ Conflicto `<main>` | ✅ Correcto |
-| Código | ❌ 1000+ líneas | ✅ ~80 líneas |
-| Mantenibilidad | ❌ Baja | ✅ Alta |
-| DX (Developer Experience) | ❌ Props complejas | ✅ Automático |
-| Next.js Native | ❌ Lucha contra | ✅ Usa el sistema |
-| Escalabilidad | ❌ Compleja | ✅ Simple |
-| Performance | ❌ Client components | ✅ Server components |
-| TypeScript | ❌ Muchas props | ✅ Mínimo |
-| Testing | ❌ Múltiples causas | ✅ Una causa |
-| Imports | ❌ En cada página | ✅ Cero imports |
+| Aspecto                   | PageWrapper           | Next.js Layouts      |
+| ------------------------- | --------------------- | -------------------- |
+| HTML Semántico            | ❌ Conflicto `<main>` | ✅ Correcto          |
+| Código                    | ❌ 1000+ líneas       | ✅ ~80 líneas        |
+| Mantenibilidad            | ❌ Baja               | ✅ Alta              |
+| DX (Developer Experience) | ❌ Props complejas    | ✅ Automático        |
+| Next.js Native            | ❌ Lucha contra       | ✅ Usa el sistema    |
+| Escalabilidad             | ❌ Compleja           | ✅ Simple            |
+| Performance               | ❌ Client components  | ✅ Server components |
+| TypeScript                | ❌ Muchas props       | ✅ Mínimo            |
+| Testing                   | ❌ Múltiples causas   | ✅ Una causa         |
+| Imports                   | ❌ En cada página     | ✅ Cero imports      |
 
 ## Conclusión
 
@@ -448,4 +456,3 @@ Esta es la forma idiomática y correcta de resolver el problema en Next.js 15.
 ---
 
 **Siguiente paso**: Implementar la migración a layouts de Next.js
-

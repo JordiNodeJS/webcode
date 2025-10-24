@@ -70,20 +70,25 @@ Genera un reporte estructurado con:
 ### **[Documentación]** **EJEMPLO DE SALIDA ESPERADA**
 
 ```
+
 ## **[Análisis]** **Análisis de Consumo de CPU/GPU - [Nombre App]**
 
 ### **[Objetivos]** **Métricas Principales**
+
 **Sin limitación de CPU:**
+
 - LCP: X ms
 - CLS: X
 - TTFB: X ms
 - Render Delay: X ms (X% del tiempo total)
 
 **Con CPU limitada (4x slowdown):**
+
 - LCP: X ms (aumento de X%)
 - [resto de métricas]
 
 ### **[Búsqueda]** **Problemas Identificados**
+
 1. **Render Blocking Resources**
    - [lista detallada con tiempos]
 2. **DOM Complexity**
@@ -92,11 +97,14 @@ Genera un reporte estructurado con:
    - [componentes más afectados]
 
 ### **[Lanzamiento]** **Recomendaciones**
+
 - **Inmediatas:** [lista específica]
 - **A Mediano Plazo:** [lista específica]
 
 ### **[Crecimiento]** **Impacto Estimado**
+
 - [análisis de impacto en usuarios reales]
+
 ```
 
 ### **[Advertencia]** **CONSIDERACIONES ESPECIALES**
@@ -126,6 +134,7 @@ El reporte debe ser:
 ## **[Recursos]** **Contexto Adicional**
 
 Este prompt está diseñado para:
+
 - **Desarrolladores**: Que necesitan análisis técnicos detallados
 - **Product Managers**: Que requieren métricas de rendimiento
 - **DevOps**: Que optimizan infraestructura
@@ -134,9 +143,8 @@ Este prompt está diseñado para:
 ## **[Diseño]** **Personalización**
 
 Puedes modificar el prompt para:
+
 - **Enfocarse en métricas específicas** (solo LCP, solo CLS, etc.)
 - **Incluir análisis de accesibilidad**
 - **Agregar comparaciones con competidores**
 - **Incorporar análisis de SEO técnico**
-
-

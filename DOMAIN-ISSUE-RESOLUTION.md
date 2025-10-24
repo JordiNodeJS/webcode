@@ -3,6 +3,7 @@
 ## 📝 Resumen del Problema
 
 **Estado actual:**
+
 - ✅ El sitio funciona correctamente en: `https://webcode-bcn.netlify.app/`
 - ❌ El sitio NO funciona en: `https://webcode.es`
 
@@ -49,10 +50,12 @@ He creado una **guía completa paso a paso** para resolver el problema:
 ### 🔧 Configuración Actualizada
 
 **`netlify.toml`** - Añadida sección opcional para:
+
 - Redirect automático de `.netlify.app` → `webcode.es`
 - Redirect de `www.webcode.es` → `webcode.es`
 
 **`next.config.ts`** - Ya incluye:
+
 - ✅ Dominio `webcode.es` en whitelist de imágenes
 - ✅ Headers de seguridad optimizados
 - ✅ Configuración para deployment en Netlify
@@ -70,6 +73,7 @@ https://app.netlify.com/sites/webcode-bcn/settings/domain
 ### 2️⃣ **Verificar Estado del Dominio**
 
 Comprueba si `webcode.es` aparece en "Custom domains" y su estado:
+
 - ✅ **Verified** → Configurado correctamente
 - ⚠️ **Awaiting External DNS** → DNS no configurado
 - ❌ **Not listed** → Dominio no añadido
@@ -77,12 +81,14 @@ Comprueba si `webcode.es` aparece en "Custom domains" y su estado:
 ### 3️⃣ **Configurar el Dominio**
 
 **OPCIÓN A - Netlify DNS (Recomendado):**
+
 1. Añade `webcode.es` como dominio personalizado
 2. Netlify te dará 4 nameservers
 3. Configura esos nameservers en tu registrador
 4. Espera 24-48h para propagación
 
 **OPCIÓN B - DNS Externo:**
+
 ```
 Tipo: A
 Nombre: @
@@ -128,13 +134,13 @@ Una vez funcionando, descomenta en `netlify.toml`:
 
 ## ⏱️ Tiempos Estimados
 
-| Acción | Tiempo |
-|--------|--------|
-| Configurar dominio en Netlify | 5-10 minutos |
-| Actualizar DNS en registrador | 5 minutos |
-| Propagación DNS | **24-48 horas** ⚠️ |
-| Provisión de certificado SSL | 5-30 minutos |
-| **TOTAL** | **1-2 días** |
+| Acción                        | Tiempo             |
+| ----------------------------- | ------------------ |
+| Configurar dominio en Netlify | 5-10 minutos       |
+| Actualizar DNS en registrador | 5 minutos          |
+| Propagación DNS               | **24-48 horas** ⚠️ |
+| Provisión de certificado SSL  | 5-30 minutos       |
+| **TOTAL**                     | **1-2 días**       |
 
 ---
 
@@ -143,16 +149,19 @@ Una vez funcionando, descomenta en `netlify.toml`:
 Mientras esperas la propagación, usa estas herramientas:
 
 ### DNS Propagation
+
 ```
 https://www.whatsmydns.net/#A/webcode.es
 ```
 
 ### SSL Certificate
+
 ```
 https://www.ssllabs.com/ssltest/analyze.html?d=webcode.es
 ```
 
 ### Security Headers
+
 ```
 https://securityheaders.com/?q=https://webcode.es
 ```

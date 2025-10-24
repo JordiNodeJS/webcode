@@ -28,7 +28,7 @@ export function AnimationProvider({ children }: AnimationProviderProps) {
   const [disabledSections, setDisabledSections] = useState<Set<string>>(
     new Set()
   );
-  
+
   // Inicializar con función para evitar warning de React Compiler
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
     if (typeof window === "undefined") return false;

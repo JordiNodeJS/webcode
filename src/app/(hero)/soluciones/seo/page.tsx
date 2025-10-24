@@ -401,19 +401,22 @@ export default function SeoPage() {
         offers={[
           {
             name: "SEO Básico",
-            description: "Optimización On-Page, 5 artículos/mes, Google Business, Informe mensual, Soporte email",
+            description:
+              "Optimización On-Page, 5 artículos/mes, Google Business, Informe mensual, Soporte email",
             price: "600",
             category: "SEO Básico"
           },
           {
-            name: "SEO Profesional", 
-            description: "Todo lo de Básico, 10 artículos/mes, Link building, Keyword research, Soporte prioritario, Call mensual",
+            name: "SEO Profesional",
+            description:
+              "Todo lo de Básico, 10 artículos/mes, Link building, Keyword research, Soporte prioritario, Call mensual",
             price: "1200",
             category: "SEO Profesional"
           },
           {
             name: "SEO Enterprise",
-            description: "Todo lo de Profesional, Contenidos ilimitados, Estrategia avanzada, Link building agresivo, Account manager dedicado, Reporting semanal",
+            description:
+              "Todo lo de Profesional, Contenidos ilimitados, Estrategia avanzada, Link building agresivo, Account manager dedicado, Reporting semanal",
             price: "0", // Personalizado
             category: "SEO Enterprise"
           }

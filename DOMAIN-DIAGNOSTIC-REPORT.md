@@ -13,6 +13,7 @@ El dominio `webcode.es` tiene DNS configurado pero presenta problemas de conecti
 ### DNS Configurado Correctamente
 
 #### webcode.es
+
 ```
 ✅ DNS resuelve a dos IPs de Netlify:
    - 99.83.190.102
@@ -20,6 +21,7 @@ El dominio `webcode.es` tiene DNS configurado pero presenta problemas de conecti
 ```
 
 #### www.webcode.es
+
 ```
 ✅ CNAME configurado correctamente:
    - Apunta a: webcode-bcn.netlify.app
@@ -28,6 +30,7 @@ El dominio `webcode.es` tiene DNS configurado pero presenta problemas de conecti
 ```
 
 #### webcode-bcn.netlify.app
+
 ```
 ✅ Sitio Netlify funcionando perfectamente
    - HTTP Status: 200 OK
@@ -86,20 +89,20 @@ Missing:
 
 ### Análisis del DNS
 
-| Dominio | Tipo | Valor | Estado |
-|---------|------|-------|--------|
-| `webcode.es` | A | 99.83.190.102, 75.2.60.5 | ✅ OK |
-| `www.webcode.es` | CNAME | webcode-bcn.netlify.app | ✅ OK |
+| Dominio          | Tipo  | Valor                    | Estado |
+| ---------------- | ----- | ------------------------ | ------ |
+| `webcode.es`     | A     | 99.83.190.102, 75.2.60.5 | ✅ OK  |
+| `www.webcode.es` | CNAME | webcode-bcn.netlify.app  | ✅ OK  |
 
 **Conclusión DNS**: ✅ **Configuración correcta**
 
 ### Análisis de Conectividad
 
-| URL | HTTP Status | Estado |
-|-----|-------------|--------|
-| `https://webcode.es` | 000 (No responde) | ❌ FALLO |
-| `https://www.webcode.es` | 301 (Redirect) | ⚠️ PARCIAL |
-| `https://webcode-bcn.netlify.app` | 200 (OK) | ✅ OK |
+| URL                               | HTTP Status       | Estado     |
+| --------------------------------- | ----------------- | ---------- |
+| `https://webcode.es`              | 000 (No responde) | ❌ FALLO   |
+| `https://www.webcode.es`          | 301 (Redirect)    | ⚠️ PARCIAL |
+| `https://webcode-bcn.netlify.app` | 200 (OK)          | ✅ OK      |
 
 **Conclusión Conectividad**: ❌ **Dominio principal no responde**
 
@@ -110,6 +113,7 @@ Missing:
 ### Acción Inmediata: Verificar Configuración en Netlify Dashboard
 
 1. **Acceder a Netlify Dashboard**
+
    ```
    https://app.netlify.com/sites/webcode-bcn/settings/domain
    ```
@@ -122,6 +126,7 @@ Missing:
    ```
    https://app.netlify.com/sites/webcode-bcn/settings/domain#https
    ```
+
    - [ ] ¿Hay un certificado SSL provisionado?
    - [ ] ¿Está activo "Force HTTPS"?
 
@@ -187,11 +192,13 @@ Pasos:
 ### Fase 2: Configuración (10-30 minutos)
 
 #### Si el dominio NO está añadido:
+
 1. Añadir `webcode.es` como custom domain
 2. Netlify verificará automáticamente el DNS
 3. Provisionar certificado SSL
 
 #### Si el dominio SÍ está añadido:
+
 1. Verificar DNS configuration
 2. Re-provisionar certificado si es necesario
 3. Activar "Force HTTPS"
@@ -204,6 +211,7 @@ Pasos:
 ```
 
 **Resultados esperados después de la configuración:**
+
 - ✅ `https://webcode.es` → HTTP 200
 - ✅ Certificado SSL válido
 - ✅ Headers de seguridad presentes
@@ -214,25 +222,25 @@ Pasos:
 
 ### Antes de la Configuración (ACTUAL)
 
-| Métrica | Estado |
-|---------|--------|
-| DNS Configurado | ✅ OK |
+| Métrica          | Estado   |
+| ---------------- | -------- |
+| DNS Configurado  | ✅ OK    |
 | HTTPS webcode.es | ❌ FALLO |
-| SSL Certificate | ❌ FALLO |
+| SSL Certificate  | ❌ FALLO |
 | Security Headers | ❌ FALLO |
-| Sitio Accesible | ❌ NO |
+| Sitio Accesible  | ❌ NO    |
 
 **Score**: 1/5 (20%)
 
 ### Después de la Configuración (ESPERADO)
 
-| Métrica | Estado |
-|---------|--------|
-| DNS Configurado | ✅ OK |
-| HTTPS webcode.es | ✅ OK |
-| SSL Certificate | ✅ OK |
-| Security Headers | ✅ OK |
-| Sitio Accesible | ✅ SÍ |
+| Métrica          | Estado |
+| ---------------- | ------ |
+| DNS Configurado  | ✅ OK  |
+| HTTPS webcode.es | ✅ OK  |
+| SSL Certificate  | ✅ OK  |
+| Security Headers | ✅ OK  |
+| Sitio Accesible  | ✅ SÍ  |
 
 **Score**: 5/5 (100%)
 
@@ -259,16 +267,19 @@ Ahora          DNS configurado ✅
 ## 🔗 Recursos y Enlaces Útiles
 
 ### Dashboards
+
 - **Netlify Site**: https://app.netlify.com/sites/webcode-bcn
 - **Domain Settings**: https://app.netlify.com/sites/webcode-bcn/settings/domain
 - **HTTPS Settings**: https://app.netlify.com/sites/webcode-bcn/settings/domain#https
 
 ### Verificación Online
+
 - **DNS Propagation**: https://www.whatsmydns.net/#A/webcode.es
 - **SSL Test**: https://www.ssllabs.com/ssltest/analyze.html?d=webcode.es
 - **Security Headers**: https://securityheaders.com/?q=https://webcode.es
 
 ### Documentación
+
 - **Guía Local**: `NETLIFY-DOMAIN-SETUP.md`
 - **Netlify Docs**: https://docs.netlify.com/domains-https/custom-domains/
 - **SSL Troubleshooting**: https://docs.netlify.com/domains-https/https-ssl/

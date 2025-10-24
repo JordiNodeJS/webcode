@@ -18,6 +18,7 @@ Este documento describe el sistema completo de protección de emails implementad
 **Ubicación**: `src/components/ui/EmailProtection.tsx`
 
 **Características**:
+
 - Ofuscación ROT13 + Base64
 - Detección de interacción humana
 - Decodificación progresiva
@@ -25,14 +26,15 @@ Este documento describe el sistema completo de protección de emails implementad
 - Fallback para casos de error
 
 **Uso**:
+
 ```tsx
 import { EmailProtection } from "@/components/ui/EmailProtection";
 
-<EmailProtection 
-  email="info@webcode.es" 
+<EmailProtection
+  email="info@webcode.es"
   className="text-primary"
   showAsLink={true}
-/>
+/>;
 ```
 
 ### 2. Protección Anti-Bot en Formularios
@@ -40,17 +42,19 @@ import { EmailProtection } from "@/components/ui/EmailProtection";
 **Ubicación**: `src/hooks/useBotProtection.ts`
 
 **Características**:
+
 - **Honeypot fields**: Campos ocultos que solo los bots llenan
 - **Rate limiting**: Límite de envíos por tiempo
 - **Detección de comportamiento**: Tiempo de completado, interacciones
 - **Verificación de navegador**: Características del navegador real
 
 **Configuración**:
+
 ```typescript
 const botProtection = useBotProtection({
   honeypotFieldName: "website",
   timeThreshold: 3000, // 3 segundos mínimo
-  maxSubmissions: 3,   // 3 envíos máximo
+  maxSubmissions: 3, // 3 envíos máximo
   cooldownPeriod: 60000 // 1 minuto de espera
 });
 ```
@@ -62,6 +66,7 @@ const botProtection = useBotProtection({
 **Métodos disponibles**:
 
 #### ROT13 + Base64
+
 ```typescript
 // Codificar
 const encoded = EmailObfuscation.encodeRot13Base64("info@webcode.es");
@@ -73,24 +78,28 @@ const decoded = EmailObfuscation.decodeRot13Base64(encoded);
 ```
 
 #### Entidades HTML
+
 ```typescript
 const encoded = EmailObfuscation.encodeHtmlEntities("info@webcode.es");
 // Resultado: "info&#64;webcode&#46;es"
 ```
 
 #### Caracteres Unicode
+
 ```typescript
 const encoded = EmailObfuscation.encodeUnicode("info@webcode.es");
 // Resultado: "info&#x40;webcode&#x2E;es"
 ```
 
 #### CSS RTL (Right-to-Left)
+
 ```typescript
 const encoded = EmailObfuscation.encodeCssRtl("info@webcode.es");
 // Resultado: "se.edocbew@ofni"
 ```
 
 #### Caracteres Invisibles
+
 ```typescript
 const encoded = EmailObfuscation.encodeInvisibleChars("info@webcode.es");
 // Resultado: "i​n​f​o​@​w​e​b​c​o​d​e​.​e​s"
@@ -99,6 +108,7 @@ const encoded = EmailObfuscation.encodeInvisibleChars("info@webcode.es");
 ### 4. Detección de Bots
 
 **Características verificadas**:
+
 - User Agent válido
 - Plugins del navegador
 - Resolución de pantalla
@@ -107,6 +117,7 @@ const encoded = EmailObfuscation.encodeInvisibleChars("info@webcode.es");
 - Interacción humana (mouse, teclado)
 
 **Patrones de bot detectados**:
+
 - `/bot/i`, `/crawler/i`, `/spider/i`
 - `/scraper/i`, `/curl/i`, `/wget/i`
 - `/python/i`, `/php/i`, `/java/i`
@@ -115,11 +126,13 @@ const encoded = EmailObfuscation.encodeInvisibleChars("info@webcode.es");
 ### 5. Rate Limiting
 
 **Configuración**:
+
 ```typescript
 const rateLimit = useRateLimit(5, 300000); // 5 envíos por 5 minutos
 ```
 
 **Características**:
+
 - Límite de requests por ventana de tiempo
 - Bloqueo temporal automático
 - Reset manual disponible
@@ -128,25 +141,33 @@ const rateLimit = useRateLimit(5, 300000); // 5 envíos por 5 minutos
 ## **[Ubicación]** Ubicaciones Protegidas
 
 ### 1. Footer Principal
+
 **Archivo**: `src/components/landing/Footer.Section.tsx`
+
 - Email de contacto protegido con `EmailProtection`
 - Enlace mailto funcional para usuarios humanos
 
 ### 2. Páginas Legales
+
 **Archivos**:
+
 - `src/app/(cookies)/politica-privacidad/page.tsx`
 - `src/app/(cookies)/cookies/page.tsx`
 - Emails protegidos en contenido legal
 
 ### 3. Formulario de Contacto
+
 **Archivo**: `src/components/features/contact/ContactForm.tsx`
+
 - Campo honeypot oculto
 - Validación anti-bot
 - Rate limiting integrado
 - Detección de comportamiento
 
 ### 4. API de Contacto
+
 **Archivo**: `src/app/api/contact/route.ts`
+
 - Validación del campo honeypot
 - Verificación de patrones de bot
 - Logging de intentos sospechosos
@@ -154,12 +175,14 @@ const rateLimit = useRateLimit(5, 300000); // 5 envíos por 5 minutos
 ## **[Lanzamiento]** Implementación
 
 ### Paso 1: Importar Componentes
+
 ```tsx
 import { EmailProtection } from "@/components/ui/EmailProtection";
 import { useBotProtection, useRateLimit } from "@/hooks/useBotProtection";
 ```
 
 ### Paso 2: Proteger Email
+
 ```tsx
 // Reemplazar enlaces directos
 <a href="mailto:info@webcode.es">info@webcode.es</a>
@@ -169,6 +192,7 @@ import { useBotProtection, useRateLimit } from "@/hooks/useBotProtection";
 ```
 
 ### Paso 3: Proteger Formularios
+
 ```tsx
 const botProtection = useBotProtection({
   honeypotFieldName: "website",
@@ -183,15 +207,16 @@ const botProtection = useBotProtection({
   name="website"
   render={({ field }) => (
     <FormItem className="hidden">
-      <Input {...field} style={{ display: 'none' }} />
+      <Input {...field} style={{ display: "none" }} />
     </FormItem>
   )}
-/>
+/>;
 ```
 
 ## **[Búsqueda]** Monitoreo y Logs
 
 ### Logs de Detección de Bots
+
 ```typescript
 console.warn("Bot detected:", {
   reasons: botDetection.reasons,
@@ -202,6 +227,7 @@ console.warn("Bot detected:", {
 ```
 
 ### Métricas de Protección
+
 - Número de intentos de bot bloqueados
 - Tiempo promedio de completado de formularios
 - Patrones de spam detectados
@@ -210,6 +236,7 @@ console.warn("Bot detected:", {
 ## ⚙️ Configuración Avanzada
 
 ### Personalizar Técnicas de Ofuscación
+
 ```typescript
 import { protectEmail } from "@/lib/email-obfuscation";
 
@@ -218,11 +245,12 @@ console.log(result.protected); // "info&#64;webcode&#46;es"
 ```
 
 ### Ajustar Parámetros de Detección
+
 ```typescript
 const EMAIL_PROTECTION_CONFIG = {
   botDetection: {
     minFormTime: 5000, // 5 segundos mínimo
-    maxSubmissions: 2,  // 2 envíos máximo
+    maxSubmissions: 2, // 2 envíos máximo
     cooldownPeriod: 120000 // 2 minutos de espera
   }
 };
@@ -231,16 +259,19 @@ const EMAIL_PROTECTION_CONFIG = {
 ## 🛠️ Mantenimiento
 
 ### Actualizar Patrones de Bot
+
 1. Editar `src/lib/email-obfuscation.ts`
 2. Añadir nuevos patrones en `botPatterns`
 3. Probar con herramientas de bot conocidas
 
 ### Ajustar Rate Limiting
+
 1. Modificar `useRateLimit` en formularios
 2. Actualizar configuración del servidor
 3. Monitorear métricas de uso
 
 ### Verificar Efectividad
+
 1. Usar herramientas de scraping para probar
 2. Monitorear logs de detección
 3. Ajustar umbrales según resultados

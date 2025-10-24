@@ -1,11 +1,11 @@
 /**
  * Componente optimizado para renderizar contenido Markdown del blog
- * 
+ *
  * Optimizaciones implementadas:
  * - Dynamic imports de plugins rehype para code splitting
  * - Lazy loading de react-markdown
  * - Mejor performance en initial load
- * 
+ *
  * NOTA: Este componente usa <img> en vez de Next.js Image para imágenes
  * dinámicas de markdown, lo cual es la práctica recomendada para contenido
  * externo no controlado.
@@ -28,12 +28,15 @@ const ReactMarkdown = lazy(() => import("react-markdown"));
 
 // Lazy loading de plugins rehype
 const loadRehypePlugins = async () => {
-  const [{ default: rehypeHighlight }, { default: rehypeRaw }, { default: rehypeSanitize }] =
-    await Promise.all([
-      import("rehype-highlight"),
-      import("rehype-raw"),
-      import("rehype-sanitize")
-    ]);
+  const [
+    { default: rehypeHighlight },
+    { default: rehypeRaw },
+    { default: rehypeSanitize }
+  ] = await Promise.all([
+    import("rehype-highlight"),
+    import("rehype-raw"),
+    import("rehype-sanitize")
+  ]);
 
   return [rehypeRaw, rehypeSanitize, rehypeHighlight];
 };
@@ -59,7 +62,13 @@ function MarkdownSkeleton() {
  * Componente interno que renderiza el Markdown
  * Se carga dinámicamente con los plugins
  */
-function MarkdownContent({ content, components }: { content: string; components: Components }) {
+function MarkdownContent({
+  content,
+  components
+}: {
+  content: string;
+  components: Components;
+}) {
   const rehypePlugins = useMemo(() => {
     // Los plugins se cargan de forma lazy la primera vez que se necesitan
     return loadRehypePlugins();

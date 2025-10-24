@@ -25,6 +25,7 @@ Crear una página completa en `/proceso` que explique el proceso de desarrollo w
 ## Requisitos Técnicos
 
 ### 1. Archivo a Crear
+
 - **Ruta**: `src/app/proceso/page.tsx`
 - **Tipo**: Server Component de Next.js
 - **Metadata**: Usar `generateSEOMetadata` de `@/lib/seo-metadata`
@@ -43,7 +44,8 @@ import { generateSEOMetadata } from "@/lib/seo-metadata";
 ```typescript
 export const metadata: Metadata = generateSEOMetadata({
   title: "Proceso de Desarrollo Web | WEBCODE Barcelona",
-  description: "Nuestro proceso de desarrollo web en 4 fases: Discovery, Diseño, Desarrollo y Launch. Transparencia total, actualizaciones semanales y garantías de calidad.",
+  description:
+    "Nuestro proceso de desarrollo web en 4 fases: Discovery, Diseño, Desarrollo y Launch. Transparencia total, actualizaciones semanales y garantías de calidad.",
   keywords: [
     "proceso desarrollo web",
     "metodología agile",
@@ -61,6 +63,7 @@ export const metadata: Metadata = generateSEOMetadata({
 ## Estructura de Contenido
 
 ### Sección 1: Hero
+
 - Título con gradiente: "Nuestro Proceso de Desarrollo"
 - Subtítulo: "Metodología probada en 4 fases para garantizar el éxito de tu proyecto digital"
 - Trust indicators: Transparencia total, Updates semanales, Garantías de calidad
@@ -73,8 +76,10 @@ export const metadata: Metadata = generateSEOMetadata({
 **Mobile**: Timeline vertical tipo acordeón
 
 #### Fase 1: Discovery & Strategy (Semana 1)
+
 **Icono**: Lupa/Search
 **Actividades**:
+
 - Análisis de necesidades del negocio
 - Research de competencia y mercado
 - Definición de objetivos y KPIs
@@ -85,8 +90,10 @@ export const metadata: Metadata = generateSEOMetadata({
 **Participación Cliente**: 8-10 horas (discovery, content review)
 
 #### Fase 2: Diseño & Experiencia (Semana 2-3)
+
 **Icono**: Paleta/Brush
 **Actividades**:
+
 - Design system personalizado
 - Wireframes y flujos básicos
 - Mockups high-fidelity
@@ -97,8 +104,10 @@ export const metadata: Metadata = generateSEOMetadata({
 **Participación Cliente**: 2-3 horas/semana (design feedback)
 
 #### Fase 3: Desarrollo & Integración (Semana 3-5)
+
 **Icono**: Código/Code
 **Actividades**:
+
 - Código limpio y escalable (Next.js 15 + React 19)
 - Integración de herramientas (Analytics, pagos, APIs)
 - Testing automatizado
@@ -109,8 +118,10 @@ export const metadata: Metadata = generateSEOMetadata({
 **Participación Cliente**: 1-2 horas/semana (testing, reviews)
 
 #### Fase 4: Launch & Optimización (Semana 6)
+
 **Icono**: Rayo/Lightning
 **Actividades**:
+
 - Deploy en producción (blue-green deployment)
 - Configuración de analytics completa
 - Interpretación de analytics y herramientas
@@ -123,13 +134,16 @@ export const metadata: Metadata = generateSEOMetadata({
 **Tiempo Total**: 6 semanas | Participación cliente: ~25-30 horas
 
 ### Sección 3: Detalles de Cada Fase
+
 Grid de 2 columnas (desktop) con cards expandidas que muestran:
+
 - Número de fase en badge
 - Título y duración
 - Lista detallada de actividades con border-left de primary
 - Entregables en lista con checkmarks
 
 ### Sección 4: Garantías de Calidad
+
 Grid de 3 columnas con 6 garantías:
 
 1. **[Completado]** Updates semanales - Demos funcionales cada semana
@@ -140,10 +154,12 @@ Grid de 3 columnas con 6 garantías:
 6. **[Candado]** Backup completo - Versionado del proyecto
 
 **Protección del Cliente** (card destacada):
+
 - Seguridad contractual: Contrato con entregables, Pagos por milestones (40%, 35%, 25%), Garantía 15 días
 - Soporte y backup: Escalación directa, Backup completo, 30 días soporte
 
 ### Sección 5: Canales de Comunicación
+
 Grid de 2 columnas con 4 canales:
 
 1. **[Email]** Email prioritario - Respuesta <4h en horario laboral
@@ -152,6 +168,7 @@ Grid de 2 columnas con 4 canales:
 4. **[Maletín]** Slack/Teams - Para proyectos enterprise
 
 ### Sección 6: CTA Final
+
 - Título: "¿Listo para empezar tu proyecto?"
 - Subtítulo: "Agenda una consulta gratuita de 30 minutos..."
 - 2 botones: "Consulta Gratuita" (link a /contacto) y "Ver FAQ" (link a /faqs)
@@ -161,6 +178,7 @@ Grid de 2 columnas con 4 canales:
 ## Estilos y Diseño
 
 ### Colores y Clases
+
 ```css
 /* Títulos con gradiente */
 .text-gradient-webcode
@@ -188,17 +206,20 @@ border-border/50
 ```
 
 ### Cards y Componentes
+
 - **Cards normales**: `bg-card border border-border rounded-lg p-6 shadow-md hover:shadow-lg transition-all duration-300`
 - **Cards destacadas**: `bg-primary/10 border-2 border-primary rounded-lg p-8 shadow-md`
 - **Badges numéricos**: `bg-primary text-primary-foreground rounded-full w-12 h-12 flex items-center justify-center font-bold shadow-md`
 
 ### Animaciones
+
 - Envolver secciones con `<WSFadeIn delay={0.1}>...</WSFadeIn>`
 - Usar delays escalonados (0.1, 0.2, 0.3) para elementos en secuencia
 - Transitions suaves en hover: `transition-all duration-300`
 - Hover effects: `hover:-translate-y-1` para cards
 
 ### Responsive Design
+
 ```tsx
 // Desktop: Timeline horizontal
 <div className="hidden lg:block">
@@ -214,7 +235,9 @@ border-border/50
 ```
 
 ### Iconos SVG
+
 Crear componente `PhaseIcon` que retorne SVGs inline para cada fase:
+
 - Fase 1: Lupa (search icon)
 - Fase 2: Paleta (design icon)
 - Fase 3: Código (code brackets)
@@ -278,9 +301,9 @@ export default function ProcesoPage() {
     {
       numero: 1,
       titulo: "Discovery & Strategy",
-      duracion: "Semana 1",
+      duracion: "Semana 1"
       // ... resto de datos
-    },
+    }
     // ... más fases
   ];
 
@@ -294,14 +317,10 @@ export default function ProcesoPage() {
       {/* Timeline de Fases */}
       <section className="py-20 bg-background">
         {/* Desktop timeline */}
-        <div className="hidden lg:block">
-          {/* ... grid horizontal */}
-        </div>
-        
+        <div className="hidden lg:block">{/* ... grid horizontal */}</div>
+
         {/* Mobile timeline */}
-        <div className="lg:hidden space-y-8">
-          {/* ... lista vertical */}
-        </div>
+        <div className="lg:hidden space-y-8">{/* ... lista vertical */}</div>
       </section>
 
       {/* Resto de secciones */}
@@ -314,4 +333,3 @@ export default function ProcesoPage() {
 ---
 
 **Nota Final**: Este prompt está diseñado para generar una página completa y funcional en un solo intento, manteniendo la coherencia con el proyecto WEBCODE existente.
-

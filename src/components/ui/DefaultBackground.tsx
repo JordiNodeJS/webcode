@@ -9,14 +9,11 @@
  * - Usa suppressHydrationWarning para evitar errores de hidratación
  * - Renderiza ambos fondos y usa CSS para mostrar el correcto
  * - No espera a que el componente se monte para decidir el tema
+ * - Usa IDs estáticos para evitar problemas de hidratación
  */
 "use client";
 
-import { useId } from "react";
-
 export function DefaultBackground() {
-  const reactId = useId();
-
   return (
     <>
       {/* Fondo para modo claro - se oculta automáticamente con dark: */}
@@ -31,14 +28,14 @@ export function DefaultBackground() {
             viewBox="0 0 100 100"
             preserveAspectRatio="none"
             role="img"
-            aria-labelledby={`webcode-background-title-light-${reactId}`}
+            aria-labelledby="webcode-background-title-webcode-bg-light"
           >
-            <title id={`webcode-background-title-light-${reactId}`}>
+            <title id="webcode-background-title-webcode-bg-light">
               Patrón de ondas decorativas
             </title>
             <defs>
               <pattern
-                id={`wave-pattern-light-${reactId}`}
+                id="wave-pattern-light"
                 x="0"
                 y="0"
                 width="20"
@@ -55,7 +52,7 @@ export function DefaultBackground() {
             <rect
               width="100%"
               height="100%"
-              fill={`url(#wave-pattern-light-${reactId})`}
+              fill="url(#wave-pattern-light)"
             />
           </svg>
         </div>

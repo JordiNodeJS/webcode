@@ -3,22 +3,26 @@
 ## Problema Resuelto
 
 Se han solucionado los errores de datos estructurados que aparecían en el reporte:
+
 - **Falta el campo "hasMerchantReturnPolicy" (en "offers")**
 - **Falta el campo "shippingDetails" (en "offers")**
 
 ## Componentes Implementados
 
 ### 1. StructuredData.tsx (Actualizado)
+
 - ✅ Agregado soporte para tipos `Product` y `Offer`
 - ✅ Incluye campos `hasMerchantReturnPolicy` y `shippingDetails`
 - ✅ Configurado para España (ES) con políticas de devolución de 14 días
 
 ### 2. ServiceOfferSchema.tsx (Nuevo)
+
 - ✅ Componente para servicios individuales con ofertas
 - ✅ Incluye todos los campos requeridos por Schema.org
 - ✅ Configuración específica para servicios digitales
 
 ### 3. MultipleOffersSchema.tsx (Nuevo)
+
 - ✅ Componente para servicios con múltiples planes de precios
 - ✅ Maneja arrays de ofertas con diferentes precios
 - ✅ Ideal para páginas de servicios con varios planes
@@ -26,6 +30,7 @@ Se han solucionado los errores de datos estructurados que aparecían en el repor
 ## Campos Implementados
 
 ### hasMerchantReturnPolicy
+
 ```json
 {
   "@type": "MerchantReturnPolicy",
@@ -38,6 +43,7 @@ Se han solucionado los errores de datos estructurados que aparecían en el repor
 ```
 
 ### shippingDetails
+
 ```json
 {
   "@type": "OfferShippingDetails",
@@ -71,6 +77,7 @@ Se han solucionado los errores de datos estructurados que aparecían en el repor
 ## Uso de los Componentes
 
 ### Para un servicio individual:
+
 ```tsx
 import { ServiceOfferSchema } from "@/components/seo/ServiceOfferSchema";
 
@@ -81,10 +88,11 @@ import { ServiceOfferSchema } from "@/components/seo/ServiceOfferSchema";
     price: "1500",
     category: "Desarrollo Web"
   }}
-/>
+/>;
 ```
 
 ### Para múltiples ofertas:
+
 ```tsx
 import { MultipleOffersSchema } from "@/components/seo/MultipleOffersSchema";
 
@@ -103,18 +111,20 @@ import { MultipleOffersSchema } from "@/components/seo/MultipleOffersSchema";
       price: "1200"
     }
   ]}
-/>
+/>;
 ```
 
 ## Páginas Actualizadas
 
 ### ✅ src/app/(hero)/soluciones/seo/page.tsx
+
 - Implementado `MultipleOffersSchema` con los 3 planes de SEO
 - Incluye precios: €600, €1200, y personalizado
 
 ## Validación
 
 Los esquemas implementados cumplen con:
+
 - ✅ Schema.org Product/Offer specifications
 - ✅ Google Rich Results requirements
 - ✅ Campos requeridos: hasMerchantReturnPolicy, shippingDetails

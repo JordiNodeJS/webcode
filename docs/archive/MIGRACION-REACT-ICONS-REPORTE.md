@@ -85,6 +85,7 @@ Se ha completado exitosamente la migración del sistema de iconos de WebCode des
 - Usa iconos de Lucide correctamente
 
 ✅ **Migrados adicionalmente**:
+
 - `src/components/sources/SourcesPageClient.tsx`
 - `src/components/sources/DocumentationSourcesPageClient.tsx`
 - `src/components/debug/PerformanceTestLab.tsx`
@@ -139,9 +140,9 @@ import { Home, Menu, Search, User, ShoppingCart } from "@/lib/icons";
 
 ```typescript
 import {
-	HiOutlineSparkles,
-	HiOutlineRocketLaunch,
-	HiOutlineLightBulb,
+  HiOutlineSparkles,
+  HiOutlineRocketLaunch,
+  HiOutlineLightBulb
 } from "@/lib/icons";
 ```
 
@@ -150,12 +151,7 @@ import {
 ### **Phosphor** (pi) - Sectores Creativos
 
 ```typescript
-import {
-	PiFlowerTulip,
-	PiScissors,
-	PiCoffee,
-	PiCamera,
-} from "@/lib/icons";
+import { PiFlowerTulip, PiScissors, PiCoffee, PiCamera } from "@/lib/icons";
 ```
 
 **Uso**: Representación de sectores específicos (floristería, peluquería, cafetería, etc.)

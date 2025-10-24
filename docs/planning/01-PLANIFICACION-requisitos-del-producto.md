@@ -12,8 +12,8 @@ WEBCODE: Plataforma Integral de Desarrollo Web y Soluciones Digitales para Freel
 
 ### 2. Historial de Cambios
 
-| Versión | Fecha      | Autor    | Cambios                                     |
-| ------- | ---------- | -------- | ------------------------------------------- |
+| Versión | Fecha      | Autor   | Cambios                                     |
+| ------- | ---------- | ------- | ------------------------------------------- |
 | 1.0     | 31/08/2025 | WebCode | Versión inicial basada en PRD-GML           |
 | 1.1     | 31/08/2025 | WebCode | Actualización con stack moderno 2025        |
 | 1.2     | 31/08/2025 | WebCode | Adaptación para mercado español - Barcelona |

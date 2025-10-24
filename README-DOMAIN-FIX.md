@@ -11,25 +11,30 @@
 ## 🎯 Solución Rápida (5 pasos)
 
 ### 1. Acceder a Netlify Dashboard
+
 ```
 https://app.netlify.com/sites/webcode-bcn/settings/domain
 ```
 
 ### 2. Añadir Dominio Personalizado
+
 - Click en **"Add custom domain"**
 - Introducir: `webcode.es`
 - Netlify verificará el DNS automáticamente
 
 ### 3. Provisionar SSL
+
 - Ir a **HTTPS settings**
 - Click en **"Provision certificate"**
 - Esperar 5-30 minutos
 
 ### 4. Activar Force HTTPS
+
 - En la misma sección HTTPS
 - Activar **"Force HTTPS"**
 
 ### 5. Verificar
+
 ```bash
 # Esperar 15-30 minutos y ejecutar:
 ./scripts/verify-domain.sh
@@ -39,11 +44,11 @@ https://app.netlify.com/sites/webcode-bcn/settings/domain
 
 ## 📚 Documentación Completa
 
-| Archivo | Contenido |
-|---------|-----------|
-| **[DOMAIN-DIAGNOSTIC-REPORT.md](DOMAIN-DIAGNOSTIC-REPORT.md)** | 📊 Diagnóstico técnico detallado |
-| **[NETLIFY-DOMAIN-SETUP.md](NETLIFY-DOMAIN-SETUP.md)** | 📖 Guía paso a paso completa |
-| **[DOMAIN-ISSUE-RESOLUTION.md](DOMAIN-ISSUE-RESOLUTION.md)** | 📝 Resumen ejecutivo del problema |
+| Archivo                                                        | Contenido                         |
+| -------------------------------------------------------------- | --------------------------------- |
+| **[DOMAIN-DIAGNOSTIC-REPORT.md](DOMAIN-DIAGNOSTIC-REPORT.md)** | 📊 Diagnóstico técnico detallado  |
+| **[NETLIFY-DOMAIN-SETUP.md](NETLIFY-DOMAIN-SETUP.md)**         | 📖 Guía paso a paso completa      |
+| **[DOMAIN-ISSUE-RESOLUTION.md](DOMAIN-ISSUE-RESOLUTION.md)**   | 📝 Resumen ejecutivo del problema |
 
 ---
 

@@ -32,8 +32,8 @@ export default function SeoOnPage() {
               para Google
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-              Optimización técnica completa de contenido, estructura y experiencia 
-              de usuario que mejora tu posicionamiento en Google.
+              Optimización técnica completa de contenido, estructura y
+              experiencia de usuario que mejora tu posicionamiento en Google.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button
@@ -65,42 +65,50 @@ export default function SeoOnPage() {
           </span>
         </h2>
         <p className="text-center text-muted-foreground mb-12 text-lg max-w-3xl mx-auto">
-          El SEO On-Page es la optimización de todos los elementos dentro de tu web 
-          que Google puede &ldquo;ver&rdquo; y analizar para determinar la relevancia y calidad de tu contenido.
+          El SEO On-Page es la optimización de todos los elementos dentro de tu
+          web que Google puede &ldquo;ver&rdquo; y analizar para determinar la
+          relevancia y calidad de tu contenido.
         </p>
 
         <div className="grid md:grid-cols-2 gap-8">
           <SolucionCard>
-            <h3 className="text-xl font-bold mb-4">Elementos que Optimizamos</h3>
+            <h3 className="text-xl font-bold mb-4">
+              Elementos que Optimizamos
+            </h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-3">
                 <span className="text-accent font-bold mt-1">📝</span>
                 <div>
-                  <span className="font-semibold">Contenido de calidad:</span> Artículos, páginas de servicio y descripciones optimizadas
+                  <span className="font-semibold">Contenido de calidad:</span>{" "}
+                  Artículos, páginas de servicio y descripciones optimizadas
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-accent font-bold mt-1">🏷️</span>
                 <div>
-                  <span className="font-semibold">Meta tags:</span> Títulos, descripciones y keywords estratégicas
+                  <span className="font-semibold">Meta tags:</span> Títulos,
+                  descripciones y keywords estratégicas
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-accent font-bold mt-1">🔗</span>
                 <div>
-                  <span className="font-semibold">Estructura interna:</span> Enlaces internos, navegación y arquitectura de información
+                  <span className="font-semibold">Estructura interna:</span>{" "}
+                  Enlaces internos, navegación y arquitectura de información
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-accent font-bold mt-1">⚡</span>
                 <div>
-                  <span className="font-semibold">Velocidad:</span> Core Web Vitals y optimización de rendimiento
+                  <span className="font-semibold">Velocidad:</span> Core Web
+                  Vitals y optimización de rendimiento
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-accent font-bold mt-1">📱</span>
                 <div>
-                  <span className="font-semibold">Experiencia móvil:</span> Diseño responsive y usabilidad
+                  <span className="font-semibold">Experiencia móvil:</span>{" "}
+                  Diseño responsive y usabilidad
                 </div>
               </li>
             </ul>
@@ -112,19 +120,26 @@ export default function SeoOnPage() {
               <div className="p-4 bg-gradient-to-r from-accent/10 to-primary/10 rounded-lg">
                 <h4 className="font-bold text-accent mb-2">🎯 Control Total</h4>
                 <p className="text-sm text-muted-foreground">
-                  Tienes control completo sobre todos los elementos de tu web, a diferencia del SEO Off-Page.
+                  Tienes control completo sobre todos los elementos de tu web, a
+                  diferencia del SEO Off-Page.
                 </p>
               </div>
               <div className="p-4 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg">
-                <h4 className="font-bold text-primary mb-2">⚡ Resultados Rápidos</h4>
+                <h4 className="font-bold text-primary mb-2">
+                  ⚡ Resultados Rápidos
+                </h4>
                 <p className="text-sm text-muted-foreground">
-                  Los cambios On-Page se reflejan en Google en 2-4 semanas, mucho más rápido que el link building.
+                  Los cambios On-Page se reflejan en Google en 2-4 semanas,
+                  mucho más rápido que el link building.
                 </p>
               </div>
               <div className="p-4 bg-gradient-to-r from-secondary/10 to-accent/10 rounded-lg">
-                <h4 className="font-bold text-secondary mb-2">💰 ROI Inmediato</h4>
+                <h4 className="font-bold text-secondary mb-2">
+                  💰 ROI Inmediato
+                </h4>
                 <p className="text-sm text-muted-foreground">
-                  Mejoras la experiencia de usuario y conversiones desde el primer día.
+                  Mejoras la experiencia de usuario y conversiones desde el
+                  primer día.
                 </p>
               </div>
             </div>
@@ -147,7 +162,8 @@ export default function SeoOnPage() {
               {
                 icon: "📝",
                 title: "Optimización de Contenido",
-                description: "Creación y optimización de contenido relevante y de calidad.",
+                description:
+                  "Creación y optimización de contenido relevante y de calidad.",
                 elements: [
                   "Keyword research y densidad óptima",
                   "Estructura H1, H2, H3 jerárquica",
@@ -160,7 +176,8 @@ export default function SeoOnPage() {
               {
                 icon: "🏷️",
                 title: "Meta Tags & Schema",
-                description: "Optimización de metadatos para motores de búsqueda.",
+                description:
+                  "Optimización de metadatos para motores de búsqueda.",
                 elements: [
                   "Títulos únicos y atractivos (50-60 chars)",
                   "Meta descripciones optimizadas",
@@ -186,7 +203,8 @@ export default function SeoOnPage() {
               {
                 icon: "⚡",
                 title: "Core Web Vitals",
-                description: "Optimización de velocidad y experiencia de usuario.",
+                description:
+                  "Optimización de velocidad y experiencia de usuario.",
                 elements: [
                   "LCP (Largest Contentful Paint) < 2.5s",
                   "FID (First Input Delay) < 100ms",
@@ -232,7 +250,9 @@ export default function SeoOnPage() {
                   {element.description}
                 </p>
                 <div className="mb-4">
-                  <h4 className="font-bold text-sm mb-2">Elementos incluidos:</h4>
+                  <h4 className="font-bold text-sm mb-2">
+                    Elementos incluidos:
+                  </h4>
                   <ul className="space-y-1 text-xs">
                     {element.elements.map((item) => (
                       <li key={item} className="flex items-start gap-2">
@@ -265,22 +285,42 @@ export default function SeoOnPage() {
             {
               tool: "Google Search Console",
               purpose: "Monitoreo y optimización de presencia en Google",
-              features: ["Indexación", "Core Web Vitals", "Search Performance", "Mobile Usability"]
+              features: [
+                "Indexación",
+                "Core Web Vitals",
+                "Search Performance",
+                "Mobile Usability"
+              ]
             },
             {
               tool: "PageSpeed Insights",
               purpose: "Análisis de rendimiento y Core Web Vitals",
-              features: ["LCP, FID, CLS", "Lab Data", "Field Data", "Optimización recomendada"]
+              features: [
+                "LCP, FID, CLS",
+                "Lab Data",
+                "Field Data",
+                "Optimización recomendada"
+              ]
             },
             {
               tool: "Screaming Frog",
               purpose: "Auditoría técnica completa del sitio",
-              features: ["Crawl Analysis", "Technical SEO", "Broken Links", "Meta Tags Audit"]
+              features: [
+                "Crawl Analysis",
+                "Technical SEO",
+                "Broken Links",
+                "Meta Tags Audit"
+              ]
             },
             {
               tool: "Ahrefs Site Audit",
               purpose: "Auditoría SEO integral y monitoreo",
-              features: ["On-Page SEO", "Technical Issues", "Content Analysis", "Competitor Analysis"]
+              features: [
+                "On-Page SEO",
+                "Technical Issues",
+                "Content Analysis",
+                "Competitor Analysis"
+              ]
             }
           ].map((tool) => (
             <SolucionCard key={tool.tool}>
@@ -333,15 +373,21 @@ export default function SeoOnPage() {
                 <div className="text-5xl font-bold mb-4 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
                   {result.metric}
                 </div>
-                <p className="text-lg text-foreground mb-2">{result.description}</p>
-                <p className="text-sm text-muted-foreground">{result.timeframe}</p>
+                <p className="text-lg text-foreground mb-2">
+                  {result.description}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  {result.timeframe}
+                </p>
               </SolucionCard>
             ))}
           </div>
 
           {/* Case Study */}
           <SolucionCard>
-            <h3 className="text-2xl font-bold mb-4">Caso de Éxito: Clínica Dental</h3>
+            <h3 className="text-2xl font-bold mb-4">
+              Caso de Éxito: Clínica Dental
+            </h3>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <h4 className="font-bold mb-2">Situación Inicial:</h4>
@@ -353,11 +399,15 @@ export default function SeoOnPage() {
                 </ul>
               </div>
               <div>
-                <h4 className="font-bold mb-2">Optimizaciones Implementadas:</h4>
+                <h4 className="font-bold mb-2">
+                  Optimizaciones Implementadas:
+                </h4>
                 <ul className="text-sm space-y-1 text-muted-foreground">
                   <li>• Optimización completa de imágenes y código</li>
                   <li>• Meta tags únicos y optimizados</li>
-                  <li>• Contenido optimizado para &ldquo;dentista [ciudad]&rdquo;</li>
+                  <li>
+                    • Contenido optimizado para &ldquo;dentista [ciudad]&rdquo;
+                  </li>
                   <li>• Arquitectura de enlaces internos mejorada</li>
                 </ul>
               </div>
@@ -375,7 +425,9 @@ export default function SeoOnPage() {
                 </div>
                 <div>
                   <div className="font-bold text-accent">Top 3</div>
-                  <div className="text-muted-foreground">8 keywords locales</div>
+                  <div className="text-muted-foreground">
+                    8 keywords locales
+                  </div>
                 </div>
                 <div>
                   <div className="font-bold text-accent">+65%</div>
@@ -496,7 +548,10 @@ export default function SeoOnPage() {
                 popular: false
               }
             ].map((plan) => (
-              <SolucionCard key={plan.title} className={plan.popular ? "ring-2 ring-accent" : ""}>
+              <SolucionCard
+                key={plan.title}
+                className={plan.popular ? "ring-2 ring-accent" : ""}
+              >
                 {plan.popular && (
                   <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
                     <span className="bg-gradient-to-r from-accent to-primary text-white px-4 py-1 rounded-full text-sm font-bold">
@@ -505,7 +560,9 @@ export default function SeoOnPage() {
                   </div>
                 )}
                 <h3 className="text-2xl font-bold mb-2 mt-4">{plan.title}</h3>
-                <p className="text-sm text-muted-foreground mb-4">{plan.description}</p>
+                <p className="text-sm text-muted-foreground mb-4">
+                  {plan.description}
+                </p>
                 <div className="text-3xl font-bold mb-6 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
                   {plan.price}
                 </div>
@@ -523,8 +580,8 @@ export default function SeoOnPage() {
 
           <div className="mt-12 text-center">
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              También ofrecemos auditorías puntuales y proyectos de optimización específicos. 
-              Sin permanencia, solo pagas por lo que necesitas.
+              También ofrecemos auditorías puntuales y proyectos de optimización
+              específicos. Sin permanencia, solo pagas por lo que necesitas.
             </p>
             <Button
               asChild
@@ -549,7 +606,7 @@ export default function SeoOnPage() {
             ¿Listo para Optimizar tu Web?
           </h2>
           <p className="mb-8 text-lg font-sans md:text-xl lg:text-2xl text-slate-600 dark:text-white/95">
-            Auditoría gratuita de SEO On-Page y propuesta de optimización 
+            Auditoría gratuita de SEO On-Page y propuesta de optimización
             personalizada sin compromiso.
           </p>
           <Button

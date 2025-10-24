@@ -30,6 +30,7 @@ Estandarizar TODAS las páginas de la aplicación para que usen la misma estruct
 Todas las páginas deben seguir uno de estos 3 patrones:
 
 #### 1. ContentPage - Contenido Simple
+
 ```tsx
 import { ContentPage } from "@/components/layout";
 
@@ -44,6 +45,7 @@ export default function MyPage() {
 ```
 
 **HTML generado**:
+
 ```html
 <div class="min-h-screen">
   <article class="pt-24 pb-20 px-4">
@@ -55,12 +57,13 @@ export default function MyPage() {
 ```
 
 #### 2. HeroSection - Marketing/Hero
+
 ```tsx
 import { HeroSection } from "@/components/layout";
 
 export default function MyPage() {
   const gradient = `...`;
-  
+
   return (
     <>
       <HeroSection gradient={gradient}>
@@ -69,17 +72,16 @@ export default function MyPage() {
           <p>Description</p>
         </div>
       </HeroSection>
-      
+
       {/* Secciones adicionales fuera del hero */}
-      <section className="py-20">
-        {/* ... */}
-      </section>
+      <section className="py-20">{/* ... */}</section>
     </>
   );
 }
 ```
 
 **HTML generado**:
+
 ```html
 <div class="min-h-screen">
   <section class="pt-24 pb-20 md:pb-32" style="background: ...">
@@ -94,6 +96,7 @@ export default function MyPage() {
 ```
 
 #### 3. GridPage - Listados/Blog
+
 ```tsx
 import { GridPage } from "@/components/layout";
 
@@ -103,9 +106,11 @@ export default function MyPage() {
       <div className="text-center mb-16">
         <h1>Título</h1>
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {items.map(item => <Card key={item.id} />)}
+        {items.map((item) => (
+          <Card key={item.id} />
+        ))}
       </div>
     </GridPage>
   );
@@ -115,12 +120,14 @@ export default function MyPage() {
 ## Inventario de Páginas
 
 ### ✅ Ya Migradas (2)
+
 - [x] `/contacto` - ContentPage
 - [x] `/about` - ContentPage
 
 ### 🔄 Pendientes de Migrar (23)
 
 #### Páginas de Contenido Simple → ContentPage
+
 - [ ] `/servicios`
 - [ ] `/sources`
 - [ ] `/documentation/sources`
@@ -128,6 +135,7 @@ export default function MyPage() {
 - [ ] `/dev-performance-test`
 
 #### Páginas Hero → HeroSection
+
 - [ ] `/soluciones` (página índice)
 - [ ] `/soluciones/web-development`
 - [ ] `/soluciones/seo`
@@ -140,11 +148,13 @@ export default function MyPage() {
 - [ ] `/briefing/formulario`
 
 #### Páginas Grid/Listado → GridPage
+
 - [ ] `/faqs`
 - [ ] `/blog`
 - [ ] `/portfolio`
 
 #### Páginas Especiales (evaluar)
+
 - [ ] `/` (homepage con HeroSection especial)
 - [ ] `/blog/[slug]` (post individual)
 - [ ] `/blog/tag/[tag]`
@@ -180,7 +190,7 @@ import { HeroSection } from "@/components/layout";
 
 export default function MyPage() {
   const gradient = `linear-gradient(...)`;
-  
+
   return (
     <HeroSection gradient={gradient}>
       <div className="max-w-3xl">
@@ -250,6 +260,7 @@ Para cada página a migrar:
 ### Ejemplo 1: Migrar /servicios
 
 **Antes**:
+
 ```tsx
 export default function ServiciosPage() {
   return (
@@ -266,6 +277,7 @@ export default function ServiciosPage() {
 ```
 
 **Después**:
+
 ```tsx
 import { ContentPage } from "@/components/layout";
 
@@ -284,6 +296,7 @@ export default function ServiciosPage() {
 ### Ejemplo 2: Migrar /soluciones/seo
 
 **Antes**:
+
 ```tsx
 export default function SeoPage() {
   return (
@@ -295,16 +308,15 @@ export default function SeoPage() {
           </div>
         </div>
       </section>
-      
-      <section className="py-20">
-        {/* más contenido */}
-      </section>
+
+      <section className="py-20">{/* más contenido */}</section>
     </div>
   );
 }
 ```
 
 **Después**:
+
 ```tsx
 import { HeroSection } from "@/components/layout";
 
@@ -314,7 +326,7 @@ export default function SeoPage() {
     rgb(var(--accent-rgb)_/_0.03),
     rgb(var(--primary-rgb)_/_0.03)
   )`;
-  
+
   return (
     <>
       <HeroSection gradient={gradient}>
@@ -322,10 +334,8 @@ export default function SeoPage() {
           <h1>SEO & Marketing</h1>
         </div>
       </HeroSection>
-      
-      <section className="py-20">
-        {/* más contenido */}
-      </section>
+
+      <section className="py-20">{/* más contenido */}</section>
     </>
   );
 }
@@ -334,6 +344,7 @@ export default function SeoPage() {
 ### Ejemplo 3: Migrar /faqs
 
 **Antes**:
+
 ```tsx
 export default function FAQsPage() {
   return (
@@ -342,9 +353,11 @@ export default function FAQsPage() {
         <div className="text-center mb-16">
           <h1>Preguntas Frecuentes</h1>
         </div>
-        
+
         <div className="space-y-4">
-          {faqs.map(faq => <FAQItem key={faq.id} />)}
+          {faqs.map((faq) => (
+            <FAQItem key={faq.id} />
+          ))}
         </div>
       </div>
     </div>
@@ -353,6 +366,7 @@ export default function FAQsPage() {
 ```
 
 **Después**:
+
 ```tsx
 import { GridPage } from "@/components/layout";
 
@@ -362,9 +376,11 @@ export default function FAQsPage() {
       <div className="text-center mb-16">
         <h1>Preguntas Frecuentes</h1>
       </div>
-      
+
       <div className="space-y-4">
-        {faqs.map(faq => <FAQItem key={faq.id} />)}
+        {faqs.map((faq) => (
+          <FAQItem key={faq.id} />
+        ))}
       </div>
     </GridPage>
   );
@@ -374,6 +390,7 @@ export default function FAQsPage() {
 ## Beneficios Esperados
 
 ### Antes de la Estandarización
+
 - ❌ 25+ archivos con código duplicado
 - ❌ Inconsistencias en spacing
 - ❌ HTML semántico variable
@@ -381,6 +398,7 @@ export default function FAQsPage() {
 - ❌ ~500 líneas de código repetido
 
 ### Después de la Estandarización
+
 - ✅ Todos usan PageWrapper
 - ✅ Spacing consistente (pt-24)
 - ✅ HTML semántico correcto
@@ -391,6 +409,7 @@ export default function FAQsPage() {
 ## Prioridad de Migración
 
 ### Fase 1: Crítico (primeras 5 páginas)
+
 1. `/servicios` - ContentPage (página importante)
 2. `/faqs` - GridPage (SEO importante)
 3. `/soluciones` - HeroSection (página hub)
@@ -398,6 +417,7 @@ export default function FAQsPage() {
 5. `/briefing` - HeroSection (conversión)
 
 ### Fase 2: Importante (siguientes 8 páginas)
+
 6. `/soluciones/web-development` - HeroSection
 7. `/soluciones/seo` - HeroSection
 8. `/soluciones/e-commerce` - HeroSection
@@ -408,6 +428,7 @@ export default function FAQsPage() {
 13. `/portfolio` - GridPage
 
 ### Fase 3: Menor prioridad (resto)
+
 14-23. Páginas restantes y especiales
 
 ## Testing
@@ -456,4 +477,3 @@ pnpm run dev
 **Versión**: 1.0.0  
 **Fecha**: 2025-10-16  
 **Autor**: Sistema de estandarización WEBCODE
-

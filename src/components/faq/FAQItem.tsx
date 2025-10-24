@@ -21,10 +21,16 @@ interface FAQItemProps {
  */
 export function FAQItem({ question, answer, index, id }: FAQItemProps) {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   // Generar ID único basado en la pregunta si no se proporciona
-  const faqId = id || `faq-${question.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')}`;
-  
+  const faqId =
+    id ||
+    `faq-${question
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g, "-")
+      .replace(/-+/g, "-")
+      .replace(/^-|-$/g, "")}`;
+
   // Función para abrir FAQ desde hash de URL
   useEffect(() => {
     const handleHashChange = () => {
@@ -32,21 +38,21 @@ export function FAQItem({ question, answer, index, id }: FAQItemProps) {
         setIsOpen(true);
         // Scroll suave al elemento después de un breve delay
         setTimeout(() => {
-          document.getElementById(faqId)?.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'center'
+          document.getElementById(faqId)?.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
           });
         }, 100);
       }
     };
-    
+
     // Verificar hash inicial
     handleHashChange();
-    
+
     // Escuchar cambios en el hash
-    window.addEventListener('hashchange', handleHashChange);
-    
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => window.removeEventListener("hashchange", handleHashChange);
   }, [faqId]);
 
   return (

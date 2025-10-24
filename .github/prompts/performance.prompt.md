@@ -10,13 +10,13 @@ Prompt consolidado para optimización de rendimiento, Core Web Vitals, animacion
 
 ### **Métricas Objetivo WebCode**
 
-| Métrica | Objetivo | Bueno | Aceptable | Pobre |
-|---------|----------|-------|-----------|-------|
-| **LCP** (Largest Contentful Paint) | < 2.5s | < 2.5s | 2.5s - 4.0s | > 4.0s |
-| **FID** (First Input Delay) | < 100ms | < 100ms | 100ms - 300ms | > 300ms |
-| **CLS** (Cumulative Layout Shift) | < 0.1 | < 0.1 | 0.1 - 0.25 | > 0.25 |
-| **FCP** (First Contentful Paint) | < 1.8s | < 1.8s | 1.8s - 3.0s | > 3.0s |
-| **TTFB** (Time to First Byte) | < 600ms | < 600ms | 600ms - 1.5s | > 1.5s |
+| Métrica                            | Objetivo | Bueno   | Aceptable     | Pobre   |
+| ---------------------------------- | -------- | ------- | ------------- | ------- |
+| **LCP** (Largest Contentful Paint) | < 2.5s   | < 2.5s  | 2.5s - 4.0s   | > 4.0s  |
+| **FID** (First Input Delay)        | < 100ms  | < 100ms | 100ms - 300ms | > 300ms |
+| **CLS** (Cumulative Layout Shift)  | < 0.1    | < 0.1   | 0.1 - 0.25    | > 0.25  |
+| **FCP** (First Contentful Paint)   | < 1.8s   | < 1.8s  | 1.8s - 3.0s   | > 3.0s  |
+| **TTFB** (Time to First Byte)      | < 600ms  | < 600ms | 600ms - 1.5s  | > 1.5s  |
 
 ### **Estrategias de Optimización**
 
@@ -43,9 +43,9 @@ import Image from 'next/image';
 #### **B) Optimizar FID (First Input Delay)**
 
 ```tsx
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 // ✅ Diferir JavaScript no crítico
 export function HeavyComponent() {
@@ -92,7 +92,7 @@ export function HeavyComponent() {
 ### **Next.js Image Component**
 
 ```tsx
-import Image from 'next/image';
+import Image from "next/image";
 
 // Imagen optimizada con tamaños responsivos
 <Image
@@ -104,7 +104,7 @@ import Image from 'next/image';
   quality={85}
   priority={isAboveFold}
   placeholder="blur"
-/>
+/>;
 ```
 
 ### **Formatos Modernos**
@@ -113,10 +113,10 @@ import Image from 'next/image';
 // next.config.ts
 const config: NextConfig = {
   images: {
-    formats: ['image/avif', 'image/webp'], // Formatos modernos
+    formats: ["image/avif", "image/webp"], // Formatos modernos
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-  },
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384]
+  }
 };
 ```
 
@@ -150,17 +150,17 @@ const config: NextConfig = {
 ### **Code Splitting**
 
 ```tsx
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
 // ✅ Lazy load de componentes pesados
-const HeavyChart = dynamic(() => import('@/components/HeavyChart'), {
+const HeavyChart = dynamic(() => import("@/components/HeavyChart"), {
   loading: () => <ChartSkeleton />,
-  ssr: false, // No renderizar en servidor si no es necesario
+  ssr: false // No renderizar en servidor si no es necesario
 });
 
 // ✅ Lazy load con named export
-const SpecificComponent = dynamic(
-  () => import('@/components/Module').then(mod => mod.SpecificComponent)
+const SpecificComponent = dynamic(() =>
+  import("@/components/Module").then((mod) => mod.SpecificComponent)
 );
 ```
 
@@ -168,16 +168,16 @@ const SpecificComponent = dynamic(
 
 ```tsx
 // ❌ Importación completa de librería
-import _ from 'lodash';
+import _ from "lodash";
 
 // ✅ Importación específica
-import debounce from 'lodash/debounce';
+import debounce from "lodash/debounce";
 
 // ❌ Importación de todo el icono pack
-import * as Icons from 'lucide-react';
+import * as Icons from "lucide-react";
 
 // ✅ Importación específica
-import { Search, Menu, X } from 'lucide-react';
+import { Search, Menu, X } from "lucide-react";
 ```
 
 ### **Bundle Analysis**
@@ -198,24 +198,28 @@ ANALYZE=true pnpm build
 
 ```tsx
 // app/layout.tsx
-import { Poppins, Space_Grotesk } from 'next/font/google';
+import { Poppins, Space_Grotesk } from "next/font/google";
 
 // ✅ Optimización automática de fuentes
 const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-sans',
-  display: 'swap', // FOUT (Flash of Unstyled Text) pero mejor performance
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
+  display: "swap" // FOUT (Flash of Unstyled Text) pero mejor performance
 });
 
 const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-display',
-  display: 'swap',
-  preload: true, // Precargar fuente crítica
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+  preload: true // Precargar fuente crítica
 });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="es" className={`${poppins.variable} ${spaceGrotesk.variable}`}>
       <body className="font-sans">{children}</body>
@@ -229,7 +233,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 ```tsx
 // Cargar solo los caracteres necesarios para español
 const font = Poppins({
-  subsets: ['latin', 'latin-ext'],
+  subsets: ["latin", "latin-ext"]
   // Excluir caracteres no usados reduce tamaño
 });
 ```
@@ -244,8 +248,8 @@ const font = Poppins({
 // tailwind.config.js
 module.exports = {
   content: [
-    './src/**/*.{js,ts,jsx,tsx,mdx}', // Purge CSS no usado
-  ],
+    "./src/**/*.{js,ts,jsx,tsx,mdx}" // Purge CSS no usado
+  ]
   // ...resto config
 };
 ```
@@ -254,15 +258,17 @@ module.exports = {
 
 ```tsx
 // app/layout.tsx
-import '../styles/critical.css'; // CSS crítico inline
+import "../styles/critical.css"; // CSS crítico inline
 
 // CSS no crítico con lazy load
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html>
-      <head>
-        {/* Critical CSS ya está inline */}
-      </head>
+      <head>{/* Critical CSS ya está inline */}</head>
       <body>{children}</body>
     </html>
   );
@@ -320,10 +326,7 @@ import { motion } from 'framer-motion';
 
 ```tsx
 // ✅ Avisar al navegador de animaciones futuras
-<motion.div
-  className="will-change-transform"
-  animate={{ x: 100 }}
->
+<motion.div className="will-change-transform" animate={{ x: 100 }}>
   Elemento animado
 </motion.div>
 
@@ -334,9 +337,9 @@ import { motion } from 'framer-motion';
 ### **Reducción de Movimiento (A11y)**
 
 ```tsx
-'use client';
+"use client";
 
-import { useReducedMotion } from 'framer-motion';
+import { useReducedMotion } from "framer-motion";
 
 export function AnimatedComponent() {
   const shouldReduceMotion = useReducedMotion();
@@ -361,10 +364,10 @@ export function AnimatedComponent() {
 ```tsx
 // ✅ Fetch en Server Component (no impacta bundle JS del cliente)
 export default async function BlogPage() {
-  const posts = await fetch('https://api.example.com/posts', {
-    cache: 'force-cache', // ISR: cache estático
-    next: { revalidate: 3600 }, // Revalidar cada hora
-  }).then(res => res.json());
+  const posts = await fetch("https://api.example.com/posts", {
+    cache: "force-cache", // ISR: cache estático
+    next: { revalidate: 3600 } // Revalidar cada hora
+  }).then((res) => res.json());
 
   return <PostsList posts={posts} />;
 }
@@ -376,9 +379,9 @@ export default async function BlogPage() {
 // ✅ Fetch paralelo para mejorar tiempo de carga
 export default async function DashboardPage() {
   const [users, orders, stats] = await Promise.all([
-    fetch('/api/users').then(res => res.json()),
-    fetch('/api/orders').then(res => res.json()),
-    fetch('/api/stats').then(res => res.json()),
+    fetch("/api/users").then((res) => res.json()),
+    fetch("/api/orders").then((res) => res.json()),
+    fetch("/api/stats").then((res) => res.json())
   ]);
 
   return <Dashboard users={users} orders={orders} stats={stats} />;
@@ -388,7 +391,7 @@ export default async function DashboardPage() {
 ### **Streaming con Suspense**
 
 ```tsx
-import { Suspense } from 'react';
+import { Suspense } from "react";
 
 // ✅ Streaming de contenido lento
 export default function Page() {
@@ -417,36 +420,36 @@ async function SlowPostsList() {
 
 ```tsx
 // Static (ISG - Incremental Static Generation)
-fetch('/api/data', {
-  cache: 'force-cache',
-  next: { revalidate: 3600 }, // Revalidar cada hora
+fetch("/api/data", {
+  cache: "force-cache",
+  next: { revalidate: 3600 } // Revalidar cada hora
 });
 
 // Dynamic (SSR - Server Side Rendering)
-fetch('/api/data', {
-  cache: 'no-store', // Sin caché, siempre fresco
+fetch("/api/data", {
+  cache: "no-store" // Sin caché, siempre fresco
 });
 
 // Revalidate on-demand
 // En route handler:
-import { revalidatePath } from 'next/cache';
-revalidatePath('/blog');
+import { revalidatePath } from "next/cache";
+revalidatePath("/blog");
 ```
 
 ### **Client-Side Caching**
 
 ```tsx
-'use client';
+"use client";
 
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from "@tanstack/react-query";
 
 // ✅ React Query para caching inteligente en cliente
 export function UserProfile() {
   const { data, isLoading } = useQuery({
-    queryKey: ['user'],
-    queryFn: () => fetch('/api/user').then(res => res.json()),
+    queryKey: ["user"],
+    queryFn: () => fetch("/api/user").then((res) => res.json()),
     staleTime: 5 * 60 * 1000, // 5 minutos
-    cacheTime: 10 * 60 * 1000, // 10 minutos
+    cacheTime: 10 * 60 * 1000 // 10 minutos
   });
 
   if (isLoading) return <Skeleton />;
@@ -472,21 +475,23 @@ pnpm dlx lighthouse http://localhost:3000 --view
 
 ```tsx
 // app/layout.tsx
-'use client';
+"use client";
 
-import { useReportWebVitals } from 'next/web-vitals';
+import { useReportWebVitals } from "next/web-vitals";
 
 export function WebVitalsTracker() {
   useReportWebVitals((metric) => {
     // Enviar a analytics
     console.log(metric);
-    
+
     // Ejemplo: enviar a Google Analytics
-    window.gtag?.('event', metric.name, {
-      value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
+    window.gtag?.("event", metric.name, {
+      value: Math.round(
+        metric.name === "CLS" ? metric.value * 1000 : metric.value
+      ),
       metric_id: metric.id,
       metric_value: metric.value,
-      metric_delta: metric.delta,
+      metric_delta: metric.delta
     });
   });
 
@@ -498,15 +503,19 @@ export function WebVitalsTracker() {
 
 ```typescript
 // Usar MCP para análisis automatizado
-const insights = await mcp_chrome-devtool_performance_start_trace({
-  reload: true,
-  autoStop: true
-});
+const insights =
+  (await mcp_chrome) -
+  devtool_performance_start_trace({
+    reload: true,
+    autoStop: true
+  });
 
 // Analizar insights específicos
-const lcpBreakdown = await mcp_chrome-devtool_performance_analyze_insight({
-  insightName: "LCPBreakdown"
-});
+const lcpBreakdown =
+  (await mcp_chrome) -
+  devtool_performance_analyze_insight({
+    insightName: "LCPBreakdown"
+  });
 ```
 
 ---

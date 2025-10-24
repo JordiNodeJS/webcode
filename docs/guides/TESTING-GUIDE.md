@@ -2,13 +2,13 @@
 
 ## **[Completado]** **ESTADO ACTUAL**
 
-### ****[Objetivos]** SOLUCIÓN IMPLEMENTADA:**
+### \***\*[Objetivos]** SOLUCIÓN IMPLEMENTADA:\*\*
 
 - **[Completado]** **Página principal** ahora usa `IdleOptimizedValuePropsGrid`
 - **[Completado]** **Performance Test Lab** funcionando sin errores
 - **[Completado]** **Servidor** corriendo en http://localhost:3001
 
-### ****[Herramientas]** RUTAS DISPONIBLES:**
+### \***\*[Herramientas]** RUTAS DISPONIBLES:\*\*
 
 #### **1. Página Principal (con solución optimizada)**
 
@@ -43,7 +43,7 @@ http://localhost:3001/dev-performance-test
 
 ### **Paso 2: Escenarios Disponibles**
 
-#### ****[Círculo Rojo]** "Tarjetas Originales"**
+#### \***\*[Círculo Rojo]** "Tarjetas Originales"\*\*
 
 - Componente con problemas de performance
 - GPU layers siempre activas
@@ -59,7 +59,7 @@ http://localhost:3001/dev-performance-test
 - Sin animaciones, solo CSS básico
 - Performance perfecto, pero sin efectos
 
-#### ****[Objetivos]** "Idle Performance Optimized"** **[Destacado]** **RECOMENDADO**
+#### \***\*[Objetivos]** "Idle Performance Optimized"\*\* **[Destacado]** **RECOMENDADO**
 
 - Nueva solución implementada
 - GPU layers condicionales
@@ -67,19 +67,19 @@ http://localhost:3001/dev-performance-test
 
 ### **Paso 3: Interpretar Métricas**
 
-#### ****[Análisis]** FPS (Frames Por Segundo)**
+#### \***\*[Análisis]** FPS (Frames Por Segundo)\*\*
 
 - **Verde (58-60 FPS)**: Excelente
 - **Amarillo (45-57 FPS)**: Aceptable
 - **Rojo (<45 FPS)**: Problemático
 
-#### ****[Guardar]** Memoria**
+#### \***\*[Guardar]** Memoria\*\*
 
 - **Verde (<5MB)**: Excelente
 - **Amarillo (5-15MB)**: Aceptable
 - **Rojo (>15MB)**: Problemático
 
-#### ****[Recargar]** Renders**
+#### \***\*[Recargar]** Renders\*\*
 
 - **Muestra**: Número de re-renders por componente
 - **Ideal**: Mínimos renders en idle

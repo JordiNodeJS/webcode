@@ -2,7 +2,6 @@
 
 import Script from "next/script";
 import type { ReactElement, ReactNode } from "react";
-import { useId } from "react";
 
 interface FAQItem {
   question: string;
@@ -20,7 +19,8 @@ interface FAQStructuredDataProps {
  * mostrando las preguntas directamente en los resultados de búsqueda.
  */
 export function FAQStructuredData({ faqs }: FAQStructuredDataProps) {
-  const uniqueId = useId();
+  // Usar ID estático para evitar problemas de hidratación
+  const uniqueId = "faq-structured-data";
 
   // Helper to convert a ReactNode (possibly JSX) into plain text
   const reactNodeToText = (node: ReactNode): string => {

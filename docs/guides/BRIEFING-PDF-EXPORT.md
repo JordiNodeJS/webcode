@@ -34,9 +34,11 @@ Utilidad principal que genera documentos PDF profesionales con:
 ### 2. API Endpoints
 
 #### `/api/briefing/download` (POST)
+
 Genera y descarga el PDF con los datos del briefing completado.
 
 **Request Body:**
+
 ```typescript
 {
   nombre: string;
@@ -53,14 +55,17 @@ Genera y descarga el PDF con los datos del briefing completado.
 ```
 
 **Response:**
+
 - Content-Type: `application/pdf`
 - Content-Disposition: `attachment; filename="briefing-{nombre}-{fecha}.pdf"`
 - PDF binario listo para descarga
 
 #### `/api/briefing/plantilla` (GET)
+
 Descarga una plantilla PDF en blanco para completar manualmente.
 
 **Response:**
+
 - Content-Type: `application/pdf`
 - Content-Disposition: `attachment; filename="briefing-webcode-plantilla.pdf"`
 - Cache: Cacheado indefinidamente (inmutable)
@@ -68,29 +73,36 @@ Descarga una plantilla PDF en blanco para completar manualmente.
 ### 3. Integración en el Formulario
 
 #### Botón de Descarga Post-Envío
+
 Tras completar el briefing, el usuario puede:
+
 - **[Completado]** Descargar su briefing en PDF
 - **[Completado]** Volver al inicio
 - **[Completado]** Ver el proceso completo
 
 #### Plantilla Descargable en Página Principal
+
 En `/briefing`:
+
 - Botón destacado para descargar la plantilla PDF vacía
 - Permite a clientes completar el briefing offline
 
 ## **[Diseño]** Diseño del PDF
 
 ### Colores
+
 - **Primary**: RGB(255, 102, 128) - #ff6680
 - **Dark Background**: RGB(24, 24, 27) - #18181b
 - **Text Color**: RGB(161, 161, 170) - #a1a1aa
 
 ### Tipografía
+
 - **Títulos**: Helvetica Bold, 12-24pt
 - **Contenido**: Helvetica Regular, 10pt
 - **Footer**: Helvetica, 8pt
 
 ### Layout
+
 - **Márgenes**: 20pt en todos los lados
 - **Ancho de contenido**: `pageWidth - 40pt`
 - **Espaciado entre secciones**: 5-15pt
@@ -166,6 +178,7 @@ const downloadPDF = async () => {
 ## **[Magia]** Características Especiales
 
 ### Mapeo de Valores
+
 Todos los valores codificados se traducen a texto legible:
 
 ```typescript
@@ -180,12 +193,15 @@ Todos los valores codificados se traducen a texto legible:
 ```
 
 ### Manejo de Arrays
+
 Los arrays de funcionalidades y dispositivos se formatean como listas separadas por comas.
 
 ### Texto Largo
+
 Los campos de texto largo (como objetivos, problemas a resolver) se dividen automáticamente en múltiples líneas respetando el ancho de página.
 
 ### Paginación Inteligente
+
 El sistema detecta cuando una sección no cabe en la página actual y añade un salto de página automático.
 
 ## **[Objetivos]** Casos de Uso
@@ -256,6 +272,7 @@ Todos los endpoints manejan errores gracefully:
 ## **[Teléfono]** Contacto
 
 Para dudas sobre esta funcionalidad:
+
 - **Responsable**: Equipo WEBCODE
 - **Email**: info@webcode.es
 - **Documentación**: `/docs/BRIEFING-PDF-EXPORT.md`
@@ -264,4 +281,3 @@ Para dudas sobre esta funcionalidad:
 
 **Última actualización**: Octubre 2025  
 **Versión**: 1.0.0
-

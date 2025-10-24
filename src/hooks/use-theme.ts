@@ -23,11 +23,11 @@ export function useTheme() {
   // resolvedTheme está disponible después del montaje
   const mounted = resolvedTheme !== undefined;
 
-  return { 
-    theme, 
+  return {
+    theme,
     setTheme,
     resolvedTheme,
-    toggleTheme, 
+    toggleTheme,
     mounted
   };
 }

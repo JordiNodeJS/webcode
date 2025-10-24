@@ -2,7 +2,7 @@
  * Componente Breadcrumb para navegación del blog
  * Server Component - No requiere JavaScript en el cliente
  * Incluye schema.org markup para SEO
- * 
+ *
  * @see https://schema.org/BreadcrumbList
  */
 
@@ -66,7 +66,7 @@ function BreadcrumbListItem({
 
 /**
  * Breadcrumb navigation component
- * 
+ *
  * @example
  * ```tsx
  * <Breadcrumb items={[

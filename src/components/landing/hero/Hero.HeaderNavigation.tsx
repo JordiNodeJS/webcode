@@ -54,7 +54,7 @@ export function HeaderNavigation() {
 
   // Active navigation tracking (page or section)
   const [manualActiveHref, setManualActiveHref] = useState<string | null>(null);
-  
+
   // Calcular activeHref basado en pathname (sin useEffect para evitar warning)
   const activeHref = useMemo(() => {
     // Prefer exact path matches for non-hash, non-external links

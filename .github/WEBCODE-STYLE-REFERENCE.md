@@ -23,19 +23,23 @@
 ### Modo Claro
 
 ```css
---primary: oklch(0.57 0.2 328.5)              /* #dc7cb3 - Rosa principal */
---secondary: oklch(0.43 0.18 184.1)           /* #bce3e5 - Aguamarina */
---primary-rgb: 220, 124, 179                  /* RGB para efectos */
---secondary-rgb: 130, 200, 210                /* RGB para efectos */
+--primary:
+  oklch(0.57 0.2 328.5) /* #dc7cb3 - Rosa principal */
+    --secondary: oklch(0.43 0.18 184.1) /* #bce3e5 - Aguamarina */
+    --primary-rgb: 220,
+  124, 179 /* RGB para efectos */ --secondary-rgb: 130, 200,
+  210 /* RGB para efectos */;
 ```
 
 ### Modo Oscuro
 
 ```css
---primary: oklch(0.84 0.16 328.5)             /* Rosa brillante */
---secondary: oklch(0.45 0.18 184.1)           /* Aguamarina oscuro */
---primary-rgb: 255, 170, 215                  /* RGB más brillante */
---secondary-rgb: 100, 180, 200                /* RGB más brillante */
+--primary:
+  oklch(0.84 0.16 328.5) /* Rosa brillante */
+    --secondary: oklch(0.45 0.18 184.1) /* Aguamarina oscuro */
+    --primary-rgb: 255,
+  170, 215 /* RGB más brillante */ --secondary-rgb: 100, 180,
+  200 /* RGB más brillante */;
 ```
 
 ### Uso en Componentes
@@ -58,11 +62,11 @@
 ### Definiciones
 
 ```css
---shadow-3d-xs: 2px 2px 0px oklch(0.57 0.2 328.5 / 0.4)
---shadow-3d-sm: 3px 3px 0px oklch(0.57 0.2 328.5 / 0.6)
---shadow-3d-md: 3px 3px 0px + blur oklch(0.57 0.2 328.5 / 0.8)
---shadow-3d-lg: 4px 4px 0px + blur oklch(0.57 0.2 328.5 / 0.8)
---shadow-3d-xl: 6px 6px 0px + blur oklch(0.57 0.2 328.5 / 0.9)
+--shadow-3d-xs: 2px 2px 0px oklch(0.57 0.2 328.5 / 0.4) --shadow-3d-sm: 3px 3px
+  0px oklch(0.57 0.2 328.5 / 0.6) --shadow-3d-md: 3px 3px 0px + blur
+  oklch(0.57 0.2 328.5 / 0.8) --shadow-3d-lg: 4px 4px 0px + blur
+  oklch(0.57 0.2 328.5 / 0.8) --shadow-3d-xl: 6px 6px 0px + blur
+  oklch(0.57 0.2 328.5 / 0.9);
 ```
 
 ### Aplicación
@@ -93,10 +97,10 @@
 ### Fuentes Definidas
 
 ```css
---font-sans: var(--font-geist-sans)    /* Texto general y cuerpo */
---font-display: Space Grotesk          /* Títulos y elementos destacados */
---font-serif: Lora                     /* Textos largos y citas */
---font-mono: var(--font-geist-mono)    /* Código y elementos técnicos */
+--font-sans: var(--font-geist-sans) /* Texto general y cuerpo */
+  --font-display: Space Grotesk /* Títulos y elementos destacados */
+  --font-serif: Lora /* Textos largos y citas */
+  --font-mono: var(--font-geist-mono) /* Código y elementos técnicos */;
 ```
 
 ### Uso en Tailwind
@@ -133,20 +137,20 @@
 ```typescript
 // Curvas de animación
 const wsCurves = {
-  primary: [0.25, 0.46, 0.45, 0.94],   // ⭐ Curva principal profesional
-  smooth: [0.4, 0, 0.2, 1],             // Suave y natural
-  bounce: [0.68, -0.55, 0.265, 1.55],   // Con rebote
-  dramatic: [0.87, 0, 0.13, 1]          // Dramático
+  primary: [0.25, 0.46, 0.45, 0.94], // ⭐ Curva principal profesional
+  smooth: [0.4, 0, 0.2, 1], // Suave y natural
+  bounce: [0.68, -0.55, 0.265, 1.55], // Con rebote
+  dramatic: [0.87, 0, 0.13, 1] // Dramático
 };
 
 // Duraciones estándar
 const timings = {
-  instant: 0.1,    // 100ms - Cambios instantáneos
-  quick: 0.2,      // 200ms - ⭐ Interacciones rápidas (hover)
-  normal: 0.3,     // 300ms - ⭐ Estándar WebCode
-  smooth: 0.5,     // 500ms - Transiciones suaves
-  dramatic: 0.8,   // 800ms - Efectos dramáticos
-  slow: 1.2        // 1200ms - Animaciones lentas
+  instant: 0.1, // 100ms - Cambios instantáneos
+  quick: 0.2, // 200ms - ⭐ Interacciones rápidas (hover)
+  normal: 0.3, // 300ms - ⭐ Estándar WebCode
+  smooth: 0.5, // 500ms - Transiciones suaves
+  dramatic: 0.8, // 800ms - Efectos dramáticos
+  slow: 1.2 // 1200ms - Animaciones lentas
 };
 ```
 
@@ -155,8 +159,8 @@ const timings = {
 ```tsx
 // ✅ Con Tailwind
 <div className="
-  transition-all 
-  duration-300 
+  transition-all
+  duration-300
   ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
 ">
 
@@ -183,7 +187,7 @@ const timings = {
   hover:opacity-80                    /* ⭐ Opacidad 0.8 estándar */
   hover:scale-102                     /* Escala sutil 1.02 */
   hover:-translate-y-1                /* Elevación sutil -4px */
-  transition-all duration-200 
+  transition-all duration-200
   ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
 ">
 ```
@@ -194,21 +198,21 @@ const timings = {
 <button className="
   /* Base */
   bg-primary text-primary-foreground
-  
+
   /* Hover */
   hover:opacity-80
   hover:-translate-y-0.5
-  
+
   /* Focus */
   focus:ring-2 focus:ring-ring focus:outline-none
-  
+
   /* Active */
   active:scale-95
-  
+
   /* Disabled */
-  disabled:opacity-50 
+  disabled:opacity-50
   disabled:cursor-not-allowed
-  
+
   /* Transition */
   transition-all duration-200
   ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
@@ -236,6 +240,7 @@ style={{ boxShadow: 'var(--shadow-3d-sm)' }}
 ```
 
 **Características:**
+
 - Gradiente rosa → aguamarina automático
 - Modo claro: gradiente suave
 - Modo oscuro: efecto neón con text-shadow
@@ -304,7 +309,7 @@ style={{ boxShadow: 'var(--shadow-3d-sm)' }}
 ```tsx
 // ✅ Siempre mobile-first
 <div className="
-  grid 
+  grid
   grid-cols-1           /* Móvil: 1 columna */
   md:grid-cols-2        /* Tablet: 2 columnas */
   lg:grid-cols-3        /* Desktop: 3 columnas */
@@ -329,11 +334,13 @@ xl: 1280px   /* Desktop grande */
 ### Con Tailwind
 
 ```tsx
-<div className="
+<div
+  className="
   bg-background 
   text-foreground 
   border-border
-">
+"
+>
   {/* Variables se ajustan automáticamente */}
 </div>
 ```
@@ -355,23 +362,18 @@ xl: 1280px   /* Desktop grande */
 ### Card Estándar WebCode
 
 ```tsx
-<Card 
-  className="border-primary" 
-  style={{ boxShadow: 'var(--shadow-3d-md)' }}
->
+<Card className="border-primary" style={{ boxShadow: "var(--shadow-3d-md)" }}>
   <CardHeader>
-    <CardTitle className="neon-cyan-card-title">
-      Título con Gradiente
-    </CardTitle>
+    <CardTitle className="neon-cyan-card-title">Título con Gradiente</CardTitle>
     <CardDescription>Descripción de la card</CardDescription>
   </CardHeader>
   <CardContent>
     <p className="font-sans">Contenido de la tarjeta</p>
   </CardContent>
   <CardFooter>
-    <Button 
+    <Button
       className="hover:opacity-80"
-      style={{ boxShadow: 'var(--shadow-3d-sm)' }}
+      style={{ boxShadow: "var(--shadow-3d-sm)" }}
     >
       Acción
     </Button>
@@ -383,14 +385,14 @@ xl: 1280px   /* Desktop grande */
 
 ```tsx
 <Button
-  variant="default"                    /* bg-primary automático */
+  variant="default" /* bg-primary automático */
   size="lg"
   className="
     hover:opacity-80 
     hover:-translate-y-0.5
     transition-all duration-200
   "
-  style={{ boxShadow: 'var(--shadow-3d-sm)' }}
+  style={{ boxShadow: "var(--shadow-3d-sm)" }}
 >
   Botón WebCode
 </Button>
@@ -401,20 +403,24 @@ xl: 1280px   /* Desktop grande */
 ```tsx
 <section className="bg-gradient-webcode min-h-screen flex items-center">
   <div className="container mx-auto px-4 py-16">
-    <h1 className="
+    <h1
+      className="
       neon-cyan-title 
       text-6xl md:text-7xl lg:text-8xl 
       font-display 
       mb-6
-    ">
+    "
+    >
       WebCode
     </h1>
-    <p className="
+    <p
+      className="
       text-lg md:text-xl 
       text-muted-foreground 
       font-sans 
       max-w-2xl
-    ">
+    "
+    >
       Descripción del servicio
     </p>
   </div>

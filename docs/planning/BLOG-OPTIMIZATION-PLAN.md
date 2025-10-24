@@ -36,34 +36,42 @@ src/
 
 ## 🎯 Objetivos de Optimización
 
-### 1. **Reducción de Bundle Size** 
+### 1. **Reducción de Bundle Size**
+
 **Objetivo**: -20-30% (de 180KB a ~125-145KB)
 
 **Estrategias**:
+
 - Convertir componentes a Server Components
 - Code splitting de MarkdownRenderer y plugins rehype
 - Tree-shaking optimizado
 
 ### 2. **Mejora de Core Web Vitals**
+
 **Objetivo**: LCP < 2.0s, FID < 50ms, CLS < 0.1
 
 **Estrategias**:
+
 - Optimización de imágenes con prioridades correctas
 - Suspense boundaries y loading states
 - CSS animations en vez de JS
 
 ### 3. **Type Safety y Mantenibilidad**
+
 **Objetivo**: 100% type-safe con runtime validation
 
 **Estrategias**:
+
 - Zod schemas para validación runtime
 - Componentes utilitarios DRY
 - Mejor error handling
 
 ### 4. **React Compiler Optimizations**
+
 **Objetivo**: Auto-memoization para mejor performance
 
 **Estrategias**:
+
 - Simplificar componentes client
 - Eliminar useLayoutEffect innecesarios
 - Usar CSS en vez de JS para animaciones
@@ -75,6 +83,7 @@ src/
 ### Problema 1: Client Components Innecesarios
 
 #### BlogPostCard.tsx (160 líneas)
+
 ```tsx
 "use client";  // ⚠️ PROBLEMA
 
@@ -84,6 +93,7 @@ useLayoutEffect(() => { ... }, [])
 ```
 
 **Por qué es un problema**:
+
 - Añade ~15KB de JS al cliente
 - Todos los posts son client-side hydrated
 - `prefers-reduced-motion` puede detectarse con CSS puro
@@ -91,14 +101,17 @@ useLayoutEffect(() => { ... }, [])
 - React Compiler no puede optimizar efectivamente
 
 **Solución**:
+
 ```tsx
 // Server Component (sin 'use client')
 export function BlogPostCard({ post, priority }: BlogPostCardProps) {
   return (
-    <Card className="blog-card">  {/* CSS handle animations */}
+    <Card className="blog-card">
+      {" "}
+      {/* CSS handle animations */}
       {/* ... contenido sin JS ... */}
     </Card>
-  )
+  );
 }
 ```
 
@@ -119,6 +132,7 @@ export function BlogPostCard({ post, priority }: BlogPostCardProps) {
 ```
 
 **Beneficios**:
+
 - ✅ -15KB bundle
 - ✅ Mejor SSR/hydration
 - ✅ React Compiler friendly
@@ -129,34 +143,41 @@ export function BlogPostCard({ post, priority }: BlogPostCardProps) {
 ### Problema 2: Code Splitting de MarkdownRenderer
 
 #### Situación actual:
+
 ```tsx
-import { MarkdownRenderer } from "@/components/blog/MarkdownRenderer"
-import ReactMarkdown from "react-markdown"
-import rehypeHighlight from "rehype-highlight"
-import rehypeRaw from "rehype-raw"
-import rehypeSanitize from "rehype-sanitize"
+import { MarkdownRenderer } from "@/components/blog/MarkdownRenderer";
+import ReactMarkdown from "react-markdown";
+import rehypeHighlight from "rehype-highlight";
+import rehypeRaw from "rehype-raw";
+import rehypeSanitize from "rehype-sanitize";
 ```
 
 **Por qué es un problema**:
+
 - Plugins rehype son ~40KB
 - Se cargan incluso en la lista de posts (no se usan)
 - Bloquean el initial render
 
 **Solución**:
+
 ```tsx
 // BlogPostCard.tsx - NO importa MarkdownRenderer
 export function BlogPostCard({ post }: Props) {
-  return <Card>{post.excerpt}</Card>  // Solo texto plano
+  return <Card>{post.excerpt}</Card>; // Solo texto plano
 }
 
 // [slug]/page.tsx - Dynamic import
-const MarkdownRenderer = dynamic(() => 
-  import('@/components/blog/MarkdownRenderer').then(m => m.MarkdownRenderer),
+const MarkdownRenderer = dynamic(
+  () =>
+    import("@/components/blog/MarkdownRenderer").then(
+      (m) => m.MarkdownRenderer
+    ),
   { ssr: true }
-)
+);
 ```
 
 **Beneficios**:
+
 - ✅ -40KB en route inicial /blog
 - ✅ Carga diferida solo en /blog/[slug]
 - ✅ Mejor performance perceived
@@ -166,6 +187,7 @@ const MarkdownRenderer = dynamic(() =>
 ### Problema 3: Duplicación de Código
 
 #### Breadcrumbs (Duplicado 3 veces):
+
 ```tsx
 // page.tsx
 <nav aria-label="Breadcrumb">
@@ -190,11 +212,12 @@ const MarkdownRenderer = dynamic(() =>
 ```
 
 **Solución**:
+
 ```tsx
 // components/blog/Breadcrumb.tsx (Server Component)
 interface BreadcrumbItem {
-  name: string
-  href?: string
+  name: string;
+  href?: string;
 }
 
 export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
@@ -206,18 +229,21 @@ export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
         ))}
       </ol>
     </nav>
-  )
+  );
 }
 
 // Uso:
-<Breadcrumb items={[
-  { name: 'Inicio', href: '/' },
-  { name: 'Blog', href: '/blog' },
-  { name: post.title }
-]} />
+<Breadcrumb
+  items={[
+    { name: "Inicio", href: "/" },
+    { name: "Blog", href: "/blog" },
+    { name: post.title }
+  ]}
+/>;
 ```
 
 **Beneficios**:
+
 - ✅ DRY (Don't Repeat Yourself)
 - ✅ Más fácil de mantener
 - ✅ Consistencia garantizada
@@ -227,6 +253,7 @@ export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
 ### Problema 4: No hay Loading States
 
 #### Situación actual:
+
 ```
 /blog/
   ├── page.tsx           ✅
@@ -236,11 +263,13 @@ export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
 ```
 
 **Por qué es un problema**:
+
 - No hay feedback visual durante carga
 - Mala UX en conexiones lentas
 - CLS puede aumentar por contenido que aparece de golpe
 
 **Solución**:
+
 ```tsx
 // app/(grid)/blog/loading.tsx
 export default function BlogLoading() {
@@ -253,16 +282,17 @@ export default function BlogLoading() {
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 // app/(grid)/blog/[slug]/loading.tsx
 export default function PostLoading() {
-  return <PostDetailSkeleton />
+  return <PostDetailSkeleton />;
 }
 ```
 
 **Beneficios**:
+
 - ✅ Mejor perceived performance
 - ✅ Reduce CLS
 - ✅ Mejor UX
@@ -272,6 +302,7 @@ export default function PostLoading() {
 ### Problema 5: Imágenes no optimizadas
 
 #### NotionImage.tsx:
+
 ```tsx
 export function NotionImage({ src, alt, priority = false }: Props) {
   return (
@@ -283,15 +314,16 @@ export function NotionImage({ src, alt, priority = false }: Props) {
       // ❌ No hay placeholder
       // ❌ No hay srcset optimizado
     />
-  )
+  );
 }
 ```
 
 **Solución**:
+
 ```tsx
-export function NotionImage({ 
-  src, 
-  alt, 
+export function NotionImage({
+  src,
+  alt,
   priority = false,
   sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 }: Props) {
@@ -305,11 +337,12 @@ export function NotionImage({
       blurDataURL={generateBlurDataURL(src)}
       quality={85}
     />
-  )
+  );
 }
 ```
 
 **Beneficios**:
+
 - ✅ -30-40% tamaño de imagen
 - ✅ Mejor LCP
 - ✅ Responsive optimizado
@@ -319,13 +352,14 @@ export function NotionImage({
 ### Problema 6: Validación de Datos
 
 #### transformers.ts:
+
 ```typescript
 export function transformNotionPageToBlogPost(page: PageObjectResponse): BlogPost {
   const properties = page.properties as unknown as NotionPageProperties
-  
+
   // ⚠️ Validación manual propensa a errores
   const titleProp = validateProperty<NotionPageProperties["Title"]>(...)
-  
+
   return {
     id: page.id,
     title: extractTitle(titleProp.title),
@@ -335,47 +369,51 @@ export function transformNotionPageToBlogPost(page: PageObjectResponse): BlogPos
 ```
 
 **Solución**:
+
 ```typescript
-import { z } from 'zod'
+import { z } from "zod";
 
 // Schemas Zod
 const NotionPropertiesSchema = z.object({
   Title: z.object({
-    type: z.literal('title'),
+    type: z.literal("title"),
     title: z.array(z.object({ plain_text: z.string() }))
   }),
   Slug: z.object({
-    type: z.literal('rich_text'),
+    type: z.literal("rich_text"),
     rich_text: z.array(z.object({ plain_text: z.string() }))
-  }),
+  })
   // ... más campos
-})
+});
 
 const BlogPostSchema = z.object({
   id: z.string(),
   title: z.string().min(1),
   slug: z.string().regex(/^[a-z0-9-]+$/),
   excerpt: z.string().max(300),
-  date: z.string().datetime(),
+  date: z.string().datetime()
   // ... más campos
-})
+});
 
-export function transformNotionPageToBlogPost(page: PageObjectResponse): BlogPost {
+export function transformNotionPageToBlogPost(
+  page: PageObjectResponse
+): BlogPost {
   // Runtime validation
-  const properties = NotionPropertiesSchema.parse(page.properties)
-  
+  const properties = NotionPropertiesSchema.parse(page.properties);
+
   const post = {
     id: page.id,
-    title: extractTitle(properties.Title.title),
+    title: extractTitle(properties.Title.title)
     // ... transformación
-  }
-  
+  };
+
   // Validar el resultado
-  return BlogPostSchema.parse(post)
+  return BlogPostSchema.parse(post);
 }
 ```
 
 **Beneficios**:
+
 - ✅ Type-safe en runtime
 - ✅ Mejores errores
 - ✅ Validación automática
@@ -386,57 +424,61 @@ export function transformNotionPageToBlogPost(page: PageObjectResponse): BlogPos
 ### Problema 7: Cache Strategy
 
 #### blog-service.ts:
+
 ```typescript
 export const getBlogPosts = unstable_cache(
   getBlogPostsUncached,
-  ['blog-posts'],
+  ["blog-posts"],
   {
     revalidate: 3600,
-    tags: ['notion-blog']  // ⚠️ Tag único para todo
+    tags: ["notion-blog"] // ⚠️ Tag único para todo
   }
-)
+);
 ```
 
 **Por qué es un problema**:
+
 - Revalidar un post invalida TODOS los posts
 - No hay invalidación selectiva
 - No aprovecha revalidateTag
 
 **Solución**:
+
 ```typescript
 export const getBlogPosts = unstable_cache(
   getBlogPostsUncached,
-  ['blog-posts'],
+  ["blog-posts"],
   {
     revalidate: 3600,
-    tags: ['blog-list']  // ✅ Tag específico
+    tags: ["blog-list"] // ✅ Tag específico
   }
-)
+);
 
 export const getBlogPostBySlug = unstable_cache(
   getBlogPostBySlugUncached,
-  ['blog-post'],
+  ["blog-post"],
   {
     revalidate: 3600,
-    tags: (slug) => [`blog-post:${slug}`]  // ✅ Tag por post
+    tags: (slug) => [`blog-post:${slug}`] // ✅ Tag por post
   }
-)
+);
 
 // API route para revalidación selectiva
 export async function POST(request: Request) {
-  const { slug } = await request.json()
-  
+  const { slug } = await request.json();
+
   if (slug) {
-    revalidateTag(`blog-post:${slug}`)  // Solo ese post
+    revalidateTag(`blog-post:${slug}`); // Solo ese post
   } else {
-    revalidateTag('blog-list')  // Toda la lista
+    revalidateTag("blog-list"); // Toda la lista
   }
-  
-  return Response.json({ revalidated: true })
+
+  return Response.json({ revalidated: true });
 }
 ```
 
 **Beneficios**:
+
 - ✅ Invalidación selectiva
 - ✅ Mejor performance de cache
 - ✅ Más control
@@ -446,6 +488,7 @@ export async function POST(request: Request) {
 ### Problema 8: Iconos SVG inline
 
 #### Múltiples archivos:
+
 ```tsx
 // BlogPostCard.tsx
 <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor">
@@ -461,6 +504,7 @@ export async function POST(request: Request) {
 ```
 
 **Solución**:
+
 ```tsx
 // Usar lucide-react (ya instalado)
 import { ChevronRight, ChevronLeft } from 'lucide-react'
@@ -473,6 +517,7 @@ import { ChevronRight, ChevronLeft } from 'lucide-react'
 ```
 
 **Beneficios**:
+
 - ✅ Tree-shaking automático
 - ✅ Consistencia visual
 - ✅ Menos código duplicado
@@ -491,6 +536,7 @@ import { ChevronRight, ChevronLeft } from 'lucide-react'
 ### Fase 2: Componentes Utilitarios (Tareas 4, 10)
 
 **Archivos a crear**:
+
 ```
 src/components/blog/
 ├── Breadcrumb.tsx          # Componente de breadcrumbs
@@ -500,6 +546,7 @@ src/components/blog/
 ```
 
 **Beneficios**:
+
 - DRY
 - Reutilización
 - Mantenibilidad
@@ -507,11 +554,13 @@ src/components/blog/
 ### Fase 3: Server Components (Tareas 2, 3)
 
 **Archivos a modificar**:
+
 - `src/components/blog/BlogPostCard.tsx`
 - `src/components/blog/BlogCategoriesCard.tsx`
 - `src/styles/globals.css` (añadir media queries)
 
 **Cambios principales**:
+
 1. Eliminar 'use client'
 2. Eliminar useState/useLayoutEffect
 3. Mover animaciones a CSS
@@ -520,6 +569,7 @@ src/components/blog/
 ### Fase 4: Loading States (Tarea 5)
 
 **Archivos a crear**:
+
 ```
 src/app/(grid)/blog/
 ├── loading.tsx
@@ -534,6 +584,7 @@ src/components/blog/
 ### Fase 5: Optimizaciones (Tareas 6, 7, 8, 9)
 
 **Archivos a modificar**:
+
 - `src/components/blog/MarkdownRenderer.tsx` (dynamic import)
 - `src/lib/notion/transformers.ts` (Zod validation)
 - `src/lib/notion/blog-service.ts` (cache strategy)
@@ -542,10 +593,12 @@ src/components/blog/
 ### Fase 6: Estilos (Tarea 11)
 
 **Archivos a modificar**:
+
 - `src/styles/globals.css`
 - Todos los componentes de blog (simplificar clases)
 
 **Aprovechar Tailwind 4**:
+
 ```css
 /* Antes */
 className="bg-gradient-to-br from-white/95 via-white/90 to-slate-50/95"
@@ -557,6 +610,7 @@ className="bg-gradient-to-br from-surface-start via-surface-mid to-surface-end"
 ### Fase 7: Testing y Validación (Tarea 12)
 
 **Tests a ejecutar**:
+
 ```bash
 # Performance
 pnpm run test:performance
@@ -572,6 +626,7 @@ pnpm run lighthouse
 ```
 
 **Métricas a medir**:
+
 - Bundle size (before/after)
 - Core Web Vitals
 - Tiempo de carga
@@ -581,6 +636,7 @@ pnpm run lighthouse
 ### Fase 8: Documentación (Tarea 13)
 
 **Archivos a actualizar**:
+
 - `CHANGELOG.md`
 - `docs/planning/BLOG-OPTIMIZATION-REPORT.md` (nuevo)
 - `README.md` (si es necesario)
@@ -590,53 +646,62 @@ pnpm run lighthouse
 ## 📈 Resultados Esperados
 
 ### Bundle Size
-| Métrica | Antes | Después | Mejora |
-|---------|-------|---------|--------|
-| Total gzipped | 350KB | 245KB | -30% |
-| Client JS | 180KB | 125KB | -30.5% |
-| Initial CSS | 45KB | 38KB | -15.5% |
+
+| Métrica       | Antes | Después | Mejora |
+| ------------- | ----- | ------- | ------ |
+| Total gzipped | 350KB | 245KB   | -30%   |
+| Client JS     | 180KB | 125KB   | -30.5% |
+| Initial CSS   | 45KB  | 38KB    | -15.5% |
 
 ### Core Web Vitals
+
 | Métrica | Antes | Después | Mejora |
-|---------|-------|---------|--------|
-| LCP | 2.3s | 1.8s | -21.7% |
-| FID | 45ms | 35ms | -22.2% |
-| CLS | 0.08 | 0.05 | -37.5% |
+| ------- | ----- | ------- | ------ |
+| LCP     | 2.3s  | 1.8s    | -21.7% |
+| FID     | 45ms  | 35ms    | -22.2% |
+| CLS     | 0.08  | 0.05    | -37.5% |
 
 ### Componentes
-| Tipo | Antes | Después |
-|------|-------|---------|
-| Client Components | 4 | 2 |
-| Server Components | 4 | 10 |
-| Lines of Code | ~650 | ~580 |
+
+| Tipo              | Antes | Después |
+| ----------------- | ----- | ------- |
+| Client Components | 4     | 2       |
+| Server Components | 4     | 10      |
+| Lines of Code     | ~650  | ~580    |
 
 ---
 
 ## 🔒 Riesgos y Mitigación
 
 ### Riesgo 1: Breaking Changes
+
 **Probabilidad**: Media  
 **Impacto**: Alto
 
 **Mitigación**:
+
 - Tests E2E completos antes y después
 - Revisión manual de todas las páginas
 - Comparación visual con screenshots
 
 ### Riesgo 2: Performance Regression
+
 **Probabilidad**: Baja  
 **Impacto**: Alto
 
 **Mitigación**:
+
 - Benchmarks antes/después
 - Lighthouse CI
 - Real User Monitoring
 
 ### Riesgo 3: CSS-only animations no funcionen
+
 **Probabilidad**: Baja  
 **Impacto**: Medio
 
 **Mitigación**:
+
 - Testing en múltiples navegadores
 - Fallbacks CSS
 - Progressive enhancement
@@ -661,17 +726,20 @@ Para considerar la optimización exitosa:
 ## 📚 Referencias
 
 ### Documentación Oficial
+
 - [Next.js 16 - App Router](https://nextjs.org/docs/app)
 - [React 19 - Server Components](https://react.dev/reference/rsc/server-components)
 - [Tailwind CSS 4 - What's New](https://tailwindcss.com/docs/v4-beta)
 - [React Compiler](https://react.dev/learn/react-compiler)
 
 ### Best Practices Internas
+
 - `.github/support/nextjs-best-practices.md`
 - `.github/support/styling-guide.md`
 - `.github/prompts/performance.prompt.md`
 
 ### Tools
+
 - [Lighthouse](https://developers.google.com/web/tools/lighthouse)
 - [Playwright](https://playwright.dev/)
 - [Zod](https://zod.dev/)

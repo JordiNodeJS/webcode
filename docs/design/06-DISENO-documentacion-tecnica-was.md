@@ -7,10 +7,10 @@ El **WebCode Animation System (WAS)** es el sistema oficial de microanimaciones 
 ### **[Objetivos]** **Principios de Diseño WAS**
 
 1. **🏢 Profesional pero Dinámico**: Animaciones sutiles que transmiten confianza sin distraer
-2. ****[Diseño]** Coherencia de Marca**: Integrado con la paleta rosa/aguamarina y efectos 3D
-3. ****[Rendimiento]** Performance**: Optimizado para Server Components y lazy loading
+2. \***\*[Diseño]** Coherencia de Marca\*\*: Integrado con la paleta rosa/aguamarina y efectos 3D
+3. \***\*[Rendimiento]** Performance\*\*: Optimizado para Server Components y lazy loading
 4. **♿ Accesibilidad**: Respeta `prefers-reduced-motion` y WCAG 2.1
-5. ****[Móvil]** Responsive**: Adaptado para desktop, tablet y móvil
+5. \***\*[Móvil]** Responsive\*\*: Adaptado para desktop, tablet y móvil
 
 ---
 

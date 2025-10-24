@@ -5,6 +5,7 @@
 El blog **está configurado correctamente** pero necesita que compartas la base de datos "WebCode Blog" con tu integración de Notion.
 
 **Error actual:**
+
 ```
 Could not find database with ID: 2898237e-a3b3-80cd-a403-f6a1c72a1116
 Make sure the relevant pages and databases are shared with your integration.
@@ -32,6 +33,7 @@ pnpm notion:verify
 ```
 
 Este script te dirá:
+
 - ✅ Si la conexión funciona
 - ✅ Cuántos posts tienes
 - ✅ Si la estructura de datos es correcta
@@ -89,6 +91,7 @@ He creado los siguientes documentos para ayudarte:
 **Por favor, comparte la base de datos "WebCode Blog" con tu integración de Notion siguiendo el paso 1️⃣**
 
 Una vez hecho, ejecuta:
+
 ```bash
 pnpm notion:verify
 ```

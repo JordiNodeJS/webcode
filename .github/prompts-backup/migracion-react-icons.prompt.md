@@ -60,24 +60,24 @@ El proyecto **WEBCODE** actualmente utiliza:
 ```typescript
 /**
  * Sistema de Iconos WebCode
- * 
+ *
  * Estrategia multi-familia para originalidad y coherencia:
- * 
+ *
  * 🎯 Lucide (lu) - Iconos primarios de UI
  *    → Navegación, acciones, estados básicos
- * 
+ *
  * 🚀 Heroicons (hi2) - Características y secciones
  *    → Features, servicios, highlights
- * 
+ *
  * 💎 Phosphor (ph) - Creatividad y sectores
  *    → Floristería, peluquería, diseño, arte
- * 
+ *
  * 🔧 Font Awesome (fa6) - Tecnologías y marcas
  *    → React, Node.js, GitHub, LinkedIn
- * 
+ *
  * ✨ Feather (fi) - Estados y feedback
  *    → Success, error, warnings, info
- * 
+ *
  * 🎨 Remix Icon (ri) - Complementarios
  *    → Diseño, creatividad, alternativas
  */
@@ -93,8 +93,8 @@ export {
   LuArrowRight,
   LuUser,
   LuSearch,
-  LuShoppingCart,
-} from 'react-icons/lu';
+  LuShoppingCart
+} from "react-icons/lu";
 
 // ===== CARACTERÍSTICAS Y SERVICIOS (Heroicons) =====
 export {
@@ -105,8 +105,8 @@ export {
   HiOutlineBolt,
   HiOutlineCpuChip,
   HiOutlinePaintBrush,
-  HiOutlineCodeBracket,
-} from 'react-icons/hi2';
+  HiOutlineCodeBracket
+} from "react-icons/hi2";
 
 // ===== SECTORES ESPECÍFICOS (Phosphor) =====
 export {
@@ -117,8 +117,8 @@ export {
   PhPaintBrush,
   PhCamera,
   PhHammer,
-  PhFork,
-} from 'react-icons/ph';
+  PhFork
+} from "react-icons/ph";
 
 // ===== TECNOLOGÍAS Y MARCAS (Font Awesome) =====
 export {
@@ -128,8 +128,8 @@ export {
   FaGithub,
   FaLinkedin,
   FaTwitter,
-  FaInstagram,
-} from 'react-icons/fa6';
+  FaInstagram
+} from "react-icons/fa6";
 
 // ===== ESTADOS Y FEEDBACK (Feather) =====
 export {
@@ -140,23 +140,23 @@ export {
   FiArrowRight,
   FiExternalLink,
   FiMail,
-  FiPhone,
-} from 'react-icons/fi';
+  FiPhone
+} from "react-icons/fi";
 
 // ===== MAPA DE COMPATIBILIDAD =====
 // Mantiene retrocompatibilidad con el sistema anterior
 export const ICON_COMPATIBILITY_MAP = {
   // Mapeo de nombres antiguos → nuevos iconos
-  'rocket': HiOutlineRocketLaunch,
-  'sparkles': HiOutlineSparkles,
-  'lightbulb': HiOutlineLightBulb,
-  'shield': HiOutlineShieldCheck,
-  'zap': HiOutlineBolt,
-  'home': LuHome,
-  'menu': LuMenu,
-  'x': LuX,
-  'check': FiCheck,
-  'arrow-right': LuArrowRight,
+  rocket: HiOutlineRocketLaunch,
+  sparkles: HiOutlineSparkles,
+  lightbulb: HiOutlineLightBulb,
+  shield: HiOutlineShieldCheck,
+  zap: HiOutlineBolt,
+  home: LuHome,
+  menu: LuMenu,
+  x: LuX,
+  check: FiCheck,
+  "arrow-right": LuArrowRight
   // ... más mapeos según necesidad
 } as const;
 
@@ -211,10 +211,10 @@ interface IconProps extends VariantProps<typeof iconVariants> {
   onClick?: () => void;
 }
 
-export function Icon({ 
-  icon: IconComponent, 
-  size, 
-  variant, 
+export function Icon({
+  icon: IconComponent,
+  size,
+  variant,
   className,
   'aria-label': ariaLabel,
   onClick,
@@ -255,7 +255,7 @@ export function SvgIconLegacy({
   title,
 }: SvgIconProps & { name: string; title?: string }) {
   const iconComponent = ICON_COMPATIBILITY_MAP[name as IconName];
-  
+
   if (!iconComponent) {
     console.warn(`Icon "${name}" not found in compatibility map`);
     return null;
@@ -350,9 +350,9 @@ import { Icon } from '@/components/ui/Icon';
 export function ServiceCard({ title, description }: ServiceCardProps) {
   return (
     <div className="p-6 border rounded-lg">
-      <Icon 
-        icon={HiOutlineSparkles} 
-        size="xl" 
+      <Icon
+        icon={HiOutlineSparkles}
+        size="xl"
         variant="primary"
         aria-label="Servicio destacado"
       />
@@ -368,9 +368,9 @@ export function ServiceCard({ title, description }: ServiceCardProps) {
 ```typescript
 // src/components/features/services/ServiceIcon.tsx
 import type { IconType } from 'react-icons';
-import { 
-  PhFlowerTulip, 
-  PhScissors, 
+import {
+  PhFlowerTulip,
+  PhScissors,
   PhStorefront,
   PhCoffee,
   PhCamera,
@@ -395,13 +395,13 @@ interface ServiceIconProps {
 
 export function ServiceIcon({ serviceType, size = 'lg', className }: ServiceIconProps) {
   const iconComponent = SERVICE_ICONS[serviceType];
-  
+
   if (!iconComponent) {
     return null;
   }
-  
+
   return (
-    <Icon 
+    <Icon
       icon={iconComponent}
       size={size}
       variant="primary"
@@ -428,7 +428,7 @@ export function Navigation() {
         onClick={() => setActiveRoute('/')}
         className="flex items-center gap-2"
       >
-        <Icon 
+        <Icon
           icon={LuHome}
           size="md"
           variant={activeRoute === '/' ? 'primary' : 'default'}
@@ -436,12 +436,12 @@ export function Navigation() {
         />
         <span>Inicio</span>
       </button>
-      
+
       <button
         onClick={() => setActiveRoute('/services')}
         className="flex items-center gap-2"
       >
-        <Icon 
+        <Icon
           icon={LuLayoutGrid}
           size="md"
           variant={activeRoute === '/services' ? 'primary' : 'default'}
@@ -461,30 +461,35 @@ export function Navigation() {
 ### Por Contexto de Uso
 
 #### 🎯 Navegación y UI Principal
+
 - **Familia**: Lucide (`lu`)
 - **Estilo**: Outline/stroke
 - **Tamaño**: `md` (h-5 w-5)
 - **Ejemplos**: `LuHome`, `LuMenu`, `LuSearch`
 
 #### 🚀 Características y Beneficios
+
 - **Familia**: Heroicons (`hi2`)
 - **Estilo**: Outline con detalles
 - **Tamaño**: `lg` o `xl` (h-6 w-6, h-8 w-8)
 - **Ejemplos**: `HiOutlineSparkles`, `HiOutlineRocketLaunch`
 
 #### 💎 Sectores Específicos (Floristería, Peluquería, etc.)
+
 - **Familia**: Phosphor (`ph`)
 - **Estilo**: Regular
 - **Tamaño**: `xl` o `2xl` (h-8 w-8, h-10 w-10)
 - **Ejemplos**: `PhFlowerTulip`, `PhScissors`, `PhCoffee`
 
 #### ✨ Estados y Feedback
+
 - **Familia**: Feather (`fi`)
 - **Estilo**: Simple y reconocible
 - **Tamaño**: `sm` o `md` (h-4 w-4, h-5 w-5)
 - **Ejemplos**: `FiCheck`, `FiX`, `FiAlertCircle`
 
 #### 🔧 Tecnologías y Marcas
+
 - **Familia**: Font Awesome (`fa6`)
 - **Estilo**: Fill/Solid
 - **Tamaño**: `md` o `lg` (h-5 w-5, h-6 w-6)
@@ -498,10 +503,10 @@ export function Navigation() {
 
 ```typescript
 // ✅ CORRECTO: Importación específica
-import { LuHome, LuUser } from 'react-icons/lu';
+import { LuHome, LuUser } from "react-icons/lu";
 
 // ❌ INCORRECTO: Importación general
-import * as Icons from 'react-icons/lu';
+import * as Icons from "react-icons/lu";
 ```
 
 ### ✅ Accesibilidad Completa
@@ -713,15 +718,17 @@ Crear un sistema de iconos **moderno**, **mantenible**, **accesible** y **origin
 ### Correcciones Importantes
 
 1. **Phosphor Icons**: El prefijo correcto es `Pi` (de `react-icons/pi`), **NO** `Ph`
+
    ```typescript
    // ❌ INCORRECTO
-   import { PhFlowerTulip } from 'react-icons/ph';
-   
+   import { PhFlowerTulip } from "react-icons/ph";
+
    // ✅ CORRECTO
-   import { PiFlowerTulip } from 'react-icons/pi';
+   import { PiFlowerTulip } from "react-icons/pi";
    ```
 
 2. **Cache de Next.js**: Al hacer cambios en archivos de iconos centralizados, Next.js puede cachear la versión anterior
+
    ```bash
    # Solución: Limpiar caché
    rm -rf .next

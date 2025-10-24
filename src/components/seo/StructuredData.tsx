@@ -1,7 +1,14 @@
 import Script from "next/script";
 
 interface StructuredDataProps {
-  type?: "Organization" | "LocalBusiness" | "WebSite" | "Service" | "Article" | "Product" | "Offer";
+  type?:
+    | "Organization"
+    | "LocalBusiness"
+    | "WebSite"
+    | "Service"
+    | "Article"
+    | "Product"
+    | "Offer";
   data?: Record<string, unknown>;
 }
 
@@ -109,7 +116,8 @@ export function StructuredData({
     ...baseData,
     "@type": "Product",
     name: "Servicios de Desarrollo Web",
-    description: "Servicios profesionales de desarrollo web, SEO y soluciones digitales",
+    description:
+      "Servicios profesionales de desarrollo web, SEO y soluciones digitales",
     brand: {
       "@type": "Brand",
       name: "WEBCODE"
@@ -125,7 +133,8 @@ export function StructuredData({
       hasMerchantReturnPolicy: {
         "@type": "MerchantReturnPolicy",
         applicableCountry: "ES",
-        returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+        returnPolicyCategory:
+          "https://schema.org/MerchantReturnFiniteReturnWindow",
         merchantReturnDays: 14,
         returnMethod: "https://schema.org/ReturnByMail",
         returnFees: "https://schema.org/FreeReturn"
@@ -170,7 +179,8 @@ export function StructuredData({
     hasMerchantReturnPolicy: {
       "@type": "MerchantReturnPolicy",
       applicableCountry: "ES",
-      returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+      returnPolicyCategory:
+        "https://schema.org/MerchantReturnFiniteReturnWindow",
       merchantReturnDays: 14,
       returnMethod: "https://schema.org/ReturnByMail",
       returnFees: "https://schema.org/FreeReturn"

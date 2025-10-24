@@ -3,7 +3,7 @@
 /**
  * Componente Image wrapper con manejo de errores
  * Maneja casos donde las imágenes de Notion no se cargan correctamente
- * 
+ *
  * OPTIMIZACIONES NEXT.JS 16:
  * - sizes: Responsive image sizing para diferentes viewports
  * - placeholder: Blur effect para mejor UX durante carga
@@ -27,7 +27,7 @@ interface NotionImageProps {
    * Attribute sizes del estándar HTML responsive images
    * Define qué tamaño tendrá la imagen en diferentes viewports
    * Ayuda al browser a elegir la imagen correcta del srcset
-   * 
+   *
    * Ejemplos:
    * - Cover image: "(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
    * - Thumbnail: "(max-width: 768px) 100vw, 400px"
