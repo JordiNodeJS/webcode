@@ -53,9 +53,15 @@ export function HeaderNavigation() {
   const isScrolled = scrollPosition.y > 10;
 
   // Active navigation tracking (page or section)
-  const [manualActiveHref, setManualActiveHref] = useState<string | null>(null);
+  // Inicializar con el hash actual solo en cliente (lazy initialization)
+  const [manualActiveHref, setManualActiveHref] = useState<string | null>(() => {
+    if (typeof window !== "undefined" && window.location.hash) {
+      return window.location.hash;
+    }
+    return null;
+  });
   
-  // Calcular activeHref basado en pathname (sin useEffect para evitar warning)
+  // Calcular activeHref basado en pathname
   const activeHref = useMemo(() => {
     // Prefer exact path matches for non-hash, non-external links
     const pathMatch = navigationItems.find((it) => {
@@ -71,11 +77,6 @@ export function HeaderNavigation() {
     // Si tenemos un hash manual seleccionado, usarlo
     if (manualActiveHref) {
       return manualActiveHref;
-    }
-
-    // Fallback to hash (if present)
-    if (typeof window !== "undefined") {
-      return window.location.hash || null;
     }
 
     return null;
@@ -238,7 +239,7 @@ export function HeaderNavigation() {
                     alt="WEBCODE Logo"
                     width={32}
                     height={32}
-                    className={`transition-all duration-300 flex-shrink-0 object-contain ${
+                    className={`transition-all duration-300 shrink-0 object-contain ${
                       isScrolled ? "w-6 h-6" : "w-8 h-8"
                     }`}
                   />
