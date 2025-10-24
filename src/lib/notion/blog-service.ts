@@ -130,13 +130,17 @@ async function getBlogPostsUncached(
  * Obtiene todos los posts publicados del blog (con cache)
  * @param pageSize - Número de posts por página (default: 10)
  * @param startCursor - Cursor para paginación
+ * 
+ * Cache tags:
+ * - "blog-list" - Para invalidar la lista completa de posts
+ * - "blog-posts" - Tag general del blog
  */
 export const getBlogPosts = unstable_cache(
   getBlogPostsUncached,
   ["blog-posts"],
   {
     revalidate: 3600, // 1 hora
-    tags: ["notion-blog"]
+    tags: ["blog-list", "blog-posts"]
   }
 );
 
@@ -192,17 +196,31 @@ async function getBlogPostBySlugUncached(
 }
 
 /**
- * Obtiene un post individual por slug (con cache)
+ * Obtiene un post individual por slug (con cache selectivo)
  * @param slug - Slug del post
+ * 
+ * Cache tags:
+ * - "blog-post:{slug}" - Para invalidar solo este post específico
+ * - "blog-posts" - Tag general del blog
+ * 
+ * Ejemplo de invalidación selectiva:
+ * ```ts
+ * revalidateTag(`blog-post:${slug}`)  // Solo invalida este post
+ * revalidateTag("blog-list")          // Invalida la lista completa
+ * ```
  */
-export const getBlogPostBySlug = unstable_cache(
-  getBlogPostBySlugUncached,
-  ["blog-post-by-slug"],
-  {
-    revalidate: 3600, // 1 hora
-    tags: ["notion-blog"]
-  }
-);
+export async function getBlogPostBySlug(
+  slug: string
+): Promise<BlogPost | null> {
+  return unstable_cache(
+    async () => getBlogPostBySlugUncached(slug),
+    [`blog-post-${slug}`],
+    {
+      revalidate: 3600, // 1 hora
+      tags: [`blog-post:${slug}`, "blog-posts"]
+    }
+  )();
+}
 
 /**
  * Obtiene posts filtrados por tag (sin cache, para uso interno)
@@ -249,18 +267,27 @@ async function getBlogPostsByTagUncached(
 }
 
 /**
- * Obtiene posts filtrados por tag (con cache)
+ * Obtiene posts filtrados por tag (con cache selectivo)
  * @param tag - Nombre del tag (case-insensitive)
  * @param pageSize - Número de posts por página
+ * 
+ * Cache tags:
+ * - "blog-tag:{tag}" - Para invalidar solo posts de este tag
+ * - "blog-list" - Tag de lista general
  */
-export const getBlogPostsByTag = unstable_cache(
-  getBlogPostsByTagUncached,
-  ["blog-posts-by-tag"],
-  {
-    revalidate: 3600, // 1 hora
-    tags: ["notion-blog"]
-  }
-);
+export async function getBlogPostsByTag(
+  tag: string,
+  pageSize = 10
+): Promise<BlogPost[]> {
+  return unstable_cache(
+    async () => getBlogPostsByTagUncached(tag, pageSize),
+    [`blog-posts-by-tag-${tag}`],
+    {
+      revalidate: 3600, // 1 hora
+      tags: [`blog-tag:${tag.toLowerCase()}`, "blog-list"]
+    }
+  )();
+}
 
 /**
  * Obtiene todos los tags únicos del blog (sin cache, para uso interno)
@@ -298,10 +325,14 @@ async function getAllTagsUncached(): Promise<
 
 /**
  * Obtiene todos los tags únicos del blog (con cache)
+ * 
+ * Cache tags:
+ * - "blog-tags" - Para invalidar la lista de tags
+ * - "blog-list" - Se actualiza cuando cambia la lista de posts
  */
 export const getAllTags = unstable_cache(getAllTagsUncached, ["blog-tags"], {
   revalidate: 3600, // 1 hora
-  tags: ["notion-blog"]
+  tags: ["blog-tags", "blog-list"]
 });
 
 /**
@@ -332,13 +363,17 @@ async function getAllPublishedSlugsUncached(): Promise<string[]> {
 /**
  * Obtiene todos los slugs publicados (con cache)
  * Útil para generateStaticParams
+ * 
+ * Cache tags:
+ * - "blog-slugs" - Para invalidar cuando se publican/eliminan posts
+ * - "blog-list" - Relacionado con la lista general
  */
 export const getAllPublishedSlugs = unstable_cache(
   getAllPublishedSlugsUncached,
   ["blog-slugs"],
   {
     revalidate: 3600, // 1 hora
-    tags: ["notion-blog"]
+    tags: ["blog-slugs", "blog-list"]
   }
 );
 
@@ -402,12 +437,16 @@ async function searchBlogPostsUncached(
 /**
  * Busca posts por término de búsqueda (con cache corto, 5 min)
  * @param searchTerm - Término de búsqueda
+ * 
+ * Cache tags:
+ * - "blog-search" - Para invalidar resultados de búsqueda
+ * - "blog-posts" - Se actualiza cuando cambia cualquier post
  */
 export const searchBlogPosts = unstable_cache(
   searchBlogPostsUncached,
   ["blog-search"],
   {
     revalidate: 300, // 5 minutos (búsquedas son más dinámicas)
-    tags: ["notion-blog"]
+    tags: ["blog-search", "blog-posts"]
   }
 );

@@ -168,6 +168,9 @@
   --shadow-3d-xl:
     6px 6px 0px 0px oklch(0.57 0.2 328.5 / 0.9),
     3px 3px 6px -1px oklch(0.57 0.2 328.5 / 0.5);
+
+  /* WebCode Animation System (WAS) - Easing personalizado */
+  --ease-webcode: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .dark {
@@ -1061,4 +1064,41 @@ html.dark body main + footer.footer-verdoso.footer-verdoso-test {
 
 [data-slot="accordion-content"][data-state="closed"] {
   animation: accordion-up 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* ============================================
+   BLOG CARDS - CSS-only animations
+   Respects prefers-reduced-motion
+   ============================================ */
+
+/* Default animations (when motion is preferred) */
+@media (prefers-reduced-motion: no-preference) {
+  .blog-card {
+    @apply hover:shadow-2xl transition-all duration-500 hover:-translate-y-2;
+  }
+
+  .blog-card-icon {
+    @apply group-hover:scale-110 transition-transform duration-300;
+  }
+}
+
+/* Reduced motion (when user prefers reduced motion) */
+@media (prefers-reduced-motion: reduce) {
+  .blog-card {
+    @apply hover:shadow-lg;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .blog-card-icon {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  /* Disable all transform animations */
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
