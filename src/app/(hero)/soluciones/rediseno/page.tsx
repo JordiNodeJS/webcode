@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SolucionCard } from "@/components/soluciones";
 import { Button } from "@/components/ui/button";
-import { 
-  SiNextdotjs, 
-  SiReact, 
-  SiTypescript, 
-  SiTailwindcss, 
-  SiNodedotjs, 
+import {
+  SiNextdotjs,
+  SiReact,
+  SiTypescript,
+  SiTailwindcss,
+  SiNodedotjs,
   SiVercel,
   SiGoogleanalytics,
   SiSemrush,
@@ -49,8 +49,9 @@ export default function RedisenoPage() {
               sin Perder Posicionamiento
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-              Rediseñamos tu página web existente con las últimas tecnologías y tendencias.
-              Migración segura, sin pérdida de SEO y con mejoras de rendimiento garantizadas.
+              Rediseñamos tu página web existente con las últimas tecnologías y
+              tendencias. Migración segura, sin pérdida de SEO y con mejoras de
+              rendimiento garantizadas.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button
@@ -88,7 +89,8 @@ export default function RedisenoPage() {
             <div className="text-5xl mb-4">🔍</div>
             <h3 className="text-2xl font-bold mb-3">Preservación SEO</h3>
             <p className="text-muted-foreground mb-4">
-              Mantenemos y mejoramos tu posicionamiento actual durante la migración.
+              Mantenemos y mejoramos tu posicionamiento actual durante la
+              migración.
             </p>
             <ul className="space-y-2 text-sm">
               <li className="flex items-start gap-2">
@@ -115,7 +117,8 @@ export default function RedisenoPage() {
             <div className="text-5xl mb-4">⚡</div>
             <h3 className="text-2xl font-bold mb-3">Rendimiento Optimizado</h3>
             <p className="text-muted-foreground mb-4">
-              Tu nueva web será más rápida, eficiente y amigable para usuarios y motores de búsqueda.
+              Tu nueva web será más rápida, eficiente y amigable para usuarios y
+              motores de búsqueda.
             </p>
             <ul className="space-y-2 text-sm">
               <li className="flex items-start gap-2">
@@ -142,7 +145,8 @@ export default function RedisenoPage() {
             <div className="text-5xl mb-4">🎨</div>
             <h3 className="text-2xl font-bold mb-3">Diseño Moderno</h3>
             <p className="text-muted-foreground mb-4">
-              Actualizamos el diseño siguiendo las últimas tendencias y mejores prácticas UX/UI.
+              Actualizamos el diseño siguiendo las últimas tendencias y mejores
+              prácticas UX/UI.
             </p>
             <ul className="space-y-2 text-sm">
               <li className="flex items-start gap-2">
@@ -169,7 +173,8 @@ export default function RedisenoPage() {
             <div className="text-5xl mb-4">🚀</div>
             <h3 className="text-2xl font-bold mb-3">Nuevas Funcionalidades</h3>
             <p className="text-muted-foreground mb-4">
-              Añadimos funcionalidades modernas que mejoran la experiencia del usuario.
+              Añadimos funcionalidades modernas que mejoran la experiencia del
+              usuario.
             </p>
             <ul className="space-y-2 text-sm">
               <li className="flex items-start gap-2">
@@ -196,7 +201,8 @@ export default function RedisenoPage() {
             <div className="text-5xl mb-4">🔒</div>
             <h3 className="text-2xl font-bold mb-3">Seguridad Mejorada</h3>
             <p className="text-muted-foreground mb-4">
-              Implementamos las mejores prácticas de seguridad y compliance legal.
+              Implementamos las mejores prácticas de seguridad y compliance
+              legal.
             </p>
             <ul className="space-y-2 text-sm">
               <li className="flex items-start gap-2">
@@ -223,7 +229,8 @@ export default function RedisenoPage() {
             <div className="text-5xl mb-4">🛠️</div>
             <h3 className="text-2xl font-bold mb-3">Soporte Continuo</h3>
             <p className="text-muted-foreground mb-4">
-              Te acompañamos durante y después del rediseño con soporte técnico especializado.
+              Te acompañamos durante y después del rediseño con soporte técnico
+              especializado.
             </p>
             <ul className="space-y-2 text-sm">
               <li className="flex items-start gap-2">
@@ -257,8 +264,8 @@ export default function RedisenoPage() {
             </span>
           </h2>
           <p className="text-xl text-muted-foreground text-center mb-12 max-w-3xl mx-auto">
-            Utilizamos las tecnologías más modernas para garantizar una migración exitosa
-            y un rendimiento óptimo.
+            Utilizamos las tecnologías más modernas para garantizar una
+            migración exitosa y un rendimiento óptimo.
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -286,13 +293,13 @@ export default function RedisenoPage() {
                   <div className="relative overflow-hidden border border-border/30 dark:border-border/20 bg-gradient-to-br from-white/95 via-white/90 to-slate-50/95 dark:from-slate-800/95 dark:via-slate-700/90 dark:to-slate-800/85 rounded-full p-6 shadow-3d-lg hover:shadow-3d-xl transition-all duration-500 hover:-translate-y-2">
                     {/* Glow effect on hover - conservando el efecto actual */}
                     <div className="absolute inset-0 bg-gradient-to-r from-secondary/6 via-primary/6 to-secondary/6 dark:from-secondary/8 dark:via-primary/12 dark:to-secondary/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-full" />
-                    
+
                     {/* Brillo metálico superior */}
                     <div className="absolute inset-2 bg-gradient-to-br from-white/20 via-white/10 to-transparent rounded-full opacity-50"></div>
-                    
+
                     {/* Reflejo metálico lateral */}
                     <div className="absolute top-3 left-3 w-6 h-6 bg-gradient-to-br from-white/30 to-transparent rounded-full opacity-60"></div>
-                    
+
                     {/* Contenido centrado */}
                     <div className="relative z-10 flex flex-col items-center justify-center">
                       <div className="mb-3 p-3 bg-background/80 rounded-full shadow-inner border border-border/20">
@@ -303,7 +310,7 @@ export default function RedisenoPage() {
                       </p>
                     </div>
                   </div>
-                  
+
                   {/* Sombra de la medalla */}
                   <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-4 bg-black/20 rounded-full blur-sm"></div>
                 </div>
@@ -371,7 +378,9 @@ export default function RedisenoPage() {
                 <div className="text-4xl font-bold bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent mb-2">
                   €1.990
                 </div>
-                <p className="text-muted-foreground">Ideal para webs pequeñas</p>
+                <p className="text-muted-foreground">
+                  Ideal para webs pequeñas
+                </p>
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-3">
@@ -395,11 +404,7 @@ export default function RedisenoPage() {
                   <span>Soporte 30 días</span>
                 </li>
               </ul>
-              <Button
-                asChild
-                variant="outline"
-                className="w-full font-bold"
-              >
+              <Button asChild variant="outline" className="w-full font-bold">
                 <Link href="/contacto">Solicitar Presupuesto</Link>
               </Button>
             </SolucionCard>
@@ -413,11 +418,15 @@ export default function RedisenoPage() {
                   </span>
                 </div>
                 <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold mb-2">Rediseño Profesional</h3>
+                  <h3 className="text-2xl font-bold mb-2">
+                    Rediseño Profesional
+                  </h3>
                   <div className="text-4xl font-bold bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent mb-2">
                     €3.990
                   </div>
-                  <p className="text-muted-foreground">Para empresas en crecimiento</p>
+                  <p className="text-muted-foreground">
+                    Para empresas en crecimiento
+                  </p>
                 </div>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-start gap-3">
@@ -489,11 +498,7 @@ export default function RedisenoPage() {
                   <span>Soporte 6 meses</span>
                 </li>
               </ul>
-              <Button
-                asChild
-                variant="outline"
-                className="w-full font-bold"
-              >
+              <Button asChild variant="outline" className="w-full font-bold">
                 <Link href="/contacto">Contactar Ventas</Link>
               </Button>
             </SolucionCard>
@@ -503,14 +508,13 @@ export default function RedisenoPage() {
 
       {/* CTA */}
       <section className="relative overflow-hidden bg-[image:linear-gradient(to_right,rgb(var(--secondary-rgb)_/_0.03),rgb(var(--primary-rgb)_/_0.03),rgb(var(--accent-rgb)_/_0.03)),linear-gradient(to_bottom_right,rgb(var(--secondary-rgb)_/_0.05),rgb(var(--primary-rgb)_/_0.05),rgb(var(--accent-rgb)_/_0.05))] dark:bg-[image:linear-gradient(to_right,rgb(var(--secondary-rgb)_/_0.05),rgb(var(--primary-rgb)_/_0.05),rgb(var(--accent-rgb)_/_0.05)),linear-gradient(to_bottom_right,rgb(var(--secondary-rgb)_/_0.10),rgb(var(--primary-rgb)_/_0.10),rgb(var(--accent-rgb)_/_0.10))] py-20 md:py-28">
-
         <div className="container relative z-10 mx-auto max-w-4xl px-4 text-center">
           <h2 className="mb-6 text-3xl font-display font-bold md:text-5xl lg:text-6xl text-foreground">
             ¿Listo para Modernizar tu Web?
           </h2>
           <p className="mb-8 text-lg font-sans md:text-xl lg:text-2xl text-muted-foreground">
-            Solicita una auditoría gratuita y descubre cómo podemos mejorar tu presencia online
-            sin perder el posicionamiento actual.
+            Solicita una auditoría gratuita y descubre cómo podemos mejorar tu
+            presencia online sin perder el posicionamiento actual.
           </p>
           <Button
             asChild

@@ -7,11 +7,13 @@
 ### 1️⃣ Verificar Estado Actual
 
 **En el Dashboard de Netlify:**
+
 1. Ve a https://app.netlify.com/sites/webcode-bcn/settings/domain
 2. Verifica la sección **"Custom domains"**
 3. Comprueba si `webcode.es` aparece listado y su estado
 
 **Estados posibles:**
+
 - ✅ **Verified** - Dominio configurado correctamente
 - ⚠️ **Awaiting External DNS** - DNS no apunta a Netlify
 - ❌ **Not added** - Dominio no configurado
@@ -32,6 +34,7 @@
 4. Netlify te mostrará los **nameservers** que debes configurar
 
 **Nameservers típicos de Netlify:**
+
 ```
 dns1.p0X.nsone.net
 dns2.p0X.nsone.net
@@ -67,6 +70,7 @@ dns4.p0X.nsone.net
 En el panel DNS de tu registrador, añade estos registros:
 
 **Para el dominio raíz (webcode.es):**
+
 ```
 Type: A
 Name: @ (o vacío)
@@ -75,6 +79,7 @@ TTL: 3600
 ```
 
 **Para www.webcode.es:**
+
 ```
 Type: CNAME
 Name: www
@@ -87,6 +92,7 @@ TTL: 3600
 #### Verificación de Propagación DNS
 
 Usa estas herramientas para verificar:
+
 ```bash
 # Desde terminal
 nslookup webcode.es
@@ -135,6 +141,7 @@ https://dnschecker.org/#A/webcode.es
 ### Tests Rápidos
 
 **Desde navegador:**
+
 ```
 ✅ https://webcode.es → Debe cargar el sitio
 ✅ https://www.webcode.es → Debe cargar el sitio (o redirect)
@@ -143,11 +150,13 @@ https://dnschecker.org/#A/webcode.es
 ```
 
 **Verificar Headers de Seguridad:**
+
 ```bash
 curl -I https://webcode.es
 ```
 
 Deberías ver headers como:
+
 ```
 strict-transport-security: max-age=63072000
 x-frame-options: DENY
@@ -163,16 +172,18 @@ x-content-type-options: nosniff
 **Causa**: DNS no propagado o mal configurado
 
 **Solución**:
+
 1. Verifica los nameservers/DNS records
 2. Espera 24-48h para propagación completa
 3. Limpia caché DNS local:
+
    ```bash
    # Windows
    ipconfig /flushdns
-   
+
    # macOS
    sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
-   
+
    # Linux
    sudo systemd-resolve --flush-caches
    ```
@@ -182,6 +193,7 @@ x-content-type-options: nosniff
 **Causa**: DNS no verificado o configuración incorrecta
 
 **Solución**:
+
 1. Ve a **Domain settings**
 2. Haz clic en **"Verify DNS configuration"**
 3. Si falla, revisa que los registros DNS estén correctos
@@ -192,6 +204,7 @@ x-content-type-options: nosniff
 **Causa**: Algunos recursos se cargan por HTTP en vez de HTTPS
 
 **Solución**:
+
 - Ya configurado en `next.config.ts` con headers de seguridad
 - Verifica que todas las URLs en el código usen `https://`
 
@@ -200,6 +213,7 @@ x-content-type-options: nosniff
 **Causa**: Puede ser propagación DNS o caché del navegador
 
 **Solución**:
+
 1. Limpia caché del navegador (Ctrl + Shift + Delete)
 2. Prueba en modo incógnito
 3. Espera 24h para propagación completa

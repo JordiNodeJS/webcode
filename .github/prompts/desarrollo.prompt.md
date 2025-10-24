@@ -20,17 +20,20 @@ Prompt consolidado para herramientas de desarrollo, testing, debugging y automat
 
 ```typescript
 // Navegar y tomar screenshot
-await page.goto('http://localhost:3000/services');
-await page.screenshot({ path: 'screenshots/services-page.png', fullPage: true });
+await page.goto("http://localhost:3000/services");
+await page.screenshot({
+  path: "screenshots/services-page.png",
+  fullPage: true
+});
 
 // Testing de interacciones
 await page.click('button[data-testid="cta-button"]');
-await expect(page.locator('.modal')).toBeVisible();
+await expect(page.locator(".modal")).toBeVisible();
 
 // Testing de formularios
-await page.fill('input[name="email"]', 'test@example.com');
+await page.fill('input[name="email"]', "test@example.com");
 await page.click('button[type="submit"]');
-await expect(page.locator('.success-message')).toBeVisible();
+await expect(page.locator(".success-message")).toBeVisible();
 ```
 
 ### **Verificación de Accesibilidad**
@@ -60,39 +63,46 @@ El MCP Chrome DevTools permite interactuar programáticamente con páginas web p
 
 ```typescript
 // Iniciar trace de performance
-await mcp_chrome-devtool_performance_start_trace({
-  reload: true,
-  autoStop: true
-});
+(await mcp_chrome) -
+  devtool_performance_start_trace({
+    reload: true,
+    autoStop: true
+  });
 
 // Obtener insights de performance
-const insights = await mcp_chrome-devtool_performance_analyze_insight({
-  insightName: "LCPBreakdown"
-});
+const insights =
+  (await mcp_chrome) -
+  devtool_performance_analyze_insight({
+    insightName: "LCPBreakdown"
+  });
 ```
 
 #### **B) Network Debugging**
 
 ```typescript
 // Listar todos los requests
-const requests = await mcp_chrome-devtool_list_network_requests({
-  resourceTypes: ["fetch", "xhr", "document"]
-});
+const requests =
+  (await mcp_chrome) -
+  devtool_list_network_requests({
+    resourceTypes: ["fetch", "xhr", "document"]
+  });
 
 // Inspeccionar request específico
-const request = await mcp_chrome-devtool_get_network_request({
-  url: "https://api.webcode.es/services"
-});
+const request =
+  (await mcp_chrome) -
+  devtool_get_network_request({
+    url: "https://api.webcode.es/services"
+  });
 ```
 
 #### **C) Emulación de Condiciones**
 
 ```typescript
 // Emular CPU throttling (dispositivos móviles)
-await mcp_chrome-devtool_emulate_cpu({ throttlingRate: 4 });
+(await mcp_chrome) - devtool_emulate_cpu({ throttlingRate: 4 });
 
 // Emular red lenta
-await mcp_chrome-devtool_emulate_network({ throttlingOption: "Slow 3G" });
+(await mcp_chrome) - devtool_emulate_network({ throttlingOption: "Slow 3G" });
 ```
 
 ---
@@ -112,16 +122,22 @@ Utilizar el MCP Context7 para:
 
 ```typescript
 // 1. Resolver librería
-const libraryInfo = await mcp_context7_resolve-library-id({
-  libraryName: "next.js"
-});
+const libraryInfo =
+  (await mcp_context7_resolve) -
+  library -
+  id({
+    libraryName: "next.js"
+  });
 
 // 2. Obtener documentación específica
-const docs = await mcp_context7_get-library-docs({
-  context7CompatibleLibraryID: "/vercel/next.js",
-  topic: "app-router",
-  tokens: 5000
-});
+const docs =
+  (await mcp_context7_get) -
+  library -
+  docs({
+    context7CompatibleLibraryID: "/vercel/next.js",
+    topic: "app-router",
+    tokens: 5000
+  });
 ```
 
 ### **Casos de Uso**

@@ -31,8 +31,9 @@ export default function SeoLocalPage() {
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-              Optimización completa de Google Business Profile y estrategias de SEO Local 
-              para que te encuentren cuando buscan tu servicio cerca de casa.
+              Optimización completa de Google Business Profile y estrategias de
+              SEO Local para que te encuentren cuando buscan tu servicio cerca
+              de casa.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button
@@ -64,8 +65,9 @@ export default function SeoLocalPage() {
           </span>
         </h2>
         <p className="text-center text-muted-foreground mb-12 text-lg max-w-3xl mx-auto">
-          El 46% de las búsquedas en Google tienen intención local. Si tu negocio no aparece 
-          cuando buscan cerca de ti, estás perdiendo clientes potenciales.
+          El 46% de las búsquedas en Google tienen intención local. Si tu
+          negocio no aparece cuando buscan cerca de ti, estás perdiendo clientes
+          potenciales.
         </p>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -73,19 +75,22 @@ export default function SeoLocalPage() {
             {
               icon: "📱",
               title: "Búsquedas Móviles",
-              description: "El 78% de búsquedas locales en móvil resultan en compra",
+              description:
+                "El 78% de búsquedas locales en móvil resultan en compra",
               stat: "78%"
             },
             {
               icon: "📍",
               title: "Google Maps",
-              description: "Más de 1 billón de personas usan Google Maps mensualmente",
+              description:
+                "Más de 1 billón de personas usan Google Maps mensualmente",
               stat: "1B+"
             },
             {
               icon: "🎯",
               title: "Conversión Local",
-              description: "Los clientes locales tienen 5x más probabilidad de comprar",
+              description:
+                "Los clientes locales tienen 5x más probabilidad de comprar",
               stat: "5x"
             }
           ].map((item) => (
@@ -108,7 +113,8 @@ export default function SeoLocalPage() {
             Problemas que Resolvemos
           </h2>
           <p className="text-center text-muted-foreground mb-12 text-lg max-w-2xl mx-auto">
-            ¿Tu negocio local no aparece cuando debería? Te ayudamos a solucionarlo.
+            ¿Tu negocio local no aparece cuando debería? Te ayudamos a
+            solucionarlo.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -135,7 +141,7 @@ export default function SeoLocalPage() {
               },
               {
                 problem: "❌ No apareces en búsquedas de voz",
-                solution: "✅ Optimización para búsquedas por voz y \"near me\""
+                solution: '✅ Optimización para búsquedas por voz y "near me"'
               }
             ].map((item) => (
               <SolucionCard key={item.problem} hover={false}>
@@ -162,7 +168,8 @@ export default function SeoLocalPage() {
             {
               icon: "🏪",
               title: "Google Business Profile",
-              description: "Optimización completa de tu perfil de Google Business.",
+              description:
+                "Optimización completa de tu perfil de Google Business.",
               features: [
                 "Configuración y verificación",
                 "Información completa y actualizada",
@@ -175,7 +182,8 @@ export default function SeoLocalPage() {
             {
               icon: "⭐",
               title: "Gestión de Reseñas",
-              description: "Sistema completo para generar y gestionar reseñas positivas.",
+              description:
+                "Sistema completo para generar y gestionar reseñas positivas.",
               features: [
                 "Estrategia de solicitud de reseñas",
                 "Respuestas profesionales",
@@ -188,10 +196,11 @@ export default function SeoLocalPage() {
             {
               icon: "🔍",
               title: "Keywords Locales",
-              description: "Investigación y optimización para términos de búsqueda local.",
+              description:
+                "Investigación y optimización para términos de búsqueda local.",
               features: [
                 "Análisis de competencia local",
-                "Keywords \"near me\" y de voz",
+                'Keywords "near me" y de voz',
                 "Long-tail keywords locales",
                 "Optimización de contenido",
                 "Tracking de posiciones"
@@ -201,7 +210,8 @@ export default function SeoLocalPage() {
             {
               icon: "📋",
               title: "Optimización NAP",
-              description: "Consistencia de Name, Address, Phone en toda la web.",
+              description:
+                "Consistencia de Name, Address, Phone en toda la web.",
               features: [
                 "Auditoría de directorios",
                 "Corrección de citas inconsistentes",
@@ -214,7 +224,8 @@ export default function SeoLocalPage() {
             {
               icon: "🗺️",
               title: "SEO de Direcciones",
-              description: "Optimización para búsquedas específicas de ubicación.",
+              description:
+                "Optimización para búsquedas específicas de ubicación.",
               features: [
                 "Landing pages por ubicación",
                 "Contenido geo-localizado",
@@ -227,7 +238,8 @@ export default function SeoLocalPage() {
             {
               icon: "📊",
               title: "Analytics Locales",
-              description: "Seguimiento y análisis de métricas específicas locales.",
+              description:
+                "Seguimiento y análisis de métricas específicas locales.",
               features: [
                 "Google My Business Insights",
                 "Tráfico desde Maps",
@@ -281,19 +293,25 @@ export default function SeoLocalPage() {
                   </p>
                 </div>
               </div>
-              
+
               <div className="space-y-4 mb-6">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="text-center p-3 bg-background/50 rounded-lg">
-                    <div className="text-2xl font-bold text-secondary">+320%</div>
-                    <div className="text-xs text-muted-foreground">Vistas en Google Maps</div>
+                    <div className="text-2xl font-bold text-secondary">
+                      +320%
+                    </div>
+                    <div className="text-xs text-muted-foreground">
+                      Vistas en Google Maps
+                    </div>
                   </div>
                   <div className="text-center p-3 bg-background/50 rounded-lg">
                     <div className="text-2xl font-bold text-primary">+150%</div>
-                    <div className="text-xs text-muted-foreground">Llamadas directas</div>
+                    <div className="text-xs text-muted-foreground">
+                      Llamadas directas
+                    </div>
                   </div>
                 </div>
-                
+
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-center gap-2">
                     <span className="text-secondary">✓</span>
@@ -309,9 +327,13 @@ export default function SeoLocalPage() {
                   </li>
                 </ul>
               </div>
-              
+
               <Button asChild variant="outline" className="w-full">
-                <a href="https://mudanzasandy.es" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://mudanzasandy.es"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Ver Proyecto →
                 </a>
               </Button>
@@ -319,7 +341,9 @@ export default function SeoLocalPage() {
 
             {/* SEO Local Process */}
             <SolucionCard>
-              <h3 className="text-2xl font-bold mb-6">Nuestro Proceso SEO Local</h3>
+              <h3 className="text-2xl font-bold mb-6">
+                Nuestro Proceso SEO Local
+              </h3>
               <div className="space-y-6">
                 {[
                   {
@@ -359,7 +383,9 @@ export default function SeoLocalPage() {
                     </div>
                     <div>
                       <h4 className="font-bold mb-1">{step.title}</h4>
-                      <p className="text-sm text-muted-foreground">{step.desc}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {step.desc}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -375,12 +401,15 @@ export default function SeoLocalPage() {
           Checklist SEO Local
         </h2>
         <p className="text-center text-muted-foreground mb-12 text-lg max-w-2xl mx-auto">
-          ¿Tu negocio cumple con todos los requisitos para aparecer en búsquedas locales?
+          ¿Tu negocio cumple con todos los requisitos para aparecer en búsquedas
+          locales?
         </p>
 
         <div className="grid md:grid-cols-2 gap-8">
           <SolucionCard>
-            <h3 className="text-2xl font-bold mb-6 text-secondary">Google Business Profile</h3>
+            <h3 className="text-2xl font-bold mb-6 text-secondary">
+              Google Business Profile
+            </h3>
             <ul className="space-y-3">
               {[
                 "Perfil verificado y completo",
@@ -401,7 +430,9 @@ export default function SeoLocalPage() {
           </SolucionCard>
 
           <SolucionCard>
-            <h3 className="text-2xl font-bold mb-6 text-primary">SEO Técnico Local</h3>
+            <h3 className="text-2xl font-bold mb-6 text-primary">
+              SEO Técnico Local
+            </h3>
             <ul className="space-y-3">
               {[
                 "Schema markup local",
@@ -411,7 +442,7 @@ export default function SeoLocalPage() {
                 "Backlinks locales",
                 "Menciones en directorios",
                 "Contenido geo-localizado",
-                "Keywords \"near me\""
+                'Keywords "near me"'
               ].map((item) => (
                 <li key={item} className="flex items-center gap-3">
                   <span className="text-primary font-bold">✓</span>
@@ -474,7 +505,14 @@ export default function SeoLocalPage() {
                 popular: false
               }
             ].map((plan) => (
-              <SolucionCard key={plan.title} className={plan.popular ? "border-2 border-secondary/50 bg-gradient-to-br from-secondary/5 to-primary/5" : ""}>
+              <SolucionCard
+                key={plan.title}
+                className={
+                  plan.popular
+                    ? "border-2 border-secondary/50 bg-gradient-to-br from-secondary/5 to-primary/5"
+                    : ""
+                }
+              >
                 {plan.popular && (
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                     <span className="px-4 py-1 bg-gradient-to-r from-secondary to-primary text-white text-sm font-bold rounded-full">
@@ -499,7 +537,8 @@ export default function SeoLocalPage() {
           </div>
 
           <p className="text-center text-muted-foreground mt-12 max-w-2xl mx-auto">
-            Todos los planes incluyen auditoría inicial gratuita. Sin permanencia.
+            Todos los planes incluyen auditoría inicial gratuita. Sin
+            permanencia.
           </p>
         </div>
       </section>
@@ -514,31 +553,40 @@ export default function SeoLocalPage() {
           {[
             {
               question: "¿Cuánto tiempo tarda en verse resultados?",
-              answer: "Los primeros resultados se ven en 2-4 semanas, pero los resultados significativos requieren 3-6 meses de trabajo constante."
+              answer:
+                "Los primeros resultados se ven en 2-4 semanas, pero los resultados significativos requieren 3-6 meses de trabajo constante."
             },
             {
               question: "¿Es necesario tener una tienda física?",
-              answer: "No necesariamente. Los negocios de servicios pueden beneficiarse del SEO Local si atienden clientes en una zona específica."
+              answer:
+                "No necesariamente. Los negocios de servicios pueden beneficiarse del SEO Local si atienden clientes en una zona específica."
             },
             {
-              question: "¿Qué es más importante: Google Business o SEO técnico?",
-              answer: "Ambos son importantes. Google Business es fundamental para búsquedas locales, pero el SEO técnico refuerza la autoridad."
+              question:
+                "¿Qué es más importante: Google Business o SEO técnico?",
+              answer:
+                "Ambos son importantes. Google Business es fundamental para búsquedas locales, pero el SEO técnico refuerza la autoridad."
             },
             {
               question: "¿Cómo se miden los resultados del SEO Local?",
-              answer: "Medimos vistas en Google Maps, llamadas directas, direcciones solicitadas, reseñas generadas y posiciones en búsquedas locales."
+              answer:
+                "Medimos vistas en Google Maps, llamadas directas, direcciones solicitadas, reseñas generadas y posiciones en búsquedas locales."
             },
             {
               question: "¿Puedo hacer SEO Local para múltiples ubicaciones?",
-              answer: "Sí, tenemos planes específicos para empresas con múltiples sucursales o áreas de servicio."
+              answer:
+                "Sí, tenemos planes específicos para empresas con múltiples sucursales o áreas de servicio."
             },
             {
               question: "¿Qué pasa con las reseñas negativas?",
-              answer: "Te ayudamos a responder profesionalmente a las reseñas negativas y desarrollamos estrategias para generar más reseñas positivas."
+              answer:
+                "Te ayudamos a responder profesionalmente a las reseñas negativas y desarrollamos estrategias para generar más reseñas positivas."
             }
           ].map((faq) => (
             <SolucionCard key={faq.question} hover={false}>
-              <h3 className="text-lg font-bold mb-3 text-secondary">{faq.question}</h3>
+              <h3 className="text-lg font-bold mb-3 text-secondary">
+                {faq.question}
+              </h3>
               <p className="text-muted-foreground">{faq.answer}</p>
             </SolucionCard>
           ))}

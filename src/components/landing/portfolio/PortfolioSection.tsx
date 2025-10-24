@@ -7,15 +7,18 @@ import { cn } from "@/lib/utils";
 
 export function PortfolioSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const { disableAnimationsForSection: _disableAnimationsForSection } = useAnimationContext();
+  const { disableAnimationsForSection: _disableAnimationsForSection } =
+    useAnimationContext();
 
   const portfolioItems = [
     {
       id: 1,
       title: "Floristería Moderna",
       category: "E-commerce",
-      description: "Tienda online completa para una floristería local con catálogo de productos, sistema de pedidos y pagos integrados.",
-      image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800&h=600&fit=crop",
+      description:
+        "Tienda online completa para una floristería local con catálogo de productos, sistema de pedidos y pagos integrados.",
+      image:
+        "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800&h=600&fit=crop",
       technologies: ["Next.js", "Stripe", "Tailwind CSS"],
       results: [
         "300% aumento en ventas online",
@@ -28,8 +31,10 @@ export function PortfolioSection() {
       id: 2,
       title: "Clínica Dental Premium",
       category: "Web Corporativa",
-      description: "Página web profesional para una clínica dental con sistema de citas online y galería de tratamientos.",
-      image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&h=600&fit=crop",
+      description:
+        "Página web profesional para una clínica dental con sistema de citas online y galería de tratamientos.",
+      image:
+        "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&h=600&fit=crop",
       technologies: ["React", "Google Calendar API", "Framer Motion"],
       results: [
         "200% más citas online",
@@ -42,8 +47,10 @@ export function PortfolioSection() {
       id: 3,
       title: "Restaurante Gourmet",
       category: "Landing Page",
-      description: "Landing page de alta conversión para un restaurante con reservas online y menú interactivo.",
-      image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop",
+      description:
+        "Landing page de alta conversión para un restaurante con reservas online y menú interactivo.",
+      image:
+        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop",
       technologies: ["Next.js", "OpenTable API", "Optimized Images"],
       results: [
         "500% más reservas online",
@@ -56,8 +63,10 @@ export function PortfolioSection() {
       id: 4,
       title: "Gimnasio CrossFit",
       category: "Web Institucional",
-      description: "Página web para gimnasio con clases online, horarios y sistema de membresías digital.",
-      image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&h=600&fit=crop",
+      description:
+        "Página web para gimnasio con clases online, horarios y sistema de membresías digital.",
+      image:
+        "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&h=600&fit=crop",
       technologies: ["Vue.js", "Stripe Subscriptions", "Video Streaming"],
       results: [
         "150 nuevas membresías",
@@ -70,8 +79,10 @@ export function PortfolioSection() {
       id: 5,
       title: "Consultora Legal",
       category: "Rediseño Web",
-      description: "Rediseño completo de página web corporativa con nuevo sistema de gestión de contenidos.",
-      image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop",
+      description:
+        "Rediseño completo de página web corporativa con nuevo sistema de gestión de contenidos.",
+      image:
+        "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop",
       technologies: ["WordPress", "Custom CMS", "SEO Optimization"],
       results: [
         "SEO mejorado en 300%",
@@ -84,8 +95,10 @@ export function PortfolioSection() {
       id: 6,
       title: "Tienda de Ropa Online",
       category: "E-commerce Avanzado",
-      description: "Tienda online completa con filtros avanzados, wishlist y programa de fidelización.",
-      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
+      description:
+        "Tienda online completa con filtros avanzados, wishlist y programa de fidelización.",
+      image:
+        "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
       technologies: ["Wix Studio", "Custom Apps", "Analytics"],
       results: [
         "ROI del 400%",
@@ -149,7 +162,8 @@ export function PortfolioSection() {
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Cada proyecto es único. Descubre cómo se podrían desarrollar estos proyectos con sus tecnologías respectivas.
+            Cada proyecto es único. Descubre cómo se podrían desarrollar estos
+            proyectos con sus tecnologías respectivas.
           </p>
         </div>
 
@@ -182,10 +196,12 @@ export function PortfolioSection() {
                 {/* Content */}
                 <div className="p-6">
                   {/* Category Badge */}
-                  <div className={cn(
-                    "inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border mb-4",
-                    colors.badge
-                  )}>
+                  <div
+                    className={cn(
+                      "inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border mb-4",
+                      colors.badge
+                    )}
+                  >
                     {item.category}
                   </div>
 
@@ -214,9 +230,19 @@ export function PortfolioSection() {
                   {/* Results */}
                   <div className="space-y-2">
                     {item.results.map((result, resultIndex) => (
-                      <div key={resultIndex} className="flex items-center gap-2">
-                        <div className={cn("w-1.5 h-1.5 rounded-full flex-shrink-0", colors.accent)}></div>
-                        <span className="text-sm text-foreground/90 font-medium">{result}</span>
+                      <div
+                        key={resultIndex}
+                        className="flex items-center gap-2"
+                      >
+                        <div
+                          className={cn(
+                            "w-1.5 h-1.5 rounded-full flex-shrink-0",
+                            colors.accent
+                          )}
+                        ></div>
+                        <span className="text-sm text-foreground/90 font-medium">
+                          {result}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -236,8 +262,12 @@ export function PortfolioSection() {
               ¿Quieres ser nuestro próximo caso de éxito?
             </h3>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Cada proyecto es una oportunidad de crear algo único. 
-              <strong className="text-foreground"> Diseño web a medida</strong> que realmente funciona para tu negocio.
+              Cada proyecto es una oportunidad de crear algo único.
+              <strong className="text-foreground">
+                {" "}
+                Diseño web a medida
+              </strong>{" "}
+              que realmente funciona para tu negocio.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a

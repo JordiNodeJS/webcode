@@ -14,6 +14,7 @@ Este prompt proporciona directrices basadas en experiencia real de optimización
 ## 🚨 Problemas Comunes de Rendimiento
 
 ### Síntomas de Mal Rendimiento
+
 - ✗ CPU/GPU usage >50 en páginas en reposo
 - ✗ Frame drops o stuttering al hacer scroll
 - ✗ Batería se agota rápidamente en móviles
@@ -21,6 +22,7 @@ Este prompt proporciona directrices basadas en experiencia real de optimización
 - ✗ Lighthouse Performance Score <90
 
 ### Causas Principales
+
 1. **Animaciones continuas innecesarias** (`animate-pulse`, `animate-spin`, `animate-bounce`)
 2. **Blur effects excesivos** (`blur-3xl`, múltiples `backdrop-blur`)
 3. **Gradientes animados** con `background-size` y `background-position`
@@ -30,6 +32,7 @@ Este prompt proporciona directrices basadas en experiencia real de optimización
 ## **[Completado]** Reglas de Oro para Animaciones
 
 ### 1. **Principio de Necesidad**
+
 ```tsx
 // **[Error]** MAL: Animación continua innecesaria
 <div className="bg-primary/20 rounded-full blur-3xl animate-pulse" />
@@ -39,6 +42,7 @@ Este prompt proporciona directrices basadas en experiencia real de optimización
 ```
 
 **Pregúntate**: ¿Esta animación aporta valor funcional o es solo decorativa?
+
 - Si es decorativa y continua → **Eliminarla**
 - Si aporta feedback al usuario → **Mantenerla con triggers**
 
@@ -63,6 +67,7 @@ Este prompt proporciona directrices basadas en experiencia real de optimización
 ```
 
 **Triggers válidos**:
+
 - `:hover` - Interacción del usuario
 - `:focus` - Accesibilidad
 - `data-active` - Estados de UI
@@ -84,6 +89,7 @@ Este prompt proporciona directrices basadas en experiencia real de optimización
 ```
 
 **Límites recomendados**:
+
 - Máximo **5 elementos** con animaciones continuas
 - Máximo **10 elementos** con animaciones hover
 - Máximo **3 blur effects** pesados (blur-3xl, backdrop-blur-xl)
@@ -102,6 +108,7 @@ Este prompt proporciona directrices basadas en experiencia real de optimización
 ```
 
 **Jerarquía de costo GPU**:
+
 1. `blur-3xl`, `backdrop-blur-3xl` - **MUY COSTOSO** (evitar)
 2. `blur-2xl`, `backdrop-blur-xl` - **COSTOSO** (usar con moderación)
 3. `blur-xl`, `backdrop-blur-lg` - **MODERADO** (máximo 5 elementos)
@@ -112,17 +119,17 @@ Este prompt proporciona directrices basadas en experiencia real de optimización
 
 ```tsx
 // **[Error]** PROHIBIDO: Animaciones continuas sin trigger
-"animate-spin"       // Solo para loaders activos
-"animate-ping"       // Solo con hover o estados
-"animate-pulse"      // Solo para skeleton loaders
-"animate-bounce"     // Solo con hover o eventos
-"animate-blob"       // Evitar completamente (custom)
-"animate-shimmer"    // Solo con hover
+"animate-spin"; // Solo para loaders activos
+"animate-ping"; // Solo con hover o estados
+"animate-pulse"; // Solo para skeleton loaders
+"animate-bounce"; // Solo con hover o eventos
+"animate-blob"; // Evitar completamente (custom)
+"animate-shimmer"; // Solo con hover
 
 // **[Completado]** PERMITIDO: Animaciones con trigger
-"hover:animate-pulse"
-"data-loading:animate-spin"
-"group-hover:animate-bounce"
+"hover:animate-pulse";
+"data-loading:animate-spin";
+"group-hover:animate-bounce";
 ```
 
 ### 6. **Animaciones CSS vs JavaScript**
@@ -160,32 +167,38 @@ className={cn(
 ### Al Detectar Problemas de Rendimiento
 
 #### 1. Identificar Elementos Animados
+
 ```javascript
 // Ejecutar en Console de Chrome DevTools
 const animatedElements = document.querySelectorAll('[class*="animate-"]');
-console.log('Animated elements:', animatedElements.length);
+console.log("Animated elements:", animatedElements.length);
 animatedElements.forEach((el, i) => {
   console.log(`${i + 1}:`, el.className);
 });
 ```
 
 #### 2. Identificar Blur Effects
+
 ```javascript
-const blurElements = document.querySelectorAll('[class*="blur-"], [class*="backdrop-blur"]');
-console.log('Blur elements:', blurElements.length);
+const blurElements = document.querySelectorAll(
+  '[class*="blur-"], [class*="backdrop-blur"]'
+);
+console.log("Blur elements:", blurElements.length);
 ```
 
 #### 3. Métricas de Referencia
+
 ```javascript
 // Performance API
-const perfData = performance.getEntriesByType('navigation')[0];
-console.log('DOM Interactive:', perfData.domInteractive);
-console.log('DOM Complete:', perfData.domComplete);
+const perfData = performance.getEntriesByType("navigation")[0];
+console.log("DOM Interactive:", perfData.domInteractive);
+console.log("DOM Complete:", perfData.domComplete);
 ```
 
 ## **[Objetivos]** Patrones de Optimización
 
 ### Pattern 1: Background Decorativo
+
 ```tsx
 // **[Error]** ANTES: Múltiples blobs animados
 <section className="relative">
@@ -199,7 +212,7 @@ console.log('DOM Complete:', perfData.domComplete);
 <section className="relative">
   {/* Gradiente de fondo */}
   <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-secondary/10" />
-  
+
   {/* Máximo 2 blur spots estáticos */}
   <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-2xl" />
   <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-2xl" />
@@ -209,27 +222,33 @@ console.log('DOM Complete:', perfData.domComplete);
 **Resultado**: De 4 animaciones continuas + blur-3xl → 0 animaciones + blur-2xl = **~90% menos CPU/GPU**
 
 ### Pattern 2: Loading States
+
 ```tsx
 // **[Error]** MAL: Spinner siempre visible y animado
-<div className="animate-spin">**[Recargar]**</div>
+<div className="animate-spin">**[Recargar]**</div>;
 
 // **[Completado]** BIEN: Spinner solo cuando está cargando
-{isLoading && (
-  <div className="animate-spin">
-    <LoaderIcon />
-  </div>
-)}
+{
+  isLoading && (
+    <div className="animate-spin">
+      <LoaderIcon />
+    </div>
+  );
+}
 
 // **[Completado]** MEJOR: Skeleton loader específico
-<div className={cn(
-  "h-20 rounded-lg",
-  isLoading ? "animate-pulse bg-muted" : "bg-card"
-)}>
+<div
+  className={cn(
+    "h-20 rounded-lg",
+    isLoading ? "animate-pulse bg-muted" : "bg-card"
+  )}
+>
   {!isLoading && children}
-</div>
+</div>;
 ```
 
 ### Pattern 3: Hover Effects (sin animaciones continuas)
+
 ```tsx
 // **[Error]** MAL: Badge con ping continuo
 <div className="relative">
@@ -250,6 +269,7 @@ console.log('DOM Complete:', perfData.domComplete);
 ```
 
 ### Pattern 4: Card Interactions
+
 ```tsx
 // **[Error]** MAL: Múltiples layers con animaciones y blurs
 <div className="relative group">
@@ -267,6 +287,7 @@ console.log('DOM Complete:', perfData.domComplete);
 ```
 
 ### Pattern 5: Timeline Connectors
+
 ```tsx
 // **[Error]** MAL: Línea con gradiente animado
 <div className="absolute top-0 h-full w-1 overflow-hidden">
@@ -299,7 +320,7 @@ const performanceAnalysis = () => {
   const blur = document.querySelectorAll('[class*="blur-"]');
   const backdropBlur = document.querySelectorAll('[class*="backdrop-blur"]');
   const gradients = document.querySelectorAll('[class*="gradient"]');
-  
+
   const analysis = {
     animatedElements: animated.length,
     blurElements: blur.length,
@@ -308,39 +329,47 @@ const performanceAnalysis = () => {
     score: 100,
     issues: []
   };
-  
+
   // Scoring
   if (animated.length > 5) {
     analysis.score -= (animated.length - 5) * 5;
-    analysis.issues.push(`**[Advertencia]** Demasiados elementos animados: ${animated.length} (máximo recomendado: 5)`);
+    analysis.issues.push(
+      `**[Advertencia]** Demasiados elementos animados: ${animated.length} (máximo recomendado: 5)`
+    );
   }
-  
+
   if (blur.length > 10) {
     analysis.score -= (blur.length - 10) * 2;
-    analysis.issues.push(`**[Advertencia]** Demasiados blur effects: ${blur.length} (máximo recomendado: 10)`);
+    analysis.issues.push(
+      `**[Advertencia]** Demasiados blur effects: ${blur.length} (máximo recomendado: 10)`
+    );
   }
-  
+
   const blur3xl = document.querySelectorAll('[class*="blur-3xl"]');
   if (blur3xl.length > 0) {
     analysis.score -= blur3xl.length * 10;
-    analysis.issues.push(`**[Error]** Blur-3xl detectado: ${blur3xl.length} elementos (muy costoso GPU)`);
+    analysis.issues.push(
+      `**[Error]** Blur-3xl detectado: ${blur3xl.length} elementos (muy costoso GPU)`
+    );
   }
-  
+
   // Report
-  console.log('=== ANÁLISIS DE RENDIMIENTO ===');
+  console.log("=== ANÁLISIS DE RENDIMIENTO ===");
   console.log(`Score: ${Math.max(0, analysis.score)}/100`);
   console.log(`\nElementos animados: ${analysis.animatedElements}`);
   console.log(`Blur effects: ${analysis.blurElements}`);
   console.log(`Backdrop blur: ${analysis.backdropBlurElements}`);
   console.log(`Gradientes: ${analysis.gradientElements}`);
-  
+
   if (analysis.issues.length > 0) {
-    console.log('\n**[Advertencia]** ISSUES ENCONTRADOS:');
-    analysis.issues.forEach(issue => console.log(issue));
+    console.log("\n**[Advertencia]** ISSUES ENCONTRADOS:");
+    analysis.issues.forEach((issue) => console.log(issue));
   } else {
-    console.log('\n**[Completado]** No se encontraron problemas de rendimiento');
+    console.log(
+      "\n**[Completado]** No se encontraron problemas de rendimiento"
+    );
   }
-  
+
   return analysis;
 };
 
@@ -351,24 +380,26 @@ performanceAnalysis();
 
 ### Performance Targets
 
-| Métrica | Excelente | Bueno | Aceptable | Malo |
-|---------|-----------|-------|-----------|------|
-| Animated elements | 0-3 | 4-5 | 6-10 | >10 |
-| Blur-3xl elements | 0 | 0-1 | 2-3 | >3 |
-| CPU idle % | <20 | 20-30 | 30-50 | >50 |
-| GPU usage % | <10 | 10-20 | 20-40 | >40 |
-| Lighthouse Perf | >95 | 90-95 | 80-90 | <80 |
-| FPS en scroll | 60 | 55-60 | 45-55 | <45 |
+| Métrica           | Excelente | Bueno | Aceptable | Malo |
+| ----------------- | --------- | ----- | --------- | ---- |
+| Animated elements | 0-3       | 4-5   | 6-10      | >10  |
+| Blur-3xl elements | 0         | 0-1   | 2-3       | >3   |
+| CPU idle %        | <20       | 20-30 | 30-50     | >50  |
+| GPU usage %       | <10       | 10-20 | 20-40     | >40  |
+| Lighthouse Perf   | >95       | 90-95 | 80-90     | <80  |
+| FPS en scroll     | 60        | 55-60 | 45-55     | <45  |
 
 ### Caso Real: Optimización Página Proceso
 
 **Antes**:
+
 - 24 elementos animados
 - 8x animate-pulse, 6x animate-blob
 - CPU idle: >100 (Chrome Task Manager)
 - Múltiples blur-3xl
 
 **Después**:
+
 - 4 elementos animados (solo skeleton loaders)
 - 0 animaciones decorativas continuas
 - CPU idle: ~20-30 (estimado)
@@ -379,6 +410,7 @@ performanceAnalysis();
 ## **[Diseño]** Alternativas sin Animaciones
 
 ### En lugar de `animate-pulse`
+
 ```tsx
 // **[Error]** animate-pulse continuo
 <div className="bg-primary/20 animate-pulse" />
@@ -388,6 +420,7 @@ performanceAnalysis();
 ```
 
 ### En lugar de `animate-blob`
+
 ```tsx
 // **[Error]** Blob animado
 <div className="absolute bg-primary/10 blur-3xl animate-blob" />
@@ -398,6 +431,7 @@ performanceAnalysis();
 ```
 
 ### En lugar de `animate-shimmer`
+
 ```tsx
 // **[Error]** Shimmer animado
 <div className="bg-gradient-to-r from-transparent via-primary to-transparent animate-shimmer" />
@@ -407,6 +441,7 @@ performanceAnalysis();
 ```
 
 ### En lugar de `animate-bounce`
+
 ```tsx
 // **[Error]** Bounce continuo
 <div className="animate-bounce">**[Lanzamiento]**</div>
@@ -423,6 +458,7 @@ Al revisar animaciones en PRs, usar este checklist:
 ## Performance Review Checklist
 
 ### Animaciones
+
 - [ ] No hay animaciones continuas innecesarias
 - [ ] Todas las animaciones tienen triggers (hover, focus, estado)
 - [ ] Total de elementos animados ≤ 5
@@ -430,21 +466,25 @@ Al revisar animaciones en PRs, usar este checklist:
 - [ ] No se usa `animate-blob` (custom, muy costoso)
 
 ### Blur Effects
+
 - [ ] No se usa `blur-3xl` (preferir `blur-2xl` o menor)
 - [ ] Total de blur effects ≤ 10
 - [ ] `backdrop-blur` es necesario (no se puede lograr con opacidad)
 
 ### Gradientes
+
 - [ ] No hay gradientes animados continuos
 - [ ] Gradientes tienen max 3 color stops
 
 ### Testing
+
 - [ ] Probado en Chrome DevTools Performance
 - [ ] CPU idle < 30% en Task Manager
 - [ ] No hay frame drops al hacer scroll
 - [ ] Lighthouse Performance > 90
 
 ### Alternativas Consideradas
+
 - [ ] ¿Se puede lograr el mismo efecto sin animación?
 - [ ] ¿Se puede usar CSS en lugar de JS?
 - [ ] ¿Se puede reducir el número de layers?
@@ -505,17 +545,20 @@ document.querySelectorAll('[class*="animate-"]').forEach((el, i) => {
 ## **[Recursos]** Referencias y Recursos
 
 ### Documentación
+
 - [CSS Triggers](https://csstriggers.com/) - Qué properties causan repaints
 - [will-change](https://developer.mozilla.org/en-US/docs/Web/CSS/will-change) - Optimización GPU
 - [Lighthouse Performance](https://developer.chrome.com/docs/lighthouse/performance/)
 
 ### Best Practices
+
 - Preferir `transform` y `opacity` (GPU accelerated)
 - Evitar animar `width`, `height`, `top`, `left` (causan reflow)
 - Usar `will-change` solo cuando sea necesario
 - Remover `will-change` después de la animación
 
 ### Tools
+
 - Chrome DevTools Performance Panel
 - Chrome Task Manager (Shift + Esc)
 - Lighthouse CI
@@ -524,6 +567,7 @@ document.querySelectorAll('[class*="animate-"]').forEach((el, i) => {
 ## **[Rendimiento]** Resumen Ejecutivo
 
 ### **[Error]** NO HACER
+
 1. Animaciones continuas decorativas (pulse, blob, shimmer)
 2. Más de 5 elementos animados simultáneamente
 3. blur-3xl en múltiples elementos
@@ -531,6 +575,7 @@ document.querySelectorAll('[class*="animate-"]').forEach((el, i) => {
 5. JavaScript para animaciones que CSS puede hacer
 
 ### **[Completado]** HACER
+
 1. Animaciones con propósito (loading, feedback)
 2. Triggers claros (hover, focus, estado)
 3. blur-2xl o menor, máximo 10 elementos
@@ -538,6 +583,7 @@ document.querySelectorAll('[class*="animate-"]').forEach((el, i) => {
 5. Probar con Performance Panel antes de merge
 
 ### **[Objetivos]** Objetivo
+
 **CPU/GPU en idle < 30%** | **Lighthouse Performance > 90** | **0 frame drops en scroll**
 
 ---
@@ -545,4 +591,3 @@ document.querySelectorAll('[class*="animate-"]').forEach((el, i) => {
 **Versión**: 1.0  
 **Última actualización**: 3 de Octubre de 2025  
 **Basado en**: Optimización real de página /proceso (83% reducción de animaciones)
-

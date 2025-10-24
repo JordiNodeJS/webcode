@@ -28,17 +28,17 @@
 
 ### 📊 Análisis de Dependencias
 
-| Característica | Vercel | Netlify | Estado |
-|----------------|--------|---------|--------|
-| Next.js 15.5.2 | ✅ Soporte nativo | ✅ Soporte completo | ✅ Compatible |
-| App Router | ✅ Soporte completo | ✅ Soporte completo | ✅ Compatible |
-| Server Components | ✅ Soporte completo | ✅ Soporte completo | ✅ Compatible |
-| Middleware | ✅ Edge Functions | ✅ Edge Functions | ✅ Compatible |
-| API Routes | ✅ Serverless Functions | ✅ Netlify Functions | ✅ Compatible |
-| Image Optimization | ✅ Vercel Image CDN | ✅ Netlify Image CDN | ✅ Compatible |
-| ISR / Revalidation | ✅ Soporte completo | ✅ Soporte completo | ✅ Compatible |
-| Turbopack | ✅ Build + Dev | ✅ Build + Dev | ✅ Compatible |
-| React Compiler | ✅ Experimental | ✅ Experimental | ✅ Compatible |
+| Característica     | Vercel                  | Netlify              | Estado        |
+| ------------------ | ----------------------- | -------------------- | ------------- |
+| Next.js 15.5.2     | ✅ Soporte nativo       | ✅ Soporte completo  | ✅ Compatible |
+| App Router         | ✅ Soporte completo     | ✅ Soporte completo  | ✅ Compatible |
+| Server Components  | ✅ Soporte completo     | ✅ Soporte completo  | ✅ Compatible |
+| Middleware         | ✅ Edge Functions       | ✅ Edge Functions    | ✅ Compatible |
+| API Routes         | ✅ Serverless Functions | ✅ Netlify Functions | ✅ Compatible |
+| Image Optimization | ✅ Vercel Image CDN     | ✅ Netlify Image CDN | ✅ Compatible |
+| ISR / Revalidation | ✅ Soporte completo     | ✅ Soporte completo  | ✅ Compatible |
+| Turbopack          | ✅ Build + Dev          | ✅ Build + Dev       | ✅ Compatible |
+| React Compiler     | ✅ Experimental         | ✅ Experimental      | ✅ Compatible |
 
 ### 🚨 Puntos Importantes
 
@@ -99,17 +99,17 @@ Estas características **NO están en tu código**, por lo que no hay conflictos
 
 ```json
 {
-  "next": "15.5.2",              // ✅ Compatible
-  "react": "19.1.0",             // ✅ Compatible
-  "framer-motion": "^12.23.12",  // ✅ Compatible
-  "lucide-react": "^0.542.0",    // ✅ Compatible
-  "@notionhq/client": "^5.1.0",  // ✅ Compatible (API externa)
-  "resend": "^6.1.0",            // ✅ Compatible (API externa)
-  "react-hook-form": "^7.62.0",  // ✅ Compatible
-  "zod": "^4.1.5",               // ✅ Compatible
-  "jspdf": "^3.0.3",             // ✅ Compatible
-  "tailwindcss": "^4",           // ✅ Compatible
-  "typescript": "^5"             // ✅ Compatible
+  "next": "15.5.2", // ✅ Compatible
+  "react": "19.1.0", // ✅ Compatible
+  "framer-motion": "^12.23.12", // ✅ Compatible
+  "lucide-react": "^0.542.0", // ✅ Compatible
+  "@notionhq/client": "^5.1.0", // ✅ Compatible (API externa)
+  "resend": "^6.1.0", // ✅ Compatible (API externa)
+  "react-hook-form": "^7.62.0", // ✅ Compatible
+  "zod": "^4.1.5", // ✅ Compatible
+  "jspdf": "^3.0.3", // ✅ Compatible
+  "tailwindcss": "^4", // ✅ Compatible
+  "typescript": "^5" // ✅ Compatible
 }
 ```
 
@@ -122,6 +122,7 @@ Estas características **NO están en tu código**, por lo que no hay conflictos
 ### 1. **Archivo `netlify.toml` creado** ✅
 
 Configuración completa para Next.js 15 con:
+
 - Build command: `pnpm build`
 - Plugin `@netlify/plugin-nextjs` (se instala automáticamente)
 - Redirects migrados desde `next.config.ts`
@@ -133,6 +134,7 @@ Configuración completa para Next.js 15 con:
 ### 2. **`next.config.ts` actualizado** ✅
 
 Cambios realizados:
+
 - Añadida detección de entorno Netlify
 - Configurado `output: "standalone"` cuando `NETLIFY=true`
 - Añadido `**.netlify.app` a remotePatterns para imágenes
@@ -141,6 +143,7 @@ Cambios realizados:
 ### 3. **`.env.netlify.example` creado** ✅
 
 Template con todas las variables de entorno necesarias:
+
 - `NOTION_API_KEY` - Para el blog con Notion CMS
 - `NOTION_DATABASE_ID` - ID de la base de datos de Notion
 - `RESEND_API_KEY` - Para envío de emails (contacto/briefing)
@@ -222,21 +225,21 @@ En **Site settings → Environment variables**, añade:
 
 **Variables Obligatorias:**
 
-| Variable | Valor | Scope |
-|----------|-------|-------|
-| `NOTION_API_KEY` | `secret_xxxxx...` | All |
-| `NOTION_DATABASE_ID` | `xxxxxxxx-xxxx-xxxx...` | All |
-| `RESEND_API_KEY` | `re_xxxxx...` | All |
-| `NODE_VERSION` | `20` | All |
-| `PNPM_VERSION` | `9` | All |
-| `NETLIFY` | `true` | All |
+| Variable             | Valor                   | Scope |
+| -------------------- | ----------------------- | ----- |
+| `NOTION_API_KEY`     | `secret_xxxxx...`       | All   |
+| `NOTION_DATABASE_ID` | `xxxxxxxx-xxxx-xxxx...` | All   |
+| `RESEND_API_KEY`     | `re_xxxxx...`           | All   |
+| `NODE_VERSION`       | `20`                    | All   |
+| `PNPM_VERSION`       | `9`                     | All   |
+| `NETLIFY`            | `true`                  | All   |
 
 **Variables Opcionales:**
 
-| Variable | Valor | Scope |
-|----------|-------|-------|
-| `NEXT_PUBLIC_GA_ID` | `G-XXXXXXXXXX` | All (si usas Google Analytics) |
-| `NEXT_PUBLIC_SITE_URL` | `https://webcode.es` | Production |
+| Variable               | Valor                | Scope                          |
+| ---------------------- | -------------------- | ------------------------------ |
+| `NEXT_PUBLIC_GA_ID`    | `G-XXXXXXXXXX`       | All (si usas Google Analytics) |
+| `NEXT_PUBLIC_SITE_URL` | `https://webcode.es` | Production                     |
 
 **Nota**: Netlify configura automáticamente `NEXT_PUBLIC_SITE_URL` y otras variables de contexto.
 
@@ -272,6 +275,7 @@ Deberías ver algo como:
 #### 3.3. Obtener URL de Deploy
 
 Una vez completado:
+
 - Netlify generará una URL tipo: `https://your-site-name.netlify.app`
 - También puedes ver el deploy en: **Deploys** tab
 
@@ -365,6 +369,7 @@ Netlify te dará instrucciones para configurar DNS. Dos opciones:
 **Opción A: Usar Netlify DNS (Recomendado)**
 
 1. Netlify te dará nameservers:
+
    ```
    dns1.p01.nsone.net
    dns2.p01.nsone.net
@@ -379,6 +384,7 @@ Netlify te dará instrucciones para configurar DNS. Dos opciones:
 **Opción B: Usar DNS Externo**
 
 1. Añade un registro CNAME:
+
    ```
    CNAME www your-site-name.netlify.app
    ```
@@ -433,14 +439,17 @@ En **Site settings → Build & deploy → Deploy notifications**:
 Netlify permite configurar variables por contexto:
 
 #### **Production**
+
 - Se aplican a deploys de la rama `main`
 - Usar valores de producción
 
 #### **Deploy Previews**
+
 - Se aplican a PRs
 - Pueden usar valores de test/staging
 
 #### **Branch Deploys**
+
 - Se aplican a ramas específicas
 - Útil para entornos de staging
 
@@ -628,15 +637,16 @@ pnpm notion:verify
 **Solución**:
 
 1. Verificar uso de `next/image`:
+
    ```tsx
    import Image from "next/image";
-   
+
    <Image
      src="/path/to/image.jpg"
      alt="Description"
      width={800}
      height={600}
-   />
+   />;
    ```
 
 2. Verificar remotePatterns en `next.config.ts`:
@@ -645,9 +655,9 @@ pnpm notion:verify
      {
        protocol: "https",
        hostname: "**.netlify.app",
-       pathname: "/**",
-     },
-   ]
+       pathname: "/**"
+     }
+   ];
    ```
 
 ---
@@ -663,13 +673,14 @@ pnpm notion:verify
 1. Verificar que `middleware.ts` esté en la raíz del proyecto
 
 2. Verificar configuración del matcher:
+
    ```ts
    export const config = {
      matcher: [
        "/cookies/:path*",
        "/politica-privacidad/:path*",
-       "/privacy/:path*",
-     ],
+       "/privacy/:path*"
+     ]
    };
    ```
 
@@ -686,6 +697,7 @@ pnpm notion:verify
 **Solución**:
 
 1. Verificar `netlify.toml`:
+
    ```toml
    [[redirects]]
      from = "/home"
@@ -704,27 +716,29 @@ pnpm notion:verify
 
 ### Tabla Comparativa
 
-| Característica | Vercel | Netlify | Notas |
-|----------------|--------|---------|-------|
-| **Next.js Support** | Nativo (creadores) | Completo vía adapter | Misma funcionalidad |
-| **Build Time** | ~2-3 min | ~3-5 min | Netlify ligeramente más lento |
-| **Edge Functions** | Vercel Edge | Netlify Edge | Sintaxis compatible |
-| **Serverless Functions** | Vercel Functions | Netlify Functions | Ambos basados en AWS Lambda |
-| **Image CDN** | Vercel Image | Netlify Image CDN | Funcionalidad similar |
-| **Analytics** | $20/mes gratis luego | $9/mes | Netlify más económico |
-| **Bandwidth** | 100 GB/mes (Free) | 100 GB/mes (Free) | Igual |
-| **Build Minutes** | 6000 min/mes (Free) | 300 min/mes (Free) | Vercel más generoso |
-| **Team Features** | Desde $20/mes | Desde $19/mes | Similar pricing |
+| Característica           | Vercel               | Netlify              | Notas                         |
+| ------------------------ | -------------------- | -------------------- | ----------------------------- |
+| **Next.js Support**      | Nativo (creadores)   | Completo vía adapter | Misma funcionalidad           |
+| **Build Time**           | ~2-3 min             | ~3-5 min             | Netlify ligeramente más lento |
+| **Edge Functions**       | Vercel Edge          | Netlify Edge         | Sintaxis compatible           |
+| **Serverless Functions** | Vercel Functions     | Netlify Functions    | Ambos basados en AWS Lambda   |
+| **Image CDN**            | Vercel Image         | Netlify Image CDN    | Funcionalidad similar         |
+| **Analytics**            | $20/mes gratis luego | $9/mes               | Netlify más económico         |
+| **Bandwidth**            | 100 GB/mes (Free)    | 100 GB/mes (Free)    | Igual                         |
+| **Build Minutes**        | 6000 min/mes (Free)  | 300 min/mes (Free)   | Vercel más generoso           |
+| **Team Features**        | Desde $20/mes        | Desde $19/mes        | Similar pricing               |
 
 ### Funcionalidades Exclusivas
 
 **Vercel:**
+
 - Vercel AI SDK
 - Edge Config (key-value store)
 - Vercel KV (Redis)
 - Vercel Postgres
 
 **Netlify:**
+
 - Netlify Forms (formularios sin backend)
 - Split Testing nativo
 - Branch deploys ilimitados (Free tier)
@@ -734,13 +748,13 @@ pnpm notion:verify
 
 Si usabas estas features de Vercel, aquí están las alternativas:
 
-| Vercel Feature | Netlify Alternativa |
-|----------------|---------------------|
-| `@vercel/analytics` | Netlify Analytics o Google Analytics 4 |
-| `@vercel/edge-config` | Netlify Edge Functions + external KV |
-| `@vercel/kv` | Upstash Redis (compatible con ambos) |
-| `@vercel/postgres` | Supabase o Neon (compatible con ambos) |
-| `@vercel/blob` | Cloudflare R2 o AWS S3 |
+| Vercel Feature        | Netlify Alternativa                    |
+| --------------------- | -------------------------------------- |
+| `@vercel/analytics`   | Netlify Analytics o Google Analytics 4 |
+| `@vercel/edge-config` | Netlify Edge Functions + external KV   |
+| `@vercel/kv`          | Upstash Redis (compatible con ambos)   |
+| `@vercel/postgres`    | Supabase o Neon (compatible con ambos) |
+| `@vercel/blob`        | Cloudflare R2 o AWS S3                 |
 
 ---
 
@@ -749,12 +763,14 @@ Si usabas estas features de Vercel, aquí están las alternativas:
 ### Opción 1: Netlify Analytics ($9/mes)
 
 **Ventajas**:
+
 - Sin código cliente (no afecta performance)
 - No bloqueado por ad-blockers
 - Métricas server-side precisas
 - Bandwidth y performance metrics incluidos
 
 **Activación**:
+
 1. Site settings → Analytics
 2. Enable Analytics
 
@@ -767,6 +783,7 @@ Si usabas estas features de Vercel, aquí están las alternativas:
 2. Obtener Measurement ID: `G-XXXXXXXXXX`
 
 3. Añadir a variables de entorno:
+
    ```
    NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
    ```
@@ -832,6 +849,7 @@ netlify init
 ```
 
 Seguir prompts:
+
 - **Create & configure a new site**: Yes
 - **Team**: Seleccionar tu equipo
 - **Site name**: `webcode` (o el que prefieras)

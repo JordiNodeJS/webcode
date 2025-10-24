@@ -88,7 +88,7 @@ Todo está pensado para que no tengas que preocuparte por aspectos técnicos. T�
 
 **[Idea]** _Precio cerrado, sin sorpresas. Incluye todo lo necesario para empezar a vender desde la primera semana._
 
-****[Tarjeta]** Opciones de pago:**
+\***\*[Tarjeta]** Opciones de pago:\*\*
 
 - Pago único: 5% descuento (1.017€)
 - 50% inicio + 50% entrega
@@ -210,7 +210,7 @@ Todo está pensado para que no tengas que preocuparte por aspectos técnicos. T�
 3. **Demo en vivo**: Te enseñamos ejemplos similares a tu sector
 4. **Inicio inmediato**: Empezamos en 48h tras confirmación
 
-****[Teléfono]** Llama ahora o escribe por WhatsApp para agendar tu consulta gratuita**
+\***\*[Teléfono]** Llama ahora o escribe por WhatsApp para agendar tu consulta gratuita\*\*
 
 ---
 

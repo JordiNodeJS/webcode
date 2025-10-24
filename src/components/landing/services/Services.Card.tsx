@@ -38,7 +38,7 @@ export function ServiceCard({
   href
 }: ServiceCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
-  
+
   // Inicializar con función para evitar warning de React Compiler
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
     if (typeof window === "undefined") return false;

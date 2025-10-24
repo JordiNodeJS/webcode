@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * Props para el componente AnimatedLogo
@@ -36,7 +36,13 @@ export function AnimatedLogo({
 }: AnimatedLogoProps) {
   const [isInView, setIsInView] = useState(false);
   const logoRef = useRef<HTMLDivElement>(null);
-  const reactId = useId();
+  
+  // Usar IDs estáticos para evitar problemas de hidratación
+  const gradientIds = {
+    primary: "webcode-grad-primary",
+    secondary: "webcode-grad-secondary", 
+    mixed: "webcode-grad-mixed"
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -126,7 +132,7 @@ export function AnimatedLogo({
           <defs>
             {/* Gradiente Rosa Principal */}
             <linearGradient
-              id={`webcode-grad-primary-${reactId}`}
+              id={gradientIds.primary}
               x1="0%"
               y1="0%"
               x2="0%"
@@ -141,7 +147,7 @@ export function AnimatedLogo({
             </linearGradient>
             {/* Gradiente Aquamarina Secundario */}
             <linearGradient
-              id={`webcode-grad-secondary-${reactId}`}
+              id={gradientIds.secondary}
               x1="100%"
               y1="0%"
               x2="0%"
@@ -156,7 +162,7 @@ export function AnimatedLogo({
             </linearGradient>
             {/* Gradiente Mixto */}
             <linearGradient
-              id={`webcode-grad-mixed-${reactId}`}
+              id={gradientIds.mixed}
               x1="100%"
               y1="100%"
               x2="0%"
@@ -176,40 +182,40 @@ export function AnimatedLogo({
           {/* Círculo 1 - Rosa Principal */}
           <path
             className="opacity-20"
-            fill={`url(#webcode-grad-primary-${reactId})`}
+            fill={`url(#${gradientIds.primary})`}
             d={paths.circle1}
           />
 
           {/* Círculo 2 - Aquamarina Secundario */}
           <path
             className="opacity-50"
-            fill={`url(#webcode-grad-secondary-${reactId})`}
+            fill={`url(#${gradientIds.secondary})`}
             d={paths.circle2}
           />
 
           {/* Círculo 3 - Gradiente Mixto */}
           <path
             className="opacity-60"
-            fill={`url(#webcode-grad-mixed-${reactId})`}
+            fill={`url(#${gradientIds.mixed})`}
             d={paths.circle3}
           />
 
           {/* Círculos invertidos para más profundidad */}
           <path
             className="opacity-25"
-            fill={`url(#webcode-grad-primary-${reactId})`}
+            fill={`url(#${gradientIds.primary})`}
             d={paths.circle4}
           />
 
           <path
             className="opacity-40"
-            fill={`url(#webcode-grad-secondary-${reactId})`}
+            fill={`url(#${gradientIds.secondary})`}
             d={paths.circle5}
           />
 
           <path
             className="opacity-45"
-            fill={`url(#webcode-grad-mixed-${reactId})`}
+            fill={`url(#${gradientIds.mixed})`}
             d={paths.circle6}
           />
         </svg>

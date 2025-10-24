@@ -1,14 +1,17 @@
 # Migración a Next.js 16.0.0
 
 ## Fecha
+
 23 de Octubre de 2025
 
 ## Resumen
+
 Migración exitosa del proyecto WEBCODE de Next.js 15.5.2 a Next.js 16.0.0 con React 19.2.0.
 
 ## Cambios Realizados
 
 ### 1. Actualización de Dependencias
+
 - **Next.js**: 15.5.2 → 16.0.0
 - **React**: 19.1.0 → 19.2.0
 - **React DOM**: 19.1.0 → 19.2.0
@@ -18,25 +21,27 @@ Migración exitosa del proyecto WEBCODE de Next.js 15.5.2 a Next.js 16.0.0 con R
 ### 2. Configuración de Next.js (`next.config.ts`)
 
 #### Cambios Principales
+
 - **React Compiler**: Movido de `experimental.reactCompiler` a `reactCompiler` (top-level) - ahora es estable
 - **Turbopack**: Ya es por defecto en Next.js 16, no requiere configuración adicional
 
 ```typescript
 // ✅ Configuración actualizada
 const nextConfig: NextConfig = {
-  reactCompiler: true,  // Antes: experimental.reactCompiler
+  reactCompiler: true, // Antes: experimental.reactCompiler
   experimental: {
     viewTransition: true,
     optimizePackageImports: ["lucide-react", "framer-motion"],
-    serverComponentsHmrCache: false,
-  },
+    serverComponentsHmrCache: false
+  }
   // ...
-}
+};
 ```
 
 ### 3. Scripts de Package.json
 
 #### Antes
+
 ```json
 {
   "dev": "next dev --turbopack",
@@ -45,6 +50,7 @@ const nextConfig: NextConfig = {
 ```
 
 #### Después
+
 ```json
 {
   "dev": "next dev",
@@ -57,6 +63,7 @@ const nextConfig: NextConfig = {
 ### 4. Middleware
 
 **Advertencia recibida**:
+
 ```
 ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead.
 ```
@@ -66,6 +73,7 @@ const nextConfig: NextConfig = {
 ### 5. Documentación Actualizada
 
 Archivos actualizados con referencias a Next.js 16:
+
 - `.github/copilot-instructions.md`
 - `.github/WEBCODE-STYLE-REFERENCE.md`
 - `.github/WEBCODE-STYLE-EXAMPLES.md`
@@ -74,6 +82,7 @@ Archivos actualizados con referencias a Next.js 16:
 ## Compatibilidad
 
 ### ✅ Funcionalidades Verificadas
+
 - App Router funcionando correctamente
 - Server Components operativos
 - Async `params` y `searchParams` (ya implementados en v15)
@@ -83,6 +92,7 @@ Archivos actualizados con referencias a Next.js 16:
 ### ⚠️ Problemas Conocidos
 
 #### Caché de Turbopack
+
 Después de la migración, pueden aparecer errores relacionados con módulos de Next.js 15 cached:
 
 ```
@@ -90,6 +100,7 @@ Module [project]/node_modules/.pnpm/next@15.5.2...
 ```
 
 **Solución**:
+
 ```bash
 # Limpiar completamente el caché
 pnpm kill
@@ -100,6 +111,7 @@ pnpm dev
 ```
 
 #### Peer Dependencies
+
 ```
 ⚠ Issues with peer dependencies found
 .
@@ -128,16 +140,19 @@ pnpm dev
 ## Beneficios de Next.js 16
 
 ### Rendimiento
+
 - **Turbopack por defecto**: Compilaciones hasta 700x más rápidas que Webpack
 - **React Compiler estable**: Optimización automática de re-renders sin `useMemo/useCallback`
 - **Mejoras en HMR**: Hot Module Replacement más rápido y estable
 
 ### Desarrollo
+
 - **Experiencia de desarrollo mejorada**: Menos configuración necesaria
 - **APIs estables**: React Compiler y otras features experimentales ahora son estables
 - **Mejor manejo de errores**: Mensajes de error más claros
 
 ### Producción
+
 - **Bundles optimizados automáticamente**: React Compiler reduce el tamaño del bundle
 - **Mejor tree-shaking**: Eliminación más eficiente de código no utilizado
 - **Performance mejorado**: Optimizaciones adicionales en el runtime
@@ -145,18 +160,23 @@ pnpm dev
 ## Notas Adicionales
 
 ### React Compiler
+
 El React Compiler ahora es estable (v1.0.0) y está habilitado en el proyecto. Esto significa:
+
 - Automemoización de componentes sin `useMemo`/`useCallback`
 - Menos re-renders innecesarios
 - Mejor rendimiento en tiempo de ejecución
 
 ### Turbopack
+
 Turbopack es ahora el bundler por defecto:
+
 - No requiere flag `--turbopack`
 - Compilación incremental mucho más rápida
 - Mejor soporte para HMR
 
 ### Advertencias Actuales
+
 - Middleware deprecation warning (no urgente)
 - Peer dependency warnings de `next-view-transitions` (esperado)
 

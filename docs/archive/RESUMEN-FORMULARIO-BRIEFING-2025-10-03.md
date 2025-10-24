@@ -28,6 +28,7 @@ Se ha implementado un **formulario completo de briefing automatizado** que permi
 ## **[Carpeta]** Archivos Creados
 
 ### 1. Página del Formulario
+
 **Ubicación:** `src/app/briefing/formulario/page.tsx`
 
 - Hero section con información del formulario
@@ -36,9 +37,11 @@ Se ha implementado un **formulario completo de briefing automatizado** que permi
 - Layout responsive
 
 ### 2. Componente del Formulario
+
 **Ubicación:** `src/components/briefing/BriefingForm.tsx` (1000+ líneas)
 
 Un componente completo que incluye:
+
 - **7 pasos estructurados:**
   1. Información de Contacto
   2. Objetivos del Proyecto
@@ -58,6 +61,7 @@ Un componente completo que incluye:
   - RGPD compliance
 
 ### 3. Endpoint API
+
 **Ubicación:** `src/app/api/briefing/route.ts`
 
 - Validación server-side con Zod
@@ -72,12 +76,14 @@ Un componente completo que incluye:
 ## **[Análisis]** Estructura del Formulario
 
 ### Paso 1: Información de Contacto
+
 - **Nombre** (requerido)
 - **Email** (requerido)
 - **Empresa** (opcional)
 - **Teléfono** (opcional)
 
 ### Paso 2: Objetivos del Proyecto
+
 - **Objetivo principal** (textarea, min 10 chars)
 - **Problemas a resolver** (textarea, min 10 chars)
 - **Presupuesto estimado** (select: <3k, 3-8k, 8-15k, 15-30k, >30k, no definido)
@@ -85,6 +91,7 @@ Un componente completo que incluye:
 - **KPIs de éxito** (opcional)
 
 ### Paso 3: Público Objetivo
+
 - **Descripción del público** (textarea, min 10 chars)
 - **Rango de edad** (opcional)
 - **Ubicación geográfica** (opcional)
@@ -92,6 +99,7 @@ Un componente completo que incluye:
 - **Idiomas necesarios** (checkboxes: ES, CA, EN, FR, DE, Otro)
 
 ### Paso 4: Funcionalidades Requeridas
+
 - **Tipo de proyecto** (select: landing, corporativa, ecommerce, webapp, blog, portal, otro)
 - **Funcionalidades esenciales** (checkboxes: 12 opciones predefinidas)
   - Formulario de contacto
@@ -110,6 +118,7 @@ Un componente completo que incluye:
 - **Integraciones necesarias** (textarea opcional)
 
 ### Paso 5: Estilo Visual y Marca
+
 - **Tiene identidad corporativa** (checkbox)
 - **Tiene logotipos** (checkbox)
 - **Colores preferidos** (text input)
@@ -117,6 +126,7 @@ Un componente completo que incluye:
 - **Tono de comunicación** (select: profesional, cercano, juvenil, elegante, técnico, otro)
 
 ### Paso 6: Contenidos
+
 - **Contenidos disponibles** (checkbox)
 - **Número de páginas estimadas** (select: 1-5, 6-10, 11-20, 21-50, >50, no definido)
 - **Necesita redacción** (checkbox)
@@ -124,6 +134,7 @@ Un componente completo que incluye:
 - **Necesita videos** (checkbox)
 
 ### Paso 7: Restricciones Técnicas y Resumen
+
 - **Tiene hosting actual** (checkbox)
 - **Necesita dominio** (checkbox)
 - **Necesita migración** (checkbox)
@@ -139,31 +150,37 @@ Un componente completo que incluye:
 ## **[Diseño]** Características de UX
 
 ### Indicadores de Progreso
+
 ```
 Paso X de 7    [████████░░░░] 57%
 ```
+
 - Barra de progreso visual con porcentaje
 - Indicador textual del paso actual
 - Colores: primary para progreso, muted para resto
 
 ### Guardado Automático
+
 - Se guarda en `localStorage` tras cada cambio
 - Key: `"webcode-briefing-draft"`
 - Recuperación automática al recargar página
 - Se limpia al enviar exitosamente
 
 ### Validación Inteligente
+
 - Validación por paso (no se puede avanzar sin completar campos requeridos)
 - Mensajes de error claros y específicos
 - Validación en tiempo real con debounce
 
 ### Estados del Formulario
+
 1. **Idle:** Estado inicial, navegación normal
 2. **Submitting:** Mostrando loader, botón deshabilitado
 3. **Success:** Card de éxito con opciones de navegación
 4. **Error:** Mensaje de error con opción de reintentar
 
 ### Navegación
+
 - Botones "Anterior" y "Siguiente" contextuales
 - Último paso muestra botón "Enviar Briefing"
 - Scroll automático al cambiar de paso
@@ -241,6 +258,7 @@ Paso X de 7    [████████░░░░] 57%
 ## **[Candado Cerrado]** Seguridad y Compliance
 
 ### RGPD
+
 - Checkbox de consentimiento obligatorio
 - Timestamp del consentimiento registrado
 - Link a política de privacidad
@@ -248,12 +266,14 @@ Paso X de 7    [████████░░░░] 57%
 - Derecho de rectificación mencionado
 
 ### Validación
+
 - **Client-side:** Zod + react-hook-form
 - **Server-side:** Zod en endpoint API
 - **Sanitización:** Manejo seguro de strings
 - **Rate limiting:** Pendiente de implementar (recomendado)
 
 ### Metadata Recopilada
+
 - IP del cliente (x-forwarded-for)
 - User agent
 - Referer
@@ -265,10 +285,12 @@ Paso X de 7    [████████░░░░] 57%
 ## **[Lanzamiento]** URLs y Navegación
 
 ### Nuevas Rutas
+
 - `/briefing/formulario` → Página del formulario
 - `/api/briefing` → Endpoint de procesamiento (POST)
 
 ### Navegación Implementada
+
 ```
 /briefing (informativa)
     ↓
@@ -284,6 +306,7 @@ Paso X de 7    [████████░░░░] 57%
 ```
 
 ### Enlaces Cruzados
+
 - **[Completado]** Desde `/briefing` a `/briefing/formulario`
 - **[Completado]** Desde `/briefing/formulario` (éxito) a `/` y `/proceso`
 - **[Completado]** Desde `/proceso` a `/briefing`
@@ -293,25 +316,27 @@ Paso X de 7    [████████░░░░] 57%
 ## **[Crecimiento]** Métricas y Analytics (Recomendadas)
 
 ### Eventos a Trackear
+
 ```javascript
 // Al iniciar el formulario
-track('briefing_started', { timestamp });
+track("briefing_started", { timestamp });
 
 // Al completar cada paso
-track('briefing_step_completed', { step: 2 });
+track("briefing_step_completed", { step: 2 });
 
 // Al enviar
-track('briefing_submitted', { 
-  tipo_proyecto, 
-  presupuesto, 
-  plazo 
+track("briefing_submitted", {
+  tipo_proyecto,
+  presupuesto,
+  plazo
 });
 
 // Al abandonar (window.beforeunload)
-track('briefing_abandoned', { current_step });
+track("briefing_abandoned", { current_step });
 ```
 
 ### Conversión Esperada
+
 ```
 100 visitantes a /briefing
 ↓ (~40%)
@@ -327,6 +352,7 @@ track('briefing_abandoned', { current_step });
 ## 🧪 Testing Checklist
 
 ### Funcional
+
 - [ ] Todos los campos se validan correctamente
 - [ ] Navegación entre pasos funciona
 - [ ] No se puede avanzar sin completar campos requeridos
@@ -338,6 +364,7 @@ track('briefing_abandoned', { current_step });
 - [ ] Reply-to funciona
 
 ### UI/UX
+
 - [ ] Responsive en mobile, tablet y desktop
 - [ ] Barra de progreso se actualiza
 - [ ] Indicadores visuales claros
@@ -347,6 +374,7 @@ track('briefing_abandoned', { current_step });
 - [ ] Success screen amigable
 
 ### Accesibilidad
+
 - [ ] Navegación por teclado
 - [ ] Labels asociados correctamente
 - [ ] ARIA attributes apropiados
@@ -355,6 +383,7 @@ track('briefing_abandoned', { current_step });
 - [ ] Lector de pantalla compatible
 
 ### Rendimiento
+
 - [ ] First Contentful Paint < 1.5s
 - [ ] Time to Interactive < 3s
 - [ ] No layout shifts
@@ -366,6 +395,7 @@ track('briefing_abandoned', { current_step });
 ## **[Idea]** Mejoras Futuras Sugeridas
 
 ### Corto Plazo
+
 - [ ] Rate limiting en API (prevenir spam)
 - [ ] Captcha o honeypot (anti-bot)
 - [ ] Confirmación por email al cliente
@@ -374,6 +404,7 @@ track('briefing_abandoned', { current_step });
 - [ ] Tests automatizados (unit + e2e)
 
 ### Medio Plazo
+
 - [ ] Guardado en base de datos (además de email)
 - [ ] Dashboard admin para ver briefings
 - [ ] Exportación a PDF del briefing
@@ -382,6 +413,7 @@ track('briefing_abandoned', { current_step });
 - [ ] Versión multiidioma del formulario
 
 ### Largo Plazo
+
 - [ ] IA para sugerir funcionalidades basado en respuestas
 - [ ] Chatbot guiado como alternativa al formulario
 - [ ] Videollamada integrada para aclarar dudas
@@ -393,12 +425,14 @@ track('briefing_abandoned', { current_step });
 ## **[Diseño]** Diseño Visual
 
 ### Colores Utilizados
+
 - **Primary:** `#ff6680` (Rosa) - Botones principales, progreso
 - **Border:** Bordes de 3-4px (estilo moderno)
 - **Card:** Fondo translúcido con backdrop-blur
 - **Muted:** Textos secundarios y descripciones
 
 ### Componentes UI
+
 - Card (shadcn)
 - Input (shadcn)
 - Textarea (shadcn)
@@ -409,6 +443,7 @@ track('briefing_abandoned', { current_step });
 - Form (react-hook-form + shadcn)
 
 ### Estilo moderno
+
 - Sombras `shadow-brutal` (6px offset)
 - Bordes gruesos `border-3` y `border-4`
 - Tipografía `font-black` para títulos
@@ -420,12 +455,14 @@ track('briefing_abandoned', { current_step });
 ## **[Documentación]** Datos Recopilados
 
 ### Total de Campos
+
 - **Requeridos:** 12 campos
 - **Opcionales:** 18 campos
 - **Checkboxes:** 25 opciones
 - **Total inputs:** ~30
 
 ### Tiempo Estimado de Completado
+
 - Usuario rápido: 8-10 minutos
 - Usuario promedio: 12-15 minutos
 - Usuario detallado: 15-20 minutos
@@ -482,21 +519,24 @@ Muestra success card con CTAs
 ## **[Recursos]** Documentación Técnica
 
 ### Esquema de Validación (Zod)
+
 ```typescript
 briefingFormSchema = z.object({
   email: z.string().email(),
   nombre: z.string().min(2),
   // ... 30+ campos con validaciones específicas
-  gdprConsent: z.boolean().refine(val => val === true)
+  gdprConsent: z.boolean().refine((val) => val === true)
 });
 ```
 
 ### LocalStorage Key
+
 ```typescript
 const STORAGE_KEY = "webcode-briefing-draft";
 ```
 
 ### API Endpoint
+
 ```typescript
 POST /api/briefing
 Content-Type: application/json
@@ -534,7 +574,7 @@ Response 400/500: {
 **[Completado]** **RGPD compliant** con consentimiento explícito  
 **[Completado]** **Navegación integrada** en el sitio  
 **[Completado]** **0 errores de linter**  
-**[Completado]** **Sitemap actualizado**  
+**[Completado]** **Sitemap actualizado**
 
 ### URLs Activas
 
@@ -570,4 +610,3 @@ Response 400/500: {
 **Implementación completada y lista para producción** **[Magia]**
 
 El formulario automatizado de briefing está completamente funcional, validado, integrado y listo para comenzar a recopilar información estructurada de potenciales clientes.
-

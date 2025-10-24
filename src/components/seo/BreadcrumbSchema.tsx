@@ -1,5 +1,4 @@
 import Script from "next/script";
-import { useId } from "react";
 
 interface BreadcrumbItem {
   name: string;
@@ -15,7 +14,8 @@ export function BreadcrumbSchema({
   items,
   baseUrl = "https://webcode.es"
 }: BreadcrumbSchemaProps) {
-  const id = useId();
+  // Usar ID estático para evitar problemas de hidratación
+  const id = "breadcrumb-schema";
   const breadcrumbList = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

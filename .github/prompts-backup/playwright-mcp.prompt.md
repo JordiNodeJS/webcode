@@ -191,7 +191,7 @@ window.getComputedStyle(el).display; // Visibilidad elementos
 }
 ```
 
-### ****[Documentación]** Plantilla: Formulario de Contacto**
+### \***\*[Documentación]** Plantilla: Formulario de Contacto\*\*
 
 ```json
 {
@@ -233,7 +233,7 @@ window.getComputedStyle(el).display; // Visibilidad elementos
 }
 ```
 
-### ****[Móvil]** Plantilla: Responsive Design**
+### \***\*[Móvil]** Plantilla: Responsive Design\*\*
 
 ```json
 {
@@ -278,18 +278,18 @@ El informe final debe seguir esta estructura en Markdown:
 ```markdown
 # 🧪 Informe de Verificación Visual - WEBCODE
 
-****[Calendario]** Fecha**: 2025-09-29 | ****[Tiempo]** Hora**: 14:30:52  
-****[Web]** Entorno**: http://localhost:3000  
-****[Móvil]** Viewport**: 1920x1080
+\***\*[Calendario]** Fecha**: 2025-09-29 | \*\***[Tiempo]** Hora**: 14:30:52  
+\***\*[Web]** Entorno**: http://localhost:3000  
+\*\***[Móvil]** Viewport**: 1920x1080
 
 ---
 
 ## **[Lista]** Resumen Ejecutivo
 
-****[Objetivos]** Estado General**: OK | FAIL | WARNING  
-****[Completado]** Pasos Exitosos**: 8/8  
-****[Error]** Pasos Fallidos**: 0/8  
-**⏱️ Tiempo Total**: 3.2s
+\***\*[Objetivos]** Estado General**: OK | FAIL | WARNING  
+\*\***[Completado]** Pasos Exitosos**: 8/8  
+\***\*[Error]** Pasos Fallidos**: 0/8  
+**⏱️ Tiempo Total\*\*: 3.2s
 
 ### Descripción
 
@@ -299,9 +299,9 @@ Navegación a página de servicios exitosa. Todos los elementos se cargan correc
 
 ## **[Cine]** Escenario Ejecutado
 
-****[Documentación]** Nombre**: Validar navegación a página de servicios  
-****[Objetivos]** Objetivo**: Verificar que la navegación desde home a servicios funciona  
-****[Lanzamiento]** URL Inicial**: http://localhost:3000/
+\***\*[Documentación]** Nombre**: Validar navegación a página de servicios  
+\*\***[Objetivos]** Objetivo**: Verificar que la navegación desde home a servicios funciona  
+\***\*[Lanzamiento]** URL Inicial\*\*: http://localhost:3000/
 
 ---
 
@@ -331,17 +331,17 @@ Navegación a página de servicios exitosa. Todos los elementos se cargan correc
 
 ### Screenshot 1: Estado Inicial
 
-- ****[Carpeta]** Archivo**: `inicio-estado-inicial-20250929-143052.png`
-- ****[Tiempo]** Timestamp**: 14:30:52
-- ****[Documentación]** Descripción**: Estado inicial de la página principal
-- ****[Móvil]** Viewport**: 1920x1080
+- \***\*[Carpeta]** Archivo\*\*: `inicio-estado-inicial-20250929-143052.png`
+- \***\*[Tiempo]** Timestamp\*\*: 14:30:52
+- \***\*[Documentación]** Descripción\*\*: Estado inicial de la página principal
+- \***\*[Móvil]** Viewport\*\*: 1920x1080
 
 ### Screenshot 2: Estado Final
 
-- ****[Carpeta]** Archivo**: `servicios-estado-final-20250929-143055.png`
-- ****[Tiempo]** Timestamp**: 14:30:55
-- ****[Documentación]** Descripción**: Página de servicios cargada correctamente
-- ****[Móvil]** Viewport**: 1920x1080
+- \***\*[Carpeta]** Archivo\*\*: `servicios-estado-final-20250929-143055.png`
+- \***\*[Tiempo]** Timestamp\*\*: 14:30:55
+- \***\*[Documentación]** Descripción\*\*: Página de servicios cargada correctamente
+- \***\*[Móvil]** Viewport\*\*: 1920x1080
 
 ---
 
@@ -349,17 +349,17 @@ Navegación a página de servicios exitosa. Todos los elementos se cargan correc
 
 ### **[Completado]** Título de Página
 
-- ****[Objetivos]** Expresión**: `document.title`
-- ****[Completado]** Esperado**: "Servicios - WEBCODE"
-- ****[Documentación]** Obtenido**: "Servicios - WEBCODE"
-- ****[Análisis]** Estado**: OK
+- \***\*[Objetivos]** Expresión\*\*: `document.title`
+- \***\*[Completado]** Esperado\*\*: "Servicios - WEBCODE"
+- \***\*[Documentación]** Obtenido\*\*: "Servicios - WEBCODE"
+- \***\*[Análisis]** Estado\*\*: OK
 
 ### **[Completado]** Heading Principal
 
-- ****[Objetivos]** Expresión**: `document.querySelector('h1')?.textContent`
-- ****[Completado]** Esperado**: "Servicios"
-- ****[Documentación]** Obtenido**: "Servicios"
-- ****[Análisis]** Estado**: OK
+- \***\*[Objetivos]** Expresión\*\*: `document.querySelector('h1')?.textContent`
+- \***\*[Completado]** Esperado\*\*: "Servicios"
+- \***\*[Documentación]** Obtenido\*\*: "Servicios"
+- \***\*[Análisis]** Estado\*\*: OK
 
 ---
 
@@ -371,22 +371,22 @@ Navegación a página de servicios exitosa. Todos los elementos se cargan correc
 
 ## **[Idea]** Recomendaciones
 
-1. ****[Completado]** Navegación funciona correctamente** - Sin acciones requeridas
-2. ****[Completado]** Tiempos de carga aceptables** - Performance dentro de límites
-3. ****[Idea]** Considerar loading states** - Para mejorar UX durante navegación
+1. \***\*[Completado]** Navegación funciona correctamente\*\* - Sin acciones requeridas
+2. \***\*[Completado]** Tiempos de carga aceptables\*\* - Performance dentro de límites
+3. \***\*[Idea]** Considerar loading states\*\* - Para mejorar UX durante navegación
 
 ---
 
 ## **[Crecimiento]** Métricas de Performance
 
-- ****[Rendimiento]** Tiempo de Carga Inicial**: 1.2s
-- ****[Búsqueda]** Elementos Encontrados**: 15
-- ****[Error]** Errores de Consola**: 0
-- ****[Advertencia]** Warnings de Consola**: 2
+- \***\*[Rendimiento]** Tiempo de Carga Inicial\*\*: 1.2s
+- \***\*[Búsqueda]** Elementos Encontrados\*\*: 15
+- \***\*[Error]** Errores de Consola\*\*: 0
+- \***\*[Advertencia]** Warnings de Consola\*\*: 2
 
 ---
 
-****[Magia]** Informe generado automáticamente por Playwright MCP - WEBCODE v3.0**
+\***\*[Magia]** Informe generado automáticamente por Playwright MCP - WEBCODE v3.0\*\*
 ```
 
 ## **CRITERIOS DE ÉXITO Y FALLOS**
@@ -585,18 +585,18 @@ await mcp_playwright_browser_take_screenshot({
 ```markdown
 # 🧪 Informe de Verificación Visual - WEBCODE
 
-****[Calendario]** Fecha**: 2025-09-29 | ****[Tiempo]** Hora**: 14:30:52  
-****[Web]** Entorno**: http://localhost:3000  
-****[Móvil]** Viewport**: 1920x1080
+\***\*[Calendario]** Fecha**: 2025-09-29 | \*\***[Tiempo]** Hora**: 14:30:52  
+\***\*[Web]** Entorno**: http://localhost:3000  
+\*\***[Móvil]** Viewport**: 1920x1080
 
 ---
 
 ## **[Lista]** Resumen Ejecutivo
 
-****[Objetivos]** Estado General**: OK **[Completado]**  
-****[Completado]** Pasos Exitosos**: 8/8  
-****[Error]** Pasos Fallidos**: 0/8  
-**⏱️ Tiempo Total**: 3.2s
+\***\*[Objetivos]** Estado General**: OK **[Completado]**  
+\*\***[Completado]** Pasos Exitosos**: 8/8  
+\***\*[Error]** Pasos Fallidos**: 0/8  
+**⏱️ Tiempo Total\*\*: 3.2s
 
 ### Descripción
 
@@ -606,9 +606,9 @@ Navegación a página de servicios exitosa. Todos los elementos se cargan correc
 
 ## **[Cine]** Escenario Ejecutado
 
-****[Documentación]** Nombre**: Validar navegación a página de servicios  
-****[Objetivos]** Objetivo**: Verificar que la navegación desde home a servicios funciona  
-****[Lanzamiento]** URL Inicial**: http://localhost:3000/
+\***\*[Documentación]** Nombre**: Validar navegación a página de servicios  
+\*\***[Objetivos]** Objetivo**: Verificar que la navegación desde home a servicios funciona  
+\***\*[Lanzamiento]** URL Inicial\*\*: http://localhost:3000/
 
 ---
 
@@ -660,13 +660,13 @@ Navegación a página de servicios exitosa. Todos los elementos se cargan correc
 
 ### Screenshot 1: Estado Inicial **[Completado]**
 
-- ****[Carpeta]** Archivo**: `inicio-estado-inicial-20250929-143052.png`
-- ****[Documentación]** Descripción**: Estado inicial de la página principal
+- \***\*[Carpeta]** Archivo\*\*: `inicio-estado-inicial-20250929-143052.png`
+- \***\*[Documentación]** Descripción\*\*: Estado inicial de la página principal
 
 ### Screenshot 2: Estado Final **[Completado]**
 
-- ****[Carpeta]** Archivo**: `servicios-estado-final-20250929-143055.png`
-- ****[Documentación]** Descripción**: Página de servicios cargada correctamente
+- \***\*[Carpeta]** Archivo\*\*: `servicios-estado-final-20250929-143055.png`
+- \***\*[Documentación]** Descripción\*\*: Página de servicios cargada correctamente
 
 ---
 
@@ -674,22 +674,22 @@ Navegación a página de servicios exitosa. Todos los elementos se cargan correc
 
 ### **[Completado]** Título de Página de Servicios
 
-- ****[Objetivos]** Expresión**: `document.querySelector('h1')?.textContent`
-- ****[Completado]** Esperado**: "Servicios"
-- ****[Documentación]** Obtenido**: "Servicios"
-- ****[Análisis]** Estado**: OK
+- \***\*[Objetivos]** Expresión\*\*: `document.querySelector('h1')?.textContent`
+- \***\*[Completado]** Esperado\*\*: "Servicios"
+- \***\*[Documentación]** Obtenido\*\*: "Servicios"
+- \***\*[Análisis]** Estado\*\*: OK
 
 ---
 
 ## **[Idea]** Recomendaciones
 
-1. ****[Completado]** Navegación funciona correctamente** - Sin acciones requeridas
-2. ****[Completado]** Tiempos de carga aceptables** - Performance dentro de límites
-3. ****[Idea]** Considerar loading states** - Para mejorar UX durante navegación
+1. \***\*[Completado]** Navegación funciona correctamente\*\* - Sin acciones requeridas
+2. \***\*[Completado]** Tiempos de carga aceptables\*\* - Performance dentro de límites
+3. \***\*[Idea]** Considerar loading states\*\* - Para mejorar UX durante navegación
 
 ---
 
-****[Magia]** Verificación completada exitosamente**
+\***\*[Magia]** Verificación completada exitosamente\*\*
 ```
 
 ## **INSTRUCCIONES FINALES**
@@ -733,7 +733,7 @@ El test se considera **COMPLETADO** cuando:
 1. **[Diseño]** **Usa emojis consistentemente** - Cada tipo de acción/resultado tiene su emoji
 2. **[Tiempo]** **Incluye tiempos reales** - No uses placeholders como {timestamp}
 3. **[Documentación]** **Se específico en descripciones** - Evita términos genéricos
-4. **[Objetivos]** **Marca claramente OK/FAIL** - Usa **[Completado]****[Error]** para resultados inmediatos
+4. **[Objetivos]** **Marca claramente OK/FAIL** - Usa **[Completado]\*\***[Error]\*\* para resultados inmediatos
 5. **[Fotografía]** **Documenta todos los screenshots** - Con nombres descriptivos reales
 6. **[Pensamiento]** **Añade contexto** - Explica qué significa cada validación DOM
 

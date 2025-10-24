@@ -23,8 +23,15 @@ export default function ContactoPage() {
           ¿Hablamos?
         </h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-          Cada empresa es única. Te creamos un <strong className="text-foreground">servicio de diseño web a medida</strong>: 
-          webs únicas con diseños originales y <strong className="text-foreground">100% orientados a los resultados</strong> que buscas.
+          Cada empresa es única. Te creamos un{" "}
+          <strong className="text-foreground">
+            servicio de diseño web a medida
+          </strong>
+          : webs únicas con diseños originales y{" "}
+          <strong className="text-foreground">
+            100% orientados a los resultados
+          </strong>{" "}
+          que buscas.
         </p>
       </div>
 

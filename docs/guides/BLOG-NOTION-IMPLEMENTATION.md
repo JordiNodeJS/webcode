@@ -50,6 +50,7 @@ Este documento explica cómo está implementada la funcionalidad del blog en Web
 El cliente de Notion es responsable de la configuración y conexión con la API de Notion.
 
 **Características principales:**
+
 - Cliente singleton para optimizar conexiones
 - Validación de variables de entorno (`NOTION_API_KEY`, `NOTION_DATABASE_ID`)
 - Función `queryDatabase` adaptada para la API v5.1.0 de Notion
@@ -59,6 +60,7 @@ El cliente de Notion es responsable de la configuración y conexión con la API 
 Los transformadores convierten los datos obtenidos de la API de Notion en objetos utilizables por la aplicación.
 
 **Funciones principales:**
+
 - `transformNotionPageToBlogPost`: Convierte una página de Notion en un objeto BlogPost
 - `generateSlug`: Genera slugs URL-amigables a partir de títulos
 - `calculateReadTime`: Calcula el tiempo estimado de lectura
@@ -69,6 +71,7 @@ Los transformadores convierten los datos obtenidos de la API de Notion en objeto
 El servicio de blog contiene toda la lógica de negocio para obtener y procesar los posts del blog.
 
 **Funciones principales:**
+
 - `getBlogPosts`: Obtiene posts publicados con paginación
 - `getBlogPostBySlug`: Obtiene un post individual por su slug
 - `getBlogPostsByTag`: Filtra posts por tag/categoría
@@ -77,6 +80,7 @@ El servicio de blog contiene toda la lógica de negocio para obtener y procesar 
 - `searchBlogPosts`: Búsqueda de posts por términos
 
 **Características adicionales:**
+
 - Paginación completa automática
 - Caching con `unstable_cache` de Next.js (1 hora de revalidación)
 - Manejo específico de errores de Notion API
@@ -96,6 +100,7 @@ Define los tipos TypeScript utilizados en la integración:
 Muestra una lista de todos los posts publicados.
 
 **Características:**
+
 - Uso de `getBlogPosts` para obtener posts
 - Sidebar con categorías usando `getAllTags`
 - Componente `BlogPostCard` para mostrar cada post
@@ -106,6 +111,7 @@ Muestra una lista de todos los posts publicados.
 Muestra el contenido completo de un artículo específico.
 
 **Características:**
+
 - `generateStaticParams` para generación estática
 - `getBlogPostBySlug` para obtener contenido
 - `MarkdownRenderer` para mostrar contenido en Markdown
@@ -118,6 +124,7 @@ Muestra el contenido completo de un artículo específico.
 Muestra posts filtrados por categoría.
 
 **Características:**
+
 - `getBlogPostsByTag` para filtrar posts
 - Sidebar con otras categorías
 
@@ -128,6 +135,7 @@ Muestra posts filtrados por categoría.
 Tarjeta reutilizable para mostrar posts en listados.
 
 **Características:**
+
 - Animaciones y efectos visuales
 - Imágenes con Next.js Image
 - Enlaces a tags y página de detalle
@@ -137,6 +145,7 @@ Tarjeta reutilizable para mostrar posts en listados.
 Renderiza el contenido Markdown de los posts.
 
 **Características:**
+
 - Soporte para código con syntax highlighting
 - Estilos tipo Notion
 - Componentes personalizados para todos los elementos Markdown
@@ -145,7 +154,7 @@ Renderiza el contenido Markdown de los posts.
 ## Flujo de Obtención y Visualización de Posts
 
 1. **Configuración**: El cliente Notion se inicializa con las credenciales del entorno
-2. **Obtención de datos**: 
+2. **Obtención de datos**:
    - La página del blog llama a `getBlogPosts` que consulta la base de datos
    - Se aplican filtros para mostrar solo posts con status "Published"
    - Los datos se transforman de objetos Notion a objetos BlogPost
@@ -159,17 +168,17 @@ Renderiza el contenido Markdown de los posts.
 
 La base de datos de Notion debe contener las siguientes propiedades:
 
-| Propiedad | Tipo | Obligatorio | Descripción |
-|-----------|------|-------------|-------------|
-| `Title` | Title | ✅ | Título del artículo |
-| `Slug` | Text | ✅ | URL amigable |
-| `Description` | Text | ✅ | Resumen/excerpt del artículo |
-| `Status` | Select | ✅ | Estado: `Published`, `Draft`, etc. |
-| `PublishedDate` | Date | ✅ | Fecha de publicación |
-| `Tags` | Multi-select | ⚪ | Categorías del artículo |
-| `Author` | Person | ⚪ | Autor del artículo |
-| `CoverImageURL` | URL | ⚪ | URL de la imagen de portada |
-| `Featured` | Checkbox | ⚪ | Marcar como destacado |
+| Propiedad       | Tipo         | Obligatorio | Descripción                        |
+| --------------- | ------------ | ----------- | ---------------------------------- |
+| `Title`         | Title        | ✅          | Título del artículo                |
+| `Slug`          | Text         | ✅          | URL amigable                       |
+| `Description`   | Text         | ✅          | Resumen/excerpt del artículo       |
+| `Status`        | Select       | ✅          | Estado: `Published`, `Draft`, etc. |
+| `PublishedDate` | Date         | ✅          | Fecha de publicación               |
+| `Tags`          | Multi-select | ⚪          | Categorías del artículo            |
+| `Author`        | Person       | ⚪          | Autor del artículo                 |
+| `CoverImageURL` | URL          | ⚪          | URL de la imagen de portada        |
+| `Featured`      | Checkbox     | ⚪          | Marcar como destacado              |
 
 ## Características Clave de la Implementación
 

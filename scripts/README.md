@@ -5,14 +5,17 @@ Este directorio contiene scripts de utilidad para el desarrollo, mantenimiento y
 ## 📚 **Índice de Scripts**
 
 ### 🌐 Deployment y Dominios
+
 - **[verify-domain.sh](#verify-domainsh)** - Verificación de configuración de dominio webcode.es
 - **[verify-domain.bat](#verify-domainbat)** - Verificación de dominio (versión Windows)
 
 ### 🔀 Git y Control de Versiones
+
 - **[git-rebase-squash.sh](#git-rebase-squashsh)** - Squash automático usando git rebase
 - **[git-squash-branch.sh](#git-squash-branchsh)** - Squash robusto con backups
 
 ### 📝 Notion CMS
+
 - **[verify-notion-connection.js](#verify-notion-connectionjs)** - Verificar conexión con Notion API
 - **[list-notion-databases.js](#list-notion-databasesjs)** - Listar bases de datos de Notion
 - **[list-database-content.js](#list-database-contentjs)** - Ver contenido de base de datos
@@ -21,6 +24,7 @@ Este directorio contiene scripts de utilidad para el desarrollo, mantenimiento y
 - **[publish-page.js](#publish-pagejs)** - Publicar página de Notion
 
 ### 🎨 Optimización y Performance
+
 - **[optimize-bundle.sh](#optimize-bundlesh)** - Análisis y optimización de bundle
 - **[optimize-images-node.mjs](#optimize-images-nodemjs)** - Optimización de imágenes
 - **[simple-performance-test.js](#simple-performance-testjs)** - Test de performance básico
@@ -29,10 +33,12 @@ Este directorio contiene scripts de utilidad para el desarrollo, mantenimiento y
 - **[test-performance-optimizations.sh](#test-performance-optimizationssh)** - Test de optimizaciones
 
 ### 🧪 Testing y Validación
+
 - **[playwright-snapshots.js](#playwright-snapshotsjs)** - Gestión de snapshots de Playwright
 - **[validate-structured-data.mjs](#validate-structured-datamjs)** - Validación de datos estructurados
 
 ### 🔧 Utilidades
+
 - **[analyze-unused-imports.mjs](#analyze-unused-importsmjs)** - Detectar imports no usados
 - **[check-logo-neon.mjs](#check-logo-neonmjs)** - Verificar efectos de neón en logos
 - **[check-missing-css-classes.mjs](#check-missing-css-classesmjs)** - Detectar clases CSS faltantes

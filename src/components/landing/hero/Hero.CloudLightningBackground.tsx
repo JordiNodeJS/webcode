@@ -407,7 +407,11 @@ export function CloudLightningBackground() {
     }
 
     // Iniciar animación (si corresponde)
-    if (isVisibleRef.current && opacityRef.current > 0.01 && animateRef.current) {
+    if (
+      isVisibleRef.current &&
+      opacityRef.current > 0.01 &&
+      animateRef.current
+    ) {
       animateRef.current();
     }
 

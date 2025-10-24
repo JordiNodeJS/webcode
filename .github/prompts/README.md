@@ -11,11 +11,13 @@ Este directorio contiene prompts consolidados y guías de desarrollo para manten
 ## 🎯 **Prompts Consolidados (Octubre 2025)**
 
 ### **1. [`desarrollo.prompt.md`](./desarrollo.prompt.md)** 🛠️
+
 **Herramientas de Desarrollo y Testing**
 
 Consolidación de: `herramientas-desarrollo`, `devtools`, `playwright-mcp`, `mcp-tools-nextjs`
 
 **Contenido**:
+
 - **Playwright MCP**: Testing E2E, screenshots, accesibilidad
 - **Chrome DevTools MCP**: Performance profiling, network debugging, emulación
 - **Context7 MCP**: Documentación actualizada de librerías
@@ -27,11 +29,13 @@ Consolidación de: `herramientas-desarrollo`, `devtools`, `playwright-mcp`, `mcp
 ---
 
 ### **2. [`arquitectura-estructura.prompt.md`](./arquitectura-estructura.prompt.md)** 🏗️
+
 **Arquitectura y Estructura de Código**
 
 Consolidación de: `arquitectura`, `layout`
 
 **Contenido**:
+
 - **Next.js 15 App Router**: Principios fundamentales, Server Components
 - **Layouts jerárquicos**: Root, sección, funcionalidad
 - **Patrones de componentes**: Naming conventions, colocación cercana vs features
@@ -43,11 +47,13 @@ Consolidación de: `arquitectura`, `layout`
 ---
 
 ### **3. [`ui-styling.prompt.md`](./ui-styling.prompt.md)** 🎨
+
 **UI/UX y Sistema de Estilos**
 
 Consolidación de: `ui-ux`, `shadcn`, `theme`, `tailwind4-theming`
 
 **Contenido**:
+
 - **Sistema WebCode (WAS)**: Paleta de colores, sombras 3D, animaciones, tipografía
 - **Componentes shadcn/ui**: Patrones de uso, variantes CVA
 - **Tailwind CSS v4**: Mobile-first, dark mode, responsive design
@@ -59,11 +65,13 @@ Consolidación de: `ui-ux`, `shadcn`, `theme`, `tailwind4-theming`
 ---
 
 ### **4. [`git-workflow.prompt.md`](./git-workflow.prompt.md)** 🔀
+
 **Git Workflow y Pull Requests**
 
 Consolidación de: `pr.prompts`, `copilot-pr-create-pr`, `pr-github-cli`
 
 **Contenido**:
+
 - **Conventional Commits**: Formato, tipos, scopes
 - **Branching strategy**: Feature branches, workflow típico
 - **Pull Requests**: GitHub CLI, templates, review checklist
@@ -75,11 +83,13 @@ Consolidación de: `pr.prompts`, `copilot-pr-create-pr`, `pr-github-cli`
 ---
 
 ### **5. [`performance.prompt.md`](./performance.prompt.md)** ⚡
+
 **Performance y Optimización**
 
 Consolidación de: `performance-optimization`, `performance-animations-guidelines`
 
 **Contenido**:
+
 - **Core Web Vitals**: LCP, FID, CLS, métricas objetivo
 - **Optimización de imágenes**: Next.js Image, formatos modernos, lazy loading
 - **Optimización de JS**: Code splitting, tree shaking, bundle analysis
@@ -96,16 +106,19 @@ Consolidación de: `performance-optimization`, `performance-animations-guideline
 Estos prompts se mantienen separados por su especificidad:
 
 ### [`llm.prompt.md`](./llm.prompt.md) 🤖
+
 **Generación de archivos llms.txt**
 
 Para crear documentación optimizada para LLMs según el estándar llmstxt.
 
 ### [`component-naming-convention.prompt.md`](./component-naming-convention.prompt.md) 📝
+
 **Convención de Nombres de Componentes**
 
 Sistema jerárquico: `[NombreSección].[Subsección].[Componente].tsx`
 
 ### [`hero-naming-convention.prompt.md`](./hero-naming-convention.prompt.md) 🎯
+
 **Convención de Nombres para Hero Section**
 
 Patrones específicos para componentes de Hero Section.
@@ -132,12 +145,12 @@ Patrones específicos para componentes de Hero Section.
 
 ## 📊 **Beneficios de la Consolidación**
 
-| Antes | Después | Mejora |
-|-------|---------|--------|
-| 24 archivos | 8 archivos | -67% |
-| Contenido redundante | Contenido único | 100% |
-| Difícil navegación | Índice claro | ✅ |
-| Desactualizados | Actualizados Oct 2025 | ✅ |
+| Antes                | Después               | Mejora |
+| -------------------- | --------------------- | ------ |
+| 24 archivos          | 8 archivos            | -67%   |
+| Contenido redundante | Contenido único       | 100%   |
+| Difícil navegación   | Índice claro          | ✅     |
+| Desactualizados      | Actualizados Oct 2025 | ✅     |
 
 ---
 
@@ -167,18 +180,23 @@ Solo crear nuevo prompt si:
 # Prompt: [Título Descriptivo] - WebCode
 
 ## Contexto y Objetivo
+
 [Explicación del propósito y alcance]
 
 ## [Sección Principal]
+
 [Contenido estructurado con subsecciones]
 
 ## Mejores Prácticas
+
 [Checklist de calidad]
 
 ## Troubleshooting
+
 [Problemas comunes y soluciones]
 
 ## Referencias
+
 [Links a documentación oficial]
 ```
 
@@ -225,14 +243,15 @@ Solo crear nuevo prompt si:
 
 ## **[Documentación]** Historial de Prompts
 
-| Fecha | Prompt | Descripción |
-|-------|--------|-------------|
+| Fecha      | Prompt                                        | Descripción                              |
+| ---------- | --------------------------------------------- | ---------------------------------------- |
 | 2025-10-03 | `performance-animations-guidelines.prompt.md` | Guía de optimización basada en caso real |
-| 2025-10-03 | `create-proceso-page.prompt.md` | Template para página de Proceso |
+| 2025-10-03 | `create-proceso-page.prompt.md`               | Template para página de Proceso          |
 
 ## **[Lanzamiento]** Próximos Prompts Planeados
 
 Ideas para futuros prompts:
+
 - [ ] Component architecture guidelines
 - [ ] SEO optimization checklist
 - [ ] Accessibility (a11y) standards
@@ -244,6 +263,7 @@ Ideas para futuros prompts:
 ## **[Idea]** Contribuir
 
 Para añadir un nuevo prompt:
+
 1. Crear archivo `.prompt.md` en este directorio
 2. Seguir el template sugerido
 3. Añadir entrada en este README

@@ -9,6 +9,7 @@
 La integración del blog con Notion API está **funcionalmente operativa**, pero requiere **configuración de permisos** en Notion para acceder a la base de datos.
 
 ### Estado General
+
 - ✅ Cliente de Notion configurado correctamente
 - ✅ Variables de entorno cargadas (`.env.local`)
 - ✅ Conexión con API de Notion establecida
@@ -21,15 +22,25 @@ La integración del blog con Notion API está **funcionalmente operativa**, pero
 ### 1. Estructura del Cliente Notion v5.1.0
 
 **Investigación realizada:**
+
 ```javascript
 // Métodos disponibles en notion.databases
-['retrieve', 'create', 'update']
-
-// Propiedades del cliente
-['blocks', 'databases', 'dataSources', 'pages', 'users', 'comments', 'fileUploads', 'search', 'oauth']
+["retrieve", "create", "update"][
+  // Propiedades del cliente
+  ("blocks",
+  "databases",
+  "dataSources",
+  "pages",
+  "users",
+  "comments",
+  "fileUploads",
+  "search",
+  "oauth")
+];
 ```
 
 **Hallazgo importante:**
+
 - ❌ `notion.databases.query()` NO existe en v5.1.0
 - ✅ `notion.dataSources.query()` es el método correcto
 
@@ -38,20 +49,22 @@ La integración del blog con Notion API está **funcionalmente operativa**, pero
 **Archivo**: `src/lib/notion/client.ts`
 
 **Antes (incorrecto):**
+
 ```typescript
 const res = await notion.request({ path, method: "post", body });
 // Error: "Invalid request URL"
 ```
 
 **Después (correcto):**
+
 ```typescript
 export async function queryDatabase(
-  params: DatabaseQueryParameters,
+  params: DatabaseQueryParameters
 ): Promise<DatabaseQueryResponse> {
   const { database_id, ...rest } = params;
   const res = await (notion as any).dataSources.query({
     data_source_id: database_id,
-    ...rest,
+    ...rest
   });
   return res as DatabaseQueryResponse;
 }
@@ -60,12 +73,14 @@ export async function queryDatabase(
 ### 3. Error Actual en la Consola
 
 **Mensaje de error:**
+
 ```
-APIResponseError: Could not find database with ID: 2898237e-a3b3-80cd-a403-f6a1c72a1116. 
+APIResponseError: Could not find database with ID: 2898237e-a3b3-80cd-a403-f6a1c72a1116.
 Make sure the relevant pages and databases are shared with your integration.
 ```
 
 **Detalles del error:**
+
 - **Code**: `object_not_found`
 - **Status**: `404`
 - **Request ID**: `91c31408-5265-4c6f-afe5-266ceb80d266`
@@ -74,11 +89,13 @@ Make sure the relevant pages and databases are shared with your integration.
 ### 4. Análisis de Red (DevTools)
 
 **Request fallida:**
+
 ```http
 GET /blog -> 500 Internal Server Error (6085ms)
 ```
 
 **Headers de respuesta de Notion API:**
+
 ```
 status: 404
 content-type: application/json; charset=utf-8
@@ -102,6 +119,7 @@ Originado en:
 ## ✅ Verificaciones Completadas
 
 ### Variables de Entorno
+
 ```bash
 ✓ .env.local existe
 ✓ NOTION_API_KEY configurada
@@ -109,6 +127,7 @@ Originado en:
 ```
 
 ### Cliente de Notion
+
 ```bash
 ✓ Paquete @notionhq/client@5.1.0 instalado
 ✓ Cliente instanciado correctamente
@@ -117,6 +136,7 @@ Originado en:
 ```
 
 ### Servidor de Desarrollo
+
 ```bash
 ✓ Next.js 15.5.2 con Turbopack
 ✓ Servidor corriendo en http://localhost:3000
@@ -129,9 +149,11 @@ Originado en:
 ## 🚨 Problema Identificado
 
 ### Causa Raíz
+
 La base de datos de Notion **NO está compartida** con la integración de Notion creada para el proyecto.
 
 ### Impacto
+
 - ❌ No se pueden obtener los posts del blog
 - ❌ Error 404 en todas las peticiones a Notion API
 - ❌ Página del blog muestra error 500
@@ -165,6 +187,7 @@ La base de datos de Notion **NO está compartida** con la integración de Notion
 **Nombre recomendado**: `WebCode Blog Integration`
 
 **Permisos mínimos requeridos:**
+
 - ✅ Read content
 - ❌ Update content (no necesario)
 - ❌ Insert content (no necesario)
@@ -174,17 +197,20 @@ La base de datos de Notion **NO está compartida** con la integración de Notion
 ## 📊 Pruebas Realizadas con DevTools
 
 ### Console
+
 - ✅ Error capturado y mostrado correctamente
 - ✅ Stack trace completo disponible
 - ✅ Request ID de Notion para debugging
 
 ### Network
+
 - ✅ Request a `/blog` visible
 - ✅ Tiempo de respuesta registrado (6085ms)
 - ✅ Status code 500 identificado
 - ✅ Headers de Notion API analizados
 
 ### Screenshots
+
 - ✅ Captura guardada: `docs/blog-notion-error-permissions.png`
 
 ---
@@ -192,11 +218,13 @@ La base de datos de Notion **NO está compartida** con la integración de Notion
 ## 🎯 Próximos Pasos
 
 ### Inmediatos (Bloqueantes)
+
 1. [ ] Compartir base de datos de Notion con la integración
 2. [ ] Verificar que la conexión funciona
 3. [ ] Probar carga de posts en el blog
 
 ### Opcionales (Mejoras)
+
 1. [ ] Añadir mejor manejo de errores de permisos
 2. [ ] Implementar mensaje de error amigable para usuarios
 3. [ ] Crear página de status de conexión con Notion
@@ -207,13 +235,17 @@ La base de datos de Notion **NO está compartida** con la integración de Notion
 ## 📝 Notas Técnicas
 
 ### Cambios en el Cliente de Notion v5
+
 En la versión 5.x del cliente oficial de Notion:
+
 - `databases.query()` fue renombrado/movido a `dataSources.query()`
 - El parámetro `database_id` ahora se llama `data_source_id`
 - La estructura de respuesta se mantiene compatible
 
 ### Compatibilidad
+
 El código actual es compatible con:
+
 - ✅ @notionhq/client v5.1.0+
 - ✅ Next.js 15.5.2
 - ✅ React 19
@@ -232,6 +264,7 @@ El código actual es compatible con:
 ## 📸 Evidencia Visual
 
 Ver captura de pantalla del error en DevTools:
+
 - Archivo: `docs/blog-notion-error-permissions.png`
 - Muestra: Error overlay de Next.js con detalles completos del error
 

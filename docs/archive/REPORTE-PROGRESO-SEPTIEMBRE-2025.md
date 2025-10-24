@@ -163,8 +163,8 @@ src/components/
 
 ## **[Análisis]** **MÉTRICAS DE CALIDAD ACTUALES**
 
-| Métrica                | Estado Actual | Objetivo  | Status               |
-| ---------------------- | ------------- | --------- | -------------------- |
+| Métrica                | Estado Actual | Objetivo  | Status                             |
+| ---------------------- | ------------- | --------- | ---------------------------------- |
 | **Performance Score**  | 100/100       | 90+       | **[Completado]** Excepcional       |
 | **FPS Promedio**       | 278           | 55+       | **[Completado]** 505% superior     |
 | **Memoria**            | 21MB          | <50MB     | **[Completado]** 58% inferior      |

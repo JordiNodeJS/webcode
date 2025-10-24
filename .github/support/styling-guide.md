@@ -57,9 +57,9 @@ Guía consolidada de estilos, Tailwind CSS v4, sistema WebCode Animation System 
 ```css
 /* Variables en globals.css */
 :root {
-  --primary: oklch(0.57 0.2 328.5);      /* #dc7cb3 - Rosa principal */
+  --primary: oklch(0.57 0.2 328.5); /* #dc7cb3 - Rosa principal */
   --primary-rgb: 220 124 179;
-  --secondary: oklch(0.43 0.18 184.1);   /* #bce3e5 - Aguamarina */
+  --secondary: oklch(0.43 0.18 184.1); /* #bce3e5 - Aguamarina */
   --secondary-rgb: 188 227 229;
 }
 ```
@@ -92,7 +92,7 @@ Guía consolidada de estilos, Tailwind CSS v4, sistema WebCode Animation System 
 **Uso:**
 
 ```tsx
-<Card style={{ boxShadow: 'var(--shadow-3d-md)' }}>
+<Card style={{ boxShadow: "var(--shadow-3d-md)" }}>
   <CardContent>Contenido con sombra 3D</CardContent>
 </Card>
 ```
@@ -101,10 +101,10 @@ Guía consolidada de estilos, Tailwind CSS v4, sistema WebCode Animation System 
 
 ```css
 /* Fuentes del sistema */
---font-sans: 'Poppins', sans-serif;        /* Texto general */
---font-display: 'Space Grotesk', sans-serif; /* Títulos */
---font-serif: 'Lora', serif;               /* Textos largos */
---font-mono: 'Fira Code', monospace;       /* Código */
+--font-sans: "Poppins", sans-serif; /* Texto general */
+--font-display: "Space Grotesk", sans-serif; /* Títulos */
+--font-serif: "Lora", serif; /* Textos largos */
+--font-mono: "Fira Code", monospace; /* Código */
 ```
 
 **Uso:**
@@ -118,12 +118,12 @@ Guía consolidada de estilos, Tailwind CSS v4, sistema WebCode Animation System 
 
 ### **Espaciado Semántico**
 
-| Contexto | Gap | Padding | Tamaño (px) | Rem |
-|----------|-----|---------|-------------|-----|
-| Texto | `gap-3` | `p-3` | 12 | 0.75rem |
-| Elemento | `gap-6` | `p-6` | 24 | 1.5rem |
-| Componente | `gap-8` | `p-8` | 32 | 2rem |
-| Sección | `gap-16` | `p-16` | 64 | 4rem |
+| Contexto   | Gap      | Padding | Tamaño (px) | Rem     |
+| ---------- | -------- | ------- | ----------- | ------- |
+| Texto      | `gap-3`  | `p-3`   | 12          | 0.75rem |
+| Elemento   | `gap-6`  | `p-6`   | 24          | 1.5rem  |
+| Componente | `gap-8`  | `p-8`   | 32          | 2rem    |
+| Sección    | `gap-16` | `p-16`  | 64          | 4rem    |
 
 ### **Animaciones WAS**
 
@@ -143,7 +143,7 @@ Guía consolidada de estilos, Tailwind CSS v4, sistema WebCode Animation System 
 #### **Patrón de Hover**
 
 ```tsx
-<Button 
+<Button
   className="
     hover:opacity-80 
     hover:translate-y-0.5
@@ -222,11 +222,11 @@ src/styles/
 ### **Paleta Oficial (Formato RGB)**
 
 ```css
---color-primary: 38 78 112;    /* #264e70 - Azul corporativo */
+--color-primary: 38 78 112; /* #264e70 - Azul corporativo */
 --color-secondary: 103 145 134; /* #679186 - Verde complementario */
---color-accent: 249 180 171;    /* #f9b4ab - Rosa coral CTA */
---color-highlight: 250 227 96;  /* #fae360 - Amarillo destacados */
---color-neutral: 187 212 206;   /* #bbd4ce - Verde neutro */
+--color-accent: 249 180 171; /* #f9b4ab - Rosa coral CTA */
+--color-highlight: 250 227 96; /* #fae360 - Amarillo destacados */
+--color-neutral: 187 212 206; /* #bbd4ce - Verde neutro */
 ```
 
 ---
@@ -236,14 +236,20 @@ src/styles/
 ### **Patrón de Card Estándar**
 
 ```tsx
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardFooter
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export function StandardCard() {
   return (
-    <Card 
-      className="border-primary" 
-      style={{ boxShadow: 'var(--shadow-3d-md)' }}
+    <Card
+      className="border-primary"
+      style={{ boxShadow: "var(--shadow-3d-md)" }}
     >
       <CardHeader>
         <CardTitle className="neon-cyan-card-title font-display">
@@ -256,13 +262,13 @@ export function StandardCard() {
         </p>
       </CardContent>
       <CardFooter>
-        <Button 
+        <Button
           className="
             hover:opacity-80 
             transition-all duration-200
             ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
           "
-          style={{ boxShadow: 'var(--shadow-3d-sm)' }}
+          style={{ boxShadow: "var(--shadow-3d-sm)" }}
         >
           Acción
         </Button>
@@ -275,22 +281,24 @@ export function StandardCard() {
 ### **Composición con cn()**
 
 ```tsx
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils";
 
 interface ButtonProps {
-  variant?: 'primary' | 'secondary';
+  variant?: "primary" | "secondary";
   className?: string;
 }
 
-export function CustomButton({ variant = 'primary', className }: ButtonProps) {
+export function CustomButton({ variant = "primary", className }: ButtonProps) {
   return (
     <button
       className={cn(
         // Estilos base
         "px-6 py-3 rounded-lg font-semibold transition-all duration-200",
         // Estilos por variante
-        variant === 'primary' && "bg-primary text-primary-foreground hover:bg-primary/90",
-        variant === 'secondary' && "bg-secondary text-secondary-foreground hover:bg-secondary/90",
+        variant === "primary" &&
+          "bg-primary text-primary-foreground hover:bg-primary/90",
+        variant === "secondary" &&
+          "bg-secondary text-secondary-foreground hover:bg-secondary/90",
         // Estilos externos
         className
       )}
@@ -308,15 +316,17 @@ export function CustomButton({ variant = 'primary', className }: ButtonProps) {
 ### **Grid Responsivo**
 
 ```tsx
-<div className="
+<div
+  className="
   grid 
   grid-cols-1 
   md:grid-cols-2 
   lg:grid-cols-3 
   xl:grid-cols-4
   gap-6
-">
-  {items.map(item => (
+"
+>
+  {items.map((item) => (
     <Card key={item.id}>{item.name}</Card>
   ))}
 </div>
@@ -326,18 +336,18 @@ export function CustomButton({ variant = 'primary', className }: ButtonProps) {
 
 ```tsx
 <h1 className="
-  text-2xl 
-  md:text-4xl 
-  lg:text-6xl 
-  font-display 
+  text-2xl
+  md:text-4xl
+  lg:text-6xl
+  font-display
   font-bold
 ">
   Título Responsivo
 </h1>
 
 <p className="
-  text-sm 
-  md:text-base 
+  text-sm
+  md:text-base
   lg:text-lg
 ">
   Texto responsivo
@@ -347,10 +357,12 @@ export function CustomButton({ variant = 'primary', className }: ButtonProps) {
 ### **Espaciado Responsivo**
 
 ```tsx
-<section className="
+<section
+  className="
   px-4 md:px-8 lg:px-16
   py-8 md:py-12 lg:py-16
-">
+"
+>
   Contenido con espaciado responsive
 </section>
 ```
@@ -359,13 +371,15 @@ export function CustomButton({ variant = 'primary', className }: ButtonProps) {
 
 ```tsx
 // Stack en móvil, horizontal en desktop
-<div className="
+<div
+  className="
   flex 
   flex-col 
   md:flex-row 
   items-center 
   gap-6
-">
+"
+>
   <div className="w-full md:w-1/2">Izquierda</div>
   <div className="w-full md:w-1/2">Derecha</div>
 </div>
@@ -392,12 +406,14 @@ export function CustomButton({ variant = 'primary', className }: ButtonProps) {
 ### **Focus Visible**
 
 ```tsx
-<button className="
+<button
+  className="
   focus:outline-none 
   focus:ring-2 
   focus:ring-primary 
   focus:ring-offset-2
-">
+"
+>
   Botón accesible
 </button>
 ```
@@ -405,8 +421,8 @@ export function CustomButton({ variant = 'primary', className }: ButtonProps) {
 ### **Skip Links**
 
 ```tsx
-<a 
-  href="#main-content" 
+<a
+  href="#main-content"
   className="
     sr-only 
     focus:not-sr-only 
@@ -445,9 +461,7 @@ const colorMap = {
 ```javascript
 // tailwind.config.js
 module.exports = {
-  content: [
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"]
   // Tailwind eliminará clases no usadas en producción
 };
 ```
@@ -523,10 +537,10 @@ pnpm dev
 // Verificar que el html tiene el atributo correcto
 <html lang="es" suppressHydrationWarning>
   <body>{children}</body>
-</html>
+</html>;
 
 // Usar next-themes para toggle
-import { ThemeProvider } from 'next-themes';
+import { ThemeProvider } from "next-themes";
 ```
 
 ### **Purge elimina clases necesarias**
@@ -534,14 +548,12 @@ import { ThemeProvider } from 'next-themes';
 ```javascript
 // tailwind.config.js
 module.exports = {
-  content: [
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   safelist: [
-    'neon-cyan-title',
-    'shadow-3d-md',
+    "neon-cyan-title",
+    "shadow-3d-md"
     // Clases que no se detectan automáticamente
-  ],
+  ]
 };
 ```
 

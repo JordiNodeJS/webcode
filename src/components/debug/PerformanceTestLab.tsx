@@ -496,7 +496,7 @@ export function PerformanceTestLab() {
   // Performance monitoring effect - Schedules state updates to avoid React Compiler warning
   useEffect(() => {
     const summary = getPerformanceSummary();
-    
+
     // Programar actualización en el próximo tick para satisfacer React Compiler
     const timeout = setTimeout(() => {
       setPerfHistory((prev) => [

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function MantenimientoLayout({
-  children,
+  children
 }: {
   children: React.ReactNode;
 }) {

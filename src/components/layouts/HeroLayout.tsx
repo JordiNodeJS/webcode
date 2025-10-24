@@ -6,18 +6,18 @@ interface HeroLayoutProps {
 
 /**
  * HeroLayout
- * 
+ *
  * Layout para páginas con secciones hero prominentes
  * - Solo wrapper mínimo (min-h-screen)
  * - Las páginas individuales manejan sus propios gradientes y spacing
  * - Usado para: soluciones, proceso, briefing
- * 
+ *
  * @example
  * // app/(hero)/soluciones/seo/page.tsx
  * export default function SeoPage() {
  *   return (
  *     <>
- *       <section 
+ *       <section
  *         className="relative pt-24 pb-20 md:pb-32"
  *         style={{ background: 'linear-gradient(...)' }}
  *       >
@@ -25,7 +25,7 @@ interface HeroLayoutProps {
  *           <h1>Hero Title</h1>
  *         </div>
  *       </section>
- *       
+ *
  *       <section className="py-20">
  *         Más contenido...
  *       </section>
@@ -34,10 +34,5 @@ interface HeroLayoutProps {
  * }
  */
 export function HeroLayout({ children }: HeroLayoutProps) {
-  return (
-    <div className="min-h-screen">
-      {children}
-    </div>
-  );
+  return <div className="min-h-screen">{children}</div>;
 }
-

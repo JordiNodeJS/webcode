@@ -20,28 +20,32 @@ Tras analizar el componente `MarkdownRenderer.tsx`, he decidido **NO modificarlo
 ### Intentos de optimización evaluados
 
 #### ❌ Dynamic imports de plugins
+
 ```tsx
 const loadRehypePlugins = async () => {
   const [rehypeHighlight, rehypeRaw, rehypeSanitize] = await Promise.all([
     import("rehype-highlight"),
     import("rehype-raw"),
     import("rehype-sanitize")
-  ])
-  return [rehypeRaw, rehypeSanitize, rehypeHighlight]
-}
+  ]);
+  return [rehypeRaw, rehypeSanitize, rehypeHighlight];
+};
 ```
 
 **Por qué no funciona**:
+
 - ReactMarkdown requiere plugins síncronos en tiempo de render
 - Los dynamic imports añaden complejidad sin beneficio real
 - El App Router ya hace code-splitting automático por ruta
 
 #### ❌ Lazy loading de ReactMarkdown
+
 ```tsx
-const ReactMarkdown = lazy(() => import("react-markdown"))
+const ReactMarkdown = lazy(() => import("react-markdown"));
 ```
 
 **Por qué no funciona**:
+
 - Añade Suspense boundary innecesario
 - La página de detalle YA tiene loading.tsx
 - No mejora la performance percibida
@@ -53,13 +57,13 @@ const ReactMarkdown = lazy(() => import("react-markdown"))
 
 ```tsx
 // ✅ blog/page.tsx - NO importa MarkdownRenderer
-import { BlogPostCard } from '@/components/blog/BlogPostCard'
+import { BlogPostCard } from "@/components/blog/BlogPostCard";
 
 // posts.map(post => <BlogPostCard post={post} />)
 // Solo muestra excerpt, NO renderiza markdown
 
 // ✅ blog/[slug]/page.tsx - SÍ importa MarkdownRenderer
-import { MarkdownRenderer } from '@/components/blog/MarkdownRenderer'
+import { MarkdownRenderer } from "@/components/blog/MarkdownRenderer";
 
 // <MarkdownRenderer content={post.content} />
 // Renderiza el markdown completo SOLO en página de detalle
@@ -67,14 +71,15 @@ import { MarkdownRenderer } from '@/components/blog/MarkdownRenderer'
 
 ### Métricas
 
-| Página | Bundle MarkdownRenderer | Impacto |
-|--------|------------------------|---------|
-| `/blog` (lista) | 0 KB | ✅ No carga |
-| `/blog/[slug]` (detalle) | ~50KB | ✅ Necesario |
+| Página                   | Bundle MarkdownRenderer | Impacto      |
+| ------------------------ | ----------------------- | ------------ |
+| `/blog` (lista)          | 0 KB                    | ✅ No carga  |
+| `/blog/[slug]` (detalle) | ~50KB                   | ✅ Necesario |
 
 ### Conclusión
 
 El componente `MarkdownRenderer.tsx` está **óptimamente implementado**:
+
 - Es Client Component (necesario para react-markdown)
 - Solo se carga en rutas de detalle
 - No afecta la performance de la lista

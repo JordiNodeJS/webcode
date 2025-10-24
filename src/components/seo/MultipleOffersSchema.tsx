@@ -90,7 +90,7 @@ export function MultipleOffersSchema({
       "@type": "Country",
       name: "Spain"
     },
-    offers: offers.map(offer => ({
+    offers: offers.map((offer) => ({
       "@type": "Offer",
       name: offer.name,
       description: offer.description,
@@ -98,7 +98,7 @@ export function MultipleOffersSchema({
       priceCurrency: offer.priceCurrency || "EUR",
       availability: offer.availability || "https://schema.org/InStock",
       seller: organizationData,
-      validFrom: offer.validFrom || new Date().toISOString().split('T')[0],
+      validFrom: offer.validFrom || new Date().toISOString().split("T")[0],
       validThrough: offer.validThrough,
       hasMerchantReturnPolicy: merchantReturnPolicy,
       shippingDetails: shippingDetails

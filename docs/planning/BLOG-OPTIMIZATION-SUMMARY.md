@@ -15,19 +15,22 @@ Optimizar la sección de blog aprovechando las novedades de **Next.js 16**, **Re
 ## 📈 Métricas de Impacto
 
 ### **Bundle Size**
+
 - **JavaScript eliminado del cliente**: ~15KB (-118 líneas)
 - **Código duplicado eliminado**: ~250 líneas
 - **Componentes reutilizables creados**: 5 nuevos componentes
 
 ### **Performance**
-| Métrica | Antes | Después | Mejora |
-|---------|-------|---------|--------|
-| **FCP** (First Contentful Paint) | Baseline | Mejorado | ⬆️ Menos JS en cliente |
-| **TTI** (Time to Interactive) | Baseline | Mejorado | ⬆️ Server Components |
-| **CLS** (Cumulative Layout Shift) | Baseline | -30-40% | ✅ Skeleton components |
-| **LCP** (Largest Contentful Paint) | Baseline | Mejorado | ✅ Image optimization |
+
+| Métrica                            | Antes    | Después  | Mejora                 |
+| ---------------------------------- | -------- | -------- | ---------------------- |
+| **FCP** (First Contentful Paint)   | Baseline | Mejorado | ⬆️ Menos JS en cliente |
+| **TTI** (Time to Interactive)      | Baseline | Mejorado | ⬆️ Server Components   |
+| **CLS** (Cumulative Layout Shift)  | Baseline | -30-40%  | ✅ Skeleton components |
+| **LCP** (Largest Contentful Paint) | Baseline | Mejorado | ✅ Image optimization  |
 
 ### **Developer Experience**
+
 - ✅ Código más mantenible (componentes reutilizables)
 - ✅ Invalidación de cache selectiva (no rebuild completo)
 - ✅ API de revalidación para webhooks de Notion
@@ -38,6 +41,7 @@ Optimizar la sección de blog aprovechando las novedades de **Next.js 16**, **Re
 ## 🚀 Cambios Implementados
 
 ### **1. Server Components** ✅
+
 **Commits**: `27e6b60`, `a942d6d`
 
 - Convertidos `BlogPostCard` y `BlogCategoriesCard` de Client a Server Components
@@ -47,6 +51,7 @@ Optimizar la sección de blog aprovechando las novedades de **Next.js 16**, **Re
 - Reducción de -63 líneas en `BlogCategoriesCard.tsx` (-47%)
 
 **Beneficios**:
+
 - Menor JavaScript en el cliente (~15KB)
 - Rendering en servidor = mejor SEO
 - Hidratación más rápida
@@ -54,61 +59,72 @@ Optimizar la sección de blog aprovechando las novedades de **Next.js 16**, **Re
 ---
 
 ### **2. Componentes Utilitarios** ✅
+
 **Commits**: `27e6b60`
 
 Creados 5 componentes reutilizables:
 
 #### **`Breadcrumb.tsx`** (100 líneas)
+
 ```tsx
-<Breadcrumb 
+<Breadcrumb
   items={[
-    { name: 'Inicio', href: '/' },
-    { name: 'Blog', href: '/blog' },
+    { name: "Inicio", href: "/" },
+    { name: "Blog", href: "/blog" },
     { name: post.title }
   ]}
 />
 ```
+
 - Schema.org BreadcrumbList markup
 - Accesibilidad completa (aria-label, aria-current)
 - Eliminó ~90 líneas duplicadas
 
 #### **`DateFormatter.tsx`** (130 líneas)
+
 ```tsx
 <DateFormatter date={post.date} format="long" showTime />
 ```
+
 - Formats: `long`, `short`, `numeric`
 - i18n con `Intl.DateTimeFormat`
 - Elemento semántico `<time datetime="...">`
 
 #### **`TagList.tsx`** (125 líneas)
+
 ```tsx
 <TagList tags={post.tags} size="sm" variant="outline" />
 ```
+
 - Variantes: `default` | `outline`
 - Tamaños: `sm` | `md` | `lg`
 - Links a páginas de tags
 - Accesibilidad completa
 
 #### **`PostMetadata.tsx`** (155 líneas)
+
 ```tsx
-<PostMetadata 
+<PostMetadata
   author={post.author}
   publishedDate={post.date}
   readTime={post.readTime}
   schema
 />
 ```
+
 - Schema.org Person markup
 - Modos: `full` | `compact`
 - Avatar + nombre + fecha + read time
 
 #### **`BlogSkeletons.tsx`** (210 líneas)
+
 ```tsx
 <BlogPageSkeleton />
 <PostDetailSkeleton />
 <BlogPostSkeleton />
 <BlogCategoriesSkeleton />
 ```
+
 - Estados de carga para todas las páginas del blog
 - Reduce CLS (Cumulative Layout Shift)
 - Mejora perceived performance
@@ -118,14 +134,17 @@ Creados 5 componentes reutilizables:
 ---
 
 ### **3. Loading States** ✅
+
 **Commits**: `27e6b60`
 
 Implementados archivos `loading.tsx` en:
+
 - `/app/(grid)/blog/loading.tsx`
 - `/app/(grid)/blog/[slug]/loading.tsx`
 - `/app/(grid)/blog/tag/[tag]/loading.tsx`
 
 **Beneficios**:
+
 - Suspense boundaries automáticas
 - Reducción de CLS en 30-40%
 - Mejor UX durante carga de datos
@@ -133,23 +152,26 @@ Implementados archivos `loading.tsx` en:
 ---
 
 ### **4. Optimización de Cache** ✅
+
 **Commits**: `3220735`
 
 #### **Granular Cache Tags** (`blog-service.ts`)
+
 ```typescript
 // Antes
-tags: ["notion-blog"]
+tags: ["notion-blog"];
 
 // Después
-tags: ["blog-list", "blog-posts"]                    // getBlogPosts
-tags: [`blog-post:${slug}`, "blog-posts"]           // getBlogPostBySlug
-tags: [`blog-tag:${tag}`, "blog-posts"]             // getBlogPostsByTag
-tags: ["blog-tags"]                                  // getAllTags
-tags: ["blog-slugs"]                                 // getAllPublishedSlugs
-tags: ["blog-search"]                                // searchBlogPosts
+tags: ["blog-list", "blog-posts"]; // getBlogPosts
+tags: [`blog-post:${slug}`, "blog-posts"]; // getBlogPostBySlug
+tags: [`blog-tag:${tag}`, "blog-posts"]; // getBlogPostsByTag
+tags: ["blog-tags"]; // getAllTags
+tags: ["blog-slugs"]; // getAllPublishedSlugs
+tags: ["blog-search"]; // searchBlogPosts
 ```
 
 #### **API de Revalidación** (`/api/revalidate`)
+
 ```bash
 # Revalidar un post específico
 curl -X POST https://webcode.es/api/revalidate \
@@ -163,10 +185,12 @@ curl -X POST https://webcode.es/api/revalidate \
 ```
 
 **Endpoints**:
+
 - POST `/api/revalidate` - Invalidación manual con auth
 - GET `/api/revalidate?token=XXX` - Health check
 
 **Tipos soportados**:
+
 - `post` - Revalidar un post específico
 - `tag` - Revalidar posts de un tag
 - `list` - Revalidar lista de posts
@@ -175,6 +199,7 @@ curl -X POST https://webcode.es/api/revalidate \
 - `all` - Revalidar todo el blog
 
 **Beneficios**:
+
 - Invalidación selectiva (no rebuild completo)
 - Integración con webhooks de Notion
 - Menor tiempo de revalidación
@@ -183,37 +208,42 @@ curl -X POST https://webcode.es/api/revalidate \
 ---
 
 ### **5. Optimización de Imágenes** ✅
+
 **Commits**: `3724953`
 
 #### **Responsive `sizes` Attribute**
+
 ```tsx
 // Cover image (hero)
-<NotionImage 
+<NotionImage
   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
 />
 
 // Card thumbnails
-<Image 
+<Image
   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
 />
 
 // Related posts
-<NotionImage 
+<NotionImage
   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
 />
 ```
 
 #### **Loading Priorities**
+
 - `priority={true}` para imágenes above-the-fold (cover image)
 - `loading="lazy"` para imágenes below-the-fold (related posts)
 
 #### **Blur Placeholders**
+
 ```tsx
-placeholder="blur"
-blurDataURL="data:image/jpeg;base64,..."
+placeholder = "blur";
+blurDataURL = "data:image/jpeg;base64,...";
 ```
 
 **Beneficios**:
+
 - Mejor LCP (Largest Contentful Paint)
 - Ahorro de bandwidth en móvil (carga imágenes correctas según viewport)
 - Mejor UX con placeholders durante carga
@@ -221,9 +251,11 @@ blurDataURL="data:image/jpeg;base64,..."
 ---
 
 ### **6. Estilos Tailwind 4** ✅
+
 **Commits**: `a05bdb6`
 
 #### **CSS Custom Property para Easing**
+
 ```css
 :root {
   --ease-webcode: cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -231,6 +263,7 @@ blurDataURL="data:image/jpeg;base64,..."
 ```
 
 #### **Uso de `bg-linear-to-*` (Tailwind 4)**
+
 ```tsx
 // ✅ Correcto (Tailwind 4)
 <Card className="bg-linear-to-br from-white/95 via-white/90 to-slate-50/95">
@@ -246,6 +279,7 @@ blurDataURL="data:image/jpeg;base64,..."
 ## 📁 Archivos Modificados
 
 ### **Nuevos Archivos** (7)
+
 ```
 src/components/blog/Breadcrumb.tsx              (100 líneas)
 src/components/blog/DateFormatter.tsx           (130 líneas)
@@ -259,6 +293,7 @@ src/app/api/revalidate/route.ts                 (271 líneas)
 ```
 
 ### **Archivos Modificados** (5)
+
 ```
 src/components/blog/BlogPostCard.tsx            (-55 líneas → 105)
 src/components/blog/BlogCategoriesCard.tsx      (-63 líneas → 70)
@@ -269,6 +304,7 @@ src/app/globals.css                             (+45 líneas → animations + ea
 ```
 
 ### **Documentación** (3)
+
 ```
 docs/planning/BLOG-OPTIMIZATION-PLAN.md         (650 líneas)
 docs/planning/BLOG-OPTIMIZATION-PROGRESS.md     (500 líneas)
@@ -280,11 +316,13 @@ docs/planning/MARKDOWN-RENDERER-OPTIMIZATION-ANALYSIS.md
 ## 🧪 Testing
 
 ### **Playwright Tests**
+
 ```bash
 pnpm playwright test --reporter=list
 ```
 
 Todos los tests existentes pasan correctamente:
+
 - ✅ Theme toggle functionality
 - ✅ Header logo layout
 - ✅ Back button performance
@@ -296,11 +334,13 @@ Todos los tests existentes pasan correctamente:
 ## 🔄 Proceso de Commits
 
 ### **Convenciones Seguidas**
+
 - ✅ Conventional Commits: `feat(blog):`, `docs(blog):`
 - ✅ Mensajes descriptivos con bullets
 - ✅ Referencia a plan: `Refs: BLOG-OPTIMIZATION-PLAN.md Task X`
 
 ### **Historial de Commits**
+
 ```bash
 27e6b60 feat(blog): convert cards to Server Components + create utility components
 a942d6d feat(blog): add loading states and Suspense boundaries
@@ -314,54 +354,62 @@ a05bdb6 feat(blog): add WebCode Animation System easing variable
 ## 📊 Comparación Antes/Después
 
 ### **BlogPostCard.tsx**
-| Métrica | Antes | Después | Delta |
-|---------|-------|---------|-------|
-| Líneas | 160 | 105 | -55 (-34%) |
-| Tipo | Client Component | Server Component | ✅ |
-| JavaScript Cliente | ~8KB | 0KB | -8KB |
-| Animaciones | useState + useLayoutEffect | CSS puro | ✅ |
+
+| Métrica            | Antes                      | Después          | Delta      |
+| ------------------ | -------------------------- | ---------------- | ---------- |
+| Líneas             | 160                        | 105              | -55 (-34%) |
+| Tipo               | Client Component           | Server Component | ✅         |
+| JavaScript Cliente | ~8KB                       | 0KB              | -8KB       |
+| Animaciones        | useState + useLayoutEffect | CSS puro         | ✅         |
 
 ### **BlogCategoriesCard.tsx**
-| Métrica | Antes | Después | Delta |
-|---------|-------|---------|-------|
-| Líneas | 133 | 70 | -63 (-47%) |
-| Tipo | Client Component | Server Component | ✅ |
-| JavaScript Cliente | ~7KB | 0KB | -7KB |
-| Lógica | Cliente | Servidor | ✅ |
+
+| Métrica            | Antes            | Después          | Delta      |
+| ------------------ | ---------------- | ---------------- | ---------- |
+| Líneas             | 133              | 70               | -63 (-47%) |
+| Tipo               | Client Component | Server Component | ✅         |
+| JavaScript Cliente | ~7KB             | 0KB              | -7KB       |
+| Lógica             | Cliente          | Servidor         | ✅         |
 
 ### **Cache Strategy**
-| Aspecto | Antes | Después |
-|---------|-------|---------|
-| Tags | Genérico `"notion-blog"` | Granular por tipo |
-| Invalidación | Toda la cache | Selectiva por path |
-| API | No disponible | `/api/revalidate` |
-| Webhooks | No soportado | Notion webhooks ready |
+
+| Aspecto      | Antes                    | Después               |
+| ------------ | ------------------------ | --------------------- |
+| Tags         | Genérico `"notion-blog"` | Granular por tipo     |
+| Invalidación | Toda la cache            | Selectiva por path    |
+| API          | No disponible            | `/api/revalidate`     |
+| Webhooks     | No soportado             | Notion webhooks ready |
 
 ---
 
 ## 🎓 Lecciones Aprendidas
 
 ### **1. Server Components son Poderosos**
+
 - Eliminan ~15KB de JS del cliente automáticamente
 - Rendering en servidor = mejor SEO sin esfuerzo
 - Hidratación más rápida = mejor UX
 
 ### **2. CSS > JavaScript para Animaciones**
+
 - `prefers-reduced-motion` con media queries > detección en JS
 - Mejor performance, menor bundle
 - Respeta preferencias del usuario nativamente
 
 ### **3. Componentes Utilitarios Valen la Pena**
+
 - Aunque añaden LOC total, reducen duplicación
 - Mejoran mantenibilidad y consistencia
 - Facilitan testing y documentación
 
 ### **4. Cache Granular es Clave**
+
 - Tags específicos permiten invalidación quirúrgica
 - API de revalidación esencial para CMS headless
 - Webhooks de Notion = contenido siempre actualizado
 
 ### **5. Responsive Images Importan**
+
 - Atributo `sizes` crucial para ahorro de bandwidth
 - Blur placeholders mejoran perceived performance
 - Loading priorities afectan LCP significativamente
@@ -371,6 +419,7 @@ a05bdb6 feat(blog): add WebCode Animation System easing variable
 ## 🚀 Próximos Pasos
 
 ### **Tareas Adicionales (Futuras)**
+
 1. **Testing E2E Específico del Blog**
    - Tests de navegación entre posts
    - Tests de filtrado por tags

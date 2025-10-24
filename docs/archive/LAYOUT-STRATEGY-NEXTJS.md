@@ -27,7 +27,7 @@ app/
 │   └── servicios/
 │
 ├── (hero)/              [NUEVO Route Group]
-│   ├── layout.tsx       → HeroLayout  
+│   ├── layout.tsx       → HeroLayout
 │   ├── soluciones/
 │   ├── proceso/
 │   └── briefing/
@@ -71,9 +71,7 @@ interface ContentLayoutProps {
 export function ContentLayout({ children }: ContentLayoutProps) {
   return (
     <article className="min-h-screen pt-24 pb-20 px-4">
-      <div className="container mx-auto max-w-4xl">
-        {children}
-      </div>
+      <div className="container mx-auto max-w-4xl">{children}</div>
     </article>
   );
 }
@@ -93,11 +91,7 @@ interface HeroLayoutProps {
  * El background gradient se maneja en la página individual
  */
 export function HeroLayout({ children }: HeroLayoutProps) {
-  return (
-    <div className="min-h-screen">
-      {children}
-    </div>
-  );
+  return <div className="min-h-screen">{children}</div>;
 }
 ```
 
@@ -117,9 +111,7 @@ interface GridLayoutProps {
 export function GridLayout({ children }: GridLayoutProps) {
   return (
     <section className="min-h-screen pt-24 pb-20 px-4">
-      <div className="container mx-auto max-w-4xl">
-        {children}
-      </div>
+      <div className="container mx-auto max-w-4xl">{children}</div>
     </section>
   );
 }
@@ -133,7 +125,11 @@ export function GridLayout({ children }: GridLayoutProps) {
 import type { ReactNode } from "react";
 import { ContentLayout } from "@/components/layouts/ContentLayout";
 
-export default function ContentGroupLayout({ children }: { children: ReactNode }) {
+export default function ContentGroupLayout({
+  children
+}: {
+  children: ReactNode;
+}) {
   return <ContentLayout>{children}</ContentLayout>;
 }
 ```
@@ -163,17 +159,19 @@ export default function GridGroupLayout({ children }: { children: ReactNode }) {
 ### 3. Migración de Páginas
 
 #### Antes (sin route groups)
+
 ```
 app/
 ├── about/
 │   ├── layout.tsx  ← Eliminar
 │   └── page.tsx
 ├── contacto/
-│   ├── layout.tsx  ← Eliminar  
+│   ├── layout.tsx  ← Eliminar
 │   └── page.tsx
 ```
 
 #### Después (con route groups)
+
 ```
 app/
 ├── (content)/
@@ -189,6 +187,7 @@ app/
 ### 4. Estructura de Página Simplificada
 
 #### Antes (con código duplicado)
+
 ```tsx
 export default function ContactoPage() {
   return (
@@ -201,6 +200,7 @@ export default function ContactoPage() {
 ```
 
 #### Después (solo contenido)
+
 ```tsx
 // app/(content)/contacto/page.tsx
 export default function ContactoPage() {
@@ -225,7 +225,7 @@ export default function SeoPage() {
   return (
     <>
       {/* Hero Section con gradient */}
-      <section 
+      <section
         className="relative pt-24 pb-20 md:pb-32 overflow-hidden"
         style={{
           background: `linear-gradient(
@@ -241,11 +241,9 @@ export default function SeoPage() {
           </div>
         </div>
       </section>
-      
+
       {/* Secciones adicionales */}
-      <section className="py-20">
-        {/* contenido */}
-      </section>
+      <section className="py-20">{/* contenido */}</section>
     </>
   );
 }
@@ -302,6 +300,7 @@ El `(hero)/layout.tsx` solo añade el wrapper `min-h-screen`.
 ### ❌ PageWrapper (componente custom)
 
 **Problemas:**
+
 - Conflicto con `<main>` del layout raíz
 - Requiere import en cada página
 - No aprovecha Next.js 15
@@ -311,6 +310,7 @@ El `(hero)/layout.tsx` solo añade el wrapper `min-h-screen`.
 ### ✅ Layouts de Next.js (nativo)
 
 **Ventajas:**
+
 - Sistema nativo de Next.js
 - Route Groups organizan sin cambiar URLs
 - Cero imports en páginas
@@ -329,18 +329,14 @@ El `(hero)/layout.tsx` solo añade el wrapper `min-h-screen`.
   <div class="min-h-screen flex flex-col">
     <HeaderNavigation />
     <main class="flex-1">
-      
       <!-- (content)/layout.tsx -->
       <article class="min-h-screen pt-24 pb-20 px-4">
         <div class="container mx-auto max-w-4xl">
-          
           <!-- page.tsx -->
           <h1>Contenido de la Página</h1>
           <p>...</p>
-          
         </div>
       </article>
-      
     </main>
     <FooterSection />
   </div>
@@ -364,7 +360,7 @@ Si quieres usar variables CSS en vez de clases fijas:
 
 ```tsx
 // ContentLayout.tsx
-<article 
+<article
   className="min-h-screen pb-20 px-4"
   style={{ paddingTop: 'var(--header-height)' }}
 >
@@ -403,7 +399,7 @@ pnpm run build
 Después de la migración completa:
 
 - ❌ `src/components/layout/PageWrapper.tsx`
-- ❌ `src/components/layout/index.ts` 
+- ❌ `src/components/layout/index.ts`
 - ❌ `src/components/layout/README.md`
 - ❌ `src/components/layouts/SectionLayout.tsx` (obsoleto)
 - ❌ `src/app/about/layout.tsx`
@@ -431,7 +427,7 @@ app/contacto/
 ├── layout.tsx
 └── page.tsx
 
-# Después  
+# Después
 app/(content)/contacto/
 └── page.tsx
 ```
@@ -478,4 +474,3 @@ Esta es la solución correcta y nativa para Next.js. PageWrapper era una soluci�
 ---
 
 **Próximo paso**: ¿Empezamos la migración a layouts de Next.js?
-

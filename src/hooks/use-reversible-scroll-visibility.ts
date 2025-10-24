@@ -1,4 +1,10 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState
+} from "react";
 
 interface ScrollVisibilityOptions {
   /** Umbral de scroll donde la flecha debe desaparecer completamente (0-1) */

@@ -33,7 +33,7 @@ export default function ServicesIndexPage() {
       subservices: [
         "Páginas web corporativas",
         "Landing pages de conversión",
-        "Portfolios profesionales", 
+        "Portfolios profesionales",
         "Aplicaciones web escalables",
         "Webs institucionales",
         "Microsites y campañas"
@@ -86,7 +86,12 @@ export default function ServicesIndexPage() {
         "Analytics y reportes",
         "Optimización de conversiones"
       ],
-      technologies: ["Google Analytics", "Search Console", "Google Ads", "Meta Ads"],
+      technologies: [
+        "Google Analytics",
+        "Search Console",
+        "Google Ads",
+        "Meta Ads"
+      ],
       color: "accent"
     },
     {
@@ -253,19 +258,25 @@ export default function ServicesIndexPage() {
                   </p>
                 </div>
               </div>
-              
+
               <div className="space-y-4 mb-6">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="text-center p-3 bg-background/50 rounded-lg">
                     <div className="text-2xl font-bold text-primary">+180%</div>
-                    <div className="text-xs text-muted-foreground">Tráfico orgánico</div>
+                    <div className="text-xs text-muted-foreground">
+                      Tráfico orgánico
+                    </div>
                   </div>
                   <div className="text-center p-3 bg-background/50 rounded-lg">
-                    <div className="text-2xl font-bold text-secondary">95/100</div>
-                    <div className="text-xs text-muted-foreground">Core Web Vitals</div>
+                    <div className="text-2xl font-bold text-secondary">
+                      95/100
+                    </div>
+                    <div className="text-xs text-muted-foreground">
+                      Core Web Vitals
+                    </div>
                   </div>
                 </div>
-                
+
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-center gap-2">
                     <span className="text-primary">✓</span>
@@ -281,9 +292,13 @@ export default function ServicesIndexPage() {
                   </li>
                 </ul>
               </div>
-              
+
               <Button asChild variant="outline" className="w-full">
-                <a href="https://mudanzasandy.es" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://mudanzasandy.es"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Ver Proyecto →
                 </a>
               </Button>
@@ -294,20 +309,39 @@ export default function ServicesIndexPage() {
               <h3 className="text-xl font-bold mb-4">Stack Tecnológico</h3>
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-semibold text-sm text-muted-foreground mb-2">Frontend</h4>
+                  <h4 className="font-semibold text-sm text-muted-foreground mb-2">
+                    Frontend
+                  </h4>
                   <div className="flex flex-wrap gap-2">
-                    {["Next.js 15", "React 19", "TypeScript", "Tailwind CSS"].map((tech) => (
-                      <span key={tech} className="px-2 py-1 text-xs bg-primary/10 text-primary rounded">
+                    {[
+                      "Next.js 15",
+                      "React 19",
+                      "TypeScript",
+                      "Tailwind CSS"
+                    ].map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
+                      >
                         {tech}
                       </span>
                     ))}
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-sm text-muted-foreground mb-2">Performance</h4>
+                  <h4 className="font-semibold text-sm text-muted-foreground mb-2">
+                    Performance
+                  </h4>
                   <div className="flex flex-wrap gap-2">
-                    {["Core Web Vitals", "SEO Optimizado", "Accesibilidad WCAG"].map((tech) => (
-                      <span key={tech} className="px-2 py-1 text-xs bg-secondary/10 text-secondary rounded">
+                    {[
+                      "Core Web Vitals",
+                      "SEO Optimizado",
+                      "Accesibilidad WCAG"
+                    ].map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 text-xs bg-secondary/10 text-secondary rounded"
+                      >
                         {tech}
                       </span>
                     ))}
@@ -334,12 +368,14 @@ export default function ServicesIndexPage() {
               {
                 icon: "⚡",
                 title: "Tecnología Moderna",
-                description: "Next.js 15 + React 19. Lo último en desarrollo web."
+                description:
+                  "Next.js 15 + React 19. Lo último en desarrollo web."
               },
               {
                 icon: "🎯",
                 title: "Resultados Medibles",
-                description: "Core Web Vitals en verde, SEO optimizado desde día 1."
+                description:
+                  "Core Web Vitals en verde, SEO optimizado desde día 1."
               },
               {
                 icon: "💰",

@@ -1,7 +1,7 @@
 /**
  * Componente de tarjeta para categorías del blog
  * Server Component - No requiere JavaScript en el cliente
- * 
+ *
  * Las animaciones se manejan con CSS puro mediante la clase 'blog-card'
  */
 

@@ -18,6 +18,7 @@ Se agregó una sección específica después de "Patrones de Next.js 16" que inc
 📋 **`.github/support/nextjs16-react19-patterns.md`** - Guía completa de patrones modernos
 
 **Contenido clave:**
+
 - ✅ **Async Request APIs**: `params: Promise<...>`, `searchParams: Promise<...>`, `await cookies()`, `await headers()`
 - ✅ **React 19 use() Hook**: Para Client Components que necesitan params/searchParams
 - ✅ **React Compiler Optimizations**: Memoización automática, mejores prácticas
@@ -44,12 +45,14 @@ Se reorganizó la sección de guías de desarrollo para destacar el documento de
 ## 🎯 Beneficios de la Integración
 
 ### **Para Copilot**
+
 - ✅ **Referencia automática** al documento de patrones antes de generar código
 - ✅ **Mejores prácticas** aplicadas automáticamente
 - ✅ **Consistencia** en el código generado
 - ✅ **Reducción de errores** comunes de Next.js 16
 
 ### **Para el Desarrollo**
+
 - ✅ **Código más moderno** siguiendo patrones actuales
 - ✅ **Mejor performance** con React Compiler optimizations
 - ✅ **APIs asíncronas** correctamente implementadas
@@ -60,30 +63,35 @@ Se reorganizó la sección de guías de desarrollo para destacar el documento de
 El documento `.github/support/nextjs16-react19-patterns.md` incluye:
 
 ### **1. Async Request APIs (Next.js 16)**
+
 - Patrones para `params: Promise<...>` y `searchParams: Promise<...>`
 - Uso correcto de `await cookies()` y `await headers()`
 - Ejemplos de `generateMetadata` asíncrono
 - Helper functions con APIs asíncronas
 
 ### **2. React 19 use() Hook**
+
 - Cuándo usar `use()` vs `async/await`
 - Patrones para Client Components con params/searchParams
 - Integración con Suspense
 - Limitaciones y mejores prácticas
 
 ### **3. React Compiler Optimizations**
+
 - Memoización automática sin `useMemo`/`useCallback`
 - Patrones que benefician del compiler
 - Evitar patrones que rompen optimización
 - Verificación de optimizaciones
 
 ### **4. Server vs Client Components**
+
 - Regla de oro para decidir cuándo usar cada uno
 - Tabla de decisión rápida
 - Patrones de composición
 - Evitar "use client" innecesario
 
 ### **5. Best Practices Checklist**
+
 - Checklist para páginas Next.js 16
 - Checklist para APIs asíncronas
 - Checklist para Client Components
@@ -93,18 +101,21 @@ El documento `.github/support/nextjs16-react19-patterns.md` incluye:
 ## 🚀 Impacto Esperado
 
 ### **Código Generado Mejorado**
+
 - ✅ **APIs asíncronas** correctamente implementadas
 - ✅ **React 19 use() hook** usado apropiadamente
 - ✅ **React Compiler** optimizaciones aplicadas
 - ✅ **Server/Client Components** balanceados correctamente
 
 ### **Reducción de Errores**
+
 - ✅ **Menos errores** de SSR con `next/dynamic`
 - ✅ **Mejor performance** con optimizaciones automáticas
 - ✅ **Código más mantenible** siguiendo patrones modernos
 - ✅ **TypeScript** correctamente tipado
 
 ### **Experiencia de Desarrollo**
+
 - ✅ **Copilot más inteligente** con contexto específico
 - ✅ **Código consistente** en todo el proyecto
 - ✅ **Mejores prácticas** aplicadas automáticamente

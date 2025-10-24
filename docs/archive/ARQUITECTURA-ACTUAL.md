@@ -236,6 +236,7 @@ Componentes atómicos reutilizables basados en shadcn/ui:
 - **Accordion**: Contenido expandible
 
 **Características**:
+
 - Altamente reutilizables
 - Basados en Radix UI
 - Styled con Tailwind CSS
@@ -250,6 +251,7 @@ Componentes con lógica de negocio específica:
 - Más features en desarrollo
 
 **Características**:
+
 - Contienen lógica de negocio
 - Integran múltiples componentes de UI
 - Manejan estados complejos
@@ -264,6 +266,7 @@ Componentes específicos para la landing page:
 - **Footer**: Pie de página con enlaces
 
 **Características**:
+
 - Optimizados para conversión
 - Animaciones del Sistema WAS
 - Responsive design
@@ -279,6 +282,7 @@ Sistema WAS (WebCode Animation System):
 - **ws-letter-reveal**: Animación de texto
 
 **Características**:
+
 - Performance optimizado
 - Respeta prefers-reduced-motion
 - Basado en Framer Motion
@@ -299,29 +303,29 @@ Componentes para optimización SEO:
 
 ### Rutas Públicas
 
-| Ruta | Descripción | Componente Principal |
-|------|-------------|---------------------|
-| `/` | Landing page principal | `app/page.tsx` |
-| `/about` | Sobre nosotros | `app/about/page.tsx` |
-| `/servicios` | Servicios ofrecidos | `app/servicios/page.tsx` |
-| `/proceso` | Proceso de trabajo | `app/proceso/page.tsx` |
-| `/soluciones` | Hub de soluciones | `app/soluciones/page.tsx` |
-| `/soluciones/[tipo]` | Soluciones específicas | `app/soluciones/[tipo]/page.tsx` |
-| `/blog` | Lista de posts | `app/blog/page.tsx` |
-| `/blog/[slug]` | Post individual | `app/blog/[slug]/page.tsx` |
-| `/blog/tag/[tag]` | Posts por tag | `app/blog/tag/[tag]/page.tsx` |
-| `/briefing` | Briefing principal | `app/briefing/page.tsx` |
-| `/briefing/formulario` | Formulario briefing | `app/briefing/formulario/page.tsx` |
-| `/contacto` | Contacto | `app/contacto/page.tsx` |
-| `/faqs` | Preguntas frecuentes | `app/faqs/page.tsx` |
+| Ruta                   | Descripción            | Componente Principal               |
+| ---------------------- | ---------------------- | ---------------------------------- |
+| `/`                    | Landing page principal | `app/page.tsx`                     |
+| `/about`               | Sobre nosotros         | `app/about/page.tsx`               |
+| `/servicios`           | Servicios ofrecidos    | `app/servicios/page.tsx`           |
+| `/proceso`             | Proceso de trabajo     | `app/proceso/page.tsx`             |
+| `/soluciones`          | Hub de soluciones      | `app/soluciones/page.tsx`          |
+| `/soluciones/[tipo]`   | Soluciones específicas | `app/soluciones/[tipo]/page.tsx`   |
+| `/blog`                | Lista de posts         | `app/blog/page.tsx`                |
+| `/blog/[slug]`         | Post individual        | `app/blog/[slug]/page.tsx`         |
+| `/blog/tag/[tag]`      | Posts por tag          | `app/blog/tag/[tag]/page.tsx`      |
+| `/briefing`            | Briefing principal     | `app/briefing/page.tsx`            |
+| `/briefing/formulario` | Formulario briefing    | `app/briefing/formulario/page.tsx` |
+| `/contacto`            | Contacto               | `app/contacto/page.tsx`            |
+| `/faqs`                | Preguntas frecuentes   | `app/faqs/page.tsx`                |
 
 ### API Routes
 
-| Endpoint | Método | Descripción |
-|----------|--------|-------------|
-| `/api/contact` | POST | Envío de formulario de contacto |
-| `/api/briefing` | POST | Envío de briefing |
-| `/api/briefing/download` | GET | Descarga PDF de briefing |
+| Endpoint                 | Método | Descripción                     |
+| ------------------------ | ------ | ------------------------------- |
+| `/api/contact`           | POST   | Envío de formulario de contacto |
+| `/api/briefing`          | POST   | Envío de briefing               |
+| `/api/briefing/download` | GET    | Descarga PDF de briefing        |
 
 ### Páginas Legales
 
@@ -340,18 +344,18 @@ Definidos en `src/app/globals.css`:
 ```css
 :root {
   /* Primary - Rosa */
-  --primary: oklch(0.57 0.2 328.5);      /* #dc7cb3 */
+  --primary: oklch(0.57 0.2 328.5); /* #dc7cb3 */
   --primary-foreground: oklch(0.98 0 0);
   --primary-rgb: 220, 124, 179;
 
   /* Secondary - Aguamarina */
-  --secondary: oklch(0.43 0.18 184.1);   /* #82c8d2 */
+  --secondary: oklch(0.43 0.18 184.1); /* #82c8d2 */
   --secondary-foreground: oklch(0.12 0 0);
   --secondary-rgb: 130, 200, 210;
 
   /* Accent - Púrpura */
   --accent: oklch(0.57 0.2 328.5);
-  
+
   /* Sombras 3D */
   --shadow-3d-sm: 3px 3px 0px 0px oklch(0.57 0.2 328.5 / 0.6);
   --shadow-3d-md: 3px 3px 0px 0px oklch(0.57 0.2 328.5 / 0.8);
@@ -381,14 +385,14 @@ const easing = {
   smooth: [0.25, 0.46, 0.45, 0.94],
   bounce: [0.68, -0.55, 0.265, 1.55],
   elastic: [0.175, 0.885, 0.32, 1.275]
-}
+};
 
 const duration = {
   instant: 100,
   quick: 200,
   normal: 300,
   slow: 500
-}
+};
 ```
 
 ---
@@ -400,6 +404,7 @@ const duration = {
 **Ubicación**: `src/lib/notion/`
 
 **Funcionalidad**:
+
 - Fetch de posts desde Notion database
 - Conversión de Notion blocks a Markdown
 - Sistema de tags y categorías
@@ -407,6 +412,7 @@ const duration = {
 - ISR con revalidación de 1 hora
 
 **Archivos**:
+
 - `client.ts`: Cliente de Notion API
 - `queries.ts`: Queries y transformaciones
 - `types.ts`: Tipos TypeScript
@@ -416,6 +422,7 @@ const duration = {
 **Ubicación**: `src/lib/email.ts`
 
 **Funcionalidad**:
+
 - Envío de emails de contacto
 - Templates personalizados
 - Validación con Zod
@@ -511,4 +518,3 @@ Request → Next.js → Notion API → Transform Data → Cache (ISR)
 
 **Última actualización**: 15 Octubre 2025  
 **Mantenedor**: WEBCODE Team
-

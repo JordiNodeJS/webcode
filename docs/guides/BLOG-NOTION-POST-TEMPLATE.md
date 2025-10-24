@@ -3,6 +3,7 @@
 ## Información de la Página (Propiedades)
 
 ### Obligatorias
+
 - **title**: Cómo Implementar un Blog con Notion y Next.js 15
 - **slug**: blog-notion-nextjs-15
 - **excerpt**: Aprende a crear un blog moderno conectando Notion como CMS con Next.js 15, incluyendo Server Components, TypeScript y optimización SEO.
@@ -10,6 +11,7 @@
 - **date**: 2025-01-12
 
 ### Opcionales
+
 - **tags**: Next.js, React, Notion, CMS, TypeScript
 - **author**: Tu Nombre
 - **cover**: [Agrega una imagen de portada]
@@ -50,16 +52,16 @@ Antes de comenzar, asegúrate de tener:
 2. Agrega una base de datos (Database - Full Page)
 3. Configura las siguientes propiedades:
 
-| Propiedad | Tipo | Obligatorio |
-|-----------|------|-------------|
-| title | Title | ✅ |
-| slug | Text | ✅ |
-| excerpt | Text | ✅ |
-| published | Checkbox | ✅ |
-| date | Date | ✅ |
-| tags | Multi-select | ❌ |
-| author | Text | ❌ |
-| cover | Files | ❌ |
+| Propiedad | Tipo         | Obligatorio |
+| --------- | ------------ | ----------- |
+| title     | Title        | ✅          |
+| slug      | Text         | ✅          |
+| excerpt   | Text         | ✅          |
+| published | Checkbox     | ✅          |
+| date      | Date         | ✅          |
+| tags      | Multi-select | ❌          |
+| author    | Text         | ❌          |
+| cover     | Files        | ❌          |
 
 ## Paso 2: Crear la Integración de Notion
 
@@ -92,10 +94,10 @@ pnpm add react-markdown rehype-raw rehype-sanitize rehype-highlight
 
 ```typescript
 // src/lib/notion/client.ts
-import { Client } from '@notionhq/client';
+import { Client } from "@notionhq/client";
 
 export const notion = new Client({
-  auth: process.env.NOTION_API_KEY,
+  auth: process.env.NOTION_API_KEY
 });
 
 export const DATABASE_ID = process.env.NOTION_DATABASE_ID!;
@@ -105,20 +107,18 @@ export const DATABASE_ID = process.env.NOTION_DATABASE_ID!;
 
 ```typescript
 // src/lib/notion/blog-service.ts
-import { notion, DATABASE_ID } from './client';
+import { notion, DATABASE_ID } from "./client";
 
 export async function getBlogPosts() {
   const response = await notion.databases.query({
     database_id: DATABASE_ID,
     filter: {
-      property: 'published',
+      property: "published",
       checkbox: { equals: true }
     },
-    sorts: [
-      { property: 'date', direction: 'descending' }
-    ]
+    sorts: [{ property: "date", direction: "descending" }]
   });
-  
+
   return response.results;
 }
 ```
@@ -131,7 +131,7 @@ import { getBlogPosts } from '@/lib/notion';
 
 export default async function BlogPage() {
   const posts = await getBlogPosts();
-  
+
   return (
     <div>
       <h1>Blog</h1>
@@ -163,7 +163,7 @@ Usa `generateStaticParams` para pre-renderizar tus posts:
 ```typescript
 export async function generateStaticParams() {
   const slugs = await getAllPublishedSlugs();
-  return slugs.map(slug => ({ slug }));
+  return slugs.map((slug) => ({ slug }));
 }
 ```
 

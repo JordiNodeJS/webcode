@@ -335,7 +335,7 @@ jobs:
           script: |
             const branchName = context.payload.pull_request.head.ref;
             const labels = [];
-            
+
             // Etiquetar por tipo de rama
             if (branchName.startsWith('feat/')) {
               labels.push('enhancement');
@@ -344,13 +344,13 @@ jobs:
             } else if (branchName.startsWith('docs/')) {
               labels.push('documentation');
             }
-            
+
             // Etiquetar por scope
             const scope = branchName.split('/')[1];
             if (scope) {
               labels.push(scope);
             }
-            
+
             // Aplicar etiquetas
             if (labels.length > 0) {
               await github.rest.issues.addLabels({
@@ -360,7 +360,7 @@ jobs:
                 labels: labels
               });
             }
-            
+
             // Auto-asignar al autor
             await github.rest.issues.addAssignees({
               owner: context.repo.owner,
@@ -388,18 +388,23 @@ jobs:
 
 ```markdown
 # Sugerencia (opcional)
+
 **Suggestion**: Podríamos extraer esta lógica a un hook personalizado.
 
 # Bloqueo (debe corregirse)
+
 **Blocker**: Este cambio rompe la funcionalidad en móviles.
 
 # Pregunta (aclaración)
+
 **Question**: ¿Por qué elegimos este approach en lugar de X?
 
 # Nitpick (menor)
+
 **Nit**: Typo en el comentario, línea 42.
 
 # Aprobación con comentarios
+
 **LGTM** (Looks Good To Me)
 Solo un par de nits menores.
 ```

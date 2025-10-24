@@ -41,34 +41,36 @@ export function AnimatedRocketIcon({ icon, slug }: AnimatedRocketIconProps) {
     <div className="relative">
       {/* Fire placeholder that stays in original position */}
       {slug === "web-development" && (
-        <div 
+        <div
           className={`text-5xl absolute top-0 left-0 z-5 ${
-            rocketAnimationState === "animate" 
-              ? RocketAnimation.fireVisible 
-              : rocketAnimationState === "reset" 
-                ? RocketAnimation.fireHidden 
+            rocketAnimationState === "animate"
+              ? RocketAnimation.fireVisible
+              : rocketAnimationState === "reset"
+                ? RocketAnimation.fireHidden
                 : RocketAnimation.fireHidden
           }`}
         >
           🔥
         </div>
       )}
-      
+
       {/* Rocket that moves */}
-      <div 
+      <div
         className={`text-5xl ${
-          slug === "web-development" 
-            ? RocketAnimation.rocketIcon 
-            : ""
+          slug === "web-development" ? RocketAnimation.rocketIcon : ""
         } ${
-          rocketAnimationState === "animate" 
-            ? RocketAnimation.animate 
-            : rocketAnimationState === "reset" 
-              ? RocketAnimation.reset 
+          rocketAnimationState === "animate"
+            ? RocketAnimation.animate
+            : rocketAnimationState === "reset"
+              ? RocketAnimation.reset
               : ""
         }`}
-        onMouseEnter={slug === "web-development" ? handleRocketHover : undefined}
-        onMouseLeave={slug === "web-development" ? handleRocketLeave : undefined}
+        onMouseEnter={
+          slug === "web-development" ? handleRocketHover : undefined
+        }
+        onMouseLeave={
+          slug === "web-development" ? handleRocketLeave : undefined
+        }
       >
         {icon}
       </div>

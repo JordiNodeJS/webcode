@@ -65,7 +65,7 @@ import type { Metadata } from 'next';
 import { Poppins, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 
-const poppins = Poppins({ 
+const poppins = Poppins({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   variable: '--font-sans'
@@ -226,7 +226,7 @@ export function InteractiveComponent() {
 
 ## **4. COLOCACIÓN CERCANA VS FEATURES**
 
-### **Usar Colocación Cercana (app/*/components/) cuando:**
+### **Usar Colocación Cercana (app/\*/components/) cuando:**
 
 - El componente **solo se usa en una página específica**
 - Es parte de la **funcionalidad principal** de esa ruta
@@ -282,16 +282,16 @@ app/(dashboard)/orders/page.tsx    → /orders
 flowchart TD
     A[app/layout.tsx<br/>Root Layout] --> B[app/(marketing)/layout.tsx<br/>Marketing Layout]
     A --> C[app/(dashboard)/layout.tsx<br/>Dashboard Layout]
-    
+
     B --> D[app/(marketing)/page.tsx<br/>Home Page]
     B --> E[app/(marketing)/services/page.tsx<br/>Services Page]
-    
+
     C --> F[app/(dashboard)/analytics/page.tsx<br/>Analytics Page]
-    
+
     D --> G[app/components/Hero.Section.tsx]
     E --> H[app/services/components/ServiceCard.tsx]
     F --> I[app/analytics/components/Chart.tsx]
-    
+
     style A fill:#dc7cb3
     style B fill:#bce3e5
     style C fill:#bce3e5
@@ -305,7 +305,7 @@ sequenceDiagram
     participant ServerComponent
     participant API
     participant Database
-    
+
     Client->>ServerComponent: Request /services
     ServerComponent->>API: fetch('/api/services')
     API->>Database: SELECT * FROM services
@@ -322,7 +322,7 @@ sequenceDiagram
 
 - ✅ **Nombres descriptivos** (evitar index.tsx genéricos)
 - ✅ **Colocación cercana** como patrón por defecto
-- ✅ **Carpetas con _** para código privado (no genera rutas)
+- ✅ **Carpetas con \_** para código privado (no genera rutas)
 - ✅ **Route Groups** para organización lógica
 
 ### **Layouts**
@@ -373,7 +373,7 @@ export function Counter() {
 
 ### **Error: Componente no se encuentra**
 
-- Verificar **rutas de importación** (alias @/* configurado)
+- Verificar **rutas de importación** (alias @/\* configurado)
 - Verificar **nombres de archivo** (mayúsculas/minúsculas)
 - Verificar **exportación** (named vs default)
 

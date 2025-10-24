@@ -53,57 +53,55 @@ src/app/
 ### Layouts Creados
 
 #### 1. ContentLayout
+
 ```tsx
 // src/components/layouts/ContentLayout.tsx
 export function ContentLayout({ children }: ContentLayoutProps) {
   return (
     <article className="min-h-screen pt-24 pb-20 px-4">
-      <div className="container mx-auto max-w-4xl">
-        {children}
-      </div>
+      <div className="container mx-auto max-w-4xl">{children}</div>
     </article>
   );
 }
 ```
 
 **Características:**
+
 - HTML semántico: `<article>`
 - Spacing: `pt-24` (96px para navbar)
 - Max width: `max-w-4xl`
 - Usado en: about, contacto, servicios
 
 #### 2. HeroLayout
+
 ```tsx
 // src/components/layouts/HeroLayout.tsx
 export function HeroLayout({ children }: HeroLayoutProps) {
-  return (
-    <div className="min-h-screen">
-      {children}
-    </div>
-  );
+  return <div className="min-h-screen">{children}</div>;
 }
 ```
 
 **Características:**
+
 - Wrapper mínimo
 - Las páginas manejan su propio spacing y gradientes
-- Usado en: soluciones/*, proceso, briefing
+- Usado en: soluciones/\*, proceso, briefing
 
 #### 3. GridLayout
+
 ```tsx
 // src/components/layouts/GridLayout.tsx
 export function GridLayout({ children }: GridLayoutProps) {
   return (
     <section className="min-h-screen pt-24 pb-20 px-4">
-      <div className="container mx-auto max-w-6xl">
-        {children}
-      </div>
+      <div className="container mx-auto max-w-6xl">{children}</div>
     </section>
   );
 }
 ```
 
 **Características:**
+
 - HTML semántico: `<section>`
 - Spacing: `pt-24` (96px para navbar)
 - Max width: `max-w-6xl` (más ancho para grids)
@@ -117,7 +115,7 @@ export function GridLayout({ children }: GridLayoutProps) {
 <body>
   <div class="min-h-screen flex flex-col">
     <HeaderNavigation />
-    
+
     <main class="flex-1">
       <!-- Para páginas (content) -->
       <article class="min-h-screen pt-24 pb-20 px-4">
@@ -125,14 +123,14 @@ export function GridLayout({ children }: GridLayoutProps) {
           <!-- Contenido de la página -->
         </div>
       </article>
-      
+
       <!-- O para páginas (grid) -->
       <section class="min-h-screen pt-24 pb-20 px-4">
         <div class="container mx-auto max-w-6xl">
           <!-- Contenido de la página -->
         </div>
       </section>
-      
+
       <!-- O para páginas (hero) -->
       <div class="min-h-screen">
         <section class="pt-24 pb-20 ...">
@@ -143,7 +141,7 @@ export function GridLayout({ children }: GridLayoutProps) {
         </section>
       </div>
     </main>
-    
+
     <FooterSection />
   </div>
 </body>
@@ -176,9 +174,7 @@ export function GridLayout({ children }: GridLayoutProps) {
    - Layout eliminado: src/app/(hero)/soluciones/layout.tsx
    - Ahora usa (hero)/layout.tsx
 
-5-10. **`/soluciones/*`** (web-development, e-commerce, seo, consulting, landing-pages, reservas)
-    - Ya tenían estructura correcta (sin `<main>`)
-    - Solo se movieron al route group
+5-10. **`/soluciones/*`** (web-development, e-commerce, seo, consulting, landing-pages, reservas) - Ya tenían estructura correcta (sin `<main>`) - Solo se movieron al route group
 
 11. **`/proceso`** (src/app/(hero)/proceso/page.tsx)
     - Movido a route group
@@ -207,12 +203,14 @@ export function GridLayout({ children }: GridLayoutProps) {
 ## Archivos Eliminados
 
 ### PageWrapper (obsoleto)
+
 - ❌ `src/components/layout/PageWrapper.tsx` (276 líneas)
 - ❌ `src/components/layout/index.ts`
 - ❌ `src/components/layout/README.md` (435 líneas)
 - ❌ `src/components/layout/` (directorio completo)
 
 ### Layouts individuales (consolidados)
+
 - ❌ `src/app/(content)/about/layout.tsx`
 - ❌ `src/app/(content)/contacto/layout.tsx`
 - ❌ `src/app/(hero)/soluciones/layout.tsx`
@@ -223,12 +221,14 @@ export function GridLayout({ children }: GridLayoutProps) {
 ## Archivos Creados
 
 ### Layouts base
+
 - ✅ `src/components/layouts/ContentLayout.tsx` (29 líneas)
 - ✅ `src/components/layouts/HeroLayout.tsx` (36 líneas)
 - ✅ `src/components/layouts/GridLayout.tsx` (43 líneas)
 - ✅ `src/components/layouts/index.ts` (13 líneas)
 
 ### Route groups
+
 - ✅ `src/app/(content)/layout.tsx` (17 líneas)
 - ✅ `src/app/(hero)/layout.tsx` (16 líneas)
 - ✅ `src/app/(grid)/layout.tsx` (18 líneas)
@@ -238,29 +238,34 @@ export function GridLayout({ children }: GridLayoutProps) {
 ## Beneficios Obtenidos
 
 ### 1. Reducción de Código
+
 - **Antes**: ~750 líneas (PageWrapper + layouts individuales)
 - **Después**: ~170 líneas (3 layouts + 3 route groups)
 - **Reducción**: 77% menos código (-580 líneas)
 
 ### 2. HTML Semántico Correcto
+
 - ✅ Un solo `<main>` (del layout raíz)
 - ✅ `<article>` para contenido
 - ✅ `<section>` para grids
 - ✅ Sin conflictos de elementos duplicados
 
 ### 3. Developer Experience
+
 - ✅ Cero imports en páginas
 - ✅ Layouts automáticos por carpeta
 - ✅ Estructura clara y organizada
 - ✅ Fácil de entender y mantener
 
 ### 4. Consistencia
+
 - ✅ Spacing uniforme (pt-24) en todas las páginas
 - ✅ Max widths estandarizados (4xl, 6xl)
 - ✅ Mismo patrón en toda la aplicación
 - ✅ Sin código duplicado
 
 ### 5. Next.js Native
+
 - ✅ Usa el sistema de layouts como está diseñado
 - ✅ Compatible con Server Components
 - ✅ Route Groups no afectan URLs
@@ -311,7 +316,7 @@ export default function NuevaHero() {
           <h1>Hero Title</h1>
         </div>
       </section>
-      
+
       <section className="py-20">
         <div className="container mx-auto max-w-6xl px-4">
           {/* Más contenido */}
@@ -335,9 +340,11 @@ export default function NuevoListado() {
   return (
     <>
       <h1 className="text-4xl font-bold mb-12">Listado</h1>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {items.map(item => <Card key={item.id} />)}
+        {items.map((item) => (
+          <Card key={item.id} />
+        ))}
       </div>
     </>
   );
@@ -412,9 +419,7 @@ export function ContentLayout({ children }: ContentLayoutProps) {
 
   return (
     <article className="min-h-screen pt-24 pb-20 px-4">
-      <div className="container mx-auto max-w-4xl">
-        {children}
-      </div>
+      <div className="container mx-auto max-w-4xl">{children}</div>
     </article>
   );
 }
@@ -439,4 +444,3 @@ Esta es la solución correcta y nativa para Next.js.
 **Fecha**: 2025-10-16  
 **Versión**: 1.0.0  
 **Autor**: Migración a Next.js Layouts
-

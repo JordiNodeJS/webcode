@@ -4,9 +4,9 @@ import Link from "next/link";
 import { SolucionCard } from "@/components/soluciones";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/Icon";
-import { 
-  SiNextdotjs, 
-  SiReact, 
+import {
+  SiNextdotjs,
+  SiReact,
   SiWebflow,
   SiShopify,
   SiWix
@@ -39,8 +39,9 @@ export default function MantenimientoPage() {
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-              Mantenimiento continuo, actualizaciones de seguridad y soporte técnico especializado.
-              Tu página web siempre actualizada, segura y optimizada.
+              Mantenimiento continuo, actualizaciones de seguridad y soporte
+              técnico especializado. Tu página web siempre actualizada, segura y
+              optimizada.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button
@@ -76,11 +77,17 @@ export default function MantenimientoPage() {
           {/* Mantenimiento Básico */}
           <SolucionCard>
             <div className="mb-4 flex justify-center">
-              <Icon icon={Shield} size="3xl" variant="primary" aria-label="Mantenimiento Básico" />
+              <Icon
+                icon={Shield}
+                size="3xl"
+                variant="primary"
+                aria-label="Mantenimiento Básico"
+              />
             </div>
             <h3 className="text-2xl font-bold mb-3">Mantenimiento Básico</h3>
             <p className="text-muted-foreground mb-4">
-              Plan esencial para mantener tu web funcionando sin problemas básicos.
+              Plan esencial para mantener tu web funcionando sin problemas
+              básicos.
             </p>
             <ul className="space-y-2 text-sm">
               <li className="flex items-start gap-2">
@@ -101,17 +108,28 @@ export default function MantenimientoPage() {
               </li>
             </ul>
             <div className="mt-6 pt-4 border-t border-border/30">
-              <div className="text-2xl font-bold text-primary mb-2">Desde 99€/mes</div>
-              <p className="text-sm text-muted-foreground">Perfecto para webs pequeñas</p>
+              <div className="text-2xl font-bold text-primary mb-2">
+                Desde 99€/mes
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Perfecto para webs pequeñas
+              </p>
             </div>
           </SolucionCard>
 
           {/* Mantenimiento Profesional */}
           <SolucionCard>
             <div className="mb-4 flex justify-center">
-              <Icon icon={Zap} size="3xl" variant="secondary" aria-label="Mantenimiento Profesional" />
+              <Icon
+                icon={Zap}
+                size="3xl"
+                variant="secondary"
+                aria-label="Mantenimiento Profesional"
+              />
             </div>
-            <h3 className="text-2xl font-bold mb-3">Mantenimiento Profesional</h3>
+            <h3 className="text-2xl font-bold mb-3">
+              Mantenimiento Profesional
+            </h3>
             <p className="text-muted-foreground mb-4">
               Plan completo con optimización continua y soporte prioritario.
             </p>
@@ -142,15 +160,24 @@ export default function MantenimientoPage() {
               </li>
             </ul>
             <div className="mt-6 pt-4 border-t border-border/30">
-              <div className="text-2xl font-bold text-secondary mb-2">Desde 199€/mes</div>
-              <p className="text-sm text-muted-foreground">Ideal para empresas</p>
+              <div className="text-2xl font-bold text-secondary mb-2">
+                Desde 199€/mes
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Ideal para empresas
+              </p>
             </div>
           </SolucionCard>
 
           {/* Mantenimiento Premium */}
           <SolucionCard>
             <div className="mb-4 flex justify-center">
-              <Icon icon={Rocket} size="3xl" variant="accent" aria-label="Mantenimiento Premium" />
+              <Icon
+                icon={Rocket}
+                size="3xl"
+                variant="accent"
+                aria-label="Mantenimiento Premium"
+              />
             </div>
             <h3 className="text-2xl font-bold mb-3">Mantenimiento Premium</h3>
             <p className="text-muted-foreground mb-4">
@@ -187,8 +214,12 @@ export default function MantenimientoPage() {
               </li>
             </ul>
             <div className="mt-6 pt-4 border-t border-border/30">
-              <div className="text-2xl font-bold text-accent mb-2">Desde 399€/mes</div>
-              <p className="text-sm text-muted-foreground">Para proyectos críticos</p>
+              <div className="text-2xl font-bold text-accent mb-2">
+                Desde 399€/mes
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Para proyectos críticos
+              </p>
             </div>
           </SolucionCard>
         </div>
@@ -240,12 +271,17 @@ export default function MantenimientoPage() {
           <div className="space-y-8">
             <div className="flex gap-4">
               <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center">
-                <Icon icon={Shield} size="lg" className="text-white" aria-label="Seguridad Web" />
+                <Icon
+                  icon={Shield}
+                  size="lg"
+                  className="text-white"
+                  aria-label="Seguridad Web"
+                />
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-2">Seguridad Web</h3>
                 <p className="text-muted-foreground">
-                  Actualizaciones de seguridad, protección contra malware, 
+                  Actualizaciones de seguridad, protección contra malware,
                   certificados SSL y monitoreo de vulnerabilidades.
                 </p>
               </div>
@@ -253,12 +289,17 @@ export default function MantenimientoPage() {
 
             <div className="flex gap-4">
               <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-secondary to-accent rounded-xl flex items-center justify-center">
-                <Icon icon={Database} size="lg" className="text-white" aria-label="Backups Automáticos" />
+                <Icon
+                  icon={Database}
+                  size="lg"
+                  className="text-white"
+                  aria-label="Backups Automáticos"
+                />
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-2">Backups Automáticos</h3>
                 <p className="text-muted-foreground">
-                  Copias de seguridad automáticas diarias con almacenamiento 
+                  Copias de seguridad automáticas diarias con almacenamiento
                   seguro y recuperación rápida en caso de problemas.
                 </p>
               </div>
@@ -266,12 +307,17 @@ export default function MantenimientoPage() {
 
             <div className="flex gap-4">
               <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-accent to-primary rounded-xl flex items-center justify-center">
-                <Icon icon={Zap} size="lg" className="text-white" aria-label="Optimización" />
+                <Icon
+                  icon={Zap}
+                  size="lg"
+                  className="text-white"
+                  aria-label="Optimización"
+                />
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-2">Optimización</h3>
                 <p className="text-muted-foreground">
-                  Mejora continua del rendimiento, optimización de imágenes, 
+                  Mejora continua del rendimiento, optimización de imágenes,
                   cache y velocidad de carga.
                 </p>
               </div>
@@ -281,39 +327,54 @@ export default function MantenimientoPage() {
           <div className="space-y-8">
             <div className="flex gap-4">
               <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center">
-                <Icon icon={Monitor} size="lg" className="text-white" aria-label="Monitoreo 24/7" />
+                <Icon
+                  icon={Monitor}
+                  size="lg"
+                  className="text-white"
+                  aria-label="Monitoreo 24/7"
+                />
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-2">Monitoreo 24/7</h3>
                 <p className="text-muted-foreground">
-                  Supervisión continua del uptime, alertas automáticas 
-                  y respuesta rápida ante incidencias.
+                  Supervisión continua del uptime, alertas automáticas y
+                  respuesta rápida ante incidencias.
                 </p>
               </div>
             </div>
 
             <div className="flex gap-4">
               <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-secondary to-accent rounded-xl flex items-center justify-center">
-                <Icon icon={Settings} size="lg" className="text-white" aria-label="Soporte Técnico" />
+                <Icon
+                  icon={Settings}
+                  size="lg"
+                  className="text-white"
+                  aria-label="Soporte Técnico"
+                />
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-2">Soporte Técnico</h3>
                 <p className="text-muted-foreground">
-                  Asistencia técnica especializada, resolución de problemas 
-                  y consultas sobre funcionalidades.
+                  Asistencia técnica especializada, resolución de problemas y
+                  consultas sobre funcionalidades.
                 </p>
               </div>
             </div>
 
             <div className="flex gap-4">
               <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-accent to-primary rounded-xl flex items-center justify-center">
-                <Icon icon={TrendingUp} size="lg" className="text-white" aria-label="Reportes Mensuales" />
+                <Icon
+                  icon={TrendingUp}
+                  size="lg"
+                  className="text-white"
+                  aria-label="Reportes Mensuales"
+                />
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-2">Reportes Mensuales</h3>
                 <p className="text-muted-foreground">
-                  Informes detallados del estado de tu web, estadísticas 
-                  de rendimiento y recomendaciones de mejora.
+                  Informes detallados del estado de tu web, estadísticas de
+                  rendimiento y recomendaciones de mejora.
                 </p>
               </div>
             </div>
@@ -333,11 +394,16 @@ export default function MantenimientoPage() {
         <div className="grid md:grid-cols-3 gap-8">
           <SolucionCard>
             <div className="mb-4 flex justify-center">
-              <Icon icon={Target} size="3xl" variant="primary" aria-label="Especialistas en Web" />
+              <Icon
+                icon={Target}
+                size="3xl"
+                variant="primary"
+                aria-label="Especialistas en Web"
+              />
             </div>
             <h3 className="text-2xl font-bold mb-3">Especialistas en Web</h3>
             <p className="text-muted-foreground">
-              Más de 5 años de experiencia manteniendo y optimizando páginas web 
+              Más de 5 años de experiencia manteniendo y optimizando páginas web
               de todo tipo. Conocemos las mejores prácticas.
             </p>
           </SolucionCard>
@@ -346,7 +412,7 @@ export default function MantenimientoPage() {
             <div className="text-5xl mb-4">⚡</div>
             <h3 className="text-2xl font-bold mb-3">Respuesta Rápida</h3>
             <p className="text-muted-foreground">
-              Tiempo de respuesta promedio de 2 horas en planes profesionales. 
+              Tiempo de respuesta promedio de 2 horas en planes profesionales.
               Tu web siempre funcionando sin interrupciones.
             </p>
           </SolucionCard>
@@ -355,8 +421,8 @@ export default function MantenimientoPage() {
             <div className="text-5xl mb-4">💰</div>
             <h3 className="text-2xl font-bold mb-3">Precios Justos</h3>
             <p className="text-muted-foreground">
-              Planes de mantenimiento transparentes sin costes ocultos. 
-              Solo pagas por lo que realmente necesitas.
+              Planes de mantenimiento transparentes sin costes ocultos. Solo
+              pagas por lo que realmente necesitas.
             </p>
           </SolucionCard>
         </div>
@@ -373,8 +439,9 @@ export default function MantenimientoPage() {
               </span>
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              No esperes a que algo se rompa. Con nuestros planes de mantenimiento, 
-              tu página web estará siempre segura, rápida y funcionando perfectamente.
+              No esperes a que algo se rompa. Con nuestros planes de
+              mantenimiento, tu página web estará siempre segura, rápida y
+              funcionando perfectamente.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button

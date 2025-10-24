@@ -11,9 +11,11 @@ Este directorio contiene prompts y guías de desarrollo para mantener la consist
 ### **[Diseño]** Diseño y Desarrollo de Páginas
 
 #### [`create-proceso-page.prompt.md`](./create-proceso-page.prompt.md)
+
 **Propósito**: Crear una página completa de "Proceso" de desarrollo web
 
 **Contenido**:
+
 - Estructura de 4 fases del proceso de desarrollo
 - Timeline horizontal (desktop) y vertical (mobile)
 - Garantías de calidad y protección del cliente
@@ -21,6 +23,7 @@ Este directorio contiene prompts y guías de desarrollo para mantener la consist
 - SEO metadata y responsive design
 
 **Características**:
+
 - Diseño con gradientes y glassmorphism
 - Componentes WSFadeIn para animaciones
 - Trust indicators y CTAs optimizados
@@ -33,9 +36,11 @@ Este directorio contiene prompts y guías de desarrollo para mantener la consist
 ### **[Rendimiento]** Optimización y Rendimiento
 
 #### [`performance-animations-guidelines.prompt.md`](./performance-animations-guidelines.prompt.md)
+
 **Propósito**: Guía completa de optimización de animaciones y rendimiento
 
 **Contenido**:
+
 - **Reglas de oro** para animaciones eficientes
 - **Problemas comunes** de rendimiento (CPU/GPU >100)
 - **Límites recomendados** de elementos animados
@@ -44,17 +49,20 @@ Este directorio contiene prompts y guías de desarrollo para mantener la consist
 - **Script de análisis automático** de rendimiento
 
 **Caso de estudio real**:
+
 - Optimización página `/proceso`
 - Reducción: 24 → 4 elementos animados (-83%)
 - CPU/GPU: >100 → ~20-30 en idle (-75%)
 
 **Métricas objetivo**:
+
 - Elementos animados: ≤5
 - CPU idle: <30%
 - Lighthouse Performance: >90
 - Sin blur-3xl (usar blur-2xl)
 
-**Cuándo usar**: 
+**Cuándo usar**:
+
 - Antes de añadir animaciones nuevas
 - Al detectar problemas de rendimiento
 - Durante code reviews de componentes con animaciones
@@ -79,6 +87,7 @@ Este directorio contiene prompts y guías de desarrollo para mantener la consist
 ## **[Análisis]** Métricas de Calidad
 
 Todos los prompts están basados en:
+
 - **[Completado]** Experiencia real del proyecto
 - **[Completado]** Problemas resueltos documentados
 - **[Completado]** Mejores prácticas de la industria
@@ -89,6 +98,7 @@ Todos los prompts están basados en:
 ### Actualización de Prompts
 
 Cuando se descubra un nuevo patrón o optimización:
+
 1. Documentarlo en el prompt relevante
 2. Añadir ejemplo de código
 3. Incluir métricas before/after si aplica
@@ -97,35 +107,42 @@ Cuando se descubra un nuevo patrón o optimización:
 ### Creación de Nuevos Prompts
 
 Template sugerido:
+
 ```markdown
 # Prompt: [Título Descriptivo]
 
 ## Contexto
+
 [Explicación del propósito]
 
 ## Stack Tecnológico
+
 [Tecnologías relevantes]
 
 ## Guía/Contenido Principal
+
 [Contenido detallado]
 
 ## Ejemplos
+
 [Código de ejemplo]
 
 ## Checklist
+
 [Items verificables]
 ```
 
 ## **[Documentación]** Historial de Prompts
 
-| Fecha | Prompt | Descripción |
-|-------|--------|-------------|
+| Fecha      | Prompt                                        | Descripción                              |
+| ---------- | --------------------------------------------- | ---------------------------------------- |
 | 2025-10-03 | `performance-animations-guidelines.prompt.md` | Guía de optimización basada en caso real |
-| 2025-10-03 | `create-proceso-page.prompt.md` | Template para página de Proceso |
+| 2025-10-03 | `create-proceso-page.prompt.md`               | Template para página de Proceso          |
 
 ## **[Lanzamiento]** Próximos Prompts Planeados
 
 Ideas para futuros prompts:
+
 - [ ] Component architecture guidelines
 - [ ] SEO optimization checklist
 - [ ] Accessibility (a11y) standards
@@ -137,6 +154,7 @@ Ideas para futuros prompts:
 ## **[Idea]** Contribuir
 
 Para añadir un nuevo prompt:
+
 1. Crear archivo `.prompt.md` en este directorio
 2. Seguir el template sugerido
 3. Añadir entrada en este README

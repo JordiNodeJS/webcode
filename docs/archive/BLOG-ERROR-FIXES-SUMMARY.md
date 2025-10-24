@@ -23,12 +23,14 @@ Make sure the relevant pages and databases are shared with your integration.
 **Archivo**: `src/lib/notion/blog-service.ts`
 
 **Mejoras:**
+
 - ✅ Detección específica de error `object_not_found`
 - ✅ Detección específica de error `unauthorized`
 - ✅ Mensajes de error descriptivos y accionables
 - ✅ Tipado correcto con `unknown` en catch
 
 **Antes:**
+
 ```typescript
 catch (error) {
   console.error("Error al obtener posts del blog:", error);
@@ -37,6 +39,7 @@ catch (error) {
 ```
 
 **Después:**
+
 ```typescript
 catch (error: unknown) {
   console.error("Error al obtener posts del blog:", error);
@@ -48,7 +51,7 @@ catch (error: unknown) {
         "Por favor, comparte la base de datos con tu integración en Notion."
       );
     }
-    
+
     if (error.code === "unauthorized") {
       throw new Error(
         "API Key de Notion inválida. Verifica tu NOTION_API_KEY en .env.local"
@@ -65,6 +68,7 @@ catch (error: unknown) {
 **Archivo**: `src/app/blog/error.tsx` (NUEVO)
 
 **Características:**
+
 - ✅ Client Component con `"use client"`
 - ✅ Detección inteligente del tipo de error
 - ✅ Instrucciones visuales paso a paso
@@ -74,6 +78,7 @@ catch (error: unknown) {
 - ✅ Iconos descriptivos (AlertCircle, Database, Key, ArrowLeft)
 
 **Tipos de errores manejados:**
+
 1. **Error de permisos (`object_not_found`):**
    - Instrucciones paso a paso para compartir la base de datos
    - Icono de base de datos
@@ -89,6 +94,7 @@ catch (error: unknown) {
    - Botones de acción
 
 **UI/UX:**
+
 - Card con borde rojo y fondo suave
 - Secciones claramente separadas
 - Enlaces a documentación interna
@@ -99,6 +105,7 @@ catch (error: unknown) {
 **Archivo**: `scripts/verify-notion-connection.js`
 
 **Corrección:**
+
 - ❌ Removida dependencia de `dotenv` (no instalado)
 - ✅ Carga manual de `.env.local` con Node.js nativo
 - ✅ Funciona sin dependencias externas
@@ -108,11 +115,13 @@ catch (error: unknown) {
 **Archivo**: `package.json`
 
 **Nuevo comando:**
+
 ```json
 "notion:verify": "node scripts/verify-notion-connection.js"
 ```
 
 **Uso:**
+
 ```bash
 pnpm notion:verify
 ```
@@ -137,17 +146,20 @@ pnpm notion:verify
 ### Estado Actual (Con errores manejados)
 
 ✅ **Console:**
+
 - Error capturado por Error Boundary
 - Mensaje: "The above error occurred in the <BlogPage> component"
 - Digest: `3145889159`
 
 ✅ **UI:**
+
 - Página de error personalizada visible
 - Header con "Error al cargar el blog"
 - Instrucciones paso a paso visibles
 - Botones de acción funcionales
 
 ✅ **Network:**
+
 - Request a `/blog` devuelve contenido (no 500)
 - Error manejado en el cliente
 
@@ -170,6 +182,7 @@ pnpm notion:verify
 ```
 
 **Resultado esperado:**
+
 ```
 ✅ Conexión con Notion: EXITOSA
 ✅ Base de datos accesible: SÍ
@@ -186,6 +199,7 @@ pnpm notion:verify
 ```
 
 **Resultado esperado:**
+
 - ✅ Lista de posts del blog
 - ✅ Imágenes de portada
 - ✅ Tags y metadatos
@@ -195,13 +209,13 @@ pnpm notion:verify
 
 ## 📊 Mejoras Implementadas
 
-| Aspecto | Antes | Después |
-|---------|-------|---------|
-| **Mensaje de error** | Genérico | Específico por tipo |
-| **UI de error** | Overlay de Next.js | Página personalizada |
-| **Instrucciones** | Ninguna | Paso a paso visual |
-| **Diagnóstico** | Manual | Script automatizado |
-| **UX** | Confusa | Clara y accionable |
+| Aspecto              | Antes              | Después              |
+| -------------------- | ------------------ | -------------------- |
+| **Mensaje de error** | Genérico           | Específico por tipo  |
+| **UI de error**      | Overlay de Next.js | Página personalizada |
+| **Instrucciones**    | Ninguna            | Paso a paso visual   |
+| **Diagnóstico**      | Manual             | Script automatizado  |
+| **UX**               | Confusa            | Clara y accionable   |
 
 ---
 

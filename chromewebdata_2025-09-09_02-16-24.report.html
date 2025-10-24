@@ -9295,13 +9295,19 @@ details[open] .lh-clump-toggletext--hide { display: block;}
           (y.setAttribute("id", "lh-tools-dropdown"),
             y.setAttribute("role", "menu"),
             y.setAttribute("aria-labelledby", "lh-tools-button"));
-          const S = o.createElement("a", "lh-report-icon lh-report-icon--print");
+          const S = o.createElement(
+            "a",
+            "lh-report-icon lh-report-icon--print"
+          );
           (S.setAttribute("role", "menuitem"),
             S.setAttribute("tabindex", "-1"),
             S.setAttribute("href", "#"),
             S.setAttribute("data-i18n", "dropdownPrintSummary"),
             S.setAttribute("data-action", "print-summary"));
-          const C = o.createElement("a", "lh-report-icon lh-report-icon--print");
+          const C = o.createElement(
+            "a",
+            "lh-report-icon lh-report-icon--print"
+          );
           (C.setAttribute("role", "menuitem"),
             C.setAttribute("tabindex", "-1"),
             C.setAttribute("href", "#"),
@@ -10089,7 +10095,11 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               );
               g.textContent = e.result.errorMessage || t.errorMissingAuditInfo;
             } else if (e.result.explanation) {
-              const p = this.dom.createChildOf(a, "div", "lh-audit-explanation");
+              const p = this.dom.createChildOf(
+                a,
+                "div",
+                "lh-audit-explanation"
+              );
               p.textContent = e.result.explanation;
             }
             const c = e.result.warnings;
@@ -10426,7 +10436,10 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               const b = n.renderTextURL(l),
                 _ = e.find(".lh-crc-node__tree-value", r);
               if ((_.append(b), !t.hasChildren || s)) {
-                const m = e.createElement("span", "lh-crc-node__chain-duration");
+                const m = e.createElement(
+                  "span",
+                  "lh-crc-node__chain-duration"
+                );
                 m.textContent = " - " + u.i18n.formatMilliseconds(i) + ", ";
                 const w = e.createElement("span", "lh-crc-node__chain-size");
                 ((w.textContent = u.i18n.formatBytesToKiB(a, 0.01)),
@@ -10969,7 +10982,11 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               const t = this._dom.createElement("ul", "lh-checklist");
               return (
                 Object.values(e.items).forEach((n) => {
-                  const r = this._dom.createChildOf(t, "li", "lh-checklist-item"),
+                  const r = this._dom.createChildOf(
+                      t,
+                      "li",
+                      "lh-checklist-item"
+                    ),
                     i = n.value
                       ? "lh-report-plain-icon--checklist-pass"
                       : "lh-report-plain-icon--checklist-fail";
@@ -11681,7 +11698,10 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                   }),
                   i.querySelector(".lh-gauge__wrapper"))
                 ) {
-                  const C = this.dom.find(".lh-category-header__description", i),
+                  const C = this.dom.find(
+                      ".lh-category-header__description",
+                      i
+                    ),
                     L = this.dom.createChildOf(
                       C,
                       "div",
@@ -12643,13 +12663,18 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 this._dom
                   .find('a[data-action="save-html"]', this._dom.rootEl)
                   .classList.remove("lh-hidden"));
-            for (const s of this._dom.findAll("[data-i18n]", this._dom.rootEl)) {
+            for (const s of this._dom.findAll(
+              "[data-i18n]",
+              this._dom.rootEl
+            )) {
               const d = s.getAttribute("data-i18n");
               s.textContent = u.strings[d];
             }
           }
           addButton(e) {
-            const t = this._dom.rootEl.querySelector(".lh-audit-group--metrics");
+            const t = this._dom.rootEl.querySelector(
+              ".lh-audit-group--metrics"
+            );
             if (!t) return;
             let n = t.querySelector(".lh-buttons");
             n || (n = this._dom.createChildOf(t, "div", "lh-buttons"));

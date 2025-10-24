@@ -7,12 +7,14 @@ Este proyecto usa **Layouts nativos de Next.js 15** con **Route Groups** para es
 ## Problema Resuelto
 
 ### Antes
+
 - Código duplicado en cada página (`pt-24`, `container`, `max-w-*`)
 - 25+ páginas con spacing manual
 - Inconsistencias entre páginas
 - Difícil de mantener
 
 ### Después
+
 - Layouts automáticos con Route Groups
 - 3 layouts base para toda la aplicación
 - Cero repetición de código
@@ -30,6 +32,7 @@ app/
 ```
 
 **Route Groups** (carpetas con paréntesis) organizan páginas sin afectar sus URLs:
+
 - `app/(content)/about/page.tsx` → URL: `/about` ✅
 - `app/(hero)/proceso/page.tsx` → URL: `/proceso` ✅
 - `app/(grid)/blog/page.tsx` → URL: `/blog` ✅
@@ -44,9 +47,7 @@ app/
 export function ContentLayout({ children }) {
   return (
     <article className="min-h-screen pt-24 pb-20 px-4">
-      <div className="container mx-auto max-w-4xl">
-        {children}
-      </div>
+      <div className="container mx-auto max-w-4xl">{children}</div>
     </article>
   );
 }
@@ -55,11 +56,13 @@ export function ContentLayout({ children }) {
 **Usado en**: `app/(content)/layout.tsx`
 
 **Páginas**:
+
 - `/about`
 - `/contacto`
 - `/servicios`
 
 **Características**:
+
 - HTML: `<article>` semántico
 - Spacing: `pt-24` (96px para navbar)
 - Max width: `max-w-4xl` (896px)
@@ -71,22 +74,20 @@ export function ContentLayout({ children }) {
 
 ```tsx
 export function HeroLayout({ children }) {
-  return (
-    <div className="min-h-screen">
-      {children}
-    </div>
-  );
+  return <div className="min-h-screen">{children}</div>;
 }
 ```
 
 **Usado en**: `app/(hero)/layout.tsx`
 
 **Páginas**:
+
 - `/soluciones` y todas sus subpáginas
 - `/proceso`
 - `/briefing`
 
 **Características**:
+
 - Wrapper mínimo
 - Las páginas manejan su propio spacing y gradientes
 - Flexibilidad máxima para heros personalizados
@@ -99,9 +100,7 @@ export function HeroLayout({ children }) {
 export function GridLayout({ children }) {
   return (
     <section className="min-h-screen pt-24 pb-20 px-4">
-      <div className="container mx-auto max-w-6xl">
-        {children}
-      </div>
+      <div className="container mx-auto max-w-6xl">{children}</div>
     </section>
   );
 }
@@ -110,11 +109,13 @@ export function GridLayout({ children }) {
 **Usado en**: `app/(grid)/layout.tsx`
 
 **Páginas**:
+
 - `/blog`
 - `/faqs`
 - `/portfolio`
 
 **Características**:
+
 - HTML: `<section>` semántico
 - Spacing: `pt-24` (96px para navbar)
 - Max width: `max-w-6xl` (1152px - más ancho para grids)
@@ -128,33 +129,32 @@ export function GridLayout({ children }) {
 <body>
   <div class="min-h-screen flex flex-col">
     <HeaderNavigation />
-    
+
     <main class="flex-1">
       <!-- Layout automático según route group -->
-      
+
       <!-- (content)/ → <article> -->
       <article class="min-h-screen pt-24 pb-20 px-4">
         <div class="container mx-auto max-w-4xl">
           <!-- Contenido de la página -->
         </div>
       </article>
-      
+
       <!-- (grid)/ → <section> -->
       <section class="min-h-screen pt-24 pb-20 px-4">
         <div class="container mx-auto max-w-6xl">
           <!-- Contenido de la página -->
         </div>
       </section>
-      
+
       <!-- (hero)/ → <div> (páginas controlan su HTML) -->
       <div class="min-h-screen">
         <section class="pt-24 pb-20 ...">
           <!-- Hero section -->
         </section>
       </div>
-      
     </main>
-    
+
     <FooterSection />
   </div>
 </body>
@@ -189,6 +189,7 @@ padding-top: 6rem;
 ### Horizontal Spacing
 
 **Todos**: `px-4` (16px) responsive
+
 - Mobile: 16px padding
 - Desktop: Mantenido por `container`
 
@@ -196,11 +197,11 @@ padding-top: 6rem;
 
 ### Por Tipo de Página
 
-| Tipo | Max Width | Pixels | Uso |
-|------|-----------|--------|-----|
-| Content | `max-w-4xl` | 896px | Páginas de contenido |
-| Grid | `max-w-6xl` | 1152px | Listados, blog |
-| Hero | `max-w-6xl` | 1152px | Heros (dentro de section) |
+| Tipo    | Max Width   | Pixels | Uso                       |
+| ------- | ----------- | ------ | ------------------------- |
+| Content | `max-w-4xl` | 896px  | Páginas de contenido      |
+| Grid    | `max-w-6xl` | 1152px | Listados, blog            |
+| Hero    | `max-w-6xl` | 1152px | Heros (dentro de section) |
 
 ### Contenedor Responsivo
 
@@ -235,9 +236,7 @@ export default function NuevaPagina() {
   return (
     <>
       <h1 className="text-4xl font-bold mb-6">Nueva Página</h1>
-      <p className="text-muted-foreground">
-        Contenido de la página...
-      </p>
+      <p className="text-muted-foreground">Contenido de la página...</p>
     </>
   );
 }
@@ -259,7 +258,7 @@ export default function NuevaHero() {
   return (
     <>
       {/* Hero Section */}
-      <section 
+      <section
         className="relative pt-24 pb-20 md:pb-32 overflow-hidden"
         style={{
           background: `linear-gradient(
@@ -276,7 +275,7 @@ export default function NuevaHero() {
           </div>
         </div>
       </section>
-      
+
       {/* Secciones adicionales */}
       <section className="py-20">
         <div className="container mx-auto max-w-6xl px-4">
@@ -309,12 +308,10 @@ export default function NuevoListado() {
           Descripción del listado
         </p>
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {items.map(item => (
-          <Card key={item.id}>
-            {/* Contenido del card */}
-          </Card>
+        {items.map((item) => (
+          <Card key={item.id}>{/* Contenido del card */}</Card>
         ))}
       </div>
     </>
@@ -327,28 +324,33 @@ export default function NuevoListado() {
 ## Ventajas del Sistema
 
 ### 1. DRY (Don't Repeat Yourself)
+
 - ✅ Cero código duplicado
 - ✅ Cambios centralizados
 - ✅ 77% menos código
 
 ### 2. Consistencia
+
 - ✅ Spacing uniforme (pt-24)
 - ✅ Max widths estandarizados
 - ✅ HTML semántico correcto
 
 ### 3. Developer Experience
+
 - ✅ Cero imports necesarios
 - ✅ Layouts automáticos
 - ✅ Fácil de entender
 - ✅ TypeScript completo
 
 ### 4. Next.js Native
+
 - ✅ Usa el sistema de layouts nativo
 - ✅ Compatible con Server Components
 - ✅ SSR/SSG funciona perfectamente
 - ✅ Route Groups no afectan URLs
 
 ### 5. Mantenibilidad
+
 - ✅ Cambios en un solo lugar
 - ✅ Fácil de extender
 - ✅ Documentación clara
@@ -386,9 +388,7 @@ export function ContentLayout({ children }) {
 
   return (
     <article className="min-h-screen pt-24 pb-20 px-4">
-      <div className="container mx-auto max-w-4xl">
-        {children}
-      </div>
+      <div className="container mx-auto max-w-4xl">{children}</div>
     </article>
   );
 }

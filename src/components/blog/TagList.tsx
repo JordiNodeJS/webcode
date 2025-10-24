@@ -1,7 +1,7 @@
 /**
  * Componente para mostrar lista de tags del blog
  * Server Component - Links a páginas de tags
- * 
+ *
  * Incluye estilos consistentes con el sistema de diseño WebCode
  */
 
@@ -77,15 +77,15 @@ function TagItem({
 
 /**
  * Lista de tags con enlaces a páginas de filtrado
- * 
+ *
  * @example
  * ```tsx
  * // Lista por defecto
  * <TagList tags={post.tags} />
- * 
+ *
  * // Variante outline
  * <TagList tags={post.tags} variant="outline" />
- * 
+ *
  * // Tags pequeños
  * <TagList tags={post.tags} size="sm" />
  * ```
@@ -113,7 +113,7 @@ export function TagList({
 
 /**
  * Componente de tag único (sin lista)
- * 
+ *
  * @example
  * ```tsx
  * <Tag tag={{ id: '1', name: 'Next.js' }} />

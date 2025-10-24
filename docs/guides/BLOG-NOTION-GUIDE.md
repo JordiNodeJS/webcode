@@ -10,22 +10,22 @@ Tu base de datos de Notion debe tener las siguientes propiedades:
 
 ### Propiedades Obligatorias
 
-| Propiedad | Tipo | Descripción |
-|-----------|------|-------------|
-| **title** | Title | Título del artículo |
-| **slug** | Rich Text | URL amigable (ej: "mi-primer-articulo") |
-| **excerpt** | Rich Text | Resumen breve del artículo (150-200 caracteres) |
-| **published** | Checkbox | Si está marcado, el artículo aparece en el blog |
-| **date** | Date | Fecha de publicación |
+| Propiedad     | Tipo      | Descripción                                     |
+| ------------- | --------- | ----------------------------------------------- |
+| **title**     | Title     | Título del artículo                             |
+| **slug**      | Rich Text | URL amigable (ej: "mi-primer-articulo")         |
+| **excerpt**   | Rich Text | Resumen breve del artículo (150-200 caracteres) |
+| **published** | Checkbox  | Si está marcado, el artículo aparece en el blog |
+| **date**      | Date      | Fecha de publicación                            |
 
 ### Propiedades Opcionales
 
-| Propiedad | Tipo | Descripción |
-|-----------|------|-------------|
-| **tags** | Multi-select | Categorías del artículo |
-| **author** | Rich Text | Nombre del autor (por defecto: "WebCode") |
-| **cover** | Files | Imagen de portada |
-| **readTime** | Number | Tiempo estimado de lectura en minutos |
+| Propiedad    | Tipo         | Descripción                               |
+| ------------ | ------------ | ----------------------------------------- |
+| **tags**     | Multi-select | Categorías del artículo                   |
+| **author**   | Rich Text    | Nombre del autor (por defecto: "WebCode") |
+| **cover**    | Files        | Imagen de portada                         |
+| **readTime** | Number       | Tiempo estimado de lectura en minutos     |
 
 ## 🔧 Configuración de Variables de Entorno
 
@@ -85,6 +85,7 @@ src/
 ## 🚀 Funciones Disponibles
 
 ### `getBlogPosts(pageSize?, startCursor?)`
+
 Obtiene todos los posts publicados con paginación.
 
 ```typescript
@@ -92,6 +93,7 @@ const { posts, meta } = await getBlogPosts(10);
 ```
 
 ### `getBlogPostBySlug(slug)`
+
 Obtiene un post específico por su slug, incluyendo el contenido completo.
 
 ```typescript
@@ -99,6 +101,7 @@ const post = await getBlogPostBySlug("mi-primer-articulo");
 ```
 
 ### `getBlogPostsByTag(tag, pageSize?)`
+
 Obtiene posts filtrados por una categoría específica.
 
 ```typescript
@@ -106,6 +109,7 @@ const posts = await getBlogPostsByTag("Next.js", 5);
 ```
 
 ### `getAllTags()`
+
 Obtiene todas las categorías con el conteo de artículos.
 
 ```typescript
@@ -114,6 +118,7 @@ const tags = await getAllTags();
 ```
 
 ### `getAllPublishedSlugs()`
+
 Obtiene todos los slugs publicados (útil para `generateStaticParams`).
 
 ```typescript
@@ -122,6 +127,7 @@ const slugs = await getAllPublishedSlugs();
 ```
 
 ### `searchBlogPosts(searchTerm)`
+
 Busca posts por término en título o excerpt.
 
 ```typescript
@@ -171,6 +177,7 @@ El contenido se convierte de Notion a Markdown y soporta:
 - **Build time**: Los posts se generan estáticamente en el build
 
 Para forzar una actualización inmediata:
+
 ```bash
 pnpm build
 ```
@@ -178,20 +185,24 @@ pnpm build
 ## 🐛 Solución de Problemas
 
 ### Error: "NOTION_API_KEY no está configurada"
+
 - Verifica que `.env.local` existe en la raíz del proyecto
 - Verifica que la variable tiene el formato correcto
 - Reinicia el servidor de desarrollo
 
 ### Los posts no aparecen
+
 - Verifica que la propiedad `published` está marcada (☑)
 - Verifica que la integración tiene acceso a la base de datos
 - Revisa la consola del servidor para errores
 
 ### Error de tipos TypeScript
+
 - Verifica que todas las propiedades obligatorias existen en Notion
 - Los nombres de las propiedades deben coincidir exactamente (case-sensitive)
 
 ### Imágenes no se muestran
+
 - Verifica que las imágenes tienen permisos públicos
 - Usa el campo `cover` para la imagen de portada
 - Las imágenes dentro del contenido se extraen automáticamente

@@ -1,5 +1,4 @@
 import Script from "next/script";
-import { useId } from "react";
 
 interface BlogPost {
   id: string;
@@ -23,7 +22,8 @@ export function ArticleSchema({
   post,
   baseUrl = "https://webcode.es"
 }: ArticleSchemaProps) {
-  const id = useId();
+  // Usar ID estático para evitar problemas de hidratación
+  const id = "article-schema";
   const articleUrl = `${baseUrl}/blog/${post.slug}`;
 
   const articleSchema = {

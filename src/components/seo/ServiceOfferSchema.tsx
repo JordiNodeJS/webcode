@@ -55,12 +55,13 @@ export function ServiceOfferSchema({
       priceCurrency: service.priceCurrency || "EUR",
       availability: service.availability || "https://schema.org/InStock",
       seller: organizationData,
-      validFrom: service.validFrom || new Date().toISOString().split('T')[0],
+      validFrom: service.validFrom || new Date().toISOString().split("T")[0],
       validThrough: service.validThrough,
       hasMerchantReturnPolicy: {
         "@type": "MerchantReturnPolicy",
         applicableCountry: "ES",
-        returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+        returnPolicyCategory:
+          "https://schema.org/MerchantReturnFiniteReturnWindow",
         merchantReturnDays: 14,
         returnMethod: "https://schema.org/ReturnByMail",
         returnFees: "https://schema.org/FreeReturn"

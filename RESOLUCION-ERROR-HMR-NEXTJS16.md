@@ -3,11 +3,13 @@
 ## 📋 Resumen del Problema
 
 ### Error Inicial
+
 ```
 Module [project]/node_modules/.pnpm/next@15.5.2_@opentelemetry+.../next/dist/compiled/react-experimental/jsx-dev-runtime.js was instantiated because it was required from module [project]/src/contexts/AnimationContext.tsx, but the module factory is not available. It might have been deleted in an HMR update.
 ```
 
 **Síntomas:**
+
 - La aplicación no renderizaba después de la migración a Next.js 16
 - El error mostraba una ruta a Next.js 15.5.2 aunque se había instalado 16.0.0
 - El problema ocurría en `AnimationContext.tsx` durante la inicialización del layout
@@ -15,6 +17,7 @@ Module [project]/node_modules/.pnpm/next@15.5.2_@opentelemetry+.../next/dist/com
 ## 🔍 Análisis del Problema
 
 ### Causa Raíz
+
 El error fue causado por **caché corrupta** de múltiples fuentes:
 
 1. **Caché de pnpm store**: Contenía versiones antiguas de Next.js (15.5.2)
@@ -23,7 +26,9 @@ El error fue causado por **caché corrupta** de múltiples fuentes:
 4. **`node_modules/`**: Instalación inconsistente de paquetes
 
 ### Por Qué Ocurrió
+
 Durante la migración a Next.js 16:
+
 - Las dependencias se actualizaron en `package.json`
 - Sin embargo, el sistema de caché de pnpm y Turbopack aún referenciaba módulos de la versión anterior
 - El HMR (Hot Module Replacement) intentaba cargar módulos de React experimental de Next.js 15.5.2
@@ -32,28 +37,35 @@ Durante la migración a Next.js 16:
 ## ✅ Solución Aplicada
 
 ### Paso 1: Limpiar Store de pnpm
+
 ```bash
 pnpm store prune
 ```
+
 **Resultado:** Eliminó 4016 archivos y 76 paquetes obsoletos
 
 ### Paso 2: Eliminar node_modules
+
 ```bash
 rm -rf node_modules
 ```
 
 ### Paso 3: Limpiar Cache de Next.js
+
 ```bash
 rm -rf .next node_modules/.cache
 ```
 
 ### Paso 4: Reinstalar Dependencias
+
 ```bash
 pnpm install --force
 ```
+
 **Resultado:** Instaló 871 paquetes limpios con Next.js 16.0.0 y React 19.2.0
 
 ### Paso 5: Migrar middleware a proxy (Next.js 16)
+
 ```bash
 # Renombrar archivos
 mv middleware.ts proxy.ts
@@ -67,6 +79,7 @@ export function proxy(request: NextRequest) {
 ## 📦 Versiones Confirmadas
 
 Después de la limpieza, las versiones correctas:
+
 ```json
 {
   "next": "16.0.0",
@@ -78,11 +91,14 @@ Después de la limpieza, las versiones correctas:
 ## 🎯 Mejoras Adicionales
 
 ### 1. Consolidación de Archivos Proxy
+
 Se unificaron dos archivos middleware en un solo `proxy.ts`:
+
 - **Antes:** `middleware.ts` (root) + `src/middleware.ts`
 - **Después:** `proxy.ts` (root) con toda la lógica consolidada
 
 ### 2. Configuración de Proxy
+
 ```typescript
 // proxy.ts - Next.js 16
 export function proxy(request: NextRequest) {
@@ -99,6 +115,7 @@ export const config = {
 ## 🚀 Resultado
 
 ### Estado del Servidor
+
 ```
 ✓ Next.js 16.0.0 (Turbopack)
 ✓ Ready in 923ms
@@ -107,6 +124,7 @@ export const config = {
 ```
 
 ### Verificaciones Exitosas
+
 - ✅ Servidor de desarrollo funciona correctamente
 - ✅ Hot Module Replacement operativo
 - ✅ No hay referencias a versiones antiguas
@@ -116,11 +134,13 @@ export const config = {
 ## 📚 Documentación Consultada
 
 ### Context7 - Next.js
+
 - **Library ID:** `/vercel/next.js`
 - **Trust Score:** 10
 - **Topics:** HMR, React 19 migration, module resolution
 
 ### Hallazgos Clave de la Documentación
+
 1. **HMR en Next.js 16**: Usa Turbopack por defecto con nuevo sistema de cache
 2. **Migración middleware → proxy**: Cambio obligatorio en Next.js 16
 3. **React 19 Compatibility**: Requiere actualización completa del store de paquetes
@@ -129,6 +149,7 @@ export const config = {
 ## 🔄 Procedimiento para Futuras Migraciones
 
 ### Checklist de Limpieza de Cache
+
 ```bash
 # 1. Limpiar store de pnpm
 pnpm store prune
@@ -147,6 +168,7 @@ pnpm list next react react-dom
 ```
 
 ### Verificación Post-Migración
+
 1. ✅ Verificar que no haya warnings sobre `middleware`
 2. ✅ Confirmar que el servidor inicia sin errores
 3. ✅ Probar HMR con cambios en componentes
@@ -155,17 +177,22 @@ pnpm list next react react-dom
 ## 🎓 Lecciones Aprendidas
 
 ### 1. Importancia de la Limpieza de Cache
+
 En migraciones mayores de versión (Next.js 15 → 16):
+
 - **Siempre** limpiar el store de pnpm con `pnpm store prune`
 - **Siempre** eliminar completamente `node_modules/` y `.next/`
 - Usar `--force` en la reinstalación para garantizar consistencia
 
 ### 2. Conflictos de Cache en Turbopack
+
 Turbopack (por defecto en Next.js 16) es más sensible a cache corrupta:
+
 - Cache de versiones anteriores puede causar errores de runtime
 - Los errores de "module factory not available" suelen indicar cache obsoleta
 
 ### 3. Convenciones de Next.js 16
+
 - `middleware.ts` → `proxy.ts` es obligatorio
 - React Compiler ahora es estable (no experimental)
 - APIs asíncronas en Server Components son el estándar
@@ -173,13 +200,16 @@ Turbopack (por defecto en Next.js 16) es más sensible a cache corrupta:
 ## 📝 Notas Adicionales
 
 ### Advertencias Informativas (No Críticas)
+
 ```
 ⚠ serverComponentsHmrCache (experimental)
 ✓ viewTransition (experimental)
 ```
+
 Estas advertencias son normales y no afectan el funcionamiento.
 
 ### Optimizaciones Activadas
+
 ```typescript
 // next.config.ts
 experimental: {

@@ -130,7 +130,7 @@ async function getBlogPostsUncached(
  * Obtiene todos los posts publicados del blog (con cache)
  * @param pageSize - Número de posts por página (default: 10)
  * @param startCursor - Cursor para paginación
- * 
+ *
  * Cache tags:
  * - "blog-list" - Para invalidar la lista completa de posts
  * - "blog-posts" - Tag general del blog
@@ -198,11 +198,11 @@ async function getBlogPostBySlugUncached(
 /**
  * Obtiene un post individual por slug (con cache selectivo)
  * @param slug - Slug del post
- * 
+ *
  * Cache tags:
  * - "blog-post:{slug}" - Para invalidar solo este post específico
  * - "blog-posts" - Tag general del blog
- * 
+ *
  * Ejemplo de invalidación selectiva:
  * ```ts
  * revalidateTag(`blog-post:${slug}`)  // Solo invalida este post
@@ -270,7 +270,7 @@ async function getBlogPostsByTagUncached(
  * Obtiene posts filtrados por tag (con cache selectivo)
  * @param tag - Nombre del tag (case-insensitive)
  * @param pageSize - Número de posts por página
- * 
+ *
  * Cache tags:
  * - "blog-tag:{tag}" - Para invalidar solo posts de este tag
  * - "blog-list" - Tag de lista general
@@ -325,7 +325,7 @@ async function getAllTagsUncached(): Promise<
 
 /**
  * Obtiene todos los tags únicos del blog (con cache)
- * 
+ *
  * Cache tags:
  * - "blog-tags" - Para invalidar la lista de tags
  * - "blog-list" - Se actualiza cuando cambia la lista de posts
@@ -363,7 +363,7 @@ async function getAllPublishedSlugsUncached(): Promise<string[]> {
 /**
  * Obtiene todos los slugs publicados (con cache)
  * Útil para generateStaticParams
- * 
+ *
  * Cache tags:
  * - "blog-slugs" - Para invalidar cuando se publican/eliminan posts
  * - "blog-list" - Relacionado con la lista general
@@ -437,7 +437,7 @@ async function searchBlogPostsUncached(
 /**
  * Busca posts por término de búsqueda (con cache corto, 5 min)
  * @param searchTerm - Término de búsqueda
- * 
+ *
  * Cache tags:
  * - "blog-search" - Para invalidar resultados de búsqueda
  * - "blog-posts" - Se actualiza cuando cambia cualquier post

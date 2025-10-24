@@ -30,12 +30,12 @@ pequeñas empresas y startups en Barcelona y España
 
 **Value Props (Grid 3 columnas):**
 
-| **[Lanzamiento]** **Tecnología 2025**          | **[Rendimiento]** **Performance Garantizado** | **[Móvil]** **Mobile-First**     |
-| ------------------------------- | ------------------------------ | ----------------------- |
-| • Next.js 15 - App Router       | • <2.5s tiempo de carga        | • Responsive design     |
-| • React 19 - Server Components  | • 99.9% uptime garantizado     | • Accesible WCAG 2.1 AA |
-| • Astro 5 - Static sites        | • Core Web Vitals en verde     | • Progressive Web Apps  |
-| • Tailwind CSS v4 - Performance | • CDN global optimizado        | • Touch-friendly UX     |
+| **[Lanzamiento]** **Tecnología 2025** | **[Rendimiento]** **Performance Garantizado** | **[Móvil]** **Mobile-First** |
+| ------------------------------------- | --------------------------------------------- | ---------------------------- |
+| • Next.js 15 - App Router             | • <2.5s tiempo de carga                       | • Responsive design          |
+| • React 19 - Server Components        | • 99.9% uptime garantizado                    | • Accesible WCAG 2.1 AA      |
+| • Astro 5 - Static sites              | • Core Web Vitals en verde                    | • Progressive Web Apps       |
+| • Tailwind CSS v4 - Performance       | • CDN global optimizado                       | • Touch-friendly UX          |
 
 **CTA Principal:**
 

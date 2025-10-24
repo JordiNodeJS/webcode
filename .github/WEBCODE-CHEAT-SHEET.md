@@ -9,16 +9,16 @@
 
 ```tsx
 // Primary (Rosa)
-className="bg-primary text-primary-foreground"
-className="border-primary"
-className="text-primary"
+className = "bg-primary text-primary-foreground";
+className = "border-primary";
+className = "text-primary";
 
-// Secondary (Aguamarina)  
-className="bg-secondary text-secondary-foreground"
+// Secondary (Aguamarina)
+className = "bg-secondary text-secondary-foreground";
 
 // Backgrounds
-className="bg-background text-foreground"
-className="bg-muted text-muted-foreground"
+className = "bg-background text-foreground";
+className = "bg-muted text-muted-foreground";
 ```
 
 ---
@@ -42,16 +42,16 @@ style={{ boxShadow: 'var(--shadow-3d-lg)' }}
 
 ```tsx
 // Títulos
-className="font-display text-5xl"
+className = "font-display text-5xl";
 
 // Texto normal
-className="font-sans text-base"
+className = "font-sans text-base";
 
 // Textos largos
-className="font-serif text-lg"
+className = "font-serif text-lg";
 
 // Código
-className="font-mono text-sm"
+className = "font-mono text-sm";
 ```
 
 ---
@@ -60,13 +60,15 @@ className="font-mono text-sm"
 
 ```tsx
 // Transición estándar (300ms)
-className="transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
+className =
+  "transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]";
 
 // Hover rápido (200ms)
-className="transition-all duration-200 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
+className =
+  "transition-all duration-200 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]";
 
 // Hover estándar
-className="hover:opacity-80 hover:-translate-y-0.5"
+className = "hover:opacity-80 hover:-translate-y-0.5";
 ```
 
 ---
@@ -75,16 +77,16 @@ className="hover:opacity-80 hover:-translate-y-0.5"
 
 ```tsx
 // Título con gradiente neón
-className="neon-cyan-title"
+className = "neon-cyan-title";
 
 // Título de card con gradiente
-className="neon-cyan-card-title"
+className = "neon-cyan-card-title";
 
 // Fondo con gradiente
-className="bg-gradient-webcode"
+className = "bg-gradient-webcode";
 
 // Texto con gradiente
-className="text-gradient-webcode"
+className = "text-gradient-webcode";
 ```
 
 ---
@@ -93,16 +95,16 @@ className="text-gradient-webcode"
 
 ```tsx
 // Texto (12px)
-className="gap-3 p-3 space-y-3"
+className = "gap-3 p-3 space-y-3";
 
 // Elemento (24px)
-className="gap-6 p-6 space-y-6"
+className = "gap-6 p-6 space-y-6";
 
 // Componente (32px)
-className="gap-8 p-8 space-y-8"
+className = "gap-8 p-8 space-y-8";
 
 // Sección (64px)
-className="gap-16 p-16 space-y-16"
+className = "gap-16 p-16 space-y-16";
 ```
 
 ---
@@ -112,8 +114,8 @@ className="gap-16 p-16 space-y-16"
 ```tsx
 // Mobile first
 className="
-  grid-cols-1 
-  md:grid-cols-2 
+  grid-cols-1
+  md:grid-cols-2
   lg:grid-cols-3
 "
 
@@ -135,7 +137,7 @@ className="px-4 py-8 md:py-12 lg:py-16"
     hover:-translate-y-0.5
     transition-all duration-200
   "
-  style={{ boxShadow: 'var(--shadow-3d-sm)' }}
+  style={{ boxShadow: "var(--shadow-3d-sm)" }}
 >
   Texto
 </Button>
@@ -146,14 +148,9 @@ className="px-4 py-8 md:py-12 lg:py-16"
 ## 🃏 Card WebCode
 
 ```tsx
-<Card 
-  className="border-primary" 
-  style={{ boxShadow: 'var(--shadow-3d-md)' }}
->
+<Card className="border-primary" style={{ boxShadow: "var(--shadow-3d-md)" }}>
   <CardHeader>
-    <CardTitle className="neon-cyan-card-title">
-      Título
-    </CardTitle>
+    <CardTitle className="neon-cyan-card-title">Título</CardTitle>
   </CardHeader>
   <CardContent>Contenido</CardContent>
 </Card>
@@ -166,11 +163,13 @@ className="px-4 py-8 md:py-12 lg:py-16"
 ```tsx
 <section className="bg-gradient-webcode min-h-screen">
   <div className="container mx-auto px-4 py-16">
-    <h1 className="
+    <h1
+      className="
       neon-cyan-title 
       text-6xl md:text-7xl 
       font-display
-    ">
+    "
+    >
       Título
     </h1>
   </div>

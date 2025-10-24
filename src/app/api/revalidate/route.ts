@@ -1,15 +1,15 @@
 /**
  * API Route para revalidación manual del cache del blog
- * 
+ *
  * Permite invalidar selectivamente diferentes partes del blog usando revalidatePath:
  * - Posts individuales por slug
  * - Lista completa de posts
  * - Posts por tag
  * - Tags
  * - Slugs
- * 
+ *
  * Seguridad: Requiere token de revalidación en headers o query params
- * 
+ *
  * @example
  * ```bash
  * # Revalidar post específico
@@ -17,13 +17,13 @@
  *   -H "Authorization: Bearer SECRET_TOKEN" \
  *   -H "Content-Type: application/json" \
  *   -d '{"type": "post", "slug": "nextjs-16-features"}'
- * 
+ *
  * # Revalidar lista completa
  * curl -X POST "https://webcode.es/api/revalidate" \
  *   -H "Authorization: Bearer SECRET_TOKEN" \
  *   -H "Content-Type: application/json" \
  *   -d '{"type": "list"}'
- * 
+ *
  * # Revalidar por tag
  * curl -X POST "https://webcode.es/api/revalidate" \
  *   -H "Authorization: Bearer SECRET_TOKEN" \
@@ -123,7 +123,9 @@ async function revalidateByType(data: RevalidateRequest): Promise<string[]> {
       break;
 
     default:
-      throw new Error(`Tipo de revalidación no soportado: ${(data as { type: string }).type}`);
+      throw new Error(
+        `Tipo de revalidación no soportado: ${(data as { type: string }).type}`
+      );
   }
 
   return revalidated;
@@ -147,12 +149,19 @@ export async function POST(request: NextRequest) {
     const data = (await request.json()) as RevalidateRequest;
 
     // Validar tipo
-    const validTypes: RevalidationType[] = ["post", "list", "tag", "tags", "slugs", "all"];
+    const validTypes: RevalidationType[] = [
+      "post",
+      "list",
+      "tag",
+      "tags",
+      "slugs",
+      "all"
+    ];
     if (!validTypes.includes(data.type)) {
       return NextResponse.json(
         {
           error: "Tipo inválido",
-          message: `Tipo debe ser uno de: ${validTypes.join(", ")}`,
+          message: `Tipo debe ser uno de: ${validTypes.join(", ")}`
         },
         { status: 400 }
       );
@@ -161,14 +170,20 @@ export async function POST(request: NextRequest) {
     // Validar datos específicos
     if (data.type === "post" && !data.slug) {
       return NextResponse.json(
-        { error: "Slug requerido", message: "Para type='post', el campo 'slug' es requerido" },
+        {
+          error: "Slug requerido",
+          message: "Para type='post', el campo 'slug' es requerido"
+        },
         { status: 400 }
       );
     }
 
     if (data.type === "tag" && !data.tag) {
       return NextResponse.json(
-        { error: "Tag requerido", message: "Para type='tag', el campo 'tag' es requerido" },
+        {
+          error: "Tag requerido",
+          message: "Para type='tag', el campo 'tag' es requerido"
+        },
         { status: 400 }
       );
     }
@@ -180,17 +195,18 @@ export async function POST(request: NextRequest) {
       revalidated: true,
       type: data.type,
       paths: revalidated,
-      timestamp: new Date().toISOString(),
+      timestamp: new Date().toISOString()
     });
   } catch (error) {
     console.error("Error en revalidación:", error);
 
-    const errorMessage = error instanceof Error ? error.message : "Error desconocido";
+    const errorMessage =
+      error instanceof Error ? error.message : "Error desconocido";
 
     return NextResponse.json(
       {
         error: "Error en revalidación",
-        message: errorMessage,
+        message: errorMessage
       },
       { status: 500 }
     );
@@ -211,7 +227,9 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const type = request.nextUrl.searchParams.get("type") as RevalidationType | null;
+    const type = request.nextUrl.searchParams.get(
+      "type"
+    ) as RevalidationType | null;
     const slug = request.nextUrl.searchParams.get("slug");
     const tag = request.nextUrl.searchParams.get("tag");
 
@@ -228,7 +246,10 @@ export async function GET(request: NextRequest) {
     if (type === "post") {
       if (!slug) {
         return NextResponse.json(
-          { error: "Slug requerido", message: "Para type='post', el parámetro 'slug' es requerido" },
+          {
+            error: "Slug requerido",
+            message: "Para type='post', el parámetro 'slug' es requerido"
+          },
           { status: 400 }
         );
       }
@@ -236,7 +257,10 @@ export async function GET(request: NextRequest) {
     } else if (type === "tag") {
       if (!tag) {
         return NextResponse.json(
-          { error: "Tag requerido", message: "Para type='tag', el parámetro 'tag' es requerido" },
+          {
+            error: "Tag requerido",
+            message: "Para type='tag', el parámetro 'tag' es requerido"
+          },
           { status: 400 }
         );
       }
@@ -252,17 +276,18 @@ export async function GET(request: NextRequest) {
       revalidated: true,
       type: data.type,
       paths: revalidated,
-      timestamp: new Date().toISOString(),
+      timestamp: new Date().toISOString()
     });
   } catch (error) {
     console.error("Error en revalidación:", error);
 
-    const errorMessage = error instanceof Error ? error.message : "Error desconocido";
+    const errorMessage =
+      error instanceof Error ? error.message : "Error desconocido";
 
     return NextResponse.json(
       {
         error: "Error en revalidación",
-        message: errorMessage,
+        message: errorMessage
       },
       { status: 500 }
     );

@@ -1,12 +1,12 @@
 "use client";
 
-import { useId } from "react";
 import { cn } from "@/lib/utils";
 import { neonTitleVariants } from "@/lib/variants";
 
 export function ServiceHeader() {
-  const id = useId();
-  const descId = `service-header-desc-${id}`;
+  // Usar IDs estáticos para evitar problemas de hidratación
+  const id = "services-header";
+  const descId = "service-header-desc";
 
   return (
     <section

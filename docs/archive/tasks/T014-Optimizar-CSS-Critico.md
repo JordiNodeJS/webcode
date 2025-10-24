@@ -21,6 +21,7 @@
 ## **[Lista]** DESCRIPCIÓN DETALLADA
 
 El análisis de rendimiento identificó dos archivos CSS render-blocking que causan un delay de 116ms en el LCP:
+
 - `b293efcda1e9eeca.css` (58ms)
 - `2473c16c0c2f6b5f.css` (58ms)
 
@@ -137,4 +138,3 @@ El análisis de rendimiento identificó dos archivos CSS render-blocking que cau
 - [ ] Documentación actualizada
 - [ ] Código revisado y aprobado
 - [ ] Dependencias de salida desbloqueadas
-

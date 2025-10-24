@@ -59,7 +59,7 @@
 - llm.prompt.md (específico)
 - component-naming-convention.prompt.md (específico)
 - hero-naming-convention.prompt.md (específico)
-- _template-estandar.md (template)
+- \_template-estandar.md (template)
 
 #### **README.md Actualizado**
 
@@ -70,6 +70,7 @@
 - Sección de mantenimiento
 
 **Resultados**:
+
 - De 24 archivos → 9 archivos (-62.5%)
 - Eliminación de redundancia 100%
 - Mejora en navegabilidad ✅
@@ -95,10 +96,12 @@
 ### **Fase 2: Continuación**
 
 **Pendiente crear**:
+
 - component-patterns.md (shadcn-ui-components + composición)
 - development-standards.md (typescript-best-practices + anti-patterns-to-avoid + performance-optimization)
 
 **Pendiente eliminar**:
+
 - nextjs-app-router.md → consolidado en nextjs-best-practices
 - project-structure.md → consolidado en nextjs-best-practices
 - tailwind-css-best-practices.md → consolidado en styling-guide
@@ -106,6 +109,7 @@
 - magicui-animations.md → consolidado en styling-guide
 
 **Mantener sin cambios**:
+
 - git-commit-standards.md (específico)
 - pnpm-package-management.md (específico)
 - instructions.md (metadocumentación)
@@ -119,12 +123,14 @@
 **Acción**: Mover contenido útil y eliminar carpeta docs
 
 **Archivos en .github/docs/**:
+
 - COLOR-SYSTEM-RULES.md → fusionar en styling-guide.md
 - THEMING.md → fusionar en styling-guide.md
 
 ### **Fase 4: Crear Estructura en docs/**
 
 **Subdirectorios a crear**:
+
 - `docs/archive/` - Documentos históricos
 - `docs/guides/` - Guías activas (Notion, Briefing, Testing)
 - `docs/design/` - Sistema de diseño (WAS, estilos, animaciones)
@@ -134,15 +140,17 @@
 ### **Fase 5: Consolidar Archivos en docs/**
 
 **Grupos a fusionar**:
+
 - **Notion** (5 archivos) → `guides/notion-integration.md`
 - **Performance** (5 archivos) → `reports/performance-optimization.md`
 - **Netlify** (5 archivos) → `guides/deployment-netlify.md`
 - **Biome** (3 archivos) → fusionar en `reports/biome-migration.md`
-- **00-*** (6 archivos) → consolidar o archivar
+- **00-\*** (6 archivos) → consolidar o archivar
 
 ### **Fase 6: Actualizar copilot-instructions.md**
 
 **Referencias a actualizar**:
+
 - Rutas de prompts
 - Rutas de support
 - Estructura de docs/
@@ -150,6 +158,7 @@
 ### **Fase 7: Crear Índices README.md**
 
 **Archivos a crear/actualizar**:
+
 - `.github/README.md` - Índice general de .github
 - `docs/README.md` - Índice de documentación
 - Actualizar referencias cruzadas

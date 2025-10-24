@@ -71,26 +71,21 @@ WEBCODE es una plataforma integral de desarrollo web y soluciones digitales para
 ### **Patrón de Componente Estándar**
 
 ```tsx
-<Card 
-  className="border-primary" 
-  style={{ boxShadow: 'var(--shadow-3d-md)' }}
->
+<Card className="border-primary" style={{ boxShadow: "var(--shadow-3d-md)" }}>
   <CardHeader>
-    <CardTitle className="neon-cyan-card-title font-display">
-      Título
-    </CardTitle>
+    <CardTitle className="neon-cyan-card-title font-display">Título</CardTitle>
   </CardHeader>
   <CardContent>
     <p className="font-sans text-muted-foreground">Contenido</p>
   </CardContent>
   <CardFooter>
-    <Button 
+    <Button
       className="
         hover:opacity-80 
         transition-all duration-200
         ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
       "
-      style={{ boxShadow: 'var(--shadow-3d-sm)' }}
+      style={{ boxShadow: "var(--shadow-3d-sm)" }}
     >
       Acción
     </Button>
@@ -101,6 +96,7 @@ WEBCODE es una plataforma integral de desarrollo web y soluciones digitales para
 ### **Checklist de Estilo Obligatorio** ✅
 
 Cada componente debe cumplir:
+
 - [ ] Usa colores del tema (primary/secondary)
 - [ ] Implementa sombras 3D donde corresponde
 - [ ] Usa tipografías correctas (font-display/font-sans)
@@ -167,6 +163,7 @@ Eres un asistente especializado en el desarrollo del proyecto WEBCODE. Sigue est
 **Stack Actual**: Next.js 16.0.0, React 19.2.0 (con React Compiler estable), TypeScript 5.x, Tailwind CSS 4.x, Lucide React 0.542.0, Framer Motion 12.23.12, shadcn/ui, Playwright 1.55.0, ESLint 9.37.0, Prettier 3.6.2, @notionhq/client 5.1.0, jsPDF 3.0.3.
 
 **Funcionalidades Completadas**:
+
 - ✅ Landing Page Hero (8 componentes optimizados)
 - ✅ Blog con Notion CMS (ISR + Scripts CLI)
 - ✅ Sistema de Briefing (Multi-paso + PDF Export)
@@ -196,6 +193,7 @@ Eres un asistente especializado en el desarrollo del proyecto WEBCODE. Sigue est
 📋 **`.github/support/nextjs16-react19-patterns.md`** - Guía completa de patrones modernos
 
 **Contenido clave:**
+
 - ✅ **Async Request APIs**: `params: Promise<...>`, `searchParams: Promise<...>`, `await cookies()`, `await headers()`
 - ✅ **React 19 use() Hook**: Para Client Components que necesitan params/searchParams
 - ✅ **React Compiler Optimizations**: Memoización automática, mejores prácticas
@@ -629,6 +627,7 @@ Para tareas específicas, consulta estos prompts consolidados en `.github/prompt
 ### **Navegación Completa**
 
 Consulta **`.github/prompts/README.md`** para:
+
 - Índice completo de prompts consolidados con descripciones
 - Guía de uso por categoría
 - Historial de consolidación (24 → 9 archivos, -62.5%)
@@ -656,4 +655,3 @@ Consulta **`.github/prompts/README.md`** para:
 - **`styling.instructions.md`** - Estilos con Tailwind CSS v4, clases utilitarias
 - **`typescript.instructions.md`** - Patrones TypeScript, tipos, interfaces
 - **`biome.instructions.md`** - Configuración y uso de Biome (linter/formatter)
-

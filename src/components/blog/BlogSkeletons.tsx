@@ -3,7 +3,12 @@
  * Mejora la perceived performance y reduce CLS
  */
 
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader
+} from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 
 /**
@@ -16,7 +21,7 @@ export function BlogPostSkeleton() {
         <div className="flex items-center gap-4 mb-4">
           {/* Icon skeleton */}
           <Skeleton className="h-14 w-14 rounded-2xl" />
-          
+
           <div className="flex-1 space-y-2">
             {/* Title skeleton */}
             <Skeleton className="h-6 w-3/4" />
@@ -29,7 +34,7 @@ export function BlogPostSkeleton() {
       <CardContent className="space-y-4">
         {/* Image skeleton */}
         <Skeleton className="h-48 w-full rounded-xl" />
-        
+
         {/* Metadata skeleton */}
         <div className="flex items-center gap-2">
           <Skeleton className="h-4 w-32" />
@@ -81,10 +86,7 @@ export function BlogCategoriesSkeleton() {
       <CardContent className="space-y-3">
         <div className="space-y-2">
           {Array.from({ length: 8 }).map((_, i) => (
-            <Skeleton 
-              key={i} 
-              className="h-8 w-full rounded-lg" 
-            />
+            <Skeleton key={i} className="h-8 w-full rounded-lg" />
           ))}
         </div>
       </CardContent>

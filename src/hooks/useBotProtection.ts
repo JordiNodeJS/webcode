@@ -30,10 +30,10 @@ export function useBotProtection(config: BotProtectionConfig = {}) {
   const [honeypotValue, setHoneypotValue] = useState<string>("");
   const [submissionCount, setSubmissionCount] = useState<number>(0);
   const [lastSubmission, setLastSubmission] = useState<number>(0);
-  
+
   // Estado de bloqueo derivado con auto-actualización
   const [isBlocked, setIsBlocked] = useState<boolean>(false);
-  
+
   // Actualizar estado de bloqueo basado en lastSubmission usando interval
   useEffect(() => {
     if (lastSubmission === 0) {

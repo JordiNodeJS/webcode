@@ -6,13 +6,15 @@ import { cn } from "@/lib/utils";
 
 export function WorkflowSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const { disableAnimationsForSection: _disableAnimationsForSection } = useAnimationContext();
+  const { disableAnimationsForSection: _disableAnimationsForSection } =
+    useAnimationContext();
 
   const workflowSteps = [
     {
       number: "01",
       title: "Estudio y Análisis",
-      description: "Analizamos tu negocio, objetivos y competencia para definir la estrategia digital que tu proyecto necesita.",
+      description:
+        "Analizamos tu negocio, objetivos y competencia para definir la estrategia digital que tu proyecto necesita.",
       icon: "🔍",
       details: [
         "Análisis de mercado y competencia",
@@ -22,9 +24,10 @@ export function WorkflowSection() {
       ]
     },
     {
-      number: "02", 
+      number: "02",
       title: "Definición del Mensaje",
-      description: "Definimos el mensaje que deseas comunicar para implementar los elementos comunicativos necesarios en el diseño.",
+      description:
+        "Definimos el mensaje que deseas comunicar para implementar los elementos comunicativos necesarios en el diseño.",
       icon: "💬",
       details: [
         "Arquitectura de la información",
@@ -36,7 +39,8 @@ export function WorkflowSection() {
     {
       number: "03",
       title: "Diseño y Desarrollo",
-      description: "Realizamos el diseño web y la programación de la página web con las últimas tecnologías.",
+      description:
+        "Realizamos el diseño web y la programación de la página web con las últimas tecnologías.",
       icon: "⚡",
       details: [
         "Diseño UX/UI personalizado",
@@ -48,7 +52,8 @@ export function WorkflowSection() {
     {
       number: "04",
       title: "Marketing Digital",
-      description: "Desplegamos acciones de marketing digital para atraer tráfico de calidad y maximizar las conversiones.",
+      description:
+        "Desplegamos acciones de marketing digital para atraer tráfico de calidad y maximizar las conversiones.",
       icon: "📈",
       details: [
         "SEO técnico y de contenidos",
@@ -60,7 +65,8 @@ export function WorkflowSection() {
     {
       number: "05",
       title: "Monitoreo y Resultados",
-      description: "Monitorizamos todo el proceso, asesorándote y acompañándote para obtener los mejores resultados.",
+      description:
+        "Monitorizamos todo el proceso, asesorándote y acompañándote para obtener los mejores resultados.",
       icon: "🎯",
       details: [
         "Reportes mensuales de resultados",
@@ -91,8 +97,9 @@ export function WorkflowSection() {
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            En WebSnack entendemos el proceso de creación de páginas web como un proceso integral, 
-            que incluye desde el servicio de diseño web hasta su completa implementación y marketing digital.
+            En WebSnack entendemos el proceso de creación de páginas web como un
+            proceso integral, que incluye desde el servicio de diseño web hasta
+            su completa implementación y marketing digital.
           </p>
         </div>
 
@@ -100,7 +107,7 @@ export function WorkflowSection() {
         <div className="relative">
           {/* Timeline Line */}
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-accent opacity-30 hidden lg:block"></div>
-          
+
           <div className="space-y-16">
             {workflowSteps.map((step, index) => (
               <div
@@ -130,7 +137,7 @@ export function WorkflowSection() {
                       {step.description}
                     </p>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {step.details.map((detail, detailIndex) => (
                       <div
@@ -138,7 +145,9 @@ export function WorkflowSection() {
                         className="flex items-center gap-3 p-3 rounded-lg bg-primary/5 border border-primary/10"
                       >
                         <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0"></div>
-                        <span className="text-sm text-foreground/90">{detail}</span>
+                        <span className="text-sm text-foreground/90">
+                          {detail}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -155,9 +164,15 @@ export function WorkflowSection() {
               ¿Listo para empezar tu proyecto?
             </h3>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Cada empresa es única. Te creamos un servicio de diseño web a medida: 
-              <strong className="text-foreground"> webs únicas</strong> con diseños originales y 
-              <strong className="text-foreground"> 100% orientados a los resultados</strong> que buscas.
+              Cada empresa es única. Te creamos un servicio de diseño web a
+              medida:
+              <strong className="text-foreground"> webs únicas</strong> con
+              diseños originales y
+              <strong className="text-foreground">
+                {" "}
+                100% orientados a los resultados
+              </strong>{" "}
+              que buscas.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a

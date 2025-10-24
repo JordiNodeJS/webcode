@@ -2,7 +2,7 @@
 
 **Proyecto**: WEBCODE  
 **Destino**: Netlify  
-**Fecha**: _____________
+**Fecha**: ******\_******
 
 ---
 
@@ -11,10 +11,12 @@
 ### Verificación de Build
 
 - [ ] **Build local exitoso**
+
   ```bash
   pnpm install
   pnpm build
   ```
+
   - Sin errores de TypeScript
   - Sin errores de ESLint
   - Build completa en menos de 5 minutos
@@ -23,6 +25,7 @@
   ```bash
   pnpm start
   ```
+
   - Sitio carga en http://localhost:3000
   - Navegación funciona correctamente
   - No hay errores en consola del navegador
@@ -53,9 +56,11 @@
 ### Control de Versiones
 
 - [ ] **Todos los cambios commiteados**
+
   ```bash
   git status
   ```
+
   - No hay archivos sin commit
   - Mensaje de commit descriptivo
 
@@ -63,6 +68,7 @@
   ```bash
   git push origin main
   ```
+
   - Cambios sincronizados con GitHub/GitLab/Bitbucket
 
 ### Documentación
@@ -148,7 +154,7 @@
 - [ ] **Deploy completo**
   - URL generada: `https://________.netlify.app`
   - Deploy marcado como "Published"
-  - Tiempo total: _____ minutos
+  - Tiempo total: **\_** minutos
 
 ---
 
@@ -285,15 +291,15 @@
   - Abrir DevTools → Lighthouse
   - Ejecutar audit en modo Incognito
   - **Scores mínimos**:
-    - Performance: _____ / 100 (target: > 90)
-    - Accessibility: _____ / 100 (target: > 90)
-    - Best Practices: _____ / 100 (target: > 90)
-    - SEO: _____ / 100 (target: > 90)
+    - Performance: **\_** / 100 (target: > 90)
+    - Accessibility: **\_** / 100 (target: > 90)
+    - Best Practices: **\_** / 100 (target: > 90)
+    - SEO: **\_** / 100 (target: > 90)
 
 - [ ] **Core Web Vitals verificados**
-  - LCP (Largest Contentful Paint): _____ ms (target: < 2500ms)
-  - FID (First Input Delay): _____ ms (target: < 100ms)
-  - CLS (Cumulative Layout Shift): _____ (target: < 0.1)
+  - LCP (Largest Contentful Paint): **\_** ms (target: < 2500ms)
+  - FID (First Input Delay): **\_** ms (target: < 100ms)
+  - CLS (Cumulative Layout Shift): **\_** (target: < 0.1)
 
 ### Responsive Design
 
@@ -371,7 +377,7 @@
 - [ ] **Sistema de analytics elegido**
   - **Opción A**: Netlify Analytics ($9/mes)
   - **Opción B**: Google Analytics 4 (gratis)
-  - **Opción C**: Otro (especificar: _____________)
+  - **Opción C**: Otro (especificar: ******\_******)
 
 - [ ] **Analytics configurado**
   - Código de tracking instalado (si GA4)
@@ -479,19 +485,19 @@
 ### Aprobaciones
 
 **Desarrollador**:  
-Nombre: _________________  
-Fecha: _________________  
-Firma: _________________
+Nombre: ********\_********  
+Fecha: ********\_********  
+Firma: ********\_********
 
 **QA/Tester** (si aplica):  
-Nombre: _________________  
-Fecha: _________________  
-Firma: _________________
+Nombre: ********\_********  
+Fecha: ********\_********  
+Firma: ********\_********
 
 **Cliente/Stakeholder** (si aplica):  
-Nombre: _________________  
-Fecha: _________________  
-Firma: _________________
+Nombre: ********\_********  
+Fecha: ********\_********  
+Firma: ********\_********
 
 ---
 
@@ -511,8 +517,8 @@ _Usa este espacio para notas, issues encontrados, o cualquier información relev
 
 **Proyecto**: WEBCODE  
 **Deployment Platform**: Netlify  
-**Fecha de Deployment**: _________________  
-**URL en Producción**: https://___________________
+**Fecha de Deployment**: ********\_********  
+**URL en Producción**: https://********\_\_\_********
 
 ---
 

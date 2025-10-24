@@ -1,7 +1,7 @@
 # ✅ Checklist de Configuración del Dominio webcode.es
 
-**Fecha**: _______________  
-**Responsable**: _______________
+**Fecha**: ******\_\_\_******  
+**Responsable**: ******\_\_\_******
 
 ---
 
@@ -20,6 +20,7 @@
 - [ ] Leído: `NETLIFY-DOMAIN-SETUP.md`
 
 **Resultado**:
+
 ```
 webcode.es responde: ☐ SÍ  ☐ NO
 SSL válido: ☐ SÍ  ☐ NO
@@ -59,7 +60,7 @@ SSL válido: ☐ SÍ  ☐ NO
 - [ ] Netlify confirma que el DNS está configurado
 - [ ] Click en "Add domain"
 
-**Estado del dominio**: _______________
+**Estado del dominio**: ******\_\_\_******
 
 ### 3.3 Verificar Estado del Dominio
 
@@ -67,7 +68,7 @@ SSL válido: ☐ SÍ  ☐ NO
 
 ☐ Verified  
 ☐ Awaiting External DNS  
-☐ Error (especificar): _______________
+☐ Error (especificar): ******\_\_\_******
 
 ---
 
@@ -92,8 +93,8 @@ SSL válido: ☐ SÍ  ☐ NO
 - [ ] Click en "Provision certificate"
 - [ ] Esperar provisión (5-30 minutos)
 
-**Hora de inicio**: _______________  
-**Hora de finalización**: _______________
+**Hora de inicio**: ******\_\_\_******  
+**Hora de finalización**: ******\_\_\_******
 
 ### 4.4 Activar Force HTTPS
 
@@ -117,7 +118,7 @@ SSL válido: ☐ SÍ  ☐ NO
 
 ☐ www → no-www (webcode.es)  
 ☐ no-www → www (www.webcode.es)  
-☐ Otro: _______________
+☐ Otro: ******\_\_\_******
 
 ---
 
@@ -126,7 +127,7 @@ SSL válido: ☐ SÍ  ☐ NO
 ### 6.1 Esperar Propagación
 
 - [ ] Esperar 15-30 minutos
-- [ ] Tiempo de espera: Desde _______________ hasta _______________
+- [ ] Tiempo de espera: Desde ******\_\_\_****** hasta ******\_\_\_******
 
 ### 6.2 Ejecutar Script de Verificación
 
@@ -134,6 +135,7 @@ SSL válido: ☐ SÍ  ☐ NO
 - [ ] Captura de pantalla guardada (opcional)
 
 **Resultados**:
+
 ```
 ✅ DNS resuelve correctamente
 ✅ HTTPS responde (200 OK)
@@ -227,16 +229,17 @@ SSL válido: ☐ SÍ  ☐ NO
   ```bash
   npm run lighthouse https://webcode.es
   ```
-- [ ] Score Lighthouse: _______ / 100
+- [ ] Score Lighthouse: **\_\_\_** / 100
 
 - [ ] Security headers verificados
+
   ```bash
   curl -I https://webcode.es | grep -i "strict-transport\|x-frame\|x-content"
   ```
 
 - [ ] SSL rating verificado
   - URL: https://www.ssllabs.com/ssltest/analyze.html?d=webcode.es
-  - Rating: _______
+  - Rating: **\_\_\_**
 
 ---
 
@@ -245,7 +248,7 @@ SSL válido: ☐ SÍ  ☐ NO
 ```
 Fecha: _______________
 Duración total: _______________
-Problemas encontrados: 
+Problemas encontrados:
 
 
 
@@ -268,12 +271,13 @@ Soluciones aplicadas:
 - [ ] ✅ Analytics y monitoreo activos
 - [ ] ✅ Documentación actualizada
 
-**Firma**: _______________  
-**Fecha de completación**: _______________
+**Firma**: ******\_\_\_******  
+**Fecha de completación**: ******\_\_\_******
 
 ---
 
 **Documentos relacionados**:
+
 - DOMAIN-DIAGNOSTIC-REPORT.md
 - NETLIFY-DOMAIN-SETUP.md
 - DOMAIN-ISSUE-RESOLUTION.md
