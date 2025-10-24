@@ -205,6 +205,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               className="w-full h-64 object-cover object-center"
               priority
               itemProp="image"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
             />
           </div>
         )}
@@ -305,6 +306,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                         width={400}
                         height={200}
                         className="h-32 w-full object-cover object-center transition-transform group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
                       />
                     </div>
                   )}

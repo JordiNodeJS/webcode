@@ -101,7 +101,6 @@ export default async function TagPage({ params }: TagPageProps) {
                   key={post.id}
                   post={post}
                   priority={index === 0}
-                  delay={index * 0.1}
                 />
               ))}
             </div>
