@@ -1,13 +1,91 @@
-# Scripts de Git Squash
+# Scripts del Proyecto WEBCODE
 
-Este directorio contiene **dos scripts** para aplanar ramas de Git, cada uno con diferentes enfoques y casos de uso.
+Este directorio contiene scripts de utilidad para el desarrollo, mantenimiento y deployment del proyecto WEBCODE.
 
-## 📚 **Documentación Completa**
+## 📚 **Índice de Scripts**
 
-- **[README.md](README.md)** - Guía de uso y comparación de scripts
-- **[TECHNICAL-DOCUMENTATION.md](TECHNICAL-DOCUMENTATION.md)** - Documentación técnica detallada y método manual paso a paso
+### 🌐 Deployment y Dominios
+- **[verify-domain.sh](#verify-domainsh)** - Verificación de configuración de dominio webcode.es
+- **[verify-domain.bat](#verify-domainbat)** - Verificación de dominio (versión Windows)
 
-## 🎯 git-rebase-squash.sh
+### 🔀 Git y Control de Versiones
+- **[git-rebase-squash.sh](#git-rebase-squashsh)** - Squash automático usando git rebase
+- **[git-squash-branch.sh](#git-squash-branchsh)** - Squash robusto con backups
+
+### 📝 Notion CMS
+- **[verify-notion-connection.js](#verify-notion-connectionjs)** - Verificar conexión con Notion API
+- **[list-notion-databases.js](#list-notion-databasesjs)** - Listar bases de datos de Notion
+- **[list-database-content.js](#list-database-contentjs)** - Ver contenido de base de datos
+- **[search-notion-database.js](#search-notion-databasejs)** - Buscar en bases de datos
+- **[show-page-content.js](#show-page-contentjs)** - Ver contenido de página
+- **[publish-page.js](#publish-pagejs)** - Publicar página de Notion
+
+### 🎨 Optimización y Performance
+- **[optimize-bundle.sh](#optimize-bundlesh)** - Análisis y optimización de bundle
+- **[optimize-images-node.mjs](#optimize-images-nodemjs)** - Optimización de imágenes
+- **[simple-performance-test.js](#simple-performance-testjs)** - Test de performance básico
+- **[run-full-performance-analysis.js](#run-full-performance-analysisjs)** - Análisis completo de performance
+- **[test-performance-cards.sh](#test-performance-cardssh)** - Test específico de tarjetas
+- **[test-performance-optimizations.sh](#test-performance-optimizationssh)** - Test de optimizaciones
+
+### 🧪 Testing y Validación
+- **[playwright-snapshots.js](#playwright-snapshotsjs)** - Gestión de snapshots de Playwright
+- **[validate-structured-data.mjs](#validate-structured-datamjs)** - Validación de datos estructurados
+
+### 🔧 Utilidades
+- **[analyze-unused-imports.mjs](#analyze-unused-importsmjs)** - Detectar imports no usados
+- **[check-logo-neon.mjs](#check-logo-neonmjs)** - Verificar efectos de neón en logos
+- **[check-missing-css-classes.mjs](#check-missing-css-classesmjs)** - Detectar clases CSS faltantes
+- **[migrate-emojis-to-svg.mjs](#migrate-emojis-to-svgmjs)** - Migrar emojis a SVG
+- **[update-websnack-to-webcode.mjs](#update-websnack-to-webcodemjs)** - Actualizar referencias de naming
+
+---
+
+## 🌐 Scripts de Deployment y Dominios
+
+### verify-domain.sh
+
+**Script de verificación de configuración del dominio webcode.es (Linux/macOS/Git Bash)**
+
+#### Uso
+
+```bash
+./scripts/verify-domain.sh
+```
+
+#### Funcionalidad
+
+- ✅ Verifica resolución DNS
+- ✅ Comprueba conectividad HTTPS
+- ✅ Valida certificado SSL
+- ✅ Revisa headers de seguridad
+- ✅ Proporciona diagnóstico completo
+
+#### Requisitos
+
+- `nslookup` o `dig`
+- `curl`
+- `openssl`
+
+### verify-domain.bat
+
+**Versión del script anterior para Windows CMD**
+
+#### Uso
+
+```cmd
+scripts\verify-domain.bat
+```
+
+#### Funcionalidad
+
+Mismas verificaciones que `verify-domain.sh` pero adaptado para Windows.
+
+---
+
+## 🔀 Scripts de Git
+
+### git-rebase-squash.sh
 
 **Script automático usando git rebase (método estándar)**
 

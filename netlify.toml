@@ -101,3 +101,24 @@
   port = 3000
   targetPort = 3000
   autoLaunch = false
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# DOMINIO PERSONALIZADO - REDIRECT OPCIONAL
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# ⚠️ DESCOMENTA ESTAS LÍNEAS DESPUÉS DE CONFIGURAR webcode.es
+# Esto redirigirá automáticamente el dominio .netlify.app al dominio personalizado
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# [[redirects]]
+#   from = "https://webcode-bcn.netlify.app/*"
+#   to = "https://webcode.es/:splat"
+#   status = 301
+#   force = true
+#   conditions = {Host = ["webcode-bcn.netlify.app"]}
+
+# [[redirects]]
+#   from = "https://www.webcode.es/*"
+#   to = "https://webcode.es/:splat"
+#   status = 301
+#   force = true
+#   conditions = {Host = ["www.webcode.es"]}
