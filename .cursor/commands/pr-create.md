@@ -29,7 +29,7 @@ Comprobaciones locales (pre-PR)
 
 Antes de crear/actualizar la PR, ejecutar las siguientes comprobaciones locales cuando sea posible:
 
-- pnpm lint:fix && pnpm format # ESLint + Prettier
+- pnpm lint:fix # ESLint
 - pnpm test # si existe script `test`
 - pnpm build # o build del paquete afectado en monorepos
 
@@ -53,7 +53,7 @@ Estrategia de PR y contenido
   - Lista de cambios (bullets)
   - Referencias a archivos de contexto y decisiones (por ejemplo `.github/project/PROJECT-STATE.md`, `.github/prompts/...`) con enlaces
   - Pasos para validar localmente
-  - Checklist de pre-merge (ESLint, Prettier, tests, build, accessibility, performance)
+  - Checklist de pre-merge (ESLint, tests, build, accessibility, performance)
 
 Asignación y revisores
 
@@ -67,7 +67,7 @@ Flujo operativo (resumen de pasos que debe ejecutar el agente — abstracción d
    - Leer archivos de contexto relevantes: `.github/project/PROJECT-STATE.md`, `.github/prompts/`, `docs/`, y cualquier otra referencia útil.
 
 2. Validaciones locales
-   - Ejecutar `pnpm lint:fix && pnpm format`, `pnpm test` (si existe) y `pnpm build`.
+   - Ejecutar `pnpm lint:fix`, `pnpm test` (si existe) y `pnpm build`.
    - Recoger resultados; si hay fallos bloqueantes, añadir `ci/failed` y reportar errores en la PR.
 
 3. Comprobar existencia de PR
@@ -156,7 +156,7 @@ Este bloque es sólo un ejemplo que el agente actualizará dinámicamente según
 **Uso**: Cuando el usuario diga "crea la pr y etiquétala" o similar, ejecutar automáticamente:
 
 1. **Detectar rama actual**: `git rev-parse --abbrev-ref HEAD`
-2. **Validaciones locales**: `pnpm lint:fix && pnpm format && pnpm build`
+2. **Validaciones locales**: `pnpm lint:fix && pnpm build`
 3. **Verificar PR existente**: `gh pr list --head <branch>`
 4. **Crear archivo temporal** con el body de la PR (UTF-8)
 5. **Crear/actualizar PR** usando `--body-file` para evitar problemas de codificación
