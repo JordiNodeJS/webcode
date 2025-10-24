@@ -5741,9 +5741,9 @@ SPDX-License-Identifier: Apache-2.0
           Re = 0.5,
           Ne = 0.49999999999999994;
         function Ue(o) {
-          let e = Math.sign(o);
+          const e = Math.sign(o);
           o = Math.abs(o);
-          let t = 0.254829592,
+          const t = 0.254829592,
             n = -0.284496736,
             r = 1.421413741,
             i = -1.453152027,
@@ -5840,21 +5840,21 @@ SPDX-License-Identifier: Apache-2.0
               );
             }
             static splitMarkdownCodeSpans(e) {
-              let t = [],
+              const t = [],
                 n = e.split(/`(.*?)`/g);
               for (let r = 0; r < n.length; r++) {
-                let i = n[r];
+                const i = n[r];
                 if (!i) continue;
-                let a = r % 2 !== 0;
+                const a = r % 2 !== 0;
                 t.push({ isCode: a, text: i });
               }
               return t;
             }
             static splitMarkdownLink(e) {
-              let t = [],
+              const t = [],
                 n = e.split(/\[([^\]]+?)\]\((https?:\/\/.*?)\)/g);
               for (; n.length; ) {
-                let [r, i, a] = n.splice(0, 3);
+                const [r, i, a] = n.splice(0, 3);
                 (r && t.push({ isLink: !1, text: r }),
                   i && a && t.push({ isLink: !0, text: i, linkHref: a }));
               }
@@ -5867,7 +5867,7 @@ SPDX-License-Identifier: Apache-2.0
                   [Symbol.iterator](),
                 a = 0;
               for (let l = 0; l <= t - n.length; l++) {
-                let s = i.next();
+                const s = i.next();
                 if (s.done) return e;
                 a = s.value.index;
               }
@@ -5887,12 +5887,12 @@ SPDX-License-Identifier: Apache-2.0
               if (e.protocol === "about:" || e.protocol === "data:") a = e.href;
               else {
                 a = e.pathname;
-                let s = a.split("/").filter((c) => c.length);
+                const s = a.split("/").filter((c) => c.length);
                 (n && s.length > n && (a = O + s.slice(-1 * n).join("/")),
                   i && (a = `${e.host}/${a.replace(/^\//, "")}`),
                   r && (a = `${a}${e.search}`));
               }
-              let l = 64;
+              const l = 64;
               if (
                 (e.protocol !== "data:" &&
                   ((a = a.slice(0, 200)),
@@ -5912,7 +5912,7 @@ SPDX-License-Identifier: Apache-2.0
                     a.length > l && (a = a.replace(/\?.*/, `?${O}`)))),
                 a.length > l)
               ) {
-                let s = a.lastIndexOf(".");
+                const s = a.lastIndexOf(".");
                 s >= 0
                   ? (a =
                       a.slice(0, l - 1 - (a.length - s)) + `${O}${a.slice(s)}`)
@@ -5921,11 +5921,11 @@ SPDX-License-Identifier: Apache-2.0
               return a;
             }
             static getChromeExtensionOrigin(e) {
-              let t = new URL(e);
+              const t = new URL(e);
               return t.protocol + "//" + t.host;
             }
             static parseURL(e) {
-              let t = new URL(e);
+              const t = new URL(e);
               return {
                 file: o.getURLDisplayName(t),
                 hostname: t.hostname,
@@ -5939,19 +5939,19 @@ SPDX-License-Identifier: Apache-2.0
               return e instanceof URL ? e : new URL(e);
             }
             static getPseudoTld(e) {
-              let t = e.split(".").slice(-2);
+              const t = e.split(".").slice(-2);
               return Ge.includes(t[0])
                 ? `.${t.join(".")}`
                 : `.${t[t.length - 1]}`;
             }
             static getPseudoRootDomain(e) {
-              let t = o.createOrReturnURL(e).hostname,
+              const t = o.createOrReturnURL(e).hostname,
                 r = o.getPseudoTld(t).split(".");
               return t.split(".").slice(-r.length).join(".");
             }
             static filterRelevantLines(e, t, n) {
               if (t.length === 0) return e.slice(0, n * 2 + 1);
-              let r = 3,
+              const r = 3,
                 i = new Set();
               return (
                 (t = t.sort(
@@ -5963,7 +5963,7 @@ SPDX-License-Identifier: Apache-2.0
                   for (; l < 1; ) (l++, s++);
                   i.has(l - r - 1) && (l -= r);
                   for (let c = l; c <= s; c++) {
-                    let d = c;
+                    const d = c;
                     i.add(d);
                   }
                 }),
@@ -5979,7 +5979,7 @@ SPDX-License-Identifier: Apache-2.0
             }
           };
         function Be(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElement("style");
           (t.append(`
     .lh-3p-filter {
@@ -5996,13 +5996,13 @@ SPDX-License-Identifier: Apache-2.0
     }
   `),
             e.append(t));
-          let n = o.createElement("div", "lh-3p-filter"),
+          const n = o.createElement("div", "lh-3p-filter"),
             r = o.createElement("label", "lh-3p-filter-label"),
             i = o.createElement("input", "lh-3p-filter-input");
           (i.setAttribute("type", "checkbox"), i.setAttribute("checked", ""));
-          let a = o.createElement("span", "lh-3p-ui-string");
+          const a = o.createElement("span", "lh-3p-ui-string");
           a.append("Show 3rd party resources");
-          let l = o.createElement("span", "lh-3p-filter-count");
+          const l = o.createElement("span", "lh-3p-filter-count");
           return (
             r.append(" ", i, " ", a, " (", l, ") "),
             n.append(" ", r, " "),
@@ -6011,7 +6011,7 @@ SPDX-License-Identifier: Apache-2.0
           );
         }
         function qe(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElement("div", "lh-audit"),
             n = o.createElement("details", "lh-expandable-details"),
             r = o.createElement("summary"),
@@ -6024,9 +6024,9 @@ SPDX-License-Identifier: Apache-2.0
             s = o.createElement("span", "lh-audit__title"),
             c = o.createElement("span", "lh-audit__display-text");
           l.append(" ", s, " ", c, " ");
-          let d = o.createElement("div", "lh-chevron-container");
+          const d = o.createElement("div", "lh-chevron-container");
           (i.append(" ", a, " ", l, " ", d, " "), r.append(" ", i, " "));
-          let h = o.createElement("div", "lh-audit__description"),
+          const h = o.createElement("div", "lh-audit__description"),
             p = o.createElement("div", "lh-audit__stackpacks");
           return (
             n.append(" ", r, " ", h, " ", p, " "),
@@ -6036,23 +6036,23 @@ SPDX-License-Identifier: Apache-2.0
           );
         }
         function je(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElement("div", "lh-category-header"),
             n = o.createElement("div", "lh-score__gauge");
           (n.setAttribute("role", "heading"),
             n.setAttribute("aria-level", "2"));
-          let r = o.createElement("div", "lh-category-header__description");
+          const r = o.createElement("div", "lh-category-header__description");
           return (t.append(" ", n, " ", r, " "), e.append(t), e);
         }
         function We(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElementNS(
               "http://www.w3.org/2000/svg",
               "svg",
               "lh-chevron"
             );
           t.setAttribute("viewBox", "0 0 100 100");
-          let n = o.createElementNS(
+          const n = o.createElementNS(
               "http://www.w3.org/2000/svg",
               "g",
               "lh-chevron__lines"
@@ -6063,7 +6063,7 @@ SPDX-License-Identifier: Apache-2.0
               "lh-chevron__line lh-chevron__line-left"
             );
           r.setAttribute("d", "M10 50h40");
-          let i = o.createElementNS(
+          const i = o.createElementNS(
             "http://www.w3.org/2000/svg",
             "path",
             "lh-chevron__line lh-chevron__line-right"
@@ -6077,7 +6077,7 @@ SPDX-License-Identifier: Apache-2.0
           );
         }
         function Ke(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElement("div", "lh-audit-group"),
             n = o.createElement("details", "lh-clump"),
             r = o.createElement("summary"),
@@ -6086,7 +6086,7 @@ SPDX-License-Identifier: Apache-2.0
             l = o.createElement("span", "lh-audit-group__title"),
             s = o.createElement("span", "lh-audit-group__itemcount");
           a.append(" ", l, " ", s, " ", " ", " ");
-          let c = o.createElement("div", "lh-clump-toggle"),
+          const c = o.createElement("div", "lh-clump-toggle"),
             d = o.createElement("span", "lh-clump-toggletext--show"),
             h = o.createElement("span", "lh-clump-toggletext--hide");
           return (
@@ -6100,7 +6100,7 @@ SPDX-License-Identifier: Apache-2.0
           );
         }
         function Ze(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElement("div", "lh-crc-container"),
             n = o.createElement("style");
           n.append(`
@@ -6156,12 +6156,12 @@ SPDX-License-Identifier: Apache-2.0
         margin-bottom: 10px;
       }
     `);
-          let r = o.createElement("div"),
+          const r = o.createElement("div"),
             i = o.createElement("div", "lh-crc__summary-value"),
             a = o.createElement("span", "lh-crc__longest_duration_label"),
             l = o.createElement("b", "lh-crc__longest_duration");
           (i.append(" ", a, " ", l, " "), r.append(" ", i, " "));
-          let s = o.createElement("div", "lh-crc"),
+          const s = o.createElement("div", "lh-crc"),
             c = o.createElement("div", "lh-crc-initial-nav");
           return (
             s.append(" ", c, " ", " "),
@@ -6171,27 +6171,27 @@ SPDX-License-Identifier: Apache-2.0
           );
         }
         function Je(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElement("div", "lh-crc-node"),
             n = o.createElement("span", "lh-crc-node__tree-marker"),
             r = o.createElement("span", "lh-crc-node__tree-value");
           return (t.append(" ", n, " ", r, " "), e.append(t), e);
         }
         function Qe(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElement("div", "lh-element-screenshot"),
             n = o.createElement("div", "lh-element-screenshot__content"),
             r = o.createElement("div", "lh-element-screenshot__image"),
             i = o.createElement("div", "lh-element-screenshot__mask"),
             a = o.createElementNS("http://www.w3.org/2000/svg", "svg");
           (a.setAttribute("height", "0"), a.setAttribute("width", "0"));
-          let l = o.createElementNS("http://www.w3.org/2000/svg", "defs"),
+          const l = o.createElementNS("http://www.w3.org/2000/svg", "defs"),
             s = o.createElementNS("http://www.w3.org/2000/svg", "clipPath");
           (s.setAttribute("clipPathUnits", "objectBoundingBox"),
             l.append(" ", s, " ", " "),
             a.append(" ", l, " "),
             i.append(" ", a, " "));
-          let c = o.createElement(
+          const c = o.createElement(
             "div",
             "lh-element-screenshot__element-marker"
           );
@@ -6204,11 +6204,11 @@ SPDX-License-Identifier: Apache-2.0
           );
         }
         function Ye(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElement("div", "lh-exp-gauge-component"),
             n = o.createElement("div", "lh-exp-gauge__wrapper");
           n.setAttribute("target", "_blank");
-          let r = o.createElement("div", "lh-exp-gauge__svg-wrapper"),
+          const r = o.createElement("div", "lh-exp-gauge__svg-wrapper"),
             i = o.createElementNS(
               "http://www.w3.org/2000/svg",
               "svg",
@@ -6240,7 +6240,7 @@ SPDX-License-Identifier: Apache-2.0
               "lh-exp-gauge__percentage"
             );
           a.append(" ", l, " ", s, " ", c, " ", d, " ");
-          let h = o.createElementNS(
+          const h = o.createElementNS(
               "http://www.w3.org/2000/svg",
               "g",
               "lh-exp-gauge__outer"
@@ -6251,7 +6251,7 @@ SPDX-License-Identifier: Apache-2.0
               "lh-cover"
             );
           h.append(" ", p, " ");
-          let g = o.createElementNS(
+          const g = o.createElementNS(
             "http://www.w3.org/2000/svg",
             "text",
             "lh-exp-gauge__label"
@@ -6269,7 +6269,7 @@ SPDX-License-Identifier: Apache-2.0
           );
         }
         function Xe(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElement("style");
           (t.append(`
     .lh-footer {
@@ -6282,13 +6282,13 @@ SPDX-License-Identifier: Apache-2.0
     }
   `),
             e.append(t));
-          let n = o.createElement("footer", "lh-footer"),
+          const n = o.createElement("footer", "lh-footer"),
             r = o.createElement("ul", "lh-meta__items");
           r.append(" ");
-          let i = o.createElement("div", "lh-generated"),
+          const i = o.createElement("div", "lh-generated"),
             a = o.createElement("b");
           a.append("Lighthouse");
-          let l = o.createElement("span", "lh-footer__version"),
+          const l = o.createElement("span", "lh-footer__version"),
             s = o.createElement("a", "lh-footer__version_issue");
           return (
             s.setAttribute(
@@ -6305,17 +6305,17 @@ SPDX-License-Identifier: Apache-2.0
           );
         }
         function et(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElement("a", "lh-fraction__wrapper"),
             n = o.createElement("div", "lh-fraction__content-wrapper"),
             r = o.createElement("div", "lh-fraction__content"),
             i = o.createElement("div", "lh-fraction__background");
           (r.append(" ", i, " "), n.append(" ", r, " "));
-          let a = o.createElement("div", "lh-fraction__label");
+          const a = o.createElement("div", "lh-fraction__label");
           return (t.append(" ", n, " ", a, " "), e.append(t), e);
         }
         function tt(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElement("a", "lh-gauge__wrapper"),
             n = o.createElement("div", "lh-gauge__svg-wrapper"),
             r = o.createElementNS(
@@ -6324,7 +6324,7 @@ SPDX-License-Identifier: Apache-2.0
               "lh-gauge"
             );
           r.setAttribute("viewBox", "0 0 120 120");
-          let i = o.createElementNS(
+          const i = o.createElementNS(
             "http://www.w3.org/2000/svg",
             "circle",
             "lh-gauge-base"
@@ -6333,7 +6333,7 @@ SPDX-License-Identifier: Apache-2.0
             i.setAttribute("cx", "60"),
             i.setAttribute("cy", "60"),
             i.setAttribute("stroke-width", "8"));
-          let a = o.createElementNS(
+          const a = o.createElementNS(
             "http://www.w3.org/2000/svg",
             "circle",
             "lh-gauge-arc"
@@ -6344,7 +6344,7 @@ SPDX-License-Identifier: Apache-2.0
             a.setAttribute("stroke-width", "8"),
             r.append(" ", i, " ", a, " "),
             n.append(" ", r, " "));
-          let l = o.createElement("div", "lh-gauge__percentage"),
+          const l = o.createElement("div", "lh-gauge__percentage"),
             s = o.createElement("div", "lh-gauge__label");
           return (
             t.append(" ", " ", n, " ", l, " ", " ", s, " "),
@@ -6353,7 +6353,7 @@ SPDX-License-Identifier: Apache-2.0
           );
         }
         function nt(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElement("style");
           (t.append(`
     /* CSS Fireworks. Originally by Eddie Lin
@@ -6428,12 +6428,12 @@ SPDX-License-Identifier: Apache-2.0
     }
   `),
             e.append(t));
-          let n = o.createElement("div", "lh-header-container"),
+          const n = o.createElement("div", "lh-header-container"),
             r = o.createElement("div", "lh-scores-wrapper-placeholder");
           return (n.append(" ", r, " "), e.append(n), e);
         }
         function rt(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElement("div", "lh-metric"),
             n = o.createElement("div", "lh-metric__innerwrap"),
             r = o.createElement("div", "lh-metric__icon"),
@@ -6448,19 +6448,19 @@ SPDX-License-Identifier: Apache-2.0
           );
         }
         function ot(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElement("div", "lh-scorescale"),
             n = o.createElement(
               "span",
               "lh-scorescale-range lh-scorescale-range--fail"
             );
           n.append("0\u201349");
-          let r = o.createElement(
+          const r = o.createElement(
             "span",
             "lh-scorescale-range lh-scorescale-range--average"
           );
           r.append("50\u201389");
-          let i = o.createElement(
+          const i = o.createElement(
             "span",
             "lh-scorescale-range lh-scorescale-range--pass"
           );
@@ -6472,7 +6472,7 @@ SPDX-License-Identifier: Apache-2.0
           );
         }
         function it(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElement("style");
           (t.append(`
     .lh-scores-container {
@@ -6539,7 +6539,7 @@ SPDX-License-Identifier: Apache-2.0
     }
   `),
             e.append(t));
-          let n = o.createElement("div", "lh-scores-wrapper"),
+          const n = o.createElement("div", "lh-scores-wrapper"),
             r = o.createElement("div", "lh-scores-container"),
             i = o.createElement("div", "lh-pyro"),
             a = o.createElement("div", "lh-pyro-before"),
@@ -6553,7 +6553,7 @@ SPDX-License-Identifier: Apache-2.0
           );
         }
         function at(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElement("div", "lh-snippet"),
             n = o.createElement("style");
           return (
@@ -6672,13 +6672,13 @@ SPDX-License-Identifier: Apache-2.0
           );
         }
         function lt(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElement("div", "lh-snippet__snippet"),
             n = o.createElement("div", "lh-snippet__snippet-inner");
           return (t.append(" ", n, " "), e.append(t), e);
         }
         function st(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElement("div", "lh-snippet__header"),
             n = o.createElement("div", "lh-snippet__title"),
             r = o.createElement("div", "lh-snippet__node"),
@@ -6699,7 +6699,7 @@ SPDX-License-Identifier: Apache-2.0
           );
         }
         function ct(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElement("div", "lh-snippet__line"),
             n = o.createElement("div", "lh-snippet__line-number"),
             r = o.createElement("div", "lh-snippet__line-icon"),
@@ -6707,7 +6707,7 @@ SPDX-License-Identifier: Apache-2.0
           return (t.append(" ", n, " ", r, " ", i, " "), e.append(t), e);
         }
         function dt(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElement("style");
           return (
             t.append(`/**
@@ -9046,7 +9046,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
           );
         }
         function ht(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElement("style");
           (t.append(`
     .lh-topbar {
@@ -9205,7 +9205,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
     }
   `),
             e.append(t));
-          let n = o.createElement("div", "lh-topbar"),
+          const n = o.createElement("div", "lh-topbar"),
             r = o.createElementNS(
               "http://www.w3.org/2000/svg",
               "svg",
@@ -9216,27 +9216,27 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             r.setAttribute("fill", "none"),
             r.setAttribute("xmlns", "http://www.w3.org/2000/svg"),
             r.setAttribute("viewBox", "0 0 48 48"));
-          let i = o.createElementNS("http://www.w3.org/2000/svg", "path");
+          const i = o.createElementNS("http://www.w3.org/2000/svg", "path");
           (i.setAttribute(
             "d",
             "m14 7 10-7 10 7v10h5v7h-5l5 24H9l5-24H9v-7h5V7Z"
           ),
             i.setAttribute("fill", "#F63"));
-          let a = o.createElementNS("http://www.w3.org/2000/svg", "path");
+          const a = o.createElementNS("http://www.w3.org/2000/svg", "path");
           (a.setAttribute(
             "d",
             "M31.561 24H14l-1.689 8.105L31.561 24ZM18.983 48H9l1.022-4.907L35.723 32.27l1.663 7.98L18.983 48Z"
           ),
             a.setAttribute("fill", "#FFA385"));
-          let l = o.createElementNS("http://www.w3.org/2000/svg", "path");
+          const l = o.createElementNS("http://www.w3.org/2000/svg", "path");
           (l.setAttribute("fill", "#FF3"),
             l.setAttribute("d", "M20.5 10h7v7h-7z"),
             r.append(" ", i, " ", a, " ", l, " "));
-          let s = o.createElement("a", "lh-topbar__url");
+          const s = o.createElement("a", "lh-topbar__url");
           (s.setAttribute("href", ""),
             s.setAttribute("target", "_blank"),
             s.setAttribute("rel", "noopener"));
-          let c = o.createElement("div", "lh-tools"),
+          const c = o.createElement("div", "lh-tools"),
             d = o.createElement("div", "lh-tools-locale lh-hidden"),
             h = o.createElement("button", "lh-button lh-tool-locale__button");
           (h.setAttribute("id", "lh-button__swap-locales"),
@@ -9248,72 +9248,72 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               "aria-controls",
               "lh-tools-locale__selector-wrapper"
             ));
-          let p = o.createElementNS("http://www.w3.org/2000/svg", "svg");
+          const p = o.createElementNS("http://www.w3.org/2000/svg", "svg");
           (p.setAttribute("width", "20px"),
             p.setAttribute("height", "20px"),
             p.setAttribute("viewBox", "0 0 24 24"),
             p.setAttribute("fill", "currentColor"));
-          let g = o.createElementNS("http://www.w3.org/2000/svg", "path");
+          const g = o.createElementNS("http://www.w3.org/2000/svg", "path");
           (g.setAttribute("d", "M0 0h24v24H0V0z"),
             g.setAttribute("fill", "none"));
-          let b = o.createElementNS("http://www.w3.org/2000/svg", "path");
+          const b = o.createElementNS("http://www.w3.org/2000/svg", "path");
           (b.setAttribute(
             "d",
             "M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"
           ),
             p.append(g, b),
             h.append(" ", p, " "));
-          let _ = o.createElement("div", "lh-tools-locale__selector-wrapper");
+          const _ = o.createElement("div", "lh-tools-locale__selector-wrapper");
           (_.setAttribute("id", "lh-tools-locale__selector-wrapper"),
             _.setAttribute("role", "menu"),
             _.setAttribute("aria-labelledby", "lh-button__swap-locales"),
             _.setAttribute("aria-hidden", "true"),
             _.append(" ", " "),
             d.append(" ", h, " ", _, " "));
-          let m = o.createElement("button", "lh-tools__button");
+          const m = o.createElement("button", "lh-tools__button");
           (m.setAttribute("id", "lh-tools-button"),
             m.setAttribute("title", "Tools menu"),
             m.setAttribute("aria-label", "Toggle report tools menu"),
             m.setAttribute("aria-haspopup", "menu"),
             m.setAttribute("aria-expanded", "false"),
             m.setAttribute("aria-controls", "lh-tools-dropdown"));
-          let w = o.createElementNS("http://www.w3.org/2000/svg", "svg");
+          const w = o.createElementNS("http://www.w3.org/2000/svg", "svg");
           (w.setAttribute("width", "100%"),
             w.setAttribute("height", "100%"),
             w.setAttribute("viewBox", "0 0 24 24"));
-          let f = o.createElementNS("http://www.w3.org/2000/svg", "path");
+          const f = o.createElementNS("http://www.w3.org/2000/svg", "path");
           (f.setAttribute("d", "M0 0h24v24H0z"),
             f.setAttribute("fill", "none"));
-          let v = o.createElementNS("http://www.w3.org/2000/svg", "path");
+          const v = o.createElementNS("http://www.w3.org/2000/svg", "path");
           (v.setAttribute(
             "d",
             "M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
           ),
             w.append(" ", f, " ", v, " "),
             m.append(" ", w, " "));
-          let y = o.createElement("div", "lh-tools__dropdown");
+          const y = o.createElement("div", "lh-tools__dropdown");
           (y.setAttribute("id", "lh-tools-dropdown"),
             y.setAttribute("role", "menu"),
             y.setAttribute("aria-labelledby", "lh-tools-button"));
-          let S = o.createElement("a", "lh-report-icon lh-report-icon--print");
+          const S = o.createElement("a", "lh-report-icon lh-report-icon--print");
           (S.setAttribute("role", "menuitem"),
             S.setAttribute("tabindex", "-1"),
             S.setAttribute("href", "#"),
             S.setAttribute("data-i18n", "dropdownPrintSummary"),
             S.setAttribute("data-action", "print-summary"));
-          let C = o.createElement("a", "lh-report-icon lh-report-icon--print");
+          const C = o.createElement("a", "lh-report-icon lh-report-icon--print");
           (C.setAttribute("role", "menuitem"),
             C.setAttribute("tabindex", "-1"),
             C.setAttribute("href", "#"),
             C.setAttribute("data-i18n", "dropdownPrintExpanded"),
             C.setAttribute("data-action", "print-expanded"));
-          let L = o.createElement("a", "lh-report-icon lh-report-icon--copy");
+          const L = o.createElement("a", "lh-report-icon lh-report-icon--copy");
           (L.setAttribute("role", "menuitem"),
             L.setAttribute("tabindex", "-1"),
             L.setAttribute("href", "#"),
             L.setAttribute("data-i18n", "dropdownCopyJSON"),
             L.setAttribute("data-action", "copy"));
-          let z = o.createElement(
+          const z = o.createElement(
             "a",
             "lh-report-icon lh-report-icon--download lh-hidden"
           );
@@ -9322,7 +9322,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             z.setAttribute("href", "#"),
             z.setAttribute("data-i18n", "dropdownSaveHTML"),
             z.setAttribute("data-action", "save-html"));
-          let F = o.createElement(
+          const F = o.createElement(
             "a",
             "lh-report-icon lh-report-icon--download"
           );
@@ -9331,19 +9331,19 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             F.setAttribute("href", "#"),
             F.setAttribute("data-i18n", "dropdownSaveJSON"),
             F.setAttribute("data-action", "save-json"));
-          let H = o.createElement("a", "lh-report-icon lh-report-icon--open");
+          const H = o.createElement("a", "lh-report-icon lh-report-icon--open");
           (H.setAttribute("role", "menuitem"),
             H.setAttribute("tabindex", "-1"),
             H.setAttribute("href", "#"),
             H.setAttribute("data-i18n", "dropdownViewer"),
             H.setAttribute("data-action", "open-viewer"));
-          let R = o.createElement("a", "lh-report-icon lh-report-icon--open");
+          const R = o.createElement("a", "lh-report-icon lh-report-icon--open");
           (R.setAttribute("role", "menuitem"),
             R.setAttribute("tabindex", "-1"),
             R.setAttribute("href", "#"),
             R.setAttribute("data-i18n", "dropdownSaveGist"),
             R.setAttribute("data-action", "save-gist"));
-          let I = o.createElement(
+          const I = o.createElement(
             "a",
             "lh-report-icon lh-report-icon--open lh-hidden"
           );
@@ -9352,7 +9352,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             I.setAttribute("href", "#"),
             I.setAttribute("data-i18n", "dropdownViewUnthrottledTrace"),
             I.setAttribute("data-action", "view-unthrottled-trace"));
-          let N = o.createElement("a", "lh-report-icon lh-report-icon--dark");
+          const N = o.createElement("a", "lh-report-icon lh-report-icon--dark");
           return (
             N.setAttribute("role", "menuitem"),
             N.setAttribute("tabindex", "-1"),
@@ -9389,7 +9389,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
           );
         }
         function pt(o) {
-          let e = o.createFragment(),
+          const e = o.createFragment(),
             t = o.createElement("div", "lh-warnings lh-warnings--toplevel"),
             n = o.createElement("p", "lh-warnings__msg"),
             r = o.createElement("ul");
@@ -9457,13 +9457,13 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               (this._onSwapHook = () => {}));
           }
           createElement(e, t) {
-            let n = this._document.createElement(e);
-            if (t) for (let r of t.split(/\s+/)) r && n.classList.add(r);
+            const n = this._document.createElement(e);
+            if (t) for (const r of t.split(/\s+/)) r && n.classList.add(r);
             return n;
           }
           createElementNS(e, t, n) {
-            let r = this._document.createElementNS(e, t);
-            if (n) for (let i of n.split(/\s+/)) i && r.classList.add(i);
+            const r = this._document.createElementNS(e, t);
+            if (n) for (const i of n.split(/\s+/)) i && r.classList.add(i);
             return r;
           }
           createSVGElement(e, t) {
@@ -9480,13 +9480,13 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             return this._document.createTextNode(e);
           }
           createChildOf(e, t, n) {
-            let r = this.createElement(t, n);
+            const r = this.createElement(t, n);
             return (e.append(r), r);
           }
           createComponent(e) {
             let t = this._componentCache.get(e);
             if (t) {
-              let r = t.cloneNode(!0);
+              const r = t.cloneNode(!0);
               return (this.findAll("style", r).forEach((i) => i.remove()), r);
             }
             return (
@@ -9499,16 +9499,16 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             this._componentCache.clear();
           }
           convertMarkdownLinkSnippets(e, t = {}) {
-            let n = this.createElement("span");
-            for (let r of E.splitMarkdownLink(e)) {
-              let i = r.text.includes("`")
+            const n = this.createElement("span");
+            for (const r of E.splitMarkdownLink(e)) {
+              const i = r.text.includes("`")
                 ? this.convertMarkdownCodeSnippets(r.text)
                 : r.text;
               if (!r.isLink) {
                 n.append(i);
                 continue;
               }
-              let a = new URL(r.linkHref);
+              const a = new URL(r.linkHref);
               ([
                 "https://developers.google.com",
                 "https://web.dev",
@@ -9517,7 +9517,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 t.alwaysAppendUtmSource) &&
                 (a.searchParams.set("utm_source", "lighthouse"),
                 a.searchParams.set("utm_medium", this._lighthouseChannel));
-              let s = this.createElement("a");
+              const s = this.createElement("a");
               ((s.rel = "noopener"),
                 (s.target = "_blank"),
                 s.append(i),
@@ -9541,14 +9541,14 @@ details[open] .lh-clump-toggletext--hide { display: block;}
           safelySetBlobHref(e, t) {
             if (t.type !== "text/html" && t.type !== "application/json")
               throw new Error("Unsupported blob type");
-            let n = URL.createObjectURL(t);
+            const n = URL.createObjectURL(t);
             e.href = n;
           }
           convertMarkdownCodeSnippets(e) {
-            let t = this.createElement("span");
-            for (let n of E.splitMarkdownCodeSpans(e))
+            const t = this.createElement("span");
+            for (const n of E.splitMarkdownCodeSpans(e))
               if (n.isCode) {
-                let r = this.createElement("code");
+                const r = this.createElement("code");
                 ((r.textContent = n.text), t.append(r));
               } else t.append(this._document.createTextNode(n.text));
             return t;
@@ -9563,7 +9563,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             return !!this._document.querySelector(".lh-devtools");
           }
           find(e, t = this.rootEl ?? this._document) {
-            let n = this.maybeFind(e, t);
+            const n = this.maybeFind(e, t);
             if (n === null) throw new Error(`query ${e} not found`);
             return n;
           }
@@ -9574,11 +9574,11 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             return Array.from(t.querySelectorAll(e));
           }
           fireEventOn(e, t = this._document, n) {
-            let r = new CustomEvent(e, n ? { detail: n } : void 0);
+            const r = new CustomEvent(e, n ? { detail: n } : void 0);
             t.dispatchEvent(r);
           }
           saveFile(e, t) {
-            let n = this.createElement("a");
+            const n = this.createElement("a");
             ((n.download = t),
               this.safelySetBlobHref(n, e),
               this._document.body.append(n),
@@ -9591,11 +9591,11 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               this._swappableSections.set(t, e));
           }
           swapSectionIfPossible(e) {
-            let t = this._swappableSections.get(e);
+            const t = this._swappableSections.get(e);
             if (!t) return;
-            let n = e.parentNode;
+            const n = e.parentNode;
             if (!n) return;
-            let r = e.querySelectorAll("style");
+            const r = e.querySelectorAll("style");
             (t.append(...r),
               n.insertBefore(t, e),
               e.remove(),
@@ -9628,7 +9628,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 o.configSettings.emulatedFormFactor),
             (o.finalDisplayedUrl = E.getFinalDisplayedUrl(o)),
             (o.mainDocumentUrl = E.getMainDocumentUrl(o)));
-          for (let n of Object.values(o.audits))
+          for (const n of Object.values(o.audits))
             if (
               ((n.scoreDisplayMode === "not_applicable" ||
                 n.scoreDisplayMode === "not-applicable") &&
@@ -9642,14 +9642,14 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                   (n.details.type = "debugdata"),
                 n.details.type === "filmstrip")
               )
-                for (let r of n.details.items)
+                for (const r of n.details.items)
                   r.data.startsWith(ye) || (r.data = ye + r.data);
               if (n.details.type === "table")
-                for (let r of n.details.headings) {
-                  let { itemType: i, text: a } = r;
+                for (const r of n.details.headings) {
+                  const { itemType: i, text: a } = r;
                   (i !== void 0 && ((r.valueType = i), delete r.itemType),
                     a !== void 0 && ((r.label = a), delete r.text));
-                  let l = r.subItemsHeading?.itemType;
+                  const l = r.subItemsHeading?.itemType;
                   r.subItemsHeading &&
                     l !== void 0 &&
                     ((r.subItemsHeading.valueType = l),
@@ -9659,10 +9659,10 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 n.id === "third-party-summary" &&
                 (n.details.type === "opportunity" || n.details.type === "table")
               ) {
-                let { headings: r, items: i } = n.details;
+                const { headings: r, items: i } = n.details;
                 if (r[0].valueType === "link") {
                   r[0].valueType = "text";
-                  for (let a of i)
+                  for (const a of i)
                     typeof a.entity == "object" &&
                       a.entity.type === "link" &&
                       (a.entity = a.entity.text);
@@ -9670,36 +9670,36 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 }
               }
             }
-          let [e] = o.lighthouseVersion.split(".").map(Number),
+          const [e] = o.lighthouseVersion.split(".").map(Number),
             t = o.categories.performance;
           if (t) {
             if (e < 9) {
               (o.categoryGroups || (o.categoryGroups = {}),
                 (o.categoryGroups.hidden = { title: "" }));
-              for (let n of t.auditRefs)
+              for (const n of t.auditRefs)
                 n.group
                   ? n.group === "load-opportunities" &&
                     (n.group = "diagnostics")
                   : (n.group = "hidden");
             } else if (e < 12)
-              for (let n of t.auditRefs) n.group || (n.group = "diagnostics");
+              for (const n of t.auditRefs) n.group || (n.group = "diagnostics");
           }
           if (e < 12 && t) {
-            let n = new Map();
-            for (let r of t.auditRefs) {
-              let i = r.relevantAudits;
+            const n = new Map();
+            for (const r of t.auditRefs) {
+              const i = r.relevantAudits;
               if (!(!i || !r.acronym))
-                for (let a of i) {
-                  let l = n.get(a) || [];
+                for (const a of i) {
+                  const l = n.get(a) || [];
                   (l.push(r.acronym), n.set(a, l));
                 }
             }
-            for (let [r, i] of n) {
+            for (const [r, i] of n) {
               if (!i.length) continue;
-              let a = o.audits[r];
+              const a = o.audits[r];
               if (a && !a.metricSavings) {
                 a.metricSavings = {};
-                for (let l of i) a.metricSavings[l] = 0;
+                for (const l of i) a.metricSavings[l] = 0;
               }
             }
           }
@@ -9721,7 +9721,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             o.i18n || (o.i18n = {}),
             o.audits["full-page-screenshot"])
           ) {
-            let n = o.audits["full-page-screenshot"].details;
+            const n = o.audits["full-page-screenshot"].details;
             (n
               ? (o.fullPageScreenshot = {
                   screenshot: n.screenshot,
@@ -9734,9 +9734,9 @@ details[open] .lh-clump-toggletext--hide { display: block;}
         var V = E.RATINGS,
           k = class o {
             static prepareReportResult(e) {
-              let t = JSON.parse(JSON.stringify(e));
+              const t = JSON.parse(JSON.stringify(e));
               xe(t);
-              for (let r of Object.values(t.audits))
+              for (const r of Object.values(t.audits))
                 r.details &&
                   (r.details.type === "opportunity" ||
                     r.details.type === "table") &&
@@ -9745,26 +9745,26 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                   o.classifyEntities(t.entities, r.details);
               if (typeof t.categories != "object")
                 throw new Error("No categories provided.");
-              let n = new Map();
-              for (let r of Object.values(t.categories))
+              const n = new Map();
+              for (const r of Object.values(t.categories))
                 (r.auditRefs.forEach((i) => {
                   i.acronym && n.set(i.acronym, i);
                 }),
                   r.auditRefs.forEach((i) => {
-                    let a = t.audits[i.id];
+                    const a = t.audits[i.id];
                     i.result = a;
-                    let l = Object.keys(i.result.metricSavings || {});
+                    const l = Object.keys(i.result.metricSavings || {});
                     if (l.length) {
                       i.relevantMetrics = [];
-                      for (let s of l) {
-                        let c = n.get(s);
+                      for (const s of l) {
+                        const c = n.get(s);
                         c && i.relevantMetrics.push(c);
                       }
                     }
                     if (t.stackPacks) {
-                      let s = [i.id, ...(i.result.replacesAudits ?? [])];
+                      const s = [i.id, ...(i.result.replacesAudits ?? [])];
                       t.stackPacks.forEach((c) => {
-                        let d = s.find((h) => c.descriptions[h]);
+                        const d = s.find((h) => c.descriptions[h]);
                         d &&
                           c.descriptions[d] &&
                           ((i.stackPacks = i.stackPacks || []),
@@ -9779,41 +9779,41 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               return t;
             }
             static getUrlLocatorFn(e) {
-              let t = e.find((r) => r.valueType === "url")?.key;
+              const t = e.find((r) => r.valueType === "url")?.key;
               if (t && typeof t == "string")
                 return (r) => {
-                  let i = r[t];
+                  const i = r[t];
                   if (typeof i == "string") return i;
                 };
-              let n = e.find((r) => r.valueType === "source-location")?.key;
+              const n = e.find((r) => r.valueType === "source-location")?.key;
               if (n)
                 return (r) => {
-                  let i = r[n];
+                  const i = r[n];
                   if (typeof i == "object" && i.type === "source-location")
                     return i.url;
                 };
             }
             static classifyEntities(e, t) {
-              let { items: n, headings: r } = t;
+              const { items: n, headings: r } = t;
               if (!n.length || n.some((a) => a.entity)) return;
-              let i = o.getUrlLocatorFn(r);
+              const i = o.getUrlLocatorFn(r);
               if (i)
-                for (let a of n) {
-                  let l = i(a);
+                for (const a of n) {
+                  const l = i(a);
                   if (!l) continue;
                   let s = "";
                   try {
                     s = E.parseURL(l).origin;
                   } catch {}
                   if (!s) continue;
-                  let c = e.find((d) => d.origins.includes(s));
+                  const c = e.find((d) => d.origins.includes(s));
                   c && (a.entity = c.name);
                 }
             }
             static getTableItemSortComparator(e) {
               return (t, n) => {
-                for (let r of e) {
-                  let i = t[r],
+                for (const r of e) {
+                  const i = t[r],
                     a = n[r];
                   if (
                     ((typeof i != typeof a ||
@@ -9842,7 +9842,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                   r = n = t = l.throttlingProvided;
                   break;
                 case "devtools": {
-                  let { cpuSlowdownMultiplier: p, requestLatencyMs: g } = i;
+                  const { cpuSlowdownMultiplier: p, requestLatencyMs: g } = i;
                   ((t = `${a.formatNumber(p)}x slowdown (DevTools)`),
                     (n = `${a.formatMilliseconds(g)} HTTP RTT, ${a.formatKbps(i.downloadThroughputKbps)} down, ${a.formatKbps(i.uploadThroughputKbps)} up (DevTools)`),
                     (r =
@@ -9854,7 +9854,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                   break;
                 }
                 case "simulate": {
-                  let {
+                  const {
                     cpuSlowdownMultiplier: p,
                     rttMs: g,
                     throughputKbps: b
@@ -9880,7 +9880,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               s
                 ? (d = l.runtimeNoEmulation)
                 : c || (d = l.runtimeDesktopEmulation);
-              let h = s
+              const h = s
                 ? void 0
                 : `${e.screenEmulation.width}x${e.screenEmulation.height}, DPR ${e.screenEmulation.deviceScaleFactor}`;
               return {
@@ -9922,8 +9922,8 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 n = 0,
                 r = 0,
                 i = 0;
-              for (let a of e.auditRefs) {
-                let l = o.showAsPassed(a.result);
+              for (const a of e.auditRefs) {
+                const l = o.showAsPassed(a.result);
                 if (
                   !(
                     a.group === "hidden" ||
@@ -10033,42 +10033,42 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             };
           }
           renderAudit(e) {
-            let t = u.strings,
+            const t = u.strings,
               n = this.dom.createComponent("audit"),
               r = this.dom.find("div.lh-audit", n);
             r.id = e.result.id;
-            let i = e.result.scoreDisplayMode;
+            const i = e.result.scoreDisplayMode;
             e.result.displayValue &&
               (this.dom.find(".lh-audit__display-text", r).textContent =
                 e.result.displayValue);
-            let a = this.dom.find(".lh-audit__title", r);
+            const a = this.dom.find(".lh-audit__title", r);
             a.append(this.dom.convertMarkdownCodeSnippets(e.result.title));
-            let l = this.dom.find(".lh-audit__description", r);
+            const l = this.dom.find(".lh-audit__description", r);
             l.append(
               this.dom.convertMarkdownLinkSnippets(e.result.description)
             );
-            for (let p of e.relevantMetrics || []) {
-              let g = this.dom.createChildOf(l, "span", "lh-audit__adorn");
+            for (const p of e.relevantMetrics || []) {
+              const g = this.dom.createChildOf(l, "span", "lh-audit__adorn");
               ((g.title = `Relevant to ${p.result.title}`),
                 (g.textContent = p.acronym || p.id));
             }
             e.stackPacks &&
               e.stackPacks.forEach((p) => {
-                let g = this.dom.createElement(
+                const g = this.dom.createElement(
                   "img",
                   "lh-audit__stackpack__img"
                 );
                 ((g.src = p.iconDataURL), (g.alt = p.title));
-                let b = this.dom.convertMarkdownLinkSnippets(p.description, {
+                const b = this.dom.convertMarkdownLinkSnippets(p.description, {
                     alwaysAppendUtmSource: !0
                   }),
                   _ = this.dom.createElement("div", "lh-audit__stackpack");
                 (_.append(g, b),
                   this.dom.find(".lh-audit__stackpacks", r).append(_));
               });
-            let s = this.dom.find("details", r);
+            const s = this.dom.find("details", r);
             if (e.result.details) {
-              let p = this.detailsRenderer.render(e.result.details);
+              const p = this.detailsRenderer.render(e.result.details);
               p && (p.classList.add("lh-details"), s.append(p));
             }
             if (
@@ -10079,22 +10079,22 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               e.result.scoreDisplayMode === "error")
             ) {
               r.classList.add("lh-audit--error");
-              let p = this.dom.find(".lh-audit__display-text", r);
+              const p = this.dom.find(".lh-audit__display-text", r);
               ((p.textContent = t.errorLabel),
                 p.classList.add("lh-tooltip-boundary"));
-              let g = this.dom.createChildOf(
+              const g = this.dom.createChildOf(
                 p,
                 "div",
                 "lh-tooltip lh-tooltip--error"
               );
               g.textContent = e.result.errorMessage || t.errorMissingAuditInfo;
             } else if (e.result.explanation) {
-              let p = this.dom.createChildOf(a, "div", "lh-audit-explanation");
+              const p = this.dom.createChildOf(a, "div", "lh-audit-explanation");
               p.textContent = e.result.explanation;
             }
-            let c = e.result.warnings;
+            const c = e.result.warnings;
             if (!c || c.length === 0) return r;
-            let d = this.dom.find("summary", s),
+            const d = this.dom.find("summary", s),
               h = this.dom.createChildOf(d, "div", "lh-warnings");
             if (
               ((this.dom.createChildOf(h, "span").textContent =
@@ -10103,16 +10103,16 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             )
               h.append(this.dom.createTextNode(c.join("")));
             else {
-              let p = this.dom.createChildOf(h, "ul");
-              for (let g of c) {
-                let b = this.dom.createChildOf(p, "li");
+              const p = this.dom.createChildOf(h, "ul");
+              for (const g of c) {
+                const b = this.dom.createChildOf(p, "li");
                 b.textContent = g;
               }
             }
             return r;
           }
           injectFinalScreenshot(e, t, n) {
-            let r = t["final-screenshot"];
+            const r = t["final-screenshot"];
             if (
               !r ||
               r.scoreDisplayMode === "error" ||
@@ -10120,10 +10120,10 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               r.details.type !== "screenshot"
             )
               return null;
-            let i = this.dom.createElement("img", "lh-final-ss-image"),
+            const i = this.dom.createElement("img", "lh-final-ss-image"),
               a = r.details.data;
             ((i.src = a), (i.alt = r.title));
-            let l = this.dom.find(".lh-category .lh-category-header", e),
+            const l = this.dom.find(".lh-category .lh-category-header", e),
               s = this.dom.createElement("div", "lh-category-headercol"),
               c = this.dom.createElement(
                 "div",
@@ -10137,11 +10137,11 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               l.classList.add("lh-category-header__finalscreenshot"));
           }
           _createChevron() {
-            let e = this.dom.createComponent("chevron");
+            const e = this.dom.createComponent("chevron");
             return this.dom.find("svg.lh-chevron", e);
           }
           _setRatingClass(e, t, n) {
-            let r = k.calculateRating(t, n);
+            const r = k.calculateRating(t, n);
             return (
               e.classList.add(`lh-audit--${n.toLowerCase()}`),
               n !== "informative" && e.classList.add(`lh-audit--${r}`),
@@ -10149,17 +10149,17 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             );
           }
           renderCategoryHeader(e, t, n) {
-            let r = this.dom.createComponent("categoryHeader"),
+            const r = this.dom.createComponent("categoryHeader"),
               i = this.dom.find(".lh-score__gauge", r),
               a = this.renderCategoryScore(e, t, n);
             if ((i.append(a), e.description)) {
-              let l = this.dom.convertMarkdownLinkSnippets(e.description);
+              const l = this.dom.convertMarkdownLinkSnippets(e.description);
               this.dom.find(".lh-category-header__description", r).append(l);
             }
             return r;
           }
           renderAuditGroup(e) {
-            let t = this.dom.createElement("div", "lh-audit-group"),
+            const t = this.dom.createElement("div", "lh-audit-group"),
               n = this.dom.createElement("div", "lh-audit-group__header");
             ((this.dom.createChildOf(
               n,
@@ -10180,29 +10180,29 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             );
           }
           _renderGroupedAudits(e, t) {
-            let n = new Map(),
+            const n = new Map(),
               r = "NotAGroup";
             n.set(r, []);
-            for (let a of e) {
-              let l = a.group || r,
+            for (const a of e) {
+              const l = a.group || r,
                 s = n.get(l) || [];
               (s.push(a), n.set(l, s));
             }
-            let i = [];
-            for (let [a, l] of n) {
+            const i = [];
+            for (const [a, l] of n) {
               if (a === r) {
-                for (let h of l) i.push(this.renderAudit(h));
+                for (const h of l) i.push(this.renderAudit(h));
                 continue;
               }
-              let s = t[a],
+              const s = t[a],
                 [c, d] = this.renderAuditGroup(s);
-              for (let h of l) c.insertBefore(this.renderAudit(h), d);
+              for (const h of l) c.insertBefore(this.renderAudit(h), d);
               (c.classList.add(`lh-audit-group--${a}`), i.push(c));
             }
             return i;
           }
           renderUnexpandableClump(e, t) {
-            let n = this.dom.createElement("div");
+            const n = this.dom.createElement("div");
             return (
               this._renderGroupedAudits(e, t).forEach((i) => n.append(i)),
               n
@@ -10212,21 +10212,21 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             e,
             { auditRefsOrEls: t, description: n, openByDefault: r }
           ) {
-            let i = this.dom.createComponent("clump"),
+            const i = this.dom.createComponent("clump"),
               a = this.dom.find(".lh-clump", i);
             r && a.setAttribute("open", "");
-            let l = this.dom.find(".lh-audit-group__header", a),
+            const l = this.dom.find(".lh-audit-group__header", a),
               s = this._clumpTitles[e];
             this.dom.find(".lh-audit-group__title", l).textContent = s;
-            let c = this.dom.find(".lh-audit-group__itemcount", a);
+            const c = this.dom.find(".lh-audit-group__itemcount", a);
             c.textContent = `(${t.length})`;
-            let d = t.map((p) =>
+            const d = t.map((p) =>
               p instanceof HTMLElement ? p : this.renderAudit(p)
             );
             a.append(...d);
-            let h = this.dom.find(".lh-audit-group", i);
+            const h = this.dom.find(".lh-audit-group", i);
             if (n) {
-              let p = this.dom.convertMarkdownLinkSnippets(n);
+              const p = this.dom.convertMarkdownLinkSnippets(n);
               (p.classList.add(
                 "lh-audit-group__description",
                 "lh-audit-group__footer"
@@ -10254,21 +10254,21 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                   .remove(),
               n?.onPageAnchorRendered)
             ) {
-              let i = this.dom.find("a", r);
+              const i = this.dom.find("a", r);
               n.onPageAnchorRendered(i);
             }
             return r;
           }
           renderScoreGauge(e, t) {
-            let n = this.dom.createComponent("gauge"),
+            const n = this.dom.createComponent("gauge"),
               r = this.dom.find("a.lh-gauge__wrapper", n);
             k.isPluginCategory(e.id) &&
               r.classList.add("lh-gauge__wrapper--plugin");
-            let i = Number(e.score),
+            const i = Number(e.score),
               a = this.dom.find(".lh-gauge", n),
               l = this.dom.find("circle.lh-gauge-arc", a);
             l && this._setGaugeArc(l, i);
-            let s = Math.round(i * 100),
+            const s = Math.round(i * 100),
               c = this.dom.find("div.lh-gauge__percentage", n);
             return (
               (c.textContent = s.toString()),
@@ -10288,7 +10288,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             );
           }
           renderCategoryFraction(e) {
-            let t = this.dom.createComponent("fraction"),
+            const t = this.dom.createComponent("fraction"),
               n = this.dom.find("a.lh-fraction__wrapper", t),
               {
                 numPassed: r,
@@ -10313,7 +10313,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             );
           }
           _setGaugeArc(e, t) {
-            let n = 2 * Math.PI * Number(e.getAttribute("r")),
+            const n = 2 * Math.PI * Number(e.getAttribute("r")),
               r = Number(e.getAttribute("stroke-width")),
               i = (0.25 * r) / n;
             e.style.transform = `rotate(${-90 + i * 360}deg)`;
@@ -10326,7 +10326,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             return !!e.result.warnings?.length;
           }
           _getClumpIdForAuditRef(e) {
-            let t = e.result.scoreDisplayMode;
+            const t = e.result.scoreDisplayMode;
             return t === "manual" || t === "notApplicable"
               ? t
               : k.showAsPassed(e.result)
@@ -10336,30 +10336,30 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 : "failed";
           }
           render(e, t = {}, n) {
-            let r = this.dom.createElement("div", "lh-category");
+            const r = this.dom.createElement("div", "lh-category");
             ((r.id = e.id), r.append(this.renderCategoryHeader(e, t, n)));
-            let i = new Map();
+            const i = new Map();
             (i.set("failed", []),
               i.set("warning", []),
               i.set("manual", []),
               i.set("passed", []),
               i.set("notApplicable", []));
-            for (let l of e.auditRefs) {
+            for (const l of e.auditRefs) {
               if (l.group === "hidden") continue;
-              let s = this._getClumpIdForAuditRef(l),
+              const s = this._getClumpIdForAuditRef(l),
                 c = i.get(s);
               (c.push(l), i.set(s, c));
             }
-            for (let l of i.values()) l.sort((s, c) => c.weight - s.weight);
-            let a = i.get("failed")?.length;
-            for (let [l, s] of i) {
+            for (const l of i.values()) l.sort((s, c) => c.weight - s.weight);
+            const a = i.get("failed")?.length;
+            for (const [l, s] of i) {
               if (s.length === 0) continue;
               if (l === "failed") {
-                let p = this.renderUnexpandableClump(s, t);
+                const p = this.renderUnexpandableClump(s, t);
                 (p.classList.add("lh-clump--failed"), r.append(p));
                 continue;
               }
-              let c = l === "manual" ? e.manualDescription : void 0,
+              const c = l === "manual" ? e.manualDescription : void 0,
                 d = l === "warning" || (l === "manual" && a === 0),
                 h = this.renderClump(l, {
                   auditRefsOrEls: s,
@@ -10373,7 +10373,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
         };
         var Y = class {
             static createSegment(e, t, n, r) {
-              let i = e[t],
+              const i = e[t],
                 a = Object.keys(e),
                 l = a.indexOf(t) === a.length - 1,
                 s = !!i.children && Object.keys(i.children).length > 0,
@@ -10401,18 +10401,18 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                   (i = t.node.navStartToEndTime),
                   (s = !0),
                   (c = t.node.isLongest));
-              let d = e.find(".lh-crc-node", r);
+              const d = e.find(".lh-crc-node", r);
               (d.setAttribute("title", l),
                 c && d.classList.add("lh-crc-node__longest"));
-              let h = e.find(".lh-crc-node__tree-marker", r);
+              const h = e.find(".lh-crc-node__tree-marker", r);
               t.treeMarkers.forEach((m) => {
-                let w = m ? "lh-tree-marker lh-vert" : "lh-tree-marker";
+                const w = m ? "lh-tree-marker lh-vert" : "lh-tree-marker";
                 h.append(
                   e.createElement("span", w),
                   e.createElement("span", "lh-tree-marker")
                 );
               });
-              let p = t.isLastChild
+              const p = t.isLastChild
                   ? "lh-tree-marker lh-up-right"
                   : "lh-tree-marker lh-vert-right",
                 g = t.hasChildren
@@ -10423,12 +10423,12 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 e.createElement("span", "lh-tree-marker lh-right"),
                 e.createElement("span", g)
               );
-              let b = n.renderTextURL(l),
+              const b = n.renderTextURL(l),
                 _ = e.find(".lh-crc-node__tree-value", r);
               if ((_.append(b), !t.hasChildren || s)) {
-                let m = e.createElement("span", "lh-crc-node__chain-duration");
+                const m = e.createElement("span", "lh-crc-node__chain-duration");
                 m.textContent = " - " + u.i18n.formatMilliseconds(i) + ", ";
-                let w = e.createElement("span", "lh-crc-node__chain-size");
+                const w = e.createElement("span", "lh-crc-node__chain-size");
                 ((w.textContent = u.i18n.formatBytesToKiB(a, 0.01)),
                   _.append(m, w));
               }
@@ -10436,8 +10436,8 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             }
             static buildTree(e, t, n, r) {
               if ((n.append(Q.createChainNode(e, t, r)), t.node.children))
-                for (let i of Object.keys(t.node.children)) {
-                  let a = Q.createSegment(
+                for (const i of Object.keys(t.node.children)) {
+                  const a = Q.createSegment(
                     t.node.children,
                     i,
                     t.treeMarkers,
@@ -10447,7 +10447,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 }
             }
             static render(e, t, n) {
-              let r = e.createComponent("crc"),
+              const r = e.createComponent("crc"),
                 i = e.find(".lh-crc", r);
               ((e.find(".lh-crc-initial-nav", r).textContent =
                 u.strings.crcInitialNavigation),
@@ -10455,9 +10455,9 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                   u.strings.crcLongestDurationLabel),
                 (e.find(".lh-crc__longest_duration", r).textContent =
                   u.i18n.formatMilliseconds(t.longestChain.duration)));
-              let a = t.chains;
-              for (let l of Object.keys(a)) {
-                let s = Q.createSegment(a, l);
+              const a = t.chains;
+              for (const l of Object.keys(a)) {
+                const s = Q.createSegment(a, l);
                 Q.buildTree(e, s, i, n);
               }
               return e.find(".lh-crc-container", r);
@@ -10480,7 +10480,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
         }
         var $ = class o {
           static getScreenshotPositions(e, t, n) {
-            let r = ut(e),
+            const r = ut(e),
               i = ke(r.x - t.width / 2, 0, n.width - t.width),
               a = ke(r.y - t.height / 2, 0, n.height - t.height);
             return {
@@ -10489,10 +10489,10 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             };
           }
           static renderClipPathInScreenshot(e, t, n, r, i) {
-            let a = e.find("clipPath", t),
+            const a = e.find("clipPath", t),
               l = `clip-${u.getUniqueSuffix()}`;
             ((a.id = l), (t.style.clipPath = `url(#${l})`));
-            let s = n.top / i.height,
+            const s = n.top / i.height,
               c = s + r.height / i.height,
               d = n.left / i.width,
               h = d + r.width / i.width,
@@ -10502,8 +10502,8 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 `0,${s}        ${d},${s} ${d},${c} 0,${c}`,
                 `${h},${s} 1,${s}       1,${c}       ${h},${c}`
               ];
-            for (let g of p) {
-              let b = e.createElementNS(
+            for (const g of p) {
+              const b = e.createElementNS(
                 "http://www.w3.org/2000/svg",
                 "polygon"
               );
@@ -10514,7 +10514,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             e.style.setProperty("--element-screenshot-url", `url('${t.data}')`);
           }
           static installOverlayFeature(e) {
-            let {
+            const {
                 dom: t,
                 rootEl: n,
                 overlayContainerEl: r,
@@ -10524,16 +10524,16 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             n.classList.contains(a) ||
               (n.classList.add(a),
               n.addEventListener("click", (l) => {
-                let s = l.target;
+                const s = l.target;
                 if (!s) return;
-                let c = s.closest(".lh-node > .lh-element-screenshot");
+                const c = s.closest(".lh-node > .lh-element-screenshot");
                 if (!c) return;
-                let d = t.createElement(
+                const d = t.createElement(
                   "div",
                   "lh-element-screenshot__overlay"
                 );
                 r.append(d);
-                let h = {
+                const h = {
                     width: d.clientWidth * 0.95,
                     height: d.clientHeight * 0.8
                   },
@@ -10556,23 +10556,23 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               }));
           }
           static _computeZoomFactor(e, t) {
-            let r = { x: t.width / e.width, y: t.height / e.height },
+            const r = { x: t.width / e.width, y: t.height / e.height },
               i = 0.75 * Math.min(r.x, r.y);
             return Math.min(1, i);
           }
           static render(e, t, n, r) {
             if (!gt(t, n)) return null;
-            let i = e.createComponent("elementScreenshot"),
+            const i = e.createComponent("elementScreenshot"),
               a = e.find("div.lh-element-screenshot", i);
             ((a.dataset.rectWidth = n.width.toString()),
               (a.dataset.rectHeight = n.height.toString()),
               (a.dataset.rectLeft = n.left.toString()),
               (a.dataset.rectTop = n.top.toString()));
-            let l = this._computeZoomFactor(n, r),
+            const l = o._computeZoomFactor(n, r),
               s = { width: r.width / l, height: r.height / l };
             ((s.width = Math.min(t.width, s.width)),
               (s.height = Math.min(t.height, s.height)));
-            let c = { width: s.width * l, height: s.height * l },
+            const c = { width: s.width * l, height: s.height * l },
               d = o.getScreenshotPositions(n, s, {
                 width: t.width,
                 height: t.height
@@ -10583,12 +10583,12 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               (h.style.backgroundPositionY = -(d.screenshot.top * l) + "px"),
               (h.style.backgroundPositionX = -(d.screenshot.left * l) + "px"),
               (h.style.backgroundSize = `${t.width * l}px ${t.height * l}px`));
-            let p = e.find("div.lh-element-screenshot__element-marker", a);
+            const p = e.find("div.lh-element-screenshot__element-marker", a);
             ((p.style.width = n.width * l + "px"),
               (p.style.height = n.height * l + "px"),
               (p.style.left = d.clip.left * l + "px"),
               (p.style.top = d.clip.top * l + "px"));
-            let g = e.find("div.lh-element-screenshot__mask", a);
+            const g = e.find("div.lh-element-screenshot__mask", a);
             return (
               (g.style.width = c.width + "px"),
               (g.style.height = c.height + "px"),
@@ -10628,7 +10628,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               }
             }
             _renderBytes(e) {
-              let t = u.i18n.formatBytesToKiB(e.value, e.granularity || 0.1),
+              const t = u.i18n.formatBytesToKiB(e.value, e.granularity || 0.1),
                 n = this._renderText(t);
               return ((n.title = u.i18n.formatBytes(e.value)), n);
             }
@@ -10650,7 +10650,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 r,
                 i;
               try {
-                let l = E.parseURL(t);
+                const l = E.parseURL(t);
                 ((n = l.file === "/" ? l.origin : l.file),
                   (r =
                     l.file === "/" || l.hostname === ""
@@ -10660,17 +10660,17 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               } catch {
                 n = t;
               }
-              let a = this._dom.createElement("div", "lh-text__url");
+              const a = this._dom.createElement("div", "lh-text__url");
               if ((a.append(this._renderLink({ text: n, url: t })), r)) {
-                let l = this._renderText(r);
+                const l = this._renderText(r);
                 (l.classList.add("lh-text__url-host"), a.append(l));
               }
               return (i && ((a.title = t), (a.dataset.url = t)), a);
             }
             _renderLink(e) {
-              let t = this._dom.createElement("a");
+              const t = this._dom.createElement("a");
               if ((this._dom.safelySetHref(t, e.url), !t.href)) {
-                let n = this._renderText(e.text);
+                const n = this._renderText(e.text);
                 return (n.classList.add("lh-link"), n);
               }
               return (
@@ -10682,22 +10682,22 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               );
             }
             _renderText(e) {
-              let t = this._dom.createElement("div", "lh-text");
+              const t = this._dom.createElement("div", "lh-text");
               return ((t.textContent = e), t);
             }
             _renderNumeric(e) {
-              let t = u.i18n.formatNumber(e.value, e.granularity || 0.1),
+              const t = u.i18n.formatNumber(e.value, e.granularity || 0.1),
                 n = this._dom.createElement("div", "lh-numeric");
               return ((n.textContent = t), n);
             }
             _renderThumbnail(e) {
-              let t = this._dom.createElement("img", "lh-thumbnail"),
+              const t = this._dom.createElement("img", "lh-thumbnail"),
                 n = e;
               return ((t.src = n), (t.title = n), (t.alt = ""), t);
             }
             _renderUnknown(e, t) {
               console.error(`Unknown details type: ${e}`, t);
-              let n = this._dom.createElement("details", "lh-unknown");
+              const n = this._dom.createElement("details", "lh-unknown");
               return (
                 (this._dom.createChildOf(n, "summary").textContent =
                   `We don't know how to render audit details of type \`${e}\`. The Lighthouse version that collected this data is likely newer than the Lighthouse version of the report renderer. Expand for the raw JSON.`),
@@ -10732,18 +10732,18 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 }
               switch (t.valueType) {
                 case "bytes": {
-                  let n = Number(e);
+                  const n = Number(e);
                   return this._renderBytes({
                     value: n,
                     granularity: t.granularity
                   });
                 }
                 case "code": {
-                  let n = String(e);
+                  const n = String(e);
                   return this._renderCode(n);
                 }
                 case "ms": {
-                  let n = {
+                  const n = {
                     value: Number(e),
                     granularity: t.granularity,
                     displayUnit: t.displayUnit
@@ -10751,26 +10751,26 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                   return this._renderMilliseconds(n);
                 }
                 case "numeric": {
-                  let n = Number(e);
+                  const n = Number(e);
                   return this._renderNumeric({
                     value: n,
                     granularity: t.granularity
                   });
                 }
                 case "text": {
-                  let n = String(e);
+                  const n = String(e);
                   return this._renderText(n);
                 }
                 case "thumbnail": {
-                  let n = String(e);
+                  const n = String(e);
                   return this._renderThumbnail(n);
                 }
                 case "timespanMs": {
-                  let n = Number(e);
+                  const n = Number(e);
                   return this._renderMilliseconds({ value: n });
                 }
                 case "url": {
-                  let n = String(e);
+                  const n = String(e);
                   return mt.some((r) => n.startsWith(r))
                     ? this.renderTextURL(n)
                     : this._renderCode(n);
@@ -10791,8 +10791,8 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 : null;
             }
             _renderTableRow(e, t) {
-              let n = this._dom.createElement("tr");
-              for (let r of t) {
+              const n = this._dom.createElement("tr");
+              for (const r of t) {
                 if (!r || !r.key) {
                   this._dom.createChildOf(n, "td", "lh-table-column--empty");
                   continue;
@@ -10800,7 +10800,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 let i = e[r.key],
                   a;
                 if ((i != null && (a = this._renderTableValue(i, r)), a)) {
-                  let l = `lh-table-column--${r.valueType}`;
+                  const l = `lh-table-column--${r.valueType}`;
                   this._dom.createChildOf(n, "td", l).append(a);
                 } else
                   this._dom.createChildOf(n, "td", "lh-table-column--empty");
@@ -10808,36 +10808,36 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               return n;
             }
             _renderTableRowsFromItem(e, t) {
-              let n = this._dom.createFragment();
+              const n = this._dom.createFragment();
               if ((n.append(this._renderTableRow(e, t)), !e.subItems)) return n;
-              let r = t.map(this._getDerivedSubItemsHeading);
+              const r = t.map(this._getDerivedSubItemsHeading);
               if (!r.some(Boolean)) return n;
-              for (let i of e.subItems.items) {
-                let a = this._renderTableRow(i, r);
+              for (const i of e.subItems.items) {
+                const a = this._renderTableRow(i, r);
                 (a.classList.add("lh-sub-item-row"), n.append(a));
               }
               return n;
             }
             _adornEntityGroupRow(e) {
-              let t = e.dataset.entity;
+              const t = e.dataset.entity;
               if (!t) return;
-              let n = this._entities?.find((i) => i.name === t);
+              const n = this._entities?.find((i) => i.name === t);
               if (!n) return;
-              let r = this._dom.find("td", e);
+              const r = this._dom.find("td", e);
               if (n.category) {
-                let i = this._dom.createElement("span");
+                const i = this._dom.createElement("span");
                 (i.classList.add("lh-audit__adorn"),
                   (i.textContent = n.category),
                   r.append(" ", i));
               }
               if (n.isFirstParty) {
-                let i = this._dom.createElement("span");
+                const i = this._dom.createElement("span");
                 (i.classList.add("lh-audit__adorn", "lh-audit__adorn1p"),
                   (i.textContent = u.strings.firstPartyChipLabel),
                   r.append(" ", i));
               }
               if (n.homepage) {
-                let i = this._dom.createElement("a");
+                const i = this._dom.createElement("a");
                 ((i.href = n.homepage),
                   (i.target = "_blank"),
                   (i.title = u.strings.openInANewTabTooltip),
@@ -10846,9 +10846,9 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               }
             }
             _renderEntityGroupRow(e, t) {
-              let n = { ...t[0] };
+              const n = { ...t[0] };
               n.valueType = "text";
-              let r = [n, ...t.slice(1)],
+              const r = [n, ...t.slice(1)],
                 i = this._dom.createFragment();
               return (
                 i.append(this._renderTableRow(e, r)),
@@ -10857,50 +10857,50 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               );
             }
             _getEntityGroupItems(e) {
-              let { items: t, headings: n, sortedBy: r } = e;
+              const { items: t, headings: n, sortedBy: r } = e;
               if (!t.length || e.isEntityGrouped || !t.some((d) => d.entity))
                 return [];
-              let i = new Set(e.skipSumming || []),
+              const i = new Set(e.skipSumming || []),
                 a = [];
-              for (let d of n)
+              for (const d of n)
                 !d.key ||
                   i.has(d.key) ||
                   (ft.includes(d.valueType) && a.push(d.key));
-              let l = n[0].key;
+              const l = n[0].key;
               if (!l) return [];
-              let s = new Map();
-              for (let d of t) {
-                let h = typeof d.entity == "string" ? d.entity : void 0,
+              const s = new Map();
+              for (const d of t) {
+                const h = typeof d.entity == "string" ? d.entity : void 0,
                   p = s.get(h) || {
                     [l]: h || u.strings.unattributable,
                     entity: h
                   };
-                for (let g of a) p[g] = Number(p[g] || 0) + Number(d[g] || 0);
+                for (const g of a) p[g] = Number(p[g] || 0) + Number(d[g] || 0);
                 s.set(h, p);
               }
-              let c = [...s.values()];
+              const c = [...s.values()];
               return (r && c.sort(k.getTableItemSortComparator(r)), c);
             }
             _renderTable(e) {
               if (!e.items.length) return this._dom.createElement("span");
-              let t = this._dom.createElement("table", "lh-table"),
+              const t = this._dom.createElement("table", "lh-table"),
                 n = this._dom.createChildOf(t, "thead"),
                 r = this._dom.createChildOf(n, "tr");
-              for (let l of e.headings) {
-                let c = `lh-table-column--${l.valueType || "text"}`,
+              for (const l of e.headings) {
+                const c = `lh-table-column--${l.valueType || "text"}`,
                   d = this._dom.createElement("div", "lh-text");
                 ((d.textContent = l.label),
                   this._dom.createChildOf(r, "th", c).append(d));
               }
-              let i = this._getEntityGroupItems(e),
+              const i = this._getEntityGroupItems(e),
                 a = this._dom.createChildOf(t, "tbody");
               if (i.length)
-                for (let l of i) {
-                  let s = typeof l.entity == "string" ? l.entity : void 0,
+                for (const l of i) {
+                  const s = typeof l.entity == "string" ? l.entity : void 0,
                     c = this._renderEntityGroupRow(l, e.headings);
-                  for (let h of e.items.filter((p) => p.entity === s))
+                  for (const h of e.items.filter((p) => p.entity === s))
                     c.append(this._renderTableRowsFromItem(h, e.headings));
-                  let d = this._dom.findAll("tr", c);
+                  const d = this._dom.findAll("tr", c);
                   (s &&
                     d.length &&
                     (d.forEach((h) => (h.dataset.entity = s)),
@@ -10909,8 +10909,8 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 }
               else {
                 let l = !0;
-                for (let s of e.items) {
-                  let c = this._renderTableRowsFromItem(s, e.headings),
+                for (const s of e.items) {
+                  const c = this._renderTableRowsFromItem(s, e.headings),
                     d = this._dom.findAll("tr", c),
                     h = d[0];
                   if (
@@ -10921,7 +10921,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                     (h.classList.add("lh-row--group"),
                       this._adornEntityGroupRow(h));
                   else
-                    for (let p of d)
+                    for (const p of d)
                       p.classList.add(l ? "lh-row--even" : "lh-row--odd");
                   ((l = !l), a.append(c));
                 }
@@ -10936,11 +10936,11 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                   : this.render(e);
             }
             _renderList(e) {
-              let t = this._dom.createElement("div", "lh-list");
+              const t = this._dom.createElement("div", "lh-list");
               return (
                 e.items.forEach((n) => {
                   if (n.type === "list-section") {
-                    let i = this._dom.createElement("div", "lh-list-section");
+                    const i = this._dom.createElement("div", "lh-list-section");
                     (n.title &&
                       this._dom
                         .createChildOf(i, "div", "lh-list-section__title")
@@ -10955,21 +10955,21 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                           .append(
                             this._dom.convertMarkdownLinkSnippets(n.description)
                           ));
-                    let a = this._renderListValue(n.value);
+                    const a = this._renderListValue(n.value);
                     (a && i.append(a), t.append(i));
                     return;
                   }
-                  let r = this._renderListValue(n);
+                  const r = this._renderListValue(n);
                   r && t.append(r);
                 }),
                 t
               );
             }
             _renderChecklist(e) {
-              let t = this._dom.createElement("ul", "lh-checklist");
+              const t = this._dom.createElement("ul", "lh-checklist");
               return (
                 Object.values(e.items).forEach((n) => {
-                  let r = this._dom.createChildOf(t, "li", "lh-checklist-item"),
+                  const r = this._dom.createChildOf(t, "li", "lh-checklist-item"),
                     i = n.value
                       ? "lh-report-plain-icon--checklist-pass"
                       : "lh-report-plain-icon--checklist-fail";
@@ -10983,13 +10983,13 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               );
             }
             renderNode(e) {
-              let t = this._dom.createElement("span", "lh-node");
+              const t = this._dom.createElement("span", "lh-node");
               if (e.nodeLabel) {
-                let a = this._dom.createElement("div");
+                const a = this._dom.createElement("div");
                 ((a.textContent = e.nodeLabel), t.append(a));
               }
               if (e.snippet) {
-                let a = this._dom.createElement("div");
+                const a = this._dom.createElement("div");
                 (a.classList.add("lh-node__snippet"),
                   (a.textContent = e.snippet),
                   t.append(a));
@@ -11002,9 +11002,9 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 !this._fullPageScreenshot)
               )
                 return t;
-              let n = e.lhId && this._fullPageScreenshot.nodes[e.lhId];
+              const n = e.lhId && this._fullPageScreenshot.nodes[e.lhId];
               if (!n || n.width === 0 || n.height === 0) return t;
-              let r = { width: 147, height: 100 },
+              const r = { width: 147, height: 100 },
                 i = $.render(
                   this._dom,
                   this._fullPageScreenshot.screenshot,
@@ -11042,9 +11042,9 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               );
             }
             _renderFilmstrip(e) {
-              let t = this._dom.createElement("div", "lh-filmstrip");
-              for (let n of e.items) {
-                let r = this._dom.createChildOf(
+              const t = this._dom.createElement("div", "lh-filmstrip");
+              for (const n of e.items) {
+                const r = this._dom.createChildOf(
                     t,
                     "div",
                     "lh-filmstrip__frame"
@@ -11059,7 +11059,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               return t;
             }
             _renderCode(e) {
-              let t = this._dom.createElement("pre", "lh-code");
+              const t = this._dom.createElement("pre", "lh-code");
               return ((t.textContent = e), t);
             }
           };
@@ -11071,7 +11071,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
           }
           _formatNumberWithGranularity(e, t, n = {}) {
             if (t !== void 0) {
-              let a = -Math.log10(t);
+              const a = -Math.log10(t);
               (Number.isInteger(a) ||
                 (console.warn(
                   `granularity of ${t} is invalid. Using 1 instead`
@@ -11180,15 +11180,15 @@ details[open] .lh-clump-toggletext--hide { display: block;}
           formatDuration(e) {
             let t = e / 1e3;
             if (Math.round(t) === 0) return "None";
-            let n = [],
+            const n = [],
               r = { day: 3600 * 24, hour: 3600, minute: 60, second: 1 };
             return (
               Object.keys(r).forEach((i) => {
-                let a = r[i],
+                const a = r[i],
                   l = Math.floor(t / a);
                 if (l > 0) {
                   t -= l * a;
-                  let s = this._formatNumberWithGranularity(l, 1, {
+                  const s = this._formatNumberWithGranularity(l, 1, {
                     style: "unit",
                     unit: i,
                     unitDisplay: "narrow"
@@ -11201,11 +11201,11 @@ details[open] .lh-clump-toggletext--hide { display: block;}
           }
         };
         function Ee(o) {
-          let e = o.createComponent("explodeyGauge");
+          const e = o.createComponent("explodeyGauge");
           return o.find(".lh-exp-gauge-component", e);
         }
         function Se(o, e, t) {
-          let n = o.find("div.lh-exp-gauge__wrapper", e);
+          const n = o.find("div.lh-exp-gauge__wrapper", e);
           ((n.className = ""),
             n.classList.add(
               "lh-exp-gauge__wrapper",
@@ -11215,13 +11215,13 @@ details[open] .lh-clump-toggletext--hide { display: block;}
         }
         function vt(o, e, t) {
           t = t || o / 32;
-          let n = o / t,
+          const n = o / t,
             r = 0.5 * t,
             i = n + r + t,
             a = 2 * Math.PI * n,
-            l = Math.acos(1 - 0.5 * Math.pow((0.5 * t) / n, 2)) * n,
+            l = Math.acos(1 - 0.5 * ((0.5 * t) / n) ** 2) * n,
             s = 2 * Math.PI * i,
-            c = Math.acos(1 - 0.5 * Math.pow((0.5 * t) / i, 2)) * i;
+            c = Math.acos(1 - 0.5 * ((0.5 * t) / i) ** 2) * i;
           return {
             radiusInner: n,
             radiusOuter: i,
@@ -11229,7 +11229,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             circumferenceOuter: s,
             getArcLength: () => Math.max(0, Number(e * a)),
             getMetricArcLength: (d, h = !1) => {
-              let p = h ? 0 : 2 * c;
+              const p = h ? 0 : 2 * c;
               return Math.max(0, Number(d * s - r - p));
             },
             endDiffInner: l,
@@ -11239,7 +11239,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
           };
         }
         function bt(o, e, t) {
-          let i = Number(t.score),
+          const i = Number(t.score),
             {
               radiusInner: a,
               radiusOuter: l,
@@ -11257,7 +11257,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             m.setAttribute("viewBox", [-64, -64 / 2, 128, 128 / 2].join(" ")),
             m.style.setProperty("--stroke-width", `${b}px`),
             m.style.setProperty("--circle-meas", (2 * Math.PI).toFixed(4)));
-          let w = o.find("g.lh-exp-gauge__outer", e),
+          const w = o.find("g.lh-exp-gauge__outer", e),
             f = o.find("g.lh-exp-gauge__inner", e),
             v = o.find("circle.lh-cover", w),
             y = o.find("circle.lh-exp-gauge__arc", f),
@@ -11285,7 +11285,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               .find((D) => x.classList.contains(D)) || x.remove();
           }),
             z.forEach((x, A) => {
-              let T = x.acronym ?? x.id,
+              const T = x.acronym ?? x.id,
                 D = !w.querySelector(`.metric--${T}`),
                 M = o.maybeFind(`g.metric--${T}`, w) || o.createSVGElement("g"),
                 B =
@@ -11323,7 +11323,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                   "lh-exp-gauge__arc--metric",
                   "lh-exp-gauge-hovertarget"
                 ));
-              let j = x.weight / F,
+              const j = x.weight / F,
                 de = h(j),
                 he = x.result.score ? x.result.score * j : 0,
                 pe = h(he),
@@ -11344,7 +11344,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 U.classList.add("metric__value"),
                 (P.textContent = T),
                 (U.textContent = `+${Math.round(he * 100)}`));
-              let me = R + j * Math.PI,
+              const me = R + j * Math.PI,
                 Z = Math.cos(me),
                 J = Math.sin(me);
               switch (!0) {
@@ -11385,7 +11385,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 (H -= Pe),
                 (R += j * 2 * Math.PI));
             }));
-          let I =
+          const I =
             w.querySelector(".lh-exp-gauge-underhovertarget") ||
             o.createSVGElement("circle");
           I.classList.add(
@@ -11394,7 +11394,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             "lh-exp-gauge-hovertarget",
             "lh-exp-gauge-underhovertarget"
           );
-          let N = h(1, !0);
+          const N = h(1, !0);
           if (
             (I.setAttribute("stroke-dasharray", `${N} ${c - N - g}`),
             I.isConnected || w.prepend(I),
@@ -11414,7 +11414,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 return;
               }
               if (!(x.target instanceof Element)) return;
-              let A = x.target.parentNode;
+              const A = x.target.parentNode;
               if (A instanceof SVGElement) {
                 if (A && A === f) {
                   m.classList.contains("state--expanded")
@@ -11427,7 +11427,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                   return;
                 }
                 if (A && A.classList && A.classList.contains("metric")) {
-                  let T = A.style.getPropertyValue("--metric-rating");
+                  const T = A.style.getPropertyValue("--metric-rating");
                   if (
                     (e.style.setProperty(
                       "--color-highlight",
@@ -11438,7 +11438,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                     (m.classList.add("state--highlight"),
                       A.classList.add("metric--highlight"));
                   else {
-                    let D = o.find(".metric--highlight", m);
+                    const D = o.find(".metric--highlight", m);
                     A !== D &&
                       (D.classList.remove("metric--highlight"),
                       A.classList.add("metric--highlight"));
@@ -11458,15 +11458,15 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               x.classList.contains("state--expanded"))
             )
               return;
-            let A = o.find(".lh-exp-gauge__inner", x),
+            const A = o.find(".lh-exp-gauge__inner", x),
               T = `uniq-${Math.random()}`;
             A.setAttribute("id", T);
-            let D = o.createSVGElement("use");
+            const D = o.createSVGElement("use");
             (D.setAttribute("href", `#${T}`), x.appendChild(D));
-            let M = 2.5;
+            const M = 2.5;
             (x.style.setProperty("--peek-dur", `${M}s`),
               x.classList.add("state--peek", "state--expanded"));
-            let B = () => {
+            const B = () => {
                 (x.classList.remove("state--peek", "state--expanded"),
                   D.remove());
               },
@@ -11486,19 +11486,19 @@ details[open] .lh-clump-toggletext--hide { display: block;}
           ne = class extends G {
             _memoryInsightToggleState = "DEFAULT";
             _renderMetric(e) {
-              let t = this.dom.createComponent("metric"),
+              const t = this.dom.createComponent("metric"),
                 n = this.dom.find(".lh-metric", t);
               n.id = e.result.id;
-              let r = k.calculateRating(
+              const r = k.calculateRating(
                 e.result.score,
                 e.result.scoreDisplayMode
               );
               n.classList.add(`lh-metric--${r}`);
-              let i = this.dom.find(".lh-metric__title", t);
+              const i = this.dom.find(".lh-metric__title", t);
               i.textContent = e.result.title;
-              let a = this.dom.find(".lh-metric__value", t);
+              const a = this.dom.find(".lh-metric__value", t);
               a.textContent = e.result.displayValue || "";
-              let l = this.dom.find(".lh-metric__description", t);
+              const l = this.dom.find(".lh-metric__description", t);
               if (
                 (l.append(
                   this.dom.convertMarkdownLinkSnippets(e.result.description)
@@ -11506,7 +11506,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 e.result.scoreDisplayMode === "error")
               ) {
                 ((l.textContent = ""), (a.textContent = "Error!"));
-                let s = this.dom.createChildOf(l, "span");
+                const s = this.dom.createChildOf(l, "span");
                 s.textContent =
                   e.result.errorMessage ||
                   "Report error: no metric information";
@@ -11516,14 +11516,14 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               return n;
             }
             _getScoringCalculatorHref(e) {
-              let t = e.filter((h) => h.group === "metrics"),
+              const t = e.filter((h) => h.group === "metrics"),
                 n = e.find((h) => h.id === "interactive"),
                 r = e.find((h) => h.id === "first-cpu-idle"),
                 i = e.find((h) => h.id === "first-meaningful-paint");
               (n && t.push(n),
                 r && t.push(r),
                 i && typeof i.result.score == "number" && t.push(i));
-              let a = (h) => Math.round(h * 100) / 100,
+              const a = (h) => Math.round(h * 100) / 100,
                 s = [
                   ...t.map((h) => {
                     let p;
@@ -11542,7 +11542,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               u.reportJson &&
                 (s.push(["device", u.reportJson.configSettings.formFactor]),
                 s.push(["version", u.reportJson.lighthouseVersion]));
-              let c = new URLSearchParams(s),
+              const c = new URLSearchParams(s),
                 d = new URL(
                   "https://googlechrome.github.io/lighthouse/scorecalc/"
                 );
@@ -11553,17 +11553,17 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 return { overallImpact: 0, overallLinearImpact: 0 };
               let n = 0,
                 r = 0;
-              for (let [i, a] of Object.entries(e.result.metricSavings)) {
+              for (const [i, a] of Object.entries(e.result.metricSavings)) {
                 if (a === void 0) continue;
-                let l = t.find((g) => g.acronym === i);
+                const l = t.find((g) => g.acronym === i);
                 if (!l || l.result.score === null) continue;
-                let s = l.result.numericValue;
+                const s = l.result.numericValue;
                 if (!s) continue;
-                let c = (a / s) * l.weight;
+                const c = (a / s) * l.weight;
                 r += c;
-                let d = l.result.scoringOptions;
+                const d = l.result.scoringOptions;
                 if (!d) continue;
-                let p =
+                const p =
                   (E.computeLogNormalScore(d, s - a) - l.result.score) *
                   l.weight;
                 n += p;
@@ -11583,7 +11583,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             }
             _getRawInsightToggleState() {
               try {
-                let e = window.localStorage.getItem(Ce);
+                const e = window.localStorage.getItem(Ce);
                 if (e === "AUDITS" || e === "INSIGHTS") return e;
               } catch {
                 return this._memoryInsightToggleState;
@@ -11591,14 +11591,14 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               return "DEFAULT";
             }
             _setInsightToggleButtonText(e) {
-              let t = this._getInsightToggleState();
+              const t = this._getInsightToggleState();
               e.innerText =
                 t === "AUDITS"
                   ? u.strings.tryInsights
                   : u.strings.goBackToAudits;
             }
             _renderInsightsToggle(e) {
-              let t = this.dom.createChildOf(
+              const t = this.dom.createChildOf(
                   e,
                   "div",
                   "lh-perf-insights-toggle"
@@ -11612,7 +11612,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 n.appendChild(
                   this.dom.convertMarkdownLinkSnippets(u.strings.insightsNotice)
                 ));
-              let a = this.dom.createChildOf(
+              const a = this.dom.createChildOf(
                 t,
                 "button",
                 "lh-button lh-button-insight-toggle"
@@ -11620,9 +11620,9 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               (this._setInsightToggleButtonText(a),
                 a.addEventListener("click", (l) => {
                   l.preventDefault();
-                  let s = this.dom.maybeFind(".lh-perf-audits--swappable");
+                  const s = this.dom.maybeFind(".lh-perf-audits--swappable");
                   s && this.dom.swapSectionIfPossible(s);
-                  let d =
+                  const d =
                     this._getInsightToggleState() === "AUDITS"
                       ? "INSIGHTS"
                       : "AUDITS";
@@ -11636,12 +11636,12 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 t.appendChild(a));
             }
             render(e, t, n) {
-              let r = u.strings,
+              const r = u.strings,
                 i = this.dom.createElement("div", "lh-category");
               ((i.id = e.id), i.append(this.renderCategoryHeader(e, t, n)));
-              let a = e.auditRefs.filter((g) => g.group === "metrics");
+              const a = e.auditRefs.filter((g) => g.group === "metrics");
               if (a.length) {
-                let [g, b] = this.renderAuditGroup(t.metrics),
+                const [g, b] = this.renderAuditGroup(t.metrics),
                   _ = this.dom.createElement(
                     "input",
                     "lh-metrics-toggle__input"
@@ -11654,14 +11654,14 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                   (_.type = "checkbox"),
                   (_.id = m),
                   g.prepend(_));
-                let w = this.dom.find(".lh-audit-group__header", g),
+                const w = this.dom.find(".lh-audit-group__header", g),
                   f = this.dom.createChildOf(
                     w,
                     "label",
                     "lh-metrics-toggle__label"
                   );
                 f.htmlFor = m;
-                let v = this.dom.createChildOf(
+                const v = this.dom.createChildOf(
                     f,
                     "span",
                     "lh-metrics-toggle__labeltext--show"
@@ -11673,7 +11673,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                   );
                 ((v.textContent = u.strings.expandView),
                   (y.textContent = u.strings.collapseView));
-                let S = this.dom.createElement("div", "lh-metrics-container");
+                const S = this.dom.createElement("div", "lh-metrics-container");
                 if (
                   (g.insertBefore(S, b),
                   a.forEach((C) => {
@@ -11681,7 +11681,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                   }),
                   i.querySelector(".lh-gauge__wrapper"))
                 ) {
-                  let C = this.dom.find(".lh-category-header__description", i),
+                  const C = this.dom.find(".lh-category-header__description", i),
                     L = this.dom.createChildOf(
                       C,
                       "div",
@@ -11691,7 +11691,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                       r.varianceDisclaimer
                     );
                   L.append(z);
-                  let F = this.dom.createChildOf(L, "a", "lh-calclink");
+                  const F = this.dom.createChildOf(L, "a", "lh-calclink");
                   ((F.target = "_blank"),
                     (F.textContent = r.calculatorLink),
                     this.dom.safelySetHref(
@@ -11701,7 +11701,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 }
                 (g.classList.add("lh-audit-group--metrics"), i.append(g));
               }
-              let l = this.dom.createChildOf(
+              const l = this.dom.createChildOf(
                   i,
                   "div",
                   "lh-filmstrip-container"
@@ -11711,16 +11711,16 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 )?.result;
               if (c?.details) {
                 l.id = c.id;
-                let g = this.detailsRenderer.render(c.details);
+                const g = this.detailsRenderer.render(c.details);
                 g && l.append(g);
               }
               this._renderInsightsToggle(i);
-              let d = this.renderFilterableSection(e, t, ["diagnostics"], a);
+              const d = this.renderFilterableSection(e, t, ["diagnostics"], a);
               d?.classList.add(
                 "lh-perf-audits--swappable",
                 "lh-perf-audits--legacy"
               );
-              let h = this.renderFilterableSection(
+              const h = this.renderFilterableSection(
                 e,
                 t,
                 ["insights", "diagnostics"],
@@ -11735,7 +11735,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                   (i.append(d), h && this.dom.registerSwappableSections(d, h)),
                 this._getInsightToggleState() === "INSIGHTS" &&
                   requestAnimationFrame(() => {
-                    let g = this.dom.maybeFind(".lh-perf-audits--swappable");
+                    const g = this.dom.maybeFind(".lh-perf-audits--swappable");
                     g && this.dom.swapSectionIfPossible(g);
                   }),
                 this.dom.fireEventOn("lh-analytics", this.dom.document(), {
@@ -11744,7 +11744,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 }),
                 (!n || n?.gatherMode === "navigation") && e.score !== null)
               ) {
-                let g = Ee(this.dom);
+                const g = Ee(this.dom);
                 (Se(this.dom, g, e),
                   this.dom.find(".lh-score__gauge", i).replaceWith(g));
               }
@@ -11752,19 +11752,19 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             }
             renderFilterableSection(e, t, n, r) {
               if (n.some((f) => !t[f])) return null;
-              let i = this.dom.createElement("div"),
+              const i = this.dom.createElement("div"),
                 a = new Set(),
                 l = (f) =>
                   f.id.endsWith("-insight") ? "insights" : (f.group ?? ""),
                 s = e.auditRefs.filter((f) => n.includes(l(f)));
-              for (let f of s)
+              for (const f of s)
                 f.result.replacesAudits?.forEach((v) => {
                   a.add(v);
                 });
-              let c = s
+              const c = s
                   .filter((f) => !a.has(f.id))
                   .map((f) => {
-                    let { overallImpact: v, overallLinearImpact: y } =
+                    const { overallImpact: v, overallLinearImpact: y } =
                         this.overallImpact(f, r),
                       S = f.result.guidanceLevel || 1,
                       C = this.renderAudit(f);
@@ -11779,23 +11779,23 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 d = c.filter((f) => !k.showAsPassed(f.auditRef.result)),
                 h = c.filter((f) => k.showAsPassed(f.auditRef.result)),
                 p = {};
-              for (let f of n) {
-                let v = this.renderAuditGroup(t[f]);
+              for (const f of n) {
+                const v = this.renderAuditGroup(t[f]);
                 (v[0].classList.add(`lh-audit-group--${f}`), (p[f] = v));
               }
               function g(f) {
-                for (let v of c)
+                for (const v of c)
                   if (f === "All") v.auditEl.hidden = !1;
                   else {
-                    let y = v.auditRef.result.metricSavings?.[f] === void 0;
+                    const y = v.auditRef.result.metricSavings?.[f] === void 0;
                     v.auditEl.hidden = y;
                   }
                 d.sort((v, y) => {
-                  let S = v.auditRef.result.score || 0,
+                  const S = v.auditRef.result.score || 0,
                     C = y.auditRef.result.score || 0;
                   if (S !== C) return S - C;
                   if (f !== "All") {
-                    let L = v.auditRef.result.metricSavings?.[f] ?? -1,
+                    const L = v.auditRef.result.metricSavings?.[f] ?? -1,
                       z = y.auditRef.result.metricSavings?.[f] ?? -1;
                     if (L !== z) return z - L;
                   }
@@ -11809,30 +11809,30 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                         v.overallLinearImpact * v.guidanceLevel
                       : y.guidanceLevel - v.guidanceLevel;
                 });
-                for (let v of d) {
+                for (const v of d) {
                   if (!v.auditRef.group) continue;
-                  let y = p[l(v.auditRef)];
+                  const y = p[l(v.auditRef)];
                   if (!y) continue;
-                  let [S, C] = y;
+                  const [S, C] = y;
                   S.insertBefore(v.auditEl, C);
                 }
               }
-              let b = new Set();
-              for (let f of d) {
-                let v = f.auditRef.result.metricSavings || {};
-                for (let [y, S] of Object.entries(v))
+              const b = new Set();
+              for (const f of d) {
+                const v = f.auditRef.result.metricSavings || {};
+                for (const [y, S] of Object.entries(v))
                   typeof S == "number" && b.add(y);
               }
-              let _ = r.filter((f) => f.acronym && b.has(f.acronym));
+              const _ = r.filter((f) => f.acronym && b.has(f.acronym));
               (_.length && this.renderMetricAuditFilter(_, i, g), g("All"));
-              for (let f of n)
+              for (const f of n)
                 if (d.some((v) => l(v.auditRef) === f)) {
-                  let v = p[f];
+                  const v = p[f];
                   if (!v) continue;
                   i.append(v[0]);
                 }
               if (!h.length) return i;
-              let m = {
+              const m = {
                   auditRefsOrEls: h.map((f) => f.auditEl),
                   groupDefinitions: t
                 },
@@ -11840,13 +11840,13 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               return (i.append(w), i);
             }
             renderMetricAuditFilter(e, t, n) {
-              let r = this.dom.createElement("div", "lh-metricfilter"),
+              const r = this.dom.createElement("div", "lh-metricfilter"),
                 i = this.dom.createChildOf(r, "span", "lh-metricfilter__text");
               i.textContent = u.strings.showRelevantAudits;
-              let a = [{ acronym: "All", id: "All" }, ...e],
+              const a = [{ acronym: "All", id: "All" }, ...e],
                 l = u.getUniqueSuffix();
-              for (let s of a) {
-                let c = `metric-${s.acronym}-${l}`,
+              for (const s of a) {
+                const c = `metric-${s.acronym}-${l}`,
                   d = this.dom.createChildOf(
                     r,
                     "input",
@@ -11855,7 +11855,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 ((d.type = "radio"),
                   (d.name = `metricsfilter-${l}`),
                   (d.id = c));
-                let h = this.dom.createChildOf(
+                const h = this.dom.createChildOf(
                   r,
                   "label",
                   "lh-metricfilter__label"
@@ -11868,7 +11868,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                     h.classList.add("lh-metricfilter__label--active")),
                   t.append(r),
                   d.addEventListener("input", (p) => {
-                    for (let b of t.querySelectorAll(
+                    for (const b of t.querySelectorAll(
                       "label.lh-metricfilter__label"
                     ))
                       b.classList.toggle(
@@ -11880,12 +11880,12 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                       s.acronym !== "All"
                     ),
                       n(s.acronym || "All"));
-                    let g = t.querySelectorAll(
+                    const g = t.querySelectorAll(
                       "div.lh-audit-group, details.lh-audit-group"
                     );
-                    for (let b of g) {
+                    for (const b of g) {
                       b.hidden = !1;
-                      let _ = Array.from(b.querySelectorAll("div.lh-audit")),
+                      const _ = Array.from(b.querySelectorAll("div.lh-audit")),
                         m = !!_.length && _.every((w) => w.hidden);
                       b.hidden = m;
                     }
@@ -11902,7 +11902,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               console.warn(
                 "Please adopt the new report API in renderer/api.js."
               );
-              let i = t.closest(".lh-root");
+              const i = t.closest(".lh-root");
               i
                 ? (this._dom.rootEl = i)
                 : (t.classList.add("lh-root", "lh-vars"),
@@ -11912,7 +11912,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               this._dom.setLighthouseChannel(
                 e.configSettings.channel || "unknown"
               ));
-            let r = k.prepareReportResult(e);
+            const r = k.prepareReportResult(e);
             return (
               (this._dom.rootEl.textContent = ""),
               this._dom.rootEl.append(this._renderReport(r)),
@@ -11922,7 +11922,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             );
           }
           _renderReportTopbar(e) {
-            let t = this._dom.createComponent("topbar"),
+            const t = this._dom.createComponent("topbar"),
               n = this._dom.find("a.lh-topbar__url", t);
             return (
               (n.textContent = e.finalDisplayedUrl),
@@ -11932,7 +11932,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             );
           }
           _renderReportHeader() {
-            let e = this._dom.createComponent("heading"),
+            const e = this._dom.createComponent("heading"),
               t = this._dom.createComponent("scoresWrapper");
             return (
               this._dom
@@ -11942,7 +11942,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             );
           }
           _renderReportFooter(e) {
-            let t = this._dom.createComponent("footer");
+            const t = this._dom.createComponent("footer");
             return (
               this._renderMetaBlock(e, t),
               (this._dom.find(".lh-footer__version_issue", t).textContent =
@@ -11953,7 +11953,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             );
           }
           _renderMetaBlock(e, t) {
-            let n = k.getEmulationDescriptions(e.configSettings || {}),
+            const n = k.getEmulationDescriptions(e.configSettings || {}),
               r = e.userAgent.match(/(\w*Chrome\/[\d.]+)/),
               i = Array.isArray(r)
                 ? r[1].replace("/", " ").replace("Chrome", "Chromium")
@@ -11975,7 +11975,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               ? (d = u.strings.runtimeAnalysisWindowTimespan)
               : e.gatherMode === "snapshot" &&
                 (d = u.strings.runtimeAnalysisWindowSnapshot);
-            let h = [
+            const h = [
                 ["date", `Captured at ${u.i18n.formatDateTime(e.fetchTime)}`],
                 [
                   "devices",
@@ -12001,11 +12001,11 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 ]
               ],
               p = this._dom.find(".lh-meta__items", t);
-            for (let [g, b, _] of h) {
-              let m = this._dom.createChildOf(p, "li", "lh-meta__item");
+            for (const [g, b, _] of h) {
+              const m = this._dom.createChildOf(p, "li", "lh-meta__item");
               if (((m.textContent = b), _)) {
                 m.classList.add("lh-tooltip-boundary");
-                let w = this._dom.createChildOf(m, "div", "lh-tooltip");
+                const w = this._dom.createChildOf(m, "div", "lh-tooltip");
                 w.textContent = _;
               }
               m.classList.add("lh-report-icon", `lh-report-icon--${g}`);
@@ -12014,21 +12014,21 @@ details[open] .lh-clump-toggletext--hide { display: block;}
           _renderReportWarnings(e) {
             if (!e.runWarnings || e.runWarnings.length === 0)
               return this._dom.createElement("div");
-            let t = this._dom.createComponent("warningsToplevel"),
+            const t = this._dom.createComponent("warningsToplevel"),
               n = this._dom.find(".lh-warnings__msg", t);
             n.textContent = u.strings.toplevelWarningsMessage;
-            let r = [];
-            for (let i of e.runWarnings) {
-              let a = this._dom.createElement("li");
+            const r = [];
+            for (const i of e.runWarnings) {
+              const a = this._dom.createElement("li");
               (a.append(this._dom.convertMarkdownLinkSnippets(i)), r.push(a));
             }
             return (this._dom.find("ul", t).append(...r), t);
           }
           _renderScoreGauges(e, t, n) {
-            let r = [],
+            const r = [],
               i = [];
-            for (let a of Object.values(e.categories)) {
-              let s = (n[a.id] || t).renderCategoryScore(
+            for (const a of Object.values(e.categories)) {
+              const s = (n[a.id] || t).renderCategoryScore(
                   a,
                   e.categoryGroups || {},
                   { gatherMode: e.gatherMode }
@@ -12041,10 +12041,10 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 (this._dom.safelySetHref(c, `#${a.id}`),
                 c.addEventListener("click", (d) => {
                   if (!c.matches('[href^="#"]')) return;
-                  let h = c.getAttribute("href"),
+                  const h = c.getAttribute("href"),
                     p = this._dom.rootEl;
                   if (!h || !p) return;
-                  let g = this._dom.find(h, p);
+                  const g = this._dom.find(h, p);
                   (d.preventDefault(), g.scrollIntoView());
                 }),
                 this._opts.onPageAnchorRendered?.(c)),
@@ -12058,7 +12058,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               i18n: new te(e.configSettings.locale),
               reportJson: e
             });
-            let t = new X(this._dom, {
+            const t = new X(this._dom, {
                 fullPageScreenshot: e.fullPageScreenshot ?? void 0,
                 entities: e.entities
               }),
@@ -12066,35 +12066,35 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               r = { performance: new ne(this._dom, t) },
               i = this._dom.createElement("div");
             i.append(this._renderReportHeader());
-            let a = this._dom.createElement("div", "lh-container"),
+            const a = this._dom.createElement("div", "lh-container"),
               l = this._dom.createElement("div", "lh-report");
             l.append(this._renderReportWarnings(e));
             let s;
             Object.keys(e.categories).length === 1
               ? i.classList.add("lh-header--solo-category")
               : (s = this._dom.createElement("div", "lh-scores-header"));
-            let d = this._dom.createElement("div");
+            const d = this._dom.createElement("div");
             if (
               (d.classList.add("lh-scorescale-wrap"),
               d.append(this._dom.createComponent("scorescale")),
               s)
             ) {
-              let b = this._dom.find(".lh-scores-container", i);
+              const b = this._dom.find(".lh-scores-container", i);
               (s.append(...this._renderScoreGauges(e, n, r)), b.append(s, d));
-              let _ = this._dom.createElement("div", "lh-sticky-header");
+              const _ = this._dom.createElement("div", "lh-sticky-header");
               (_.append(...this._renderScoreGauges(e, n, r)), a.append(_));
             }
-            let h = this._dom.createElement("div", "lh-categories");
+            const h = this._dom.createElement("div", "lh-categories");
             l.append(h);
-            let p = { gatherMode: e.gatherMode };
-            for (let b of Object.values(e.categories)) {
-              let _ = r[b.id] || n;
+            const p = { gatherMode: e.gatherMode };
+            for (const b of Object.values(e.categories)) {
+              const _ = r[b.id] || n;
               _.dom
                 .createChildOf(h, "div", "lh-category-wrapper")
                 .append(_.render(b, e.categoryGroups, p));
             }
             n.injectFinalScreenshot(h, e.audits, d);
-            let g = this._dom.createFragment();
+            const g = this._dom.createFragment();
             return (
               this._opts.omitGlobalStyles ||
                 g.append(this._dom.createComponent("styles")),
@@ -12112,7 +12112,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
           }
         };
         function W(o, e) {
-          let t = o.rootEl;
+          const t = o.rootEl;
           typeof e > "u"
             ? t.classList.toggle("lh-dark")
             : t.classList.toggle("lh-dark", e);
@@ -12127,10 +12127,10 @@ details[open] .lh-clump-toggletext--hide { display: block;}
           let t = new TextEncoder().encode(o);
           if (e.gzip)
             if (typeof CompressionStream < "u") {
-              let i = new CompressionStream("gzip"),
+              const i = new CompressionStream("gzip"),
                 a = i.writable.getWriter();
               (a.write(t), a.close());
-              let l = await new Response(i.readable).arrayBuffer();
+              const l = await new Response(i.readable).arrayBuffer();
               t = new Uint8Array(l);
             } else t = window.pako.gzip(o);
           let n = "",
@@ -12140,7 +12140,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
           return _t(n);
         }
         function xt(o, e) {
-          let t = wt(o),
+          const t = wt(o),
             n = Uint8Array.from(t, (r) => r.charCodeAt(0));
           return e.gzip
             ? window.pako.ungzip(n, { to: "string" })
@@ -12148,7 +12148,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
         }
         var Ae = { toBase64: yt, fromBase64: xt };
         function se() {
-          let o = window.location.host.endsWith(".vercel.app"),
+          const o = window.location.host.endsWith(".vercel.app"),
             e = new URLSearchParams(window.location.search).has("dev");
           return o
             ? `https://${window.location.host}/gh-pages`
@@ -12157,41 +12157,41 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               : "https://googlechrome.github.io/lighthouse";
         }
         function ce(o) {
-          let e = o.generatedTime,
+          const e = o.generatedTime,
             t = o.fetchTime || e;
           return `${o.lighthouseVersion}-${o.finalDisplayedUrl}-${t}`;
         }
         function kt(o, e, t) {
-          let n = new URL(e).origin;
+          const n = new URL(e).origin;
           window.addEventListener("message", function i(a) {
             a.origin === n &&
               r &&
               a.data.opened &&
               (r.postMessage(o, n), window.removeEventListener("message", i));
           });
-          let r = window.open(e, t);
+          const r = window.open(e, t);
         }
         async function Le(o, e, t) {
-          let n = new URL(e),
+          const n = new URL(e),
             r = !!window.CompressionStream;
           ((n.hash = await Ae.toBase64(JSON.stringify(o), { gzip: r })),
             r && n.searchParams.set("gzip", "1"),
             window.open(n.toString(), t));
         }
         async function ze(o) {
-          let e = "viewer-" + ce(o),
+          const e = "viewer-" + ce(o),
             t = se() + "/viewer/";
           await Le({ lhr: o }, t, e);
         }
         async function Te(o) {
-          let e = "viewer-" + ce(o),
+          const e = "viewer-" + ce(o),
             t = se() + "/viewer/";
           kt({ lhr: o }, t, e);
         }
         function Me(o) {
           if (!o.audits["script-treemap-data"].details)
             throw new Error("no script treemap data found");
-          let t = {
+          const t = {
               lhr: {
                 mainDocumentUrl: o.mainDocumentUrl,
                 finalUrl: o.finalUrl,
@@ -12284,7 +12284,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             }
           }
           onMenuKeydown(e) {
-            let t = e.target;
+            const t = e.target;
             switch (e.code) {
               case "ArrowUp":
                 (e.preventDefault(), this._getPreviousMenuItem(t).focus());
@@ -12305,7 +12305,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             e.keyCode === 27 && this.close();
           }
           onMenuFocusOut(e) {
-            let t = e.relatedTarget;
+            const t = e.relatedTarget;
             this._menuEl.contains(t) || this.close();
           }
           _getNextSelectableNode(e, t) {
@@ -12322,11 +12322,11 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             return (r >= n.length && (r = 0), n[r]);
           }
           _getNextMenuItem(e) {
-            let t = Array.from(this._menuEl.childNodes);
+            const t = Array.from(this._menuEl.childNodes);
             return this._getNextSelectableNode(t, e);
           }
           _getPreviousMenuItem(e) {
-            let t = Array.from(this._menuEl.childNodes).reverse();
+            const t = Array.from(this._menuEl.childNodes).reverse();
             return this._getNextSelectableNode(t, e);
           }
         };
@@ -12359,7 +12359,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
           }
           onDropDownMenuClick(e) {
             e.preventDefault();
-            let t = e.target;
+            const t = e.target;
             if (!(!t || !t.hasAttribute("data-action"))) {
               switch (t.getAttribute("data-action")) {
                 case "copy":
@@ -12372,14 +12372,14 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                   (this.expandAllDetails(), this._print());
                   break;
                 case "save-json": {
-                  let n = JSON.stringify(this.lhr, null, 2);
+                  const n = JSON.stringify(this.lhr, null, 2);
                   this._reportUIFeatures._saveFile(
                     new Blob([n], { type: "application/json" })
                   );
                   break;
                 }
                 case "save-html": {
-                  let n = this._reportUIFeatures.getReportHtml();
+                  const n = this._reportUIFeatures.getReportHtml();
                   try {
                     this._reportUIFeatures._saveFile(
                       new Blob([n], { type: "text/html" })
@@ -12469,7 +12469,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             this._dropDownMenu.close();
           }
           _getScrollParent(e) {
-            let { overflowY: t } = window.getComputedStyle(e);
+            const { overflowY: t } = window.getComputedStyle(e);
             return t !== "visible" && t !== "hidden"
               ? e
               : e.parentElement
@@ -12509,13 +12509,13 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                     "div",
                     "lh-highlighter"
                   );
-                  let e = this._getScrollParent(
+                  const e = this._getScrollParent(
                     this._dom.find(".lh-container", this._dom.rootEl)
                   );
                   e.addEventListener("scroll", () =>
                     this._updateStickyHeader()
                   );
-                  let t =
+                  const t =
                     e instanceof window.Document ? document.documentElement : e;
                   new window.ResizeObserver(() =>
                     this._updateStickyHeader()
@@ -12525,7 +12525,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
           }
           _updateStickyHeader() {
             if (!this.stickyHeaderEl) return;
-            let e = this.topbarEl.getBoundingClientRect().bottom,
+            const e = this.topbarEl.getBoundingClientRect().bottom,
               t = this.categoriesEl.getBoundingClientRect().top,
               n = e >= t,
               i = Array.from(
@@ -12549,7 +12549,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
           }
         };
         function Et(o, e) {
-          let t = e ? new Date(e) : new Date(),
+          const t = e ? new Date(e) : new Date(),
             n = t.toLocaleTimeString("en-US", { hour12: !1 }),
             r = t
               .toLocaleDateString("en-US", {
@@ -12559,11 +12559,11 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               })
               .split("/");
           r.unshift(r.pop());
-          let i = r.join("-");
+          const i = r.join("-");
           return `${o}_${i}_${n}`.replace(/[/?<>\\:*|"]/g, "-");
         }
         function Fe(o) {
-          let e = new URL(o.finalDisplayedUrl).hostname;
+          const e = new URL(o.finalDisplayedUrl).hostname;
           return Et(e, o.fetchTime);
         }
         function St(o) {
@@ -12587,20 +12587,20 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               this._setupThirdPartyFilter(),
               this._setupElementScreenshotOverlay(this._dom.rootEl),
               (this._dom._onSwap = () => this._setupThirdPartyFilter()));
-            let t =
+            const t =
               this._dom.isDevTools() ||
               this._opts.disableDarkMode ||
               this._opts.disableAutoDarkModeAndFireworks;
             !t &&
               window.matchMedia("(prefers-color-scheme: dark)").matches &&
               W(this._dom, !0);
-            let r = [
+            const r = [
                 "performance",
                 "accessibility",
                 "best-practices",
                 "seo"
               ].every((s) => {
-                let c = e.categories[s];
+                const c = e.categories[s];
                 return c && c.score === 1;
               }),
               i =
@@ -12614,7 +12614,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                     !!(s.group === "metrics" && e.audits[s.id].errorMessage)
                 ))
             ) {
-              let s = this._dom.find(
+              const s = this._dom.find(
                 "input.lh-metrics-toggle__input",
                 this._dom.rootEl
               );
@@ -12643,20 +12643,20 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 this._dom
                   .find('a[data-action="save-html"]', this._dom.rootEl)
                   .classList.remove("lh-hidden"));
-            for (let s of this._dom.findAll("[data-i18n]", this._dom.rootEl)) {
-              let d = s.getAttribute("data-i18n");
+            for (const s of this._dom.findAll("[data-i18n]", this._dom.rootEl)) {
+              const d = s.getAttribute("data-i18n");
               s.textContent = u.strings[d];
             }
           }
           addButton(e) {
-            let t = this._dom.rootEl.querySelector(".lh-audit-group--metrics");
+            const t = this._dom.rootEl.querySelector(".lh-audit-group--metrics");
             if (!t) return;
             let n = t.querySelector(".lh-buttons");
             n || (n = this._dom.createChildOf(t, "div", "lh-buttons"));
-            let r = ["lh-button"];
+            const r = ["lh-button"];
             e.icon &&
               (r.push("lh-report-icon"), r.push(`lh-report-icon--${e.icon}`));
-            let i = this._dom.createChildOf(n, "button", r.join(" "));
+            const i = this._dom.createChildOf(n, "button", r.join(" "));
             return (
               (i.textContent = e.text),
               i.addEventListener("click", e.onClick),
@@ -12680,7 +12680,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               .classList.add("lh-score100");
           }
           _setupMediaQueryListeners() {
-            let e = self.matchMedia("(max-width: 500px)");
+            const e = self.matchMedia("(max-width: 500px)");
             (e.addListener(this.onMediaQueryChange),
               this.onMediaQueryChange(e));
           }
@@ -12691,7 +12691,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             this._dom.rootEl.classList.toggle("lh-narrow", e.matches);
           }
           _setupThirdPartyFilter() {
-            let e = [
+            const e = [
                 "uses-rel-preconnect",
                 "third-party-facades",
                 "network-dependency-tree-insight"
@@ -12704,14 +12704,14 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 )
               )
               .filter((i) => {
-                let a = i.closest(".lh-audit");
+                const a = i.closest(".lh-audit");
                 if (!a) throw new Error(".lh-table not within audit");
                 return !e.includes(a.id);
               })
               .forEach((i) => {
                 if (this._tablesHandledFor3p.has(i)) return;
                 this._tablesHandledFor3p.add(i);
-                let a = St(i),
+                const a = St(i),
                   l = a.filter((m) => !m.classList.contains("lh-sub-item-row")),
                   s = this._getThirdPartyRows(
                     l,
@@ -12726,7 +12726,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                     f = !0,
                     v = l[0];
                   for (; v; ) {
-                    let y = w && s.includes(v);
+                    const y = w && s.includes(v);
                     do
                       (v.classList.toggle("lh-row--hidden", y),
                         c &&
@@ -12737,14 +12737,14 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                     y || (f = !f);
                   }
                 });
-                let p = s.filter(
+                const p = s.filter(
                   (m) => !m.classList.contains("lh-row--group")
                 ).length;
                 ((this._dom.find(".lh-3p-filter-count", d).textContent =
                   `${p}`),
                   (this._dom.find(".lh-3p-ui-string", d).textContent =
                     u.strings.thirdPartyResourcesLabel));
-                let g = s.length === l.length,
+                const g = s.length === l.length,
                   b = !s.length;
                 if (
                   ((g || b) &&
@@ -12753,7 +12753,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
                 )
                   return;
                 i.parentNode.insertBefore(d, i);
-                let _ = i.closest(".lh-audit");
+                const _ = i.closest(".lh-audit");
                 if (!_) throw new Error(".lh-table not within audit");
                 t.includes(_.id) && !g && h.click();
               });
@@ -12768,16 +12768,16 @@ details[open] .lh-clump-toggletext--hide { display: block;}
               });
           }
           _getThirdPartyRows(e, t) {
-            let n = E.getEntityFromUrl(t, this.json.entities),
+            const n = E.getEntityFromUrl(t, this.json.entities),
               r = this.json.entities?.find((a) => a.isFirstParty === !0)?.name,
               i = [];
-            for (let a of e) {
+            for (const a of e) {
               if (r) {
                 if (!a.dataset.entity || a.dataset.entity === r) continue;
               } else {
-                let l = a.querySelector("div.lh-text__url");
+                const l = a.querySelector("div.lh-text__url");
                 if (!l) continue;
-                let s = l.dataset.url;
+                const s = l.dataset.url;
                 if (!s || !(E.getEntityFromUrl(s, this.json.entities) !== n))
                   continue;
               }
@@ -12786,7 +12786,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             return i;
           }
           _saveFile(e) {
-            let t = e.type.match("json") ? ".json" : ".html",
+            const t = e.type.match("json") ? ".json" : ".html",
               n =
                 Fe({
                   finalDisplayedUrl: E.getFinalDisplayedUrl(this.json),
@@ -12798,9 +12798,9 @@ details[open] .lh-clump-toggletext--hide { display: block;}
           }
         };
         function De(o, e = {}) {
-          let t = document.createElement("article");
+          const t = document.createElement("article");
           t.classList.add("lh-root", "lh-vars");
-          let n = new ee(t.ownerDocument, t),
+          const n = new ee(t.ownerDocument, t),
             r = new re(n);
           return (
             e._onSwapHook && (n._onSwapHook = e._onSwapHook),
@@ -12812,7 +12812,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
         var le = class {
           constructor(e) {
             this.el = e;
-            let t = document.createElement("style");
+            const t = document.createElement("style");
             if (
               ((t.textContent = `
       #lh-log {
@@ -12873,7 +12873,7 @@ details[open] .lh-clump-toggletext--hide { display: block;}
           }
         };
         function Ct() {
-          let o = window.__LIGHTHOUSE_JSON__,
+          const o = window.__LIGHTHOUSE_JSON__,
             e = De(o, {
               occupyEntireViewport: !0,
               getStandaloneReportHTML() {
@@ -12882,14 +12882,14 @@ details[open] .lh-clump-toggletext--hide { display: block;}
             });
           (document.body.append(e),
             document.addEventListener("lh-analytics", (t) => {
-              let n = t;
+              const n = t;
               "gtag" in window &&
                 window.gtag("event", n.detail.name, n.detail.data ?? {});
             }),
             document.addEventListener("lh-log", (t) => {
-              let n = document.querySelector("div#lh-log");
+              const n = document.querySelector("div#lh-log");
               if (!n) return;
-              let r = new le(n),
+              const r = new le(n),
                 i = t.detail;
               switch (i.cmd) {
                 case "log":
