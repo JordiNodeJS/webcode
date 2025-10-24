@@ -1,0 +1,78 @@
+---
+alwaysApply: true
+description: "Configuración y herramientas específicas del proyecto webcode"
+---
+
+# Project Configuration Rules
+
+## Herramientas y Configuración
+- **Package Manager**: Usar `pnpm` y `pnpm dlx` (nunca npm)
+- **Build Tool**: Next.js 16.0.0 con React 19.2.0
+- **Styling**: TailwindCSS v4 con PostCSS
+- **Linting**: ESLint con configuración flat config
+- **Formatting**: Prettier
+- **Testing**: Playwright para tests E2E
+
+## Estructura del Proyecto
+- **App Router**: Next.js 16 con App Router
+- **Componentes**: Ubicados en `src/components/`
+- **Hooks**: Ubicados en `src/hooks/`
+- **Utils**: Ubicados en `src/lib/`
+- **Types**: Ubicados en `src/types/`
+- **Styles**: Globales en `src/styles/`
+
+## Archivos de Configuración Importantes
+- [package.json](mdc:package.json) - Dependencias y scripts
+- [next.config.ts](mdc:next.config.ts) - Configuración de Next.js
+- [eslint.config.mjs](mdc:eslint.config.mjs) - Configuración de ESLint
+- [postcss.config.mjs](mdc:postcss.config.mjs) - Configuración de PostCSS
+- [tsconfig.json](mdc:tsconfig.json) - Configuración de TypeScript
+
+## Scripts Disponibles
+```json
+{
+  "dev": "next dev",
+  "build": "pnpm dlx rimraf .next && next build", 
+  "start": "next start",
+  "lint": "eslint .",
+  "lint:fix": "eslint . --fix",
+  "format": "pnpm dlx prettier --write ."
+}
+```
+
+## Convenciones de Código
+- **Commits**: En inglés
+- **Variables**: camelCase
+- **Componentes**: PascalCase
+- **Archivos**: kebab-case para páginas, PascalCase para componentes
+- **Imports**: Ordenados y agrupados
+
+## Dependencias Principales
+- **UI**: Radix UI, Lucide React, Framer Motion
+- **Forms**: React Hook Form, Zod validation
+- **Email**: Resend
+- **CMS**: Notion (NotionHQ client)
+- **PDF**: jsPDF
+- **Performance**: Web Vitals
+
+## Configuración de Desarrollo
+- **IDE**: Cursor con reglas específicas
+- **Git**: Squash commits, inglés
+- **PR**: Etiquetado automático, asignación a JordiNodeJS
+- **Deploy**: Netlify con configuración dual
+
+## Archivos de Documentación
+- [README.md](mdc:README.md) - Documentación principal
+- [.github/copilot-instructions.md](mdc:.github/copilot-instructions.md) - Instrucciones para AI
+- [.cursor/commands/pr.md](mdc:.cursor/commands/pr.md) - Flujo de PRs
+- [docs/](mdc:docs/) - Documentación del proyecto
+
+## Reglas Específicas
+1. **Nunca usar npm** - Solo pnpm
+2. **Commits en inglés** - Siempre
+3. **Seguir convenciones de Next.js 16** - App Router
+4. **Usar TypeScript estricto** - Sin any
+5. **Componentes funcionales** - Con hooks
+6. **Responsive design** - Mobile-first
+7. **Accesibilidad** - WCAG 2.1
+8. **Performance** - Core Web Vitals

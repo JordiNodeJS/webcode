@@ -1,0 +1,92 @@
+---
+globs: *.md,*.json,*.js,*.ts,*.tsx
+description: "Reglas de flujo de trabajo Git y GitHub para el proyecto webcode"
+---
+
+# Git Workflow Rules
+
+## Convenciones de Commits
+- **Formato**: `<type>(<scope>): <descripción>`
+- **Tipos**: `feat`, `fix`, `refactor`, `docs`, `style`, `test`, `chore`
+- **Idioma**: Siempre en inglés
+- **Ejemplos**:
+  - `feat(theme): implement theme toggle functionality`
+  - `fix(animations): resolve hydration issues with WSFadeIn component`
+  - `docs(readme): update project documentation`
+
+## Gestión de Ramas
+- **Ramas feature**: `feat/description`
+- **Ramas fix**: `fix/description`  
+- **Ramas docs**: `docs/description`
+- **Ramas refactor**: `refactor/description`
+
+## Pull Request Workflow
+- **Base branch**: `main` (por defecto)
+- **Assignee**: `JordiNodeJS` (por defecto)
+- **Reviewer**: `JordiNodeJS` (solicitar review)
+
+## Etiquetas de PR
+### Por Tipo
+- `type/feature` - Nuevas funcionalidades
+- `type/bugfix` - Corrección de bugs
+- `type/refactor` - Refactoring de código
+- `type/docs` - Documentación
+- `type/chore` - Tareas de mantenimiento
+
+### Por Área
+- `area/ui` - Componentes de interfaz
+- `area/theme` - Sistema de temas
+- `area/animations` - Animaciones y transiciones
+- `area/performance` - Optimizaciones de rendimiento
+- `area/accessibility` - Mejoras de accesibilidad
+
+### Por Estado
+- `status/ready-for-review` - Lista para revisión
+- `status/blocked` - Bloqueada por dependencias
+- `status/conflicts` - Tiene conflictos de merge
+- `status/needs-changes` - Requiere cambios
+
+### Por Prioridad
+- `priority/low` - Baja prioridad
+- `priority/medium` - Prioridad media (por defecto)
+- `priority/high` - Alta prioridad
+- `priority/critical` - Crítica
+
+### CI/CD
+- `ci/required` - Requiere validaciones CI
+- `ci/failed` - Falló en CI
+- `ci/passed` - Pasó todas las validaciones
+
+## Validaciones Pre-PR
+1. **Linting**: `pnpm lint`
+2. **Build**: `pnpm build` 
+3. **Tests**: `pnpm test` (si existe)
+4. **TypeScript**: Verificar tipos sin errores
+
+## Herramientas del Proyecto
+- **Package Manager**: `pnpm` (no npm)
+- **GitHub CLI**: `gh` para operaciones de PR
+- **Linting**: ESLint (configurado en [eslint.config.mjs](mdc:eslint.config.mjs))
+- **Formatting**: Prettier
+- **Build**: Next.js 16.0.0
+
+## Archivos de Contexto
+- [package.json](mdc:package.json) - Scripts y dependencias
+- [.cursor/commands/pr.md](mdc:.cursor/commands/pr.md) - Flujo completo de PR
+- [.github/copilot-instructions.md](mdc:.github/copilot-instructions.md) - Instrucciones del proyecto
+- [.github/prompts/](mdc:.github/prompts/) - Prompts específicos del proyecto
+
+## Comandos de Referencia
+```bash
+# Crear rama
+git checkout -b feat/description
+
+# Crear PR
+gh pr create --title "feat(scope): description" --body "..." --assignee JordiNodeJS
+
+# Listar PRs
+gh pr list --head <branch>
+
+# Merge PR
+gh pr merge <number> --squash --delete-branch
+```

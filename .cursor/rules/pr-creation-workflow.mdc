@@ -1,0 +1,93 @@
+---
+description: "Comando para crear, etiquetar y asignar Pull Requests automáticamente"
+---
+
+# Pull Request Creation Workflow
+
+## Comando: Crear PR con etiquetas y asignación
+
+Cuando el usuario solicite crear una PR, etiquetarla y asignarla, seguir este flujo automatizado:
+
+### 1. Preparación y Validación
+- Detectar la rama actual: `git rev-parse --abbrev-ref HEAD`
+- Ejecutar validaciones locales:
+  - `pnpm lint` (usar ESLint en lugar de biome si no está disponible)
+  - `pnpm build` (verificar compilación)
+  - `pnpm test` (si existe el script)
+
+### 2. Verificar PR Existente
+- Usar `gh pr list --head <branch> --json number,url,state,title` para verificar si ya existe una PR
+
+### 3. Crear o Actualizar PR
+- **Si no existe PR**: Crear nueva con `gh pr create`
+- **Si existe PR**: Actualizar con `gh pr edit`
+
+### 4. Etiquetado Automático
+Crear y asignar etiquetas según el tipo de rama:
+- `type/feature` para ramas `feat/*`
+- `type/bugfix` para ramas `fix/*`
+- `type/refactor` para ramas `refactor/*`
+- `area/<component>` basado en archivos modificados
+- `status/ready-for-review`
+- `priority/medium` (por defecto)
+- `ci/required`
+
+### 5. Asignación
+- Assignee por defecto: `JordiNodeJS`
+- Solicitar review a `JordiNodeJS`
+
+### 6. Contenido de la PR
+**Título**: `<type>(<scope>): <descripción>` (ej: `feat(theme): implement theme toggle`)
+
+**Body debe incluir**:
+- Resumen corto (2-4 líneas)
+- Lista de cambios (bullets)
+- Pasos para validar localmente
+- Checklist de pre-merge
+- Referencias a archivos relevantes
+
+### 7. Comandos de Referencia
+```bash
+# Crear PR
+gh pr create --title "..." --body "..." --base main --head <branch> --assignee JordiNodeJS
+
+# Listar PRs existentes
+gh pr list --head <branch> --json number,url,state,title
+
+# Editar PR
+gh pr edit <pr-number> --title "..." --body "..."
+
+# Añadir etiquetas
+gh pr edit <pr-number> --add-label "type/feature,status/ready-for-review"
+
+# Comentar
+gh pr comment <pr-number> --body "..."
+```
+
+### 8. Salida Esperada
+Devolver formato markdown con:
+- pr_number: número de la PR
+- pr_url: URL de la PR  
+- branch: rama origen
+- merge_commit: null (si no se mergea)
+- deleted_remote_branch: false
+- deleted_local_branch: false
+- warnings: lista de advertencias
+- errors: lista de errores
+
+### 9. Manejo de Errores
+- Si hay errores de build: etiquetar `ci/failed` y comentar errores
+- Si hay conflictos: etiquetar `status/conflicts`
+- Si no hay commits entre ramas: informar que la funcionalidad ya está mergeada
+
+### 10. Validaciones Específicas del Proyecto
+- Usar `pnpm` como gestor de paquetes (no npm)
+- Commits en inglés
+- Seguir convenciones de [package.json](mdc:package.json)
+- Considerar archivos de contexto en [.github/prompts/](mdc:.github/prompts/)
+
+## Ejemplo de Uso
+```
+Usuario: "crea la pr y etiquétala"
+→ Ejecutar flujo completo de creación de PR con etiquetado automático
+```

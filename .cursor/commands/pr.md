@@ -147,3 +147,25 @@ Registro:
 ```
 
 Este bloque es sólo un ejemplo que el agente actualizará dinámicamente según el resultado real de sus acciones.
+
+---
+
+## Comando Rápido: Crear PR con Etiquetas
+
+**Uso**: Cuando el usuario diga "crea la pr y etiquétala" o similar, ejecutar automáticamente:
+
+1. **Detectar rama actual**: `git rev-parse --abbrev-ref HEAD`
+2. **Validaciones locales**: `pnpm lint && pnpm build`
+3. **Verificar PR existente**: `gh pr list --head <branch>`
+4. **Crear/actualizar PR** con título, body y asignación
+5. **Añadir etiquetas automáticas** según tipo de rama
+6. **Devolver resultado** en formato markdown
+
+**Etiquetas automáticas por tipo de rama**:
+- `feat/*` → `type/feature`, `status/ready-for-review`, `priority/medium`
+- `fix/*` → `type/bugfix`, `status/ready-for-review`, `priority/medium`  
+- `refactor/*` → `type/refactor`, `status/ready-for-review`, `priority/medium`
+- `docs/*` → `type/docs`, `status/ready-for-review`, `priority/low`
+
+**Assignee por defecto**: `JordiNodeJS`
+**Base branch**: `main`
