@@ -88,7 +88,6 @@ export default async function BlogPage() {
                   key={post.id}
                   post={post}
                   priority={index === 0}
-                  delay={index * 0.1}
                 />
               ))}
             </div>

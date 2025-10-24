@@ -1,14 +1,14 @@
-"use client";
-
 /**
  * Componente de tarjeta para artículos del blog
- * Reutilizable en diferentes vistas
- * Diseño moderno inspirado en las tarjetas de servicios
+ * Server Component - No requiere JavaScript en el cliente
+ * 
+ * Las animaciones se manejan con CSS puro mediante la clase 'blog-card'
+ * y respetan prefers-reduced-motion mediante media queries.
  */
 
 import Image from "next/image";
 import Link from "next/link";
-import { useLayoutEffect, useState } from "react";
+import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -19,36 +19,15 @@ import {
   CardTitle
 } from "@/components/ui/card";
 import type { BlogPost } from "@/lib/notion";
+import { CompactPostMetadata } from "./PostMetadata";
+import { TagList } from "./TagList";
 
 interface BlogPostCardProps {
   post: BlogPost;
   priority?: boolean;
-  delay?: number;
 }
 
-export function BlogPostCard({
-  post,
-  priority = false,
-  delay = 0
-}: BlogPostCardProps) {
-  // Inicializar con función para evitar warning de React Compiler
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  });
-
-  // Listener para cambios en las preferencias
-  useLayoutEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-    const handleChange = (e: MediaQueryListEvent) => {
-      setPrefersReducedMotion(e.matches);
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, []);
-
+export function BlogPostCard({ post, priority = false }: BlogPostCardProps) {
   // Generar icono basado en las primeras letras del título
   const generateIcon = (title: string) => {
     const words = title.split(" ");
@@ -60,31 +39,18 @@ export function BlogPostCard({
 
   return (
     <Card
-      className={`group relative overflow-hidden border border-border/30 dark:border-border/20 bg-gradient-to-br from-white/95 via-white/90 to-slate-50/95 dark:from-slate-800/95 dark:via-slate-700/90 dark:to-slate-800/85 focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 ${
-        prefersReducedMotion
-          ? "hover:shadow-lg"
-          : "hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-      }`}
-      style={{
-        animationDelay: prefersReducedMotion ? "0s" : `${delay}s`
-      }}
+      className="blog-card group relative overflow-hidden border border-border/30 dark:border-border/20 bg-linear-to-br from-white/95 via-white/90 to-slate-50/95 dark:from-slate-800/95 dark:via-slate-700/90 dark:to-slate-800/85 focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
       data-testid={`blog-card-${post.slug}`}
       role="article"
       aria-labelledby={`blog-title-${post.slug}`}
       aria-describedby={`blog-description-${post.slug}`}
     >
       {/* Glow effect on hover */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/6 via-secondary/6 to-primary/6 dark:from-primary/8 dark:via-primary/12 dark:to-primary/8 opacity-6 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-r from-primary/6 via-secondary/6 to-primary/6 dark:from-primary/8 dark:via-primary/12 dark:to-primary/8 opacity-6 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
       <CardHeader className="relative z-10 pb-4">
         <div className="flex items-center gap-4 mb-4">
-          <div
-            className={`text-2xl font-bold p-3 bg-primary/20 dark:bg-primary/20 rounded-2xl border border-primary/30 dark:border-primary/40 ${
-              prefersReducedMotion
-                ? ""
-                : "group-hover:scale-110 transition-transform duration-300"
-            }`}
-          >
+          <div className="blog-card-icon text-2xl font-bold p-3 bg-primary/20 dark:bg-primary/20 rounded-2xl border border-primary/30 dark:border-primary/40">
             {generateIcon(post.title)}
           </div>
           <div className="flex-1">
@@ -122,23 +88,11 @@ export function BlogPostCard({
         )}
 
         {/* Metadatos */}
-        <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground dark:text-muted-foreground/90">
-          <time dateTime={post.date}>
-            {new Date(post.date).toLocaleDateString("es-ES", {
-              year: "numeric",
-              month: "long",
-              day: "numeric"
-            })}
-          </time>
-          {post.readTime && (
-            <>
-              <span>•</span>
-              <span>{post.readTime} min de lectura</span>
-            </>
-          )}
-          <span>•</span>
-          <span>{post.author}</span>
-        </div>
+        <CompactPostMetadata
+          publishedDate={post.date}
+          readTime={post.readTime}
+          className="text-muted-foreground dark:text-muted-foreground/90"
+        />
 
         {/* Resumen del artículo */}
         <div className="space-y-3">
@@ -150,17 +104,7 @@ export function BlogPostCard({
         {/* Tags */}
         {post.tags.length > 0 && (
           <div className="pt-4 border-t border-border/40 dark:border-border/30">
-            <div className="flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
-                <Link
-                  key={tag.id}
-                  href={`/blog/tag/${encodeURIComponent(tag.name.toLowerCase())}`}
-                  className="rounded-full bg-primary/10 px-3 py-1 text-xs text-primary hover:bg-primary/20 transition-colors duration-200 border border-primary/20"
-                >
-                  {tag.name}
-                </Link>
-              ))}
-            </div>
+            <TagList tags={post.tags} size="sm" />
           </div>
         )}
       </CardContent>
@@ -168,29 +112,15 @@ export function BlogPostCard({
       <CardFooter className="relative z-10 pt-6">
         <Button
           asChild
-          className="w-full bg-gradient-to-r from-primary/70 via-secondary/60 to-primary/60 dark:bg-primary dark:hover:bg-primary/85 text-primary-foreground dark:text-primary-foreground font-semibold py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 dark:hover:shadow-primary/20"
+          className="w-full bg-linear-to-r from-primary/70 via-secondary/60 to-primary/60 dark:bg-primary dark:hover:bg-primary/85 text-primary-foreground dark:text-primary-foreground font-semibold py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 dark:hover:shadow-primary/20"
           size="lg"
         >
           <Link
             href={`/blog/${post.slug}`}
-            className="inline-flex items-center justify-center"
+            className="inline-flex items-center justify-center gap-2"
           >
             Leer artículo completo
-            <svg
-              className="ml-2 h-4 w-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <title>Flecha hacia la derecha</title>
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
+            <ChevronRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </Button>
       </CardFooter>

@@ -1,12 +1,11 @@
-"use client";
-
 /**
  * Componente de tarjeta para categorías del blog
- * Diseño moderno inspirado en las tarjetas de servicios
+ * Server Component - No requiere JavaScript en el cliente
+ * 
+ * Las animaciones se manejan con CSS puro mediante la clase 'blog-card'
  */
 
 import Link from "next/link";
-import { useEffect, useLayoutEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -23,64 +22,31 @@ interface Tag {
 interface BlogCategoriesCardProps {
   tags: Tag[];
   title?: string;
-  delay?: number;
 }
 
 export function BlogCategoriesCard({
   tags,
-  title = "Categorías",
-  delay = 0
+  title = "Categorías"
 }: BlogCategoriesCardProps) {
-  // Inicializar con función para evitar warning de React Compiler
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  });
-
-  // IDs estables para evitar problemas de hidratación
+  // IDs estables para accesibilidad
   const cardId = title.toLowerCase().replace(/\s+/g, "-");
   const titleId = `categories-title-${cardId}`;
   const descId = `categories-description-${cardId}`;
 
-  // Listener para cambios en las preferencias
-  useLayoutEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-    const handleChange = (e: MediaQueryListEvent) => {
-      setPrefersReducedMotion(e.matches);
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, []);
-
   return (
     <Card
-      className={`group relative overflow-hidden border border-border/30 dark:border-border/20 bg-gradient-to-br from-white/95 via-white/90 to-slate-50/95 dark:from-slate-800/95 dark:via-slate-700/90 dark:to-slate-800/85 focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 ${
-        prefersReducedMotion
-          ? "hover:shadow-lg"
-          : "hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-      }`}
-      style={{
-        animationDelay: prefersReducedMotion ? "0s" : `${delay}s`
-      }}
+      className="blog-card group relative overflow-hidden border border-border/30 dark:border-border/20 bg-linear-to-br from-white/95 via-white/90 to-slate-50/95 dark:from-slate-800/95 dark:via-slate-700/90 dark:to-slate-800/85 focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
       data-testid="blog-categories-card"
       role="complementary"
       aria-labelledby={titleId}
       aria-describedby={descId}
     >
       {/* Glow effect on hover */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/6 via-secondary/6 to-primary/6 dark:from-primary/8 dark:via-primary/12 dark:to-primary/8 opacity-6 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-r from-primary/6 via-secondary/6 to-primary/6 dark:from-primary/8 dark:via-primary/12 dark:to-primary/8 opacity-6 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
       <CardHeader className="relative z-10 pb-2 px-6 pt-6">
         <div className="flex items-center gap-3 mb-3">
-          <div
-            className={`text-sm font-bold p-1.5 bg-primary/20 dark:bg-primary/20 rounded-lg border border-primary/30 dark:border-primary/40 ${
-              prefersReducedMotion
-                ? ""
-                : "group-hover:scale-110 transition-transform duration-300"
-            }`}
-          >
+          <div className="blog-card-icon text-sm font-bold p-1.5 bg-primary/20 dark:bg-primary/20 rounded-lg border border-primary/30 dark:border-primary/40">
             🏷️
           </div>
           <div className="flex-1">
