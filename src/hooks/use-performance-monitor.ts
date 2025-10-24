@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 interface PerformanceMemory {
   usedJSHeapSize: number;
@@ -204,7 +204,7 @@ export function useComponentPerformanceMonitor(componentName: string) {
     if (process.env.NODE_ENV === "development") {
       console.log(`🎯 ${componentName} render #${renderCountRef.current}`);
     }
-  });
+  }, [componentName]);
 
   return {
     renderCount,

@@ -22,9 +22,9 @@ import "../../styles/webcode-code-theme.css"; // Tema personalizado WebCode
 // Dynamic import de ReactMarkdown para code splitting
 const ReactMarkdown = lazy(() => import("react-markdown"));
 
-interface MarkdownRendererProps {
-  content: string;
-}
+// interface MarkdownRendererProps {
+//   content: string;
+// }
 
 // Lazy loading de plugins rehype
 const loadRehypePlugins = async () => {

@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
 import { CallToAction } from "@/components/landing/hero/Hero.CallToAction";
 // ✅ OPCIÓN 2: Fondo alternativo con nubes y relámpagos
-import { CloudLightningBackground } from "@/components/landing/hero/Hero.CloudLightningBackground";
+// import { CloudLightningBackground } from "@/components/landing/hero/Hero.CloudLightningBackground";
 import { HeaderNavigation } from "@/components/landing/hero/Hero.HeaderNavigation";
 import { TrustIndicators } from "@/components/landing/hero/Hero.TrustIndicators";
 import { IdleOptimizedValuePropsGrid } from "@/components/landing/hero/Hero.ValuePropsGrid.Idle-Optimized";
