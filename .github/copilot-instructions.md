@@ -189,6 +189,19 @@ Eres un asistente especializado en el desarrollo del proyecto WEBCODE. Sigue est
 - **React Compiler estable**: Habilitado con `reactCompiler: true` en next.config.ts (movido de experimental)
 - **Turbopack por defecto**: No requiere flag `--turbopack` en comandos dev/build
 
+### **📚 REFERENCIA OBLIGATORIA: Patrones Next.js 16 y React 19**
+
+**ANTES de generar cualquier código Next.js 16 o React 19, consulta:**
+
+📋 **`.github/support/nextjs16-react19-patterns.md`** - Guía completa de patrones modernos
+
+**Contenido clave:**
+- ✅ **Async Request APIs**: `params: Promise<...>`, `searchParams: Promise<...>`, `await cookies()`, `await headers()`
+- ✅ **React 19 use() Hook**: Para Client Components que necesitan params/searchParams
+- ✅ **React Compiler Optimizations**: Memoización automática, mejores prácticas
+- ✅ **Server vs Client Components**: Cuándo usar cada uno, patrones de composición
+- ✅ **Best Practices Checklist**: Lista de verificación para código Next.js 16
+
 ### **Estándares de TypeScript**
 
 - Modo estricto habilitado
@@ -589,6 +602,7 @@ export default function ContactForm() {
 **Referencias detalladas**:
 
 - **Guías consolidadas**: `.github/support/` (nextjs-best-practices, styling-guide, etc.)
+- **Patrones Next.js 16/React 19**: `.github/support/nextjs16-react19-patterns.md` ⭐ **OBLIGATORIO**
 - **Instrucciones por archivo**: `.github/instructions/` (app-router, components, styling, typescript)
 - **Prompts especializados**: `.github/prompts/` (desarrollo, arquitectura, ui-styling, git-workflow, performance)
 
@@ -626,6 +640,7 @@ Consulta **`.github/prompts/README.md`** para:
 
 #### **Guías de Desarrollo** (`.github/support/`)
 
+- **`nextjs16-react19-patterns.md`** ⭐ **OBLIGATORIO** - Patrones modernos Next.js 16 y React 19, APIs asíncronas, use() hook, React Compiler
 - **`nextjs-best-practices.md`** - App Router Next.js 16, estructura de proyecto, data fetching, routing, layouts, metadata, error handling
 - **`styling-guide.md`** - Tailwind CSS v4, sistema WAS, reglas de colores, responsive design, accesibilidad WCAG 2.1 AA
 - **`git-commit-standards.md`** - Conventional Commits, mensajes de commit
