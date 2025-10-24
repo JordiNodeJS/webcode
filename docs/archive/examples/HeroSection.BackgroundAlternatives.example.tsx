@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
 import { CallToAction } from "@/components/landing/hero/Hero.CallToAction";
 // ✅ OPCIÓN 2: Fondo alternativo con nubes y relámpagos
-import { CloudLightningBackground } from "@/components/landing/hero/Hero.CloudLightningBackground";
+// import { CloudLightningBackground } from "@/components/landing/hero/Hero.CloudLightningBackground";
 import { HeaderNavigation } from "@/components/landing/hero/Hero.HeaderNavigation";
 import { TrustIndicators } from "@/components/landing/hero/Hero.TrustIndicators";
 import { IdleOptimizedValuePropsGrid } from "@/components/landing/hero/Hero.ValuePropsGrid.Idle-Optimized";
@@ -63,7 +63,7 @@ const HeroSectionExample = () => {
 			<div className="container relative z-10 mx-auto px-4 py-20 md:py-32">
 				<div className="flex flex-col items-center text-center">
 					{/* Hero Content */}
-					<WSFadeIn delay={0.1} sectionId="hero">
+					<WSFadeIn delay={0.1} _sectionId="hero">
 						<h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
 							<span className="block">Desarrollo Web</span>
 							<span className="block text-gradient-webcode">
@@ -72,7 +72,7 @@ const HeroSectionExample = () => {
 						</h1>
 					</WSFadeIn>
 
-					<WSFadeIn delay={0.2} sectionId="hero">
+					<WSFadeIn delay={0.2} _sectionId="hero">
 						<p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl">
 							Creamos experiencias digitales excepcionales con las últimas
 							tecnologías: Next.js, React, Astro y más para tu negocio en

@@ -126,7 +126,7 @@ Notas y recomendaciones
 - Si faltan labels sugeridos, crearlos con nombres claros y descriptivos.
 - Si no hay tests configurados, añadir una nota en la PR sugiriendo la creación de `pnpm test` y pruebas para la nueva funcionalidad.
 
-Versión: 2.0 — adaptado a gh CLI y con flujo operativo abstracto
+Versión: 3.0 — optimizado basado en PR #66 y mejorado con flujo completo
 Autor: agente automático (prompt maintainer)
 
 ---
@@ -178,3 +178,10 @@ Este bloque es sólo un ejemplo que el agente actualizará dinámicamente según
 
 **Assignee por defecto**: `JordiNodeJS`
 **Base branch**: `main`
+
+**Mejoras implementadas basadas en PR #66:**
+- Flujo optimizado con validaciones paralelas
+- Manejo de errores de TypeScript en build
+- Etiquetado automático estándar
+- Limpieza automática de ramas
+- Comandos de referencia simplificados
