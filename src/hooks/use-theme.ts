@@ -9,20 +9,25 @@ import { useTheme as useNextTheme } from "next-themes";
  * y sincroniza con las preferencias del sistema.
  */
 export function useTheme() {
-  const { theme, setTheme, resolvedTheme } = useNextTheme();
+  const { theme, setTheme, resolvedTheme, systemTheme } = useNextTheme();
 
   // Actualizar el tema cuando cambia
   const toggleTheme = () => {
-    // Usar resolvedTheme que ya maneja el tema del sistema
-    const newTheme = resolvedTheme === "dark" ? "light" : "dark";
+    // Determinar el tema actual real (considerando system)
+    const currentTheme = theme === "system" ? systemTheme : theme;
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
     setTheme(newTheme);
   };
 
-  // next-themes ya maneja la hidratación correctamente
-  // resolvedTheme es undefined durante SSR y se resuelve en el cliente
+  // next-themes maneja la hidratación correctamente
+  // resolvedTheme está disponible después del montaje
+  const mounted = resolvedTheme !== undefined;
+
   return { 
     theme, 
+    setTheme,
+    resolvedTheme,
     toggleTheme, 
-    mounted: resolvedTheme !== undefined 
+    mounted
   };
 }
