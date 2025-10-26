@@ -139,19 +139,22 @@ export default function ServicesIndexPage() {
         {/* Capa 2: Contenido con backdrop blur individual (z-10, elementos interactivos) */}
         <div className="container mx-auto max-w-6xl px-4 relative z-10 pointer-events-none">
           <div className="max-w-4xl pointer-events-auto">
-            <div className="inline-block mb-6 px-6 py-2 bg-white/40 dark:bg-black/40 backdrop-blur-md text-primary dark:text-primary font-bold uppercase text-sm tracking-wider rounded-full border-2 border-primary/50 shadow-lg">
+            <div className="inline-block mb-6 px-6 py-2 bg-white/80 dark:bg-black/60 backdrop-blur-xl text-primary dark:text-primary font-bold uppercase text-sm tracking-wider rounded-full border-2 border-primary/60 shadow-xl shadow-black/20">
               Soluciones Digitales
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              <span className="inline-block px-4 py-2 bg-white/60 dark:bg-black/60 backdrop-blur-md rounded-lg text-gray-900 dark:text-white">
+              <span className="inline-block px-6 py-3 bg-white/90 dark:bg-black/70 backdrop-blur-xl rounded-2xl text-gray-900 dark:text-white shadow-2xl shadow-black/30">
                 Impulsamos tu Negocio con{" "}
               </span>
-              <span className="inline-block px-4 py-2 bg-white/60 dark:bg-black/60 backdrop-blur-md rounded-lg bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Tecnología
+              <br className="md:hidden" />
+              <span className="inline-block px-6 py-3 mt-2 bg-white/90 dark:bg-black/70 backdrop-blur-xl rounded-2xl shadow-2xl shadow-black/30">
+                <span className="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent font-black">
+                  Tecnología
+                </span>
               </span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 max-w-3xl">
-              <span className="inline-block px-4 py-2 bg-white/60 dark:bg-black/60 backdrop-blur-md rounded-lg text-gray-800 dark:text-white/90 font-medium">
+              <span className="inline-block px-6 py-3 bg-white/90 dark:bg-black/70 backdrop-blur-xl rounded-2xl text-gray-900 dark:text-white/90 font-semibold shadow-xl shadow-black/20 leading-relaxed">
                 Desde webs profesionales hasta transformación digital completa.
                 Soluciones a medida para cada etapa de tu negocio.
               </span>
