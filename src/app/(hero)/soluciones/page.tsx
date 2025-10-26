@@ -136,29 +136,32 @@ export default function ServicesIndexPage() {
           ariaLabel="Escena 3D interactiva de fondo mostrando soluciones digitales"
         />
 
-        {/* Capa 2: Contenido con backdrop blur individual (z-10, elementos interactivos) */}
+        {/* Capa 2: Overlay de gradiente para dark mode (z-1, no interactivo) */}
+        <div className="fixed left-0 top-0 bottom-0 w-full md:w-1/2 hidden dark:block bg-linear-to-r from-black/80 via-black/60 to-transparent z-1 pointer-events-none" />
+
+        {/* Capa 3: Contenido (z-10, elementos interactivos) */}
         <div className="container mx-auto max-w-6xl px-4 relative z-10 pointer-events-none">
           <div className="max-w-4xl pointer-events-auto">
-            <div className="inline-block mb-6 px-6 py-2 bg-white/80 dark:bg-black/60 backdrop-blur-xl text-primary dark:text-primary font-bold uppercase text-sm tracking-wider rounded-full border-2 border-primary/60 shadow-xl shadow-black/20">
+            {/* Badge - Tarjeta en light mode, estilo original en dark mode */}
+            <div className="inline-block mb-6 px-6 py-2 bg-linear-to-br from-white/95 via-white/90 to-slate-50/95 dark:bg-linear-to-r dark:from-primary/30 dark:to-secondary/30 text-primary dark:text-primary font-bold uppercase text-sm tracking-wider rounded-full border border-border/30 dark:border-primary/30 shadow-lg dark:shadow-none">
               Soluciones Digitales
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              <span className="inline-block px-6 py-3 bg-white/90 dark:bg-black/70 backdrop-blur-xl rounded-2xl text-gray-900 dark:text-white shadow-2xl shadow-black/30">
-                Impulsamos tu Negocio con{" "}
-              </span>
-              <br className="md:hidden" />
-              <span className="inline-block px-6 py-3 mt-2 bg-white/90 dark:bg-black/70 backdrop-blur-xl rounded-2xl shadow-2xl shadow-black/30">
-                <span className="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent font-black">
-                  Tecnología
-                </span>
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl">
-              <span className="inline-block px-6 py-3 bg-white/90 dark:bg-black/70 backdrop-blur-xl rounded-2xl text-gray-900 dark:text-white/90 font-semibold shadow-xl shadow-black/20 leading-relaxed">
-                Desde webs profesionales hasta transformación digital completa.
-                Soluciones a medida para cada etapa de tu negocio.
-              </span>
-            </p>
+            
+            {/* Título - Tarjeta en light mode, texto simple con gradiente en dark mode */}
+            <div className="mb-6 p-6 bg-linear-to-br from-white/95 via-white/90 to-slate-50/95 dark:p-0 dark:bg-transparent border border-border/30 dark:border-none rounded-2xl shadow-xl dark:shadow-none">
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight font-display neon-cyan-title dark:drop-shadow-lg">
+                Impulsamos tu Negocio con Tecnología
+              </h1>
+            </div>
+
+            {/* Subtítulo - Tarjeta en light mode, texto simple en dark mode */}
+            <div className="p-6 bg-linear-to-br from-white/95 via-white/90 to-slate-50/95 dark:p-0 dark:bg-transparent border border-border/30 dark:border-none rounded-2xl shadow-lg dark:shadow-none">
+              <p className="text-xl md:text-2xl text-muted-foreground dark:text-foreground/90 dark:drop-shadow-md">
+                Desde <strong className="text-foreground">webs profesionales</strong> hasta{" "}
+                <strong className="text-foreground">transformación digital completa</strong>.
+                Soluciones <strong className="text-foreground">a medida</strong> para cada etapa de tu negocio.
+              </p>
+            </div>
           </div>
         </div>
       </section>
