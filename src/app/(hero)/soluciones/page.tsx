@@ -136,32 +136,25 @@ export default function ServicesIndexPage() {
           ariaLabel="Escena 3D interactiva de fondo mostrando soluciones digitales"
         />
 
-        {/* Capa 2: Overlay de gradiente para dark mode (z-1, no interactivo) */}
-        <div className="fixed left-0 top-0 bottom-0 w-full md:w-1/2 hidden dark:block bg-linear-to-r from-black/80 via-black/60 to-transparent z-1 pointer-events-none" />
+        {/* Capa 2: Overlay de gradiente para contraste del texto (z-1, no interactivo) */}
+        <div className="fixed left-0 top-0 bottom-0 w-full md:w-1/2 bg-linear-to-r from-black/60 via-black/40 to-transparent dark:from-black/80 dark:via-black/60 dark:to-transparent z-1 pointer-events-none" />
 
-        {/* Capa 3: Contenido (z-10, elementos interactivos) */}
+        {/* Capa 3: Contenido (z-10, elementos interactivos individuales) */}
         <div className="container mx-auto max-w-6xl px-4 relative z-10 pointer-events-none">
           <div className="max-w-4xl pointer-events-auto">
-            {/* Badge - Tarjeta en light mode, estilo original en dark mode */}
-            <div className="inline-block mb-6 px-6 py-2 bg-linear-to-br from-white/95 via-white/90 to-slate-50/95 dark:bg-linear-to-r dark:from-primary/30 dark:to-secondary/30 text-primary dark:text-primary font-bold uppercase text-sm tracking-wider rounded-full border border-border/30 dark:border-primary/30 shadow-lg dark:shadow-none">
+            <div className="inline-block mb-6 px-6 py-2 bg-linear-to-r from-primary/20 to-secondary/20 dark:from-primary/30 dark:to-secondary/30 text-primary dark:text-primary font-bold uppercase text-sm tracking-wider rounded-full border border-primary/30">
               Soluciones Digitales
             </div>
-            
-            {/* Título - Tarjeta en light mode, texto simple con gradiente en dark mode */}
-            <div className="mb-6 p-6 bg-linear-to-br from-white/95 via-white/90 to-slate-50/95 dark:p-0 dark:bg-transparent border border-border/30 dark:border-none rounded-2xl shadow-xl dark:shadow-none">
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight font-display neon-cyan-title dark:drop-shadow-lg">
-                Impulsamos tu Negocio con Tecnología
-              </h1>
-            </div>
-
-            {/* Subtítulo - Tarjeta en light mode, texto simple en dark mode */}
-            <div className="p-6 bg-linear-to-br from-white/95 via-white/90 to-slate-50/95 dark:p-0 dark:bg-transparent border border-border/30 dark:border-none rounded-2xl shadow-lg dark:shadow-none">
-              <p className="text-xl md:text-2xl text-muted-foreground dark:text-foreground/90 dark:drop-shadow-md">
-                Desde <strong className="text-foreground">webs profesionales</strong> hasta{" "}
-                <strong className="text-foreground">transformación digital completa</strong>.
-                Soluciones <strong className="text-foreground">a medida</strong> para cada etapa de tu negocio.
-              </p>
-            </div>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white dark:text-white drop-shadow-lg">
+              Impulsamos tu Negocio con{" "}
+              <span className="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">
+                Tecnología
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 dark:text-white/90 mb-8 max-w-3xl drop-shadow-md">
+              Desde webs profesionales hasta transformación digital completa.
+              Soluciones a medida para cada etapa de tu negocio.
+            </p>
           </div>
         </div>
       </section>
