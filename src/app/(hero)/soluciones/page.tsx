@@ -142,16 +142,44 @@ export default function ServicesIndexPage() {
         {/* Capa 3: Contenido (z-10, elementos interactivos individuales) */}
         <div className="container mx-auto max-w-6xl px-4 relative z-10 pointer-events-none">
           <div className="max-w-4xl pointer-events-auto">
-            <div className="inline-block mb-6 px-6 py-2 bg-linear-to-r from-primary/20 to-secondary/20 dark:from-primary/30 dark:to-secondary/30 text-primary dark:text-primary font-bold uppercase text-sm tracking-wider rounded-full border border-primary/30">
+            {/* LIGHT MODE - Badge glassmorphism */}
+            <div className="dark:hidden inline-block mb-6 px-6 py-2 bg-linear-to-br from-white/95 via-white/90 to-slate-50/95 text-primary font-bold uppercase text-sm tracking-wider rounded-full border border-border/30 shadow-lg">
               Soluciones Digitales
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white dark:text-white drop-shadow-lg">
+
+            {/* DARK MODE - Badge simple */}
+            <div className="hidden dark:inline-block mb-6 px-6 py-2 bg-linear-to-r from-primary/30 to-secondary/30 text-primary font-bold uppercase text-sm tracking-wider rounded-full border border-primary/30">
+              Soluciones Digitales
+            </div>
+
+            {/* LIGHT MODE - Título con caja glassmorphism */}
+            <div className="dark:hidden mb-6 p-6 bg-linear-to-br from-white/95 via-white/90 to-slate-50/95 border border-border/30 rounded-2xl shadow-xl">
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight text-foreground">
+                Impulsamos tu Negocio con{" "}
+                <span className="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  Tecnología
+                </span>
+              </h1>
+            </div>
+
+            {/* DARK MODE - Título sin caja */}
+            <h1 className="hidden dark:block text-4xl md:text-6xl font-bold mb-6 leading-tight text-white drop-shadow-lg">
               Impulsamos tu Negocio con{" "}
               <span className="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">
                 Tecnología
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 dark:text-white/90 mb-8 max-w-3xl drop-shadow-md">
+
+            {/* LIGHT MODE - Subtítulo con caja glassmorphism */}
+            <div className="dark:hidden p-6 bg-linear-to-br from-white/95 via-white/90 to-slate-50/95 border border-border/30 rounded-2xl shadow-lg">
+              <p className="text-xl md:text-2xl text-muted-foreground">
+                Desde webs profesionales hasta transformación digital completa.
+                Soluciones a medida para cada etapa de tu negocio.
+              </p>
+            </div>
+
+            {/* DARK MODE - Subtítulo sin caja */}
+            <p className="hidden dark:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl drop-shadow-md">
               Desde webs profesionales hasta transformación digital completa.
               Soluciones a medida para cada etapa de tu negocio.
             </p>
