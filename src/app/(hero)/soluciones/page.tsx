@@ -495,47 +495,53 @@ export default function ServicesIndexPage() {
 
       {/* CTA Section */}
       <section className="container mx-auto max-w-6xl px-4 py-20">
-        <div className="relative overflow-hidden rounded-xl border-2 border-border/50 dark:border-border/20 bg-linear-to-br from-primary/20 via-secondary/20 to-accent/20 dark:from-primary/10 dark:via-secondary/10 dark:to-accent/10 shadow-3d-lg hover:shadow-3d-xl transition-all duration-500">
-          {/* Animated gradient overlay - Must stay separate for animate-gradient-x (requires background-size: 200% 200%) */}
-          <div className="absolute inset-0 bg-linear-to-r from-primary/15 via-secondary/15 to-accent/15 dark:from-primary/15 dark:via-secondary/15 dark:to-accent/15 animate-gradient-x opacity-50 rounded-xl" />
+        <div className="group relative">
+          {/* Efecto de brillo de fondo en hover */}
+          <div className="absolute -inset-1 bg-linear-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-20 blur-xl transition-all duration-700 rounded-2xl" />
 
-          <div className="relative z-10 p-8 md:p-12 lg:p-16 text-center">
-            {/* Badge */}
-            <div className="inline-flex items-center px-4 py-2 mb-6 bg-primary/20 dark:bg-primary/30 text-primary dark:text-primary-foreground rounded-full text-sm font-semibold shadow-3d-sm ring-1 ring-primary/30">
-              💬 Hablemos
-            </div>
+          {/* Card principal con glassmorphism */}
+          <div className="relative overflow-hidden rounded-2xl border-2 border-primary/20 bg-card/90 backdrop-blur-xl shadow-xl hover:shadow-2xl hover:border-primary/40 transition-all duration-500">
+            {/* Animated gradient overlay - Must stay separate for animate-gradient-x (requires background-size: 200% 200%) */}
+            <div className="absolute inset-0 bg-linear-to-r from-primary/15 via-secondary/15 to-accent/15 dark:from-primary/15 dark:via-secondary/15 dark:to-accent/15 animate-gradient-x opacity-50 rounded-2xl" />
 
-            {/* Title with gradient */}
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              <span className="text-gradient-webcode">
-                ¿Hablamos de tu Proyecto?
-              </span>
-            </h2>
+            <div className="relative z-10 p-8 md:p-12 lg:p-16 text-center">
+              {/* Badge */}
+              <div className="inline-flex items-center px-4 py-2 mb-6 bg-primary/20 dark:bg-primary/30 text-primary dark:text-primary-foreground rounded-full text-sm font-semibold shadow-3d-sm ring-1 ring-primary/30">
+                💬 Hablemos
+              </div>
 
-                        {/* Description */}
-            <p className="text-lg md:text-xl text-foreground/90 mb-10 max-w-2xl mx-auto leading-relaxed">                                                    
-              Cuéntanos qué necesitas y te enviaremos un presupuesto
-              personalizado en{" "}
-              <span className="text-primary font-semibold">24h</span>. Sin      
-              compromiso.
-            </p>
+              {/* Title with gradient */}
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                <span className="text-gradient-webcode">
+                  ¿Hablamos de tu Proyecto?
+                </span>
+              </h2>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button
-                asChild
-                size="lg"
-                className="group relative bg-linear-to-r from-primary/70 via-secondary/60 to-primary/50 text-white font-semibold text-lg hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:-translate-y-1"
-              >
-                <Link href="/contacto">
-                  ✉️ Solicitar Presupuesto
-                  <span className="ml-2 inline-block transition-transform group-hover:translate-x-1">
-                    →
-                  </span>
-                </Link>
-              </Button>
+              {/* Description */}
+              <p className="text-lg md:text-xl text-foreground/90 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Cuéntanos qué necesitas y te enviaremos un presupuesto
+                personalizado en{" "}
+                <span className="text-primary font-semibold">24h</span>. Sin
+                compromiso.
+              </p>
 
-              <EyeFollowButton />
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button
+                  asChild
+                  size="lg"
+                  className="group relative bg-linear-to-r from-primary/70 via-secondary/60 to-primary/50 text-white font-semibold text-lg hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:-translate-y-1"
+                >
+                  <Link href="/contacto">
+                    ✉️ Solicitar Presupuesto
+                    <span className="ml-2 inline-block transition-transform group-hover:translate-x-1">
+                      →
+                    </span>
+                  </Link>
+                </Button>
+
+                <EyeFollowButton />
+              </div>
             </div>
           </div>
         </div>
