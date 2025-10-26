@@ -3,7 +3,7 @@ import Link from "next/link";
 import { EyeFollowButton, SolucionCard } from "@/components/soluciones";
 import { AnimatedRocketIcon } from "@/components/soluciones/AnimatedRocketIcon";
 import { Button } from "@/components/ui/button";
-import { SplineBackgroundClient } from "@/components/custom/SplineBackgroundClient";
+import { SplineBackgroundThemed } from "@/components/custom/SplineBackgroundThemed";
 import { SPLINE_SCENES } from "@/lib/spline-paths";
 
 export const metadata: Metadata = {
@@ -127,8 +127,9 @@ export default function ServicesIndexPage() {
       {/* Hero Section con Spline Background */}
       <section className="relative overflow-hidden pt-24 pb-20 md:pb-32">
         {/* Capa 1: Escena 3D (z-0, fondo interactivo) */}
-        <SplineBackgroundClient
-          scene={SPLINE_SCENES.MAIN}
+        <SplineBackgroundThemed
+          darkScene={SPLINE_SCENES.MAIN}
+          lightScene={SPLINE_SCENES.LIGHT_MODE}
           preset="BACKGROUND_RESPONSIVE"
           container="FIXED_FULLSCREEN_INTERACTIVE"
           className="fixed inset-0 z-0"
@@ -136,7 +137,7 @@ export default function ServicesIndexPage() {
         />
 
         {/* Capa 2: Overlay de gradiente para contraste del texto (z-1, no interactivo) */}
-        <div className="fixed left-0 top-0 bottom-0 w-full md:w-1/2 bg-linear-to-r from-black/60 via-black/40 to-transparent dark:from-black/80 dark:via-black/60 dark:to-transparent z-1 pointer-events-none" />
+        <div className="fixed left-0 top-0 bottom-0 w-full md:w-1/2 bg-linear-to-r from-white/70 via-white/50 to-transparent dark:from-black/80 dark:via-black/60 dark:to-transparent z-1 pointer-events-none" />
 
         {/* Capa 3: Contenido (z-10, elementos interactivos individuales) */}
         <div className="container mx-auto max-w-6xl px-4 relative z-10 pointer-events-none">
@@ -144,13 +145,13 @@ export default function ServicesIndexPage() {
             <div className="inline-block mb-6 px-6 py-2 bg-linear-to-r from-primary/20 to-secondary/20 dark:from-primary/30 dark:to-secondary/30 text-primary dark:text-primary font-bold uppercase text-sm tracking-wider rounded-full border border-primary/30">
               Soluciones Digitales
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white dark:text-white drop-shadow-lg">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-foreground drop-shadow-lg">
               Impulsamos tu Negocio con{" "}
               <span className="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">
                 Tecnología
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 dark:text-white/90 mb-8 max-w-3xl drop-shadow-md">
+            <p className="text-xl md:text-2xl text-foreground/90 mb-8 max-w-3xl drop-shadow-md">
               Desde webs profesionales hasta transformación digital completa.
               Soluciones a medida para cada etapa de tu negocio.
             </p>

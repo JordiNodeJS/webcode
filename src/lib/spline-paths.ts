@@ -10,8 +10,11 @@ export const SPLINE_SCENES = {
   /** Escena de teclado interactivo - Usada en landing pages */
   KEYBOARD: "/scenes/keyboard-scene.splinecode",
   
-  /** Escena principal - General purpose */
+  /** Escena principal - General purpose (dark mode) */
   MAIN: "/scenes/scene.splinecode",
+  
+  /** Escena principal optimizada para light mode */
+  LIGHT_MODE: "/scenes/light-mode-scene.splinecode",
   
   /** Escena alternativa 1 */
   SCENE_1: "/scenes/scene-1.splinecode",
