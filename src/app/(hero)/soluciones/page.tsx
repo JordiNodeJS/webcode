@@ -137,13 +137,13 @@ export default function ServicesIndexPage() {
         />
 
         {/* Capa 2: Overlay de gradiente para contraste del texto (z-1, no interactivo) */}
-        <div className="fixed left-0 top-0 bottom-0 w-full md:w-1/2 bg-linear-to-r from-white/90 via-white/70 to-transparent dark:from-black/80 dark:via-black/60 dark:to-transparent z-1 pointer-events-none" />
+        <div className="fixed left-0 top-0 bottom-0 w-full md:w-1/2 bg-linear-to-r from-white/98 via-white/95 to-white/80 dark:from-black/80 dark:via-black/60 dark:to-transparent z-1 pointer-events-none" />
 
         {/* Capa 3: Contenido (z-10, elementos interactivos individuales) */}
         <div className="container mx-auto max-w-6xl px-4 relative z-10 pointer-events-none">
-          <div className="max-w-4xl pointer-events-auto">
+                    <div className="max-w-4xl pointer-events-auto">
             {/* LIGHT MODE - Badge glassmorphism */}
-            <div className="dark:hidden inline-block mb-6 px-6 py-2 bg-linear-to-br from-white/95 via-white/90 to-slate-50/95 text-primary font-bold uppercase text-sm tracking-wider rounded-full border border-border/30 shadow-lg">
+            <div className="dark:hidden inline-block mb-6 px-6 py-2 bg-linear-to-br from-white/99 via-white/98 to-white/97 text-primary font-bold uppercase text-sm tracking-wider rounded-full border border-border/30 shadow-lg backdrop-blur-sm">          
               Soluciones Digitales
             </div>
 
@@ -152,11 +152,11 @@ export default function ServicesIndexPage() {
               Soluciones Digitales
             </div>
 
-            {/* LIGHT MODE - Título con caja glassmorphism */}
-            <div className="dark:hidden mb-6 p-6 bg-linear-to-br from-white/95 via-white/90 to-slate-50/95 border border-border/30 rounded-2xl shadow-xl">
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight text-foreground">
+                        {/* LIGHT MODE - Título con caja glassmorphism */}
+            <div className="dark:hidden mb-6 p-6 bg-linear-to-br from-white/99 via-white/98 to-white/97 border border-border/30 rounded-2xl shadow-xl backdrop-blur-md">      
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight text-foreground">                                                                     
                 Impulsamos tu Negocio con{" "}
-                <span className="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">
+                <span className="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">                                                       
                   Tecnología
                 </span>
               </h1>
@@ -512,11 +512,11 @@ export default function ServicesIndexPage() {
               </span>
             </h2>
 
-            {/* Description */}
-            <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
+                        {/* Description */}
+            <p className="text-lg md:text-xl text-foreground/90 mb-10 max-w-2xl mx-auto leading-relaxed">                                                    
               Cuéntanos qué necesitas y te enviaremos un presupuesto
               personalizado en{" "}
-              <span className="text-primary font-semibold">24h</span>. Sin
+              <span className="text-primary font-semibold">24h</span>. Sin      
               compromiso.
             </p>
 
