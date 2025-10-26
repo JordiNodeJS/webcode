@@ -137,7 +137,7 @@ export default function ServicesIndexPage() {
         />
 
         {/* Capa 2: Overlay de gradiente para contraste del texto (z-1, no interactivo) */}
-        <div className="fixed left-0 top-0 bottom-0 w-full md:w-1/2 bg-linear-to-r from-black/60 via-black/40 to-transparent dark:from-black/80 dark:via-black/60 dark:to-transparent z-1 pointer-events-none" />
+        <div className="fixed left-0 top-0 bottom-0 w-full md:w-1/2 bg-linear-to-r from-white/90 via-white/70 to-transparent dark:from-black/80 dark:via-black/60 dark:to-transparent z-1 pointer-events-none" />
 
         {/* Capa 3: Contenido (z-10, elementos interactivos individuales) */}
         <div className="container mx-auto max-w-6xl px-4 relative z-10 pointer-events-none">
@@ -274,7 +274,7 @@ export default function ServicesIndexPage() {
       </section>
 
       {/* Credentials & Case Study */}
-      <section className="bg-linear-to-br from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10 py-20">
+      <section className="bg-linear-to-br from-primary/20 to-secondary/20 dark:from-primary/10 dark:to-secondary/10 py-20 border-y border-border/30">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
@@ -290,9 +290,9 @@ export default function ServicesIndexPage() {
 
           <div className="grid md:grid-cols-2 gap-8 mb-16">
             {/* MudanzasAndy Case Study */}
-            <SolucionCard className="bg-linear-to-br from-primary/10 to-secondary/10 border-2 border-primary/30">
+            <SolucionCard className="bg-linear-to-br from-primary/20 to-secondary/20 dark:from-primary/10 dark:to-secondary/10 border-2 border-primary/30">
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-16 h-16 bg-linear-to-br from-primary to-secondary rounded-xl flex items-center justify-center text-2xl font-bold text-white">
+                <div className="w-16 h-16 bg-linear-to-br from-primary to-secondary rounded-xl flex items-center justify-center text-2xl font-bold text-white shadow-md">
                   MA
                 </div>
                 <div className="flex-1">
@@ -398,7 +398,7 @@ export default function ServicesIndexPage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="bg-linear-to-br from-accent/5 to-primary/5 dark:from-accent/10 dark:to-primary/10 py-20">
+      <section className="bg-linear-to-br from-accent/20 to-primary/20 dark:from-accent/10 dark:to-primary/10 py-20 border-y border-border/30">
         <div className="container mx-auto max-w-6xl px-4">
           <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">
             ¿Por Qué{" "}
@@ -495,9 +495,9 @@ export default function ServicesIndexPage() {
 
       {/* CTA Section */}
       <section className="container mx-auto max-w-6xl px-4 py-20">
-        <div className="relative overflow-hidden rounded-xl border border-border/30 dark:border-border/20 bg-linear-to-br from-primary/5 via-secondary/5 to-accent/5 dark:from-primary/10 dark:via-secondary/10 dark:to-accent/10 shadow-3d-lg hover:shadow-3d-xl transition-all duration-500">
+        <div className="relative overflow-hidden rounded-xl border-2 border-border/50 dark:border-border/20 bg-linear-to-br from-primary/20 via-secondary/20 to-accent/20 dark:from-primary/10 dark:via-secondary/10 dark:to-accent/10 shadow-3d-lg hover:shadow-3d-xl transition-all duration-500">
           {/* Animated gradient overlay - Must stay separate for animate-gradient-x (requires background-size: 200% 200%) */}
-          <div className="absolute inset-0 bg-linear-to-r from-primary/8 via-secondary/8 to-accent/8 dark:from-primary/15 dark:via-secondary/15 dark:to-accent/15 animate-gradient-x opacity-50 rounded-xl" />
+          <div className="absolute inset-0 bg-linear-to-r from-primary/15 via-secondary/15 to-accent/15 dark:from-primary/15 dark:via-secondary/15 dark:to-accent/15 animate-gradient-x opacity-50 rounded-xl" />
 
           <div className="relative z-10 p-8 md:p-12 lg:p-16 text-center">
             {/* Badge */}
