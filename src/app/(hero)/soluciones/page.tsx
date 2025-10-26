@@ -137,21 +137,21 @@ export default function ServicesIndexPage() {
         />
 
         {/* Capa 2: Overlay de gradiente para contraste del texto (z-1, no interactivo) */}
-        <div className="fixed left-0 top-0 bottom-0 w-full md:w-1/2 bg-linear-to-r from-white/70 via-white/50 to-transparent dark:from-black/80 dark:via-black/60 dark:to-transparent z-1 pointer-events-none" />
+        <div className="fixed left-0 top-0 bottom-0 w-full md:w-1/2 bg-linear-to-r from-white/85 via-white/70 to-white/30 dark:from-black/80 dark:via-black/60 dark:to-transparent backdrop-blur-sm z-1 pointer-events-none" />
 
         {/* Capa 3: Contenido (z-10, elementos interactivos individuales) */}
         <div className="container mx-auto max-w-6xl px-4 relative z-10 pointer-events-none">
           <div className="max-w-4xl pointer-events-auto">
-            <div className="inline-block mb-6 px-6 py-2 bg-linear-to-r from-primary/20 to-secondary/20 dark:from-primary/30 dark:to-secondary/30 text-primary dark:text-primary font-bold uppercase text-sm tracking-wider rounded-full border border-primary/30">
+            <div className="inline-block mb-6 px-6 py-2 bg-linear-to-r from-primary/30 to-secondary/30 dark:from-primary/30 dark:to-secondary/30 text-primary dark:text-primary font-bold uppercase text-sm tracking-wider rounded-full border-2 border-primary/50 shadow-lg backdrop-blur-md">
               Soluciones Digitales
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-foreground drop-shadow-lg">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-gray-900 dark:text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)] dark:drop-shadow-lg">
               Impulsamos tu Negocio con{" "}
-              <span className="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent drop-shadow-none">
                 Tecnología
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-foreground/90 mb-8 max-w-3xl drop-shadow-md">
+            <p className="text-xl md:text-2xl text-gray-800 dark:text-white/90 mb-8 max-w-3xl drop-shadow-[0_1px_4px_rgba(0,0,0,0.2)] dark:drop-shadow-md font-medium">
               Desde webs profesionales hasta transformación digital completa.
               Soluciones a medida para cada etapa de tu negocio.
             </p>
