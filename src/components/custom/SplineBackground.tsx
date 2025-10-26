@@ -169,6 +169,16 @@ export function SplineBackground({
   // Obtener estilos del preset
   const presetConfig = SPLINE_PRESETS[preset];
 
+  // Validación: Si el preset no existe, usar fallback
+  if (!presetConfig) {
+    console.error(`❌ Preset "${preset}" no encontrado en SPLINE_PRESETS.`, {
+      preset,
+      availablePresets: Object.keys(SPLINE_PRESETS)
+    });
+    // Fallback a BACKGROUND
+    return null;
+  }
+
   // Combinar estilos con overrides
   const containerStyles = container
     ? SPLINE_CONTAINER_STYLES[container]
