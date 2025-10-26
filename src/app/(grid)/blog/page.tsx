@@ -4,6 +4,7 @@
  */
 
 import type { Metadata } from "next";
+import Link from "next/link";
 import { BlogCategoriesCard } from "@/components/blog/BlogCategoriesCard";
 import { BlogPostCard } from "@/components/blog/BlogPostCard";
 import { getAllTags, getBlogPosts } from "@/lib/notion";
@@ -63,6 +64,36 @@ export default async function BlogPage() {
           Artículos, tutoriales y recursos sobre desarrollo web, tecnología y
           soluciones digitales
         </p>
+      </div>
+
+      {/* Tutoriales Section */}
+      <div className="mb-16 rounded-lg border bg-linear-to-r from-primary/5 to-secondary/5 p-8 dark:from-primary/10 dark:to-secondary/10">
+        <h2 className="mb-4 text-2xl font-bold">📚 Tutoriales Destacados</h2>
+        <p className="mb-4 text-muted-foreground">
+          Guías prácticas para integrar tecnologías modernas en tus proyectos.
+        </p>
+        <div className="space-y-3">
+          <Link
+            href="https://spline.webcode.es"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-3 rounded-lg border bg-card p-4 transition-all hover:border-primary hover:shadow-md"
+          >
+            <span className="text-2xl">🎨</span>
+            <div>
+              <h3 className="font-semibold group-hover:text-primary transition-colors">
+                Guía Spline: Integra Experiencias 3D en Next.js
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Aprende a integrar escenas interactivas 3D con Spline en tus
+                proyectos Next.js
+              </p>
+            </div>
+            <span className="ml-auto text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+              →
+            </span>
+          </Link>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
