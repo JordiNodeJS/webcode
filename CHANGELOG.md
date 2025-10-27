@@ -9,6 +9,45 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/lang/es/).
 
 ## [Unreleased]
 
+### 🎬 Agregado - Integración Spline 3D (2025-10-26)
+
+- **Componente SplineBackground**: Sistema completo de escenas 3D interactivas
+  - 5 presets predefinidos: BACKGROUND, BACKGROUND_RESPONSIVE, HERO, SIDEBAR, MODAL
+  - Gestión automática de estados: loading, error handling, reintentos (max 3)
+  - Sistema de configuración flexible con overrides y customización
+  - TypeScript completo con tipado fuerte para todas las props
+  - Accesibilidad completa: ARIA labels, reduced motion, screen readers
+  - ⚠️ **IMPORTANTE**: Requiere importación dinámica con `next/dynamic` para uso en Server Components
+
+- **Sistema de Estilos Spline**: `src/lib/spline-styles.ts`
+  - Container presets: 5 tipos (fixed, absolute, relative)
+  - Position presets: 6 posiciones (center, corners, responsive)
+  - Size presets: 5 tamaños (small → extra large)
+  - Scale presets: 5 escalas (0.8x → 1.5x + responsive)
+  - Utilidad `getSplineStyles()` para combinación de estilos
+  - Utilidad `getSplineZIndex()` para arquitectura de capas
+
+- **Registro de Escenas**: `src/lib/spline-paths.ts`
+  - Rutas centralizadas de archivos .splinecode
+  - Type-safe con `as const` assertion
+  - 4 escenas disponibles: KEYBOARD, MAIN, SCENE_1, SCENE_3
+
+- **Integración en Soluciones**: `src/app/(hero)/soluciones/page.tsx`
+  - Escena 3D como fondo interactivo con preset BACKGROUND_RESPONSIVE
+  - Importación dinámica con `next/dynamic` para compatibilidad Next.js 16
+  - Arquitectura de capas correcta: z-0 (escena), z-1 (overlay), z-10 (contenido)
+  - Gestión apropiada de pointer-events para interactividad
+  - Overlay de gradiente para mejorar contraste del texto
+
+- **Documentación Completa**:
+  - `docs/guides/spline-integration.md` - Guía completa con casos de uso y troubleshooting
+  - `docs/guides/spline-quick-start.md` - Referencia rápida con ejemplos
+  - Ejemplos de implementación con dynamic import
+  - Mejores prácticas de performance y accesibilidad
+  - Sección de troubleshooting con solución al error de async Client Component
+
+- **Dependencias**: Agregado `@splinetool/react-spline` v4.1.0
+
 ### ⚡ Optimizado - Blog Section (Next.js 16 + React 19)
 
 - **Server Components**: Convertidos `BlogPostCard` y `BlogCategoriesCard` de Client a Server Components

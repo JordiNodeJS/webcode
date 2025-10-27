@@ -3,6 +3,8 @@ import Link from "next/link";
 import { EyeFollowButton, SolucionCard } from "@/components/soluciones";
 import { AnimatedRocketIcon } from "@/components/soluciones/AnimatedRocketIcon";
 import { Button } from "@/components/ui/button";
+import { SplineBackgroundClient } from "@/components/custom/SplineBackgroundClient";
+import { SPLINE_SCENES } from "@/lib/spline-paths";
 
 export const metadata: Metadata = {
   title: "Soluciones Digitales | WEBCODE",
@@ -122,20 +124,33 @@ export default function ServicesIndexPage() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-[image:linear-gradient(to_right,rgb(var(--primary-rgb)_/_0.03),rgb(var(--secondary-rgb)_/_0.03),rgb(var(--accent-rgb)_/_0.03)),linear-gradient(to_bottom_right,rgb(var(--primary-rgb)_/_0.05),rgb(var(--secondary-rgb)_/_0.05),rgb(var(--accent-rgb)_/_0.05))] dark:bg-[image:linear-gradient(to_right,rgb(var(--primary-rgb)_/_0.05),rgb(var(--secondary-rgb)_/_0.05),rgb(var(--accent-rgb)_/_0.05)),linear-gradient(to_bottom_right,rgb(var(--primary-rgb)_/_0.10),rgb(var(--secondary-rgb)_/_0.10),rgb(var(--accent-rgb)_/_0.10))] pt-24 pb-20 md:pb-32 rounded-2xl">
-        <div className="container mx-auto max-w-6xl px-4 relative z-10">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-block mb-6 px-6 py-2 bg-gradient-to-r from-primary/20 to-secondary/20 dark:from-primary/30 dark:to-secondary/30 text-primary dark:text-primary font-bold uppercase text-sm tracking-wider rounded-full border border-primary/30">
+      {/* Hero Section con Spline Background */}
+      <section className="relative overflow-hidden pt-24 pb-20 md:pb-32">
+        {/* Capa 1: Escena 3D (z-0, fondo interactivo) */}
+        <SplineBackgroundClient
+          scene={SPLINE_SCENES.MAIN}
+          preset="BACKGROUND_RESPONSIVE"
+          container="FIXED_FULLSCREEN_INTERACTIVE"
+          className="fixed inset-0 z-0"
+          ariaLabel="Escena 3D interactiva de fondo mostrando soluciones digitales"
+        />
+
+        {/* Capa 2: Overlay de gradiente para contraste del texto (z-1, no interactivo) */}
+        <div className="fixed left-0 top-0 bottom-0 w-full md:w-1/2 bg-linear-to-r from-black/60 via-black/40 to-transparent dark:from-black/80 dark:via-black/60 dark:to-transparent z-1 pointer-events-none" />
+
+        {/* Capa 3: Contenido (z-10, elementos interactivos individuales) */}
+        <div className="container mx-auto max-w-6xl px-4 relative z-10 pointer-events-none">
+          <div className="max-w-4xl pointer-events-auto">
+            <div className="inline-block mb-6 px-6 py-2 bg-linear-to-r from-primary/20 to-secondary/20 dark:from-primary/30 dark:to-secondary/30 text-primary dark:text-primary font-bold uppercase text-sm tracking-wider rounded-full border border-primary/30">
               Soluciones Digitales
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-foreground">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white dark:text-white drop-shadow-lg">
               Impulsamos tu Negocio con{" "}
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">
                 Tecnología
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-white/90 dark:text-white/90 mb-8 max-w-3xl drop-shadow-md">
               Desde webs profesionales hasta transformación digital completa.
               Soluciones a medida para cada etapa de tu negocio.
             </p>
@@ -212,7 +227,7 @@ export default function ServicesIndexPage() {
               {/* CTA */}
               <Button
                 asChild
-                className={`w-full font-semibold text-lg bg-gradient-to-r ${
+                className={`w-full font-semibold text-lg bg-linear-to-r ${
                   solution.color === "secondary"
                     ? "from-secondary/70 via-secondary/60 to-secondary/50"
                     : solution.color === "accent"
@@ -230,12 +245,12 @@ export default function ServicesIndexPage() {
       </section>
 
       {/* Credentials & Case Study */}
-      <section className="bg-gradient-to-br from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10 py-20">
+      <section className="bg-linear-to-br from-primary/5 to-secondary/5 dark:from-primary/10 dark:to-secondary/10 py-20">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
               Casos de{" "}
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">
                 Éxito
               </span>
             </h2>
@@ -246,9 +261,9 @@ export default function ServicesIndexPage() {
 
           <div className="grid md:grid-cols-2 gap-8 mb-16">
             {/* MudanzasAndy Case Study */}
-            <SolucionCard className="bg-gradient-to-br from-primary/10 to-secondary/10 border-2 border-primary/30">
+            <SolucionCard className="bg-linear-to-br from-primary/10 to-secondary/10 border-2 border-primary/30">
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center text-2xl font-bold text-white">
+                <div className="w-16 h-16 bg-linear-to-br from-primary to-secondary rounded-xl flex items-center justify-center text-2xl font-bold text-white">
                   MA
                 </div>
                 <div className="flex-1">
@@ -354,11 +369,11 @@ export default function ServicesIndexPage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="bg-gradient-to-br from-accent/5 to-primary/5 dark:from-accent/10 dark:to-primary/10 py-20">
+      <section className="bg-linear-to-br from-accent/5 to-primary/5 dark:from-accent/10 dark:to-primary/10 py-20">
         <div className="container mx-auto max-w-6xl px-4">
           <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">
             ¿Por Qué{" "}
-            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">
               WEBCODE?
             </span>
           </h2>
@@ -405,7 +420,7 @@ export default function ServicesIndexPage() {
       <section className="container mx-auto max-w-6xl px-4 py-20">
         <h2 className="text-3xl md:text-5xl font-bold mb-6 text-center">
           Cómo{" "}
-          <span className="bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
+          <span className="bg-linear-to-r from-secondary to-accent bg-clip-text text-transparent">
             Trabajamos
           </span>
         </h2>
@@ -451,9 +466,9 @@ export default function ServicesIndexPage() {
 
       {/* CTA Section */}
       <section className="container mx-auto max-w-6xl px-4 py-20">
-        <div className="relative overflow-hidden rounded-xl border border-border/30 dark:border-border/20 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 dark:from-primary/10 dark:via-secondary/10 dark:to-accent/10 shadow-3d-lg hover:shadow-3d-xl transition-all duration-500">
+        <div className="relative overflow-hidden rounded-xl border border-border/30 dark:border-border/20 bg-linear-to-br from-primary/5 via-secondary/5 to-accent/5 dark:from-primary/10 dark:via-secondary/10 dark:to-accent/10 shadow-3d-lg hover:shadow-3d-xl transition-all duration-500">
           {/* Animated gradient overlay - Must stay separate for animate-gradient-x (requires background-size: 200% 200%) */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/8 via-secondary/8 to-accent/8 dark:from-primary/15 dark:via-secondary/15 dark:to-accent/15 animate-gradient-x opacity-50 rounded-xl" />
+          <div className="absolute inset-0 bg-linear-to-r from-primary/8 via-secondary/8 to-accent/8 dark:from-primary/15 dark:via-secondary/15 dark:to-accent/15 animate-gradient-x opacity-50 rounded-xl" />
 
           <div className="relative z-10 p-8 md:p-12 lg:p-16 text-center">
             {/* Badge */}
@@ -481,7 +496,7 @@ export default function ServicesIndexPage() {
               <Button
                 asChild
                 size="lg"
-                className="group relative bg-gradient-to-r from-primary/70 via-secondary/60 to-primary/50 text-white font-semibold text-lg hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:-translate-y-1"
+                className="group relative bg-linear-to-r from-primary/70 via-secondary/60 to-primary/50 text-white font-semibold text-lg hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:-translate-y-1"
               >
                 <Link href="/contacto">
                   ✉️ Solicitar Presupuesto
