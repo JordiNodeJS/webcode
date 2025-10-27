@@ -76,7 +76,7 @@ export function SplineBackgroundThemed({
       {/* Capa 1: Velo visible solo en modo claro (z-1) */}
       {isLightMode && (
         <div 
-          className="fixed inset-0 pointer-events-none"
+          className="absolute inset-0 pointer-events-none"
           style={{
             zIndex: 1,
             background: `
@@ -96,5 +96,3 @@ export function SplineBackgroundThemed({
     </>
   );
 }
-
-export default SplineBackgroundThemed;
