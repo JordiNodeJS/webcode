@@ -180,7 +180,7 @@ export default function ServicesIndexPage() {
       </section>
 
       {/* Solutions Grid */}
-      <section className="container mx-auto max-w-6xl px-4 py-20">
+      <section className="relative z-10 container mx-auto max-w-6xl px-4 py-20">
         <div className="grid md:grid-cols-2 gap-8">
           {solutions.map((solution) => (
             <SolucionCard key={solution.slug} className="h-full">
@@ -266,7 +266,7 @@ export default function ServicesIndexPage() {
       </section>
 
       {/* Credentials & Case Study */}
-      <section className="bg-linear-to-br from-primary/20 to-secondary/20 dark:from-primary/10 dark:to-secondary/10 py-20 border-y border-border/30">
+      <section className="relative z-10 bg-linear-to-br from-primary/20 to-secondary/20 dark:from-primary/10 dark:to-secondary/10 py-20 border-y border-border/30">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
@@ -390,7 +390,7 @@ export default function ServicesIndexPage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="bg-linear-to-br from-accent/20 to-primary/20 dark:from-accent/10 dark:to-primary/10 py-20 border-y border-border/30">
+      <section className="relative z-10 bg-linear-to-br from-accent/20 to-primary/20 dark:from-accent/10 dark:to-primary/10 py-20 border-y border-border/30">
         <div className="container mx-auto max-w-6xl px-4">
           <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">
             ¿Por Qué{" "}
@@ -438,7 +438,7 @@ export default function ServicesIndexPage() {
       </section>
 
       {/* Process Overview */}
-      <section className="container mx-auto max-w-6xl px-4 py-20">
+      <section className="relative z-10 container mx-auto max-w-6xl px-4 py-20">
         <h2 className="text-3xl md:text-5xl font-bold mb-6 text-center">
           Cómo{" "}
           <span className="bg-linear-to-r from-secondary to-accent bg-clip-text text-transparent">
@@ -486,7 +486,7 @@ export default function ServicesIndexPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="container mx-auto max-w-6xl px-4 py-20">
+      <section className="relative z-10 container mx-auto max-w-6xl px-4 py-20">
         <div className="group relative">
           {/* Efecto de brillo de fondo en hover */}
           <div className="absolute -inset-1 bg-linear-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-20 blur-xl transition-all duration-700 rounded-2xl" />

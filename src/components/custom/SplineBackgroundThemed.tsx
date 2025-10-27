@@ -37,6 +37,7 @@ interface SplineBackgroundThemedProps extends SplineBackgroundProps {
 export function SplineBackgroundThemed({
   darkScene,
   lightScene,
+  className,
   ...props
 }: SplineBackgroundThemedProps) {
   const { resolvedTheme } = useTheme();
@@ -45,6 +46,7 @@ export function SplineBackgroundThemed({
 
   // Determinar escena según tema
   const currentScene = resolvedTheme === "light" ? lightScene : darkScene;
+  const isLightMode = resolvedTheme === "light";
 
   // Evitar hidratación inconsistente
   useEffect(() => {
@@ -66,7 +68,33 @@ export function SplineBackgroundThemed({
     return null;
   }
 
-  return <Component scene={currentScene} {...props} />;
+  return (
+    <>
+      {/* Capa 0: Escena Spline base (z-0) */}
+      <Component scene={currentScene} {...props} className={className} />
+      
+      {/* Capa 1: Velo visible solo en modo claro (z-1) */}
+      {isLightMode && (
+        <div 
+          className="fixed inset-0 pointer-events-none"
+          style={{
+            zIndex: 1,
+            background: `
+              linear-gradient(
+                135deg,
+                oklch(0.98 0.04 328.5 / 0.65) 0%,
+                oklch(0.99 0.03 184.1 / 0.55) 50%,
+                oklch(0.985 0.02 328.5 / 0.60) 100%
+              )
+            `,
+            backdropFilter: "blur(2px) brightness(1.15) saturate(0.85)",
+            WebkitBackdropFilter: "blur(2px) brightness(1.15) saturate(0.85)"
+          }}
+          aria-hidden="true"
+        />
+      )}
+    </>
+  );
 }
 
 export default SplineBackgroundThemed;
