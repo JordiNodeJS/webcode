@@ -136,8 +136,8 @@ export default function ServicesIndexPage() {
           ariaLabel="Escena 3D interactiva de fondo mostrando soluciones digitales"
         />
 
-        {/* Capa 2: Overlay de gradiente para contraste del texto (z-1, no interactivo) - Solo en hero */}
-        <div className="absolute left-0 top-0 bottom-0 w-full md:w-1/2 bg-linear-to-r from-white/98 via-white/95 to-white/80 dark:from-black/80 dark:via-black/50 dark:to-primary/40 z-1 pointer-events-none" />
+        {/* Capa 2: Overlay de gradiente para contraste del texto (z-1, no interactivo) */}
+        <div className="fixed left-0 top-0 bottom-0 w-full md:w-1/2 bg-linear-to-r from-white/98 via-white/95 to-white/80 dark:from-black/80 dark:via-black/60 dark:to-transparent z-1 pointer-events-none" />
 
         {/* Capa 3: Contenido (z-10, elementos interactivos individuales) */}
         <div className="container mx-auto max-w-6xl px-4 relative z-10 pointer-events-none">
