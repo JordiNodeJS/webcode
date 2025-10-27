@@ -144,34 +144,16 @@ export default function ServicesIndexPage() {
               Soluciones Digitales
             </div>
 
-                        {/* LIGHT MODE - Título con caja glassmorphism */}
-            <div className="dark:hidden mb-6 p-6 bg-linear-to-br from-white/99 via-white/98 to-white/97 border border-border/30 rounded-2xl shadow-xl backdrop-blur-md">      
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight text-foreground">                                                                     
-                Impulsamos tu Negocio con{" "}
-                <span className="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">                                                       
-                  Tecnología
-                </span>
-              </h1>
-            </div>
-
-            {/* DARK MODE - Título sin caja */}
-            <h1 className="hidden dark:block text-4xl md:text-6xl font-bold mb-6 leading-tight text-white drop-shadow-lg">
+            {/* Título - Sin caja en light mode, igual que dark mode */}
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-foreground dark:text-white drop-shadow-lg">
               Impulsamos tu Negocio con{" "}
               <span className="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">
                 Tecnología
               </span>
             </h1>
 
-            {/* LIGHT MODE - Subtítulo con caja glassmorphism */}
-            <div className="dark:hidden p-6 bg-linear-to-br from-white/95 via-white/90 to-slate-50/95 border border-border/30 rounded-2xl shadow-lg">
-              <p className="text-xl md:text-2xl text-muted-foreground">
-                Desde webs profesionales hasta transformación digital completa.
-                Soluciones a medida para cada etapa de tu negocio.
-              </p>
-            </div>
-
-            {/* DARK MODE - Subtítulo sin caja */}
-            <p className="hidden dark:block text-xl md:text-2xl text-white/90 mb-8 max-w-3xl drop-shadow-md">
+            {/* Subtítulo - Sin caja en light mode, igual que dark mode */}
+            <p className="text-xl md:text-2xl text-foreground/90 dark:text-white/90 mb-8 max-w-3xl drop-shadow-md">
               Desde webs profesionales hasta transformación digital completa.
               Soluciones a medida para cada etapa de tu negocio.
             </p>
@@ -180,7 +162,7 @@ export default function ServicesIndexPage() {
       </section>
 
       {/* Solutions Grid */}
-      <section className="container mx-auto max-w-6xl px-4 py-20">
+      <section className="relative z-10 container mx-auto max-w-6xl px-4 py-20">
         <div className="grid md:grid-cols-2 gap-8">
           {solutions.map((solution) => (
             <SolucionCard key={solution.slug} className="h-full">
@@ -266,7 +248,7 @@ export default function ServicesIndexPage() {
       </section>
 
       {/* Credentials & Case Study */}
-      <section className="bg-linear-to-br from-primary/20 to-secondary/20 dark:from-primary/10 dark:to-secondary/10 py-20 border-y border-border/30">
+      <section className="relative z-10 bg-linear-to-br from-primary/20 to-secondary/20 dark:from-primary/10 dark:to-secondary/10 py-20 border-y border-border/30">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
@@ -390,7 +372,7 @@ export default function ServicesIndexPage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="bg-linear-to-br from-accent/20 to-primary/20 dark:from-accent/10 dark:to-primary/10 py-20 border-y border-border/30">
+      <section className="relative z-10 bg-linear-to-br from-accent/20 to-primary/20 dark:from-accent/10 dark:to-primary/10 py-20 border-y border-border/30">
         <div className="container mx-auto max-w-6xl px-4">
           <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">
             ¿Por Qué{" "}
@@ -438,7 +420,7 @@ export default function ServicesIndexPage() {
       </section>
 
       {/* Process Overview */}
-      <section className="container mx-auto max-w-6xl px-4 py-20">
+      <section className="relative z-10 container mx-auto max-w-6xl px-4 py-20">
         <h2 className="text-3xl md:text-5xl font-bold mb-6 text-center">
           Cómo{" "}
           <span className="bg-linear-to-r from-secondary to-accent bg-clip-text text-transparent">
@@ -486,7 +468,7 @@ export default function ServicesIndexPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="container mx-auto max-w-6xl px-4 py-20">
+      <section className="relative z-10 container mx-auto max-w-6xl px-4 py-20">
         <div className="group relative">
           {/* Efecto de brillo de fondo en hover */}
           <div className="absolute -inset-1 bg-linear-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-20 blur-xl transition-all duration-700 rounded-2xl" />
