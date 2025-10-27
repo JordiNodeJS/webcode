@@ -136,19 +136,14 @@ export default function ServicesIndexPage() {
           ariaLabel="Escena 3D interactiva de fondo mostrando soluciones digitales"
         />
 
-        {/* Capa 2: Overlay de gradiente para contraste del texto (z-1, no interactivo) */}
-        <div className="fixed left-0 top-0 bottom-0 w-full md:w-1/2 bg-linear-to-r from-white/98 via-white/95 to-white/80 dark:from-black/80 dark:via-black/60 dark:to-transparent z-1 pointer-events-none" />
+        {/* Capa 2: Overlay de gradiente para contraste del texto (z-1, no interactivo) - Solo en hero */}
+        <div className="absolute left-0 top-0 bottom-0 w-full md:w-1/2 bg-linear-to-r from-white/98 via-white/95 to-white/80 dark:from-black/80 dark:via-black/50 dark:to-primary/40 z-1 pointer-events-none" />
 
         {/* Capa 3: Contenido (z-10, elementos interactivos individuales) */}
         <div className="container mx-auto max-w-6xl px-4 relative z-10 pointer-events-none">
-                    <div className="max-w-4xl pointer-events-auto">
-            {/* LIGHT MODE - Badge glassmorphism */}
-            <div className="dark:hidden inline-block mb-6 px-6 py-2 bg-linear-to-br from-white/99 via-white/98 to-white/97 text-primary font-bold uppercase text-sm tracking-wider rounded-full border border-border/30 shadow-lg backdrop-blur-sm">          
-              Soluciones Digitales
-            </div>
-
-            {/* DARK MODE - Badge simple */}
-            <div className="hidden dark:inline-block mb-6 px-6 py-2 bg-linear-to-r from-primary/30 to-secondary/30 text-primary font-bold uppercase text-sm tracking-wider rounded-full border border-primary/30">
+          <div className="max-w-4xl pointer-events-auto">
+            {/* Badge - Adaptativo a tema */}
+            <div className="inline-block mb-6 px-6 py-2 bg-linear-to-r from-primary/50 to-secondary/50 text-white font-bold uppercase text-sm tracking-wider rounded-full border-2 border-primary/60 shadow-lg dark:from-primary/30 dark:to-secondary/30 dark:border-primary/40 dark:shadow-primary/20">
               Soluciones Digitales
             </div>
 
