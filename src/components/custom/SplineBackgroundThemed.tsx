@@ -7,6 +7,7 @@
  * según el tema actual (light/dark mode).
  * 
  * Compatible con Next.js 16 y React 19
+ * Optimizado para rendimiento: se desactiva cuando está fuera del viewport
  * 
  * @example
  * ```tsx
@@ -23,6 +24,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import type { ComponentProps, ComponentType } from "react";
 import type { SplineScenePath } from "@/lib/spline-paths";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 type SplineBackgroundProps = Omit<ComponentProps<typeof import("./SplineBackground").SplineBackground>, 'scene'>;
 type SplineComponent = ComponentType<ComponentProps<typeof import("./SplineBackground").SplineBackground>>;
@@ -43,6 +45,12 @@ export function SplineBackgroundThemed({
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [Component, setComponent] = useState<SplineComponent | null>(null);
+  
+  // Hook para detectar visibilidad en viewport
+  const { ref, isIntersecting } = useIntersectionObserver({
+    threshold: 0.1, // Se activa cuando al menos 10% del elemento es visible
+    rootMargin: "50px", // Margen adicional para activar antes
+  });
 
   // Determinar escena según tema
   const currentScene = resolvedTheme === "light" ? lightScene : darkScene;
@@ -65,34 +73,39 @@ export function SplineBackgroundThemed({
   }, []);
 
   if (!mounted || !Component) {
-    return null;
+    return <div ref={ref} className={className} />;
   }
 
   return (
-    <>
-      {/* Capa 0: Escena Spline base (z-0) */}
-      <Component scene={currentScene} {...props} className={className} />
-      
-      {/* Capa 1: Velo visible solo en modo claro (z-1) */}
-      {isLightMode && (
-        <div 
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            zIndex: 1,
-            background: `
-              linear-gradient(
-                135deg,
-                oklch(0.98 0.04 328.5 / 0.65) 0%,
-                oklch(0.99 0.03 184.1 / 0.55) 50%,
-                oklch(0.985 0.02 328.5 / 0.60) 100%
-              )
-            `,
-            backdropFilter: "blur(2px) brightness(1.15) saturate(0.85)",
-            WebkitBackdropFilter: "blur(2px) brightness(1.15) saturate(0.85)"
-          }}
-          aria-hidden="true"
-        />
+    <div ref={ref} className={className}>
+      {/* Solo renderizar Spline cuando esté en viewport */}
+      {isIntersecting && (
+        <>
+          {/* Capa 0: Escena Spline base (z-0) */}
+          <Component scene={currentScene} {...props} />
+          
+          {/* Capa 1: Velo visible solo en modo claro (z-1) */}
+          {isLightMode && (
+            <div 
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                zIndex: 1,
+                background: `
+                  linear-gradient(
+                    135deg,
+                    oklch(0.98 0.04 328.5 / 0.65) 0%,
+                    oklch(0.99 0.03 184.1 / 0.55) 50%,
+                    oklch(0.985 0.02 328.5 / 0.60) 100%
+                  )
+                `,
+                backdropFilter: "blur(2px) brightness(1.15) saturate(0.85)",
+                WebkitBackdropFilter: "blur(2px) brightness(1.15) saturate(0.85)"
+              }}
+              aria-hidden="true"
+            />
+          )}
+        </>
       )}
-    </>
+    </div>
   );
 }
