@@ -249,11 +249,11 @@ export default function ProcesoPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section Mejorado */}
-      <section className="relative pt-24 pb-20 md:pb-32 overflow-hidden">
+      <section className="relative h-screen overflow-hidden">
         {/* Background gradients */}
         <div 
           className="absolute inset-0" 
-          style={{ backgroundImage: 'radial-gradient(circle 384px at 75% 0%, rgba(220, 124, 179, 0.35), transparent)' }}
+          style={{ backgroundImage: 'radial-gradient(circle 384px at 75% 10%, rgba(220, 124, 179, 0.15), transparent)' }}
         />
         <div 
           className="absolute inset-0" 
@@ -261,12 +261,12 @@ export default function ProcesoPage() {
         />
         <div 
           className="absolute inset-0" 
-          style={{ backgroundImage: 'linear-gradient(to bottom right, rgba(220, 124, 179, 0.40), transparent, rgba(130, 200, 210, 0.40))' }}
+          style={{ backgroundImage: 'linear-gradient(to bottom, transparent 0%, transparent 15%, rgba(220, 124, 179, 0.20) 50%, rgba(130, 200, 210, 0.25) 100%)' }}
         />
         {/* Grid pattern - kept separate as it uses complex SVG pattern */}
-        <div className="absolute inset-0 bg-webcode-grid opacity-50" />
+        <div className="absolute inset-0 bg-webcode-grid opacity-30" />
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 relative z-10 h-full flex items-center">
           <WSFadeIn delay={0.1}>
             <div className="text-center max-w-5xl mx-auto space-y-8">
               {/* Badge superior */}
