@@ -249,9 +249,22 @@ export default function ProcesoPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section Mejorado */}
-      <section className="relative pt-24 pb-20 md:pb-32 overflow-hidden bg-[image:radial-gradient(circle_384px_at_75%_0%,rgb(var(--primary-rgb)_/_0.04),transparent),radial-gradient(circle_384px_at_25%_100%,rgb(var(--secondary-rgb)_/_0.04),transparent),linear-gradient(to_bottom_right,rgb(var(--primary-rgb)_/_0.10),var(--background),rgb(var(--secondary-rgb)_/_0.10))]">
+      <section className="relative pt-24 pb-20 md:pb-32 overflow-hidden">
+        {/* Background gradients */}
+        <div 
+          className="absolute inset-0" 
+          style={{ backgroundImage: 'radial-gradient(circle 384px at 75% 0%, rgba(220, 124, 179, 0.35), transparent)' }}
+        />
+        <div 
+          className="absolute inset-0" 
+          style={{ backgroundImage: 'radial-gradient(circle 384px at 25% 100%, rgba(130, 200, 210, 0.35), transparent)' }}
+        />
+        <div 
+          className="absolute inset-0" 
+          style={{ backgroundImage: 'linear-gradient(to bottom right, rgba(220, 124, 179, 0.40), transparent, rgba(130, 200, 210, 0.40))' }}
+        />
         {/* Grid pattern - kept separate as it uses complex SVG pattern */}
-        <div className="absolute inset-0 bg-webcode-grid" />
+        <div className="absolute inset-0 bg-webcode-grid opacity-50" />
 
         <div className="container mx-auto px-4 relative z-10">
           <WSFadeIn delay={0.1}>
