@@ -157,6 +157,46 @@ gh pr view 42
 gh pr merge 42 --squash
 ```
 
+### **⚠️ Prevención de Problemas de Codificación UTF-8**
+
+**IMPORTANTE**: Para evitar caracteres raros () en comentarios y body de PRs:
+
+**Solución 1**: Usar `--body-file` en lugar de `--body`
+```bash
+# ✅ CORRECTO - Evita problemas de codificación
+echo "# Título de la PR
+
+## Cambios
+- Cambio 1
+- Cambio 2" > .pr-body-temp.md
+
+gh pr create \
+  --title "feat(blog): add Notion integration" \
+  --body-file .pr-body-temp.md \
+  --base main
+
+# Limpiar archivo temporal
+rm .pr-body-temp.md
+
+# ❌ INCORRECTO - Puede causar problemas de codificación
+gh pr create --body "Texto con acentos y emojis 🚀"
+```
+
+**Solución 2**: Evitar emojis en comentarios de PR
+```bash
+# ✅ Usar bullets estándar
+gh pr comment 42 --body "## Validaciones
+- ESLint: OK
+- Build: OK"
+
+# ❌ Evitar emojis que pueden convertirse en
+gh pr comment 42 --body "## Validaciones
+✅ ESLint: OK
+🎉 Build: OK"
+```
+
+**Nota**: GitHub CLI en Windows puede tener problemas con caracteres UTF-8 en línea de comandos. Siempre usar `--body-file` para contenido con acentos, caracteres especiales o emojis.
+
 ### B) Template de PR
 
 ```markdown
