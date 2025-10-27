@@ -12,14 +12,14 @@ interface UseIntersectionObserverOptions {
  * Hook para detectar cuando un elemento está visible en el viewport
  * usando Intersection Observer API
  */
-export function useIntersectionObserver({
+export function useIntersectionObserver<T extends HTMLElement = HTMLDivElement>({
   threshold = 0,
   rootMargin = "0px",
   freezeOnceVisible = false,
 }: UseIntersectionObserverOptions = {}) {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const [hasIntersected, setHasIntersected] = useState(false);
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<T>(null);
 
   useEffect(() => {
     const element = ref.current;
