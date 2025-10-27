@@ -46,9 +46,9 @@ https://app.netlify.com/sites/webcode-bcn/settings/domain
 
 | Archivo                                                        | Contenido                         |
 | -------------------------------------------------------------- | --------------------------------- |
-| **[DOMAIN-DIAGNOSTIC-REPORT.md](DOMAIN-DIAGNOSTIC-REPORT.md)** | 📊 Diagnóstico técnico detallado  |
-| **[NETLIFY-DOMAIN-SETUP.md](NETLIFY-DOMAIN-SETUP.md)**         | 📖 Guía paso a paso completa      |
-| **[DOMAIN-ISSUE-RESOLUTION.md](DOMAIN-ISSUE-RESOLUTION.md)**   | 📝 Resumen ejecutivo del problema |
+| **[docs/deployment/DOMAIN-DIAGNOSTIC-REPORT.md](docs/deployment/DOMAIN-DIAGNOSTIC-REPORT.md)** | 📊 Diagnóstico técnico detallado  |
+| **[docs/deployment/NETLIFY-DOMAIN-SETUP.md](docs/deployment/NETLIFY-DOMAIN-SETUP.md)**         | 📖 Guía paso a paso completa      |
+| **[docs/deployment/DOMAIN-ISSUE-RESOLUTION.md](docs/deployment/DOMAIN-ISSUE-RESOLUTION.md)**   | 📝 Resumen ejecutivo del problema |
 
 ---
 
