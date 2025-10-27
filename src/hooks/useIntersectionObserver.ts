@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react";
 interface UseIntersectionObserverOptions {
   threshold?: number;
   rootMargin?: string;
-  freezeOnceVisible?: boolean;
 }
 
 /**
@@ -15,10 +14,8 @@ interface UseIntersectionObserverOptions {
 export function useIntersectionObserver<T extends HTMLElement = HTMLDivElement>({
   threshold = 0,
   rootMargin = "0px",
-  freezeOnceVisible = false,
 }: UseIntersectionObserverOptions = {}) {
   const [isIntersecting, setIsIntersecting] = useState(false);
-  const [hasIntersected, setHasIntersected] = useState(false);
   const ref = useRef<T>(null);
 
   useEffect(() => {
@@ -27,18 +24,7 @@ export function useIntersectionObserver<T extends HTMLElement = HTMLDivElement>(
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        const isElementIntersecting = entry.isIntersecting;
-        
-        if (!hasIntersected && isElementIntersecting) {
-          setHasIntersected(true);
-        }
-
-        // Si freezeOnceVisible está activado, solo cambia el estado la primera vez
-        if (freezeOnceVisible && hasIntersected) {
-          return;
-        }
-
-        setIsIntersecting(isElementIntersecting);
+        setIsIntersecting(entry.isIntersecting);
       },
       {
         threshold,
@@ -54,7 +40,7 @@ export function useIntersectionObserver<T extends HTMLElement = HTMLDivElement>(
       // evitar memory leaks
       observer.unobserve(element);
     };
-  }, [threshold, rootMargin, freezeOnceVisible, hasIntersected]);
+  }, [threshold, rootMargin]);
 
-  return { ref, isIntersecting, hasIntersected };
+  return { ref, isIntersecting };
 }
