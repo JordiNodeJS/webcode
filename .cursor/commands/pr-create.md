@@ -76,7 +76,8 @@ Flujo operativo (resumen de pasos que debe ejecutar el agente — abstracción d
 4. Crear o actualizar PR con `gh`
    - Si no existe: `gh pr create --title "..." --body-file <archivo.md> --base main --head <branch> --assignee JordiNodeJS`.
    - Si existe: `gh pr edit <pr-number> --title "..." --body-file <archivo.md>` para actualizar contenido.
-   - **IMPORTANTE**: Usar `--body-file` en lugar de `--body` para evitar problemas de codificación UTF-8.
+   - **IMPORTANTE**: Usar `--body-file` en lugar de `--body` para evitar problemas de codificación UTF-8 en Windows.
+   - **IMPORTANTE**: Evitar emojis en comentarios de PR, usar bullets estándar (`-` o `*`) para evitar caracteres raros.
 
 5. Etiquetas y assignación
    - Listar labels (`gh label list`). Crear las faltantes (`gh label create`) y asignarlas a la PR (`gh pr edit <pr> --add-label "..."`).
@@ -84,6 +85,7 @@ Flujo operativo (resumen de pasos que debe ejecutar el agente — abstracción d
 
 6. Comentario de contexto y checklist
    - Añadir un comentario en la PR con los extractos de contexto relevantes y el resultado de las comprobaciones locales.
+   - **IMPORTANTE**: En comentarios usar `gh pr comment`, NO incluir emojis (evitar `✅`, `🚀`, etc.). Usar bullets estándar (`-` o `*`) y checkmarks en texto (`- [x] Done`).
 
 7. Merge condicional (opcional)
    - Sólo intentar merge automático si:
@@ -164,12 +166,45 @@ Este bloque es sólo un ejemplo que el agente actualizará dinámicamente según
 7. **Limpiar archivos temporales**
 8. **Devolver resultado** en formato markdown
 
-### ⚠️ Prevención de Problemas de Codificación
+### ⚠️ Prevención de Problemas de Codificación UTF-8
 
-- **SIEMPRE usar `--body-file`** en lugar de `--body` para contenido con acentos
-- **Crear archivo temporal** con codificación UTF-8
-- **Limpiar archivos temporales** después de usar
-- **Verificar codificación** antes de enviar
+**Problema identificado**: GitHub CLI en Windows puede convertir emojis (✅, 🚀) en caracteres raros ().
+
+**Soluciones**:
+
+1. **Para body de PR**: Usar `--body-file` SIEMPRE
+   ```bash
+   # ✅ CORRECTO
+   gh pr create --body-file .pr-body-temp.md
+   
+   # ❌ INCORRECTO
+   gh pr create --body "Texto con emojis 🚀"
+   ```
+
+2. **Para comentarios en PR**: Evitar emojis
+   ```bash
+   # ✅ CORRECTO - Usar bullets estándar
+   gh pr comment 42 --body "## Validaciones
+   - ESLint: OK
+   - Build: OK"
+   
+   # ❌ INCORRECTO - Emojis se convertirán en
+   gh pr comment 42 --body "## Validaciones
+   ✅ ESLint: OK"
+   ```
+
+3. **Alternativa**: Usar checkmarks en texto
+   ```bash
+   gh pr comment 42 --body "## Validaciones
+   - [x] ESLint: OK
+   - [x] Build: OK"
+   ```
+
+4. **Mejores prácticas**:
+   - Crear archivo temporal con codificación UTF-8
+   - Limpiar archivos temporales después de usar
+   - Verificar contenido antes de enviar
+   - Usar solo ASCII en línea de comandos cuando sea posible
 
 **Etiquetas automáticas por tipo de rama**:
 

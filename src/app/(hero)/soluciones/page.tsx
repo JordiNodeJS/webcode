@@ -125,14 +125,14 @@ export default function ServicesIndexPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section con Spline Background */}
-      <section className="relative overflow-hidden pt-24 pb-20 md:pb-32">
-        {/* Capa 1: Escena 3D (z-0, fondo interactivo) */}
+      <section className="relative overflow-hidden min-h-screen flex items-center pt-24 pb-20 md:pb-32">
+        {/* Capa 1: Escena 3D (z-0, fondo interactivo) - Solo en Hero Section */}
         <SplineBackgroundThemed
           darkScene={SPLINE_SCENES.MAIN}
           lightScene={SPLINE_SCENES.LIGHT_MODE}
           preset="BACKGROUND_RESPONSIVE"
-          container="FIXED_FULLSCREEN_INTERACTIVE"
-          className="fixed inset-0 z-0"
+          container="ABSOLUTE_FULLSCREEN"
+          className="absolute inset-0 z-0"
           ariaLabel="Escena 3D interactiva de fondo mostrando soluciones digitales"
         />
 
