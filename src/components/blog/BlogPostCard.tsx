@@ -113,8 +113,9 @@ export function BlogPostCard({ post, priority = false }: BlogPostCardProps) {
       <CardFooter className="relative z-10 pt-6">
         <Button
           asChild
-          className="w-full bg-linear-to-r from-primary/70 via-secondary/60 to-primary/60 dark:bg-primary dark:hover:bg-primary/85 text-primary-foreground dark:text-primary-foreground font-semibold py-3 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 dark:hover:shadow-primary/20"
+          className="w-full bg-linear-to-r from-primary/70 via-secondary/60 to-primary/60 dark:bg-primary dark:hover:bg-primary/85 text-primary-foreground dark:text-primary-foreground font-semibold py-3 rounded-xl hover:opacity-80 transition-all duration-300"
           size="lg"
+          style={{ boxShadow: 'var(--shadow-3d-sm)' }}
         >
           <Link
             href={`/blog/${post.slug}`}

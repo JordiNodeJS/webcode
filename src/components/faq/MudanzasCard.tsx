@@ -23,7 +23,10 @@ export function MudanzasCard() {
   }, [open]);
 
   return (
-    <article className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 items-start bg-background/50 border border-border/30 rounded-lg p-4 shadow-sm">
+    <article 
+      className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 items-start bg-background/50 border border-border/30 rounded-lg p-4"
+      style={{ boxShadow: 'var(--shadow-3d-sm)' }}
+    >
       {/* visual */}
       <div className="col-span-1 rounded-md overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
         {/* Inline placeholder 'screenshot' */}
@@ -67,7 +70,7 @@ export function MudanzasCard() {
             href="https://mudanzasandy.es"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-4 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition"
+            className="inline-flex items-center px-4 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-80 transition-all duration-200"
           >
             Ver demo
           </a>
@@ -75,14 +78,14 @@ export function MudanzasCard() {
           <button
             type="button"
             onClick={() => setOpen(true)}
-            className="inline-flex items-center px-4 py-2 border border-border rounded-lg text-sm hover:bg-accent transition"
+            className="inline-flex items-center px-4 py-2 border border-border rounded-lg text-sm hover:opacity-80 hover:bg-accent transition-all duration-200"
           >
             Previsualizar
           </button>
 
           <Link
             href="/contacto"
-            className="inline-flex items-center px-4 py-2 border border-border rounded-lg text-sm hover:bg-accent transition"
+            className="inline-flex items-center px-4 py-2 border border-border rounded-lg text-sm hover:opacity-80 hover:bg-accent transition-all duration-200"
           >
             Solicitar case study
           </Link>
@@ -127,7 +130,7 @@ export function MudanzasCard() {
                     href="https://mudanzasandy.es"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition"
+                    className="inline-flex items-center px-4 py-2 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-80 transition-all duration-200"
                   >
                     Abrir demo
                   </a>
@@ -135,7 +138,7 @@ export function MudanzasCard() {
                   <button
                     type="button"
                     onClick={() => setOpen(false)}
-                    className="inline-flex items-center px-4 py-2 border border-border rounded-lg text-sm hover:bg-accent transition"
+                    className="inline-flex items-center px-4 py-2 border border-border rounded-lg text-sm hover:opacity-80 hover:bg-accent transition-all duration-200"
                   >
                     Cerrar
                   </button>

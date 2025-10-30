@@ -206,14 +206,15 @@ export function HeaderNavigation() {
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ease-out ${
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${
         isScrolled
-          ? "backdrop-blur-lg border-b border-border/40 shadow-xl py-2"
-          : "backdrop-blur-md border-b border-border/30 shadow-lg py-4"
+          ? "backdrop-blur-lg border-b border-border/40 py-2"
+          : "backdrop-blur-md border-b border-border/30 py-4"
       }`}
       // Usamos tokens CSS del tema para que funcione en light/dark: hsl(var(--background)/alpha)
       style={{
-        backgroundColor: `hsl(var(--background) / ${bgOpacity.toFixed(3)})`
+        backgroundColor: `hsl(var(--background) / ${bgOpacity.toFixed(3)})`,
+        boxShadow: isScrolled ? 'var(--shadow-3d-md)' : 'var(--shadow-3d-sm)'
       }}
     >
       <nav className="container mx-auto px-4">

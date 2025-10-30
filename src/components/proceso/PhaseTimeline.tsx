@@ -225,11 +225,12 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
                         {/* Badge numérico con pulse controlado */}
                         <div className="flex justify-center mb-4">
                           <div
-                            className={`relative bg-primary text-primary-foreground rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl shadow-lg group-hover:shadow-primary/50 transition-all duration-300 group-hover:scale-110 ${
+                            className={`relative bg-primary text-primary-foreground rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl group-hover:scale-110 transition-all duration-300 ${
                               pulseBadges.has(fase.numero)
                                 ? "animate-pulse"
                                 : ""
                             }`}
+                            style={{ boxShadow: 'var(--shadow-3d-md)' }}
                           >
                             <span className="relative z-10">{fase.numero}</span>
                             {/* Pulse ring en hover */}
@@ -276,9 +277,10 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
                 {/* Badge numérico con efecto y pulse controlado */}
                 <div className="absolute left-0 top-0">
                   <div
-                    className={`relative bg-primary text-primary-foreground rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl shadow-lg ${
+                    className={`relative bg-primary text-primary-foreground rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl ${
                       pulseBadges.has(fase.numero) ? "animate-pulse" : ""
                     }`}
+                    style={{ boxShadow: 'var(--shadow-3d-md)' }}
                   >
                     <span className="relative z-10">{fase.numero}</span>
                     <div className="absolute inset-0 rounded-full bg-primary/30 blur-md" />
@@ -286,7 +288,10 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
                 </div>
 
                 {/* Card de fase con glassmorphism */}
-                <div className="bg-card/80 backdrop-blur-md border-2 border-primary/20 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
+                <div 
+                  className="bg-card/80 backdrop-blur-md border-2 border-primary/20 rounded-2xl p-6 hover:-translate-y-1 transition-all duration-500"
+                  style={{ boxShadow: 'var(--shadow-3d-lg)' }}
+                >
                   <div className="flex items-start gap-4 mb-4">
                     <div className="text-primary flex-shrink-0 transform hover:scale-110 transition-transform duration-300">
                       <PhaseIcon phase={fase.numero} />

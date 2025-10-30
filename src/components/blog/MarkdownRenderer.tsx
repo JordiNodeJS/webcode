@@ -168,7 +168,8 @@ const components: Components = {
     <img
       src={src}
       alt={alt || "Imagen del artículo"}
-      className="my-8 rounded-lg shadow-md"
+      className="my-8 rounded-lg"
+      style={{ boxShadow: 'var(--shadow-3d-sm)' }}
       loading="lazy"
       {...props}
     />

@@ -111,10 +111,16 @@ export default function PhaseDetails({ fases }: PhaseDetailsProps) {
                 <div className="absolute -inset-1 bg-gradient-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-20 blur-xl transition-all duration-700 rounded-2xl" />
 
                 {/* Card principal con glassmorphism */}
-                <div className="relative bg-card/90 backdrop-blur-xl border-2 border-primary/20 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 hover:border-primary/40">
+                <div 
+                  className="relative bg-card/90 backdrop-blur-xl border-2 border-primary/20 rounded-2xl p-8 hover:-translate-y-1 hover:border-primary/40 transition-all duration-500"
+                  style={{ boxShadow: 'var(--shadow-3d-lg)' }}
+                >
                   {/* Label de duración alineado con el número */}
                   <div className="absolute top-8 right-4 flex items-center">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30 shadow-lg">
+                    <div 
+                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30"
+                      style={{ boxShadow: 'var(--shadow-3d-sm)' }}
+                    >
                       <svg
                         className="w-4 h-4 text-primary flex-shrink-0"
                         fill="none"
@@ -139,7 +145,10 @@ export default function PhaseDetails({ fases }: PhaseDetailsProps) {
                   <div className="flex items-center gap-4 mb-6 pr-32">
                     {/* Badge numérico con efecto neon */}
                     <div className="relative flex-shrink-0">
-                      <div className="bg-gradient-to-br from-primary to-primary/80 text-primary-foreground rounded-2xl w-16 h-16 flex items-center justify-center font-bold text-2xl shadow-lg group-hover:shadow-primary/50 group-hover:scale-110 transition-all duration-300">
+                      <div 
+                        className="bg-gradient-to-br from-primary to-primary/80 text-primary-foreground rounded-2xl w-16 h-16 flex items-center justify-center font-bold text-2xl group-hover:scale-110 transition-all duration-300"
+                        style={{ boxShadow: 'var(--shadow-3d-md)' }}
+                      >
                         {fase.numero}
                       </div>
                       <div className="absolute inset-0 rounded-2xl bg-primary/30 blur-md group-hover:blur-lg transition-all duration-300" />

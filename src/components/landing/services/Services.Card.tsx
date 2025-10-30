@@ -154,8 +154,9 @@ export function ServiceCard({
       <CardFooter className="relative z-10 pt-6 pb-8">
         <Button
           asChild
-          className="w-full bg-gradient-to-r from-primary/70 via-secondary/60 to-primary/50 text-white font-semibold text-lg hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
+          className="w-full bg-gradient-to-r from-primary/70 via-secondary/60 to-primary/50 text-white font-semibold text-lg hover:opacity-80 transition-all duration-300"
           size="lg"
+          style={{ boxShadow: 'var(--shadow-3d-sm)' }}
         >
           <Link href={href}>{ctaText}</Link>
         </Button>

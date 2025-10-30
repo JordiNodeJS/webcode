@@ -170,7 +170,10 @@ const OptimizedCard = React.memo(() => {
   useComponentPerformanceMonitor("OptimizedCard");
 
   return (
-    <Card className="h-full bg-background border-border/30 shadow-sm hover:shadow-md transition-shadow duration-200">
+    <Card 
+      className="h-full bg-background border-border/30 hover:opacity-95 transition-all duration-200"
+      style={{ boxShadow: 'var(--shadow-3d-sm)' }}
+    >
       <CardContent className="p-6 text-center h-full flex flex-col">
         <div className="flex justify-center mb-4">
           <Rocket className="h-8 w-8 text-primary" />

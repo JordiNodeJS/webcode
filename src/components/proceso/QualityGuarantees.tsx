@@ -49,7 +49,10 @@ export default function QualityGuarantees({
                 <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-30 blur-2xl transition-all duration-700 rounded-2xl" />
 
                 {/* Card con glassmorphism */}
-                <div className="relative h-full bg-card/80 backdrop-blur-xl border-2 border-primary/20 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-primary/40 hover:scale-105">
+                <div 
+                  className="relative h-full bg-card/80 backdrop-blur-xl border-2 border-primary/20 rounded-2xl p-6 hover:-translate-y-2 hover:border-primary/40 hover:scale-105 transition-all duration-500"
+                  style={{ boxShadow: 'var(--shadow-3d-lg)' }}
+                >
                   {/* Gradient overlay on hover */}
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
