@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { ViewTransitions } from "next-view-transitions";
@@ -12,48 +11,15 @@ import { generateSEOMetadata } from "@/lib/seo-metadata";
 import { initWebVitals } from "@/lib/web-vitals";
 import { criticalCss } from "./critical-css";
 
-// Use local fonts to avoid network dependency
-// These fonts should be placed in public/fonts/ directory
-// Fallback to system fonts if not available
-const geistSans = localFont({
-  src: [
-    {
-      path: "../../public/fonts/GeistVF.woff2",
-      weight: "100 900",
-      style: "normal"
-    }
-  ],
-  variable: "--font-geist-sans",
-  display: "swap",
-  fallback: [
-    "system-ui",
-    "-apple-system",
-    "BlinkMacSystemFont",
-    "Segoe UI",
-    "Roboto",
-    "sans-serif"
-  ]
-});
-
-const geistMono = localFont({
-  src: [
-    {
-      path: "../../public/fonts/GeistMonoVF.woff2",
-      weight: "100 900",
-      style: "normal"
-    }
-  ],
-  variable: "--font-geist-mono",
-  display: "swap",
-  fallback: [
-    "ui-monospace",
-    "SFMono-Regular",
-    "Menlo",
-    "Monaco",
-    "Consolas",
-    "monospace"
-  ]
-});
+// Font variables - using CSS with system font fallbacks
+// Local Geist fonts can be added to public/fonts/ for enhanced typography
+// See public/fonts/README.md for setup instructions
+const fontVariables = {
+  "--font-geist-sans":
+    'var(--font-geist-custom, system-ui, -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", sans-serif)',
+  "--font-geist-mono":
+    'var(--font-geist-mono-custom, ui-monospace, "SFMono-Regular", "Menlo", "Monaco", "Consolas", monospace)'
+};
 
 export const metadata: Metadata = {
   ...generateSEOMetadata({
@@ -205,7 +171,8 @@ export default function RootLayout({
           {/* No manifest-based CSS injection */}
         </head>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className="antialiased"
+          style={fontVariables as React.CSSProperties}
           suppressHydrationWarning
         >
           <ThemeProvider
