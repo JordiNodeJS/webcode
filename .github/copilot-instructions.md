@@ -1,16 +1,11 @@
 # Instrucciones de Copilot - Proyecto WEBCODE
 
-## **CONTEXTO DEL PROYECTO**
+## **CONTEXTO DEL PROYECTO (resumen)**
 
-### ¿Qué es WEBCODE?
-
-WEBCODE es una plataforma integral de desarrollo web y soluciones digitales para freelancers, pequeñas empresas y startups en Barcelona y España. Ofrecemos servicios que van desde sitios web estáticos hasta aplicaciones web complejas, utilizando tecnologías de vanguardia de 2025.
-
-**Misión**: Democratizar el acceso a soluciones web profesionales y de alta calidad para emprendedores y pequeñas empresas en España.
-
-**Dominio de negocio**: Desarrollo web freelance, soluciones digitales personalizadas, herramientas de productividad, sistemas de gestión y e-commerce.
-
-**Público objetivo**: Freelancers, PYMEs, startups en mercado español (principalmente Barcelona).
+- Plataforma de desarrollo web y soluciones digitales (Barcelona/ES).
+- Misión: acceso sencillo a soluciones web de alta calidad.
+- Dominio: web dev, herramientas, gestión, e‑commerce.
+- Público: freelancers, PYMEs, startups en España.
 
 ---
 
@@ -51,24 +46,15 @@ WEBCODE es una plataforma integral de desarrollo web y soluciones digitales para
    - Componente: `gap-8` / `p-8` (32px)
    - Sección: `gap-16` / `p-16` (64px)
 
-### **Clases Especiales WebCode**
+### **Clases Especiales WebCode (rápido)**
 
 ```tsx
-// Títulos con gradiente neón
-<h1 className="neon-cyan-title">
-<h2 className="neon-cyan-card-title">
-
-// Fondos con gradiente del tema
-<div className="bg-gradient-webcode">
-
-// Texto con gradiente
-<p className="text-gradient-webcode">
-
-// Sombras 3D directas
-<div className="shadow-3d-md">
+<h1 className="neon-cyan-title" />
+<div className="bg-gradient-webcode shadow-3d-md" />
+<p className="text-gradient-webcode" />
 ```
 
-### **Patrón de Componente Estándar**
+### **Patrón de Componente Estándar (abreviado)**
 
 ```tsx
 <Card className="border-primary" style={{ boxShadow: "var(--shadow-3d-md)" }}>
@@ -79,16 +65,7 @@ WEBCODE es una plataforma integral de desarrollo web y soluciones digitales para
     <p className="font-sans text-muted-foreground">Contenido</p>
   </CardContent>
   <CardFooter>
-    <Button
-      className="
-        hover:opacity-80 
-        transition-all duration-200
-        ease-[cubic-bezier(0.25,0.46,0.45,0.94)]
-      "
-      style={{ boxShadow: "var(--shadow-3d-sm)" }}
-    >
-      Acción
-    </Button>
+    <Button className="hover:opacity-80 transition-all duration-200 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]" />
   </CardFooter>
 </Card>
 ```
@@ -110,21 +87,11 @@ Cada componente debe cumplir:
 
 ## **🧠 SISTEMA DE MEMORIA DE PROYECTO**
 
-### **CONTEXTO AUTOMÁTICO ACTUALIZADO**
+### **CONTEXTO AUTOMÁTICO (siempre revisar)**
 
-**ANTES DE CUALQUIER RESPUESTA, consulta estos archivos para obtener contexto actualizado:**
-
-1. **Estado actual del proyecto**: `.github/project/PROJECT-STATE.md`
-2. **Contexto técnico**: `.github/context/technical-context.md`
-3. **Sesión actual**: `.github/context/current-session.md`
-
-Estos archivos se actualizan automáticamente y contienen:
-
-- Estado actual de desarrollo y progreso
-- Tareas en progreso y backlog priorizado
-- Decisiones técnicas recientes
-- Problemas identificados y soluciones
-- Contexto de la sesión actual de desarrollo
+- `.github/project/PROJECT-STATE.md`
+- `.github/context/technical-context.md`
+- `.github/context/current-session.md`
 
 ### **GESTIÓN INTERNA DE TAREAS**
 
@@ -136,61 +103,23 @@ Consulta las instrucciones detalladas en: `.github/project/taskmanager-instructi
 
 Eres un asistente especializado en el desarrollo del proyecto WEBCODE. Sigue estas directrices al generar código:
 
-## **STACK TECNOLÓGICO DEL PROYECTO**
+## **STACK (resumen)**
 
-### **Framework Principal**
+- Next.js 16, React 19, TypeScript 5.x, Tailwind v4, shadcn/ui, Lucide, RHF+Zod, Framer Motion, Playwright, ESLint+Prettier. Gestor: pnpm.
 
-- **Next.js 16.0.0** con App Router y Turbopack (por defecto) ✅
-- **React 19.2.0** con Server Components ✅
-- **TypeScript 5.x** con configuración estricta ✅
+### Estado del Proyecto (breve)
 
-### **Herramientas de Desarrollo**
-
-- **pnpm** como gestor de paquetes (nunca npm/yarn) ✅
-- **ESLint** 9.37.0 con eslint-config-next ✅
-- **Prettier** 3.6.2 para formateo de código ✅
-- **Tailwind CSS v4** para estilos ✅
-- **shadcn/ui** para componentes base ✅
-- **Lucide React** 0.542.0 para iconografía ✅
-- **React Hook Form** + **Zod** para validación ✅
-- **Framer Motion** 12.23.12 para animaciones (Sistema WAS) ✅
-- **Playwright** 1.55.0 para testing ✅
-
-### Estado del Proyecto
-
-✅ **PROYECTO EN RELEASE CANDIDATE (98%)**: Landing page completa con Hero Section optimizada (100/100 performance), Blog totalmente funcional con Notion CMS y 6 scripts CLI de gestión, Sistema de Briefing con exportación PDF, todas las páginas de soluciones completadas (Web Dev, SEO con subpáginas, Reservas), páginas adicionales implementadas (Servicios, Contacto, FAQs, Portfolio). Migración completa a Lucide React (150KB reducidos). React Compiler habilitado para optimización automática.
-
-**Stack Actual**: Next.js 16.0.0, React 19.2.0 (con React Compiler estable), TypeScript 5.x, Tailwind CSS 4.x, Lucide React 0.542.0, Framer Motion 12.23.12, shadcn/ui, Playwright 1.55.0, ESLint 9.37.0, Prettier 3.6.2, @notionhq/client 5.1.0, jsPDF 3.0.3.
-
-**Funcionalidades Completadas**:
-
-- ✅ Landing Page Hero (8 componentes optimizados)
-- ✅ Blog con Notion CMS (ISR + Scripts CLI)
-- ✅ Sistema de Briefing (Multi-paso + PDF Export)
-- ✅ Páginas de Soluciones (Web Dev, SEO completo, Reservas)
-- ✅ Páginas Adicionales (Servicios, Contacto, FAQs, Portfolio)
-- ✅ Testing E2E con Playwright
-- ✅ Performance 100/100 Desktop, 90+ Mobile
-
-**Próximo paso**: Deploy a producción en Vercel + configuración de dominio + monitoreo.
+- RC ≈98%. Próximo: Deploy Vercel + dominio + monitoreo.
 
 ## **REGLAS FUNDAMENTALES DE DESARROLLO**
 
-### **Patrones de Next.js 16**
+### **Patrones Next.js 16 (clave)**
 
-- Usar **App Router exclusivamente** (directorio app/)
-- **Server Components por defecto**, 'use client' solo cuando sea necesario
-- Fetch moderno con opciones de caché nativas
-- Route handlers para endpoints de API
-- **APIs asíncronas**: `cookies()`, `headers()`, `params`, `searchParams` son ahora Promises
-- **React Compiler estable**: Habilitado con `reactCompiler: true` en next.config.ts (movido de experimental)
-- **Turbopack por defecto**: No requiere flag `--turbopack` en comandos dev/build
+- App Router, Server Components por defecto, fetch/caché moderna, route handlers, APIs asíncronas, React Compiler ON, Turbopack.
 
 ### **📚 REFERENCIA OBLIGATORIA: Patrones Next.js 16 y React 19**
 
-**ANTES de generar cualquier código Next.js 16 o React 19, consulta:**
-
-📋 **`.github/support/nextjs16-react19-patterns.md`** - Guía completa de patrones modernos
+Consulta antes de codificar: `.github/support/nextjs16-react19-patterns.md`.
 
 **Contenido clave:**
 
@@ -200,12 +129,9 @@ Eres un asistente especializado en el desarrollo del proyecto WEBCODE. Sigue est
 - ✅ **Server vs Client Components**: Cuándo usar cada uno, patrones de composición
 - ✅ **Best Practices Checklist**: Lista de verificación para código Next.js 16
 
-### **Estándares de TypeScript**
+### **TypeScript (clave)**
 
-- Modo estricto habilitado
-- Interfaces apropiadas para todas las props y datos
-- **Prohibido tipo 'any'**
-- Validación en tiempo de ejecución con esquemas Zod
+- Strict, interfaces completas, sin `any`, validación Zod.
 
 ### **Patrones de Exportación**
 
@@ -232,101 +158,29 @@ export default function HomePage() { ... }
 export default function AboutPage() { ... }
 ```
 
-### **Componentes shadcn/ui**
+### **Componentes**
 
-- Componentes shadcn/ui en `src/components/ui/` (**nunca modificar**)
-- Componentes personalizados en `src/components/custom/`
-- Consultar `.github/instructions/components.instructions.md` para patrones específicos
-- Componentes Magic UI para animaciones
-- Patrones de composición apropiados
+- shadcn/ui en `src/components/ui/` (no modificar). Custom en `src/components/custom/`. Ver `.github/instructions/components.instructions.md`.
 
-### **Gestión de Paquetes**
+### **Paquetes**
 
-- **Siempre usar comandos pnpm**
-- `pnpm dlx` para herramientas CLI
-- **Nunca sugerir npm o yarn**
+- Usa pnpm y `pnpm dlx`. Nunca npm/yarn.
 
-### **Estilos y Diseño**
+### **Estilos**
 
-- Clases utilitarias de Tailwind directamente
-- Diseño responsive mobile-first
-- Soporte para modo oscuro con prefijo `dark:`
-- **No CSS personalizado a menos que sea absolutamente necesario**
+- Tailwind utilitario, mobile-first, `dark:`, evitar CSS custom.
 
-### **Optimización de Rendimiento**
+### **Rendimiento**
 
-- Componente Next.js Image para todas las imágenes
-- Importaciones dinámicas para componentes pesados
-- Estrategias de caché apropiadas
-- Estados de carga y límites de error
+- `next/image`, imports dinámicos, caché adecuada, loading/error states.
 
 ## **ESTRUCTURA DE ARCHIVOS DEL PROYECTO**
 
 ⚠️ **NOTA IMPORTANTE**: El proyecto se creará con la estructura estándar de Next.js 16 usando `src/` y siguiendo principios de colocación cercana (colocation).
 
-### **Estructura de Directorio Principal**
+### **Estructura (referencia)**
 
-```
-src/
-├── app/                        # App Router - rutas y páginas
-│   ├── layout.tsx             # Layout raíz de la aplicación
-│   ├── page.tsx               # Página principal
-│   ├── (marketing)/           # Route Group - rutas de marketing
-│   │   ├── layout.tsx         # Layout específico para marketing
-│   │   ├── about/
-│   │   │   ├── page.tsx
-│   │   │   └── components/    # Componentes específicos de About
-│   │   └── services/
-│   │       ├── page.tsx
-│   │       └── components/    # Componentes específicos de Services
-│   ├── (dashboard)/           # Route Group - área de administración
-│   │   ├── layout.tsx         # Layout con sidebar y header admin
-│   │   ├── analytics/
-│   │   │   ├── page.tsx
-│   │   │   └── components/    # Chart.tsx, StatsCard.tsx, etc.
-│   │   └── orders/
-│   │       ├── page.tsx
-│   │       └── components/    # OrderTable.tsx, OrderCard.tsx, etc.
-│   ├── _private/              # Código privado que no genera rutas
-│   │   └── utils/             # Utilidades internas
-│   └── api/                   # Route handlers
-│       ├── services/
-│       └── contact/
-├── components/                 # Componentes compartidos
-│   ├── ui/                    # shadcn/ui (nunca modificar) - PENDIENTE INSTALACIÓN
-│   │   ├── Button.tsx
-│   │   ├── Card.tsx
-│   │   └── Input.tsx
-│   ├── magicui/               # Magic UI components - PENDIENTE INSTALACIÓN
-│   │   ├── AnimatedButton.tsx
-│   │   └── HeroSection.tsx
-│   └── features/              # Bloques funcionales con lógica de negocio
-│       ├── shopping-cart/     # ShoppingCart.tsx, CartItem.tsx, etc.
-│       ├── search/            # SearchBar.tsx, SearchResults.tsx, etc.
-│       └── contact/           # ContactForm.tsx, ContactInfo.tsx, etc.
-├── lib/                       # Utilidades y configuraciones - PENDIENTE INSTALACIÓN
-│   ├── utils.ts              # Funciones helper generales
-│   ├── validators.ts         # Esquemas Zod
-│   └── api.ts                # Configuración de API
-├── hooks/                     # Custom hooks - PENDIENTE INSTALACIÓN
-│   ├── useLocalStorage.ts
-│   └── useDebounce.ts
-├── types/                     # Tipos TypeScript - PENDIENTE INSTALACIÓN
-│   ├── index.ts              # Tipos principales
-│   └── api.ts                # Tipos de API
-└── styles/                    # Estilos globales - PENDIENTE INSTALACIÓN
-    ├── globals.css           # Estilos base de Tailwind
-    └── components.css        # Estilos específicos cuando sea necesario
-
-docs/                          # Documentación del proyecto ✅
-tasks/                         # Sistema de gestión de tareas ✅
-.github/                       # Configuraciones y directrices ✅
-public/                        # Assets estáticos - PENDIENTE INSTALACIÓN
-├── images/
-├── icons/
-└── favicon.ico
-package.json                   # Dependencias del proyecto - PENDIENTE INSTALACIÓN
-```
+Consulta `.github/prompts/arquitectura-estructura.prompt.md` para estructura completa y patrones.
 
 ### **REGLAS DE ORGANIZACIÓN DE ARCHIVOS**
 
@@ -451,7 +305,7 @@ src/components/features/search/SearchBar.tsx
 
 ### **Estado Actual del Proyecto**
 
-🚨 **IMPORTANTE**: El proyecto está en fase de planificación. La aplicación Next.js aún no se ha inicializado.
+Planificación: app Next.js aún no inicializada.
 
 ## **DIRECTRICES DE GENERACIÓN DE CÓDIGO**
 
@@ -493,109 +347,13 @@ src/components/features/search/SearchBar.tsx
 
 ### **Ejemplos de Código y Comandos**
 
-#### **Setup inicial del proyecto (PENDIENTE)**
+#### **Setup inicial (referencia)**
 
-```bash
-# Crear proyecto Next.js 16
-pnpm create next-app@latest webcode --typescript --tailwind --eslint --app --src-dir --import-alias "@/*"
+Usa `.github/prompts/desarrollo.prompt.md` para comandos pnpm/`pnpm dlx` actualizados.
 
-# Instalar dependencias principales
-pnpm add next@latest react@latest react-dom@latest
+#### **Ejemplos (referencia)**
 
-# Instalar shadcn/ui
-pnpm dlx shadcn@latest init
-pnpm dlx shadcn@latest add button card input
-
-# Instalar validación de formularios
-pnpm add react-hook-form @hookform/resolvers zod
-
-# Instalar Magic UI (cuando esté disponible)
-pnpm add magicui
-```
-
-#### **Ejemplo de Server Component**
-
-```typescript
-// src/app/services/page.tsx
-interface Service {
-  id: string;
-  title: string;
-  description: string;
-  price: number;
-}
-
-export default async function ServicesPage() {
-  // Fetch de datos en Server Component
-  const services: Service[] = await fetch("/api/services", {
-    cache: "force-cache", // Cache estático
-  }).then((res) => res.json());
-
-  return (
-    <main className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Servicios WebCode</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {services.map((service) => (
-          <ServiceCard key={service.id} service={service} />
-        ))}
-      </div>
-    </main>
-  );
-}
-```
-
-#### **Ejemplo de Client Component con validación**
-
-```typescript
-"use client";
-
-// src/components/custom/contact-form.tsx
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-
-// ✅ Validación Base
-const contactSchema = z.object({
-  name: z.string().min(2, "Nombre debe tener al menos 2 caracteres"),
-  email: z.string().email("Email inválido"),
-  message: z.string().min(10, "Mensaje debe tener al menos 10 caracteres"),
-  gdprConsent: z
-    .boolean()
-    .refine((val) => val === true, "Debes aceptar la política de privacidad"),
-});
-
-// ✅ Validación Progresiva por Nicho
-const floristeriaSchema = contactSchema.extend({
-  businessInfo: z.object({
-    name: z.string().min(2),
-    location: z.string().min(5, "Incluye barrio de Barcelona"),
-    specialties: z
-      .array(z.enum(["bodas", "funerales", "eventos_corporativos"]))
-      .min(1),
-  }),
-});
-
-type ContactForm = z.infer<typeof contactSchema>;
-
-export default function ContactForm() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<ContactForm>({
-    resolver: zodResolver(contactSchema),
-  });
-
-  const onSubmit = async (data: ContactForm) => {
-    // Lógica de envío
-  };
-
-  return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      {/* Implementación del formulario */}
-    </form>
-  );
-}
-```
+Consulta ejemplos en `.github/support/` y `.github/instructions/`.
 
 **Referencias detalladas**:
 
@@ -621,6 +379,7 @@ Para tareas específicas, consulta estos prompts consolidados en `.github/prompt
 #### **Prompts Especializados**
 
 - **`llm.prompt.md`** - 🤖 Generación de archivos llms.txt optimizados
+- **`devtools.prompt.md`** - 🧩 Chrome DevTools, Network/Performance, Lighthouse, tracing y debugging
 - **`component-naming-convention.prompt.md`** - 📝 Convención de nombres jerárquica de componentes
 - **`hero-naming-convention.prompt.md`** - 🎯 Convención de nombres para Hero Section
 
