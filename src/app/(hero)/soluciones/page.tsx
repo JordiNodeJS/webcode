@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { EyeFollowButton, SolucionCard } from "@/components/soluciones";
 import { AnimatedRocketIcon } from "@/components/soluciones/AnimatedRocketIcon";
 import { Button } from "@/components/ui/button";
@@ -359,6 +360,133 @@ export default function ServicesIndexPage() {
                       <span
                         key={tech}
                         className="px-2 py-1 text-xs bg-secondary/10 text-secondary rounded"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </SolucionCard>
+          </div>
+
+          {/* Interior Design Project */}
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
+            <SolucionCard className="bg-linear-to-br from-secondary/20 to-accent/20 dark:from-secondary/10 dark:to-accent/10 border-2 border-secondary/30">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-16 h-16 bg-linear-to-br from-secondary to-accent rounded-xl flex items-center justify-center text-2xl font-bold text-white shadow-md">
+                  ID
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold mb-1">WebCode — Interior Design Landing</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Plantilla landing corporativa para estudio de interiorismo
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-4 mb-6">
+                {/* Image Preview */}
+                <div className="relative w-full h-[250px] rounded-lg overflow-hidden">
+                  <Image
+                    src="/images/interior-design.jpg"
+                    alt="WebCode Interior Design Landing - Captura de pantalla del proyecto"
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority={false}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <p className="text-xs font-medium text-muted-foreground mb-1">VISTA PREVIA</p>
+                    <h4 className="text-sm font-bold text-foreground">Diseño Moderno & Responsive</h4>
+                  </div>
+                </div>
+
+                <p className="text-sm text-muted-foreground">
+                  Plantilla de landing corporativa para un estudio de interiorismo construida con Next.js y TypeScript. 
+                  Muestra portafolio, blog y contacto; diseño responsive y componentes reutilizables para escalabilidad.
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  {["Next.js 16", "TypeScript", "Bootstrap", "SCSS"].map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 text-xs font-medium bg-secondary/10 text-secondary rounded-full border border-secondary/30"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-center gap-2">
+                    <span className="text-secondary">✓</span>
+                    <span>Portafolio de proyectos</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-secondary">✓</span>
+                    <span>Blog integrado</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-secondary">✓</span>
+                    <span>Formulario de contacto</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-secondary">✓</span>
+                    <span>Componentes reutilizables</span>
+                  </li>
+                </ul>
+              </div>
+
+              <Button asChild variant="outline" className="w-full">
+                <a
+                  href="https://interior-design.webcode.es/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Ver Demo →
+                </a>
+              </Button>
+            </SolucionCard>
+
+            {/* Stack Tecnológico Interior Design */}
+            <SolucionCard>
+              <h3 className="text-xl font-bold mb-4">Stack Tecnológico</h3>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-semibold text-sm text-muted-foreground mb-2">
+                    Frontend
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "Next.js 16",
+                      "TypeScript",
+                      "Bootstrap",
+                      "SCSS"
+                    ].map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 text-xs bg-secondary/10 text-secondary rounded"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-sm text-muted-foreground mb-2">
+                    Características
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "Diseño Responsive",
+                      "Componentes Reutilizables",
+                      "SEO Optimizado"
+                    ].map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 text-xs bg-accent/10 text-accent rounded"
                       >
                         {tech}
                       </span>
