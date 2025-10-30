@@ -264,7 +264,7 @@ export default function ServicesIndexPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-16">
-            {/* MudanzasAndy Case Study */}
+            {/* MudanzasAndy Case Study - Consolidated */}
             <SolucionCard className="bg-linear-to-br from-primary/20 to-secondary/20 dark:from-primary/10 dark:to-secondary/10 border-2 border-primary/30">
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-16 h-16 bg-linear-to-br from-primary to-secondary rounded-xl flex items-center justify-center text-2xl font-bold text-white shadow-md">
@@ -279,6 +279,23 @@ export default function ServicesIndexPage() {
               </div>
 
               <div className="space-y-4 mb-6">
+                {/* Image Preview */}
+                <div className="relative w-full h-[250px] rounded-lg overflow-hidden">
+                  <Image
+                    src="/images/mudanzasandy-preview.webp"
+                    alt="MudanzasAndy.es - Captura de pantalla del proyecto"
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority={false}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <p className="text-xs font-medium text-muted-foreground mb-1">VISTA PREVIA</p>
+                    <h4 className="text-sm font-bold text-foreground">Diseño Profesional & Optimizado</h4>
+                  </div>
+                </div>
+
                 <div className="grid grid-cols-2 gap-4">
                   <div className="text-center p-3 bg-background/50 rounded-lg">
                     <div className="text-2xl font-bold text-primary">+180%</div>
@@ -296,6 +313,27 @@ export default function ServicesIndexPage() {
                   </div>
                 </div>
 
+                <div>
+                  <h4 className="font-semibold text-sm text-muted-foreground mb-2">
+                    Stack Tecnológico
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "Next.js 15",
+                      "React 19",
+                      "TypeScript",
+                      "Tailwind CSS"
+                    ].map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 text-xs bg-primary/10 text-primary rounded-full border border-primary/30"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-center gap-2">
                     <span className="text-primary">✓</span>
@@ -308,6 +346,10 @@ export default function ServicesIndexPage() {
                   <li className="flex items-center gap-2">
                     <span className="text-primary">✓</span>
                     <span>Diseño responsive perfecto</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    <span>Core Web Vitals & Accesibilidad WCAG</span>
                   </li>
                 </ul>
               </div>
@@ -323,55 +365,7 @@ export default function ServicesIndexPage() {
               </Button>
             </SolucionCard>
 
-            {/* Technology Stack */}
-            <SolucionCard>
-              <h3 className="text-xl font-bold mb-4">Stack Tecnológico</h3>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-semibold text-sm text-muted-foreground mb-2">
-                    Frontend
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      "Next.js 15",
-                      "React 19",
-                      "TypeScript",
-                      "Tailwind CSS"
-                    ].map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 text-xs bg-primary/10 text-primary rounded"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-sm text-muted-foreground mb-2">
-                    Performance
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      "Core Web Vitals",
-                      "SEO Optimizado",
-                      "Accesibilidad WCAG"
-                    ].map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 text-xs bg-secondary/10 text-secondary rounded"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </SolucionCard>
-          </div>
-
-          {/* Interior Design Project */}
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
+            {/* Interior Design Project - Consolidated */}
             <SolucionCard className="bg-linear-to-br from-secondary/20 to-accent/20 dark:from-secondary/10 dark:to-accent/10 border-2 border-secondary/30">
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-16 h-16 bg-linear-to-br from-secondary to-accent rounded-xl flex items-center justify-center text-2xl font-bold text-white shadow-md">
@@ -408,15 +402,20 @@ export default function ServicesIndexPage() {
                   Muestra portafolio, blog y contacto; diseño responsive y componentes reutilizables para escalabilidad.
                 </p>
 
-                <div className="flex flex-wrap gap-2">
-                  {["Next.js 16", "TypeScript", "Bootstrap", "SCSS"].map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 text-xs font-medium bg-secondary/10 text-secondary rounded-full border border-secondary/30"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                <div>
+                  <h4 className="font-semibold text-sm text-muted-foreground mb-2">
+                    Stack Tecnológico
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {["Next.js 16", "TypeScript", "Bootstrap", "SCSS"].map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 text-xs bg-secondary/10 text-secondary rounded-full border border-secondary/30"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
                 <ul className="space-y-2 text-sm">
@@ -434,7 +433,7 @@ export default function ServicesIndexPage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="text-secondary">✓</span>
-                    <span>Componentes reutilizables</span>
+                    <span>Diseño Responsive & Componentes Reutilizables</span>
                   </li>
                 </ul>
               </div>
@@ -448,52 +447,6 @@ export default function ServicesIndexPage() {
                   Ver Demo →
                 </a>
               </Button>
-            </SolucionCard>
-
-            {/* Stack Tecnológico Interior Design */}
-            <SolucionCard>
-              <h3 className="text-xl font-bold mb-4">Stack Tecnológico</h3>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-semibold text-sm text-muted-foreground mb-2">
-                    Frontend
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      "Next.js 16",
-                      "TypeScript",
-                      "Bootstrap",
-                      "SCSS"
-                    ].map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 text-xs bg-secondary/10 text-secondary rounded"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-sm text-muted-foreground mb-2">
-                    Características
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      "Diseño Responsive",
-                      "Componentes Reutilizables",
-                      "SEO Optimizado"
-                    ].map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 text-xs bg-accent/10 text-accent rounded"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
             </SolucionCard>
           </div>
         </div>
