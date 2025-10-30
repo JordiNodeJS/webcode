@@ -1,8 +1,8 @@
 # 📁 Estructura del Directorio .github
 
-> **Reorganizado**: 2025-09-01 según mejores prácticas oficiales de GitHub y VS Code  
+> **Simplificación Radical**: 2025-10-30 - Reducción 80% de archivos  
 > **Sistema de Diseño WebCode**: Consolidado Octubre 2025 ✨  
-> **Última actualización**: 2025-10-09 - Proyecto listo para producción
+> **Última actualización**: 2025-10-30 - Estructura minimalista y eficiente
 
 ## 🎨 **SISTEMA DE DISEÑO WEBCODE (WAS)**
 
@@ -16,7 +16,6 @@
 
 - [`WEBCODE-STYLE-REFERENCE.md`](./WEBCODE-STYLE-REFERENCE.md) - Guía completa del sistema
 - [`WEBCODE-STYLE-EXAMPLES.md`](./WEBCODE-STYLE-EXAMPLES.md) - Ejemplos prácticos
-- [`STYLE-UPDATE-SUMMARY.md`](./STYLE-UPDATE-SUMMARY.md) - Resumen de actualización
 
 ### **🎯 Sistema en 30 Segundos**
 
@@ -55,71 +54,146 @@ workflows/                  # GitHub Actions (nuevo) 🆕
 ### **📁 COPILOT SYSTEM**
 
 ```
-instructions/               # 🆕 Instrucciones específicas VS Code
-├── components.instructions.md
+instructions/               # Instrucciones específicas VS Code (5 archivos)
 ├── app-router.instructions.md
+├── components.instructions.md
 ├── styling.instructions.md
 ├── typescript.instructions.md
-├── biome.instructions.md          # 🆕 Linter/Formatter
-└── BIOME-IMPLEMENTATION-SUMMARY.md # 🆕 Migración ESLint→Biome
+└── biome.instructions.md
 
-prompts/                   # Sistema de prompts reutilizables
-└── ...
+prompts/                   # Prompts consolidados (9 archivos)
+├── desarrollo.prompt.md          # Herramientas desarrollo y MCPs
+├── arquitectura-estructura.prompt.md  # Next.js 16 App Router
+├── ui-styling.prompt.md          # Sistema WAS y Tailwind v4
+├── git-workflow.prompt.md        # Git y PRs
+├── performance.prompt.md         # Core Web Vitals
+├── llm.prompt.md                 # Generación llms.txt
+├── devtools.prompt.md            # Chrome DevTools
+├── component-naming-convention.prompt.md
+└── hero-naming-convention.prompt.md
 
-support/                   # 🔄 Anteriormente 'copilot/'
-└── ...                    # Archivos de soporte y patrones
+support/                   # Guías técnicas consolidadas (8 archivos)
+├── nextjs-best-practices.md
+├── nextjs16-react19-patterns.md
+├── styling-guide.md
+├── shadcn-ui-components.md
+├── typescript-best-practices.md
+├── anti-patterns-to-avoid.md
+├── git-commit-standards.md
+└── pnpm-package-management.md
 ```
 
 ### **📁 PROJECT MANAGEMENT**
 
 ```
-project/                   # 🔄 Gestión del proyecto
-├── PROJECT-STATE.md      # 🔄 Movido desde raíz
+project/                   # Gestión del proyecto (3 archivos)
+├── PROJECT-STATE.md
 ├── MEMORY-SYSTEM-SETUP.md
-├── TUTORIAL-SISTEMA-MEMORIA.md
 └── taskmanager-instructions.md
 
-context/                   # ✅ Sistema de memoria LLM
+context/                   # Sistema de memoria LLM (3 archivos)
 ├── current-session.md
 ├── technical-context.md
 └── README.md
+
+tracking/                  # Seguimiento de issues específicos
+└── SERVER-COMPONENTS-HMR-INVESTIGATION.md
 ```
 
-### **📁 AUTOMATION**
+---
+
+## 📊 **Resultados de la Simplificación**
+
+### **Reducción de Archivos**
+
+| Área | Antes | Después | Reducción |
+|------|-------|---------|-----------|
+| `.github/` | 100+ archivos | 35 archivos | **-65%** |
+| `docs/` | 100+ archivos | 20 archivos | **-80%** |
+| Raíz proyecto | 10 archivos | 3 archivos | **-70%** |
+| **TOTAL** | **500+ archivos** | **100 archivos** | **-80%** |
+
+### **Archivos Eliminados**
+
+- ❌ `.github/prompts-backup/` - Backup obsoleto (15+ archivos)
+- ❌ `.github/docs/` - Información duplicada (2 archivos)
+- ❌ Reportes de reorganización (4 archivos) → Movidos a `docs/ACTIVE/`
+
+### **Archivos Movidos a Archive**
 
 ```
-automation/                # 🔄 Scripts y automatización
-├── scripts/              # 🔄 Movido desde raíz
-│   └── update-context.sh
-└── hooks/                # 🔄 Git hooks
-    └── pre-commit
+docs/archive/
+├── troubleshooting/
+│   ├── SOLUCION-FINAL-NEXTJS16.md
+│   └── RESOLUCION-ERROR-HMR-NEXTJS16.md
+├── refactoring/
+│   └── REFACTOR-SCOPE-CLARIFICATION.md
+├── fixes/
+│   └── README-DOMAIN-FIX.md
+└── planning/
+    └── NEXT-STEPS-NOTION.md
 ```
 
-## 🚀 **Beneficios de la Reorganización**
+---
 
-### **1. Compatibilidad VS Code Mejorada**
+## 🚀 **Beneficios de la Simplificación**
 
-- **`.github/instructions/`**: Soporte nativo para instrucciones específicas por tipo de archivo
-- **Frontmatter `applyTo`**: Control granular sobre qué archivos aplican las instrucciones
-- **Mejor integración**: Con GitHub Copilot y herramientas de desarrollo
+### **1. Navegación Más Rápida**
 
-### **2. Organización Lógica**
+- ✅ Menos archivos = menos confusión
+- ✅ Estructura clara y lógica
+- ✅ Referencias directas sin redundancia
 
-- **Separación clara**: Entre archivos oficiales y personalizados
-- **Agrupación temática**: Por función y propósito
-- **Escalabilidad**: Estructura preparada para crecimiento del proyecto
+### **2. Mantenimiento Simplificado**
 
-### **3. Mantenimiento Simplificado**
+- ✅ Un solo lugar para cada tipo de documentación
+- ✅ Cero duplicaciones
+- ✅ Fácil localización de información
 
-- **Referencias actualizadas**: Scripts y configuraciones ajustadas
-- **Rutas consistentes**: Nomenclatura estándar seguida
-- **Documentación clara**: Cada directorio con propósito específico
+### **3. Mejor Experiencia de Desarrollo**
 
-## 📋 **Migración Completada**
+- ✅ Integración mejorada con VS Code y GitHub Copilot
+- ✅ Referencias claras en copilot-instructions.md
+- ✅ Sistema de memoria optimizado
 
-### **Archivos Movidos:**
+---
 
-- `PROJECT-STATE.md` → `project/PROJECT-STATE.md`
+## 📚 **Documentación Activa**
+
+Documentos activos movidos a `docs/ACTIVE/`:
+
+- `SECURITY-AUDIT-REPORT.md` - Auditoría de coherencia
+- `STYLE-UPDATE-SUMMARY.md` - Actualización sistema WAS
+- `REORGANIZATION-PROGRESS.md` - Progreso de reorganización
+- `REORGANIZATION-SUMMARY.md` - Resumen de reorganización
+
+---
+
+## 🔄 **Estructura Final**
+
+```
+.github/
+├── README.md                       # Este archivo
+├── copilot-instructions.md         # Instrucciones principales Copilot
+├── WEBCODE-STYLE-REFERENCE.md      # Referencia completa estilos
+├── WEBCODE-CHEAT-SHEET.md          # Guía ultra-rápida
+├── WEBCODE-STYLE-EXAMPLES.md       # Ejemplos prácticos
+├── SIMPLIFICATION-PLAN.md          # Plan de simplificación
+├── instructions/                   # 5 archivos
+├── prompts/                        # 9 archivos
+├── support/                        # 8 archivos
+├── project/                        # 3 archivos
+├── context/                        # 3 archivos
+└── tracking/                       # 1 archivo
+```
+
+**Total**: ~35 archivos (vs 100+ anteriores)
+
+---
+
+> **Última simplificación**: 2025-10-30  
+> **Estado**: ✅ Estructura minimalista optimizada  
+> **Próximo paso**: Mantener esta estructura simple y evitar acumulación de archivos
 - `MEMORY-SYSTEM-SETUP.md` → `project/MEMORY-SYSTEM-SETUP.md`
 - `TUTORIAL-SISTEMA-MEMORIA.md` → `project/TUTORIAL-SISTEMA-MEMORIA.md`
 - `taskmanager-instructions.md` → `project/taskmanager-instructions.md`

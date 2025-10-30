@@ -20,7 +20,8 @@ const nextConfig: NextConfig = {
     viewTransition: true,
     // Optimizaciones experimentales para bundle
     optimizePackageImports: ["lucide-react", "framer-motion"],
-    serverComponentsHmrCache: false
+    // HMR cache para Server Components - Mejor performance en desarrollo
+    serverComponentsHmrCache: true
   },
   // Configurar orígenes permitidos para desarrollo
   allowedDevOrigins: ["192.168.0.15:3000", "localhost:3000", "127.0.0.1:3000"],
