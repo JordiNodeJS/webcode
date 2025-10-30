@@ -278,7 +278,7 @@ const ValuePropCard = React.memo(({ prop }: { prop: ValueProp }) => {
               {prop.features.map((feature) => (
                 <li
                   key={feature}
-                  className="flex items-center justify-center text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-teal-500 group-hover:[transform:translateZ(15px)_scale(1.05)] font-medium transition-all duration-300"
+                  className="flex items-center justify-center text-center text-gradient-webcode group-hover:[transform:translateZ(15px)_scale(1.05)] font-medium transition-all duration-300"
                 >
                   {feature}
                 </li>

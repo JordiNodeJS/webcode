@@ -99,7 +99,7 @@ const HeroSection = () => {
         }}
       >
         <ChevronDown
-          className={`h-8 w-8 text-gray-400 dark:text-gray-500 transition-colors duration-200 ${
+          className={`h-8 w-8 text-muted-foreground transition-colors duration-200 ${
             !isReducedMotion ? "animate-bounce" : ""
           }`}
         />

@@ -28,7 +28,7 @@ export function MudanzasCard() {
       style={{ boxShadow: 'var(--shadow-3d-sm)' }}
     >
       {/* visual */}
-      <div className="col-span-1 rounded-md overflow-hidden bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+      <div className="col-span-1 rounded-md overflow-hidden bg-muted flex items-center justify-center">
         {/* Inline placeholder 'screenshot' */}
         <picture className="w-full h-40 block">
           <source
@@ -104,7 +104,7 @@ export function MudanzasCard() {
           <div className="relative max-w-3xl w-full mx-4 md:mx-0">
             <div className="bg-white dark:bg-[#0b1220] rounded-lg overflow-hidden shadow-xl transform transition-all scale-100">
               <div className="p-4">
-                <div className="w-full h-72 bg-gray-100 dark:bg-gray-800 rounded-md flex items-center justify-center">
+                <div className="w-full h-72 bg-muted rounded-md flex items-center justify-center">
                   <picture className="w-full h-full block">
                     <source
                       type="image/webp"
