@@ -45,3 +45,9 @@ next-env.d.ts
 
 # Archivos temporales de análisis CSS
 public/css-chunks.json
+
+# Local font files (optional - see public/fonts/README.md for setup)
+public/fonts/*.woff
+public/fonts/*.woff2
+public/fonts/*.ttf
+public/fonts/*.otf

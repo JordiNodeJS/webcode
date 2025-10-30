@@ -39,15 +39,16 @@ export function ServiceCard({
 }: ServiceCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // Inicializar con función para evitar warning de React Compiler
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  });
+  // Inicializar con false para evitar hydration mismatch
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   // Listener para cambios en las preferencias
   useLayoutEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    
+    // Set initial value - this is intentional for client-side hydration
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setPrefersReducedMotion(mediaQuery.matches);
 
     const handleChange = (e: MediaQueryListEvent) => {
       setPrefersReducedMotion(e.matches);

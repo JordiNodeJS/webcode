@@ -55,7 +55,7 @@ export function HeaderNavigation() {
   // Active navigation tracking (page or section)
   const [manualActiveHref, setManualActiveHref] = useState<string | null>(null);
 
-  // Calcular activeHref basado en pathname (sin useEffect para evitar warning)
+  // Calcular activeHref basado en pathname (sin acceso directo a window para evitar hydration issues)
   const activeHref = useMemo(() => {
     // Prefer exact path matches for non-hash, non-external links
     const pathMatch = navigationItems.find((it) => {
@@ -71,11 +71,6 @@ export function HeaderNavigation() {
     // Si tenemos un hash manual seleccionado, usarlo
     if (manualActiveHref) {
       return manualActiveHref;
-    }
-
-    // Fallback to hash (if present)
-    if (typeof window !== "undefined") {
-      return window.location.hash || null;
     }
 
     return null;
@@ -208,8 +203,8 @@ export function HeaderNavigation() {
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${
         isScrolled
-          ? "backdrop-blur-lg border-b border-border/40 py-2"
-          : "backdrop-blur-md border-b border-border/30 py-4"
+          ? "backdrop-blur-lg border-b border-border/20 py-2"
+          : "backdrop-blur-md border-b border-border/10 py-4"
       }`}
       // Usamos tokens CSS del tema para que funcione en light/dark: hsl(var(--background)/alpha)
       style={{
