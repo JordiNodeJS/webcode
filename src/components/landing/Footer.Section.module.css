@@ -78,7 +78,7 @@
 }
 
 /* Overlay verdoso para el fondo del footer - MEJORADO PARA LEGIBILIDAD */
-.footer-verdoso-overlay {
+.footerVerdosoOverlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -86,7 +86,7 @@
     oklch(var(--secondary) / 0.12) 0%,
     oklch(var(--primary) / 0.08) 25%,
     oklch(var(--card) / 0.95) 50%,
-    oklch(var(--accent) / 0.10) 75%,
+    oklch(var(--accent) / 0.1) 75%,
     oklch(var(--secondary) / 0.12) 100%
   );
   backdrop-filter: blur(2px);

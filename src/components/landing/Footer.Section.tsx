@@ -21,9 +21,9 @@ export function FooterSection() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative z-10 bg-card/90 backdrop-blur-xl border-2 border-primary/20 overflow-hidden shadow-xl">
+    <footer className="relative bg-card/90 backdrop-blur-xl border-2 border-primary/20 rounded-t-3xl shadow-xl">
       {/* Fondo con gradiente sutil verdoso - MEJORADO PARA LEGIBILIDAD */}
-      <div className="absolute inset-0 footer-verdoso-overlay"></div>
+      <div className={`absolute inset-0 ${styles.footerVerdosoOverlay}`}></div>
 
       <div className="relative container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
