@@ -3,7 +3,12 @@
 // Cards y layouts
 export { BlogCategoriesCard } from "./BlogCategoriesCard";
 export { BlogPostCard } from "./BlogPostCard";
-export { BlogSkeletons } from "./BlogSkeletons";
+export {
+  BlogPostSkeleton,
+  BlogCategoriesSkeleton,
+  BlogPageSkeleton,
+  PostDetailSkeleton
+} from "./BlogSkeletons";
 
 // Navigation y metadata
 export { Breadcrumb } from "./Breadcrumb";
@@ -13,5 +18,5 @@ export { TagList } from "./TagList";
 
 // Content rendering
 export { MarkdownRenderer } from "./MarkdownRenderer";
-export { OptimizedMarkdownRenderer } from "./MarkdownRenderer.optimized";
+export { MarkdownContent as OptimizedMarkdownRenderer } from "./MarkdownRenderer.optimized";
 export { NotionImage } from "./NotionImage";

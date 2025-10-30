@@ -1,4 +1,4 @@
 // Sources Components - Componentes para páginas de documentación de fuentes
 
-export { DocumentationSourcesPageClient } from "./DocumentationSourcesPageClient";
-export { SourcesPageClient } from "./SourcesPageClient";
+export { default as DocumentationSourcesPageClient } from "./DocumentationSourcesPageClient";
+export { default as SourcesPageClient } from "./SourcesPageClient";
