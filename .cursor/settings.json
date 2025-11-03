@@ -27,5 +27,10 @@
         "cmd": "node scripts/format-on-save.js ${file}"
       }
     ]
-  }
+  },
+  "git.autoRepositoryDetection": true,
+  "git.scanRepositories": [
+    ".",
+    "../worktree/branch"
+  ]
 }
