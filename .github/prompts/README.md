@@ -101,6 +101,25 @@ Consolidación de: `performance-optimization`, `performance-animations-guideline
 
 ---
 
+### **6. [`next16-migration-verification.prompt.md`](./next16-migration-verification.prompt.md)** 🔄
+
+**Verificación de Migración Next.js 15 → 16**
+
+**Contenido**:
+
+- **Checklist completa**: Versiones, configuración, APIs asíncronas
+- **Breaking changes**: params/searchParams Promises, cookies/headers async, middleware → proxy
+- **Turbopack**: Verificación como bundler predeterminado
+- **Cache Components**: Revalidación, updateTag, refresh
+- **Parallel Routes**: Requisito de default.tsx
+- **Testing funcional**: Rutas dinámicas, Server Actions, imágenes
+- **Performance**: Comparación con v15, Core Web Vitals
+- **Troubleshooting**: Errores comunes y soluciones
+
+**Cuándo usar**: Verificar migración completa a Next.js 16, validar breaking changes
+
+---
+
 ## 📌 **Prompts Especializados**
 
 Estos prompts se mantienen separados por su especificidad:
