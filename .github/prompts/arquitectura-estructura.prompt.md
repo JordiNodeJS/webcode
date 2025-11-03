@@ -292,9 +292,9 @@ flowchart TD
     E --> H[app/services/components/ServiceCard.tsx]
     F --> I[app/analytics/components/Chart.tsx]
 
-    style A fill:#dc7cb3
-    style B fill:#bce3e5
-    style C fill:#bce3e5
+  style A fill:rgb(220,124,179)
+  style B fill:rgb(188,227,229)
+  style C fill:rgb(188,227,229)
 ```
 
 ### **Flujo de Datos**
