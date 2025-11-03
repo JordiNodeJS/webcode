@@ -40,5 +40,10 @@
   },
   "[postcss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "piny.project_settings": {
+    "open-pages": [
+      "pinyfakepage.html"
+    ]
   }
 }

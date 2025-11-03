@@ -1,97 +1,52 @@
-# Template Estándar - Prompts WebCode
+# Plantilla: Prompt para GitHub Copilot (.prompt.md)
 
-## **Estructura Estándar para Prompts**
+Prompt para generar un prompt file de GitHub Copilot (archivo `.prompt.md`).
+
+## Objetivo
+
+Crear un archivo reusable para Copilot (VS Code / JetBrains) con parámetros interactivos y un ejemplo de uso.
+
+## Prompt (para tu IA)
+
+Genera un archivo de prompt para GitHub Copilot en Markdown (`.prompt.md`). Debe incluir:
+
+- Metadatos opcionales al inicio (ej. `mode`, `description`).
+- Instrucciones claras y paso a paso.
+- Campos interactivos `${input:...:placeholder}` para pedir código y audiencia.
+- Un ejemplo de uso al final.
+
+Devuelve solo el contenido Markdown listo para guardar como `.github/prompts/<nombre>.prompt.md`. Sugiere un nombre de archivo claro (ej. `explain-code.prompt.md`).
+
+## Dónde colocarlo
+
+En `.github/prompts/` dentro del workspace (el nombre debe terminar en `.prompt.md`).
+
+## Cómo usarlo
+
+1. Guardar el archivo en `.github/prompts/`.
+2. En VS Code o JetBrains, abrir Copilot Chat y escribir `/nombre-del-prompt` (sin extensión).
+3. Adjuntar archivos de contexto si es necesario y ejecutar.
+
+## Ejemplo de salida esperada (contenido Markdown)
 
 ```markdown
-# Prompt: [Nombre del Prompt] - WebCode
-
-## **Contexto y Objetivo**
-
-[Descripción clara del propósito del prompt y su rol en el proyecto WebCode]
-
-## **Alcance**
-
-- [Lista de funcionalidades cubiertas]
-- [Herramientas específicas utilizadas]
-- [Casos de uso principales]
-
+---
+mode: 'agent'
+description: 'Explica código de forma clara y con ejemplos'
 ---
 
-## **[SECCIÓN PRINCIPAL 1]**
+Explica el siguiente código de forma sencilla:
 
-### **[Subsección]**
+Código: ${input:code:Pegue aquí el código a explicar}
 
-[Contenido específico con ejemplos de código si aplica]
+Audiencia: ${input:audience:¿Para quién es la explicación? (ej. principiantes)}
 
-### **[Subsección]**
+Por favor incluye:
 
-[Contenido específico]
+- Resumen breve de qué hace el código
+- Paso a paso de las partes principales
+- Explicación de conceptos clave
+- Un ejemplo de uso simple
 
----
-
-## **[SECCIÓN PRINCIPAL 2]**
-
-### **[Subsección]**
-
-[Contenido específico]
-
----
-
-## **Flujo de Trabajo / Implementación**
-
-### **Pasos Estándar**
-
-1. [Paso 1]
-2. [Paso 2]
-3. [Paso 3]
-
-### **Criterios de Aceptación**
-
-- **[Completado]** [Criterio 1]
-- **[Completado]** [Criterio 2]
-- **[Completado]** [Criterio 3]
-
----
-
-**Nota**: [Información adicional relevante para el proyecto WebCode]
+Usa lenguaje claro y evita jerga innecesaria.
 ```
-
-## **Directrices de Formato**
-
-### **1. Idioma**
-
-- **Español** como idioma principal
-- Términos técnicos en inglés cuando sea estándar (Next.js, TypeScript, etc.)
-- Comentarios de código en español
-
-### **2. Estructura**
-
-- **Título descriptivo** con "- WebCode" al final
-- **Secciones claras** con separadores visuales (`---`)
-- **Subsecciones** para organizar contenido
-- **Ejemplos de código** cuando sea relevante
-
-### **3. Elementos Requeridos**
-
-- **[Completado]** **Contexto y Objetivo**: Propósito claro
-- **[Completado]** **Alcance**: Qué cubre y qué no
-- **[Completado]** **Flujo de Trabajo**: Pasos concretos
-- **[Completado]** **Criterios de Aceptación**: Validación de resultados
-- **[Completado]** **Nota final**: Contexto del proyecto WebCode
-
-### **4. Convenciones**
-
-- **Negrita** para términos importantes: `**Next.js 15**`
-- **Listas** con viñetas para enumeraciones
-- **Bloques de código** con sintaxis highlight apropiada
-- **Emojis** para indicadores visuales: **[Completado]** **[Error]** **[Advertencia]** **[Objetivos]**
-
-### **5. Referencias**
-
-- **Referencias cruzadas** claras: `./archivo.prompt.md`
-- **Enlaces a documentación** oficial cuando aplique
-- **Contexto del proyecto** WebCode siempre presente
-
----
-
-**Uso**: Utilizar este template para estandarizar todos los prompts del proyecto WebCode y mantener consistencia en formato y estructura.
