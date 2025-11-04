@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { EyeFollowButton, SolucionCard } from "@/components/soluciones";
+import { EyeFollowButton, SolucionCard, ImageCarousel } from "@/components/soluciones";
 import { AnimatedRocketIcon } from "@/components/soluciones/AnimatedRocketIcon";
 import { Button } from "@/components/ui/button";
 import { SplineBackgroundThemed } from "@/components/custom/SplineBackgroundThemed";
@@ -250,7 +250,7 @@ export default function ServicesIndexPage() {
 
       {/* Credentials & Case Study */}
       <section className="relative z-10 bg-linear-to-br from-primary/20 to-secondary/20 dark:from-primary/10 dark:to-secondary/10 py-20 border-y border-border/30">
-        <div className="container mx-auto max-w-6xl px-4">
+        <div className="container mx-auto max-w-7xl px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
               Casos de{" "}
@@ -263,7 +263,7 @@ export default function ServicesIndexPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {/* MudanzasAndy Case Study - Consolidated */}
             <SolucionCard className="bg-linear-to-br from-primary/20 to-secondary/20 dark:from-primary/10 dark:to-secondary/10 border-2 border-primary/30">
               <div className="flex items-start gap-4 mb-6">
@@ -441,6 +441,91 @@ export default function ServicesIndexPage() {
               <Button asChild variant="outline" className="w-full">
                 <a
                   href="https://interior-design.webcode.es/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Ver Demo →
+                </a>
+              </Button>
+            </SolucionCard>
+
+            {/* Luxury Hotel Project - Consolidated */}
+            <SolucionCard className="bg-linear-to-br from-accent/20 to-primary/20 dark:from-accent/10 dark:to-primary/10 border-2 border-accent/30">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-16 h-16 bg-linear-to-br from-accent to-primary rounded-xl flex items-center justify-center text-2xl font-bold text-white shadow-md">
+                  LH
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold mb-1">Luxury Hotel — Landing Hotel de Lujo</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Landing corporativa para hotel de lujo
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-4 mb-6">
+                {/* Image Carousel */}
+                <ImageCarousel
+                  images={[
+                    "/images/01-lux.webp",
+                    "/images/02-lux.webp",
+                    "/images/03-lux.webp",
+                    "/images/04-lux.webp"
+                  ]}
+                  alt="Luxury Hotel - Landing Hotel de Lujo"
+                />
+
+                <p className="text-sm text-muted-foreground">
+                  Landing corporativa para un hotel de lujo: diseño responsive, formulario de reservas con validación, carruseles interactivos y efectos glassmorphism listos para producción.
+                </p>
+
+                <div>
+                  <h4 className="font-semibold text-sm text-muted-foreground mb-2">
+                    Stack Tecnológico
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "Next.js 16",
+                      "React 19",
+                      "TypeScript",
+                      "Tailwind CSS",
+                      "Embla Carousel",
+                      "Lucide",
+                      "pnpm"
+                    ].map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 text-xs bg-accent/10 text-accent rounded-full border border-accent/30"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-center gap-2">
+                    <span className="text-accent">✓</span>
+                    <span>Diseño responsive</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-accent">✓</span>
+                    <span>Formulario de reservas con validación</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-accent">✓</span>
+                    <span>Carruseles interactivos</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-accent">✓</span>
+                    <span>Efectos glassmorphism</span>
+                  </li>
+                </ul>
+              </div>
+
+              <Button asChild variant="outline" className="w-full">
+                <a
+                  href="https://template-luxury-hotel.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
