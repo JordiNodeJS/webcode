@@ -533,6 +533,89 @@ export default function ServicesIndexPage() {
                 </a>
               </Button>
             </SolucionCard>
+
+            {/* Decord Gallery Project - Consolidated */}
+            <SolucionCard className="bg-linear-to-br from-primary/20 via-secondary/20 to-accent/20 dark:from-primary/10 dark:via-secondary/10 dark:to-accent/10 border-2 border-primary/30">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-16 h-16 bg-linear-to-br from-primary via-secondary to-accent rounded-xl flex items-center justify-center text-2xl font-bold text-white shadow-md">
+                  DG
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold mb-1">Decord Gallery — Art Gallery Template</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Plantilla para galería de arte moderna
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-4 mb-6">
+                {/* Image Carousel */}
+                <ImageCarousel
+                  images={[
+                    "/images/decord/decord-home.webp",
+                    "/images/decord/decord-gallery.webp",
+                    "/images/decord/decord-events.webp",
+                    "/images/decord/decord-about.webp"
+                  ]}
+                  alt="Decord Gallery - Art Gallery Template"
+                />
+
+                <p className="text-sm text-muted-foreground">
+                  Plantilla completa para galería de arte moderna con múltiples layouts de galería, gestión de eventos, blog integrado y secciones de testimonios. Diseño responsive y optimizado para mostrar obras de arte.
+                </p>
+
+                <div>
+                  <h4 className="font-semibold text-sm text-muted-foreground mb-2">
+                    Stack Tecnológico
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "HTML5",
+                      "CSS3",
+                      "JavaScript",
+                      "Bootstrap",
+                      "jQuery"
+                    ].map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 text-xs bg-primary/10 text-primary rounded-full border border-primary/30"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    <span>Múltiples layouts de galería</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    <span>Gestión de eventos y exposiciones</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    <span>Blog integrado</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    <span>Diseño responsive y optimizado</span>
+                  </li>
+                </ul>
+              </div>
+
+              <Button asChild variant="outline" className="w-full">
+                <a
+                  href="https://ld-wt73.template-help.com/tf/decord_v1/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Ver Demo →
+                </a>
+              </Button>
+            </SolucionCard>
           </div>
         </div>
       </section>
