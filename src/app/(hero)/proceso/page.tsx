@@ -266,7 +266,7 @@ export default function ProcesoPage() {
         {/* Grid pattern - kept separate as it uses complex SVG pattern */}
         <div className="absolute inset-0 bg-webcode-grid opacity-30" />
 
-        <div className="container mx-auto px-4 relative z-10 h-full flex items-center">
+        <div className="container mx-auto px-4 relative z-10 h-full flex items-center justify-center">
           <WSFadeIn delay={0.1}>
             <div className="text-center max-w-5xl mx-auto space-y-8">
               {/* Badge superior */}
