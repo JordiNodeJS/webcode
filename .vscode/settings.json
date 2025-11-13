@@ -1,4 +1,14 @@
 {
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#8B0077",
+    "statusBar.foreground": "#FFFFFF",
+    "statusBar.noFolderBackground": "#8B0077",
+    "statusBar.noFolderForeground": "#FFFFFF",
+    "statusBar.debuggingBackground": "#8B0077",
+    "statusBar.debuggingForeground": "#FFFFFF"
+  }
+}
+{
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "files.autoSave": "onFocusChange",
