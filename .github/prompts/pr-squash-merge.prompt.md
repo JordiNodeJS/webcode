@@ -1,3 +1,11 @@
+---
+name: pr-squash-merge
+description: "Squash y merge de Pull Request usando GitHub CLI. Guía para agentes automáticos que realizan merges con comprobaciones y limpieza de ramas."
+model: "Raptor mini (Preview)"
+tools: ['edit', 'runNotebooks', 'search', 'new', 'runCommands', 'runTasks', 'Context7/*', 'github-mpc/*', 'usages', 'vscodeAPI', 'problems', 'changes', 'testFailure', 'openSimpleBrowser', 'fetch', 'githubRepo', 'extensions', 'todos', 'runSubagent']
+argument-hint: "tags: pr, merge, gh; version: 1.0.0"
+---
+
 ## Prompt: Squash y Merge Pull Request
 
 Propósito
