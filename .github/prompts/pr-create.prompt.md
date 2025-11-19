@@ -1,7 +1,7 @@
 ---
 name: pr-create
 description: "MCP — crear, revisar y mergear Pull Request (adaptado a gh CLI). Guía para automatizar PRs usando la GitHub CLI (gh)."
-model: minimax-m2 (ollama)
+model: Raptor mini (Preview) (copilot)
 argument-hint: "tags: pr, gh, cli, workflow; version: 3.0"
 tools: ['edit', 'runNotebooks', 'search', 'new', 'runCommands', 'runTasks', 'github-mpc/*', 'usages', 'vscodeAPI', 'problems', 'changes', 'testFailure', 'openSimpleBrowser', 'fetch', 'githubRepo', 'extensions', 'todos', 'runSubagent']
 ---
