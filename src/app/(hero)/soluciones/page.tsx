@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { EyeFollowButton, SolucionCard, ImageCarousel } from "@/components/soluciones";
+import {
+  EyeFollowButton,
+  SolucionCard,
+  ImageCarousel
+} from "@/components/soluciones";
 import { AnimatedRocketIcon } from "@/components/soluciones/AnimatedRocketIcon";
 import { Button } from "@/components/ui/button";
 import { SplineBackgroundThemed } from "@/components/custom/SplineBackgroundThemed";
@@ -291,8 +295,12 @@ export default function ServicesIndexPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent pointer-events-none" />
                   <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <p className="text-xs font-medium text-muted-foreground mb-1">VISTA PREVIA</p>
-                    <h4 className="text-sm font-bold text-foreground">Diseño Profesional & Optimizado</h4>
+                    <p className="text-xs font-medium text-muted-foreground mb-1">
+                      VISTA PREVIA
+                    </p>
+                    <h4 className="text-sm font-bold text-foreground">
+                      Diseño Profesional & Optimizado
+                    </h4>
                   </div>
                 </div>
 
@@ -372,7 +380,9 @@ export default function ServicesIndexPage() {
                   ID
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold mb-1">WebCode — Interior Design Landing</h3>
+                  <h3 className="text-2xl font-bold mb-1">
+                    WebCode — Interior Design Landing
+                  </h3>
                   <p className="text-sm text-muted-foreground">
                     Plantilla landing corporativa para estudio de interiorismo
                   </p>
@@ -392,14 +402,20 @@ export default function ServicesIndexPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent pointer-events-none" />
                   <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <p className="text-xs font-medium text-muted-foreground mb-1">VISTA PREVIA</p>
-                    <h4 className="text-sm font-bold text-foreground">Diseño Moderno & Responsive</h4>
+                    <p className="text-xs font-medium text-muted-foreground mb-1">
+                      VISTA PREVIA
+                    </p>
+                    <h4 className="text-sm font-bold text-foreground">
+                      Diseño Moderno & Responsive
+                    </h4>
                   </div>
                 </div>
 
                 <p className="text-sm text-muted-foreground">
-                  Plantilla de landing corporativa para un estudio de interiorismo construida con Next.js y TypeScript. 
-                  Muestra portafolio, blog y contacto; diseño responsive y componentes reutilizables para escalabilidad.
+                  Plantilla de landing corporativa para un estudio de
+                  interiorismo construida con Next.js y TypeScript. Muestra
+                  portafolio, blog y contacto; diseño responsive y componentes
+                  reutilizables para escalabilidad.
                 </p>
 
                 <div>
@@ -407,14 +423,16 @@ export default function ServicesIndexPage() {
                     Stack Tecnológico
                   </h4>
                   <div className="flex flex-wrap gap-2">
-                    {["Next.js 16", "TypeScript", "Bootstrap", "SCSS"].map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 text-xs bg-secondary/10 text-secondary rounded-full border border-secondary/30"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                    {["Next.js 16", "TypeScript", "Bootstrap", "SCSS"].map(
+                      (tech) => (
+                        <span
+                          key={tech}
+                          className="px-2 py-1 text-xs bg-secondary/10 text-secondary rounded-full border border-secondary/30"
+                        >
+                          {tech}
+                        </span>
+                      )
+                    )}
                   </div>
                 </div>
 
@@ -456,7 +474,9 @@ export default function ServicesIndexPage() {
                   LH
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold mb-1">Luxury Hotel — Landing Hotel de Lujo</h3>
+                  <h3 className="text-2xl font-bold mb-1">
+                    Luxury Hotel — Landing Hotel de Lujo
+                  </h3>
                   <p className="text-sm text-muted-foreground">
                     Landing corporativa para hotel de lujo
                   </p>
@@ -476,7 +496,9 @@ export default function ServicesIndexPage() {
                 />
 
                 <p className="text-sm text-muted-foreground">
-                  Landing corporativa para un hotel de lujo: diseño responsive, formulario de reservas con validación, carruseles interactivos y efectos glassmorphism listos para producción.
+                  Landing corporativa para un hotel de lujo: diseño responsive,
+                  formulario de reservas con validación, carruseles interactivos
+                  y efectos glassmorphism listos para producción.
                 </p>
 
                 <div>
@@ -541,7 +563,9 @@ export default function ServicesIndexPage() {
                   DG
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold mb-1">Decord Gallery — Art Gallery Template</h3>
+                  <h3 className="text-2xl font-bold mb-1">
+                    Decord Gallery — Art Gallery Template
+                  </h3>
                   <p className="text-sm text-muted-foreground">
                     Plantilla para galería de arte moderna
                   </p>
@@ -561,7 +585,10 @@ export default function ServicesIndexPage() {
                 />
 
                 <p className="text-sm text-muted-foreground">
-                  Plantilla completa para galería de arte moderna con múltiples layouts de galería, gestión de eventos, blog integrado y secciones de testimonios. Diseño responsive y optimizado para mostrar obras de arte.
+                  Plantilla completa para galería de arte moderna con múltiples
+                  layouts de galería, gestión de eventos, blog integrado y
+                  secciones de testimonios. Diseño responsive y optimizado para
+                  mostrar obras de arte.
                 </p>
 
                 <div>
@@ -569,20 +596,16 @@ export default function ServicesIndexPage() {
                     Stack Tecnológico
                   </h4>
                   <div className="flex flex-wrap gap-2">
-                    {[
-                      "HTML5",
-                      "CSS3",
-                      "JavaScript",
-                      "Bootstrap",
-                      "jQuery"
-                    ].map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 text-xs bg-primary/10 text-primary rounded-full border border-primary/30"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                    {["HTML5", "CSS3", "JavaScript", "Bootstrap", "jQuery"].map(
+                      (tech) => (
+                        <span
+                          key={tech}
+                          className="px-2 py-1 text-xs bg-primary/10 text-primary rounded-full border border-primary/30"
+                        >
+                          {tech}
+                        </span>
+                      )
+                    )}
                   </div>
                 </div>
 
@@ -608,7 +631,7 @@ export default function ServicesIndexPage() {
 
               <Button asChild variant="outline" className="w-full">
                 <a
-                  href="https://ld-wt73.template-help.com/tf/decord_v1/"
+                  href="https://decord.webcode.es/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
