@@ -639,6 +639,94 @@ export default function ServicesIndexPage() {
                 </a>
               </Button>
             </SolucionCard>
+
+            {/* RSS Reader Antigravity - Modern RSS Reader */}
+            <SolucionCard className="bg-linear-to-br from-secondary/20 via-primary/20 to-accent/20 dark:from-secondary/10 dark:via-primary/10 dark:to-accent/10 border-2 border-secondary/30">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-16 h-16 bg-linear-to-br from-secondary via-primary to-accent rounded-xl flex items-center justify-center text-2xl font-bold text-white shadow-md">
+                  RS
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold mb-1">
+                    RSS Reader Antigravity — Modern RSS Reader
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Lector RSS moderno, offline y con scraping inteligente
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-4 mb-6">
+                {/* Image Carousel */}
+                <ImageCarousel
+                  images={[
+                    "/images/rss-reader/home-populated-light.webp",
+                    "/images/rss-reader/article-view-light.webp",
+                    "/images/rss-reader/article-view-dark.webp"
+                  ]}
+                  alt="RSS Reader Antigravity - Modern RSS Reader"
+                />
+
+                <p className="text-sm text-muted-foreground">
+                  Lector RSS moderno con capacidades offline completas y
+                  experiencia premium. Incluye scraping inteligente con Mozilla
+                  Readability, +45 temas personalizables, optimización
+                  automática de imágenes y soporte completo para modo oscuro.
+                </p>
+
+                <div>
+                  <h4 className="font-semibold text-sm text-muted-foreground mb-2">
+                    Stack Tecnológico
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "Next.js 16",
+                      "React 19",
+                      "Tailwind CSS",
+                      "TypeScript",
+                      "IndexedDB",
+                      "Sharp"
+                    ].map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 text-xs bg-secondary/10 text-secondary rounded-full border border-secondary/30"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-center gap-2">
+                    <span className="text-secondary">✓</span>
+                    <span>Arquitectura Offline-First con IndexedDB</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-secondary">✓</span>
+                    <span>Scraping híbrido con Mozilla Readability</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-secondary">✓</span>
+                    <span>+45 temas personalizables</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-secondary">✓</span>
+                    <span>Optimización automática de imágenes (WebP)</span>
+                  </li>
+                </ul>
+              </div>
+
+              <Button asChild variant="outline" className="w-full">
+                <a
+                  href="https://rss.webcode.es/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Ver Demo →
+                </a>
+              </Button>
+            </SolucionCard>
           </div>
         </div>
       </section>
