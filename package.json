@@ -40,7 +40,7 @@
     "jspdf-autotable": "^5.0.2",
     "lucide-react": "^0.542.0",
     "motion": "^12.23.12",
-    "next": "16.0.7",
+    "next": "16.0.8",
     "next-themes": "^0.4.6",
     "next-view-transitions": "^0.3.4",
     "notion-to-md": "^3.1.9",
