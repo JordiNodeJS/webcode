@@ -27,8 +27,10 @@ export function NetworkBackground() {
 
   // Esperar a que el componente se monte para evitar hydration mismatch
   // next-themes no puede resolver el tema hasta después del montaje
+  // Usamos setTimeout para evitar setState síncrono en effect
   useEffect(() => {
-    setMounted(true);
+    const timer = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(timer);
   }, []);
 
   // Durante SSR y antes de montar, mostrar placeholder

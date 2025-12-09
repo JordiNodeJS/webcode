@@ -55,8 +55,10 @@ export function HeaderNavigation() {
   const isScrolled = scrollPosition.y > 10;
 
   // Mark as mounted on client side
+  // Usamos setTimeout para evitar setState síncrono en effect
   useEffect(() => {
-    setMounted(true);
+    const timer = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(timer);
   }, []);
 
   // Active navigation tracking (page or section)

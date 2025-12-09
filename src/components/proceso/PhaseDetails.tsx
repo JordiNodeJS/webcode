@@ -84,8 +84,10 @@ export default function PhaseDetails({ fases }: PhaseDetailsProps) {
   // que genera IDs internos diferentes entre SSR y cliente
   const [mounted, setMounted] = useState(false);
 
+  // Usamos setTimeout para evitar setState síncrono en effect
   useEffect(() => {
-    setMounted(true);
+    const timer = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
