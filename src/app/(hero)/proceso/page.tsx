@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Suspense } from "react";
+import { NetworkBackground } from "@/components/proceso/NetworkBackground";
 
 const WSFadeIn = dynamic(() =>
   import("@/components/animations/ws-fade-in").then((m) => m.WSFadeIn)
@@ -251,20 +252,32 @@ export default function ProcesoPage() {
       {/* Hero Section Mejorado */}
       <section className="relative h-screen overflow-hidden">
         {/* Background gradients */}
-        <div 
-          className="absolute inset-0" 
-          style={{ backgroundImage: 'radial-gradient(circle 384px at 75% 10%, rgba(220, 124, 179, 0.15), transparent)' }}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle 384px at 75% 10%, rgba(220, 124, 179, 0.15), transparent)"
+          }}
         />
-        <div 
-          className="absolute inset-0" 
-          style={{ backgroundImage: 'radial-gradient(circle 384px at 25% 100%, rgba(130, 200, 210, 0.35), transparent)' }}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle 384px at 25% 100%, rgba(130, 200, 210, 0.35), transparent)"
+          }}
         />
-        <div 
-          className="absolute inset-0" 
-          style={{ backgroundImage: 'linear-gradient(to bottom, transparent 0%, transparent 15%, rgba(220, 124, 179, 0.20) 50%, rgba(130, 200, 210, 0.25) 100%)' }}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(to bottom, transparent 0%, transparent 15%, rgba(220, 124, 179, 0.20) 50%, rgba(130, 200, 210, 0.25) 100%)"
+          }}
         />
         {/* Grid pattern - kept separate as it uses complex SVG pattern */}
         <div className="absolute inset-0 bg-webcode-grid opacity-30" />
+
+        {/* Particles Network Effect */}
+        <NetworkBackground />
 
         <div className="container mx-auto px-4 relative z-10 h-full flex items-center justify-center">
           <WSFadeIn delay={0.1}>

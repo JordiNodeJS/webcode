@@ -47,10 +47,19 @@ const languages = [
 export function HeaderNavigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentLanguage, setCurrentLanguage] = useState("es");
+  // Mounted state pattern to avoid Radix UI hydration mismatch with generated IDs
+  const [mounted, setMounted] = useState(false);
   const scrollPosition = useScrollPosition();
   const pathname = usePathname();
   const router = useRouter();
   const isScrolled = scrollPosition.y > 10;
+
+  // Mark as mounted on client side
+  // Usamos setTimeout para evitar setState síncrono en effect
+  useEffect(() => {
+    const timer = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Active navigation tracking (page or section)
   const [manualActiveHref, setManualActiveHref] = useState<string | null>(null);
@@ -368,98 +377,111 @@ export function HeaderNavigation() {
                 </div>
               </WSFadeIn>
 
-              {/* Sheet para menú móvil */}
+              {/* Sheet para menú móvil - Solo renderizar cuando montado para evitar hydration mismatch */}
               <WSFadeIn delay={0.4}>
-                <Sheet
-                  open={isMobileMenuOpen}
-                  onOpenChange={setIsMobileMenuOpen}
-                >
-                  <SheetTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="md:hidden text-foreground"
-                      data-testid="mobile-menu-toggle"
-                      aria-label="Toggle mobile menu"
-                      aria-expanded={isMobileMenuOpen}
-                    >
-                      <Menu size={20} />
-                    </Button>
-                  </SheetTrigger>
-                  {/* Fix: use sensible mobile-first widths (was inverted sm:w) */}
-                  <SheetContent side="right" className="w-56 sm:w-64">
-                    {/* Título oculto visualmente para accesibilidad */}
-                    <SheetTitle className="sr-only">Navegación</SheetTitle>
-                    <div className="flex flex-col space-y-4 mt-6 ps-4 text-center">
-                      {navigationItems.map((item) =>
-                        item.href.startsWith("http") ? (
-                          <a
-                            key={item.href}
-                            href={item.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2 cursor-pointer"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                          >
-                            {item.label}
-                          </a>
-                        ) : item.href.startsWith("#") ? (
-                          <a
-                            key={item.href}
-                            href={item.href}
-                            aria-current={
-                              activeHref === item.href ? "true" : undefined
-                            }
-                            className={`text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2 cursor-pointer ${
-                              activeHref === item.href ? "text-primary" : ""
-                            }`}
-                            onClick={(e) => {
-                              handleSmoothScroll(item.href, e);
-                              setIsMobileMenuOpen(false);
-                            }}
-                          >
-                            {item.label}
-                            <span
-                              className={`block h-0.5 w-full rounded bg-primary mt-1 transition-all duration-200 ${
-                                activeHref === item.href
-                                  ? "opacity-100"
-                                  : "opacity-0"
+                {mounted ? (
+                  <Sheet
+                    open={isMobileMenuOpen}
+                    onOpenChange={setIsMobileMenuOpen}
+                  >
+                    <SheetTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="md:hidden text-foreground"
+                        data-testid="mobile-menu-toggle"
+                        aria-label="Toggle mobile menu"
+                        aria-expanded={isMobileMenuOpen}
+                      >
+                        <Menu size={20} />
+                      </Button>
+                    </SheetTrigger>
+                    {/* Fix: use sensible mobile-first widths (was inverted sm:w) */}
+                    <SheetContent side="right" className="w-56 sm:w-64">
+                      {/* Título oculto visualmente para accesibilidad */}
+                      <SheetTitle className="sr-only">Navegación</SheetTitle>
+                      <div className="flex flex-col space-y-4 mt-6 ps-4 text-center">
+                        {navigationItems.map((item) =>
+                          item.href.startsWith("http") ? (
+                            <a
+                              key={item.href}
+                              href={item.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2 cursor-pointer"
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              {item.label}
+                            </a>
+                          ) : item.href.startsWith("#") ? (
+                            <a
+                              key={item.href}
+                              href={item.href}
+                              aria-current={
+                                activeHref === item.href ? "true" : undefined
+                              }
+                              className={`text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2 cursor-pointer ${
+                                activeHref === item.href ? "text-primary" : ""
                               }`}
-                              aria-hidden
-                            />
-                          </a>
-                        ) : (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            aria-current={
-                              activeHref === item.href ? "true" : undefined
-                            }
-                            className={`text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2 cursor-pointer ${
-                              activeHref === item.href ? "text-primary" : ""
-                            }`}
-                            onClick={(
-                              e: React.MouseEvent<HTMLAnchorElement>
-                            ) => {
-                              handleSmoothScroll(item.href, e);
-                              setIsMobileMenuOpen(false);
-                            }}
-                          >
-                            {item.label}
-                            <span
-                              className={`block h-0.5 w-full rounded bg-primary mt-1 transition-all duration-200 ${
-                                activeHref === item.href
-                                  ? "opacity-100"
-                                  : "opacity-0"
+                              onClick={(e) => {
+                                handleSmoothScroll(item.href, e);
+                                setIsMobileMenuOpen(false);
+                              }}
+                            >
+                              {item.label}
+                              <span
+                                className={`block h-0.5 w-full rounded bg-primary mt-1 transition-all duration-200 ${
+                                  activeHref === item.href
+                                    ? "opacity-100"
+                                    : "opacity-0"
+                                }`}
+                                aria-hidden
+                              />
+                            </a>
+                          ) : (
+                            <Link
+                              key={item.href}
+                              href={item.href}
+                              aria-current={
+                                activeHref === item.href ? "true" : undefined
+                              }
+                              className={`text-foreground hover:text-primary transition-colors duration-200 font-medium text-lg py-2 cursor-pointer ${
+                                activeHref === item.href ? "text-primary" : ""
                               }`}
-                              aria-hidden
-                            />
-                          </Link>
-                        )
-                      )}
-                    </div>
-                  </SheetContent>
-                </Sheet>
+                              onClick={(
+                                e: React.MouseEvent<HTMLAnchorElement>
+                              ) => {
+                                handleSmoothScroll(item.href, e);
+                                setIsMobileMenuOpen(false);
+                              }}
+                            >
+                              {item.label}
+                              <span
+                                className={`block h-0.5 w-full rounded bg-primary mt-1 transition-all duration-200 ${
+                                  activeHref === item.href
+                                    ? "opacity-100"
+                                    : "opacity-0"
+                                }`}
+                                aria-hidden
+                              />
+                            </Link>
+                          )
+                        )}
+                      </div>
+                    </SheetContent>
+                  </Sheet>
+                ) : (
+                  // Placeholder button during SSR to avoid hydration mismatch
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="md:hidden text-foreground"
+                    aria-label="Toggle mobile menu"
+                    aria-expanded={false}
+                  >
+                    <Menu size={20} />
+                  </Button>
+                )}
               </WSFadeIn>
             </div>
           </div>
