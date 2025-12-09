@@ -4,7 +4,7 @@ import {
   createContext,
   type ReactNode,
   useContext,
-  useLayoutEffect,
+  useEffect,
   useMemo,
   useState
 } from "react";
@@ -29,15 +29,12 @@ export function AnimationProvider({ children }: AnimationProviderProps) {
     new Set()
   );
 
-  // Inicializar con función para evitar warning de React Compiler
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  });
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
-  // Listener para cambios en las preferencias
-  useLayoutEffect(() => {
+  useEffect(() => {
+    // Check initial preference
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mediaQuery.matches);
 
     const handleChange = (e: MediaQueryListEvent) => {
       setPrefersReducedMotion(e.matches);
@@ -92,9 +89,12 @@ export function AnimationProvider({ children }: AnimationProviderProps) {
 export function useAnimationContext() {
   const context = useContext(AnimationContext);
   if (context === undefined) {
-    throw new Error(
-      "useAnimationContext must be used within an AnimationProvider"
-    );
+    return {
+      isAnimationEnabled: true,
+      disableAnimationsForSection: () => {},
+      enableAnimationsForSection: () => {},
+      disabledSections: new Set<string>()
+    };
   }
   return context;
 }
