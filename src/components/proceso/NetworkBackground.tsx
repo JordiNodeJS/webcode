@@ -8,8 +8,11 @@ import { Particles } from "@/components/magicui/particles";
  * NetworkBackground - Fondo animado de partículas con soporte para tema
  *
  * Usa colores del tema WebCode que contrastan bien en ambos modos:
- * - Dark: blanco (#ffffff) sobre fondo oscuro
- * - Light: rosa primary (#dc7cb3) sobre fondo claro con gradientes
+ * - Dark: blanco (#ffffff) sobre fondo oscuro con blur suave (opacity 0.4)
+ * - Light: aguamarina oscuro (#006b75) sobre fondo claro sin blur (opacity 0.7)
+ *
+ * El modo claro usa mayor opacidad y sin blur para asegurar visibilidad
+ * contra los gradientes rosados y aguamarinas del fondo.
  *
  * Usa useId() de React 19 para IDs estables entre SSR y cliente.
  * El componente espera a que el tema se resuelva antes de renderizar
@@ -39,14 +42,21 @@ export function NetworkBackground() {
   }
 
   // Colores del tema WebCode que contrastan en ambos modos
-  // Dark: blanco sobre fondo oscuro
-  // Light: rosa primary (#dc7cb3) que se ve bien sobre el gradiente rosado/aguamarina
-  const color = resolvedTheme === "dark" ? "#ffffff" : "#dc7cb3";
+  // Dark: blanco sobre fondo oscuro con blur suave
+  // Light: aguamarina oscuro (#006b75) que contrasta bien sobre el gradiente rosado/aguamarina
+  const color = resolvedTheme === "dark" ? "#ffffff" : "#006b75";
+
+  // En modo claro, usamos mayor opacidad y sin blur para mejor visibilidad
+  // En modo oscuro, mantenemos el efecto blur suave original
+  const particleClassName =
+    resolvedTheme === "dark"
+      ? "absolute inset-0 opacity-40 blur-[1px]"
+      : "absolute inset-0 opacity-70";
 
   return (
     <Particles
       key={`${id}-${resolvedTheme}`}
-      className="absolute inset-0 opacity-40 blur-[1px]"
+      className={particleClassName}
       quantity={80}
       ease={80}
       color={color}
