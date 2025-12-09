@@ -168,13 +168,13 @@ export default function PhaseTimeline({ fases }: PhaseTimelineProps) {
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 bg-gradient-to-br from-background via-muted/30 to-background overflow-hidden"
+      className="relative py-20 bg-gradient-to-br from-background via-primary/5 to-background overflow-hidden"
     >
       {/* Pattern de fondo estático (optimizado para rendimiento) */}
-      <div className="absolute inset-0 opacity-30">
+      <div className="absolute inset-0 opacity-60">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(var(--primary-rgb),0.1),transparent_50%)]" />
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-2xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-2xl" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-2xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-2xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">

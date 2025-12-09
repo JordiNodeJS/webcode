@@ -1,5 +1,6 @@
 "use client";
 
+import { useId, useEffect, useState } from "react";
 import { WSFadeIn } from "@/components/animations/ws-fade-in";
 import {
   Accordion,
@@ -77,6 +78,16 @@ const activityExplanations: Record<string, string> = {
 };
 
 export default function PhaseDetails({ fases }: PhaseDetailsProps) {
+  // Usar useId() de React 19 para IDs estables entre SSR y cliente
+  const baseId = useId();
+  // Patrón mounted para evitar hydration mismatch con Radix UI Accordion
+  // que genera IDs internos diferentes entre SSR y cliente
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <section className="relative py-20 overflow-hidden">
       {/* Fondo con gradiente estático (optimizado) */}
@@ -153,7 +164,7 @@ export default function PhaseDetails({ fases }: PhaseDetailsProps) {
                     </div>
                   </div>
 
-                  {/* Actividades con Accordion */}
+                  {/* Actividades con Accordion - Solo renderizar cuando montado */}
                   <div className="mb-6">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -177,34 +188,53 @@ export default function PhaseDetails({ fases }: PhaseDetailsProps) {
                       </h4>
                     </div>
 
-                    <Accordion
-                      type="single"
-                      collapsible
-                      className="w-full space-y-2"
-                    >
-                      {fase.actividades.map((actividad, idx) => (
-                        <AccordionItem
-                          key={`${fase.numero}-actividad-${actividad.substring(0, 20)}`}
-                          value={`item-${fase.numero}-${idx}`}
-                          className="border-2 !border-b-2 border-primary/20 rounded-lg px-4 hover:border-primary/40 transition-all duration-300 bg-card/50 backdrop-blur-sm"
-                        >
-                          <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary hover:no-underline py-3 px-2">
-                            <div className="flex items-center gap-4 text-left">
+                    {/* Placeholder durante SSR para evitar hydration mismatch */}
+                    {!mounted ? (
+                      <div className="w-full space-y-2">
+                        {fase.actividades.map((actividad, idx) => (
+                          <div
+                            key={`${baseId}-placeholder-${fase.numero}-${idx}`}
+                            className="border-2 border-primary/20 rounded-lg px-4 py-3 bg-card/50"
+                          >
+                            <div className="flex items-center gap-4 text-left text-sm font-semibold text-foreground">
                               <span className="text-primary font-bold flex-shrink-0 ml-1">
                                 ▸
                               </span>
                               <span>{actividad}</span>
                             </div>
-                          </AccordionTrigger>
-                          <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-4 pt-2">
-                            <div className="pl-7 pr-4 py-3 bg-primary/5 rounded-lg border-l-4 border-primary/50">
-                              {activityExplanations[actividad] ||
-                                "Explicación detallada de esta actividad."}
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      ))}
-                    </Accordion>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <Accordion
+                        type="single"
+                        collapsible
+                        className="w-full space-y-2"
+                      >
+                        {fase.actividades.map((actividad, idx) => (
+                          <AccordionItem
+                            key={`${baseId}-${fase.numero}-actividad-${idx}`}
+                            value={`${baseId}-item-${fase.numero}-${idx}`}
+                            className="border-2 !border-b-2 border-primary/20 rounded-lg px-4 hover:border-primary/40 transition-all duration-300 bg-card/50 backdrop-blur-sm"
+                          >
+                            <AccordionTrigger className="text-sm font-semibold text-foreground hover:text-primary hover:no-underline py-3 px-2">
+                              <div className="flex items-center gap-4 text-left">
+                                <span className="text-primary font-bold flex-shrink-0 ml-1">
+                                  ▸
+                                </span>
+                                <span>{actividad}</span>
+                              </div>
+                            </AccordionTrigger>
+                            <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-4 pt-2">
+                              <div className="pl-7 pr-4 py-3 bg-primary/5 rounded-lg border-l-4 border-primary/50">
+                                {activityExplanations[actividad] ||
+                                  "Explicación detallada de esta actividad."}
+                              </div>
+                            </AccordionContent>
+                          </AccordionItem>
+                        ))}
+                      </Accordion>
+                    )}
                   </div>
 
                   {/* Entregables */}
@@ -231,9 +261,9 @@ export default function PhaseDetails({ fases }: PhaseDetailsProps) {
                       </h4>
                     </div>
                     <ul className="grid grid-cols-1 gap-2">
-                      {fase.entregables.map((entregable) => (
+                      {fase.entregables.map((entregable, idx) => (
                         <li
-                          key={`${fase.numero}-entregable-${entregable.substring(0, 20)}`}
+                          key={`${baseId}-${fase.numero}-entregable-${idx}`}
                           className="flex items-center gap-3 text-sm text-muted-foreground bg-gradient-to-r from-secondary/5 to-transparent p-3 rounded-lg hover:from-secondary/10 transition-all duration-300"
                         >
                           <span className="text-secondary font-bold text-lg flex-shrink-0 flex items-center justify-center w-5 h-5">

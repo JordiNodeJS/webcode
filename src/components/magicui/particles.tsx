@@ -102,7 +102,15 @@ export const Particles: React.FC<ParticlesProps> = ({
   const resizeTimeout = useRef<NodeJS.Timeout | null>(null);
   const isVisible = useRef<boolean>(false);
 
-  const rgb = hexToRgb(color);
+  // Store color in a ref to access current value in animation loop
+  const colorRef = useRef(color);
+  const rgbRef = useRef(hexToRgb(color));
+
+  // Update refs when color changes
+  useEffect(() => {
+    colorRef.current = color;
+    rgbRef.current = hexToRgb(color);
+  }, [color]);
 
   const circleParams = useCallback((): Circle => {
     const x = Math.floor(Math.random() * canvasSize.current.w);
@@ -136,7 +144,7 @@ export const Particles: React.FC<ParticlesProps> = ({
         context.current.translate(translateX, translateY);
         context.current.beginPath();
         context.current.arc(x, y, size, 0, 2 * Math.PI);
-        context.current.fillStyle = `rgba(${rgb.join(", ")}, ${alpha})`;
+        context.current.fillStyle = `rgba(${rgbRef.current.join(", ")}, ${alpha})`;
         context.current.fill();
         context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
 
@@ -145,7 +153,7 @@ export const Particles: React.FC<ParticlesProps> = ({
         }
       }
     },
-    [dpr, rgb]
+    [dpr]
   );
 
   const clearContext = useCallback(() => {
@@ -220,7 +228,7 @@ export const Particles: React.FC<ParticlesProps> = ({
 
           if (distance < 100) {
             context.current.beginPath();
-            context.current.strokeStyle = `rgba(${rgb.join(", ")}, ${
+            context.current.strokeStyle = `rgba(${rgbRef.current.join(", ")}, ${
               0.3 * (1 - distance / 100)
             })`;
             context.current.lineWidth = 0.5;
@@ -232,7 +240,7 @@ export const Particles: React.FC<ParticlesProps> = ({
         }
       }
     }
-  }, [rgb]);
+  }, []);
 
   // Store animate in a ref to be accessible inside itself
   const animateRef = useRef<() => void>(() => {});
@@ -374,6 +382,18 @@ export const Particles: React.FC<ParticlesProps> = ({
   useEffect(() => {
     initCanvas();
   }, [refresh, initCanvas]);
+
+  // Reinitialize when color changes to ensure particles use the new color
+  useEffect(() => {
+    // Clear existing circles and redraw with new color
+    circles.current = [];
+    initCanvas();
+
+    // Ensure animation is running if visible
+    if (isVisible.current && !rafID.current) {
+      animateRef.current();
+    }
+  }, [color, initCanvas]);
 
   return (
     <div
