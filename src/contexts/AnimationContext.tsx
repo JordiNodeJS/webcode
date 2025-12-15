@@ -29,12 +29,17 @@ export function AnimationProvider({ children }: AnimationProviderProps) {
     new Set()
   );
 
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  // Initialize with actual value instead of default false
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    }
+    return false;
+  });
 
   useEffect(() => {
-    // Check initial preference
+    // Only listen for changes, don't set initial state
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
 
     const handleChange = (e: MediaQueryListEvent) => {
       setPrefersReducedMotion(e.matches);
