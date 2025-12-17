@@ -49,3 +49,7 @@ Thumbs.db
 
 # Workspace files (optional - comenta si quieres versionarlos)
 *.code-workspace
+
+# kilo code
+.kilocodemodes
+.kilocode/
